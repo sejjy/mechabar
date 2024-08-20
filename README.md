@@ -29,6 +29,10 @@ This configuration is tested and optimized for the following system setup:
    ```
 3. **Setup scripts:**
 
+    Copy the `scripts` folder to your Waybar configuration directory:
+    ```bash
+    cp -r scripts ~/.config/waybar/
+    ```
     Copy the scripts from the `scripts` directory to `~/.local/share/bin`:
     ```bash
     mkdir -p ~/.local/share/bin
