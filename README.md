@@ -16,8 +16,8 @@ This configuration is tested and optimized for the following system setup:
 1. **Clone the repository:**
 
    ```bash
-   git clone https://github.com/Sejjy/mecha-bar.git
-   cd mecha-bar
+   git clone https://github.com/Sejjy/MechaBar.git
+   cd MechaBar
    ```
 2. **Copy the configuration files:**
 
