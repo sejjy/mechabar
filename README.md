@@ -1,4 +1,4 @@
-# Minimal Mecha Bar
+# Mecha Bar
 ![Mecha Bar](/preview/mecha-bar.png)
 
 ## System Information
