@@ -17,7 +17,7 @@ This configuration is tested and optimized for the following system setup:
 
    ```bash
    git clone https://github.com/Sejjy/mecha-bar.git
-   cd waybar-config
+   cd mecha-bar
    ```
 2. **Copy the configuration files:**
 
