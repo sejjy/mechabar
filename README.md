@@ -16,7 +16,7 @@ This configuration is tested and optimized for the following system setup:
 1. **Clone the repository:**
 
    ```bash
-   git clone https://github.com/yourusername/waybar-config.git
+   git clone https://github.com/Sejjy/mecha-bar.git
    cd waybar-config
    ```
 2. **Copy the configuration files:**
