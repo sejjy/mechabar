@@ -12,9 +12,7 @@ This configuration is tested and optimized for the following system setup:
 > **Note:** This configuration is initially designed for laptops.
 
 ## Dependencies
-
 To ensure Mecha Bar works properly, make sure to install the following dependencies:
-
 - pipewire
 - wireplumber
 - pavucontrol
@@ -27,21 +25,20 @@ To ensure Mecha Bar works properly, make sure to install the following dependenc
 
 ## Installation
 1. **Clone the repository:**
-
    ```bash
    git clone https://github.com/Sejjy/MechaBar.git
    cd MechaBar
    ```
+   
 2. **Copy the configuration files:**
-
     Copy the `config.jsonc`, `style.css`, and `theme.css` files to your Waybar configuration directory:
     ```bash
     cp config.jsonc ~/.config/waybar/
     cp style.css ~/.config/waybar/
     cp theme.css ~/.config/waybar/
    ```
-3. **Setup scripts:**
 
+3. **Setup scripts:**
     Copy the `scripts` folder to your Waybar configuration directory:
     ```bash
     cp -r scripts ~/.config/waybar/
@@ -58,8 +55,8 @@ To ensure Mecha Bar works properly, make sure to install the following dependenc
         ```bash
         sudo pacman -S python
         ```
-4. **Restart Waybar**
 
+4. **Restart Waybar**
     After copying the files, restart Waybar to apply the changes:
     ```bash
     killall waybar
