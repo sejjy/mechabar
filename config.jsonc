@@ -175,7 +175,7 @@
     "custom/wifi": {
         "exec": "~/.config/waybar/scripts/network-status.sh",
         "interval": 30,
-        "format": "󰢾 SKY",
+        "format": "󰢾 SKY",  // use "{}" to display your network name
         "tooltip": true,
         "tooltip-format": "{}",
         "on-click": "~/.config/waybar/scripts/network-menu.sh",
