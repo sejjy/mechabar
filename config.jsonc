@@ -171,6 +171,7 @@
         "max-length": 8
 	},
 
+    // These scripts use rofi. If you use dmenu, you will need to create your own script.
     "custom/wifi": {
         "exec": "~/.config/waybar/scripts/network-status.sh",
         "interval": 30,
@@ -252,6 +253,8 @@
         "format": " ",
         "tooltip": false
     },
+
+    // Adjust this if you have a long network name so that the modules are centered.
     "custom/paddc": {
         "format": "   ",
         "tooltip": false
