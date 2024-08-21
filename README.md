@@ -7,10 +7,23 @@ This configuration is tested and optimized for the following system setup:
 - **Operating System**: Arch Linux
 - **Display Server**: Wayland
 - **Window Manager**: Hyprland
-- **Audio**: PipeWire with WirePlumber
 - **Monitor Resolution**: 1920x1080
 
 > **Note:** This configuration is initially designed for laptops.
+
+## Dependencies
+
+To ensure Mecha Bar works properly, make sure to install the following dependencies:
+
+- pipewire
+- wireplumber
+- pavucontrol
+- playerctl
+- brightnessctl
+- python
+- rofi
+- ttf-font-awesome
+- networkmanager
 
 ## Installation
 1. **Clone the repository:**
@@ -54,7 +67,7 @@ This configuration is tested and optimized for the following system setup:
     ```
 
 ## Customization
-Feel free to modify the configuration files to fit your preferences.
+You can modify the configuration files to match your setup, but you will need to adjust the scripts and configuration accordingly if you use alternative tools or dependencies.
 
 ## Credits
 This configuration uses base modules and scripts from prasanthrangan's [hyprdots](https://github.com/prasanthrangan/hyprdots) which served as the foundation for this setup.
