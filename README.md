@@ -20,7 +20,7 @@ To ensure Mecha Bar works properly, make sure to install the following dependenc
 - brightnessctl
 - python
 - rofi
-- ttf-font-awesome
+- ttf-jetbrains-mono-nerd
 - networkmanager
 
 ## Installation
