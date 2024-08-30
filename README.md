@@ -1,15 +1,13 @@
 # Mecha Bar
-![Mecha Bar](/preview/mecha-bar.png)
+![Mecha Bar](/preview/v1.1.png)
 
 ## System Information
-This configuration is tested and optimized for the following system setup:
+> **Note:** This configuration is initially tested and optimized for a laptop with the following system setup:
 
 - **Operating System**: Arch Linux
 - **Display Server**: Wayland
 - **Window Manager**: Hyprland
 - **Monitor Resolution**: 1920x1080
-
-> **Note:** This configuration is initially designed for laptops.
 
 ## Dependencies
 To ensure Mecha Bar works properly, make sure to install the following dependencies:
@@ -20,6 +18,7 @@ To ensure Mecha Bar works properly, make sure to install the following dependenc
 - brightnessctl
 - python
 - rofi
+- wlogout
 - ttf-jetbrains-mono-nerd
 - networkmanager
 
@@ -34,10 +33,11 @@ To ensure Mecha Bar works properly, make sure to install the following dependenc
     
     Copy the `config.jsonc`, `style.css`, and `theme.css` files to `~/.config/waybar`:
     ```bash
+    mkdir -p ~/.config/waybar/
     cp config.jsonc ~/.config/waybar/
     cp style.css ~/.config/waybar/
     cp theme.css ~/.config/waybar/
-   ```
+    ```
 
 3. **Setup scripts:**
     
@@ -75,6 +75,6 @@ To ensure Mecha Bar works properly, make sure to install the following dependenc
 You can modify the configuration files to match your setup. However, if you use alternative tools or dependencies, you'll need to adjust the scripts and configurations accordingly.
 
 ## Credits
-This configuration uses base modules and scripts from prasanthrangan's [hyprdots](https://github.com/prasanthrangan/hyprdots) which served as the foundation for this setup.
+This configuration uses base modules and scripts from prasanthrangan's [hyprdots](https://github.com/prasanthrangan/hyprdots), which served as the foundation for this setup.
 
 
