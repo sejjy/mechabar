@@ -31,7 +31,8 @@ To ensure Mecha Bar works properly, make sure to install the following dependenc
    ```
    
 2. **Copy the configuration files:**
-    Copy the `config.jsonc`, `style.css`, and `theme.css` files to your Waybar configuration directory:
+    
+    Copy the `config.jsonc`, `style.css`, and `theme.css` files to `~/.config/waybar`:
     ```bash
     cp config.jsonc ~/.config/waybar/
     cp style.css ~/.config/waybar/
@@ -39,32 +40,39 @@ To ensure Mecha Bar works properly, make sure to install the following dependenc
    ```
 
 3. **Setup scripts:**
-    Copy the `scripts` folder to your Waybar configuration directory:
+    
+    Copy the `scripts` folder to `~/.config/waybar`:
     ```bash
     cp -r scripts ~/.config/waybar/
     ```
-    Copy the scripts from the `scripts` directory to `~/.local/share/bin`:
+
+    Copy the scripts to `~/.local/share/bin`:
     ```bash
     mkdir -p ~/.local/share/bin
     cp scripts/* ~/.local/share/bin/
     ```
 
-    > **Note:** The `mediaplayer.py` script requires Python 3 to function. Make sure Python 3 is installed on your system:
-    - **Arch Linux**
-
+4. **Copy additional configuration files:**
+    - **rofi:** Copy the files to `~/.config/rofi`:
         ```bash
-        sudo pacman -S python
+        mkdir -p ~/.config/rofi
+        cp -r rofi/* ~/.config/rofi/
         ```
 
-4. **Restart Waybar**
-    After copying the files, restart Waybar to apply the changes:
+    - **wlogout:** Copy the files to `~/.config/wlogout`:
+        ```bash
+        mkdir -p ~/.config/wlogout
+        cp -r wlogout/* ~/.config/wlogout/
+        ```
+
+5. **Restart Waybar to apply the changes:**
     ```bash
     killall waybar
     waybar &
     ```
 
 ## Customization
-You can modify the configuration files to match your setup, but you will need to adjust the scripts and configuration accordingly if you use alternative tools or dependencies.
+You can modify the configuration files to match your setup. However, if you use alternative tools or dependencies, you'll need to adjust the scripts and configurations accordingly.
 
 ## Credits
 This configuration uses base modules and scripts from prasanthrangan's [hyprdots](https://github.com/prasanthrangan/hyprdots) which served as the foundation for this setup.
