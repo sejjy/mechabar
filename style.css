@@ -42,8 +42,8 @@ tooltip {
     background: @wb-act-bg;
     color: @wb-act-fg;
     margin-left: 2px;
-    padding-left: 8px;
-    padding-right: 8px;
+    padding-left: 6px;
+    padding-right: 6px;
     margin-right: 2px;
     animation: ws_active 20s ease-in-out 1;
     transition: all 0.4s cubic-bezier(.55,-0.68,.48,1.682);
@@ -98,6 +98,7 @@ tooltip {
 #custom-paddl {
     font-size: 11.5pt;
     margin-bottom: -2px;
+    margin-left: -3px;
     padding-right: 2px;
     background: @main-bg;
 }
@@ -203,7 +204,7 @@ tooltip {
     padding-right: 0px;
     background: @arch;
     margin-bottom: -2px;
-    text-shadow: 0px 0px 2px rgba(0, 0, 0, 1);
+    text-shadow: 0px 0px 1px rgba(0, 0, 0, 1);
 }
 #custom-right2 {
     font-size: 11.5pt;
@@ -248,9 +249,15 @@ tooltip {
 }
 
 /* CONNECTION */
+#custom-wi {
+    text-shadow: 0px 0px 2px rgba(0, 0, 0, 1);
+    background: @wifi;
+    margin-right: -2px;
+    padding-left: 5px;
+}
 #custom-wifi {
-    padding-left: 4px;
-    padding-right: 4px;
+    padding-left: 0px;
+    padding-right: 0px;
     text-shadow: 0px 0px 2px rgba(0, 0, 0, 1);
     background: @wifi;
 }
@@ -328,8 +335,8 @@ tooltip {
     margin-top: 2px;
     margin-right: 4px;
     margin-bottom: 2px;
-    padding-left: 10px;
-    padding-right: 7px;
+    padding-left: 9px;
+    padding-right: 6px;
 }
 #custom-paddr {
     font-size: 11.5pt;
