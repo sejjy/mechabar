@@ -3,8 +3,7 @@
 scrDir=$(dirname "$(realpath "$0")")
 source $scrDir/globalcontrol.sh
 
-# define functions
-
+# Define functions
 print_error() {
     cat <<"EOF"
     ./volumecontrol.sh -[device] <actions>
@@ -63,8 +62,7 @@ select_output() {
     fi
 }
 
-# eval device option
-
+# Evaluate device option
 while getopts iops: DeviceOpt; do
     case "${DeviceOpt}" in
     i)
@@ -95,14 +93,12 @@ while getopts iops: DeviceOpt; do
     esac
 done
 
-# set default variables
-
+# Set default variables
 icodir="${confDir}/dunst/icons/vol"
 shift $((OPTIND - 1))
 step="${2:-5}"
 
-# execute action
-
+# Execute action
 case "${1}" in
 i) action_${ctrl} i ;;
 d) action_${ctrl} d ;;
