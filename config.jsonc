@@ -96,6 +96,7 @@
             "(.*)Mozilla Firefox": "<span foreground='#f38ba8'>󰈹</span>  Firefox",
             "(.*) - Visual Studio Code": "<span foreground='#89b4fa'>󰨞</span>  $1",
             "(.*)Visual Studio Code": "<span foreground='#89b4fa'>󰨞</span>  Visual Studio Code",
+            "(.*)Spotify": "<span foreground='#a6e3a1'></span>  Spotify",
             "(.*)Spotify Premium": "<span foreground='#a6e3a1'></span>  Spotify Premium",
             "Discord": "<span foreground='#89b4fa'></span>  Discord",
             "GNU Image Manipulation Program": "<span foreground='#a6adc8'></span>  GNU Image Manipulation Program",
