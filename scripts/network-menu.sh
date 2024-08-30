@@ -2,8 +2,8 @@
 
 # Set variables for script directory and rofi configuration
 scrDir=$(dirname "$(realpath "$0")")
-roconf="$HOME/.config/waybar/rofi/wifi.rasi"
 # roconf="${confDir}/rofi/wifi.rasi"
+roconf="$HOME/.config/rofi/wifi.rasi"
 
 # Set rofi scaling
 [[ "${rofiScale}" =~ ^[0-9]+$ ]] || rofiScale=10

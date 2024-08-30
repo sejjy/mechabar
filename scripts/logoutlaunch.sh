@@ -7,17 +7,17 @@ if pgrep -x "wlogout" > /dev/null; then
 fi
 
 # Set file variables
-scrDir=$(dirname "$(realpath "$0")")
+scrDir=`dirname "$(realpath "$0")"`
 source $scrDir/globalcontrol.sh
 [ -z "${1}" ] || wlogoutStyle="${1}"
-wLayout="$HOME/.config/waybar/wlogout/layout_${wlogoutStyle}"
-wlTmplt="$HOME/.config/waybar/wlogout/style_${wlogoutStyle}.css"
+wLayout="${confDir}/wlogout/layout_${wlogoutStyle}"
+wlTmplt="${confDir}/wlogout/style_${wlogoutStyle}.css"
 
-if [ ! -f "${wLayout}" ] || [ ! -f "${wlTmplt}" ]; then
+if [ ! -f "${wLayout}" ] || [ ! -f "${wlTmplt}" ] ; then
     echo "ERROR: Config ${wlogoutStyle} not found..."
     wlogoutStyle=1
-    wLayout="$HOME/.config/waybar/wlogout/layout_${wlogoutStyle}"
-    wlTmplt="$HOME/.config/waybar/wlogout/style_${wlogoutStyle}.css"
+    wLayout="${confDir}/wlogout/layout_${wlogoutStyle}"
+    wlTmplt="${confDir}/wlogout/style_${wlogoutStyle}.css"
 fi
 
 # Detect monitor resolution
