@@ -1,0 +1,103 @@
+// Config //
+configuration {
+    modi:                        "drun";
+    show-icons:                  false;
+}
+
+@theme "~/.config/waybar/rofi/theme.rasi"
+
+// Main //
+window {
+    width:                       23em;
+    height:                      23.7em;
+    transparency:                "real";
+    fullscreen:                  false;
+    enabled:                     true;
+    cursor:                      "default";
+    spacing:                     0em;
+    padding:                     0em;
+    border-color:                @main-br;
+    background-color:            @main-bg;
+}
+mainbox {
+    enabled:                     true;
+    spacing:                     0em;
+    padding:                     0.5em;
+    orientation:                 vertical;
+    children:                    [ "wallbox" , "listbox" ];
+    background-color:            transparent;
+}
+wallbox {
+    spacing:                     0em;
+    padding:                     -1em;
+    expand:                      false;
+    orientation:                 horizontal;
+    background-color:            transparent;
+    children:                    ["inputbar"];
+}
+
+
+// Inputs //
+inputbar {
+    enabled:                     true;
+    padding:                     0em 0em 0em 0.7em;
+    children:                    [ "entry" ];
+    background-color:            @main-bg;
+    expand:                      true;
+}
+entry {
+    enabled:                     true;
+    padding:                     1.8em;
+    text-color:                  @main-fg;
+    background-color:            transparent;
+}
+
+
+// Lists //
+listbox {
+    spacing:                     0em;
+    padding:                     0em;
+    orientation:                 vertical;
+    children:                    [ "dummy" , "listview" , "dummy" ];
+    background-color:            transparent;
+}
+listview {
+    enabled:                     true;
+    padding:                     0.5em;
+    columns:                     1;
+    lines:                       10; 
+    cycle:                       false;
+    fixed-height:                true;
+    fixed-columns:               false;
+    expand:                      false;
+    cursor:                      "default";
+    background-color:            transparent;
+    text-color:                  @main-fg;
+}
+dummy {
+    spacing:                     0em;
+    padding:                     0em;
+    background-color:            transparent;
+}
+
+
+// Elements //
+element {
+    enabled:                     true;
+    padding:                     0.5em;
+    cursor:                      pointer;
+    background-color:            transparent;
+    text-color:                  @main-fg;
+}
+element selected.normal {
+    background-color:            @select-bg;
+    text-color:                  @select-fg;
+}
+element-text {
+    vertical-align:              0.0;
+    horizontal-align:            0.0;
+    cursor:                      inherit;
+    background-color:            transparent;
+    text-color:                  inherit;
+}
+
