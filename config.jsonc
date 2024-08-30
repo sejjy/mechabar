@@ -8,7 +8,7 @@
     "gtk-layer-shell": true,
     "reload_style_on_change": true,
 
-// positions
+// Positions
 	"modules-left": [
         "custom/paddl",
         "custom/ws",            // window icon
@@ -43,6 +43,7 @@
         "clock#date",           // date
         "custom/right4",
 
+        "custom/wi",
         "custom/wifi",          // connection
         "custom/right5"
     ],
@@ -59,10 +60,10 @@
         "battery",              // battery
 
         "custom/leftin2",
-        "custom/power"         // power button
+        "custom/power"          // power button
     ],
 
-// modules
+// Modules
     "custom/ws": {
         "format": " ",
         "tooltip": false
@@ -127,7 +128,7 @@
 	    "format": "󰘚 {percentage}%",
 	    "format-c": "󰀪 {percentage}%",
         "tooltip": true,
-        "tooltip-format": "{used:0.1f}GB / {total:0.1f}GB",
+        "tooltip-format": "{used:0.1f} GB / {total:0.1f} GB",
         "interval": 20,
         "min-length": 7,
         "max-length": 7
@@ -148,7 +149,8 @@
 
     "clock#time": {
         "format": "󱑂 {:%H:%M}",
-        "tooltip": false,
+        "tooltip": true,
+        "tooltip-format": "{:%I:%M %p}",
         "min-length": 8,
         "max-length": 8
     },
@@ -171,16 +173,20 @@
         "max-length": 8
 	},
 
-    // These scripts use rofi. If you use dmenu, you will need to create your own script.
+    "custom/wi": {
+        "format": "󰤥 ",
+        "tooltip": false
+    },
+
     "custom/wifi": {
         "exec": "~/.config/waybar/scripts/network-status.sh",
         "interval": 30,
-        "format": "󰢾 SKY",  // use "{}" to display your network name
+        "format": "Wi-Fi",   // use "{}" to display network name
         "tooltip": true,
         "tooltip-format": "{}",
         "on-click": "~/.config/waybar/scripts/network-menu.sh",
-        "min-length": 6,
-        "max-length": 6
+        "min-length": 7,
+        "max-length": 7
     },
 
     "custom/media": {
@@ -199,20 +205,20 @@
             "headphone": "󰋋",
             "default": ["󰖀", "󰕾"]
         },
-        "on-click": "volumecontrol.sh -o m",
+        "on-click": "~/.config/waybar/scripts/volumecontrol.sh -o m",
         "on-click-right": "pavucontrol -t 3",
-        "on-scroll-up": "volumecontrol.sh -o i",
-        "on-scroll-down": "volumecontrol.sh -o d",
+        "on-scroll-up": "~/.config/waybar/scripts/volumecontrol.sh -o i",
+        "on-scroll-down": "~/.config/waybar/scripts/volumecontrol.sh -o d",
         "scroll-step": 10,
         "min-length": 6,
         "max-length": 6
     },
 
     "backlight": {
-        "device": "intel_backlight",
         "format": "{icon} {percent}%",
         "format-icons": ["", "", "", "", "", "", "", "", ""],
-        "tooltip": false,
+        "tooltip": true,
+        "tooltip-format": "Brightness",
         "on-scroll-up": "brightnessctl set 5%+",
         "on-scroll-down": "brightnessctl set 5%-",
         "min-length": 6,
@@ -220,17 +226,11 @@
     },
 
     "battery": {
-        "states": {
-            "good": 95,
-            "warning": 30,
-            "critical": 20
-        },
         "format": "{icon} {capacity}%",
-        // "format-icons": ["", "", "", "", ""],
         "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
         "format-charging": "󱘖 {capacity}%",
         "format-plugged": "󱘖 {capacity}%",
-        "tooltip-format": "{time}",
+        "tooltip-format": "{timeTo}",
 	    "interval": 1,
         "min-length": 6,
         "max-length": 6
@@ -239,12 +239,12 @@
     "custom/power": {
         "format": " ",
         "tooltip": false,
-        "on-click": "logoutlaunch.sh 2",
-        "on-click-right": "logoutlaunch.sh 1",
+        "on-click": "~/.config/waybar/scripts/logoutlaunch.sh 2",
+        "on-click-right": "~/.config/waybar/scripts/logoutlaunch.sh 1",
         "interval" : 86400
     },
 
-//padding
+// Padding
     "custom/paddl": {
         "format": " ",
         "tooltip": false
@@ -254,13 +254,9 @@
         "tooltip": false
     },
 
-    // Adjust this if you have a long network name so that the modules are centered.
+    // Adjust this if you have a long network name so that the modules remain centered.
     "custom/paddc": {
-        "format": "   ",
-        "tooltip": false
-    },
-    "custom/paddr": {
-        "format": "",
+        "format": "     ",
         "tooltip": false
     },
 
