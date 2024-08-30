@@ -4,7 +4,7 @@ configuration {
     show-icons:                  false;
 }
 
-@theme "~/.config/waybar/rofi/theme.rasi"
+@theme "~/.config/rofi/theme.rasi"
 
 // Main //
 window {
