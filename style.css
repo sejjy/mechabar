@@ -7,15 +7,7 @@
     min-height: 11px;
 }
 
-/* Main Colors */
-@define-color background    #11111b;
-@define-color foreground    #cdd6f4;
-
-/* Workspace Button Colors */
-@define-color active-bg     #b4befe;
-@define-color active-fg     #11111b;
-@define-color hover-bg      #45475a;
-@define-color hover-fg      #cdd6f4;
+@import "theme.css";
 
 /* Main Background */
 window#waybar {
