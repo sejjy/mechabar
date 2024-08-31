@@ -1,3 +1,4 @@
+/* Global Styling */
 * {
     border: none;
     font-family: "JetBrainsMono Nerd Font";
@@ -6,340 +7,340 @@
     min-height: 11px;
 }
 
-@import "theme.css";
+/* Main Colors */
+@define-color background    #11111b;
+@define-color foreground    #cdd6f4;
 
+/* Workspace Button Colors */
+@define-color active-bg     #b4befe;
+@define-color active-fg     #11111b;
+@define-color hover-bg      #45475a;
+@define-color hover-fg      #cdd6f4;
+
+/* Main Background */
 window#waybar {
-    background: @bar-bg;
+    background: @background;
 }
 
+/* Tooltip Styling */
 tooltip {
-    background: @main-bg;
-    color: @main-fg;
+    color: @foreground;
+    background: @background;
     border: solid;
+    border-width: 1.5px;
     border-radius: 7px;
-    border-width: 1px;
     border-color: white;
 }
 
-/* WORKSPACE BUTTONS */
+/* Workspace Button */
 #workspaces button {
-    box-shadow: none;
-    text-shadow: 0px 0px 2px rgba(0, 0, 0, 1);
-    padding: 0px;
+    color: @foreground;
     border-radius: 8px;
+    box-shadow: none;
     margin-top: 2px;
+    margin-right: 0px;
     margin-bottom: 2px;
     margin-left: 0px;
-    padding-left: 2px;
+    padding: 0px;
     padding-right: 2px;
-    margin-right: 0px;
-    color: @main-fg;
+    padding-left: 2px;
     animation: ws_normal 20s ease-in-out 1;
 }
+
+/* Active Workspace Button */
 #workspaces button.active {
-    box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 1);
+    color: @active-fg;
+    background: @active-bg;
     text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.6);
-    background: @wb-act-bg;
-    color: @wb-act-fg;
-    margin-left: 2px;
-    padding-left: 6px;
-    padding-right: 6px;
+    box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 1);
     margin-right: 2px;
+    margin-left: 2px;
+    padding-right: 6px;
+    padding-left: 6px;
     animation: ws_active 20s ease-in-out 1;
     transition: all 0.4s cubic-bezier(.55,-0.68,.48,1.682);
 }
+
+/* Hover Effect for Workspace Buttons */
 #workspaces button:hover {
-    background: @wb-hvr-bg;
-    color: @wb-hvr-fg;
+    color: @hover-fg;
+    background: @hover-bg;
+    box-shadow: none;
     animation: ws_hover 20s ease-in-out 1;
     transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
 }
 
-/* SPACING */
+/* General Module Styling */
 #custom-ws,
 #workspaces,
 #window,
-#custom-cpuinfo
+#custom-cpuinfo,
 #memory,
 #cpu,
 #clock,
+#custom-wifi,
 #pulseaudio,
 #backlight,
 #battery,
-#custom-power,
-#mpris,
-#custom-notifications {
-    margin-bottom: 0px;
+#custom-power {
     opacity: 1;
-    padding-left: 4px;
+    margin-bottom: 0px;
     padding-right: 4px;
+    padding-left: 4px;
+    text-shadow: 0px 0px 2px rgba(0, 0, 0, 1);
 }
 
-/* COLORS */
-@define-color workspaces    #181825;
+/* General Left Arrow Styling */
+#custom-left1,
+#custom-left2,
+#custom-left3,
+#custom-left4,
+#custom-left5,
+#custom-left6,
+#custom-left7,
+#custom-left8 {
+    font-size: 11.5pt;
+    margin-bottom: -2px;
+    text-shadow: -1px 0px 2px rgba(0, 0, 0, 1);
+}
 
+/* General Right Arrow Styling */
+#custom-right1,
+#custom-right2,
+#custom-right3,
+#custom-right4,
+#custom-right5 {
+    font-size: 11.5pt;
+    margin-bottom: -2px;
+    padding-right: 3px;
+    text-shadow: 1px 0px 2px rgba(0, 0, 0, 1);
+}
+
+/* Color Definitions */
+@define-color workspaces    #181825;
 @define-color cpuinfo       #181825;
 @define-color memory        #1e1e2e;
 @define-color cpu           #313244;
-
 @define-color arch          #b4befe;
-
 @define-color time          #313244;
 @define-color date          #1e1e2e;
 @define-color wifi          #181825;
-
 @define-color pulseaudio    #181825;
 @define-color backlight     #1e1e2e;
 @define-color battery       #313244;
 @define-color power         #b4befe;
 
-/* MODULES */
-/* WINDOW ICON */
+/* Window Icon */
 #custom-paddl {
     font-size: 11.5pt;
     margin-bottom: -2px;
     margin-left: -3px;
     padding-right: 2px;
-    background: @main-bg;
+    background: @background;
 }
+
 #custom-ws {
-    text-shadow: 0px 0px 2px rgba(0, 0, 0, 1);
-    background: @main-bg;
+    background: @background;
 }
+
+/* Workspaces */
 #custom-left1 {
-    font-size: 11.5pt;
     color: @workspaces;
-    background: @main-bg;
-    margin-bottom: -2px;
-    text-shadow: -1px 0px 2px rgba(0, 0, 0, 1);
+    background: @background;
     padding-left: 2px;
 }
 
-/* WORKSPACES */
 #workspaces {
     padding: 0;
     background: @workspaces;
 }
+
 #custom-right1 {
-    font-size: 11.5pt;
     color: @workspaces;
-    background: @main-bg;
-    margin-bottom: -2px;
-    text-shadow: 1px 0px 2px rgba(0, 0, 0, 1);
-    padding-right: 3px;
+    background: @background;
 }
 
-/* WINDOW TITLE */
-#window {
-    text-shadow: 0px 0px 2px rgba(0, 0, 0, 1);
-}
-
-/* TEMPERATURE */
+/* Temperature */
 #custom-paddc {
     padding-right: 3px;
 }
+
 #custom-left2 {
-    font-size: 11.5pt;
     color: @cpuinfo;
-    background: @main-bg;
-    margin-bottom: -2px;
+    background: @background;
     border-radius: 10px;
-    text-shadow: -1px 0px 2px rgba(0, 0, 0, 1);
     padding-left: 3px;
-}
-#custom-cpuinfo {
-    padding-left: 1px;
-    text-shadow: 0px 0px 2px rgba(0, 0, 0, 1);
-    background: @cpuinfo;
 }
 
-/* MEMORY */
+#custom-cpuinfo {
+    background: @cpuinfo;
+    padding-left: 1px;
+    padding-right: 0px;
+}
+
+/* Memory */
 #custom-left3 {
-    font-size: 11.5pt;
     color: @memory;
     background: @cpuinfo;
-    margin-bottom: -2px;
-    text-shadow: -1px 0px 2px rgba(0, 0, 0, 1);
     padding-left: 3px;
 }
+
 #memory {
-    padding-left: 1px;
-    text-shadow: 0px 0px 2px rgba(0, 0, 0, 1);
     background: @memory;
+    padding-left: 1px;
+    padding-right: 0px;
 }
 
 /* CPU */
 #custom-left4 {
-    font-size: 11.5pt;
     color: @cpu;
     background: @memory;
-    margin-bottom: -2px;
-    text-shadow: -1px 0px 2px rgba(0, 0, 0, 1);
     padding-left: 3px;
 }
+
 #cpu {
-    text-shadow: 0px 0px 2px rgba(0, 0, 0, 1);
     background: @cpu;
 }
+
 #custom-leftin1 {
-    font-size: 11.5pt;
     color: @cpu;
+    font-size: 11.5pt;
     margin-bottom: -2px;
 }
 
-/* ARCH LOGO */
+/* Arch Logo */
 #custom-left5 {
-    font-size: 11.5pt;
     color: @arch;
-    background: @main-bg;
-    margin-bottom: -2px;
+    background: @background;
     text-shadow: -1px 0px 2px rgba(0, 0, 0, 0.6);
     padding-left: 3px;
 }
+
 #custom-arch {
-	text-shadow: none;
     color: black;
-    font-size: 11pt;
-    padding-left: 4px;
-    padding-right: 0px;
     background: @arch;
+    font-size: 11pt;
+    margin-right: -1px;
     margin-bottom: -2px;
-    text-shadow: 0px 0px 1px rgba(0, 0, 0, 1);
-}
-#custom-right2 {
-    font-size: 11.5pt;
-    color: @arch;
-    background: @main-bg;
-    margin-bottom: -2px;
-    text-shadow: 1px 0px 2px rgba(0, 0, 0, 1);
-    padding-right: 3px;
+    padding-right: 0px;
+    padding-left: 3px;
+    text-shadow: 0px 0px 1.5px rgba(0, 0, 0, 1);
 }
 
-/* TIME */
+#custom-right2 {
+    color: @arch;
+    background: @background;
+}
+
+/* Time */
 #custom-rightin1 {
-    font-size: 11.5pt;
     color: @time;
+    font-size: 11.5pt;
     margin-bottom: -2px;
 }
+
 #clock.time {
-    text-shadow: 0px 0px 2px rgba(0, 0, 0, 1);
     background: @time;
 }
+
 #custom-right3 {
-    font-size: 11.5pt;
     color: @time;
     background: @date;
-    margin-bottom: -2px;
-    text-shadow: 1px 0px 2px rgba(0, 0, 0, 1);
-    padding-right: 3px;
 }
 
-/* DATE */
+/* Date */
 #clock.date {
-    text-shadow: 0px 0px 2px rgba(0, 0, 0, 1);
     background: @date;
 }
+
 #custom-right4 {
-    font-size: 11.5pt;
     color: @date;
     background: @wifi;
-    margin-bottom: -2px;
-    text-shadow: 1px 0px 2px rgba(0, 0, 0, 1);
-    padding-right: 3px;
 }
 
-/* CONNECTION */
-#custom-wi {
-    text-shadow: 0px 0px 2px rgba(0, 0, 0, 1);
+/* Network */
+#custom-wi {  
     background: @wifi;
+    text-shadow: 0px 0px 2px rgba(0, 0, 0, 1);
     margin-right: -2px;
     padding-left: 5px;
 }
+
 #custom-wifi {
-    padding-left: 0px;
-    padding-right: 0px;
-    text-shadow: 0px 0px 2px rgba(0, 0, 0, 1);
     background: @wifi;
+    padding-right: 0px;
+    padding-left: 0px;
 }
+
 #custom-right5 {
-    font-size: 11.5pt;
     color: @wifi;
-    background: @main-bg;
-    margin-bottom: -2px;
-    text-shadow: 1px 0px 2px rgba(0, 0, 0, 1);
-    padding-right: 3px;
+    background: @background;
 }
 
-/* MEDIA INFO */
+/* Media Info */
 #custom-media {
-    background-color: @main-bg;
-    padding-left: 8px;
+    background-color: @background;
     padding-right: 8px;
+    padding-left: 8px;
 }
 
-/* OUTPUT DEVICE */
+/* PulseAudio */
 #custom-left6 {
-    font-size: 11.5pt;
     color: @pulseaudio;
-    background: @main-bg;
-    margin-bottom: -2px;
-    text-shadow: -1px 0px 2px rgba(0, 0, 0, 1);
+    background: @background;
     padding-left: 3px;
 }
+
 #pulseaudio {
-    text-shadow: 0px 0px 2px rgba(0, 0, 0, 1);
     background: @pulseaudio;
 }
 
-/* BRIGHTNESS */
+/* Brightness */
 #custom-left7 {
-    font-size: 11.5pt;
     color: @backlight;
     background: @pulseaudio;
-    margin-bottom: -2px;
-    text-shadow: -1px 0px 2px rgba(0, 0, 0, 1);
     padding-left: 2px;
 }
+
 #backlight {
-    text-shadow: 0px 0px 2px rgba(0, 0, 0, 1);
     background: @backlight;
 }
 
-/* BATTERY */
+/* Battery */
 #custom-left8 {
-    font-size: 11.5pt;
     color: @battery;
     background: @backlight;
-    margin-bottom: -2px;
-    text-shadow: -1px 0px 2px rgba(0, 0, 0, 1);
     padding-left: 2px;
 }
+
 #battery {
-    text-shadow: 0px 0px 2px rgba(0, 0, 0, 1);
     background: @battery;
 }
 
-/* POWER BUTTON */
+/* Power Button */
 #custom-leftin2 {
-    font-size: 11.5pt;
     color: @battery;
-    background: @main-bg;
+    background: @background;
+    font-size: 11.5pt;
     margin-bottom: -2px;
 }
+
 #custom-power {
-    color: @main-bg;
+    color: @background;
     background: @power;
-    box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 1);
     text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.6);
+    box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 1);
     border-radius: 20px;
     margin-top: 2px;
     margin-right: 4px;
     margin-bottom: 2px;
-    padding-left: 9px;
     padding-right: 6px;
+    padding-left: 9px;
 }
-#custom-paddr {
-    font-size: 11.5pt;
-    color: @main-bg;
-    margin-bottom: -2px;
+
+#custom-power:hover {
+    color: @hover-fg;
+    background: @hover-bg;
+    box-shadow: none;
+    transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
 }
