@@ -1,5 +1,5 @@
 # Mecha Bar
-![Mecha Bar](/preview/v1.1.png)
+![Mecha Bar](/preview/v1.2.png)
 
 ## System Information
 > **Note:** This configuration is initially tested and optimized for a laptop with the following system setup:
@@ -31,12 +31,11 @@ To ensure Mecha Bar works properly, make sure to install the following dependenc
    
 2. **Copy the configuration files:**
     
-    Copy the `config.jsonc`, `style.css`, and `theme.css` files to `~/.config/waybar`:
+    Copy the `config.jsonc` and `style.css` files to `~/.config/waybar`:
     ```bash
     mkdir -p ~/.config/waybar/
     cp config.jsonc ~/.config/waybar/
     cp style.css ~/.config/waybar/
-    cp theme.css ~/.config/waybar/
     ```
 
 3. **Setup scripts:**
@@ -76,5 +75,3 @@ You can modify the configuration files to match your setup. However, if you use 
 
 ## Credits
 This configuration uses base modules and scripts from prasanthrangan's [hyprdots](https://github.com/prasanthrangan/hyprdots), which served as the foundation for this setup.
-
-
