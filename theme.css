@@ -1,0 +1,18 @@
+/* Main Colors */
+@define-color background    #11111b;
+@define-color foreground    #cdd6f4;
+
+/* Workspace Button Colors */
+@define-color active-bg     #b4befe;
+@define-color active-fg     #11111b;
+@define-color hover-bg      #45475a;
+@define-color hover-fg      #cdd6f4;
+
+/* wlogout */
+@define-color bar-bg #11111b;
+@define-color main-bg #11111b;
+@define-color main-fg #cdd6f4;
+@define-color wb-act-bg #b4befe;
+@define-color wb-act-fg #11111b;
+@define-color wb-hvr-bg #6c7086;
+@define-color wb-hvr-fg #11111b;
