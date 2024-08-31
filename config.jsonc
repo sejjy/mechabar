@@ -20,6 +20,7 @@
         "custom/paddw",
         "hyprland/window"       // window title
     ],
+
 	"modules-center": [
         "custom/paddc",
         "custom/left2",
@@ -47,6 +48,7 @@
         "custom/wifi",          // connection
         "custom/right5"
     ],
+
 	"modules-right": [
         "custom/media",         // media info
 
@@ -174,7 +176,7 @@
         "max-length": 8
 	},
 
-    "custom/wi": {
+    "custom/wi": {  // TODO: Signal strength
         "format": "󰤥 ",
         "tooltip": false
     },
@@ -261,7 +263,7 @@
         "tooltip": false
     },
 
-// LEFT arrows
+// Left Arrows
     "custom/left1": {
         "format": "",
         "tooltip": false
@@ -295,7 +297,7 @@
         "tooltip": false
     },
 
-// RIGHT arrows
+// Right Arrows
     "custom/right1": {
         "format": "",
         "tooltip": false
@@ -317,7 +319,7 @@
         "tooltip": false
     },
 
-// LEFT inverse
+// Left Inverse
     "custom/leftin1": {
         "format": "",
         "tooltip": false
@@ -327,10 +329,9 @@
         "tooltip": false
     },
 
-// RIGHT inverse
+// Right Inverse
     "custom/rightin1": {
         "format": "",
         "tooltip": false
     }
 }
-
