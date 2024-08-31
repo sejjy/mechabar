@@ -1,5 +1,5 @@
 # Mecha Bar
-![Mecha Bar](/preview/v1.2.png)
+![Mecha Bar](/preview/v1.1.png)
 
 ## System Information
 > **Note:** This configuration is initially tested and optimized for a laptop with the following system setup:
