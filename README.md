@@ -1,5 +1,5 @@
 # Mecha Bar
-![Mecha Bar](/preview/v1.1.png)
+![Mecha Bar](/preview/v1.1.1.png)
 
 ## System Information
 > **Note:** This configuration is initially tested and optimized for a laptop with the following system setup:
@@ -53,17 +53,18 @@ To ensure Mecha Bar works properly, make sure to install the following dependenc
     ```
 
 4. **Copy additional configuration files:**
-    - **rofi:** Copy the files to `~/.config/rofi`:
-        ```bash
-        mkdir -p ~/.config/rofi
-        cp -r rofi/* ~/.config/rofi/
-        ```
 
-    - **wlogout:** Copy the files to `~/.config/wlogout`:
-        ```bash
-        mkdir -p ~/.config/wlogout
-        cp -r wlogout/* ~/.config/wlogout/
-        ```
+    **rofi:** Copy the files to `~/.config/rofi`:
+    ```bash
+    mkdir -p ~/.config/rofi
+    cp -r rofi/* ~/.config/rofi/
+    ```
+
+    **wlogout:** Copy the files to `~/.config/wlogout`:
+    ```bash
+    mkdir -p ~/.config/wlogout
+    cp -r wlogout/* ~/.config/wlogout/
+    ```
 
 5. **Restart Waybar to apply the changes:**
     ```bash
@@ -75,4 +76,6 @@ To ensure Mecha Bar works properly, make sure to install the following dependenc
 You can modify the configuration files to match your setup. However, if you use alternative tools or dependencies, you'll need to adjust the scripts and configurations accordingly.
 
 ## Credits
-This configuration uses base modules and scripts from prasanthrangan's [hyprdots](https://github.com/prasanthrangan/hyprdots), which served as the foundation for this setup.
+This configuration uses base modules and scripts from **prasanthrangan**'s [hyprdots](https://github.com/prasanthrangan/hyprdots), which served as the foundation for this setup.
+
+The color scheme is based on the **Catppuccin Mocha** palette. You can find more details on the official Catppuccin [website](https://catppuccin.com/palette).
