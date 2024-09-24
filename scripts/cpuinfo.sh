@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
 # CPU model
-model=$(cat /proc/cpuinfo | grep 'model name' | head -n 1 | awk -F ': ' '{print $2}')
+model=$(cat /proc/cpuinfo | grep 'model name' | head -n 1 | awk -F ': ' '{print $2}' | sed 's/@.*//' | sed 's/(R)//g' | sed 's/(TM)//g')
 
 # CPU utilization
 utilization=$(top -bn1 | awk '/^%Cpu/ {print 100 - $8}')
@@ -31,4 +31,4 @@ thermo=$(eval_ico thermo $temp)
 speedo=$(eval_ico util $utilization)
 
 # Print cpu info (json)
-echo "{\"text\":\"${thermo} ${temp}°C\", \"tooltip\":\"${model}\n${thermo} Temperature: ${temp}°C\n${speedo} Utilization: ${utilization}%\n󰘚 Clock Speed: ${frequency}\"}"
+echo "{\"text\":\"${thermo} ${temp}°C\", \"tooltip\":\"${model}\nTemperature: ${temp}°C\nUtilization: ${utilization}%\nClock Speed: ${frequency}\"}"
