@@ -98,7 +98,7 @@ tooltip {
 #custom-left6,
 #custom-left7,
 #custom-left8 {
-    font-size: 11.5pt;
+    font-size: 11pt;
     text-shadow: -1px 0px 2px rgba(0, 0, 0, 1);
 }
 
@@ -108,7 +108,7 @@ tooltip {
 #custom-right3,
 #custom-right4,
 #custom-right5 {
-    font-size: 11.5pt;
+    font-size: 11pt;
     padding-right: 3px;
     text-shadow: 1px 0px 2px rgba(0, 0, 0, 1);
 }
