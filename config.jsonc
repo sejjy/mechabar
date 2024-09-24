@@ -173,7 +173,7 @@
         "max-length": 7
     },
 
-    "cpu": {
+    "cpu": {    // TODO: Custom tooltip (?)
         "format": "󰻠 {usage}%",
         "tooltip": false,
         "interval": 5,
