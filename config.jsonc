@@ -2,7 +2,7 @@
     "layer": "top",
     "position": "top",
     "mode": "dock",
-    "height": 20,
+    // "height": 20, // removed for dynamic height (I don't see a difference)
     "exclusive": true,
     "passthrough": false,
     "gtk-layer-shell": true,
@@ -10,7 +10,7 @@
 
 // Positions
 	"modules-left": [
-        "custom/paddl",
+        // "custom/paddl",
         "custom/ws",            // window icon
         "custom/left1",
 
@@ -67,8 +67,10 @@
 
 // Modules
     "custom/ws": {
-        "format": " ",
-        "tooltip": false
+        "format": "  ",
+        "tooltip": false,
+        "min-length": 3,
+        "max-length": 3
     },
 
     "hyprland/workspaces": {
@@ -92,24 +94,48 @@
         "format": "{}",
         "separate-outputs": true,
         "rewrite": {
+
+            // terminal
             "sejjy@archlinux:(.*)": "  $1",
             "(.*)sejjy@archlinux:~": "  sejjy@archlinux",
+
+            // firefox
             "(.*) — Mozilla Firefox": "<span foreground='#f38ba8'>󰈹</span>  $1",
             "(.*)Mozilla Firefox": "<span foreground='#f38ba8'>󰈹</span>  Firefox",
+
+            // vscode
             "(.*) - Visual Studio Code": "<span foreground='#89b4fa'>󰨞</span>  $1",
             "(.*)Visual Studio Code": "<span foreground='#89b4fa'>󰨞</span>  Visual Studio Code",
+
+            // spotify
             "(.*)Spotify": "<span foreground='#a6e3a1'></span>  Spotify",
             "(.*)Spotify Premium": "<span foreground='#a6e3a1'></span>  Spotify Premium",
+
+            // discord
             "Discord": "<span foreground='#89b4fa'></span>  Discord",
+
+            // GIMP
             "GNU Image Manipulation Program": "<span foreground='#a6adc8'></span>  GNU Image Manipulation Program",
+
+            // OBS Studio
             "OBS(.*)": "<span foreground='#a6adc8'>󰐌</span>  OBS Studio",
+
+            // VLC Media Player
             "VLC media player": "<span foreground='#fab387'>󰕼</span>  VLC Media Player",
+
+            // OnlyOffice
             "ONLYOFFICE Desktop Editors": "<span foreground='#f38ba8'></span>  OnlyOffice Desktop",
+
+            // qView
             "qView": "  qView",
             "(.*).jpg": "  $1.jpg",
             "(.*).png": "  $1.png",
             "(.*).svg": "  $1.svg",
+
+            // file manager
             "/": "  File Manager",
+
+            // desktop
             "": "<span foreground='#cba6f7'></span>  Sejjy 󰅂 Hyprland"
         },
         "min-length": 5,
@@ -248,16 +274,16 @@
     },
 
 // Padding
-    "custom/paddl": {
-        "format": " ",
-        "tooltip": false
-    },
+    // "custom/paddl": {
+    //     "format": " ",
+    //     "tooltip": false
+    // },
     "custom/paddw": {
         "format": " ",
         "tooltip": false
     },
 
-    // Adjust this if you have a long network name so that the modules remain centered.
+    // adjust this if you have a long network name so that the modules remain centered.
     "custom/paddc": {
         "format": "     ",
         "tooltip": false
