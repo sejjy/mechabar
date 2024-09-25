@@ -128,14 +128,6 @@ tooltip {
 @define-color power         #b4befe;
 
 /* Window Icon */
-/* #custom-paddl {
-    font-size: 11.5pt;
-    margin-bottom: -2px;
-    margin-left: -3px;
-    padding-right: 2px;
-    background: @background;
-} */
-
 #custom-ws {
     background: @background;
 }
