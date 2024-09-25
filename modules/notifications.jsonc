@@ -11,8 +11,8 @@
             "update-notification": "󰚰<span foreground='white'><sup></sup></span>",
             "music-notification": "󰝚<span foreground='white'><sup></sup></span>",
             "volume-notification": "󰕿<span foreground='white'><sup></sup></span>",
-            /* "notification": "<span foreground='white'><sup></sup></span>",
-            "none": "" */
+            "notification": "<span foreground='white'><sup></sup></span>",
+            "none": ""
         },
         "return-type": "json",
         "exec-if": "which dunstctl",
