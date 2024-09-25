@@ -29,7 +29,7 @@ y_pos_center=$((monRes[1] / 2))
 r_override="window { anchor: center; x-offset: -${x_pos_center}px; y-offset: -${y_pos_center}px; border: ${hypr_width}px; border-radius: 15px; } wallbox { border-radius: 10px; } element { border-radius: 10px; }"
 
 # Notify the user about fetching Wi-Fi networks
-notify-send "Getting list of available Wi-Fi networks..."
+notify-send -i "/home/sejjy/.config/dunst/icons/hyprdots.svg" "Getting list of available Wi-Fi networks..."
 
 # Get a list of available Wi-Fi connections and format it
 wifi_list=$(nmcli --fields "SECURITY,SSID" device wifi list | sed 1d | sed 's/  */ /g' | sed -E "s/WPA*.?\S/  /g" | sed "s/^--/  /g" | sed "s/    / /g" | sed "/--/d")
