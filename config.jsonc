@@ -263,6 +263,11 @@
     },
 
     "battery": {
+        "states": { // testing
+            "good": 80,
+            "warning": 30,
+            "critical": 20
+        },
         "format": "{icon} {capacity}%",
         "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
         "format-charging": "󱘖 {capacity}%",
@@ -274,11 +279,6 @@
     },
 
     "custom/power": {
-        "states": {
-            "good": 80,
-            "warning": 30,
-            "critical": 20
-        },
         "format": " ",
         "tooltip": false,
         "on-click": "~/.config/waybar/scripts/logoutlaunch.sh 2",
