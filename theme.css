@@ -1,3 +1,10 @@
+/* 
+bg - background
+fg - foreground
+act - active
+hvr - hover
+*/
+
 /* Main Colors */
 @define-color background    #11111b;
 @define-color foreground    #cdd6f4;
@@ -8,7 +15,7 @@
 @define-color hover-bg      #45475a;
 @define-color hover-fg      #cdd6f4;
 
-/* wlogout */
+/* wlogout Colors */
 @define-color bar-bg #11111b;
 @define-color main-bg #11111b;
 @define-color main-fg #cdd6f4;
