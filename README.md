@@ -10,17 +10,18 @@
 - **Monitor Resolution**: 1920x1080
 
 ## Dependencies
-To ensure Mecha Bar works properly, make sure to install the following dependencies:
-- pipewire
-- wireplumber
-- pavucontrol
-- playerctl
-- brightnessctl
-- python
-- rofi
-- wlogout
-- ttf-jetbrains-mono-nerd
-- networkmanager
+To ensure Mecha Bar works properly, install the following dependencies:
+
+- ```pipewire``` - Low-latency audio/video router and processor
+- ```wireplumber``` - Session / policy manager implementation for PipeWire
+- ```pavucontrol``` - PulseAudio Volume Control
+- ```playerctl``` - MPRIS media player controller and lib for spotify, vlc, audacious, bmp, xmms2, and others.
+- ```brightnessctl``` - Lightweight brightness control tool
+- ```python``` - The Python programming language
+- ```rofi``` - A window switcher, application launcher and dmenu replacement
+- ```wlogout``` - A wayland based logout menu 
+- ```ttf-jetbrains-mono-nerd``` - Patched font JetBrains Mono from nerd fonts library
+- ```networkmanager``` - Network connection manager and user applications
 
 ## Installation
 1. **Clone the repository:**
@@ -54,11 +55,12 @@ To ensure Mecha Bar works properly, make sure to install the following dependenc
 
 4. **Copy additional configuration files:**
 
-    **Dunst** (Notifications): Copy the files to `~/.config/dunst`:
+    **Dunst** (Notifications)***(Optional)***: Copy the files to `~/.config/dunst`:
     ```bash
     mkdir -p ~/.config/dunst
     cp -r dunst/* ~/.config/dunst/
     ```
+    > **Note:** You can skip this step if you don’t use Dunst or already have a custom notification setup.
 
     **Rofi** (Network Menu): Copy the files to `~/.config/rofi`:
     ```bash
