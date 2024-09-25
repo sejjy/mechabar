@@ -54,13 +54,19 @@ To ensure Mecha Bar works properly, make sure to install the following dependenc
 
 4. **Copy additional configuration files:**
 
-    **rofi:** Copy the files to `~/.config/rofi`:
+    **Dunst** (Notifications): Copy the files to `~/.config/dunst`:
+    ```bash
+    mkdir -p ~/.config/dunst
+    cp -r dunst/* ~/.config/dunst/
+    ```
+
+    **Rofi** (Network Menu): Copy the files to `~/.config/rofi`:
     ```bash
     mkdir -p ~/.config/rofi
     cp -r rofi/* ~/.config/rofi/
     ```
 
-    **wlogout:** Copy the files to `~/.config/wlogout`:
+    **Wlogout** (Logout Menu): Copy the files to `~/.config/wlogout`:
     ```bash
     mkdir -p ~/.config/wlogout
     cp -r wlogout/* ~/.config/wlogout/
