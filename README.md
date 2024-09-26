@@ -26,8 +26,8 @@ To ensure Mecha Bar works properly, install the following dependencies:
 ## Installation
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/Sejjy/MechaBar.git
-   cd MechaBar
+   git clone https://github.com/sejjy/mechabar.git
+   cd mechabar
    ```
    
 2. **Copy the configuration files:**
