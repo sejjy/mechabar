@@ -10,9 +10,7 @@
 @import "theme.css";
 
 /* Main Background */
-window#waybar {
-    background: @background;
-}
+window#waybar { background: @background; }
 
 /* [new] Drop Shadow */
 window#waybar > box {
@@ -128,9 +126,7 @@ tooltip {
 @define-color power         #b4befe;
 
 /* Window Icon */
-#custom-ws {
-    background: @background;
-}
+#custom-ws { background: @background; }
 
 /* Workspaces */
 #custom-left1 {
@@ -139,10 +135,7 @@ tooltip {
     padding-left: 2px;
 }
 
-#workspaces {
-    padding: 0;
-    background: @workspaces;
-}
+#workspaces { background: @workspaces; }
 
 #custom-right1 {
     color: @workspaces;
@@ -150,9 +143,7 @@ tooltip {
 }
 
 /* Temperature */
-#custom-paddc {
-    padding-right: 3px;
-}
+#custom-paddc { padding-right: 3px; }
 
 #custom-left2 {
     color: @cpuinfo;
@@ -187,9 +178,7 @@ tooltip {
     padding-left: 3px;
 }
 
-#cpu {
-    background: @cpu;
-}
+#cpu { background: @cpu; }
 
 #custom-leftin1 {
     color: @cpu;
@@ -228,9 +217,7 @@ tooltip {
     margin-bottom: -2px;
 }
 
-#clock.time {
-    background: @time;
-}
+#clock.time { background: @time; }
 
 #custom-right3 {
     color: @time;
@@ -238,9 +225,7 @@ tooltip {
 }
 
 /* Date */
-#clock.date {
-    background: @date;
-}
+#clock.date { background: @date; }
 
 #custom-right4 {
     color: @date;
@@ -280,9 +265,7 @@ tooltip {
     padding-left: 3px;
 }
 
-#pulseaudio {
-    background: @pulseaudio;
-}
+#pulseaudio { background: @pulseaudio; }
 
 /* Brightness */
 #custom-left7 {
@@ -291,9 +274,7 @@ tooltip {
     padding-left: 2px;
 }
 
-#backlight {
-    background: @backlight;
-}
+#backlight { background: @backlight; }
 
 /* Battery */
 #custom-left8 {
@@ -302,9 +283,11 @@ tooltip {
     padding-left: 2px;
 }
 
-#battery {
-    background: @battery;
-}
+#battery { background: @battery; }
+
+#battery.warning { color: #f9e2af; }
+
+#battery.critical { color: #f38ba8; }
 
 /* Power Button */
 #custom-leftin2 {
