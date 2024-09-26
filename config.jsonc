@@ -262,9 +262,8 @@
         "max-length": 6
     },
 
-    "battery": {
-        "states": { // testing
-            "good": 80,
+    "battery": {    // TODO: Send notification on low battery
+        "states": {
             "warning": 30,
             "critical": 20
         },
