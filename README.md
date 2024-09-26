@@ -7,7 +7,7 @@
 - **Operating System**: Arch Linux
 - **Display Server**: Wayland
 - **Window Manager**: Hyprland
-- **Monitor Resolution**: 1920x1080
+- **Screen Resolution**: 1920x1080
 
 ## Dependencies
 To ensure Mecha Bar works properly, install the following dependencies:
@@ -54,13 +54,6 @@ To ensure Mecha Bar works properly, install the following dependencies:
     ```
 
 4. **Copy additional configuration files:**
-
-    **Dunst** (Notifications)***(Optional)***: Copy the files to `~/.config/dunst`:
-    ```bash
-    mkdir -p ~/.config/dunst
-    cp -r dunst/* ~/.config/dunst/
-    ```
-    > **Note:** You can skip this step if you don’t use Dunst or already have a custom notification setup.
 
     **Rofi** (Network Menu): Copy the files to `~/.config/rofi`:
     ```bash
