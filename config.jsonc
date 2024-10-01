@@ -94,48 +94,49 @@
         "separate-outputs": true,
         "rewrite": {
             // desktop
-            "": "<span foreground='#cba6f7'></span>  Sejjy 󰅂 Hyprland",
+            "": "<span foreground='#cba6f7'> </span> Sejjy 󰅂 Hyprland",
 
             // terminal
             "sejjy@archlinux:(.*)": "  $1",
             "(.*)sejjy@archlinux:~": "  sejjy@archlinux",
 
             // firefox
-            "(.*) — Mozilla Firefox": "<span foreground='#f38ba8'>󰈹</span>  $1",
-            "(.*)Mozilla Firefox": "<span foreground='#f38ba8'>󰈹</span>  Firefox",
+            "(.*) — Mozilla Firefox": "<span foreground='#f38ba8'>󰈹 </span> $1",
+            "(.*)Mozilla Firefox": "<span foreground='#f38ba8'>󰈹 </span> Firefox",
 
             // vscode
-            "(.*) - Visual Studio Code": "<span foreground='#89b4fa'>󰨞</span>  $1",
-            "(.*)Visual Studio Code": "<span foreground='#89b4fa'>󰨞</span>  Visual Studio Code",
+            "(.*) - Visual Studio Code": "<span foreground='#89b4fa'>󰨞 </span> $1",
+            "(.*)Visual Studio Code": "<span foreground='#89b4fa'>󰨞 </span> Visual Studio Code",
 
             // spotify
-            "(.*)Spotify": "<span foreground='#a6e3a1'></span>  Spotify",
-            "(.*)Spotify Premium": "<span foreground='#a6e3a1'></span>  Spotify Premium",
+            "(.*)Spotify": "<span foreground='#a6e3a1'> </span> Spotify",
+            "(.*)Spotify Premium": "<span foreground='#a6e3a1'> </span> Spotify Premium",
 
             // discord
-            "Discord": "<span foreground='#89b4fa'></span>  Discord",
-            "(.*)Discord(.*)": "<span foreground='#89b4fa'></span>  $1Discord$2",
+            "Discord": "<span foreground='#89b4fa'> </span> Discord",
+            "(.*)Discord(.*)": "<span foreground='#89b4fa'> </span> $1Discord$2",
 
             // OBS Studio
-            "OBS(.*)": "<span foreground='#a6adc8'>󰐌</span>  OBS Studio",
+            "OBS(.*)": "<span foreground='#a6adc8'>󰐌 </span> OBS Studio",
 
             // VLC Media Player
-            "VLC media player": "<span foreground='#fab387'>󰕼</span>  VLC Media Player",
+            "VLC media player": "<span foreground='#fab387'>󰕼 </span> VLC Media Player",
+            "(.*) - VLC media player": "<span foreground='#fab387'>󰕼 </span> $1",
             
             // GIMP
-            "GNU Image Manipulation Program": "<span foreground='#a6adc8'></span>  GNU Image Manipulation Program",
+            "GNU Image Manipulation Program": "<span foreground='#a6adc8'> </span> GNU Image Manipulation Program",
 
             // Godot
-            "Godot": "<span foreground='#89b4fa'></span>  Godot Engine",
-            "Godot Engine - (.*)": "<span foreground='#89b4fa'></span>  $1",
-            "(.*) - Godot Engine": "<span foreground='#89b4fa'></span>  $1",
+            "Godot": "<span foreground='#89b4fa'> </span> Godot Engine",
+            "Godot Engine - (.*)": "<span foreground='#89b4fa'> </span> $1",
+            "(.*) - Godot Engine": "<span foreground='#89b4fa'> </span> $1",
             
             // OnlyOffice
-            "ONLYOFFICE Desktop Editors": "<span foreground='#f38ba8'></span>  OnlyOffice Desktop",
-            "(.*).docx": "<span foreground='#89b4fa'></span>  $1.docx",
-            "(.*).xlsx": "<span foreground='#a6e3a1'></span>  $1.xlsx",
-            "(.*).pptx": "<span foreground='#fab387'></span>  $1.pptx",
-            "(.*).pdf": "<span foreground='#f38ba8'></span>  $1.pdf",
+            "ONLYOFFICE Desktop Editors": "<span foreground='#f38ba8'> </span> OnlyOffice Desktop",
+            "(.*).docx": "<span foreground='#89b4fa'> </span> $1.docx",
+            "(.*).xlsx": "<span foreground='#a6e3a1'> </span> $1.xlsx",
+            "(.*).pptx": "<span foreground='#fab387'> </span> $1.pptx",
+            "(.*).pdf": "<span foreground='#f38ba8'> </span> $1.pdf",
 
             // file manager
             "/": "  File Manager",
@@ -144,7 +145,10 @@
             "qView": "  qView",
             "(.*).jpg": "  $1.jpg",
             "(.*).png": "  $1.png",
-            "(.*).svg": "  $1.svg"
+            "(.*).svg": "  $1.svg",
+
+            // security
+            "Authenticate": "  Authenticate"
         },
         "min-length": 5,
         "max-length": 45
