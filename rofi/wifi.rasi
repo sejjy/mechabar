@@ -8,8 +8,8 @@ configuration {
 
 // Main //
 window {
-    width:                       23em;
-    height:                      23.7em;
+    height:                      16em;
+    width:                       18em;
     transparency:                "real";
     fullscreen:                  false;
     enabled:                     true;
@@ -22,25 +22,25 @@ window {
 mainbox {
     enabled:                     true;
     spacing:                     0em;
-    padding:                     0.5em;
+    padding:                     0.5em 0em;
     orientation:                 vertical;
     children:                    [ "wallbox" , "listbox" ];
     background-color:            transparent;
 }
 wallbox {
     spacing:                     0em;
-    padding:                     -1em;
+    margin:                      0em 0.5em;
+    padding:                     -1.2em;
     expand:                      false;
     orientation:                 horizontal;
     background-color:            transparent;
-    children:                    ["inputbar"];
+    children:                    [ "inputbar" ];
 }
-
 
 // Inputs //
 inputbar {
     enabled:                     true;
-    padding:                     0em 0em 0em 0.7em;
+    padding:                     -0.2em 0.7em;
     children:                    [ "entry" ];
     background-color:            @main-bg;
     expand:                      true;
@@ -52,7 +52,6 @@ entry {
     background-color:            transparent;
 }
 
-
 // Lists //
 listbox {
     spacing:                     0em;
@@ -63,10 +62,16 @@ listbox {
 }
 listview {
     enabled:                     true;
-    padding:                     0.5em;
+    padding:                     0.4em 0.5em;
+    spacing:                     0em;
     columns:                     1;
-    lines:                       10; 
+    lines:                       7; 
     cycle:                       false;
+    dynamic:                     true;
+    scrollbar:                   false;
+    layout:                      vertical;
+    reverse:                     false;
+    expand:                      false;
     fixed-height:                true;
     fixed-columns:               false;
     expand:                      false;
@@ -80,11 +85,10 @@ dummy {
     background-color:            transparent;
 }
 
-
 // Elements //
 element {
     enabled:                     true;
-    padding:                     0.5em;
+    padding:                     0.4em;
     cursor:                      pointer;
     background-color:            transparent;
     text-color:                  @main-fg;
@@ -92,6 +96,7 @@ element {
 element selected.normal {
     background-color:            @select-bg;
     text-color:                  @select-fg;
+    border-radius:               0.5em;
 }
 element-text {
     vertical-align:              0.0;
@@ -100,4 +105,3 @@ element-text {
     background-color:            transparent;
     text-color:                  inherit;
 }
-
