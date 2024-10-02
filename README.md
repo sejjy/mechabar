@@ -1,8 +1,23 @@
 # Mecha Bar
-![Mecha Bar](/preview/v1.1.1.png)
+![Mecha Bar](/assets/v1.2.0.png)
+
+<details>
+    <summary>
+        Wi-Fi Menu
+    </summary>
+        <img src="assets/wifimenu.png" alt="Wi-Fi Menu" />
+</details>
+
+<details>
+    <summary>
+        Logout Menu
+    </summary>
+        <img src="assets/logout1.png" alt="Logout Menu 1" />
+        <img src="assets/logout2.png" alt="Logout Menu 2" />
+</details>
 
 ## System Information
-> **Note:** This configuration is initially tested and optimized for a laptop with the following system setup:
+> **Note:** This configuration is initially tested and optimized for a **laptop** with the following system setup:
 
 - **Operating System**: Arch Linux
 - **Display Server**: Wayland
@@ -14,7 +29,6 @@ To ensure Mecha Bar works properly, install the following dependencies:
 
 - ```pipewire``` - Low-latency audio/video router and processor
 - ```wireplumber``` - Session / policy manager implementation for PipeWire
-- ```pavucontrol``` - PulseAudio Volume Control
 - ```playerctl``` - MPRIS media player controller and lib for spotify, vlc, audacious, bmp, xmms2, and others
 - ```brightnessctl``` - Lightweight brightness control tool
 - ```python``` - The Python programming language
@@ -55,13 +69,13 @@ To ensure Mecha Bar works properly, install the following dependencies:
 
 4. **Copy additional configuration files:**
 
-    **Rofi** (Network Menu): Copy the files to `~/.config/rofi`:
+    **Rofi**: Copy the files to `~/.config/rofi`:
     ```bash
     mkdir -p ~/.config/rofi
     cp -r rofi/* ~/.config/rofi/
     ```
 
-    **Wlogout** (Logout Menu): Copy the files to `~/.config/wlogout`:
+    **Wlogout**: Copy the files to `~/.config/wlogout`:
     ```bash
     mkdir -p ~/.config/wlogout
     cp -r wlogout/* ~/.config/wlogout/
