@@ -43,7 +43,7 @@ elif [[ "$connected" =~ "disabled" ]]; then
 fi
 
 # Use rofi to select Wi-Fi network
-chosen_network=$(echo -e " 󰷫  Manual Entry\n$toggle\n$wifi_list" | uniq -u | rofi -dmenu -i -selected-row 1 -theme-str "entry { placeholder: \"Search\"; }" -theme-str "${r_scale}" -theme-str "${r_override}" -config "${roconf}" -p "Wi-Fi SSID")
+chosen_network=$(echo -e "   Manual Entry\n$toggle\n$wifi_list" | uniq -u | rofi -dmenu -i -selected-row 1 -theme-str "entry { placeholder: \"Search\"; }" -theme-str "${r_scale}" -theme-str "${r_override}" -config "${roconf}" -p "Wi-Fi SSID")
 
 # Get the name of the connection
 read -r chosen_id <<< "${chosen_network:3}"
@@ -55,7 +55,7 @@ elif [ "$chosen_network" = " 󰤨  Enable Wi-Fi" ]; then
     nmcli radio wifi on
 elif [ "$chosen_network" = " 󰤭  Disable Wi-Fi" ]; then
     nmcli radio wifi off
-elif [ "$chosen_network" = " 󰷫  Manual Entry" ]; then
+elif [ "$chosen_network" = "   Manual Entry" ]; then
     # Prompt for manual SSID and password
     manual_ssid=$(rofi -dmenu -theme-str "entry { placeholder: \"SSID\"; }" -theme-str "${r_scale}" -theme-str "${r_override}" -config "${roconf}" -p "Enter SSID:")
     if [ -z "$manual_ssid" ]; then
