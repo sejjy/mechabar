@@ -220,12 +220,12 @@
     },
 
     "custom/wifi": {
-        "exec": "~/.config/waybar/scripts/network-status.sh",
+        "exec": "~/.config/waybar/scripts/essid.sh",
         "interval": 30,
-        "format": "Wi-Fi",   // use "{}" to display network name
+        "format": "Wi-Fi",   // use "{}" to display wifi name
         "tooltip": true,
         "tooltip-format": "{}",
-        "on-click": "~/.config/waybar/scripts/network-menu.sh",
+        "on-click": "~/.config/waybar/scripts/wifimenu.sh",
         "min-length": 7,
         "max-length": 7
     },
