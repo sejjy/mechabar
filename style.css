@@ -116,14 +116,14 @@ tooltip {
 @define-color cpuinfo           #181825;
 @define-color memory            #1e1e2e;
 @define-color cpu               #313244;
-@define-color arch              #b4befe;
+@define-color arch              #9399b2;
 @define-color time              #313244;
 @define-color date              #1e1e2e;
 @define-color wifi              #181825;
 @define-color pulseaudio        #181825;
 @define-color backlight         #1e1e2e;
 @define-color battery           #313244;
-@define-color power             #b4befe;
+@define-color power             #6c7086;
 
 /* Window Icon */
 #custom-ws { background: @background; }
