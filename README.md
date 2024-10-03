@@ -2,12 +2,12 @@
 ![Mecha Bar](/assets/v1.2.0.png)
 
 <details>
-    <summary>Wi-Fi Menu</summary>
+    <summary><strong>Wi-Fi Menu</strong></summary>
     <img src="assets/wifimenu.png" alt="Wi-Fi Menu" />
 </details>
 
 <details>
-    <summary>Logout Menu</summary>
+    <summary><strong>Logout Menu</strong></summary>
     <table>
         <tr>
             <td><img src="assets/logout1.0.png" alt="Logout Menu 1.0" /></td>
