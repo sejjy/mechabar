@@ -2,10 +2,8 @@
 ![Mecha Bar](/assets/v1.2.0.png)
 
 <details>
-    <summary>
-        Wi-Fi Menu
-    </summary>
-        <img src="assets/wifimenu.png" alt="Wi-Fi Menu" />
+    <summary>Wi-Fi Menu</summary>
+    <img src="assets/wifimenu.png" alt="Wi-Fi Menu" />
 </details>
 
 <details>
@@ -25,26 +23,31 @@
 ## System Information
 > **Note:** This configuration is initially tested and optimized for a **laptop** with the following system setup:
 
-- **Operating System**: Arch Linux
-- **Display Server**: Wayland
-- **Window Manager**: Hyprland
-- **Screen Resolution**: 1920x1080
+|                               |                   |
+|-------------------------------|-------------------|
+| **Operating System**          | Arch Linux        |
+| **Display Server**            | Wayland           |
+| **Window Manager**            | Hyprland          |
+| **Screen Resolution**         | 1920x1080         |
 
 ## Dependencies
 To ensure Mecha Bar works properly, install the following dependencies:
 
-- ```pipewire``` - Low-latency audio/video router and processor
-- ```wireplumber``` - Session / policy manager implementation for PipeWire
-- ```playerctl``` - MPRIS media player controller and lib for spotify, vlc, audacious, bmp, xmms2, and others
-- ```brightnessctl``` - Lightweight brightness control tool
-- ```python``` - The Python programming language
-- ```rofi``` - A window switcher, application launcher and dmenu replacement
-- ```wlogout``` - A wayland based logout menu 
-- ```ttf-jetbrains-mono-nerd``` - Patched font JetBrains Mono from nerd fonts library
-- ```networkmanager``` - Network connection manager and user applications
+|                               |                                                                                       |
+|-------------------------------|---------------------------------------------------------------------------------------|
+| `pipewire`                    | Low-latency audio/video router and processor                                          |
+| `wireplumber`                 | Session / policy manager implementation for PipeWire                                  |
+| `playerctl`                   | MPRIS media player controller for Spotify, VLC, Audacious, BMP, XMMS2, and others     |
+| `brightnessctl`               | Lightweight brightness control tool                                                   |
+| `python`                      | The Python programming language                                                       |
+| `rofi`                        | A window switcher, application launcher, and dmenu replacement                        |
+| `wlogout`                     | A Wayland-based logout menu                                                           |
+| `ttf-jetbrains-mono-nerd`     | Patched font JetBrains Mono from nerd fonts library                                   |
+| `networkmanager`              | Network connection manager and user applications                                      |
 
 ## Installation
 1. **Clone the repository:**
+
    ```bash
    git clone https://github.com/sejjy/mechabar.git
    cd mechabar
@@ -88,6 +91,7 @@ To ensure Mecha Bar works properly, install the following dependencies:
     ```
 
 5. **Restart Waybar to apply the changes:**
+
     ```bash
     killall waybar
     waybar &
