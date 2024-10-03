@@ -21,7 +21,8 @@
 </details>
 
 ## System Information
-> **Note:** This configuration is initially tested and optimized for a **laptop** with the following system setup:
+> [!NOTE]
+> This configuration is initially tested and optimized for a **laptop** with the following system setup:
 
 |                               |                   |
 |-------------------------------|-------------------|
