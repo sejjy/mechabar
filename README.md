@@ -9,11 +9,17 @@
 </details>
 
 <details>
-    <summary>
-        Logout Menu
-    </summary>
-        <img src="assets/logout1.png" alt="Logout Menu 1" />
-        <img src="assets/logout2.png" alt="Logout Menu 2" />
+    <summary>Logout Menu</summary>
+    <table>
+        <tr>
+            <td><img src="assets/logout1.0.png" alt="Logout Menu 1.0" /></td>
+            <td><img src="assets/logout1.1.png" alt="Logout Menu 1.1" /></td>
+        </tr>
+        <tr>
+            <td><img src="assets/logout2.0.png" alt="Logout Menu 2.0" /></td>
+            <td><img src="assets/logout2.1.png" alt="Logout Menu 2.1" /></td>
+        </tr>
+    </table>
 </details>
 
 ## System Information
