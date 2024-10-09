@@ -94,26 +94,27 @@
         "separate-outputs": true,
         "rewrite": {
             // desktop
-            "": "<span foreground='#cba6f7'> </span> Sejjy 󰅂 Hyprland",
+            "": "<span foreground='#89b4fa'> </span> Hyprland",
 
             // terminal
             "sejjy@archlinux:(.*)": "  $1",
             "(.*)sejjy@archlinux:~": "  sejjy@archlinux",
 
-            // firefox
+            // Firefox
             "(.*) — Mozilla Firefox": "<span foreground='#f38ba8'>󰈹 </span> $1",
             "(.*)Mozilla Firefox": "<span foreground='#f38ba8'>󰈹 </span> Firefox",
 
-            // vscode
+            // VSCode
             "(.*) - Visual Studio Code": "<span foreground='#89b4fa'>󰨞 </span> $1",
             "(.*)Visual Studio Code": "<span foreground='#89b4fa'>󰨞 </span> Visual Studio Code",
 
-            // spotify
+            // Spotify
             "(.*)Spotify": "<span foreground='#a6e3a1'> </span> Spotify",
             "(.*)Spotify Premium": "<span foreground='#a6e3a1'> </span> Spotify Premium",
 
-            // discord
-            "Discord": "<span foreground='#89b4fa'> </span> Discord",
+            // Discord
+            "vesktop": "<span foreground='#89b4fa'> </span> Discord",
+            "• Discord(.*)": "Discord$1",
             "(.*)Discord(.*)": "<span foreground='#89b4fa'> </span> $1Discord$2",
 
             // OBS Studio
@@ -146,6 +147,9 @@
             "(.*).jpg": "  $1.jpg",
             "(.*).png": "  $1.png",
             "(.*).svg": "  $1.svg",
+
+            // Timeshift
+            "Timeshift-gtk": "<span foreground='#a6e3a1'> </span> Timeshift",
 
             // security
             "Authenticate": "  Authenticate"
