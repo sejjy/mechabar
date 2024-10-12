@@ -1,4 +1,8 @@
-<h1 style="text-align: center; border: none;">🤖 MechaBar</h1>
+<div id="user-content-toc">
+  <ul align="center" style="list-style: none;">
+    <summary><h1>🤖 MechaBar</h1></summary>
+  </ul>
+</div>
 
 ## Preview
 
