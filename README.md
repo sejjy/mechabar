@@ -1,6 +1,4 @@
-<h1 style="text-align: center; border: none;">🤖 MechaBar</h1>
-
-## Preview
+<h1 align="center" style="border-style: none;">🤖 MechaBar</h1>
 
 ![MechaBar](/assets/v1.2.0.png)
 
