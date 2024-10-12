@@ -40,7 +40,7 @@ wallbox {
 // Inputs //
 inputbar {
     enabled:                     true;
-    padding:                     -0.2em 0.7em;
+    padding:                     -0.2em 0.3em;
     children:                    [ "entry" ];
     background-color:            @main-bg;
     expand:                      true;
