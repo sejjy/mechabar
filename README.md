@@ -1,8 +1,8 @@
-# 🤖 MechaBar
+<h1 style="text-align: center; border: none;">🤖 MechaBar</h1>
+
+## Preview
 
 ![MechaBar](/assets/v1.2.0.png)
-
-#
 
 <a id="wifi-menu"></a>
 
@@ -29,33 +29,40 @@
     </table>
 </details>
 
-## System Information
+#
 
-This configuration is initially tested and optimized for a **laptop** with the following system setup:
+> [!NOTE]
+> This configuration is used for a **laptop** with the following system setup:
 
 - Arch Linux
 - Wayland
 - Hyprland
-- 1920x1080
+- `monitor = DP-1, 1920x1080@60, 0x0, 1`
 
 ## Dependencies
 
 To ensure _MechaBar_ works properly after [installation](#installation), install the following dependencies:
 
-|                           |                                                                                   |
-| ------------------------- | --------------------------------------------------------------------------------- |
-| `pipewire`                | Low-latency audio/video router and processor                                      |
-| `wireplumber`             | Session/policy manager implementation for PipeWire                                |
-| `playerctl`               | MPRIS media player controller for Spotify, VLC, Audacious, BMP, XMMS2, and others |
-| `brightnessctl`           | Lightweight brightness control tool                                               |
-| `python`                  | The Python programming language                                                   |
-| `rofi`                    | A window switcher, application launcher, and dmenu replacement                    |
-| `wlogout`                 | A Wayland-based logout menu                                                       |
-| `ttf-jetbrains-mono-nerd` | Patched font JetBrains Mono from the nerd fonts library                           |
-| `networkmanager`          | Network connection manager and user applications                                  |
+```bash
+# For Arch
+sudo pacman -S pipewire wireplumber playerctl brightnessctl python ttf-jetbrains-mono-nerd networkmanager
+yay -S rofi-lbonn-wayland-git wlogout
+```
 
-> [!NOTE]
-> If you wish to stick with your own alternatives, please refer to the [Customization](#customization) section.
+|                           |                                                                                           |
+| ------------------------- | ----------------------------------------------------------------------------------------- |
+| `pipewire`                | Low-latency audio/video router and processor                                              |
+| `wireplumber`             | Session/policy manager implementation for PipeWire                                        |
+| `playerctl`               | MPRIS media player controller for Spotify, VLC, Audacious, BMP, XMMS2, and others         |
+| `brightnessctl`           | Lightweight brightness control tool                                                       |
+| `python`                  | The Python programming language                                                           |
+| `rofi-lbonn-wayland-git`  | A window switcher, application launcher and dmenu replacement (fork with Wayland support) |
+| `wlogout`                 | Logout menu for wayland                                                                   |
+| `ttf-jetbrains-mono-nerd` | Patched font JetBrains Mono from the nerd fonts library                                   |
+| `networkmanager`          | Network connection manager and user applications                                          |
+
+> [!IMPORTANT]
+> If you use alternatives, you might need to adjust the [scripts](/scripts/) and configuration files accordingly.
 
 ## Installation
 
@@ -66,49 +73,38 @@ To ensure _MechaBar_ works properly after [installation](#installation), install
    cd mechabar
    ```
 
-2. **Copy the configuration files:**
-
-   Copy the `config.jsonc`, `style.css`, and `theme.css` files to `~/.config/waybar`:
+2. **Copy configuration files:**
 
    ```bash
    mkdir -p ~/.config/waybar/
-   cp config.jsonc ~/.config/waybar/
-   cp style.css ~/.config/waybar/
-   cp theme.css ~/.config/waybar/
-   ```
+   cp config.jsonc style.css theme.css ~/.config/waybar/
 
-3. **Setup scripts:**
-
-   Copy the [scripts](/scripts/) folder to `~/.config/waybar`:
-
-   ```bash
-   cp -r scripts ~/.config/waybar/
-   ```
-
-   Copy the scripts to `~/.local/share/bin`:
-
-   ```bash
-   mkdir -p ~/.local/share/bin
-   cp scripts/* ~/.local/share/bin/
-   ```
-
-4. **Additional configuration files:**
-
-   **[Wi-Fi Menu](#wifi-menu)**: Copy the files to `~/.config/rofi`:
-
-   ```bash
+   # Wi-Fi Menu
    mkdir -p ~/.config/rofi
    cp -r rofi/* ~/.config/rofi/
-   ```
 
-   **[Logout Menu](#logout-menu)**: Copy the files to `~/.config/wlogout`:
-
-   ```bash
+   # Logout Menu
    mkdir -p ~/.config/wlogout
    cp -r wlogout/* ~/.config/wlogout/
    ```
 
-5. **Restart Waybar to apply the changes:**
+3. **Setup scripts:**
+
+   ```bash
+   # Waybar-exclusive scripts
+   mkdir -p ~/.config/waybar/scripts/
+   cp scripts/wifimenu.sh scripts/mediaplayer.py scripts/essid.sh scripts/cpuinfo.sh ~/.config/waybar/scripts/
+
+   # System-wide scripts
+   mkdir -p ~/.local/share/bin/
+   cp scripts/volumecontrol.sh scripts/brightnesscontrol.sh scripts/logoutlaunch.sh ~/.local/share/bin/
+
+   # Make scripts executable
+   chmod +x ~/.config/waybar/scripts/*
+   chmod +x ~/.local/share/bin/volumecontrol.sh ~/.local/share/bin/brightnesscontrol.sh ~/.local/share/bin/logoutlaunch.sh
+   ```
+
+4. **Restart Waybar to apply the changes:**
 
    ```bash
    killall waybar
@@ -117,11 +113,12 @@ To ensure _MechaBar_ works properly after [installation](#installation), install
 
 ## Customization
 
-> [!IMPORTANT]
-> You can modify the files to match your setup. However, if you use alternative [dependencies](#dependencies), you'll need to adjust the [scripts](/scripts/) and configurations accordingly.
+> [!TIP]
+> Consider changing the colors in [style.css](/style.css) and [theme.css](/theme.css) to match your system theme.
+
+- You can remove existing modules or add new ones from the [modules](/modules/) folder. For a complete list of available modules, visit the [Waybar Wiki](https://github.com/Alexays/Waybar/wiki).
 
 ## Credits
 
-This setup uses base modules and scripts from **[prasanthrangan](https://github.com/prasanthrangan)'s [hyprdots](https://github.com/prasanthrangan/hyprdots)**.
-
-The color scheme is based on the **[catppuccin](https://github.com/catppuccin/catppuccin) mocha [palette](https://github.com/catppuccin/catppuccin/blob/main/docs/style-guide.md)**.
+- This setup uses personalized modules and scripts from **[prasanthrangan/hyprdots](https://github.com/prasanthrangan/hyprdots)**.
+- The color scheme is based on the **[Catppuccin Mocha palette](https://github.com/catppuccin/catppuccin/blob/main/docs/style-guide.md)**.
