@@ -112,11 +112,11 @@ yay -S rofi-lbonn-wayland-git wlogout
 ## Customization
 
 > [!TIP]
-> Consider changing the colors in [style.css](/style.css) and [theme.css](/theme.css) to match your system theme.
+> You can change the colors in [style.css](/style.css) and [theme.css](/theme.css) to match your system theme.
 
 - You can remove existing modules or add new ones from the [modules](/modules/) folder. For a complete list of available modules, visit the [Waybar Wiki](https://github.com/Alexays/Waybar/wiki).
 
 ## Credits
 
-- This setup uses personalized modules and scripts from **[prasanthrangan/hyprdots](https://github.com/prasanthrangan/hyprdots)**.
-- The color scheme is based on the **[Catppuccin Mocha palette](https://github.com/catppuccin/catppuccin/blob/main/docs/style-guide.md)**.
+- This configuration uses base modules and scripts from **[prasanthrangan/hyprdots](https://github.com/prasanthrangan/hyprdots)**.
+- The pastel color palette, or 'flavor', used is **[Catppuccin Mocha](https://github.com/catppuccin/catppuccin/blob/main/docs/style-guide.md)**.
