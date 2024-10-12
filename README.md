@@ -124,4 +124,4 @@ To ensure _MechaBar_ works properly after [installation](#installation), install
 
 This setup uses base modules and scripts from **[prasanthrangan](https://github.com/prasanthrangan)'s [hyprdots](https://github.com/prasanthrangan/hyprdots)**.
 
-The color scheme is based on the **[catppuccin](<(https://github.com/catppuccin/catppuccin)>) mocha [palette](https://github.com/catppuccin/catppuccin/blob/main/docs/style-guide.md)**.
+The color scheme is based on the **[catppuccin](https://github.com/catppuccin/catppuccin) mocha [palette](https://github.com/catppuccin/catppuccin/blob/main/docs/style-guide.md)**.
