@@ -2,30 +2,30 @@
 
 ![MechaBar](/assets/v1.2.0.png)
 
-<a id="wifi-menu"></a>
+<div align="center">
+    <details>
+        <summary><strong>&nbsp;🛜 Wi-Fi Menu</strong></summary>
+        <br>
+        <img src="assets/wifimenu.png" alt="Wi-Fi Menu" />
+    </details>
+</div>
 
-<details>
-    <summary><strong>&nbsp;🛜 Wi-Fi Menu</strong></summary>
-    <br>
-    <img src="assets/wifimenu.png" alt="Wi-Fi Menu" />
-</details>
-
-<a id="logout-menu"></a>
-
-<details>
-    <summary><strong>&nbsp;⏸️ Logout Menu</strong></summary>
-    <br>
-    <table>
-        <tr>
-            <td><img src="assets/logout1.0.png" alt="Logout Menu 1.0" /></td>
-            <td><img src="assets/logout1.1.png" alt="Logout Menu 1.1" /></td>
-        </tr>
-        <tr>
-            <td><img src="assets/logout2.0.png" alt="Logout Menu 2.0" /></td>
-            <td><img src="assets/logout2.1.png" alt="Logout Menu 2.1" /></td>
-        </tr>
-    </table>
-</details>
+<div align="center">
+    <details>
+        <summary><strong>&nbsp;⏸️ Logout Menu</strong></summary>
+        <br>
+        <table>
+            <tr>
+                <td><img src="assets/logout1.0.png" alt="Logout Menu 1.0" /></td>
+                <td><img src="assets/logout1.1.png" alt="Logout Menu 1.1" /></td>
+            </tr>
+            <tr>
+                <td><img src="assets/logout2.0.png" alt="Logout Menu 2.0" /></td>
+                <td><img src="assets/logout2.1.png" alt="Logout Menu 2.1" /></td>
+            </tr>
+        </table>
+    </details>
+</div>
 
 #
 
