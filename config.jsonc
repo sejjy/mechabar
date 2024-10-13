@@ -66,7 +66,7 @@
 
 // Modules
     "custom/ws": {
-        "format": "  ",
+        "format": "  ",
         "tooltip": false,
         "min-length": 3,
         "max-length": 3
@@ -201,7 +201,7 @@
     },
 
     "clock#date": {
-        "format": "󱨴 {:%m-%d}",
+        "format": "󰨳 {:%m-%d}",
         "tooltip-format": "<tt>{calendar}</tt>",
         "calendar": {
             "mode": "month",
