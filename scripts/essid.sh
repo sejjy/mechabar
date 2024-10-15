@@ -9,4 +9,4 @@ if [ -z "$essid" ]; then
 fi
 
 # Output JSON format
-echo "${essid}"
+echo "󰤨 ${essid}"
