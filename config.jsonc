@@ -43,7 +43,6 @@
         "clock#date",           // date
         "custom/right4",
 
-        "custom/wi",
         "custom/wifi",          // connection
         "custom/right5"
     ],
@@ -173,8 +172,8 @@
 	    "format": "󰘚 {percentage}%",
 	    "format-c": "󰀪 {percentage}%",
         "tooltip": true,
-        "tooltip-format": "{used:0.1f} GB / {total:0.1f} GB",
-        "interval": 20,
+        "tooltip-format": "󰘚 {used:0.1f} GB / {total:0.1f} GB",
+        "interval": 10,
         "min-length": 7,
         "max-length": 7
     },
@@ -195,7 +194,7 @@
     "clock#time": {
         "format": "󱑂 {:%H:%M}",
         "tooltip": true,
-        "tooltip-format": "{:%I:%M %p}",
+        "tooltip-format": "󱑂 {:%I:%M %p}",
         "min-length": 8,
         "max-length": 8
     },
@@ -205,7 +204,7 @@
         "tooltip-format": "<tt>{calendar}</tt>",
         "calendar": {
             "mode": "month",
-            "mode-mon-col": 3,
+            "mode-mon-col": 6,
             "on-click-right": "mode",
             "format": {
                 "months": "<span color='#f5e0dc'><b>{}</b></span>",
@@ -218,14 +217,9 @@
         "max-length": 8
 	},
 
-    "custom/wi": {  // TODO: Signal strength
-        "format": "󰤥 ",
-        "tooltip": false
-    },
-
     "custom/wifi": {
         "exec": "~/.config/waybar/scripts/essid.sh",
-        "format": "Wi-Fi",   // use "{}" to display wifi name
+        "format": "󰤨 Wi-Fi",   // use "{}" to display wifi name
         "tooltip": true,
         "tooltip-format": "{}",
         "on-click": "~/.config/waybar/scripts/wifimenu.sh",
@@ -250,6 +244,8 @@
             "headphone": "󰋋",
             "default": ["󰖀", "󰕾"]
         },
+        "tooltip": true,
+        "tooltip-format": "{icon} {desc}",
         "on-click": "~/.config/waybar/scripts/volumecontrol.sh -o m",
         "on-click-right": "pavucontrol -t 3",
         "on-scroll-up": "~/.config/waybar/scripts/volumecontrol.sh -o i",
@@ -263,7 +259,7 @@
         "format": "{icon} {percent}%",
         "format-icons": ["", "", "", "", "", "", "", "", ""],
         "tooltip": true,
-        "tooltip-format": "Brightness",
+        "tooltip-format": "{icon} Brightness",
         "on-scroll-up": "~/.config/waybar/scripts/brightnesscontrol.sh -o i",
         "on-scroll-down": "~/.config/waybar/scripts/brightnesscontrol.sh -o d",
         "min-length": 6,
@@ -278,8 +274,8 @@
         "format": "{icon} {capacity}%",
         "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
         "format-charging": "󱘖 {capacity}%",
-        "format-plugged": "󱘖 {capacity}%",
-        "tooltip-format": "{timeTo}",
+        "tooltip-format": "󰂎 {timeTo}",
+        "tooltip-format-charging": "󱘖 {timeTo}",
 	    "interval": 1,
         "min-length": 6,
         "max-length": 6
@@ -299,9 +295,10 @@
         "tooltip": false
     },
 
-    // adjust this if you have a long network name so that the modules remain centered.
+    // adjust padding in style.css if you have a long network name
+    // so that the modules remain centered.
     "custom/paddc": {
-        "format": "     ",
+        "format": " ",
         "tooltip": false
     },
 
