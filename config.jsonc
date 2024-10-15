@@ -229,7 +229,7 @@
         "tooltip": true,
         "tooltip-format": "{}",
         "on-click": "~/.config/waybar/scripts/wifimenu.sh",
-        "interval": 5,
+        "interval": 1,
         "min-length": 7,
         "max-length": 7
     },
