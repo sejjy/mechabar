@@ -143,7 +143,7 @@ tooltip {
 }
 
 /* Temperature */
-#custom-paddc { padding-right: 3px; }
+#custom-paddc { padding-right: 22px; }
 
 #custom-left2 {
     color: @cpuinfo;
@@ -232,18 +232,10 @@ tooltip {
     background: @wifi;
 }
 
-/* Network */
-#custom-wi {  
-    background: @wifi;
-    text-shadow: 0px 0px 2px rgba(0, 0, 0, 1);
-    margin-right: -2px;
-    padding-left: 5px;
-}
-
 #custom-wifi {
     background: @wifi;
-    padding-right: 0px;
-    padding-left: 0px;
+    padding-right: 6px;
+    padding-left: 4px;
 }
 
 #custom-right5 {
