@@ -1,6 +1,6 @@
 <h1 align="center" style="border-style: none;">🤖 MechaBar</h1>
 
-![MechaBar](/assets/v1.2.0.png)
+![MechaBar](/assets/v1.3.0.png)
 
 <div align="center">
     <details>
@@ -91,15 +91,15 @@ yay -S rofi-lbonn-wayland-git wlogout
    ```bash
    # Waybar-exclusive scripts
    mkdir -p ~/.config/waybar/scripts/
-   cp scripts/wifimenu.sh scripts/mediaplayer.py scripts/essid.sh scripts/cpuinfo.sh ~/.config/waybar/scripts/
+   cp scripts/cpuinfo.sh scripts/cpu.sh scripts/essid.sh scripts/wifimenu.sh scripts/mediaplayer.py ~/.config/waybar/scripts/
 
    # System-wide scripts
    mkdir -p ~/.local/share/bin/
-   cp scripts/volumecontrol.sh scripts/brightnesscontrol.sh scripts/logoutlaunch.sh ~/.local/share/bin/
+   cp scripts/globalcontrol.sh scripts/volumecontrol.sh scripts/brightnesscontrol.sh scripts/logoutlaunch.sh ~/.local/share/bin/
 
    # Make scripts executable
    chmod +x ~/.config/waybar/scripts/*
-   chmod +x ~/.local/share/bin/volumecontrol.sh ~/.local/share/bin/brightnesscontrol.sh ~/.local/share/bin/logoutlaunch.sh
+   chmod +x ~/.local/share/bin/globalcontrol.sh ~/.local/share/bin/volumecontrol.sh ~/.local/share/bin/brightnesscontrol.sh ~/.local/share/bin/logoutlaunch.sh
    ```
 
 4. **Restart Waybar to apply the changes:**
