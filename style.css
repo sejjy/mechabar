@@ -73,7 +73,7 @@ tooltip {
 #window,
 #custom-cpuinfo,
 #memory,
-#cpu,
+#custom-cpu,
 #clock,
 #custom-wifi,
 #pulseaudio,
@@ -178,7 +178,7 @@ tooltip {
     padding-left: 3px;
 }
 
-#cpu { background: @cpu; }
+#custom-cpu { background: @cpu; }
 
 #custom-leftin1 {
     color: @cpu;
@@ -194,7 +194,7 @@ tooltip {
     padding-left: 3px;
 }
 
-#custom-arch {
+#idle_inhibitor {
     color: black;
     background: @arch;
     font-size: 11pt;
