@@ -22,6 +22,7 @@ else
   rssi="N/A"
   rx_bitrate=""
   tx_bitrate=""
+  phy_mode=""
   signal=$(echo $wifi_info | awk -F: '{print $3}')
 
   active_device=$(nmcli -t -f DEVICE,STATE device status | \
@@ -51,6 +52,15 @@ else
 
     # Download speed
     tx_bitrate=$(echo "$iw_output" | grep "tx bitrate:" | awk '{print $3 " " $4}')
+
+    # Physical Layer Mode
+    if echo "$iw_output" | grep -q "VHT"; then
+      phy_mode="802.11ac"  # Wi-Fi 5
+    elif echo "$iw_output" | grep -q "HT"; then
+      phy_mode="802.11n"  # Wi-Fi 4
+    elif echo "$iw_output" | grep -q "HE"; then
+      phy_mode="802.11ax"  # Wi-Fi 6
+    fi
   fi
 
   # Get the current Wi-Fi ESSID
@@ -71,6 +81,10 @@ else
 
   if [ -n "$tx_bitrate" ]; then
     tooltip+="\nTx Rate:     ${tx_bitrate}"
+  fi
+
+  if [ -n "$phy_mode" ]; then
+    tooltip+="\nPHY Mode:    ${phy_mode}"
   fi
 fi
 
