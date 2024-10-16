@@ -1,5 +1,11 @@
 #!/bin/bash
 
+# Check if necessary utilities are installed
+if ! command -v nmcli &> /dev/null || ! command -v iw &> /dev/null; then
+  echo "{\"text\": \"󰤮 Wi-Fi\", \"tooltip\": \"Wi-Fi utilities are missing\"}"
+  exit 1
+fi
+
 wifi_info=$(nmcli -t -f active,ssid,signal dev wifi | grep "^yes")
 
 # If no ESSID is found, set a default value
