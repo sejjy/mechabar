@@ -39,7 +39,7 @@
 
 ## Dependencies
 
-To ensure _MechaBar_ works properly after [installation](#installation), install the following dependencies:
+To ensure _Mechabar_ works properly after [installation](#installation), install the following dependencies:
 
 ```bash
 # For Arch
