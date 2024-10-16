@@ -54,11 +54,11 @@ else
     tx_bitrate=$(echo "$iw_output" | grep "tx bitrate:" | awk '{print $3 " " $4}')
 
     # Physical Layer Mode
-    if echo "$iw_output" | grep -q "VHT"; then
+    if echo "$iw_output" | grep -E -q "rx bitrate:.* VHT"; then
       phy_mode="802.11ac"  # Wi-Fi 5
-    elif echo "$iw_output" | grep -q "HT"; then
+    elif echo "$iw_output" | grep -E -q "rx bitrate:.* HT"; then
       phy_mode="802.11n"  # Wi-Fi 4
-    elif echo "$iw_output" | grep -q "HE"; then
+    elif echo "$iw_output" | grep -E -q "rx bitrate:.* HE"; then
       phy_mode="802.11ax"  # Wi-Fi 6
     fi
   fi
