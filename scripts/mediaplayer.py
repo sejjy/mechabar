@@ -67,12 +67,25 @@ class PlayerManager:
     def write_output(self, text, player):
         logger.debug(f"Writing output: {text}")
 
-        output = {"text": text,
-                  "class": "custom-" + player.props.player_name,
-                  "alt": player.props.player_name}
+        # Determine the icon for the tooltip based on playback status
+        if player.props.status == "Playing":
+            tooltip_status = ""  # Icon for playing
+        else:
+            tooltip_status = "Paused: "  # Icon for paused
+
+        # Tooltip includes the icon and track info
+        tooltip = f"{tooltip_status}{text}"  
+
+        output = {
+            "text": text,  # Main text remains unchanged
+            "class": "custom-" + player.props.player_name,
+            "alt": player.props.player_name,
+            "tooltip": tooltip  # Updated tooltip with the icon
+        }
 
         sys.stdout.write(json.dumps(output) + "\n")
         sys.stdout.flush()
+
 
     def clear_output(self):
         sys.stdout.write("\n")
