@@ -29,14 +29,6 @@
 
 #
 
-> [!NOTE]
-> This configuration is optimized for a **laptop** with the following system setup:
-
-- Arch Linux
-- Wayland
-- Hyprland
-- `monitor = DP-1, 1920x1080@60, 0x0, 1`
-
 ## Dependencies
 
 To ensure _Mechabar_ works properly after [installation](#installation), install the following dependencies:
