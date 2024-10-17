@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/bin/bash
 
 # Check if wlogout is already running
 if pgrep -x "wlogout" > /dev/null; then
@@ -6,14 +6,15 @@ if pgrep -x "wlogout" > /dev/null; then
     exit 0
 fi
 
-# Set file variables
-scrDir=`dirname "$(realpath "$0")"`
-source $scrDir/globalcontrol.sh
+# Define configuration directories
+confDir="${XDG_CONFIG_HOME:-$HOME/.config}"
+
+# Style selection
 [ -z "${1}" ] || wlogoutStyle="${1}"
 wLayout="${confDir}/wlogout/layout_${wlogoutStyle}"
 wlTmplt="${confDir}/wlogout/style_${wlogoutStyle}.css"
 
-if [ ! -f "${wLayout}" ] || [ ! -f "${wlTmplt}" ] ; then
+if [ ! -f "${wLayout}" ] || [ ! -f "${wlTmplt}" ]; then
     echo "ERROR: Config ${wlogoutStyle} not found..."
     wlogoutStyle=1
     wLayout="${confDir}/wlogout/layout_${wlogoutStyle}"
@@ -27,24 +28,28 @@ hypr_scale=$(hyprctl -j monitors | jq '.[] | select(.focused == true) | .scale' 
 
 # Scale config layout and style
 case "${wlogoutStyle}" in
-    1)  wlColms=6
+    1)
+        wlColms=6
         export mgn=$(( y_mon * 38 / hypr_scale ))
-        export hvr=$(( y_mon * 33 / hypr_scale )) ;;
-    2)  wlColms=2
+        export hvr=$(( y_mon * 33 / hypr_scale ))
+        ;;
+    2)
+        wlColms=2
         export x_mgn=$(( x_mon * 38 / hypr_scale ))
         export y_mgn=$(( y_mon * 28 / hypr_scale ))
         export x_hvr=$(( x_mon * 35 / hypr_scale ))
-        export y_hvr=$(( y_mon * 23 / hypr_scale )) ;;
+        export y_hvr=$(( y_mon * 23 / hypr_scale ))
+        ;;
 esac
 
 # Scale font size
 export fntSize=$(( y_mon * 2 / 100 ))
 
-# Detect wallpaper brightness
-[ -f "${cacheDir}/wall.dcol" ] && source "${cacheDir}/wall.dcol"
-[ "${dcol_mode}" = "dark" ] && export BtnCol="white" || export BtnCol="black"
+export BtnCol="white"  # Default button color
 
 # Evaluate hypr border radius
+hypr_border="$(hyprctl -j getoption decoration:rounding | jq '.int')"
+export hypr_border
 export active_rad=$(( hypr_border * 5 ))
 export button_rad=$(( hypr_border * 8 ))
 

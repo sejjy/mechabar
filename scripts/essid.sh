@@ -75,14 +75,14 @@ else
     ip_address="127.0.0.1"
     gateway="127.0.0.1"
     mac_address="N/A"
-    security=$(echo $wifi_info | awk -F: '{print $4}')
+    security=$(echo "$wifi_info" | awk -F: '{print $4}')
     bssid="N/A"
     chan="N/A"
     rssi="N/A"
     rx_bitrate=""
     tx_bitrate=""
     phy_mode=""
-    signal=$(echo $wifi_info | awk -F: '{print $3}')
+    signal=$(echo "$wifi_info" | awk -F: '{print $3}')
 
     active_device=$(nmcli -t -f DEVICE,STATE device status | \
                         grep -w "connected" | \
@@ -90,7 +90,7 @@ else
                         awk -F: '{print $1}')
 
     if [ -n "$active_device" ]; then
-        output=$(nmcli -e no -g ip4.address,ip4.gateway,general.hwaddr device show $active_device)
+        output=$(nmcli -e no -g ip4.address,ip4.gateway,general.hwaddr device show "$active_device")
 
         ip_address=$(echo "$output" | sed -n '1p')
         gateway=$(echo "$output" | sed -n '2p')
@@ -125,7 +125,7 @@ else
     fi
 
     # Get the current Wi-Fi ESSID
-    essid=$(echo $wifi_info | awk -F: '{print $2}')
+    essid=$(echo "$wifi_info" | awk -F: '{print $2}')
 
     tooltip="$essid\n"
     tooltip+="\nIP Address:  ${ip_address}"
