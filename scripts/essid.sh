@@ -17,6 +17,17 @@
 # - MAC Address: The unique Media Access Control address of the local
 #   device's Wi-Fi adapter.  Example: "F8:34:41:07:1B:65"
 #
+# - Security: The encryption protocol being used to secure your Wi-Fi
+#   connection. Common security protocols include:
+#   - WPA2 (Wi-Fi Protected Access 2): The most commonly used security
+#     standard, offering strong encryption (AES).
+#   - WPA3: The latest version, providing even stronger security,
+#     especially in public or open networks.
+#   - WEP (Wired Equivalent Privacy): An outdated and insecure protocol
+#     that should not be used.
+#   Example: "WPA2" indicates that the connection is secured using WPA2
+#   with AES encryption.
+#
 # - BSSID (Basic Service Set Identifier): The MAC address of the Wi-Fi
 #   access point you are connected to.  Example: "A4:22:49:DA:91:A0"
 #
@@ -30,8 +41,8 @@
 #   Closer to 0 means stronger signal, with values like -40 dBm being
 #   very good.  Example: "-40 dBm"
 #
-# - Signal: The signal quality, which is often represented as a
-#   percentage, where higher numbers mean better signal.  Example: "100"
+# - Signal: The signal quality, which is represented as a percentage,
+#   where higher numbers mean better signal.  Example: "100"
 #   indicates perfect signal strength.
 #
 # - Rx Rate (Receive Rate): The maximum data rate (in Mbit/s) at which
@@ -53,7 +64,7 @@ if ! command -v nmcli &> /dev/null; then
     exit 1
 fi
 
-wifi_info=$(nmcli -t -f active,ssid,signal dev wifi | grep "^yes")
+wifi_info=$(nmcli -t -f active,ssid,signal,security dev wifi | grep "^yes")
 
 # If no ESSID is found, set a default value
 if [ -z "$wifi_info" ]; then
@@ -64,6 +75,7 @@ else
     ip_address="127.0.0.1"
     gateway="127.0.0.1"
     mac_address="N/A"
+    security=$(echo $wifi_info | awk -F: '{print $4}')
     bssid="N/A"
     chan="N/A"
     rssi="N/A"
@@ -119,6 +131,7 @@ else
     tooltip+="\nIP Address:  ${ip_address}"
     tooltip+="\nRouter:      ${gateway}"
     tooltip+="\nMAC Address: ${mac_address}"
+    tooltip+="\nSecurity:    ${security}"
     tooltip+="\nBSSID:       ${bssid}"
     tooltip+="\nChannel:     ${chan}"
     tooltip+="\nRSSI:        ${rssi}"
