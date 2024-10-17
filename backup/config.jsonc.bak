@@ -172,7 +172,7 @@
     "format": "󰘚 {percentage}%",
     "format-c": "󰀪 {percentage}%",
     "tooltip": true,
-    "tooltip-format": "󰘚 Memory Used: {used:0.1f} GB / {total:0.1f} GB",
+    "tooltip-format": "Memory Used: {used:0.1f} GB / {total:0.1f} GB",
     "interval": 10,
     "min-length": 7,
     "max-length": 7
@@ -190,8 +190,8 @@
   "idle_inhibitor": {
     "format": " ",
     "tooltip": true,
-    "tooltip-format-activated": "󰐌 Presentation Mode",
-    "tooltip-format-deactivated": "󰏥 Idle Mode",
+    "tooltip-format-activated": "Presentation Mode",
+    "tooltip-format-deactivated": "Idle Mode",
     "start-activated": false,
     "timeout": 5
   },
@@ -199,7 +199,7 @@
   "clock#time": {
     "format": "󱑂 {:%H:%M}",
     "tooltip": true,
-    "tooltip-format": "󱑂 12-Hour Format: {:%I:%M %p}",
+    "tooltip-format": "12-hour Format: {:%I:%M %p}",
     "min-length": 8,
     "max-length": 8
   },
@@ -211,12 +211,7 @@
       "mode": "month",
       "mode-mon-col": 6,
       "on-click-right": "mode",
-      "format": {
-        "months": "<span color='#f5e0dc'><b>{}</b></span>",
-        "weekdays": "<span color='#f9e2af'><b>{}</b></span>",
-        "days": "<span color='#cdd6f4'>{}</span>",
-        "today": "<span color='#f38ba8'><b>{}</b></span>"
-      }
+      "format": { "today": "<span color='#f38ba8'><b>{}</b></span>" }
     },
     "actions": { "on-click-right": "mode" },
     "min-length": 8,
@@ -252,7 +247,7 @@
       "default": ["󰖀", "󰕾"]
     },
     "tooltip": true,
-    "tooltip-format": "{icon} {desc}",
+    "tooltip-format": "{desc}",
     "on-click": "~/.local/share/bin/volumecontrol.sh -o m",
     "on-click-right": "pavucontrol -t 3",
     "on-scroll-up": "~/.local/share/bin/volumecontrol.sh -o i",
@@ -266,7 +261,7 @@
     "format": "{icon} {percent}%",
     "format-icons": ["", "", "", "", "", "", "", "", ""],
     "tooltip": true,
-    "tooltip-format": "{icon} Intel Backlight",
+    "tooltip-format": "Intel Backlight",
     "on-scroll-up": "~/.local/share/bin/brightnesscontrol.sh -o i",
     "on-scroll-down": "~/.local/share/bin/brightnesscontrol.sh -o d",
     "min-length": 6,
@@ -281,8 +276,8 @@
     "format": "{icon} {capacity}%",
     "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
     "format-charging": "󱘖 {capacity}%",
-    "tooltip-format": "󰂎 {timeTo}",
-    "tooltip-format-charging": "󱘖 {timeTo}",
+    "tooltip-format": "{timeTo}",
+    "tooltip-format-charging": "{timeTo}",
     "interval": 1,
     "min-length": 6,
     "max-length": 6
