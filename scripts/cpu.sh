@@ -1,12 +1,12 @@
-#!/usr/bin/env sh
+#!/bin/bash
 
-# CPU model
-model=$(cat /proc/cpuinfo | grep 'model name' | head -n 1 | awk -F ': ' '{print $2}' | sed 's/@.*//' | sed 's/(R)//g' | sed 's/(TM)//g')
+# Get CPU model (removed "(R)", "(TM)", and clock speed)
+model=$(awk -F ': ' '/model name/{gsub(/@\s.*|\s*\(R\)|\s*\(TM\)/, ""); gsub(/^[ \t]+|[ \t]+$/, ""); print $2}' /proc/cpuinfo | head -n 1)
 
-# Get CPU load (usage percentage)
+# Get CPU usage percentage
 load=$(vmstat 1 2 | tail -1 | awk '{print 100 - $15}')
 
-# Determine the CPU state based on the load
+# Determine CPU state based on usage
 if [ "$load" -le 25 ]; then
     state="Low"
 elif [ "$load" -le 50 ]; then
@@ -15,7 +15,8 @@ else
     state="High"
 fi
 
-# CPU icon
-icon="󰻠"
+tooltip="${model}"
+tooltip+="\nCPU Usage: ${state}"
 
-echo "{\"text\":\"${icon} ${load}%\", \"tooltip\":\"${model}\n${icon} CPU Usage: ${state}\"}"
+# Module and tooltip
+echo "{\"text\": \"󰻠 ${load}%\", \"tooltip\": \"${tooltip}\"}"

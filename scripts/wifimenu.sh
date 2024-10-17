@@ -1,15 +1,13 @@
-#!/usr/bin/env sh
+#!/bin/bash
 
-# Set variables for script directory and rofi configuration
-scrDir=$(dirname "$(realpath "$0")")
-# roconf="${confDir}/rofi/wifi.rasi"
+hypr_border=1
 roconf="$HOME/.config/rofi/wifi.rasi"
 
 # Set rofi scaling
 [[ "${rofiScale}" =~ ^[0-9]+$ ]] || rofiScale=10
 r_scale="configuration { font: \"JetBrainsMono Nerd Font ${rofiScale}\"; }"
 wind_border=$((hypr_border * 3 / 2))
-elem_border=$([ $hypr_border -eq 0 ] && echo "5" || echo $hypr_border)
+elem_border=$([ "$hypr_border" -eq 0 ] && echo "5" || echo "$hypr_border")
 
 # Ensure that hypr_width, wind_border, and elem_border have valid numeric values
 [[ "${hypr_width}" =~ ^[0-9]+$ ]] || hypr_width=2
@@ -18,18 +16,15 @@ elem_border=$([ $hypr_border -eq 0 ] && echo "5" || echo $hypr_border)
 
 # Get monitor resolution and calculate center position
 readarray -t monRes < <(hyprctl -j monitors | jq '.[] | select(.focused==true) | .width,.height,.scale')
-monRes[2]="$(echo "${monRes[2]}" | sed "s/\.//")"
-monRes[0]="$(( ${monRes[0]} * 100 / ${monRes[2]} ))"
-monRes[1]="$(( ${monRes[1]} * 100 / ${monRes[2]} ))"
+monRes[2]="${monRes[2]//./}"
+monRes[0]=$((monRes[0] * 100 / monRes[2]))
+monRes[1]=$((monRes[1] * 100 / monRes[2]))
 
 x_pos_center=$((monRes[0] / 2))
 y_pos_center=$((monRes[1] / 2))
 
 # Rofi override to center window on screen
 r_override="window { anchor: center; x-offset: -${x_pos_center}px; y-offset: -${y_pos_center}px; border: ${hypr_width}px; border-radius: 15px; } wallbox { border-radius: 10px; } element { border-radius: 10px; }"
-
-# Notify the user about fetching Wi-Fi networks
-notify-send -i "/home/sejjy/.config/dunst/icons/hyprdots.svg" "Getting list of available Wi-Fi networks..."
 
 # Get a list of available Wi-Fi connections and format it
 wifi_list=$(nmcli --fields "SECURITY,SSID" device wifi list | sed 1d | sed 's/  */ /g' | sed -E "s/WPA*.?\S/  /g" | sed "s/^--/  /g" | sed "s/    / /g" | sed "/--/d")
@@ -71,7 +66,7 @@ elif [ "$chosen_network" = "   Manual Entry" ]; then
     fi
 else
     # Message to show when connection is activated successfully
-    success_message="You are now connected to the Wi-Fi network \"$chosen_id\"."
+    success_message="You are now connected to \"$chosen_id\"."
     
     # Get saved connections
     saved_connections=$(nmcli -g NAME connection)
