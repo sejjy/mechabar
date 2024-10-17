@@ -1,8 +1,7 @@
 #!/bin/bash
 
-# Check if necessary utilities are installed
-if ! command -v nmcli &> /dev/null || ! command -v iw &> /dev/null; then
-    echo "{\"text\": \"󰤮 Wi-Fi\", \"tooltip\": \"Wi-Fi utilities are missing\"}"
+if ! command -v nmcli &> /dev/null; then
+    echo "{\"text\": \"󰤮 Wi-Fi\", \"tooltip\": \"nmcli utility is missing\"}"
     exit 1
 fi
 
@@ -44,22 +43,24 @@ else
         freq=$(echo "$line" | awk -F':' '{print $9}')
         chan="$chan ($freq)"
 
-        iw_output=$(iw dev "$active_device" station dump)
-        rssi=$(echo "$iw_output" | grep "signal:" | awk '{print $2 " dBm"}')
+        if command -v iw &> /dev/null; then
+            iw_output=$(iw dev "$active_device" station dump)
+            rssi=$(echo "$iw_output" | grep "signal:" | awk '{print $2 " dBm"}')
 
-        # Upload speed
-        rx_bitrate=$(echo "$iw_output" | grep "rx bitrate:" | awk '{print $3 " " $4}')
+            # Upload speed
+            rx_bitrate=$(echo "$iw_output" | grep "rx bitrate:" | awk '{print $3 " " $4}')
 
-        # Download speed
-        tx_bitrate=$(echo "$iw_output" | grep "tx bitrate:" | awk '{print $3 " " $4}')
+            # Download speed
+            tx_bitrate=$(echo "$iw_output" | grep "tx bitrate:" | awk '{print $3 " " $4}')
 
-        # Physical Layer Mode
-        if echo "$iw_output" | grep -E -q "rx bitrate:.* VHT"; then
-            phy_mode="802.11ac"  # Wi-Fi 5
-        elif echo "$iw_output" | grep -E -q "rx bitrate:.* HT"; then
-            phy_mode="802.11n"  # Wi-Fi 4
-        elif echo "$iw_output" | grep -E -q "rx bitrate:.* HE"; then
-            phy_mode="802.11ax"  # Wi-Fi 6
+            # Physical Layer Mode
+            if echo "$iw_output" | grep -E -q "rx bitrate:.* VHT"; then
+                phy_mode="802.11ac"  # Wi-Fi 5
+            elif echo "$iw_output" | grep -E -q "rx bitrate:.* HT"; then
+                phy_mode="802.11n"  # Wi-Fi 4
+            elif echo "$iw_output" | grep -E -q "rx bitrate:.* HE"; then
+                phy_mode="802.11ax"  # Wi-Fi 6
+            fi
         fi
     fi
 
