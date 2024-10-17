@@ -95,11 +95,11 @@ yay -S rofi-lbonn-wayland-git wlogout
 
    # System-wide scripts
    mkdir -p ~/.local/share/bin/
-   cp scripts/globalcontrol.sh scripts/volumecontrol.sh scripts/brightnesscontrol.sh scripts/logoutlaunch.sh ~/.local/share/bin/
+   cp scripts/volumecontrol.sh scripts/brightnesscontrol.sh scripts/logoutlaunch.sh ~/.local/share/bin/
 
    # Make scripts executable
    chmod +x ~/.config/waybar/scripts/*
-   chmod +x ~/.local/share/bin/globalcontrol.sh ~/.local/share/bin/volumecontrol.sh ~/.local/share/bin/brightnesscontrol.sh ~/.local/share/bin/logoutlaunch.sh
+   chmod +x ~/.local/share/bin/volumecontrol.sh ~/.local/share/bin/brightnesscontrol.sh ~/.local/share/bin/logoutlaunch.sh
    ```
 
 4. **Restart Waybar to apply the changes:**
