@@ -54,7 +54,7 @@
     "pulseaudio", // output device
 
     "custom/left7",
-    "backlight", // brightness
+    "custom/backlight", // brightness
 
     "custom/left8",
     "battery", // battery
@@ -173,13 +173,13 @@
     "format-c": "󰀪 {percentage}%",
     "tooltip": true,
     "tooltip-format": "Memory Used: {used:0.1f} GB / {total:0.1f} GB",
-    "interval": 10,
+    "interval": 5,
     "min-length": 7,
     "max-length": 7
   },
 
   "custom/cpu": {
-    "exec": "~/.config/waybar/scripts/cpu.sh",
+    "exec": "~/.config/waybar/scripts/cpuusage.sh",
     "return-type": "json",
     "tooltip": true,
     "interval": 5,
@@ -219,7 +219,7 @@
   },
 
   "custom/wifi": {
-    "exec": "~/.config/waybar/scripts/essid.sh",
+    "exec": "~/.config/waybar/scripts/wifiinfo.sh",
     "return-type": "json",
     "format": "{}", // in essid.sh, change "Wi-Fi" to "${essid}" to display network name
     "tooltip": true,
@@ -247,25 +247,25 @@
       "default": ["󰖀", "󰕾"]
     },
     "tooltip": true,
-    "tooltip-format": "{desc}",
+    "tooltip-format": "Device: {desc}",
     "on-click": "~/.local/share/bin/volumecontrol.sh -o m",
     "on-click-right": "pavucontrol -t 3",
     "on-scroll-up": "~/.local/share/bin/volumecontrol.sh -o i",
     "on-scroll-down": "~/.local/share/bin/volumecontrol.sh -o d",
-    "scroll-step": 10,
     "min-length": 6,
     "max-length": 6
   },
 
-  "backlight": {
-    "format": "{icon} {percent}%",
-    "format-icons": ["", "", "", "", "", "", "", "", ""],
-    "tooltip": true,
-    "tooltip-format": "Intel Backlight",
-    "on-scroll-up": "~/.local/share/bin/brightnesscontrol.sh -o i",
-    "on-scroll-down": "~/.local/share/bin/brightnesscontrol.sh -o d",
-    "min-length": 6,
-    "max-length": 6
+  "custom/backlight": {
+      "exec": "~/.local/share/bin/brightnesscontrol.sh",
+      "return-type": "json",
+      "format": "{}",
+      "tooltip": true,
+      "on-scroll-up": "~/.local/share/bin/brightnesscontrol.sh -o i",
+      "on-scroll-down": "~/.local/share/bin/brightnesscontrol.sh -o d",
+      "interval": 1,
+      "min-length": 6,
+      "max-length": 6
   },
 
   "battery": {
@@ -276,8 +276,8 @@
     "format": "{icon} {capacity}%",
     "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
     "format-charging": "󱘖 {capacity}%",
-    "tooltip-format": "{timeTo}",
-    "tooltip-format-charging": "{timeTo}",
+    "tooltip-format": "Time to Empty: {time}",
+    "tooltip-format-charging": "Time to Full: {time}",
     "interval": 1,
     "min-length": 6,
     "max-length": 6
