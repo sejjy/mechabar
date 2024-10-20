@@ -2,7 +2,7 @@
   "layer": "top",
   "position": "top",
   "mode": "dock",
-  // "height": 20, // uncomment to set height
+  // "height": 20, // uncomment to set fixed height
   "exclusive": true,
   "passthrough": false,
   "gtk-layer-shell": true,
@@ -221,7 +221,7 @@
   "custom/wifi": {
     "exec": "~/.config/waybar/scripts/wifiinfo.sh",
     "return-type": "json",
-    "format": "{}", // in essid.sh, change "Wi-Fi" to "${essid}" to display network name
+    "format": "{}", // in wifiinfo.sh, change "Wi-Fi" to "${essid}" to display network name
     "tooltip": true,
     "on-click": "~/.config/waybar/scripts/wifimenu.sh",
     "interval": 1,
@@ -241,10 +241,10 @@
 
   "pulseaudio": {
     "format": "{icon} {volume}%",
-    "format-muted": "婢 {volume}%",
+    "format-muted": "󰝟 {volume}%",
     "format-icons": {
       "headphone": "󰋋",
-      "default": ["󰖀", "󰕾"]
+      "default": ["󰕿", "󰖀", "󰕾"]
     },
     "tooltip": true,
     "tooltip-format": "Device: {desc}",
@@ -256,15 +256,15 @@
   },
 
   "custom/backlight": {
-      "exec": "~/.local/share/bin/brightnesscontrol.sh",
-      "return-type": "json",
-      "format": "{}",
-      "tooltip": true,
-      "on-scroll-up": "~/.local/share/bin/brightnesscontrol.sh -o i",
-      "on-scroll-down": "~/.local/share/bin/brightnesscontrol.sh -o d",
-      "interval": 1,
-      "min-length": 6,
-      "max-length": 6
+    "exec": "~/.local/share/bin/brightnesscontrol.sh",
+    "return-type": "json",
+    "format": "{}",
+    "tooltip": true,
+    "on-scroll-up": "~/.local/share/bin/brightnesscontrol.sh -o i",
+    "on-scroll-down": "~/.local/share/bin/brightnesscontrol.sh -o d",
+    "interval": 1,
+    "min-length": 6,
+    "max-length": 6
   },
 
   "battery": {
