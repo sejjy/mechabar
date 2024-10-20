@@ -32,17 +32,26 @@ notify_mute() {
 
 action_volume() {
     case "${1}" in
-        i)
-            # Check current volume and increase only if below 100
-            current_vol=$(pactl get-sink-volume @DEFAULT_SINK@ | awk '{print $5}' | sed 's/%//')
-            if [ "$current_vol" -lt 100 ]; then
-                pactl set-sink-volume @DEFAULT_SINK@ +5%
+    i)
+        # Check current volume and increase only if below 100
+        current_vol=$(pactl get-sink-volume @DEFAULT_SINK@ | awk '{print $5}' | sed 's/%//')
+        if [ "$current_vol" -lt 100 ]; then
+            new_vol=$((current_vol + 5))
+            if [ "$new_vol" -gt 100 ]; then
+                new_vol=100
             fi
-            ;;
-        d)
-            # Decrease volume
-            pactl set-sink-volume @DEFAULT_SINK@ -5%
-            ;;
+            pactl set-sink-volume @DEFAULT_SINK@ "${new_vol}%"
+        fi
+        ;;
+    d)
+        # Decrease volume, ensuring it doesn't drop below 0%
+        current_vol=$(pactl get-sink-volume @DEFAULT_SINK@ | awk '{print $5}' | sed 's/%//')
+        new_vol=$((current_vol - 5))
+        if [ "$new_vol" -lt 0 ]; then
+            new_vol=0
+        fi
+        pactl set-sink-volume @DEFAULT_SINK@ "${new_vol}%"
+        ;;
     esac
 }
 
@@ -93,10 +102,10 @@ shift $((OPTIND - 1))
 
 # Execute action
 case "${1}" in
-    i) action_volume i ;;
-    d) action_volume d ;;
-    m) pactl set-sink-mute @DEFAULT_SINK@ toggle && notify_mute && exit 0 ;;
-    *) print_error ;;
+i) action_volume i ;;
+d) action_volume d ;;
+m) pactl set-sink-mute @DEFAULT_SINK@ toggle && notify_mute && exit 0 ;;
+*) print_error ;;
 esac
 
 send_notification
