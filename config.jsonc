@@ -249,7 +249,6 @@
     "tooltip": true,
     "tooltip-format": "Device: {desc}",
     "on-click": "~/.local/share/bin/volumecontrol.sh -o m",
-    "on-click-right": "pavucontrol -t 3",
     "on-scroll-up": "~/.local/share/bin/volumecontrol.sh -o i",
     "on-scroll-down": "~/.local/share/bin/volumecontrol.sh -o d",
     "min-length": 6,
