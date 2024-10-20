@@ -83,7 +83,7 @@ yay -S rofi-lbonn-wayland-git wlogout
    ```bash
    # Waybar-exclusive scripts
    mkdir -p ~/.config/waybar/scripts/
-   cp scripts/cpuinfo.sh scripts/cpu.sh scripts/essid.sh scripts/wifimenu.sh scripts/mediaplayer.py ~/.config/waybar/scripts/
+   cp scripts/cpuinfo.sh scripts/cpuusage.sh scripts/wifiinfo.sh scripts/wifimenu.sh scripts/mediaplayer.py ~/.config/waybar/scripts/
 
    # System-wide scripts
    mkdir -p ~/.local/share/bin/
