@@ -17,27 +17,33 @@ EOF
 }
 
 send_notification() {
+    vol=$(pactl get-sink-volume @DEFAULT_SINK@ | awk '{print $5}' | sed 's/%//')
     notify-send -r 91190 "Volume: ${vol}%"
 }
 
 notify_mute() {
-    mute=$(pamixer "${srce}" --get-mute)
-    if [ "${mute}" = "true" ]; then
+    mute=$(pactl get-sink-mute @DEFAULT_SINK@ | awk '{print $2}')
+    if [ "${mute}" = "yes" ]; then
         notify-send -r 91190 "Muted"
     else
         notify-send -r 91190 "Unmuted"
     fi
 }
 
-action_pamixer() {
-    pamixer "${srce}" -"${1}" "${step}"
-    vol=$(pamixer "${srce}" --get-volume)
-}
-
-action_playerctl() {
-    [ "${1}" = "i" ] && pvl="+" || pvl="-"
-    playerctl --player="${srce}" volume 0.0"${step}""${pvl}"
-    vol=$(playerctl --player="${srce}" volume | awk '{ printf "%.0f\n", $0 * 100 }')
+action_volume() {
+    case "${1}" in
+        i)
+            # Check current volume and increase only if below 100
+            current_vol=$(pactl get-sink-volume @DEFAULT_SINK@ | awk '{print $5}' | sed 's/%//')
+            if [ "$current_vol" -lt 100 ]; then
+                pactl set-sink-volume @DEFAULT_SINK@ +5%
+            fi
+            ;;
+        d)
+            # Decrease volume
+            pactl set-sink-volume @DEFAULT_SINK@ -5%
+            ;;
+    esac
 }
 
 select_output() {
@@ -58,28 +64,24 @@ select_output() {
 while getopts iops: DeviceOpt; do
     case "${DeviceOpt}" in
     i)
-        nsink=$(pamixer --list-sources | awk -F '"' 'END {print $(NF - 1)}')
+        nsink=$(pactl list sources short | awk '{print $2}')
         [ -z "${nsink}" ] && echo "ERROR: Input device not found..." && exit 0
-        ctrl="pamixer"
         srce="--default-source"
         ;;
     o)
-        nsink=$(pamixer --get-default-sink | awk -F '"' 'END{print $(NF - 1)}')
+        nsink=$(pactl list sinks short | awk '{print $2}')
         [ -z "${nsink}" ] && echo "ERROR: Output device not found..." && exit 0
-        ctrl="pamixer"
         srce=""
         ;;
     p)
         nsink=$(playerctl --list-all | grep -w "${OPTARG}")
         [ -z "${nsink}" ] && echo "ERROR: Player ${OPTARG} not active..." && exit 0
-        ctrl="playerctl"
+        # shellcheck disable=SC2034
         srce="${nsink}"
         ;;
     s)
-        # shellcheck disable=SC2034
-        default_sink="$(pamixer --get-default-sink | awk -F '"' 'END{print $(NF - 1)}')"
-        selected_sink="$(select_output "${@}")"
-        select_output "$selected_sink"
+        # Select an output device
+        select_output "$@"
         exit
         ;;
     *) print_error ;;
@@ -88,14 +90,13 @@ done
 
 # Set default variables
 shift $((OPTIND - 1))
-step="${2:-5}"
 
 # Execute action
 case "${1}" in
-i) action_"${ctrl}" i ;;
-d) action_"${ctrl}" d ;;
-m) "${ctrl}" "${srce}" -t && notify_mute && exit 0 ;;
-*) print_error ;;
+    i) action_volume i ;;
+    d) action_volume d ;;
+    m) pactl set-sink-mute @DEFAULT_SINK@ toggle && notify_mute && exit 0 ;;
+    *) print_error ;;
 esac
 
 send_notification
