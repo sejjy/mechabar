@@ -79,7 +79,7 @@ tooltip {
 #clock,
 #custom-wifi,
 #pulseaudio,
-#backlight,
+#custom-backlight,
 #battery,
 #custom-power {
   opacity: 1;
@@ -282,7 +282,7 @@ tooltip {
   padding-left: 2px;
 }
 
-#backlight {
+#custom-backlight {
   background: @backlight;
 }
 
