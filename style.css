@@ -179,6 +179,14 @@ tooltip {
   padding-right: 0px;
 }
 
+#memory.warning {
+  color: #f9e2af;
+}
+
+#memory.critical {
+  color: #f38ba8;
+}
+
 /* CPU */
 #custom-left4 {
   color: @cpu;
@@ -303,6 +311,10 @@ tooltip {
 
 #battery.critical {
   color: #f38ba8;
+}
+
+#battery.full {
+  color: #a6e3a1;
 }
 
 /* Power Button */
