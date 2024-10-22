@@ -1,34 +1,64 @@
 #!/bin/bash
 
 # Get CPU clock speeds
-freqlist=$(awk '/cpu MHz/ {print $4}' /proc/cpuinfo)  # Extract clock speed in MHz
-maxfreq=$(sed 's/...$//' /sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_max_freq)  # Max CPU frequency
-frequency=$(echo "$freqlist" | tr ' ' '\n' | awk "{sum+=\$1} END {printf \"%.0f/$maxfreq MHz\", sum/NR}")  # Average frequency
-
-# Get CPU temperature in Celsius
-temp=$(sensors | awk '/Package id 0/ {print $4}' | awk -F '[+.]' '{print $2}')  # Package temperature
-if [[ -z "$temp" ]]; then
-    temp=$(sensors | awk '/Tctl/ {print $2}' | tr -d '+°C')  # Fallback to Tctl if Package id 0 is empty
-fi
-if [[ -z "$temp" ]]; then
-    temp="N/A"  # If no temp found, set to N/A
-else
-    temp_f=$(awk "BEGIN {printf \"%.1f\", ($temp * 9 / 5) + 32}")  # Convert Celsius to Fahrenheit
-fi
-
-# Map icons based on temperature and utilization
-set_ico="{\"thermo\":{\"0\":\"󱃃\",\"45\":\"󰔏\",\"65\":\"󱃂\",\"85\":\"󰸁\"},\"util\":{\"0\":\"󰾆\",\"30\":\"󰾅\",\"60\":\"󰓅\",\"90\":\"󰀪\"}}"
-eval_ico() {
-    local key="$1"
-    local value="$2"
-    map_ico=$(echo "$set_ico" | jq -r --arg aky "$key" --argjson avl "$value" '.[$aky] | keys_unsorted | map(tonumber) | map(select(. <= $avl)) | max')
-    echo "$set_ico" | jq -r --arg aky "$key" --arg avl "$map_ico" '.[$aky] | .[$avl]'  # Get the corresponding icon
+get_cpu_frequency() {
+    freqlist=$(awk '/cpu MHz/ {print $4}' /proc/cpuinfo)
+    maxfreq=$(sed 's/...$//' /sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_max_freq)
+    average_freq=$(echo "$freqlist" | tr ' ' '\n' | awk "{sum+=\$1} END {printf \"%.0f/%s MHz\", sum/NR, $maxfreq}")
+    echo "$average_freq"
 }
 
-thermo=$(eval_ico thermo "$temp")  # Get temperature icon
+# Get CPU temperature
+get_cpu_temperature() {
+    temp=$(sensors | awk '/Package id 0/ {print $4}' | awk -F '[+.]' '{print $2}')
+    if [[ -z "$temp" ]]; then
+        temp=$(sensors | awk '/Tctl/ {print $2}' | tr -d '+°C')
+    fi
+    if [[ -z "$temp" ]]; then
+        temp="N/A"
+    else
+        temp_f=$(awk "BEGIN {printf \"%.1f\", ($temp * 9 / 5) + 32}")
+    fi
+    echo "${temp:-N/A} ${temp_f:-N/A}"
+}
 
-tooltip="Temperature: ${temp_f}°F"
-tooltip+="\nClock Speed: ${frequency}"
+# Get the corresponding icon based on temperature
+get_temperature_icon() {
+    temp_value=$1
+    icon
+
+    if [ "$temp_value" -ge 80 ]; then
+        icon="󰸁" # High temperature
+    elif [ "$temp_value" -ge 70 ]; then
+        icon="󱃂" # Medium temperature
+    elif [ "$temp_value" -ge 60 ]; then
+        icon="󰔏" # Normal temperature
+    else
+        icon="󱃃" # Low temperature
+    fi
+
+    echo "$icon"
+}
+
+# Main script execution
+cpu_frequency=$(get_cpu_frequency)
+read -r temp_info < <(get_cpu_temperature)
+temp=$(echo "$temp_info" | awk '{print $1}')   # Celsius
+temp_f=$(echo "$temp_info" | awk '{print $2}') # Fahrenheit
+
+# Determine the temperature icon
+thermo_icon=$(get_temperature_icon "$temp")
+
+# Set color based on temperature
+if ((temp > 80)); then
+    # If temperature is above 80, set color to #f38ba8
+    text_output="<span color='#f38ba8'>${thermo_icon} ${temp}°C</span>"
+else
+    # Default color
+    text_output="${thermo_icon} ${temp}°C"
+fi
+
+tooltip="Temperature: ${temp_f}°F\nClock Speed: ${cpu_frequency}"
 
 # Module and tooltip
-echo "{\"text\": \"${thermo} ${temp}°C\", \"tooltip\": \"$tooltip\"}"
+echo "{\"text\": \"$text_output\", \"tooltip\": \"$tooltip\"}"
