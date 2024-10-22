@@ -168,9 +168,12 @@
   },
 
   "memory": {
-    "states": { "c": 90 },
+    "states": {
+      "warning": 75,
+      "critical": 90
+    },
     "format": "󰘚 {percentage}%",
-    "format-c": "󰀪 {percentage}%",
+    "format-critical": "󰀦 {percentage}%",
     "tooltip": true,
     "tooltip-format": "Memory Used: {used:0.1f} GB / {total:0.1f} GB",
     "interval": 5,
@@ -269,11 +272,16 @@
 
   "battery": {
     "states": {
+      "full": 100,
+      "good": 99,
       "warning": 30,
-      "critical": 20
+      "critical": 15
     },
     "format": "{icon} {capacity}%",
-    "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+    "format-icons": ["󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂"],
+    "format-full": "󱃌 {capacity}%",
+    "format-warning": "󰁻 {capacity}%",
+    "format-critical": "󱃍 {capacity}%",
     "format-charging": "󱘖 {capacity}%",
     "tooltip-format": "Time to Empty: {time}",
     "tooltip-format-charging": "Time to Full: {time}",
