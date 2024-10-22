@@ -15,8 +15,17 @@ else
     state="High"
 fi
 
+# Set color based on CPU load
+if [ "$load" -gt 80 ]; then
+    # If CPU usage is above 80, set color to #f38ba8
+    text_output="<span color='#f38ba8'>󰻠 ${load}%</span>"
+else
+    # Default color
+    text_output="󰻠 ${load}%"
+fi
+
 tooltip="${model}"
 tooltip+="\nCPU Usage: ${state}"
 
 # Module and tooltip
-echo "{\"text\": \"󰻠 ${load}%\", \"tooltip\": \"${tooltip}\"}"
+echo "{\"text\": \"$text_output\", \"tooltip\": \"$tooltip\"}"
