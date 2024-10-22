@@ -307,6 +307,14 @@ tooltip {
   background: @battery;
 }
 
+#battery.full {
+  color: #a6e3a1;
+}
+
+#battery.good {
+  color: @module-fg;
+}
+
 #battery.warning {
   color: #f9e2af;
 }
@@ -315,8 +323,8 @@ tooltip {
   color: #f38ba8;
 }
 
-#battery.full {
-  color: #a6e3a1;
+#battery.charging {
+  color: @foreground;
 }
 
 /* Power Button */
