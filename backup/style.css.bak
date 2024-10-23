@@ -14,7 +14,7 @@ window#waybar {
   background: @background;
 }
 
-/* [new] Drop Shadow */
+/* Drop Shadow */
 window#waybar > box {
   background-color: transparent;
   box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 1);
@@ -28,12 +28,12 @@ tooltip {
   border: solid;
   border-width: 1.5px;
   border-radius: 7px;
-  border-color: white;
+  border-color: @tooltip-border;
 }
 
 /* Workspace Button */
 #workspaces button {
-  color: @foreground;
+  color: @module-fg;
   border-radius: 8px;
   box-shadow: none;
   margin-top: 2px;
@@ -78,11 +78,13 @@ tooltip {
 #custom-cpu,
 #clock,
 #custom-wifi,
+#custom-media,
 #pulseaudio,
-#backlight,
+#custom-backlight,
 #battery,
 #custom-power {
   opacity: 1;
+  color: @module-fg;
   margin-bottom: 0px;
   padding-right: 4px;
   padding-left: 4px;
@@ -112,20 +114,6 @@ tooltip {
   padding-right: 3px;
   text-shadow: 1px 0px 2px rgba(0, 0, 0, 1);
 }
-
-/* Color Definitions */
-@define-color workspaces        #181825;
-@define-color cpuinfo           #181825;
-@define-color memory            #1e1e2e;
-@define-color cpu               #313244;
-@define-color arch              #9399b2;
-@define-color time              #313244;
-@define-color date              #1e1e2e;
-@define-color wifi              #181825;
-@define-color pulseaudio        #181825;
-@define-color backlight         #1e1e2e;
-@define-color battery           #313244;
-@define-color power             #9399b2;
 
 /* Window Icon */
 #custom-ws {
@@ -179,6 +167,14 @@ tooltip {
   padding-right: 0px;
 }
 
+#memory.warning {
+  color: @warning;
+}
+
+#memory.critical {
+  color: @critical;
+}
+
 /* CPU */
 #custom-left4 {
   color: @cpu;
@@ -205,7 +201,7 @@ tooltip {
 }
 
 #idle_inhibitor {
-  color: black;
+  color: @distro;
   background: @arch;
   font-size: 11pt;
   margin-right: -1px;
@@ -282,7 +278,7 @@ tooltip {
   padding-left: 2px;
 }
 
-#backlight {
+#custom-backlight {
   background: @backlight;
 }
 
@@ -297,12 +293,24 @@ tooltip {
   background: @battery;
 }
 
+#battery.full {
+  color: @full;
+}
+
+#battery.good {
+  color: @module-fg;
+}
+
 #battery.warning {
-  color: #f9e2af;
+  color: @warning;
 }
 
 #battery.critical {
-  color: #f38ba8;
+  color: @critical;
+}
+
+#battery.charging {
+  color: @charging;
 }
 
 /* Power Button */
