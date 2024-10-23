@@ -2,7 +2,7 @@
   "layer": "top",
   "position": "top",
   "mode": "dock",
-  // "height": 20, // uncomment to set height
+  // "height": 20, // uncomment to set fixed height
   "exclusive": true,
   "passthrough": false,
   "gtk-layer-shell": true,
@@ -54,7 +54,7 @@
     "pulseaudio", // output device
 
     "custom/left7",
-    "backlight", // brightness
+    "custom/backlight", // brightness
 
     "custom/left8",
     "battery", // battery
@@ -168,18 +168,21 @@
   },
 
   "memory": {
-    "states": { "c": 90 },
+    "states": {
+      "warning": 75,
+      "critical": 90
+    },
     "format": "󰘚 {percentage}%",
-    "format-c": "󰀪 {percentage}%",
+    "format-critical": "󰀦 {percentage}%",
     "tooltip": true,
     "tooltip-format": "Memory Used: {used:0.1f} GB / {total:0.1f} GB",
-    "interval": 10,
+    "interval": 5,
     "min-length": 7,
     "max-length": 7
   },
 
   "custom/cpu": {
-    "exec": "~/.config/waybar/scripts/cpu.sh",
+    "exec": "~/.config/waybar/scripts/cpuusage.sh",
     "return-type": "json",
     "tooltip": true,
     "interval": 5,
@@ -219,9 +222,9 @@
   },
 
   "custom/wifi": {
-    "exec": "~/.config/waybar/scripts/essid.sh",
+    "exec": "~/.config/waybar/scripts/wifiinfo.sh",
     "return-type": "json",
-    "format": "{}", // in essid.sh, change "Wi-Fi" to "${essid}" to display network name
+    "format": "{}", // in wifiinfo.sh, change "Wi-Fi" to "${essid}" to display network name
     "tooltip": true,
     "on-click": "~/.config/waybar/scripts/wifimenu.sh",
     "interval": 1,
@@ -241,43 +244,47 @@
 
   "pulseaudio": {
     "format": "{icon} {volume}%",
-    "format-muted": "婢 {volume}%",
+    "format-muted": "󰝟 {volume}%",
     "format-icons": {
       "headphone": "󰋋",
-      "default": ["󰖀", "󰕾"]
+      "default": ["󰕿", "󰖀", "󰕾"]
     },
     "tooltip": true,
-    "tooltip-format": "{desc}",
+    "tooltip-format": "Device: {desc}",
     "on-click": "~/.local/share/bin/volumecontrol.sh -o m",
-    "on-click-right": "pavucontrol -t 3",
     "on-scroll-up": "~/.local/share/bin/volumecontrol.sh -o i",
     "on-scroll-down": "~/.local/share/bin/volumecontrol.sh -o d",
-    "scroll-step": 10,
     "min-length": 6,
     "max-length": 6
   },
 
-  "backlight": {
-    "format": "{icon} {percent}%",
-    "format-icons": ["", "", "", "", "", "", "", "", ""],
+  "custom/backlight": {
+    "exec": "~/.local/share/bin/brightnesscontrol.sh",
+    "return-type": "json",
+    "format": "{}",
     "tooltip": true,
-    "tooltip-format": "Intel Backlight",
     "on-scroll-up": "~/.local/share/bin/brightnesscontrol.sh -o i",
     "on-scroll-down": "~/.local/share/bin/brightnesscontrol.sh -o d",
+    "interval": 1,
     "min-length": 6,
     "max-length": 6
   },
 
   "battery": {
     "states": {
+      "full": 100,
+      "good": 99,
       "warning": 30,
-      "critical": 20
+      "critical": 15
     },
     "format": "{icon} {capacity}%",
-    "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+    "format-icons": ["󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂"],
+    "format-full": "󱃌 {capacity}%",
+    "format-warning": "󰁻 {capacity}%",
+    "format-critical": "󱃍 {capacity}%",
     "format-charging": "󱘖 {capacity}%",
-    "tooltip-format": "{timeTo}",
-    "tooltip-format-charging": "{timeTo}",
+    "tooltip-format": "Time to Empty: {time}",
+    "tooltip-format-charging": "Time to Full: {time}",
     "interval": 1,
     "min-length": 6,
     "max-length": 6
