@@ -126,4 +126,4 @@ yay -S rofi-lbonn-wayland-git wlogout
 ## Credits
 
 - This configuration uses base modules and scripts from **[prasanthrangan/hyprdots](https://github.com/prasanthrangan/hyprdots)**.
-- The pastel color palette, or 'flavor', used is **[Catppuccin Mocha](https://github.com/catppuccin/catppuccin/blob/main/docs/style-guide.md)**.
+- The pastel color palette, or "flavor", used is **[Catppuccin Mocha](https://github.com/catppuccin/catppuccin/blob/main/docs/style-guide.md)**.
