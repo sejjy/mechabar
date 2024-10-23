@@ -50,8 +50,8 @@ temp_f=$(echo "$temp_info" | awk '{print $2}') # Fahrenheit
 thermo_icon=$(get_temperature_icon "$temp")
 
 # Set color based on temperature
-if ((temp > 80)); then
-    # If temperature is above 80, set color to #f38ba8
+if [ "$temp" -ge 80 ]; then
+    # If temperature is above 80%, set color to #f38ba8
     text_output="<span color='#f38ba8'>${thermo_icon} ${temp}°C</span>"
 else
     # Default color
