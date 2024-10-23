@@ -1,84 +1,115 @@
 #!/bin/bash
 
-hypr_border=1
-roconf="$HOME/.config/rofi/wifi.rasi"
+# This script allows you to:
+# - Enable or disable Wi-Fi.
+# - Select and connect to a Wi-Fi network.
+# - Manually input SSID and password for Wi-Fi.
+#
+# It integrates with Rofi for a user-friendly menu interface
+# and nmcli to handle network management.
+#
+# REQUIREMENTS:
+# - Rofi: A window switcher/launcher (for UI).
+# - nmcli: A command-line tool for managing NetworkManager.
+# - hyprctl & jq: For getting focused monitor resolution.
+#
+# WARNING:
+# The script assumes that certain variables (such as
+# font size, border size, and screen resolution) are valid.
+# If these values are missing or invalid, the script may not
+# behave as expected. If you plan to use this in multiple
+# environments, consider adding more input validation.
 
-# Set rofi scaling
-[[ "${rofiScale}" =~ ^[0-9]+$ ]] || rofiScale=10
-r_scale="configuration { font: \"JetBrainsMono Nerd Font ${rofiScale}\"; }"
-wind_border=$((hypr_border * 3 / 2))
-elem_border=$([ "$hypr_border" -eq 0 ] && echo "5" || echo "$hypr_border")
+# Rofi configuration file path
+config="$HOME/.config/rofi/wifi.rasi"
 
-# Ensure that hypr_width, wind_border, and elem_border have valid numeric values
-[[ "${hypr_width}" =~ ^[0-9]+$ ]] || hypr_width=2
-[[ "${wind_border}" =~ ^[0-9]+$ ]] || wind_border=0
-[[ "${elem_border}" =~ ^[0-9]+$ ]] || elem_border=0
+# Default border and font size
+border_width=2
+scale=10
+font="configuration { font: \"JetBrainsMono Nerd Font ${scale}\"; }"
 
 # Get monitor resolution and calculate center position
-readarray -t monRes < <(hyprctl -j monitors | jq '.[] | select(.focused==true) | .width,.height,.scale')
-monRes[2]="${monRes[2]//./}"
-monRes[0]=$((monRes[0] * 100 / monRes[2]))
-monRes[1]=$((monRes[1] * 100 / monRes[2]))
+# This determines where the Rofi window will appear (centered on screen).
+readarray -t monitor_res < <(hyprctl -j monitors | jq '.[] | select(.focused==true) | .width,.height,.scale')
+monitor_res[2]="${monitor_res[2]//./}"
+monitor_res[0]=$((monitor_res[0] * 100 / monitor_res[2]))
+monitor_res[1]=$((monitor_res[1] * 100 / monitor_res[2]))
 
-x_pos_center=$((monRes[0] / 2))
-y_pos_center=$((monRes[1] / 2))
+x_center=$((monitor_res[0] / 2))
+y_center=$((monitor_res[1] / 2))
 
-# Rofi override to center window on screen
-r_override="window { anchor: center; x-offset: -${x_pos_center}px; y-offset: -${y_pos_center}px; border: ${hypr_width}px; border-radius: 15px; } wallbox { border-radius: 10px; } element { border-radius: 10px; }"
+# Rofi interface
+override="window { anchor: center; x-offset: -${x_center}px; y-offset: -${y_center}px; 
+border: ${border_width}px; border-radius: 15px; } \
+wallbox { border-radius: 10px; } element { border-radius: 10px; }"
 
-# Notify the user about fetching Wi-Fi networks
+# Init notification
 notify-send "Searching for available Wi-Fi networks..."
 
-# Get a list of available Wi-Fi connections and format it
-wifi_list=$(nmcli --fields "SECURITY,SSID" device wifi list | sed 1d | sed 's/  */ /g' | sed -E "s/WPA*.?\S/  /g" | sed "s/^--/  /g" | sed "s/    / /g" | sed "/--/d")
+# Get list of available Wi-Fi networks and format it
+wifi_list=$(nmcli --fields "SECURITY,SSID" device wifi list | sed 1d | sed 's/  */ /g' |
+    sed -E "s/WPA*.?\S/  /g" | sed "s/^--/  /g" | sed "s/    / /g" | sed "/--/d")
 
-# Check Wi-Fi status
-connected=$(nmcli -fields WIFI g)
-if [[ "$connected" =~ "enabled" ]]; then
+# Check current Wi-Fi status (enabled/disabled)
+status=$(nmcli -fields WIFI g)
+if [[ "$status" =~ "enabled" ]]; then
     toggle=" 󰤭  Disable Wi-Fi"
-elif [[ "$connected" =~ "disabled" ]]; then
+elif [[ "$status" =~ "disabled" ]]; then
     toggle=" 󰤨  Enable Wi-Fi"
 fi
 
-# Use rofi to select Wi-Fi network
-chosen_network=$(echo -e "   Manual Entry\n$toggle\n$wifi_list" | uniq -u | rofi -dmenu -i -selected-row 1 -theme-str "entry { placeholder: \"Search\"; }" -theme-str "${r_scale}" -theme-str "${r_override}" -config "${roconf}" -p "Wi-Fi SSID")
+# Display Wi-Fi menu
+selected=$(echo -e "   Manual Entry\n$toggle\n$wifi_list" | uniq -u | rofi -dmenu -i -selected-row 1 \
+    -theme-str "entry { placeholder: \"Search...\"; }" -theme-str "${font}" -theme-str "${override}" \
+    -config "${config}")
 
-# Get the name of the connection
-read -r chosen_id <<< "${chosen_network:3}"
+# Extract chosen SSID
+ssid="${selected:3}"
 
-# Perform actions based on the selected option
-if [ "$chosen_network" = "" ]; then
+# User selection
+if [ -z "$selected" ]; then
+    # Exit if nothing is selected
     exit
-elif [ "$chosen_network" = " 󰤨  Enable Wi-Fi" ]; then
+elif [ "$selected" = " 󰤨  Enable Wi-Fi" ]; then
+    # Enable Wi-Fi if selected
     nmcli radio wifi on
-elif [ "$chosen_network" = " 󰤭  Disable Wi-Fi" ]; then
+elif [ "$selected" = " 󰤭  Disable Wi-Fi" ]; then
+    # Disable Wi-Fi if selected
     nmcli radio wifi off
-elif [ "$chosen_network" = "   Manual Entry" ]; then
-    # Prompt for manual SSID and password
-    manual_ssid=$(rofi -dmenu -theme-str "entry { placeholder: \"SSID\"; }" -theme-str "${r_scale}" -theme-str "${r_override}" -config "${roconf}" -p "Enter SSID:")
-    if [ -z "$manual_ssid" ]; then
-        exit
-    fi
+elif [ "$selected" = "   Manual Entry" ]; then
+    # Manual entry
+    manual_ssid=$(rofi -dmenu -theme-str "entry { placeholder: \"Enter SSID...\"; }" -theme-str "${font}" \
+        -theme-str "${override}" -config "${config}")
 
-    manual_password=$(rofi -dmenu -theme-str "entry { placeholder: \"Password\"; }" -theme-str "${r_scale}" -theme-str "${r_override}" -config "${roconf}" -p "Enter Password (optional):")
-    
+    # Exit if no SSID is provided
+    [ -z "$manual_ssid" ] && exit
+
+    # Prompt for the Wi-Fi password (optional)
+    manual_password=$(rofi -dmenu -theme-str "entry { placeholder: \"Enter Password...\"; }" -theme-str "${font}" \
+        -theme-str "${override}" -config "${config}")
+
+    # Connect to Wi-Fi with or without a password
     if [ -z "$manual_password" ]; then
         nmcli device wifi connect "$manual_ssid"
     else
         nmcli device wifi connect "$manual_ssid" password "$manual_password"
     fi
 else
-    # Message to show when connection is activated successfully
-    success_message="You are now connected to \"$chosen_id\"."
-    
-    # Get saved connections
-    saved_connections=$(nmcli -g NAME connection)
-    if [[ $(echo "$saved_connections" | grep -w "$chosen_id") = "$chosen_id" ]]; then
-        nmcli connection up id "$chosen_id" | grep "successfully" && notify-send "Connection Established" "$success_message"
+    # Connected notification
+    notify="You are now connected to \"$ssid\"."
+
+    # Check if the selected network is saved
+    saved_network=$(nmcli -g NAME connection)
+    if [[ $(echo "$saved_network" | grep -w "$ssid") == "$ssid" ]]; then
+        # Connect to saved network
+        nmcli connection up id "$ssid" | grep "successfully" && notify-send "Connection Established" "$notify"
     else
-        if [[ "$chosen_network" =~ " " ]]; then
-            wifi_password=$(rofi -dmenu -theme-str "entry { placeholder: \"Password: \"; }" -theme-str "${r_scale}" -theme-str "${r_override}" -config "${roconf}" -p "Password: ")
+        # Prompt for password if the network is secure
+        if [[ "$selected" =~ " " ]]; then
+            wifi_password=$(rofi -dmenu -theme-str "entry { placeholder: \"Password: \"; }" -theme-str "${font}" \
+                -theme-str "${override}" -config "${config}")
         fi
-        nmcli device wifi connect "$chosen_id" password "$wifi_password" | grep "successfully" && notify-send "Connection Established" "$success_message"
+        # Connect to the selected Wi-Fi network
+        nmcli device wifi connect "$ssid" password "$wifi_password" | grep "successfully" && notify-send "Connection Established" "$notify"
     fi
 fi
