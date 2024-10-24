@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Get CPU clock speeds
 get_cpu_frequency() {

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Check if wlogout is already running
 if pgrep -x "wlogout" > /dev/null; then

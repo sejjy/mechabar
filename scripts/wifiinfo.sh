@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # This script gathers detailed Wi-Fi connection information.
 # It collects the following fields:
