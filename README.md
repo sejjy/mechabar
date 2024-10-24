@@ -1,14 +1,28 @@
 <h1 align="center" style="border-style: none;">🤖 Mechabar</h1>
 
-![MechaBar](/assets/v1.3.1-1.png)
-![MechaBar](/assets/v1.3.1-2.png)
-![MechaBar](/assets/v1.3.1-3.png)
+<div align="center">
+    <table>
+        <tr>
+            <td><img src="assets/v1.3.1-1.png" alt="Preview 1" /></td>
+        </tr>
+        <tr>
+            <td><img src="assets/v1.3.1-2.png" alt="Preview 2" /></td>
+        </tr>
+        <tr>
+            <td><img src="assets/v1.3.1-3.png" alt="Preview 3" /></td>
+        </tr>
+    </table>
+</div>
 
 <div align="center">
     <details>
         <summary><strong>&nbsp;🛜 Wi-Fi Menu</strong></summary>
         <br>
-        <img src="assets/wifimenu.png" alt="Wi-Fi Menu" />
+        <table>
+            <tr>
+                <td><img src="assets/wifimenu.png" alt="Wi-Fi Menu" /></td>
+            </tr>
+        </table>
     </details>
 </div>
 
@@ -35,7 +49,7 @@
 
 To ensure _Mechabar_ works properly after [installation](#installation), install the following packages:
 
-Arch Linux:
+**Arch Linux:**
 
 ```bash
 sudo pacman -S pipewire wireplumber playerctl brightnessctl python ttf-jetbrains-mono-nerd networkmanager
@@ -73,14 +87,14 @@ yay -S rofi-lbonn-wayland-git wlogout
    cp config.jsonc style.css theme.css ~/.config/waybar/
    ```
 
-   Rofi:
+   **Rofi:**
 
    ```bash
    mkdir -p ~/.config/rofi
    cp -r rofi/* ~/.config/rofi/
    ```
 
-   Wlogout:
+   **Wlogout:**
 
    ```bash
    mkdir -p ~/.config/wlogout
@@ -89,7 +103,7 @@ yay -S rofi-lbonn-wayland-git wlogout
 
 3. **Setup scripts:**
 
-   Waybar-exclusive:
+   **Waybar-exclusive:**
 
    ```bash
    cd scripts
@@ -97,14 +111,14 @@ yay -S rofi-lbonn-wayland-git wlogout
    cp cpuinfo.sh cpuusage.sh wifiinfo.sh wifimenu.sh mediaplayer.py ~/.config/waybar/scripts/
    ```
 
-   System-wide:
+   **System-wide:**
 
    ```bash
    mkdir -p ~/.local/share/bin/
    cp volumecontrol.sh brightnesscontrol.sh logoutlaunch.sh ~/.local/share/bin/
    ```
 
-   Make executable:
+   **Make scripts executable:**
 
    ```bash
    chmod +x ~/.config/waybar/scripts/*
@@ -120,7 +134,7 @@ yay -S rofi-lbonn-wayland-git wlogout
 
 ## Customization
 
-- You can change the colors in [theme.css](/theme.css) to match your system theme.
+- You can change the colors in [theme.css](/theme.css) (for Waybar and Wlogout) and [theme.rasi](/rofi/theme.rasi) (for Rofi) to match your system theme.
 - You can remove existing modules or add new ones from the [modules](/modules/) folder. For a complete list of available modules, visit the [Waybar Wiki](https://github.com/Alexays/Waybar/wiki).
 
 ## Credits
