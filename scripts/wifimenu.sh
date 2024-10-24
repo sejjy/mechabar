@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # This script allows you to:
 # - Enable or disable Wi-Fi.
