@@ -20,7 +20,12 @@
         <br>
         <table>
             <tr>
-                <td><img src="assets/wifimenu.png" alt="Wi-Fi Menu" /></td>
+                <td><img src="assets/wifi-1.0.png" alt="Wi-Fi Menu 1.0" /></td>
+                <td><img src="assets/wifi-1.1.png" alt="Wi-Fi Menu 1.1" /></td>
+            </tr>
+            <tr>
+                <td><img src="assets/wifi-1.2.png" alt="Wi-Fi Menu 1.2" /></td>
+                <td><img src="assets/wifi-1.3.png" alt="Wi-Fi Menu 1.3" /></td>
             </tr>
         </table>
     </details>
@@ -52,24 +57,25 @@ To ensure _Mechabar_ works properly after [installation](#installation), install
 **Arch Linux:**
 
 ```bash
-sudo pacman -S pipewire wireplumber playerctl brightnessctl python ttf-jetbrains-mono-nerd networkmanager
+sudo pacman -S ttf-jetbrains-mono-nerd python networkmanager pipewire wireplumber playerctl brightnessctl jq
 yay -S rofi-lbonn-wayland-git wlogout
 ```
 
 |                           |                                                                                           |
 | ------------------------- | ----------------------------------------------------------------------------------------- |
+| `ttf-jetbrains-mono-nerd` | Patched font JetBrains Mono from the nerd fonts library                                   |
+| `python`                  | The Python programming language                                                           |
+| `networkmanager`          | Network connection manager and user applications                                          |
 | `pipewire`                | Low-latency audio/video router and processor                                              |
 | `wireplumber`             | Session/policy manager implementation for PipeWire                                        |
 | `playerctl`               | MPRIS media player controller for Spotify, VLC, Audacious, BMP, XMMS2, and others         |
 | `brightnessctl`           | Lightweight brightness control tool                                                       |
-| `python`                  | The Python programming language                                                           |
+| `jq`                      | Command-line JSON processor                                                               |
 | `rofi-lbonn-wayland-git`  | A window switcher, application launcher and dmenu replacement (fork with Wayland support) |
 | `wlogout`                 | Logout menu for Wayland                                                                   |
-| `ttf-jetbrains-mono-nerd` | Patched font JetBrains Mono from the nerd fonts library                                   |
-| `networkmanager`          | Network connection manager and user applications                                          |
 
 > [!IMPORTANT]
-> If you use alternatives, you might need to adjust the [scripts](/scripts/) and configuration files accordingly.
+> If you use alternatives, you _might_ need to adjust the [scripts](/scripts/) and configuration files accordingly.
 
 ## Installation
 
