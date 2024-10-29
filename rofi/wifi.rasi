@@ -1,97 +1,126 @@
-// Config //
 configuration {
     modi:                        "drun";
     show-icons:                  false;
+    font:                        "JetBrainsMono Nerd Font 9";
 }
 
 @theme "~/.config/rofi/theme.rasi"
 
-// Main //
+/* Main Window */
 window {
-    height:                      16em;
-    width:                       18em;
-    transparency:                "real";
-    fullscreen:                  false;
     enabled:                     true;
+    width:                       18em;
+    fullscreen:                  false;
+    transparency:                "real";
     cursor:                      "default";
-    spacing:                     0em;
-    padding:                     0em;
+
+    padding:                     0;
+    spacing:                     0;
+    border:                      0.13em;
+    border-radius:               0.938em;
+
     border-color:                @main-br;
     background-color:            @main-bg;
 }
+
+/* Main Container */
 mainbox {
     enabled:                     true;
-    spacing:                     0em;
-    padding:                     0.5em 0em;
     orientation:                 vertical;
-    children:                    [ "wallbox" , "listbox" ];
+
+    padding:                     0.5em 0;
+    spacing:                     0;
+
     background-color:            transparent;
+    children:                    [ "wallbox", "listbox" ];
 }
+
+/* Input Container */
 wallbox {
-    spacing:                     0em;
-    margin:                      0em 0.5em;
-    padding:                     -1.2em;
-    expand:                      false;
+    enabled:                     true;
     orientation:                 horizontal;
+    expand:                      false;
+
+    margin:                      0 0.5em;
+    padding:                     -1.2em;
+    spacing:                     0;
+
     background-color:            transparent;
+    border-radius:               0.625em;
     children:                    [ "inputbar" ];
 }
 
-// Inputs //
+/* Input Bar */
 inputbar {
     enabled:                     true;
-    padding:                     -0.2em 0.3em;
-    children:                    [ "entry" ];
-    background-color:            @main-bg;
     expand:                      true;
+
+    padding:                     -0.2em 0.3em;
+
+    background-color:            @input-bg;
+    children:                    [ "entry" ];
 }
 entry {
     enabled:                     true;
+
     padding:                     1.8em;
-    text-color:                  @main-fg;
+    cursor:                      text;
+
     background-color:            transparent;
+    text-color:                  @main-fg;
 }
 
-// Lists //
+/* List Container */
 listbox {
-    spacing:                     0em;
-    padding:                     0em;
+    enabled:                     true;
     orientation:                 vertical;
-    children:                    [ "dummy" , "listview" , "dummy" ];
+
+    padding:                     0;
+    spacing:                     0;
+
     background-color:            transparent;
+    children:                    [ "dummy", "listview", "dummy" ];
 }
 listview {
     enabled:                     true;
-    padding:                     0.4em 0.5em;
-    spacing:                     0em;
-    columns:                     1;
-    lines:                       7; 
+    layout:                      vertical;
     cycle:                       false;
     dynamic:                     true;
-    scrollbar:                   false;
-    layout:                      vertical;
-    reverse:                     false;
-    expand:                      false;
     fixed-height:                true;
     fixed-columns:               false;
     expand:                      false;
+    reverse:                     false;
+
+    columns:                     1;
+    lines:                       7;
     cursor:                      "default";
+
+    padding:                     0.4em 0.5em;
+    spacing:                     0;
+
     background-color:            transparent;
     text-color:                  @main-fg;
+    scrollbar:                   false;
 }
 dummy {
-    spacing:                     0em;
-    padding:                     0em;
+    enabled:                     true;
+
+    padding:                     0;
+    spacing:                     0;
+
     background-color:            transparent;
 }
 
-// Elements //
+/* List Elements */
 element {
     enabled:                     true;
+
     padding:                     0.4em;
     cursor:                      pointer;
+
     background-color:            transparent;
     text-color:                  @main-fg;
+    border-radius:               0.625em;
 }
 element selected.normal {
     background-color:            @select-bg;
@@ -99,9 +128,12 @@ element selected.normal {
     border-radius:               0.5em;
 }
 element-text {
-    vertical-align:              0.0;
-    horizontal-align:            0.0;
+    enabled:                     true;
+
+    vertical-align:              0;
+    horizontal-align:            0;
     cursor:                      inherit;
+
     background-color:            transparent;
     text-color:                  inherit;
 }
