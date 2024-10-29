@@ -5,9 +5,10 @@ br - border
 */
 
 * {
-    main-bg:            #11111b;
     main-fg:            #cdd6f4;
+    main-bg:            #11111b;
     main-br:            #cdd6f4;
-    select-bg:          #b4befe;
+    input-bg:           #181825;
+    select-bg:          #9399b2;
     select-fg:          #11111b;
 }
