@@ -5,32 +5,15 @@
 # - Select and connect to a Wi-Fi network.
 # - Manually input SSID and password for Wi-Fi.
 #
-# It integrates with Rofi for a user-friendly menu interface
-# and nmcli to handle network management.
-#
 # REQUIREMENTS:
 # - Rofi: A window switcher/launcher (for UI).
 # - nmcli: A command-line tool for managing NetworkManager.
 # - hyprctl & jq: For getting focused monitor resolution.
-#
-# WARNING:
-# The script assumes that certain variables (such as
-# font size, border size, and screen resolution) are valid.
-# If these values are missing or invalid, the script may not
-# behave as expected. If you plan to use this in multiple
-# environments, consider adding more input validation.
-
-# Rofi configuration file path
-config="$HOME/.config/rofi/wifi.rasi"
-
-# Default border and font size
-border_width=2
-scale=10
-font="configuration { font: \"JetBrainsMono Nerd Font ${scale}\"; }"
 
 # Get monitor resolution and calculate center position
-# This determines where the Rofi window will appear (centered on screen).
+# This determines where the Rofi window will appear.
 readarray -t monitor_res < <(hyprctl -j monitors | jq '.[] | select(.focused==true) | .width,.height,.scale')
+
 monitor_res[2]="${monitor_res[2]//./}"
 monitor_res[0]=$((monitor_res[0] * 100 / monitor_res[2]))
 monitor_res[1]=$((monitor_res[1] * 100 / monitor_res[2]))
@@ -38,78 +21,78 @@ monitor_res[1]=$((monitor_res[1] * 100 / monitor_res[2]))
 x_center=$((monitor_res[0] / 2))
 y_center=$((monitor_res[1] / 2))
 
-# Rofi interface
-override="window { anchor: center; x-offset: -${x_center}px; y-offset: -${y_center}px; 
-border: ${border_width}px; border-radius: 15px; } \
-wallbox { border-radius: 10px; } element { border-radius: 10px; }"
+# Rofi configuration
+config="$HOME/.config/rofi/wifi.rasi"
+override="window { anchor: center; x-offset: -${x_center}px; y-offset: -${y_center}px; }"
 
 # Init notification
 notify-send "Searching for available Wi-Fi networks..."
 
-# Get list of available Wi-Fi networks and format it
-wifi_list=$(nmcli --fields "SECURITY,SSID" device wifi list | sed 1d | sed 's/  */ /g' |
-    sed -E "s/WPA*.?\S/  /g" | sed "s/^--/  /g" | sed "s/    / /g" | sed "/--/d")
+while true; do
 
-# Check current Wi-Fi status (enabled/disabled)
-status=$(nmcli -fields WIFI g)
-if [[ "$status" =~ "enabled" ]]; then
-    toggle=" 󰤭  Disable Wi-Fi"
-elif [[ "$status" =~ "disabled" ]]; then
-    toggle=" 󰤨  Enable Wi-Fi"
-fi
+  # Get list of available Wi-Fi networks and apply formatting
+  wifi_list=$(nmcli --fields "SECURITY,SSID" device wifi list | sed 1d | sed 's/  */ /g' | sed -E "s/WPA*.?\S/  /g" | sed "s/^--/  /g" | sed "s/    / /g" | sed "/--/d")
 
-# Display Wi-Fi menu
-selected=$(echo -e "   Manual Entry\n$toggle\n$wifi_list" | uniq -u | rofi -dmenu -i -selected-row 1 \
-    -theme-str "entry { placeholder: \"Search...\"; }" -theme-str "${font}" -theme-str "${override}" \
-    -config "${config}")
+  # Check current Wi-Fi status (enabled/disabled) and
+  # Display the menu based on status
+  wifi_status=$(nmcli -fields WIFI g)
 
-# Extract chosen SSID
-ssid="${selected:3}"
+  if [[ "$wifi_status" =~ "enabled" ]]; then
+    selected_option=$(echo -e "   Manual Entry\n 󰤭  Disable Wi-Fi\n$wifi_list" | uniq -u | rofi -dmenu -i -selected-row 1 -theme-str "entry { placeholder: \"Search\"; }" -theme-str "${override}" -config "${config}" -theme-str "window { height: 15.3em; }")
 
-# User selection
-if [ -z "$selected" ]; then
-    # Exit if nothing is selected
+  elif [[ "$wifi_status" =~ "disabled" ]]; then
+    selected_option=$(echo -e " 󰤨  Enable Wi-Fi" | uniq -u | rofi -dmenu -i -selected-row 1 -theme-str "${override}" -config "${config}" -theme-str "window { height: 2.9em; } mainbox { padding: 2.5em 0 -2em 0;} inputbar { enabled: false; } ")
+  fi
+
+  # Extract selected SSID
+  read -r selected_ssid <<<"${selected_option:3}"
+
+  # Perform actions based on the selected option
+  if [ "$selected_option" = "" ]; then
     exit
-elif [ "$selected" = " 󰤨  Enable Wi-Fi" ]; then
-    # Enable Wi-Fi if selected
+
+  elif [ "$selected_option" = " 󰤨  Enable Wi-Fi" ]; then
     nmcli radio wifi on
-elif [ "$selected" = " 󰤭  Disable Wi-Fi" ]; then
-    # Disable Wi-Fi if selected
+    nmcli device wifi rescan
+    sleep 3
+
+  elif [ "$selected_option" = " 󰤭  Disable Wi-Fi" ]; then
     nmcli radio wifi off
-elif [ "$selected" = "   Manual Entry" ]; then
-    # Manual entry
-    manual_ssid=$(rofi -dmenu -theme-str "entry { placeholder: \"Enter SSID...\"; }" -theme-str "${font}" \
-        -theme-str "${override}" -config "${config}")
 
-    # Exit if no SSID is provided
-    [ -z "$manual_ssid" ] && exit
+  elif [ "$selected_option" = "   Manual Entry" ]; then
 
-    # Prompt for the Wi-Fi password (optional)
-    manual_password=$(rofi -dmenu -theme-str "entry { placeholder: \"Enter Password...\"; }" -theme-str "${font}" \
-        -theme-str "${override}" -config "${config}")
+    # Prompt for manual SSID and password
+    manual_ssid=$(rofi -dmenu -theme-str "entry { placeholder: \"Enter SSID\"; }" -theme-str "${override}" -config "${config}" -theme-str "window { height: 3em; } mainbox { padding: 0.5em 0;}")
 
-    # Connect to Wi-Fi with or without a password
+    if [ -z "$manual_ssid" ]; then
+      exit
+    fi
+
+    manual_password=$(rofi -dmenu -password -theme-str "entry { placeholder: \"Enter password\"; }" -theme-str "${override}" -config "${config}" -theme-str "window { height: 3em; } mainbox { padding: 0.5em 0;}")
+
     if [ -z "$manual_password" ]; then
-        nmcli device wifi connect "$manual_ssid"
+      nmcli device wifi connect "$manual_ssid"
     else
-        nmcli device wifi connect "$manual_ssid" password "$manual_password"
+      nmcli device wifi connect "$manual_ssid" password "$manual_password"
     fi
-else
-    # Connected notification
-    notify="You are now connected to \"$ssid\"."
 
-    # Check if the selected network is saved
-    saved_network=$(nmcli -g NAME connection)
-    if [[ $(echo "$saved_network" | grep -w "$ssid") == "$ssid" ]]; then
-        # Connect to saved network
-        nmcli connection up id "$ssid" | grep "successfully" && notify-send "Connection Established" "$notify"
+  else
+    # Notify when connection is activated successfully
+    connected_notif="You are now connected to \"$selected_ssid\"."
+
+    # Get saved connections
+    saved_connections=$(nmcli -g NAME connection)
+
+    if [[ $(echo "$saved_connections" | grep -w "$selected_ssid") = "$selected_ssid" ]]; then
+      nmcli connection up id "$selected_ssid" | grep "successfully" && notify-send "Connection Established" "$connected_notif"
+
     else
-        # Prompt for password if the network is secure
-        if [[ "$selected" =~ " " ]]; then
-            wifi_password=$(rofi -dmenu -theme-str "entry { placeholder: \"Password: \"; }" -theme-str "${font}" \
-                -theme-str "${override}" -config "${config}")
-        fi
-        # Connect to the selected Wi-Fi network
-        nmcli device wifi connect "$ssid" password "$wifi_password" | grep "successfully" && notify-send "Connection Established" "$notify"
+      if [[ "$selected_option" =~ " " ]]; then
+        wifi_password=$(rofi -dmenu -password -theme-str "entry { placeholder: \"Enter password: \"; }" -theme-str "${override}" -config "${config}" -theme-str "window { height: 3em; } mainbox { padding: 0.5em 0;}")
+      fi
+
+      nmcli device wifi connect "$selected_ssid" password "$wifi_password" | grep "successfully" && notify-send "Connection Established" "$connected_notif"
     fi
-fi
+  fi
+  
+done
