@@ -1,51 +1,55 @@
 <h1 align="center" style="border-style: none;">🤖 Mechabar</h1>
 
 <div align="center">
+  <table>
+    <tr>
+      <td><img src="assets/v1.3.1-1.png" alt="Preview 1" /></td>
+    </tr>
+  </table>
+  <table>
+    <tr>
+      <td><img src="assets/v1.3.1-2.png" alt="Preview 2" /></td>
+    </tr>
+  </table>
+  <table>
+    <tr>
+      <td><img src="assets/v1.3.1-3.png" alt="Preview 3" /></td>
+    </tr>
+  </table>
+</div>
+
+<div align="center">
+  <details>
+    <summary><strong>&nbsp;🛜 Wi-Fi Menu</strong></summary>
+    <br />
     <table>
-        <tr>
-            <td><img src="assets/v1.3.1-1.png" alt="Preview 1" /></td>
-        </tr>
-        <tr>
-            <td><img src="assets/v1.3.1-2.png" alt="Preview 2" /></td>
-        </tr>
-        <tr>
-            <td><img src="assets/v1.3.1-3.png" alt="Preview 3" /></td>
-        </tr>
+      <tr>
+        <td><img src="assets/wifi-1.0.png" alt="Wi-Fi Menu 1.0" /></td>
+        <td><img src="assets/wifi-1.1.png" alt="Wi-Fi Menu 1.1" /></td>
+      </tr>
+      <tr>
+        <td><img src="assets/wifi-1.2.png" alt="Wi-Fi Menu 1.2" /></td>
+        <td><img src="assets/wifi-1.3.png" alt="Wi-Fi Menu 1.3" /></td>
+      </tr>
     </table>
+  </details>
 </div>
 
 <div align="center">
-    <details>
-        <summary><strong>&nbsp;🛜 Wi-Fi Menu</strong></summary>
-        <br>
-        <table>
-            <tr>
-                <td><img src="assets/wifi-1.0.png" alt="Wi-Fi Menu 1.0" /></td>
-                <td><img src="assets/wifi-1.1.png" alt="Wi-Fi Menu 1.1" /></td>
-            </tr>
-            <tr>
-                <td><img src="assets/wifi-1.2.png" alt="Wi-Fi Menu 1.2" /></td>
-                <td><img src="assets/wifi-1.3.png" alt="Wi-Fi Menu 1.3" /></td>
-            </tr>
-        </table>
-    </details>
-</div>
-
-<div align="center">
-    <details>
-        <summary><strong>&nbsp;⏸️ Logout Menu</strong></summary>
-        <br>
-        <table>
-            <tr>
-                <td><img src="assets/logout-1.0.png" alt="Logout Menu 1.0" /></td>
-                <td><img src="assets/logout-1.1.png" alt="Logout Menu 1.1" /></td>
-            </tr>
-            <tr>
-                <td><img src="assets/logout-2.0.png" alt="Logout Menu 2.0" /></td>
-                <td><img src="assets/logout-2.1.png" alt="Logout Menu 2.1" /></td>
-            </tr>
-        </table>
-    </details>
+  <details>
+    <summary><strong>&nbsp;⏸️ Logout Menu</strong></summary>
+    <br />
+    <table>
+      <tr>
+        <td><img src="assets/logout-1.0.png" alt="Logout Menu 1.0" /></td>
+        <td><img src="assets/logout-1.1.png" alt="Logout Menu 1.1" /></td>
+      </tr>
+      <tr>
+        <td><img src="assets/logout-2.0.png" alt="Logout Menu 2.0" /></td>
+        <td><img src="assets/logout-2.1.png" alt="Logout Menu 2.1" /></td>
+      </tr>
+    </table>
+  </details>
 </div>
 
 #
