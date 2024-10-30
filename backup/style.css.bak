@@ -1,6 +1,5 @@
 /* Global Styling */
 * {
-  border: none;
   font-family: "JetBrainsMono Nerd Font";
   font-weight: bold;
   font-size: 10px;
@@ -11,7 +10,7 @@
 
 /* Main Background */
 window#waybar {
-  background: @background;
+  background: @main-bg;
 }
 
 /* Drop Shadow */
@@ -23,12 +22,12 @@ window#waybar > box {
 
 /* Tooltip Styling */
 tooltip {
-  color: @foreground;
-  background: @background;
+  color: @main-fg;
+  background: @main-bg;
   border: solid;
   border-width: 1.5px;
   border-radius: 7px;
-  border-color: @tooltip-border;
+  border-color: @main-br;
 }
 
 /* Workspace Button */
@@ -117,13 +116,13 @@ tooltip {
 
 /* Window Icon */
 #custom-ws {
-  background: @background;
+  background: @main-bg;
 }
 
 /* Workspaces */
 #custom-left1 {
   color: @workspaces;
-  background: @background;
+  background: @main-bg;
   padding-left: 2px;
 }
 
@@ -133,7 +132,7 @@ tooltip {
 
 #custom-right1 {
   color: @workspaces;
-  background: @background;
+  background: @main-bg;
 }
 
 /* Temperature */
@@ -143,7 +142,7 @@ tooltip {
 
 #custom-left2 {
   color: @cpuinfo;
-  background: @background;
+  background: @main-bg;
   border-radius: 10px;
   padding-left: 3px;
 }
@@ -194,15 +193,15 @@ tooltip {
 
 /* Arch Logo */
 #custom-left5 {
-  color: @arch;
-  background: @background;
+  color: @arch-bg;
+  background: @main-bg;
   text-shadow: -1px 0px 2px rgba(0, 0, 0, 0.6);
   padding-left: 3px;
 }
 
 #idle_inhibitor {
-  color: @distro;
-  background: @arch;
+  color: @arch-fg;
+  background: @arch-bg;
   font-size: 11pt;
   margin-right: -1px;
   margin-bottom: -2px;
@@ -212,8 +211,8 @@ tooltip {
 }
 
 #custom-right2 {
-  color: @arch;
-  background: @background;
+  color: @arch-bg;
+  background: @main-bg;
 }
 
 /* Time */
@@ -250,12 +249,12 @@ tooltip {
 
 #custom-right5 {
   color: @wifi;
-  background: @background;
+  background: @main-bg;
 }
 
 /* Media Info */
 #custom-media {
-  background-color: @background;
+  background-color: @main-bg;
   padding-right: 8px;
   padding-left: 8px;
 }
@@ -263,7 +262,7 @@ tooltip {
 /* PulseAudio */
 #custom-left6 {
   color: @pulseaudio;
-  background: @background;
+  background: @main-bg;
   padding-left: 3px;
 }
 
@@ -316,13 +315,13 @@ tooltip {
 /* Power Button */
 #custom-leftin2 {
   color: @battery;
-  background: @background;
+  background: @main-bg;
   font-size: 12.2pt;
   margin-bottom: -2px;
 }
 
 #custom-power {
-  color: @background;
+  color: @main-bg;
   background: @power;
   text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.6);
   box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 1);
