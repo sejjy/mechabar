@@ -7,13 +7,11 @@
 
 @import "theme.css";
 
-
 /* === Main Background === */
 
 window#waybar {
   background: @main-bg;
 }
-
 
 /* === Drop Shadow === */
 
@@ -22,7 +20,6 @@ window#waybar > box {
   box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 1);
   margin: 2px 2px 2px 2px;
 }
-
 
 /* === Tooltip === */
 
@@ -34,7 +31,6 @@ tooltip {
   border-radius: 7px;
   border-color: @main-br;
 }
-
 
 /* === Workspace Buttons === */
 
@@ -70,7 +66,6 @@ tooltip {
   animation: ws_hover 20s ease-in-out 1;
   transition: all 0.3s cubic-bezier(0.55, -0.68, 0.48, 1.682);
 }
-
 
 /* === General === */
 
@@ -117,17 +112,16 @@ tooltip {
   text-shadow: 1px 0px 2px rgba(0, 0, 0, 1);
 }
 
-
 /* === Modules === */
 
-/*                            == Window Icon == 
-*/
+/* == Window Icon == */
+
 #custom-ws {
   background: @main-bg;
 }
 
-/*                            == Workspaces == 
-*/
+/* == Workspaces == */
+
 #custom-left1 {
   color: @workspaces;
   background: @main-bg;
@@ -141,8 +135,8 @@ tooltip {
   background: @main-bg;
 }
 
-/*                            == Temperature == 
-*/
+/* == Temperature == */
+
 #custom-paddc {
   padding-right: 22px;
 }
@@ -158,8 +152,8 @@ tooltip {
   padding-right: 0px;
 }
 
-/*                            == Memory == 
-*/
+/* == Memory == */
+
 #custom-left3 {
   color: @memory;
   background: @cpuinfo;
@@ -177,8 +171,8 @@ tooltip {
   color: @critical;
 }
 
-/*                            == CPU == 
-*/
+/* == CPU == */
+
 #custom-left4 {
   color: @cpu;
   background: @memory;
@@ -193,8 +187,8 @@ tooltip {
   margin-bottom: -2px;
 }
 
-/*                            == Arch Logo == 
-*/
+/* == Arch Logo == */
+
 #custom-left5 {
   color: @arch-bg;
   background: @main-bg;
@@ -216,8 +210,8 @@ tooltip {
   background: @main-bg;
 }
 
-/*                            == Time == 
-*/
+/* == Time == */
+
 #custom-rightin1 {
   color: @time;
   font-size: 12.2pt;
@@ -231,8 +225,8 @@ tooltip {
   background: @date;
 }
 
-/*                            == Date == 
-*/
+/* == Date == */
+
 #clock.date {
   background: @date;
 }
@@ -241,8 +235,8 @@ tooltip {
   background: @wifi;
 }
 
-/*                            == Wi-Fi == 
-*/
+/* == Wi-Fi == */
+
 #custom-wifi {
   background: @wifi;
   padding-right: 6px;
@@ -253,16 +247,16 @@ tooltip {
   background: @main-bg;
 }
 
-/*                            == Media Info == 
-*/
+/* == Media Info == */
+
 #custom-media {
   background-color: @main-bg;
   padding-right: 8px;
   padding-left: 8px;
 }
 
-/*                            == Output Device == 
-*/
+/* == Output Device == */
+
 #custom-left6 {
   color: @pulseaudio;
   background: @main-bg;
@@ -272,8 +266,8 @@ tooltip {
   background: @pulseaudio;
 }
 
-/*                            == Brightness == 
-*/
+/* == Brightness == */
+
 #custom-left7 {
   color: @backlight;
   background: @pulseaudio;
@@ -283,8 +277,8 @@ tooltip {
   background: @backlight;
 }
 
-/*                            == Battery == 
-*/
+/* == Battery == */
+
 #custom-left8 {
   color: @battery;
   background: @backlight;
@@ -309,8 +303,8 @@ tooltip {
   color: @charging;
 }
 
-/*                            == Power Button == 
-*/
+/* == Power Button == */
+
 #custom-leftin2 {
   color: @battery;
   background: @main-bg;
