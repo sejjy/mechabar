@@ -38,10 +38,10 @@ while true; do
   wifi_status=$(nmcli -fields WIFI g)
 
   if [[ "$wifi_status" =~ "enabled" ]]; then
-    selected_option=$(echo -e "   Manual Entry\n 󰤭  Disable Wi-Fi\n$wifi_list" | uniq -u | rofi -dmenu -i -selected-row 1 -theme-str "entry { placeholder: \"Search\"; }" -theme-str "${override}" -config "${config}" -theme-str "window { height: 15.3em; }")
+    selected_option=$(echo -e "   Manual Entry\n 󰤭  Disable Wi-Fi\n$wifi_list" | uniq -u | rofi -dmenu -i -selected-row 1 -theme-str "entry { placeholder: \"Search\"; }" -theme-str "${override}" -config "${config}" -theme-str "window { height: 250px; }")
 
   elif [[ "$wifi_status" =~ "disabled" ]]; then
-    selected_option=$(echo -e " 󰤨  Enable Wi-Fi" | uniq -u | rofi -dmenu -i -selected-row 1 -theme-str "${override}" -config "${config}" -theme-str "window { height: 2.9em; } mainbox { padding: 2.5em 0 -2em 0;} inputbar { enabled: false; } ")
+    selected_option=$(echo -e " 󰤨  Enable Wi-Fi" | uniq -u | rofi -dmenu -i -selected-row 1 -theme-str "${override}" -config "${config}" -theme-str "window { height: 48px; } mainbox { padding: 40px 0 -32px 0;} inputbar { enabled: false; } ")
   fi
 
   # Extract selected SSID
@@ -62,13 +62,13 @@ while true; do
   elif [ "$selected_option" = "   Manual Entry" ]; then
 
     # Prompt for manual SSID and password
-    manual_ssid=$(rofi -dmenu -theme-str "entry { placeholder: \"Enter SSID\"; }" -theme-str "${override}" -config "${config}" -theme-str "window { height: 3em; } mainbox { padding: 0.5em 0;}")
+    manual_ssid=$(rofi -dmenu -theme-str "entry { placeholder: \"Enter SSID\"; }" -theme-str "${override}" -config "${config}" -theme-str "window { height: 48px; } mainbox { padding: 8px 0; }")
 
     if [ -z "$manual_ssid" ]; then
       exit
     fi
 
-    manual_password=$(rofi -dmenu -password -theme-str "entry { placeholder: \"Enter password\"; }" -theme-str "${override}" -config "${config}" -theme-str "window { height: 3em; } mainbox { padding: 0.5em 0;}")
+    manual_password=$(rofi -dmenu -password -theme-str "entry { placeholder: \"Enter password\"; }" -theme-str "${override}" -config "${config}" -theme-str "window { height: 48px; } mainbox { padding: 8px 0; }")
 
     if [ -z "$manual_password" ]; then
       nmcli device wifi connect "$manual_ssid"
@@ -88,7 +88,7 @@ while true; do
 
     else
       if [[ "$selected_option" =~ " " ]]; then
-        wifi_password=$(rofi -dmenu -password -theme-str "entry { placeholder: \"Enter password: \"; }" -theme-str "${override}" -config "${config}" -theme-str "window { height: 3em; } mainbox { padding: 0.5em 0;}")
+        wifi_password=$(rofi -dmenu -password -theme-str "entry { placeholder: \"Enter password: \"; }" -theme-str "${override}" -config "${config}" -theme-str "window { height: 48px; } mainbox { padding: 8px 0; }")
       fi
 
       nmcli device wifi connect "$selected_ssid" password "$wifi_password" | grep "successfully" && notify-send "Connection Established" "$connected_notif"
