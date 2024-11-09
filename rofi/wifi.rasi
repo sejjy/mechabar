@@ -1,139 +1,130 @@
 configuration {
-    modi:                        "drun";
-    show-icons:                  false;
-    font:                        "JetBrainsMono Nerd Font 9";
+  modi:                     "drun";
+  show-icons:               false;
+  font:                     "JetBrainsMono Nerd Font 9";
 }
 
 @theme "~/.config/rofi/theme.rasi"
 
 /* Main Window */
+
 window {
-    enabled:                     true;
-    width:                       18em;
-    fullscreen:                  false;
-    transparency:                "real";
-    cursor:                      "default";
+  enabled:                  true;
+  width:                    288px;
+  fullscreen:               false;
+  transparency:             "real";
 
-    padding:                     0;
-    spacing:                     0;
-    border:                      0.13em;
-    border-radius:               0.938em;
+  border:                   2.08px;
+  border-radius:            15px;
 
-    border-color:                @main-br;
-    background-color:            @main-bg;
+  border-color:             @main-br;
+  background-color:         @main-bg;
+  children:                 [ "mainbox" ];
 }
 
 /* Main Container */
+
 mainbox {
-    enabled:                     true;
-    orientation:                 vertical;
+  enabled:                  true;
+  orientation:              vertical;
 
-    padding:                     0.5em 0;
-    spacing:                     0;
+  padding:                  8px 0;
+  spacing:                  0;
 
-    background-color:            transparent;
-    children:                    [ "wallbox", "listbox" ];
+  background-color:         inherit;
+  text-color:               @main-fg;
+  children:                 [ "wallbox", "listbox" ];
 }
 
 /* Input Container */
+
 wallbox {
-    enabled:                     true;
-    orientation:                 horizontal;
-    expand:                      false;
+  enabled:                  true;
+  orientation:              horizontal;
+  expand:                   false;
 
-    margin:                      0 0.5em;
-    padding:                     -1.2em;
-    spacing:                     0;
+  margin:                   0 8px;
+  padding:                  -19.2px;
+  spacing:                  0;
 
-    background-color:            transparent;
-    border-radius:               0.625em;
-    children:                    [ "inputbar" ];
+  background-color:         @input-bg;
+  border-radius:            8px;
+  children:                 [ "inputbar" ];
 }
 
 /* Input Bar */
+
 inputbar {
-    enabled:                     true;
-    expand:                      true;
+  enabled:                  true;
+  expand:                   true;
 
-    padding:                     -0.2em 0.3em;
+  padding:                  -3.2px 4.8px;
 
-    background-color:            @input-bg;
-    children:                    [ "entry" ];
+  background-color:         inherit;
+  children:                 [ "entry" ];
 }
 entry {
-    enabled:                     true;
+  enabled:                  true;
 
-    padding:                     1.8em;
-    cursor:                      text;
+  padding:                  28.8px;
+  cursor:                   text;
 
-    background-color:            transparent;
-    text-color:                  @main-fg;
+  background-color:         inherit;
+  text-color:               @main-fg;
 }
 
 /* List Container */
+
 listbox {
-    enabled:                     true;
-    orientation:                 vertical;
+  enabled:                  true;
+  orientation:              vertical;
 
-    padding:                     0;
-    spacing:                     0;
-
-    background-color:            transparent;
-    children:                    [ "dummy", "listview", "dummy" ];
+  background-color:         inherit;
+  children:                 [ "listview" ];
 }
 listview {
-    enabled:                     true;
-    layout:                      vertical;
-    cycle:                       false;
-    dynamic:                     true;
-    fixed-height:                true;
-    fixed-columns:               false;
-    expand:                      false;
-    reverse:                     false;
+  enabled:                  true;
+  layout:                   vertical;
+  cycle:                    false;
+  dynamic:                  true;
+  fixed-height:             true;
+  fixed-columns:            false;
+  expand:                   false;
+  reverse:                  false;
 
-    columns:                     1;
-    lines:                       7;
-    cursor:                      "default";
+  columns:                  1;
+  lines:                    7;
 
-    padding:                     0.4em 0.5em;
-    spacing:                     0;
+  padding:                  6.4px 8px;
+  spacing:                  0;
 
-    background-color:            transparent;
-    text-color:                  @main-fg;
-    scrollbar:                   false;
-}
-dummy {
-    enabled:                     true;
-
-    padding:                     0;
-    spacing:                     0;
-
-    background-color:            transparent;
+  background-color:         inherit;
+  scrollbar:                false;
 }
 
 /* List Elements */
+
 element {
-    enabled:                     true;
+  enabled:                  true;
 
-    padding:                     0.4em;
-    cursor:                      pointer;
+  padding:                  6.4px;
+  cursor:                   pointer;
 
-    background-color:            transparent;
-    text-color:                  @main-fg;
-    border-radius:               0.625em;
+  background-color:         transparent;
+  text-color:               @main-fg;
 }
 element selected.normal {
-    background-color:            @select-bg;
-    text-color:                  @select-fg;
-    border-radius:               0.5em;
+  background-color:         @select-bg;
+  text-color:               @select-fg;
+  border-radius:            8px;
 }
 element-text {
-    enabled:                     true;
+  enabled:                  true;
 
-    vertical-align:              0;
-    horizontal-align:            0;
-    cursor:                      inherit;
+  vertical-align:           0;
+  horizontal-align:         0;
+  cursor:                   inherit;
 
-    background-color:            transparent;
-    text-color:                  inherit;
+  background-color:         transparent;
+  text-color:               inherit;
 }
