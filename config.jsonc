@@ -34,7 +34,7 @@
     "custom/leftin1",
 
     "custom/left5",
-    "idle_inhibitor",       // arch logo
+    "idle_inhibitor",       // distro icon
     "custom/right2",
 
     "custom/rightin1",
@@ -45,6 +45,8 @@
     "custom/right4",
 
     "custom/wifi",          // wi-fi
+    "bluetooth",            // bluetooth
+    "custom/update",        // system update
     "custom/right5"
   ],
 
@@ -106,8 +108,11 @@
 
       // == Terminal ==
 
-      "sejjy@archlinux:(.*)": "  $1",
-      "(.*)sejjy@archlinux:~": "  sejjy@archlinux",
+      "~": "  Terminal",
+      "zsh": "  Terminal",
+      "kitty": "  Terminal",
+      "sejjy@archlinux:(.*)": "  Terminal",
+      "(.*)sejjy@archlinux:~": "  Terminal",
 
       // == Browser ==
 
@@ -264,9 +269,39 @@
     "format": "{}",
     "tooltip": true,
     "on-click": "~/.config/waybar/scripts/wifimenu.sh",
+    "on-click-right": "kitty bash -c nmtui",
     "interval": 1,
-    "min-length": 7,
-    "max-length": 7
+    "min-length": 1,
+    "max-length": 1
+  },
+
+  "bluetooth": {
+    "format": "󰂰",
+    "format-disabled": "󰂲",
+    "format-connected": "󰂱",
+    "format-connected-battery": "󰂱",
+
+    "tooltip-format": "{num_connections} connected",
+    "tooltip-format-disabled": "Bluetooth Disabled",
+    "tooltip-format-connected": "{num_connections} connected\n{device_enumerate}",
+    "tooltip-format-enumerate-connected": "{device_alias}",
+    "tooltip-format-enumerate-connected-battery": "{device_alias}: {device_battery_percentage}%",
+
+    "on-click": "blueman-manager",
+    "min-length": 1,
+    "max-length": 1
+  },
+
+  "custom/update": {
+    "exec": "~/.local/share/bin/systemupdate.sh",
+    "return-type": "json",
+    "format": "{}",
+    "on-click": "hyprctl dispatch exec 'systemupdate.sh up'",
+    "interval": 60,
+    "tooltip": true,
+    "signal": 20,
+    "min-length": 1,
+    "max-length": 1
   },
 
   "custom/media": {
@@ -284,8 +319,10 @@
     "format-muted": "󰝟 {volume}%",
 
     "format-icons": {
+      "default": ["󰕿", "󰖀", "󰕾"],
       "headphone": "󰋋",
-      "default": ["󰕿", "󰖀", "󰕾"]
+      "hands-free": "󰋋",
+      "headset": "󰋋"
     },
 
     "tooltip": true,
@@ -334,8 +371,7 @@
     "format": " ",
     "tooltip": false,
     "on-click": "~/.local/share/bin/logoutlaunch.sh 2",
-    "on-click-right": "~/.local/share/bin/logoutlaunch.sh 1",
-    "interval": 86400
+    "on-click-right": "~/.local/share/bin/logoutlaunch.sh 1"
   },
 
   // === Padding ===
