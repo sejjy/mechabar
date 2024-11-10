@@ -321,7 +321,6 @@
     "format-icons": {
       "default": ["󰕿", "󰖀", "󰕾"],
       "headphone": "󰋋",
-      "hands-free": "󰋋",
       "headset": "󰋋"
     },
 
