@@ -22,11 +22,11 @@
 @define-color cpuinfo         #181825;
 @define-color memory          #1e1e2e;
 @define-color cpu             #313244;
-@define-color arch-fg         #000000;
-@define-color arch-bg         #9399b2;
+@define-color distro-fg       #000000;
+@define-color distro-bg       #9399b2;
 @define-color time            #313244;
 @define-color date            #1e1e2e;
-@define-color wifi            #181825;
+@define-color tray            #181825;
 
 @define-color pulseaudio      #181825;
 @define-color backlight       #1e1e2e;
