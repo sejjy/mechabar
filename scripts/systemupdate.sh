@@ -37,9 +37,10 @@ if [ "$1" == "up" ]; then
     $0 upgrade
     ${aur_helper} -Syu
     $flatpak_update_cmd
+    printf '\n'
     read -n 1 -p 'Press any key to continue...'
     "
-  kitty --title systemupdate sh -c "${command}"
+  kitty --title "System Update" sh -c "${command}"
 fi
 
 # Check for AUR updates
@@ -52,22 +53,20 @@ official_updates=$(
 # Check for Flatpak updates
 if pkg_installed flatpak; then
   flatpak_updates=$(flatpak remote-ls --updates | wc -l)
-  flatpak_disp="\nFlatpak $flatpak_updates"
 else
   flatpak_updates=0
-  flatpak_disp=""
 fi
 
 # Calculate total available updates
 total_updates=$((official_updates + aur_updates + flatpak_updates))
 
-[ "${1}" == upgrade ] && printf "[Official]: %-10s\n[AUR ($aur_helper)]: %-10s\n[Flatpak]: %-10s\n" "$official_updates" "$aur_updates" "$flatpak_updates" && exit
+[ "${1}" == upgrade ] && printf "Official:  %-10s\nAUR ($aur_helper): %-10s\nFlatpak:   %-10s\n\n" "$official_updates" "$aur_updates" "$flatpak_updates" && exit
 
-tooltip="Official:  $official_updates package(s)\nAUR ($aur_helper): $aur_updates$flatpak_disp package(s)"
+tooltip="Official:  $official_updates\nAUR ($aur_helper): $aur_updates\nFlatpak:   $flatpak_updates"
 
 # Module and tooltip
 if [ $total_updates -eq 0 ]; then
-  echo "{\"text\":\"󰸟\", \"tooltip\":\"Packages are up to date\"}"
+  echo "{\"text\":\"󰗠\", \"tooltip\":\"Packages are up to date\"}"
 else
   echo "{\"text\":\"󰞒\", \"tooltip\":\"${tooltip}\"}"
 fi
