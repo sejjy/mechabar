@@ -77,6 +77,8 @@ tooltip {
 #custom-cpu,
 #clock,
 #custom-wifi,
+#bluetooth,
+#custom-update,
 #custom-media,
 #pulseaudio,
 #custom-backlight,
@@ -187,17 +189,17 @@ tooltip {
   margin-bottom: -2px;
 }
 
-/* == Arch Logo == */
+/* == Distro Icon == */
 
 #custom-left5 {
-  color: @arch-bg;
+  color: @distro-bg;
   background: @main-bg;
   text-shadow: -1px 0px 2px rgba(0, 0, 0, 0.6);
   padding-left: 3px;
 }
 #idle_inhibitor {
-  color: @arch-fg;
-  background: @arch-bg;
+  color: @distro-fg;
+  background: @distro-bg;
   font-size: 11pt;
   margin-right: -1px;
   margin-bottom: -2px;
@@ -206,7 +208,7 @@ tooltip {
   text-shadow: 0px 0px 1.5px rgba(0, 0, 0, 1);
 }
 #custom-right2 {
-  color: @arch-bg;
+  color: @distro-bg;
   background: @main-bg;
 }
 
@@ -232,18 +234,26 @@ tooltip {
 }
 #custom-right4 {
   color: @date;
-  background: @wifi;
+  background: @tray;
 }
 
-/* == Wi-Fi == */
+/* == Tray == */
 
 #custom-wifi {
-  background: @wifi;
-  padding-right: 6px;
-  padding-left: 4px;
+  padding-left: 5px;
+  padding-right: 8px;
+  background: @tray;
+}
+#bluetooth {
+  padding-right: 5px;
+  background: @tray;
+}
+#custom-update {
+  padding-right: 8px;
+  background: @tray;
 }
 #custom-right5 {
-  color: @wifi;
+  color: @tray;
   background: @main-bg;
 }
 
