@@ -3,17 +3,7 @@
 <div align="center">
   <table>
     <tr>
-      <td><img src="assets/v1.3.1-1.png" alt="Preview 1" /></td>
-    </tr>
-  </table>
-  <table>
-    <tr>
-      <td><img src="assets/v1.3.1-2.png" alt="Preview 2" /></td>
-    </tr>
-  </table>
-  <table>
-    <tr>
-      <td><img src="assets/v1.3.1-3.png" alt="Preview 3" /></td>
+      <td><img src="assets/v1.3.2.png" alt="Preview 1" /></td>
     </tr>
   </table>
 </div>
@@ -125,7 +115,7 @@ yay -S rofi-lbonn-wayland-git wlogout
 
    ```bash
    mkdir -p ~/.local/share/bin/
-   cp volumecontrol.sh brightnesscontrol.sh logoutlaunch.sh ~/.local/share/bin/
+   cp systemupdate.sh volumecontrol.sh brightnesscontrol.sh logoutlaunch.sh ~/.local/share/bin/
    ```
 
    **Make scripts executable:**
