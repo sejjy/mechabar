@@ -14,12 +14,12 @@
     <br />
     <table>
       <tr>
-        <td><img src="assets/wifi-1.0.png" alt="Wi-Fi Menu 1.0" /></td>
-        <td><img src="assets/wifi-1.1.png" alt="Wi-Fi Menu 1.1" /></td>
+        <td><img src="assets/wifi-1.png" alt="Wi-Fi Menu 1" /></td>
+        <td><img src="assets/wifi-2.png" alt="Wi-Fi Menu 2" /></td>
       </tr>
       <tr>
-        <td><img src="assets/wifi-1.2.png" alt="Wi-Fi Menu 1.2" /></td>
-        <td><img src="assets/wifi-1.3.png" alt="Wi-Fi Menu 1.3" /></td>
+        <td><img src="assets/wifi-3.png" alt="Wi-Fi Menu 3" /></td>
+        <td><img src="assets/wifi-4.png" alt="Wi-Fi Menu 4" /></td>
       </tr>
     </table>
   </details>
