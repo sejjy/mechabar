@@ -8,22 +8,22 @@ load=$(vmstat 1 2 | tail -1 | awk '{print 100 - $15}')
 
 # Determine CPU state based on usage
 if [ "$load" -ge 80 ]; then
-    state="Critical"
+  state="Critical"
 elif [ "$load" -ge 60 ]; then
-    state="High"
+  state="High"
 elif [ "$load" -ge 25 ]; then
-    state="Moderate"
+  state="Moderate"
 else
-    state="Low"
+  state="Low"
 fi
 
 # Set color based on CPU load
 if [ "$load" -ge 80 ]; then
-    # If CPU usage is >= 80%, set color to #f38ba8
-    text_output="<span color='#f38ba8'>󰀩 ${load}%</span>"
+  # If CPU usage is >= 80%, set color to #f38ba8
+  text_output="<span color='#f38ba8'>󰀩 ${load}%</span>"
 else
-    # Default color
-    text_output="󰻠 ${load}%"
+  # Default color
+  text_output="󰻠 ${load}%"
 fi
 
 tooltip="${model}"
