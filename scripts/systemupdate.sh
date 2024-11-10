@@ -66,7 +66,7 @@ tooltip="Official:  $official_updates\nAUR ($aur_helper): $aur_updates\nFlatpak:
 
 # Module and tooltip
 if [ $total_updates -eq 0 ]; then
-  echo "{\"text\":\"󰗠\", \"tooltip\":\"Packages are up to date\"}"
+  echo "{\"text\":\"󰸟\", \"tooltip\":\"Packages are up to date\"}"
 else
   echo "{\"text\":\"󰞒\", \"tooltip\":\"${tooltip}\"}"
 fi
