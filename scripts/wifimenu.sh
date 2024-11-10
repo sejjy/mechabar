@@ -41,11 +41,11 @@ while true; do
     selected_option=$(echo -e "   Manual Entry\n 󰤭  Disable Wi-Fi\n$wifi_list" | uniq -u | rofi -dmenu -i -selected-row 1 -theme-str "entry { placeholder: \"Search\"; }" -theme-str "${override}" -config "${config}" -theme-str "window { height: 250px; }")
 
   elif [[ "$wifi_status" =~ "disabled" ]]; then
-    selected_option=$(echo -e " 󰤨  Enable Wi-Fi" | uniq -u | rofi -dmenu -i -selected-row 1 -theme-str "${override}" -config "${config}" -theme-str "window { height: 48px; } mainbox { padding: 40px 0 -32px 0;} inputbar { enabled: false; } ")
+    selected_option=$(echo -e " 󰤨  Enable Wi-Fi" | uniq -u | rofi -dmenu -i -theme-str "${override}" -config "${config}" -theme-str "window { height: 48px; } mainbox { padding: 40px 0 -32px 0;} inputbar { enabled: false; }")
   fi
 
   # Extract selected SSID
-  read -r selected_ssid <<<"${selected_option:3}"
+  read -r selected_ssid <<<"${selected_option:4}"
 
   # Perform actions based on the selected option
   if [ "$selected_option" = "" ]; then
