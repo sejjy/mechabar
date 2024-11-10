@@ -51,20 +51,26 @@ To ensure _Mechabar_ works properly after [installation](#installation), install
 **Arch Linux:**
 
 ```bash
-sudo pacman -S ttf-jetbrains-mono-nerd python networkmanager pipewire wireplumber playerctl brightnessctl jq
+sudo pacman -S ttf-jetbrains-mono-nerd jq networkmanager blueman playerctl python pipewire wireplumber brightnessctl
+```
+
+**AUR (yay):**
+
+```bash
 yay -S rofi-lbonn-wayland-git wlogout
 ```
 
 |                           |                                                                                           |
 | ------------------------- | ----------------------------------------------------------------------------------------- |
 | `ttf-jetbrains-mono-nerd` | Patched font JetBrains Mono from the nerd fonts library                                   |
-| `python`                  | The Python programming language                                                           |
+| `jq`                      | Command-line JSON processor                                                               |
 | `networkmanager`          | Network connection manager and user applications                                          |
+| `blueman`                 | GTK+ Bluetooth Manager                                                                    |
+| `playerctl`               | MPRIS media player controller for Spotify, VLC, Audacious, BMP, XMMS2, and others         |
+| `python`                  | The Python programming language                                                           |
 | `pipewire`                | Low-latency audio/video router and processor                                              |
 | `wireplumber`             | Session/policy manager implementation for PipeWire                                        |
-| `playerctl`               | MPRIS media player controller for Spotify, VLC, Audacious, BMP, XMMS2, and others         |
 | `brightnessctl`           | Lightweight brightness control tool                                                       |
-| `jq`                      | Command-line JSON processor                                                               |
 | `rofi-lbonn-wayland-git`  | A window switcher, application launcher and dmenu replacement (fork with Wayland support) |
 | `wlogout`                 | Logout menu for Wayland                                                                   |
 
@@ -87,14 +93,14 @@ yay -S rofi-lbonn-wayland-git wlogout
    cp config.jsonc style.css theme.css ~/.config/waybar/
    ```
 
-   **Rofi:**
+   Rofi:
 
    ```bash
    mkdir -p ~/.config/rofi
    cp -r rofi/* ~/.config/rofi/
    ```
 
-   **Wlogout:**
+   Wlogout:
 
    ```bash
    mkdir -p ~/.config/wlogout
@@ -103,7 +109,7 @@ yay -S rofi-lbonn-wayland-git wlogout
 
 3. **Setup scripts:**
 
-   **Waybar-exclusive:**
+   Waybar-exclusive:
 
    ```bash
    cd scripts
@@ -111,14 +117,14 @@ yay -S rofi-lbonn-wayland-git wlogout
    cp cpuinfo.sh cpuusage.sh wifiinfo.sh wifimenu.sh mediaplayer.py ~/.config/waybar/scripts/
    ```
 
-   **System-wide:**
+   System-wide:
 
    ```bash
    mkdir -p ~/.local/share/bin/
    cp systemupdate.sh volumecontrol.sh brightnesscontrol.sh logoutlaunch.sh ~/.local/share/bin/
    ```
 
-   **Make scripts executable:**
+   Make scripts executable:
 
    ```bash
    chmod +x ~/.config/waybar/scripts/*
