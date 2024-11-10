@@ -1,69 +1,73 @@
 {
   "layer": "top",
   "position": "top",
+  // "height": 24, // uncomment to set fixed height
   "mode": "dock",
-  // "height": 20, // uncomment to set fixed height
   "exclusive": true,
   "passthrough": false,
-  "gtk-layer-shell": true,
   "reload_style_on_change": true,
+  "gtk-layer-shell": true,
 
-  // Positions
+  // === Positions ===
+
   "modules-left": [
-    "custom/ws", // window icon
+    "custom/ws",            // window icon
     "custom/left1",
 
-    "hyprland/workspaces", // workspaces
+    "hyprland/workspaces",  // workspaces
     "custom/right1",
 
     "custom/paddw",
-    "hyprland/window" // window title
+    "hyprland/window"       // window title
   ],
 
   "modules-center": [
     "custom/paddc",
     "custom/left2",
-    "custom/cpuinfo", // temperature
+    "custom/cpuinfo",       // temperature
 
     "custom/left3",
-    "memory", // memory
+    "memory",               // memory
 
     "custom/left4",
-    "custom/cpu", // cpu
+    "custom/cpu",           // cpu
     "custom/leftin1",
 
     "custom/left5",
-    "idle_inhibitor", // arch logo
+    "idle_inhibitor",       // distro icon
     "custom/right2",
 
     "custom/rightin1",
-    "clock#time", // time
+    "clock#time",           // time
     "custom/right3",
 
-    "clock#date", // date
+    "clock#date",           // date
     "custom/right4",
 
-    "custom/wifi", // connection
+    "custom/wifi",          // wi-fi
+    "bluetooth",            // bluetooth
+    "custom/update",        // system update
     "custom/right5"
   ],
 
   "modules-right": [
-    "custom/media", // media info
+    "custom/media",         // media info
 
     "custom/left6",
-    "pulseaudio", // output device
+    "pulseaudio",           // output device
 
     "custom/left7",
-    "custom/backlight", // brightness
+    "custom/backlight",     // brightness
 
     "custom/left8",
-    "battery", // battery
+    "battery",              // battery
 
     "custom/leftin2",
-    "custom/power" // power button
+    "custom/power"          // power button
   ],
 
-  // Modules
+  // === Modules ===
+
   "custom/ws": {
     "format": "  ",
     "tooltip": false,
@@ -78,83 +82,115 @@
     "disable-scroll": false,
     "on-scroll-up": "hyprctl dispatch workspace -1",
     "on-scroll-down": "hyprctl dispatch workspace +1",
+    "sort-by-number": true,
     "persistent-workspaces": {
       "1": [],
       "2": [],
       "3": [],
       "4": [],
       "5": []
-    },
-    "sort-by-number": true
+    }
   },
 
   "hyprland/window": {
     "format": "{}",
     "separate-outputs": true,
+    "min-length": 5,
+    "max-length": 45,
+
+    // === Window Titles ===
+
     "rewrite": {
-      // desktop
-      "": "<span foreground='#89b4fa'> </span> Hyprland",
+      // == Desktop ==
 
-      // terminal
-      "sejjy@archlinux:(.*)": "  $1",
-      "(.*)sejjy@archlinux:~": "  sejjy@archlinux",
+      "": 
+        "<span foreground='#89b4fa'> </span> Hyprland",
 
-      // Firefox
-      "(.*) — Mozilla Firefox": "<span foreground='#f38ba8'>󰈹 </span> $1",
-      "(.*)Mozilla Firefox": "<span foreground='#f38ba8'>󰈹 </span> Firefox",
+      // == Terminal ==
 
-      // VSCode
-      "(.*) - Visual Studio Code": "<span foreground='#89b4fa'>󰨞 </span> $1",
-      "(.*)Visual Studio Code": "<span foreground='#89b4fa'>󰨞 </span> Visual Studio Code",
+      "~": "  Terminal",
+      "zsh": "  Terminal",
+      "kitty": "  Terminal",
+      "sejjy@archlinux:(.*)": "  Terminal",
+      "(.*)sejjy@archlinux:~": "  Terminal",
 
-      // Spotify
-      "(.*)Spotify": "<span foreground='#a6e3a1'> </span> Spotify",
-      "(.*)Spotify Premium": "<span foreground='#a6e3a1'> </span> Spotify Premium",
+      // == Browser ==
 
-      // Discord
-      "vesktop": "<span foreground='#89b4fa'> </span> Discord",
-      "• Discord(.*)": "Discord$1",
-      "(.*)Discord(.*)": "<span foreground='#89b4fa'> </span> $1Discord$2",
+      "(.*) — Mozilla Firefox": 
+        "<span foreground='#f38ba8'>󰈹 </span> $1",
+      "(.*)Mozilla Firefox": 
+        "<span foreground='#f38ba8'>󰈹 </span> Firefox",
 
-      // OBS Studio
-      "OBS(.*)": "<span foreground='#a6adc8'>󰐌 </span> OBS Studio",
+      // == Development ==
 
-      // VLC Media Player
-      "VLC media player": "<span foreground='#fab387'>󰕼 </span> VLC Media Player",
-      "(.*) - VLC media player": "<span foreground='#fab387'>󰕼 </span> $1",
+      "(.*) - Visual Studio Code": 
+        "<span foreground='#89b4fa'>󰨞 </span> $1",
+      "(.*)Visual Studio Code": 
+        "<span foreground='#89b4fa'>󰨞 </span> Visual Studio Code",
 
-      // GIMP
-      "GNU Image Manipulation Program": "<span foreground='#a6adc8'> </span> GNU Image Manipulation Program",
+      "Godot": 
+        "<span foreground='#89b4fa'> </span> Godot Engine",
+      "Godot Engine - (.*)": 
+        "<span foreground='#89b4fa'> </span> $1",
+      "(.*) - Godot Engine": 
+        "<span foreground='#89b4fa'> </span> $1",
 
-      // Godot
-      "Godot": "<span foreground='#89b4fa'> </span> Godot Engine",
-      "Godot Engine - (.*)": "<span foreground='#89b4fa'> </span> $1",
-      "(.*) - Godot Engine": "<span foreground='#89b4fa'> </span> $1",
+      // == Media ==
 
-      // OnlyOffice
-      "ONLYOFFICE Desktop Editors": "<span foreground='#f38ba8'> </span> OnlyOffice Desktop",
-      "(.*).docx": "<span foreground='#89b4fa'> </span> $1.docx",
-      "(.*).xlsx": "<span foreground='#a6e3a1'> </span> $1.xlsx",
-      "(.*).pptx": "<span foreground='#fab387'> </span> $1.pptx",
-      "(.*).pdf": "<span foreground='#f38ba8'> </span> $1.pdf",
+      "(.*)Spotify": 
+        "<span foreground='#a6e3a1'> </span> Spotify",
+      "(.*)Spotify Premium": 
+        "<span foreground='#a6e3a1'> </span> Spotify Premium",
 
-      // file manager
-      "/": "  File Manager",
+      "OBS(.*)": 
+        "<span foreground='#a6adc8'>󰐌 </span> OBS Studio",
 
-      // qView
+      "VLC media player": 
+        "<span foreground='#fab387'>󰕼 </span> VLC Media Player",
+      "(.*) - VLC media player": 
+        "<span foreground='#fab387'>󰕼 </span> $1",
+
+      "GNU Image Manipulation Program": 
+        "<span foreground='#a6adc8'> </span> GNU Image Manipulation Program",
+
       "qView": "  qView",
+
       "(.*).jpg": "  $1.jpg",
       "(.*).png": "  $1.png",
       "(.*).svg": "  $1.svg",
 
-      // Timeshift
-      "Timeshift-gtk": "<span foreground='#a6e3a1'> </span> Timeshift",
+      // == Social ==
 
-      // security
+      "vesktop": 
+        "<span foreground='#89b4fa'> </span> Discord",
+
+      "• Discord(.*)": "Discord$1",
+      "(.*)Discord(.*)": 
+        "<span foreground='#89b4fa'> </span> $1Discord$2",
+
+      // == Documents ==
+
+      "ONLYOFFICE Desktop Editors": 
+        "<span foreground='#f38ba8'> </span> OnlyOffice Desktop",
+
+      "(.*).docx": 
+        "<span foreground='#89b4fa'> </span> $1.docx",
+      "(.*).xlsx": 
+        "<span foreground='#a6e3a1'> </span> $1.xlsx",
+      "(.*).pptx": 
+        "<span foreground='#fab387'> </span> $1.pptx",
+      "(.*).pdf": 
+        "<span foreground='#f38ba8'> </span> $1.pdf",
+
+      "/": "  File Manager",
+
+      // == System ==
+
+      "Timeshift-gtk": 
+        "<span foreground='#a6e3a1'> </span> Timeshift",
+
       "Authenticate": "  Authenticate"
-    },
-    "min-length": 5,
-    "max-length": 45
+    }
   },
 
   "custom/cpuinfo": {
@@ -172,6 +208,7 @@
       "warning": 75,
       "critical": 90
     },
+
     "format": "󰘚 {percentage}%",
     "format-critical": "󰀦 {percentage}%",
     "tooltip": true,
@@ -210,12 +247,14 @@
   "clock#date": {
     "format": "󰨳 {:%m-%d}",
     "tooltip-format": "<tt>{calendar}</tt>",
+
     "calendar": {
       "mode": "month",
       "mode-mon-col": 6,
       "on-click-right": "mode",
       "format": { "today": "<span color='#f38ba8'><b>{}</b></span>" }
     },
+
     "actions": { "on-click-right": "mode" },
     "min-length": 8,
     "max-length": 8
@@ -224,16 +263,49 @@
   "custom/wifi": {
     "exec": "~/.config/waybar/scripts/wifiinfo.sh",
     "return-type": "json",
-    "format": "{}", // in wifiinfo.sh, change "Wi-Fi" to "${essid}" to display network name
+
+    // in wifiinfo.sh, change "Wi-Fi" to "${essid}"
+    // to display network name
+    "format": "{}",
     "tooltip": true,
     "on-click": "~/.config/waybar/scripts/wifimenu.sh",
+    "on-click-right": "kitty bash -c nmtui",
     "interval": 1,
-    "min-length": 7,
-    "max-length": 7
+    "min-length": 1,
+    "max-length": 1
+  },
+
+  "bluetooth": {
+    "format": "󰂰",
+    "format-disabled": "󰂲",
+    "format-connected": "󰂱",
+    "format-connected-battery": "󰂱",
+
+    "tooltip-format": "{num_connections} connected",
+    "tooltip-format-disabled": "Bluetooth Disabled",
+    "tooltip-format-connected": "{num_connections} connected\n{device_enumerate}",
+    "tooltip-format-enumerate-connected": "{device_alias}",
+    "tooltip-format-enumerate-connected-battery": "{device_alias}: {device_battery_percentage}%",
+
+    "on-click": "blueman-manager",
+    "min-length": 1,
+    "max-length": 1
+  },
+
+  "custom/update": {
+    "exec": "~/.local/share/bin/systemupdate.sh",
+    "return-type": "json",
+    "format": "{}",
+    "on-click": "hyprctl dispatch exec 'systemupdate.sh up'",
+    "interval": 60,
+    "tooltip": true,
+    "signal": 20,
+    "min-length": 1,
+    "max-length": 1
   },
 
   "custom/media": {
-    "exec": "/usr/bin/python3 ~/.config/waybar/scripts/mediaplayer.py",
+    "exec": "~/.config/waybar/scripts/mediaplayer.py",
     "return-type": "json",
     "format": "{}",
     "tooltip": "{tooltip}",
@@ -245,10 +317,13 @@
   "pulseaudio": {
     "format": "{icon} {volume}%",
     "format-muted": "󰝟 {volume}%",
+
     "format-icons": {
+      "default": ["󰕿", "󰖀", "󰕾"],
       "headphone": "󰋋",
-      "default": ["󰕿", "󰖀", "󰕾"]
+      "headset": "󰋋"
     },
+
     "tooltip": true,
     "tooltip-format": "Device: {desc}",
     "on-click": "~/.local/share/bin/volumecontrol.sh -o m",
@@ -277,6 +352,7 @@
       "warning": 30,
       "critical": 15
     },
+
     "format": "{icon} {capacity}%",
     "format-icons": ["󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂"],
     "format-full": "󱃌 {capacity}%",
@@ -294,11 +370,11 @@
     "format": " ",
     "tooltip": false,
     "on-click": "~/.local/share/bin/logoutlaunch.sh 2",
-    "on-click-right": "~/.local/share/bin/logoutlaunch.sh 1",
-    "interval": 86400
+    "on-click-right": "~/.local/share/bin/logoutlaunch.sh 1"
   },
 
-  // Padding
+  // === Padding ===
+
   "custom/paddw": {
     "format": " ",
     "tooltip": false
@@ -311,7 +387,8 @@
     "tooltip": false
   },
 
-  // Left Arrows
+  // == Left Arrows ==
+
   "custom/left1": {
     "format": "",
     "tooltip": false
@@ -345,7 +422,8 @@
     "tooltip": false
   },
 
-  // Right Arrows
+  // == Right Arrows==
+
   "custom/right1": {
     "format": "",
     "tooltip": false
@@ -367,7 +445,8 @@
     "tooltip": false
   },
 
-  // Left Inverse
+  // == Left Inverse ==
+
   "custom/leftin1": {
     "format": "",
     "tooltip": false
@@ -377,7 +456,8 @@
     "tooltip": false
   },
 
-  // Right Inverse
+  // == Right Inverse ==
+
   "custom/rightin1": {
     "format": "",
     "tooltip": false
