@@ -42,21 +42,23 @@
 
 ## Dependencies
 
-To ensure _Mechabar_ works properly after [installation](#installation), install the following packages:
+To ensure _Mechabar_ works properly after [installation](#installation), make sure you have the following packages:
 
 **Arch Linux:**
 
-```bash
-sudo pacman -S ttf-jetbrains-mono-nerd jq networkmanager blueman playerctl python pipewire wireplumber brightnessctl
-```
+- Required:
 
-**AUR (yay):**
+  ```bash
+  sudo pacman -S ttf-jetbrains-mono-nerd jq networkmanager blueman playerctl python pipewire wireplumber brightnessctl
+  ```
 
-```bash
-yay -S rofi-lbonn-wayland-git wlogout
-```
+- Optional (Recommended):
 
-|                           |                                                                                           |
+  ```bash
+  yay -S rofi-lbonn-wayland-git wlogout
+  ```
+
+| Package                   | Description                                                                               |
 | ------------------------- | ----------------------------------------------------------------------------------------- |
 | `ttf-jetbrains-mono-nerd` | Patched font JetBrains Mono from the nerd fonts library                                   |
 | `jq`                      | Command-line JSON processor                                                               |
@@ -71,7 +73,7 @@ yay -S rofi-lbonn-wayland-git wlogout
 | `wlogout`                 | Logout menu for Wayland                                                                   |
 
 > [!IMPORTANT]
-> If you use alternatives, you _might_ need to adjust the [scripts](/scripts/) and configuration files accordingly.
+> If you use alternatives, you may need to adjust the [scripts](/scripts/) and configuration files accordingly.
 
 ## Installation
 
@@ -110,14 +112,14 @@ yay -S rofi-lbonn-wayland-git wlogout
    ```bash
    cd scripts
    mkdir -p ~/.config/waybar/scripts/
-   cp cpuinfo.sh cpuusage.sh wifiinfo.sh wifimenu.sh mediaplayer.py ~/.config/waybar/scripts/
+   cp cpuinfo.sh cpuusage.sh wifiinfo.sh wifimenu.sh systemupdate.sh mediaplayer.py ~/.config/waybar/scripts/
    ```
 
    System-wide:
 
    ```bash
    mkdir -p ~/.local/share/bin/
-   cp systemupdate.sh volumecontrol.sh brightnesscontrol.sh logoutlaunch.sh ~/.local/share/bin/
+   cp volumecontrol.sh brightnesscontrol.sh logoutlaunch.sh ~/.local/share/bin/
    ```
 
    Make scripts executable:
@@ -138,6 +140,15 @@ yay -S rofi-lbonn-wayland-git wlogout
 
 - You can change the colors in [theme.css](/theme.css) (for Waybar and Wlogout) and [theme.rasi](/rofi/theme.rasi) (for Rofi) to match your system theme.
 - You can remove existing modules or add new ones from the [modules](/modules/) folder. For a complete list of available modules, visit the [Waybar Wiki](https://github.com/Alexays/Waybar/wiki).
+
+## Roadmap
+
+Here are some features and improvements planned for future versions:
+
+- [ ] Theme switcher
+- [ ] Install script
+- [ ] Rofi Bluetooth menu
+- [ ] Improve logout menu (Wlogout) animations
 
 ## Credits
 
