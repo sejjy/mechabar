@@ -3,7 +3,7 @@
 import gi
 gi.require_version("Playerctl", "2.0")
 from gi.repository import Playerctl, GLib
-from gi.repository.Playerctl import Player # type: ignore
+from gi.repository.Playerctl import Player  # type: ignore
 import argparse
 import logging
 import sys
@@ -96,15 +96,18 @@ class PlayerManager:
     # Return the first player that is currently playing.
     players = self.get_players()
     logger.debug(f"Getting first playing player from {len(players)} players")
+    
     for player in players[::-1]:
       if player.props.status == "Playing":
         return player
+        
     return players[0] if players else None
 
   def show_most_important_player(self):
     # Display the most relevant player information.
     logger.debug("Showing most important player")
     current_player = self.get_first_playing_player()
+    
     if current_player is not None:
       self.on_metadata_changed(current_player, current_player.props.metadata)
     else:
@@ -119,21 +122,30 @@ class PlayerManager:
     title = title.replace("&", "&amp;")
 
     # Construct track info based on player type and status
-    track_info = "Advertisement" if player_name == "spotify" and "mpris:trackid" in metadata and ":ad:" in player.props.metadata["mpris:trackid"] else f"{artist} - {title}" if artist and title else title
+    if player_name == "spotify" and "mpris:trackid" in metadata and ":ad:" in player.props.metadata["mpris:trackid"]:
+      track_info = "Advertisement"
+    elif artist and title:
+      track_info = f"{artist} - {title}"
+    else:
+      track_info = title
 
     if track_info:
-      track_info = ("󰓇  " if player.props.status == "Playing" and player_name == "spotify" else
-                    "󰗃  " if player.props.status == "Playing" and player_name == "firefox" else
-                    "󰏦  ") + track_info
+      track_info = (
+        f"<span color='#a6e3a1'>󰓇  </span>" if player.props.status == "Playing" and player_name == "spotify" else
+        f"<span color='#f38ba8'>󰗃  </span>" if player.props.status == "Playing" and player_name == "firefox" else
+        f"<span color='#9399b2'>  </span>"
+      ) + track_info
 
     # Only print output if no other player is playing
     current_playing = self.get_first_playing_player()
+    
     if current_playing is None or current_playing.props.player_name == player.props.player_name:
       self.write_output(track_info, player)
 
   def on_player_appeared(self, _, player):
     # Handle new player appearance.
     logger.info(f"Player has appeared: {player.name}")
+    
     if player.name not in self.excluded_players:
       if self.selected_player is None or player.name == self.selected_player:
         self.init_player(player)
@@ -159,13 +171,17 @@ def main():
   # Initialize logging if enabled
   if arguments.enable_logging:
     logfile = os.path.join(os.path.dirname(os.path.realpath(__file__)), "media-player.log")
-    logging.basicConfig(filename=logfile, level=logging.DEBUG,
-                        format="%(asctime)s %(name)s %(levelname)s:%(lineno)d %(message)s")
+    logging.basicConfig(
+      filename=logfile,
+      level=logging.DEBUG,
+      format="%(asctime)s %(name)s %(levelname)s:%(lineno)d %(message)s"
+    )
 
   # Set log level based on verbosity
   logger.setLevel(max((3 - arguments.verbose) * 10, 0))
 
   logger.info("Creating player manager")
+  
   if arguments.player:
     logger.info(f"Filtering for player: {arguments.player}")
   if arguments.exclude:
