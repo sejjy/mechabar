@@ -94,5 +94,5 @@ while true; do
       nmcli device wifi connect "$selected_ssid" password "$wifi_password" | grep "successfully" && notify-send "Connection Established" "$connected_notif"
     fi
   fi
-  
+
 done
