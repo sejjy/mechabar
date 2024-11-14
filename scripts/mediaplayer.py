@@ -133,7 +133,7 @@ class PlayerManager:
       track_info = (
         f"<span color='#a6e3a1'>󰓇  </span>" if player.props.status == "Playing" and player_name == "spotify" else
         f"<span color='#f38ba8'>󰗃  </span>" if player.props.status == "Playing" and player_name == "firefox" else
-        f"<span color='#9399b2'>  </span>"
+        f"<span color='#9399b2'>󰏤  </span>"
       ) + track_info
 
     # Only print output if no other player is playing
