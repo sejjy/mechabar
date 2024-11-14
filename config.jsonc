@@ -240,7 +240,7 @@
   "clock#time": {
     "format": "󱑂 {:%H:%M}",
     "tooltip": true,
-    "tooltip-format": "12-hour Format: {:%I:%M %p}",
+    "tooltip-format": "Standard Time: {:%I:%M %p}",
     "min-length": 8,
     "max-length": 8
   },
@@ -370,8 +370,8 @@
     "format-critical": "󱃍 {capacity}%",
     "format-charging": "󱘖 {capacity}%",
 
-    "tooltip-format": "Time to Empty: {time}",
-    "tooltip-format-charging": "Time to Full: {time}",
+    "tooltip-format": "Discharging: {time}",
+    "tooltip-format-charging": "Charging: {time}",
     "interval": 1,
     "min-length": 6,
     "max-length": 6
