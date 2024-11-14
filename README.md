@@ -152,6 +152,6 @@ Here are some features and improvements planned for future versions:
 
 ## Credits
 
-- Icons - [ryanoasis / nerd-fonts](https://github.com/ryanoasis/nerd-fonts)
-- Scripts - [prasanthrangan / hyprdots](https://github.com/prasanthrangan/hyprdots)
-- Color Palette - [Catppuccin Mocha](https://catppuccin.com/palette)
+- The original files in the [modules](/modules/) folder are from [prasanthrangan / hyprdots](https://github.com/prasanthrangan/hyprdots).
+- Icons: [ryanoasis / nerd-fonts](https://github.com/ryanoasis/nerd-fonts)
+- Color palette: [catppuccin / catppuccin](https://github.com/catppuccin/catppuccin) (Mocha)
