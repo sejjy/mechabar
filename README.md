@@ -73,7 +73,7 @@ To ensure _Mechabar_ works properly after [installation](#installation), make su
 | `wlogout`                 | Logout menu for Wayland                                                                   |
 
 > [!IMPORTANT]
-> If you use alternatives, you may need to adjust the [scripts](/scripts/) and configuration files accordingly.
+> If you use alternatives, you may need to modify the [scripts](/scripts/) and configuration files accordingly.
 
 ## Installation
 
@@ -148,9 +148,10 @@ Here are some features and improvements planned for future versions:
 - [ ] Theme switcher
 - [ ] Install script
 - [ ] Rofi Bluetooth menu
-- [ ] Improve logout menu (Wlogout) animations
+- [ ] Better logout menu
 
 ## Credits
 
-- This configuration uses base modules and scripts from **[prasanthrangan/hyprdots](https://github.com/prasanthrangan/hyprdots)**.
-- The pastel color palette, or "flavor", used is **[Catppuccin Mocha](https://github.com/catppuccin/catppuccin/blob/main/docs/style-guide.md)**.
+- Icons - [ryanoasis / nerd-fonts](https://github.com/ryanoasis/nerd-fonts)
+- Scripts - [prasanthrangan / hyprdots](https://github.com/prasanthrangan/hyprdots)
+- Color Palette - [Catppuccin Mocha](https://catppuccin.com/palette)
