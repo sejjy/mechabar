@@ -148,7 +148,7 @@ Here are some features and improvements planned for future versions:
 - [ ] Theme switcher
 - [ ] Install script
 - [ ] Rofi Bluetooth menu
-- [ ] Better logout menu
+- [ ] Improved logout menu
 
 ## Credits
 
