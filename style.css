@@ -45,7 +45,6 @@ tooltip {
   padding: 0px;
   padding-right: 2px;
   padding-left: 2px;
-  animation: ws_normal 20s ease-in-out 1;
 }
 #workspaces button.active {
   color: @active-fg;
@@ -56,15 +55,14 @@ tooltip {
   margin-left: 2px;
   padding-right: 6px;
   padding-left: 6px;
-  animation: ws_active 20s ease-in-out 1;
-  transition: all 0.4s cubic-bezier(0.55, -0.68, 0.48, 1.682);
+  transition: all 0.3s cubic-bezier(0.55, -0.68, 0.48, 1.682);
 }
 #workspaces button:hover {
   color: @hover-fg;
   background: @hover-bg;
+  text-shadow: none;
   box-shadow: none;
-  animation: ws_hover 20s ease-in-out 1;
-  transition: all 0.3s cubic-bezier(0.55, -0.68, 0.48, 1.682);
+  transition: all 0.2s cubic-bezier(0.55, -0.68, 0.48, 1.682);
 }
 
 /* === General === */
@@ -336,6 +334,7 @@ tooltip {
 #custom-power:hover {
   color: @hover-fg;
   background: @hover-bg;
+  text-shadow: none;
   box-shadow: none;
-  transition: all 0.3s cubic-bezier(0.55, -0.68, 0.48, 1.682);
+  transition: all 0.2s cubic-bezier(0.55, -0.68, 0.48, 1.682);
 }
