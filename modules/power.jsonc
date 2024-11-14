@@ -1,7 +1,6 @@
 {
   "custom/power": {
-    "format": "{}",
-    // "rotate": ${r_deg},
+    "format": " {}",
     "exec": "echo ; echo  logout",
     "on-click": "logoutlaunch.sh 2",
     "on-click-right": "logoutlaunch.sh 1",

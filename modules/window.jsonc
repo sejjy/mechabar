@@ -1,7 +1,6 @@
 {
   "hyprland/window": {
     "format": "  {}",
-    // "rotate": ${r_deg},
     "separate-outputs": true,
 
     "rewrite": {
@@ -14,7 +13,7 @@
       "(.*)Spotify": "Spotify 󰓇",
       "(.*)Steam": "Steam 󰓓"
     },
-    
+
     "max-length": 1000
   }
 }

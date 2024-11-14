@@ -1,7 +1,10 @@
 {
+  // scripts:
+  // https://github.com/prasanthrangan/hyprdots/blob/main/Configs/.local/share/bin/wbarconfgen.sh
+  // https://github.com/prasanthrangan/hyprdots/blob/main/Configs/.local/share/bin/quickapps.sh
+
   "custom/wbar": {
-    "format": "{}", //    //
-    // "rotate": ${r_deg},
+    "format": " {}",
     "exec": "echo ; echo  switch bar //  dock",
     "on-click": "wbarconfgen.sh n",
     "on-click-right": "wbarconfgen.sh p",

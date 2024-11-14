@@ -1,8 +1,8 @@
 {
   "pulseaudio": {
     "format": "{icon} {volume}",
-    // "rotate": ${r_deg},
-    "format-muted": "婢",
+
+    "format-muted": "󰝟",
     "on-click": "pavucontrol -t 3",
     "on-click-right": "volumecontrol.sh -s ''",
     "on-click-middle": "volumecontrol.sh -o m",
@@ -10,23 +10,23 @@
     "on-scroll-down": "volumecontrol.sh -o d",
     "tooltip-format": "{icon} {desc} // {volume}%",
     "scroll-step": 5,
-    
+
     "format-icons": {
-      "headphone": "",
-      "hands-free": "",
-      "headset": "",
-      "phone": "",
-      "portable": "",
-      "car": "",
-      "default": ["", "", ""]
+      "headphone": "󰋋",
+      "hands-free": "󰋋",
+      "headset": "󰋋",
+      "phone": "󰏲",
+      "portable": "󰏲",
+      "car": "󰄋",
+      "default": ["󰕿", "󰖀", "󰕾"]
     }
   },
 
   "pulseaudio#microphone": {
     "format": "{format_source}",
-    // "rotate": ${r_deg},
+
     "format-source": "",
-    "format-source-muted": "",
+    "format-source-muted": "󰍭",
     "on-click": "pavucontrol -t 4",
     "on-click-middle": "volumecontrol.sh -i m",
     "on-scroll-up": "volumecontrol.sh -i i",

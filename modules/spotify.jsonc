@@ -2,7 +2,6 @@
   "custom/spotify": {
     "exec": "mediaplayer.py --player spotify",
     "format": " {}",
-    // "rotate": ${r_deg},
     "return-type": "json",
     "on-click": "playerctl play-pause --player spotify",
     "on-click-right": "playerctl next --player spotify",
