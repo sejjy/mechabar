@@ -2,6 +2,7 @@
   "layer": "top",
   "position": "top",
   // "height": 24, // uncomment to set fixed height
+  // the layout may break if height is greater than 24
   "mode": "dock",
   "exclusive": true,
   "passthrough": false,
@@ -252,10 +253,16 @@
       "mode": "month",
       "mode-mon-col": 6,
       "on-click-right": "mode",
-      "format": { "today": "<span color='#f38ba8'><b>{}</b></span>" }
+
+      "format": {
+        "today": "<span color='#f38ba8'><b>{}</b></span>"
+      }
     },
 
-    "actions": { "on-click-right": "mode" },
+    "actions": {
+      "on-click-right": "mode"
+    },
+
     "min-length": 8,
     "max-length": 8
   },
@@ -263,9 +270,6 @@
   "custom/wifi": {
     "exec": "~/.config/waybar/scripts/wifiinfo.sh",
     "return-type": "json",
-
-    // in wifiinfo.sh, change "Wi-Fi" to "${essid}"
-    // to display network name
     "format": "{}",
     "tooltip": true,
     "on-click": "~/.config/waybar/scripts/wifimenu.sh",
@@ -281,13 +285,19 @@
     "format-connected": "󰂱",
     "format-connected-battery": "󰂱",
 
-    "tooltip-format": "{num_connections} connected",
-    "tooltip-format-disabled": "Bluetooth Disabled",
-    "tooltip-format-connected": "{num_connections} connected\n{device_enumerate}",
-    "tooltip-format-enumerate-connected": "{device_alias}",
-    "tooltip-format-enumerate-connected-battery": "{device_alias}: {device_battery_percentage}%",
+    "tooltip-format": 
+      "{num_connections} connected",
+    "tooltip-format-disabled": 
+      "Bluetooth Disabled",
+    "tooltip-format-connected": 
+      "{num_connections} connected\n{device_enumerate}",
+    "tooltip-format-enumerate-connected": 
+      "{device_alias}",
+    "tooltip-format-enumerate-connected-battery": 
+      "{device_alias}: {device_battery_percentage}%",
 
     "on-click": "blueman-manager",
+    "interval": 1,
     "min-length": 1,
     "max-length": 1
   },
@@ -299,7 +309,7 @@
     "on-click": "hyprctl dispatch exec 'systemupdate.sh up'",
     "interval": 60,
     "tooltip": true,
-    "signal": 20,
+    "signal": 20, // I'm not sure what this does
     "min-length": 1,
     "max-length": 1
   },
@@ -359,6 +369,7 @@
     "format-warning": "󰁻 {capacity}%",
     "format-critical": "󱃍 {capacity}%",
     "format-charging": "󱘖 {capacity}%",
+
     "tooltip-format": "Time to Empty: {time}",
     "tooltip-format-charging": "Time to Full: {time}",
     "interval": 1,
@@ -380,8 +391,6 @@
     "tooltip": false
   },
 
-  // adjust padding in style.css if you have a long network name
-  // so that the modules remain centered.
   "custom/paddc": {
     "format": " ",
     "tooltip": false
