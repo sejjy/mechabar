@@ -45,6 +45,7 @@ tooltip {
   padding: 0px;
   padding-right: 2px;
   padding-left: 2px;
+  transition: all 0s, margin 0.01s;
 }
 #workspaces button.active {
   color: @active-fg;
@@ -55,7 +56,6 @@ tooltip {
   margin-left: 2px;
   padding-right: 6px;
   padding-left: 6px;
-  transition: all 0.3s cubic-bezier(0.55, -0.68, 0.48, 1.682);
 }
 #workspaces button:hover {
   color: @hover-fg;
