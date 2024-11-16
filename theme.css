@@ -13,8 +13,8 @@
 @define-color active-bg       #9399b2;
 @define-color active-fg       #11111b;
 
-@define-color hover-bg        #45475a;
-@define-color hover-fg        #cdd6f4;
+@define-color hover-bg        #313244;
+@define-color hover-fg        rgba(205, 214, 244, 0.6);
 
 /* Module Colors */
 
