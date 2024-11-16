@@ -1,8 +1,8 @@
 {
   "layer": "top",
   "position": "top",
-  // "height": 24, // uncomment to set fixed height
-  // the layout may break if height is greater than 24
+  // "height": 24, // Uncomment to set a fixed height
+  // Note: The layout may break if height is greater than 24
   "mode": "dock",
   "exclusive": true,
   "passthrough": false,
@@ -97,7 +97,6 @@
     "format": "{}",
     "separate-outputs": true,
     "min-length": 5,
-    "max-length": 45,
 
     // === Window Titles ===
 
@@ -240,7 +239,7 @@
   "clock#time": {
     "format": "󱑂 {:%H:%M}",
     "tooltip": true,
-    "tooltip-format": "12-hour Format: {:%I:%M %p}",
+    "tooltip-format": "Standard Time: {:%I:%M %p}",
     "min-length": 8,
     "max-length": 8
   },
@@ -370,8 +369,8 @@
     "format-critical": "󱃍 {capacity}%",
     "format-charging": "󱘖 {capacity}%",
 
-    "tooltip-format": "Time to Empty: {time}",
-    "tooltip-format-charging": "Time to Full: {time}",
+    "tooltip-format": "Discharging: {time}",
+    "tooltip-format-charging": "Charging: {time}",
     "interval": 1,
     "min-length": 6,
     "max-length": 6
