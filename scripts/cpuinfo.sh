@@ -25,8 +25,6 @@ get_cpu_temperature() {
 # Get the corresponding icon based on temperature
 get_temperature_icon() {
   temp_value=$1
-  icon
-
   if [ "$temp_value" -ge 80 ]; then
     icon="󰸁" # High temperature
   elif [ "$temp_value" -ge 70 ]; then
@@ -36,7 +34,6 @@ get_temperature_icon() {
   else
     icon="󱃃" # Low temperature
   fi
-
   echo "$icon"
 }
 
