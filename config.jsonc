@@ -97,7 +97,6 @@
     "format": "{}",
     "separate-outputs": true,
     "min-length": 5,
-    "max-length": 45,
 
     // === Window Titles ===
 
