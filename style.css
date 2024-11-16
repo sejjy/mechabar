@@ -17,7 +17,7 @@ window#waybar {
 
 window#waybar > box {
   background-color: transparent;
-  box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 1);
+  box-shadow: 0 0 2px 1px rgba(0, 0, 0, 1);
   margin: 2px;
 }
 
@@ -45,8 +45,8 @@ tooltip {
 #workspaces button.active {
   color: @active-fg;
   background: @active-bg;
-  text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.6);
-  box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.4);
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.4);
   margin: 2px;
   padding: 0 6px;
 }
@@ -55,7 +55,6 @@ tooltip {
   background: @hover-bg;
   text-shadow: none;
   box-shadow: none;
-  transition: all 0.2s cubic-bezier(0.55, -0.68, 0.48, 1.682);
 }
 
 /* === General === */
@@ -77,9 +76,9 @@ tooltip {
 #custom-power {
   opacity: 1;
   color: @module-fg;
-  margin-bottom: 0px;
+  margin-bottom: 0;
   padding: 0 4px;
-  text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.6);
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.6);
 }
 
 #custom-left1,
@@ -91,7 +90,7 @@ tooltip {
 #custom-left7,
 #custom-left8 {
   font-size: 11pt;
-  text-shadow: -2px 0px 2px rgba(0, 0, 0, 0.5);
+  text-shadow: -2px 0 2px rgba(0, 0, 0, 0.5);
 }
 
 #custom-right1,
@@ -101,7 +100,7 @@ tooltip {
 #custom-right5 {
   font-size: 11pt;
   padding-right: 3px;
-  text-shadow: 2px 0px 2px rgba(0, 0, 0, 0.5);
+  text-shadow: 2px 0 2px rgba(0, 0, 0, 0.5);
 }
 
 /* === Modules === */
@@ -125,7 +124,7 @@ tooltip {
 #custom-right1 {
   color: @workspaces;
   background: @main-bg;
-  text-shadow: 3px 0px 2px rgba(0, 0, 0, 0.4);
+  text-shadow: 3px 0 2px rgba(0, 0, 0, 0.4);
 }
 
 /* == Temperature == */
@@ -142,7 +141,7 @@ tooltip {
 #custom-cpuinfo {
   background: @cpuinfo;
   padding-left: 1px;
-  padding-right: 0px;
+  padding-right: 0;
 }
 
 /* == Memory == */
@@ -155,7 +154,7 @@ tooltip {
 #memory {
   background: @memory;
   padding-left: 1px;
-  padding-right: 0px;
+  padding-right: 0;
 }
 #memory.warning {
   color: @warning;
@@ -185,7 +184,7 @@ tooltip {
 #custom-left5 {
   color: @distro-bg;
   background: @main-bg;
-  text-shadow: -2px 0px 2px rgba(0, 0, 0, 0.6);
+  text-shadow: -2px 0 2px rgba(0, 0, 0, 0.6);
   padding-left: 3px;
 }
 #idle_inhibitor {
@@ -194,9 +193,9 @@ tooltip {
   font-size: 11pt;
   margin-right: -1px;
   margin-bottom: -2px;
-  padding-right: 0px;
+  padding-right: 0;
   padding-left: 3px;
-  text-shadow: 0px 0px 1.5px rgba(0, 0, 0, 1);
+  text-shadow: 0 0 1.5px rgba(0, 0, 0, 1);
 }
 #custom-right2 {
   color: @distro-bg;
@@ -227,7 +226,6 @@ tooltip {
   color: @hover-fg;
   text-shadow: none;
   box-shadow: none;
-  transition: all 0.2s cubic-bezier(0.55, -0.68, 0.48, 1.682);
 }
 #custom-right4 {
   color: @date;
@@ -245,7 +243,6 @@ tooltip {
   color: @hover-fg;
   text-shadow: none;
   box-shadow: none;
-  transition: all 0.2s cubic-bezier(0.55, -0.68, 0.48, 1.682);
 }
 #bluetooth {
   padding-right: 5px;
@@ -255,7 +252,6 @@ tooltip {
   color: @hover-fg;
   text-shadow: none;
   box-shadow: none;
-  transition: all 0.2s cubic-bezier(0.55, -0.68, 0.48, 1.682);
 }
 #custom-update {
   padding-right: 8px;
@@ -265,7 +261,6 @@ tooltip {
   color: @hover-fg;
   text-shadow: none;
   box-shadow: none;
-  transition: all 0.2s cubic-bezier(0.55, -0.68, 0.48, 1.682);
 }
 #custom-right5 {
   color: @tray;
@@ -283,7 +278,6 @@ tooltip {
   color: @hover-fg;
   text-shadow: none;
   box-shadow: none;
-  transition: all 0.2s cubic-bezier(0.55, -0.68, 0.48, 1.682);
 }
 
 /* == Output Device == */
@@ -300,7 +294,6 @@ tooltip {
   color: @hover-fg;
   text-shadow: none;
   box-shadow: none;
-  transition: all 0.2s cubic-bezier(0.55, -0.68, 0.48, 1.682);
 }
 
 /* == Brightness == */
@@ -351,12 +344,10 @@ tooltip {
 #custom-power {
   color: @main-bg;
   background: @power;
-  text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.6);
-  box-shadow: 1px 0px 2px 1px rgba(0, 0, 0, 0.6);
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.6);
+  box-shadow: 1px 0 2px 1px rgba(0, 0, 0, 0.6);
   border-radius: 20px;
-  margin-top: 2px;
-  margin-right: 4px;
-  margin-bottom: 2px;
+  margin: 2px 4px 2px 0;
   padding-right: 6px;
   padding-left: 9px;
 }
@@ -365,5 +356,4 @@ tooltip {
   background: @hover-bg;
   text-shadow: none;
   box-shadow: none;
-  transition: all 0.2s cubic-bezier(0.55, -0.68, 0.48, 1.682);
 }
