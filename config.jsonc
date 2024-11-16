@@ -4,8 +4,6 @@
   // "height": 24, // Uncomment to set a fixed height
   // Note: The layout may break if height is greater than 24
   "mode": "dock",
-  "exclusive": true,
-  "passthrough": false,
   "reload_style_on_change": true,
   "gtk-layer-shell": true,
 
@@ -77,13 +75,8 @@
   },
 
   "hyprland/workspaces": {
-    "all-outputs": false,
-    "active-only": false,
-    "on-click": "activate",
-    "disable-scroll": false,
     "on-scroll-up": "hyprctl dispatch workspace -1",
     "on-scroll-down": "hyprctl dispatch workspace +1",
-    "sort-by-number": true,
     "persistent-workspaces": {
       "1": [],
       "2": [],
@@ -95,12 +88,12 @@
 
   "hyprland/window": {
     "format": "{}",
-    "separate-outputs": true,
     "min-length": 5,
 
     // === Window Titles ===
 
     "rewrite": {
+      
       // == Desktop ==
 
       "": 
