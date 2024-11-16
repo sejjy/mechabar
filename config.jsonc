@@ -302,10 +302,10 @@
   },
 
   "custom/update": {
-    "exec": "~/.local/share/bin/systemupdate.sh",
+    "exec": "~/.config/waybar/scripts/systemupdate.sh",
     "return-type": "json",
     "format": "{}",
-    "on-click": "hyprctl dispatch exec 'systemupdate.sh up'",
+    "on-click": "hyprctl dispatch exec '~/.config/waybar/scripts/systemupdate.sh up'",
     "interval": 60,
     "tooltip": true,
     "signal": 20, // I'm not sure what this does
