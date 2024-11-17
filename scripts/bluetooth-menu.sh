@@ -20,7 +20,7 @@ config="$HOME/.config/rofi/network-menu.rasi"
 override="window { anchor: center; x-offset: -${x_center}px; y-offset: -${y_center}px; }"
 
 # Initial notification
-notify-send "BLuetooth" "Searching for available devices..."
+notify-send "Bluetooth" "Searching for available devices..."
 
 while true; do
   # Check Bluetooth status
@@ -48,11 +48,15 @@ while true; do
   case "$selected_option" in
   " 󰂯  Enable Bluetooth")
     notify-send "Bluetooth" "Enabled"
+    rfkill unblock bluetooth
     bluetoothctl power on
+    sleep 1
     ;;
   " 󰂲  Disable Bluetooth")
     notify-send "Bluetooth" "Disabled"
+    rfkill block bluetooth
     bluetoothctl power off
+    sleep 1
     ;;
   " 󰂰  Rescan")
     notify-send "Bluetooth" "Rescanning for devices..."
@@ -62,21 +66,19 @@ while true; do
     notify-send "Bluetooth" "Device scan completed"
     ;;
   *)
-    device_name=${selected_option// 󰂱  /} # Extract the name of the device
+    device_name=${selected_option// 󰂱  /}
 
     if [[ -n "$device_name" ]]; then
       device_mac=$(bluetoothctl devices | grep "$device_name" | awk '{print $2}')
 
-      # Pair the device
-      if bluetoothctl pair "$device_mac"; then
-        notify-send "Bluetooth" "Paired with $device_name"
-      else
-        notify-send "Bluetooth" "Failed to pair with $device_name"
-      fi
-
       # Connect the device
-      if bluetoothctl connect "$device_mac"; then
-        notify-send "Bluetooth" "Connected to $device_name"
+      notify-send "Bluetooth" "Connecting to $device_name..."
+      bluetoothctl connect "$device_mac" &
+      sleep 3
+      connection_status=$(bluetoothctl info "$device_mac" | grep "Connected:" | awk '{print $2}')
+
+      if [[ "$connection_status" == "yes" ]]; then
+        notify-send "Bluetooth" "Successfully connected to $device_name"
       else
         notify-send "Bluetooth" "Failed to connect to $device_name"
       fi
