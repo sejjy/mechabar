@@ -18,6 +18,23 @@ check_package() {
   fi
 }
 
+# Check if an AUR package is installed
+check_aur_package() {
+  AUR_HELPER=$(get_aur_helper)
+
+  if [ "$AUR_HELPER" == "none" ]; then
+    printf "\n\n\033[1;31mNeither yay nor paru were found. You can manually install the AUR packages.\033[0m\n\n"
+    exit 1
+  fi
+
+  if $AUR_HELPER -Qi "$1" &>/dev/null; then
+    printf "\033[1;33m%s (AUR) is already installed.\033[0m\n" "$1"
+  else
+    printf "\033[1;32mInstalling %s (AUR)...\033[0m\n" "$1"
+    $AUR_HELPER -S --noconfirm "$1"
+  fi
+}
+
 # Determine the AUR helper (yay or paru)
 get_aur_helper() {
   if command -v yay &>/dev/null; then
@@ -60,7 +77,8 @@ install_optional() {
   fi
 
   printf "\n\n\033[1;32mUsing %s to install optional dependencies...\033[0m\n\n" "$AUR_HELPER"
-  $AUR_HELPER -S --noconfirm rofi-lbonn-wayland-git wlogout
+  check_aur_package rofi-lbonn-wayland-git
+  check_aur_package wlogout
 }
 
 # Copy configuration files
