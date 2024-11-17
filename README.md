@@ -97,7 +97,7 @@ A mecha-themed **[Waybar](https://github.com/Alexays/Waybar)** configuration ini
   sudo pacman -S libnotify jq networkmanager bluez bluez-utils python playerctl brightnessctl
   ```
 
-- Recommended (with alternatives):
+  With alternatives:
 
   ```bash
   sudo pacman -S ttf-jetbrains-mono-nerd pipewire wireplumber
