@@ -1,50 +1,82 @@
-<h1 align="center" style="border-style: none;">🤖 Mechabar</h1>
-
 <div align="center">
+  <h1>🤖 Mechabar</h1>
+
   <table>
     <tr>
       <td><img src="assets/v1.0.0.png" alt="Preview 1" /></td>
     </tr>
   </table>
-</div>
 
-<div align="center">
   <details>
-    <summary><strong>&nbsp;🛜 Wi-Fi Menu</strong></summary>
+    <summary><strong>&nbsp;🛜 Wi-Fi</strong> &amp; <strong>Bluetooth Menu</strong></summary>
     <br />
     <table>
       <tr>
-        <td><img src="assets/wifi-1.0.png" alt="Wi-Fi Menu" /></td>
+        <td><img src="assets/wifi.png" alt="Wi-Fi Menu" /></td>
       </tr>
       <tr>
-        <td><img src="assets/wifi-1.1.png" alt="Wi-Fi Menu" /></td>
+        <td><img src="assets/bluetooth.png" alt="Bluetooth Menu" /></td>
+      </tr>
+      <tr>
+        <td><img src="assets/tui.png" alt="NMTUI and BlueTUI" /></td>
       </tr>
     </table>
   </details>
-</div>
 
-<div align="center">
   <details>
     <summary><strong>&nbsp;⏸️ Logout Menu</strong></summary>
     <br />
     <table>
       <tr>
-        <td><img src="assets/logout-1.0.png" alt="Logout Menu 1" /></td>
+        <td><img src="assets/logout-1.png" alt="Logout Menu 1" /></td>
       </tr>
       <tr>
-        <td><img src="assets/logout-2.0.png" alt="Logout Menu 2" /></td>
+        <td><img src="assets/logout-2.png" alt="Logout Menu 2" /></td>
       </tr>
     </table>
   </details>
+
+<a href="https://github.com/sejjy/mechabar/stargazers"
+    ><img
+      src="https://img.shields.io/github/stars/sejjy/mechabar?colorA=1e1e2e&colorB=f9e2af&style=for-the-badge"
+  /></a>
+<a href="https://github.com/sejjy/mechabar/commits"
+    ><img
+      src="https://img.shields.io/github/last-commit/sejjy/mechabar?colorA=1e1e2e&colorB=a6e3a1&style=for-the-badge"
+  /></a>
+<a href="https://github.com/sejjy/mechabar/contributors"
+    ><img
+      src="https://img.shields.io/github/contributors/sejjy/mechabar?colorA=1e1e2e&colorB=b4befe&style=for-the-badge"
+  /></a>
+
 </div>
+
+A mecha-themed **[Waybar](https://github.com/Alexays/Waybar)** configuration initially designed for **[Hyprland](https://github.com/hyprwm/Hyprland)**, but also compatible with **Sway** and other **Wlroots-based compositors** with minimal adjustments. Contributions are welcome, including opening **[issues](https://github.com/sejjy/mechabar/issues)**, submitting **[pull requests](https://github.com/sejjy/mechabar/pulls)** for bug fixes or enhancements, and adding support for other distributions and compositors through new branches.
+
+## Installation
+
+### Automatic
+
+1. **Clone the repository:**
+
+   ```bash
+   git clone https://github.com/sejjy/mechabar.git
+   cd mechabar
+   ```
+
+2. **Run the [install](/install.sh) script:**
+
+   ```bash
+   ./install.sh
+   ```
+
+   This installs all dependencies, configuration files, and scripts.
 
 #
 
-## Dependencies
+### Manual
 
-To ensure _Mechabar_ works properly after [installation](#installation), make sure you have the following packages:
-
-**Arch Linux:**
+#### Dependencies
 
 - Required:
 
@@ -83,7 +115,9 @@ To ensure _Mechabar_ works properly after [installation](#installation), make su
 > [!IMPORTANT]
 > If you use alternatives, you may need to modify the [scripts](/scripts/) and configuration files accordingly.
 
-## Installation
+#
+
+#### Installation
 
 1. **Clone the repository:**
 
@@ -154,8 +188,8 @@ To ensure _Mechabar_ works properly after [installation](#installation), make su
 Here are some features and improvements planned for future versions:
 
 - [ ] Theme switcher
-- [ ] Install script
-- [ ] Rofi Bluetooth menu
+- [x] Install script
+- [x] Rofi Bluetooth menu
 - [ ] Improved logout menu
 
 ## Credits
