@@ -3,8 +3,8 @@
 # Exit on error
 set -e
 
-if [ ! -d "mechabar" ]; then
-  printf "\n\033[1;31mYou must run this script from the 'mechabar' directory.\033[0m\n\n"
+if [ "$(basename "$PWD")" != "mechabar" ]; then
+  echo "You must run this script from the 'mechabar' directory."
   exit 1
 fi
 
