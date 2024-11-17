@@ -49,10 +49,16 @@ To ensure _Mechabar_ works properly after [installation](#installation), make su
 - Required:
 
   ```bash
-  sudo pacman -S ttf-jetbrains-mono-nerd jq networkmanager blueman playerctl python pipewire wireplumber brightnessctl
+  sudo pacman -S libnotify jq networkmanager bluez bluez-utils python playerctl brightnessctl
   ```
 
-- Optional (Recommended):
+- Recommended (with alternatives):
+
+  ```bash
+  sudo pacman -S ttf-jetbrains-mono-nerd pipewire wireplumber
+  ```
+
+- Optional (but recommended):
 
   ```bash
   yay -S rofi-lbonn-wayland-git wlogout
@@ -60,15 +66,17 @@ To ensure _Mechabar_ works properly after [installation](#installation), make su
 
 | Package                   | Description                                                                               |
 | ------------------------- | ----------------------------------------------------------------------------------------- |
-| `ttf-jetbrains-mono-nerd` | Patched font JetBrains Mono from the nerd fonts library                                   |
+| `libnotify`               | Library for sending desktop notifications                                                 |
 | `jq`                      | Command-line JSON processor                                                               |
 | `networkmanager`          | Network connection manager and user applications                                          |
-| `blueman`                 | GTK+ Bluetooth Manager                                                                    |
-| `playerctl`               | MPRIS media player controller for Spotify, VLC, Audacious, BMP, XMMS2, and others         |
+| `bluez`                   | Daemons for the bluetooth protocol stack                                                  |
+| `bluez-utils`             | Development and debugging utilities for the bluetooth protocol stack                      |
 | `python`                  | The Python programming language                                                           |
+| `playerctl`               | MPRIS media player controller for Spotify, VLC, Audacious, BMP, XMMS2, and others         |
+| `brightnessctl`           | Lightweight brightness control tool                                                       |
+| `ttf-jetbrains-mono-nerd` | Patched font JetBrains Mono from the nerd fonts library                                   |
 | `pipewire`                | Low-latency audio/video router and processor                                              |
 | `wireplumber`             | Session/policy manager implementation for PipeWire                                        |
-| `brightnessctl`           | Lightweight brightness control tool                                                       |
 | `rofi-lbonn-wayland-git`  | A window switcher, application launcher and dmenu replacement (fork with Wayland support) |
 | `wlogout`                 | Logout menu for Wayland                                                                   |
 
@@ -112,14 +120,14 @@ To ensure _Mechabar_ works properly after [installation](#installation), make su
    ```bash
    cd scripts
    mkdir -p ~/.config/waybar/scripts/
-   cp cpuinfo.sh cpuusage.sh wifiinfo.sh wifimenu.sh systemupdate.sh mediaplayer.py ~/.config/waybar/scripts/
+   cp bluetooth-menu.sh cpu-temp.sh cpu-usage.sh media-player.py system-update.sh wifi-menu.sh wifi-status.sh ~/.config/waybar/scripts/
    ```
 
    System-wide:
 
    ```bash
    mkdir -p ~/.local/share/bin/
-   cp volumecontrol.sh brightnesscontrol.sh logoutlaunch.sh ~/.local/share/bin/
+   cp brightness-control.sh volume-control.sh logout-menu.sh ~/.local/share/bin/
    ```
 
    Make scripts executable:
