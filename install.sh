@@ -8,6 +8,16 @@ if [ ! -d "mechabar" ]; then
   exit 1
 fi
 
+# Check if a package is already installed
+check_package() {
+  if pacman -Qi "$1" &>/dev/null; then
+    printf "\033[1;33m%s is already installed.\033[0m\n" "$1"
+  else
+    printf "\033[1;32mInstalling %s...\033[0m\n" "$1"
+    sudo pacman -S --noconfirm "$1"
+  fi
+}
+
 # Determine the AUR helper (yay or paru)
 get_aur_helper() {
   if command -v yay &>/dev/null; then
@@ -22,13 +32,22 @@ get_aur_helper() {
 # Required
 install_dependencies() {
   printf "\n\033[1;32mInstalling required dependencies...\033[0m\n\n"
-  sudo pacman -S --noconfirm libnotify jq networkmanager bluez bluez-utils python playerctl brightnessctl
+  check_package libnotify
+  check_package jq
+  check_package networkmanager
+  check_package bluez
+  check_package bluez-utils
+  check_package python
+  check_package playerctl
+  check_package brightnessctl
 }
 
 # Recommended (with alternatives)
 install_recommended() {
   printf "\n\n\033[1;32mInstalling recommended dependencies...\033[0m\n\n"
-  sudo pacman -S --noconfirm ttf-jetbrains-mono-nerd pipewire wireplumber
+  check_package ttf-jetbrains-mono-nerd
+  check_package pipewire
+  check_package wireplumber
 }
 
 # Optional (but recommended)
@@ -36,7 +55,7 @@ install_optional() {
   AUR_HELPER=$(get_aur_helper)
 
   if [ "$AUR_HELPER" == "none" ]; then
-    printf "\n\n\033[1;31myay or paru not found. Perform manual installation with your preferred AUR helper.\033[0m\n\n"
+    printf "\n\n\033[1;31mNeither yay nor paru were found. You can manually install the AUR packages.\033[0m\n\n"
     exit 1
   fi
 
@@ -80,7 +99,10 @@ setup_scripts() {
 # Restart Waybar to apply changes
 restart_waybar() {
   printf "\n\n\033[1;32mRestarting Waybar...\033[0m\n\n"
-  killall waybar || true
+
+  if pgrep -x "waybar" >/dev/null; then
+    killall waybar
+  fi
   waybar &
 }
 
