@@ -175,7 +175,7 @@ A mecha-themed **[Waybar](https://github.com/Alexays/Waybar)** configuration ini
 
    ```bash
    killall waybar
-   waybar &
+   nohup waybar >/dev/null 2>&1 &
    ```
 
 ## Customization

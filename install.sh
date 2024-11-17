@@ -100,10 +100,8 @@ setup_scripts() {
 restart_waybar() {
   printf "\n\n\033[1;32mRestarting Waybar...\033[0m\n\n"
 
-  if pgrep -x "waybar" >/dev/null; then
-    killall waybar
-  fi
-  waybar &
+  killall waybar
+  nohup waybar >/dev/null 2>&1 &
 }
 
 main() {
