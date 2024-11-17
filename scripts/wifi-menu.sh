@@ -38,7 +38,7 @@ while true; do
   wifi_status=$(nmcli -fields WIFI g)
 
   if [[ "$wifi_status" =~ "enabled" ]]; then
-    selected_option=$(echo -e "   Rescan\n   Manual Entry\n 󰤭  Disable Wi-Fi\n$wifi_list" | uniq -u | rofi -dmenu -i -selected-row 2 -theme-str "entry { placeholder: \"Search\"; }" -theme-str "${override}" -config "${config}" -theme-str "window { height: 250px; }")
+    selected_option=$(echo -e "   Rescan\n   Manual Entry\n 󰤭  Disable Wi-Fi\n$wifi_list" | uniq -u | rofi -dmenu -i -selected-row 2 -theme-str "entry { placeholder: \"Search\"; }" -theme-str "${override}" -config "${config}" -theme-str "window { height: 250px; }")
 
   elif [[ "$wifi_status" =~ "disabled" ]]; then
     selected_option=$(echo -e " 󰤨  Enable Wi-Fi" | uniq -u | rofi -dmenu -i -theme-str "${override}" -config "${config}" -theme-str "window { height: 48px; } mainbox { padding: 40px 0 -32px 0;} inputbar { enabled: false; }")
@@ -61,8 +61,9 @@ while true; do
   elif [ "$selected_option" = " 󰤭  Disable Wi-Fi" ]; then
     notify-send "Wi-Fi" "Disabled"
     nmcli radio wifi off
+    sleep 1
 
-  elif [ "$selected_option" = "   Manual Entry" ]; then
+  elif [ "$selected_option" = "   Manual Entry" ]; then
     notify-send "Wi-Fi" "Enter SSID and password manually..."
 
     # Prompt for manual SSID and password
