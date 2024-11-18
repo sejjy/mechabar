@@ -4,12 +4,12 @@
 set -e
 
 if [ "$(basename "$PWD")" != "mechabar" ]; then
-  echo "You must run this script from the 'mechabar' directory."
+  printf "\n\033[1;31mYou must run this script from the 'mechabar' directory.\033[0m\n"
   exit 1
 fi
 
 if ! command -v pacman &>/dev/null; then
-  printf "\033[1;31mThis script is intended for Arch-based systems only.\033[0m\n"
+  printf "\n\033[1;31mThis script is intended for Arch-based systems only.\033[0m\n"
   exit 1
 fi
 
@@ -38,7 +38,7 @@ backup() {
 # Check if a package is already installed
 check_package() {
   if pacman -Qi "$1" &>/dev/null; then
-    printf "\033[1;33m%s is already installed.\033[0m\n" "$1"
+    printf "\n\033[1;33m%s is already installed.\033[0m\n" "$1"
   else
     printf "\033[1;32mInstalling %s...\033[0m\n" "$1"
     sudo pacman -S --noconfirm "$1"
@@ -50,7 +50,7 @@ check_aur_package() {
   AUR_HELPER=$(get_aur_helper)
 
   if $AUR_HELPER -Qi "$1" &>/dev/null; then
-    printf "\033[1;33m%s (AUR) is already installed.\033[0m\n" "$1"
+    printf "\n\033[1;33m%s (AUR) is already installed.\033[0m\n" "$1"
   else
     printf "\033[1;32mInstalling %s (AUR)...\033[0m\n" "$1"
     $AUR_HELPER -S --noconfirm "$1"
@@ -64,7 +64,7 @@ get_aur_helper() {
   elif command -v paru &>/dev/null; then
     echo "paru"
   else
-    printf "\n\n\033[1;31mNeither yay nor paru were found. Install one to proceed:\033[0m\n"
+    printf "\n\033[1;31mNeither yay nor paru were found. Install one to proceed:\033[0m\n"
     printf "\033[1;32mFor yay: \033[0msudo pacman -S --needed git base-devel && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si\n"
     printf "\033[1;32mFor paru: \033[0msudo pacman -S --needed base-devel && git clone https://aur.archlinux.org/paru.git && cd paru && makepkg -si\n"
     printf "\n\033[1;31mor use your preferred AUR helper to install these packages:\033[0m\n"
@@ -76,7 +76,7 @@ get_aur_helper() {
 
 # Install required dependencies
 install_dependencies() {
-  printf "\n\033[1;32mInstalling dependencies...\033[0m\n\n"
+  printf "\n\033[1;32mInstalling dependencies...\033[0m\n"
 
   DEPENDENCIES=(
     libnotify jq networkmanager bluez bluez-utils python playerctl brightnessctl
@@ -90,14 +90,14 @@ install_dependencies() {
 
 # Install optional dependencies
 install_optional() {
-  printf "\n\n\033[1;32mUsing %s to install optional dependencies...\033[0m\n\n" "$(get_aur_helper)"
+  printf "\n\033[1;32mUsing %s to install optional dependencies...\033[0m\n" "$(get_aur_helper)"
   check_aur_package rofi-lbonn-wayland-git
   check_aur_package wlogout
 }
 
 # Copy configuration files
 copy_configs() {
-  printf "\n\n\033[1;32mCopying config files...\033[0m\n"
+  printf "\n\033[1;32mCopying config files...\033[0m\n"
 
   mkdir -p ~/.config/waybar/
   cp config.jsonc style.css theme.css ~/.config/waybar/
@@ -113,7 +113,7 @@ copy_configs() {
 
 # Setup scripts
 setup_scripts() {
-  printf "\n\n\033[1;32mSetting up scripts...\033[0m\n"
+  printf "\n\033[1;32mSetting up scripts...\033[0m\n"
 
   # Waybar-exclusive
   mkdir -p ~/.config/waybar/scripts/
@@ -130,7 +130,7 @@ setup_scripts() {
 
 # Restart Waybar to apply changes
 restart_waybar() {
-  printf "\n\n\033[1;32mRestarting Waybar...\033[0m\n"
+  printf "\n\033[1;32mRestarting Waybar...\033[0m\n"
 
   killall waybar || true
   nohup waybar >/dev/null 2>&1 &
@@ -144,7 +144,7 @@ main() {
   setup_scripts
   restart_waybar
 
-  printf "\n\n\033[1;32mInstallation complete!\033[0m\n\n"
+  printf "\n\033[1;32mInstallation complete!\033[0m\n\n"
 }
 
 main
