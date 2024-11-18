@@ -83,7 +83,7 @@ A mecha-themed **[Waybar](https://github.com/Alexays/Waybar)** configuration ini
    ./install.sh
    ```
 
-   This installs all dependencies, configuration files, and scripts.
+   This backs up existing files, installs all necessary dependencies, configurations, and scripts.
 
 #
 
