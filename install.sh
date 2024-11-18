@@ -8,6 +8,33 @@ if [ "$(basename "$PWD")" != "mechabar" ]; then
   exit 1
 fi
 
+if ! command -v pacman &>/dev/null; then
+  printf "\033[1;31mThis script is intended for Arch-based systems only.\033[0m\n"
+  exit 1
+fi
+
+backup() {
+  printf "\n\033[1;34mBacking up existing config files...\033[0m\n\n"
+
+  CONFIG_DIR=~/.config
+  TIMESTAMP=$(date +%m-%Y)
+  declare -A FOLDERS=(
+    ["waybar"]="waybar-backup-$TIMESTAMP"
+    ["rofi"]="rofi-backup-$TIMESTAMP"
+    ["wlogout"]="wlogout-backup-$TIMESTAMP"
+  )
+
+  for SRC in "${!FOLDERS[@]}"; do
+    DEST="${FOLDERS[$SRC]}"
+    if [ -d "$CONFIG_DIR/$SRC" ]; then
+      printf "\033[1;33mBacking up %s to %s...\033[0m\n" "$SRC" "$DEST"
+      cp -r "$CONFIG_DIR/$SRC" "$CONFIG_DIR/$DEST"
+    else
+      printf "\033[1;34mNo existing %s config found. Skipping backup.\033[0m\n" "$SRC"
+    fi
+  done
+}
+
 # Check if a package is already installed
 check_package() {
   if pacman -Qi "$1" &>/dev/null; then
@@ -21,11 +48,6 @@ check_package() {
 # Check if an AUR package is installed
 check_aur_package() {
   AUR_HELPER=$(get_aur_helper)
-
-  if [ "$AUR_HELPER" == "none" ]; then
-    printf "\n\n\033[1;31mNeither yay nor paru were found. You can manually install the AUR packages.\033[0m\n\n"
-    exit 1
-  fi
 
   if $AUR_HELPER -Qi "$1" &>/dev/null; then
     printf "\033[1;33m%s (AUR) is already installed.\033[0m\n" "$1"
@@ -42,48 +64,40 @@ get_aur_helper() {
   elif command -v paru &>/dev/null; then
     echo "paru"
   else
-    echo "none"
-  fi
-}
-
-# Required
-install_dependencies() {
-  printf "\n\033[1;32mInstalling required dependencies...\033[0m\n\n"
-  check_package libnotify
-  check_package jq
-  check_package networkmanager
-  check_package bluez
-  check_package bluez-utils
-  check_package python
-  check_package playerctl
-  check_package brightnessctl
-}
-
-# Recommended (with alternatives)
-install_recommended() {
-  printf "\n\n\033[1;32mInstalling recommended dependencies...\033[0m\n\n"
-  check_package ttf-jetbrains-mono-nerd
-  check_package pipewire
-  check_package wireplumber
-}
-
-# Optional (but recommended)
-install_optional() {
-  AUR_HELPER=$(get_aur_helper)
-
-  if [ "$AUR_HELPER" == "none" ]; then
-    printf "\n\n\033[1;31mNeither yay nor paru were found. You can manually install the AUR packages.\033[0m\n\n"
+    printf "\n\n\033[1;31mNeither yay nor paru were found. Install one to proceed:\033[0m\n"
+    printf "\033[1;32mFor yay: \033[0msudo pacman -S --needed git base-devel && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si\n"
+    printf "\033[1;32mFor paru: \033[0msudo pacman -S --needed base-devel && git clone https://aur.archlinux.org/paru.git && cd paru && makepkg -si\n"
+    printf "\n\033[1;31mor use your preferred AUR helper to install these packages:\033[0m\n"
+    printf "rofi-lbonn-wayland-git\nwlogout\n"
+    printf "\n\033[1;33mOnce installed, rerun the script.\033[0m\n"
     exit 1
   fi
+}
 
-  printf "\n\n\033[1;32mUsing %s to install optional dependencies...\033[0m\n\n" "$AUR_HELPER"
+# Install required dependencies
+install_dependencies() {
+  printf "\n\033[1;32mInstalling dependencies...\033[0m\n\n"
+
+  DEPENDENCIES=(
+    libnotify jq networkmanager bluez bluez-utils python playerctl brightnessctl
+    ttf-jetbrains-mono-nerd pipewire wireplumber
+  )
+
+  for PACKAGE in "${DEPENDENCIES[@]}"; do
+    check_package "$PACKAGE"
+  done
+}
+
+# Install optional dependencies
+install_optional() {
+  printf "\n\n\033[1;32mUsing %s to install optional dependencies...\033[0m\n\n" "$(get_aur_helper)"
   check_aur_package rofi-lbonn-wayland-git
   check_aur_package wlogout
 }
 
 # Copy configuration files
 copy_configs() {
-  printf "\n\n\033[1;32mCopying configuration files...\033[0m\n\n"
+  printf "\n\n\033[1;32mCopying config files...\033[0m\n\n"
 
   mkdir -p ~/.config/waybar/
   cp config.jsonc style.css theme.css ~/.config/waybar/
@@ -118,13 +132,13 @@ setup_scripts() {
 restart_waybar() {
   printf "\n\n\033[1;32mRestarting Waybar...\033[0m\n\n"
 
-  killall waybar
+  killall waybar || true
   nohup waybar >/dev/null 2>&1 &
 }
 
 main() {
+  backup
   install_dependencies
-  install_recommended
   install_optional
   copy_configs
   setup_scripts
