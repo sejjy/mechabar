@@ -97,7 +97,7 @@ install_optional() {
 
 # Copy configuration files
 copy_configs() {
-  printf "\n\n\033[1;32mCopying config files...\033[0m\n\n"
+  printf "\n\n\033[1;32mCopying config files...\033[0m\n"
 
   mkdir -p ~/.config/waybar/
   cp config.jsonc style.css theme.css ~/.config/waybar/
@@ -113,7 +113,7 @@ copy_configs() {
 
 # Setup scripts
 setup_scripts() {
-  printf "\n\n\033[1;32mSetting up scripts...\033[0m\n\n"
+  printf "\n\n\033[1;32mSetting up scripts...\033[0m\n"
 
   # Waybar-exclusive
   mkdir -p ~/.config/waybar/scripts/
@@ -130,7 +130,7 @@ setup_scripts() {
 
 # Restart Waybar to apply changes
 restart_waybar() {
-  printf "\n\n\033[1;32mRestarting Waybar...\033[0m\n\n"
+  printf "\n\n\033[1;32mRestarting Waybar...\033[0m\n"
 
   killall waybar || true
   nohup waybar >/dev/null 2>&1 &
