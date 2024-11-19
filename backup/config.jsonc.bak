@@ -4,8 +4,6 @@
   // "height": 24, // Uncomment to set a fixed height
   // Note: The layout may break if height is greater than 24
   "mode": "dock",
-  "exclusive": true,
-  "passthrough": false,
   "reload_style_on_change": true,
   "gtk-layer-shell": true,
 
@@ -77,13 +75,8 @@
   },
 
   "hyprland/workspaces": {
-    "all-outputs": false,
-    "active-only": false,
-    "on-click": "activate",
-    "disable-scroll": false,
     "on-scroll-up": "hyprctl dispatch workspace -1",
     "on-scroll-down": "hyprctl dispatch workspace +1",
-    "sort-by-number": true,
     "persistent-workspaces": {
       "1": [],
       "2": [],
@@ -95,12 +88,12 @@
 
   "hyprland/window": {
     "format": "{}",
-    "separate-outputs": true,
     "min-length": 5,
 
     // === Window Titles ===
 
     "rewrite": {
+      
       // == Desktop ==
 
       "": 
@@ -194,7 +187,7 @@
   },
 
   "custom/cpuinfo": {
-    "exec": "~/.config/waybar/scripts/cpuinfo.sh",
+    "exec": "~/.config/waybar/scripts/cpu-temp.sh",
     "return-type": "json",
     "format": "{}",
     "tooltip": true,
@@ -219,7 +212,7 @@
   },
 
   "custom/cpu": {
-    "exec": "~/.config/waybar/scripts/cpuusage.sh",
+    "exec": "~/.config/waybar/scripts/cpu-usage.sh",
     "return-type": "json",
     "tooltip": true,
     "interval": 5,
@@ -267,12 +260,12 @@
   },
 
   "custom/wifi": {
-    "exec": "~/.config/waybar/scripts/wifiinfo.sh",
+    "exec": "~/.config/waybar/scripts/wifi-status.sh",
     "return-type": "json",
     "format": "{}",
     "tooltip": true,
-    "on-click": "~/.config/waybar/scripts/wifimenu.sh",
-    "on-click-right": "kitty bash -c nmtui",
+    "on-click": "~/.config/waybar/scripts/wifi-menu.sh",
+    "on-click-right": "kitty --title '󰤨  Network Manager TUI' bash -c nmtui",
     "interval": 1,
     "min-length": 1,
     "max-length": 1
@@ -295,17 +288,18 @@
     "tooltip-format-enumerate-connected-battery": 
       "{device_alias}: {device_battery_percentage}%",
 
-    "on-click": "blueman-manager",
+    "on-click": "~/.config/waybar/scripts/bluetooth-menu.sh",
+    "on-click-right": "kitty --title '󰂯  Bluetooth TUI' bash -c bluetui",
     "interval": 1,
     "min-length": 1,
     "max-length": 1
   },
 
   "custom/update": {
-    "exec": "~/.local/share/bin/systemupdate.sh",
+    "exec": "~/.config/waybar/scripts/system-update.sh",
     "return-type": "json",
     "format": "{}",
-    "on-click": "hyprctl dispatch exec 'systemupdate.sh up'",
+    "on-click": "hyprctl dispatch exec '~/.config/waybar/scripts/system-update.sh up'",
     "interval": 60,
     "tooltip": true,
     "signal": 20, // I'm not sure what this does
@@ -314,7 +308,7 @@
   },
 
   "custom/media": {
-    "exec": "~/.config/waybar/scripts/mediaplayer.py",
+    "exec": "~/.config/waybar/scripts/media-player.py",
     "return-type": "json",
     "format": "{}",
     "tooltip": "{tooltip}",
@@ -335,20 +329,20 @@
 
     "tooltip": true,
     "tooltip-format": "Device: {desc}",
-    "on-click": "~/.local/share/bin/volumecontrol.sh -o m",
-    "on-scroll-up": "~/.local/share/bin/volumecontrol.sh -o i",
-    "on-scroll-down": "~/.local/share/bin/volumecontrol.sh -o d",
+    "on-click": "~/.local/share/bin/volume-control.sh -o m",
+    "on-scroll-up": "~/.local/share/bin/volume-control.sh -o i",
+    "on-scroll-down": "~/.local/share/bin/volume-control.sh -o d",
     "min-length": 6,
     "max-length": 6
   },
 
   "custom/backlight": {
-    "exec": "~/.local/share/bin/brightnesscontrol.sh",
+    "exec": "~/.local/share/bin/brightness-control.sh",
     "return-type": "json",
     "format": "{}",
     "tooltip": true,
-    "on-scroll-up": "~/.local/share/bin/brightnesscontrol.sh -o i",
-    "on-scroll-down": "~/.local/share/bin/brightnesscontrol.sh -o d",
+    "on-scroll-up": "~/.local/share/bin/brightness-control.sh -o i",
+    "on-scroll-down": "~/.local/share/bin/brightness-control.sh -o d",
     "interval": 1,
     "min-length": 6,
     "max-length": 6
@@ -379,8 +373,8 @@
   "custom/power": {
     "format": " ",
     "tooltip": false,
-    "on-click": "~/.local/share/bin/logoutlaunch.sh 2",
-    "on-click-right": "~/.local/share/bin/logoutlaunch.sh 1"
+    "on-click": "~/.local/share/bin/logout-menu.sh 2",
+    "on-click-right": "~/.local/share/bin/logout-menu.sh 1"
   },
 
   // === Padding ===
