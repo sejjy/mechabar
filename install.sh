@@ -14,7 +14,7 @@ if ! command -v pacman &>/dev/null; then
 fi
 
 backup() {
-  printf "\n\033[1;34mBacking up existing config files...\033[0m\n\n"
+  printf "\n\033[1;34mBacking up existing config files...\033[0m\n"
 
   CONFIG_DIR=~/.config
   TIMESTAMP=$(date +%m-%Y)
@@ -38,7 +38,7 @@ backup() {
 # Check if a package is already installed
 check_package() {
   if pacman -Qi "$1" &>/dev/null; then
-    printf "\n\033[1;33m%s is already installed.\033[0m\n" "$1"
+    printf "\033[1;33m%s is already installed.\033[0m\n" "$1"
   else
     printf "\033[1;32mInstalling %s...\033[0m\n" "$1"
     sudo pacman -S --noconfirm "$1"
@@ -50,7 +50,7 @@ check_aur_package() {
   AUR_HELPER=$(get_aur_helper)
 
   if $AUR_HELPER -Qi "$1" &>/dev/null; then
-    printf "\n\033[1;33m%s (AUR) is already installed.\033[0m\n" "$1"
+    printf "\033[1;33m%s (AUR) is already installed.\033[0m\n" "$1"
   else
     printf "\033[1;32mInstalling %s (AUR)...\033[0m\n" "$1"
     $AUR_HELPER -S --noconfirm "$1"
