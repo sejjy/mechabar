@@ -94,13 +94,13 @@ A mecha-themed **[Waybar](https://github.com/Alexays/Waybar)** configuration ini
 - Required:
 
   ```bash
-  sudo pacman -S jq bluez-utils python brightnessctl
+  sudo pacman -S bluez-utils brightnessctl jq python
   ```
 
   With alternatives:
 
   ```bash
-  sudo pacman -S ttf-jetbrains-mono-nerd pipewire wireplumber
+  sudo pacman -S pipewire ttf-jetbrains-mono-nerd wireplumber
   ```
 
 - Optional (but recommended):
@@ -111,15 +111,15 @@ A mecha-themed **[Waybar](https://github.com/Alexays/Waybar)** configuration ini
 
 | Package                   | Description                                                                               |
 | ------------------------- | ----------------------------------------------------------------------------------------- |
-| `jq`                      | Command-line JSON processor                                                               |
-| `bluez-utils`             | Development and debugging utilities for the bluetooth protocol stack                      |
-| `python`                  | The Python programming language                                                           |
-| `brightnessctl`           | Lightweight brightness control tool                                                       |
-| `ttf-jetbrains-mono-nerd` | Patched font JetBrains Mono from the nerd fonts library                                   |
-| `pipewire`                | Low-latency audio/video router and processor                                              |
-| `wireplumber`             | Session/policy manager implementation for PipeWire                                        |
 | `bluetui    `             | TUI for managing bluetooth devices                                                        |
+| `bluez-utils`             | Development and debugging utilities for the bluetooth protocol stack                      |
+| `brightnessctl`           | Lightweight brightness control tool                                                       |
+| `jq`                      | Command-line JSON processor                                                               |
+| `pipewire`                | Low-latency audio/video router and processor                                              |
+| `python`                  | The Python programming language                                                           |
 | `rofi-lbonn-wayland-git`  | A window switcher, application launcher and dmenu replacement (fork with Wayland support) |
+| `ttf-jetbrains-mono-nerd` | Patched font JetBrains Mono from the nerd fonts library                                   |
+| `wireplumber`             | Session/policy manager implementation for PipeWire                                        |
 | `wlogout`                 | Logout menu for Wayland                                                                   |
 
 > [!IMPORTANT]
