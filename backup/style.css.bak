@@ -42,6 +42,12 @@ tooltip {
   padding: 0 2px;
   transition: none;
 }
+#workspaces button:hover {
+  color: @hover-fg;
+  background: @hover-bg;
+  text-shadow: none;
+  box-shadow: none;
+}
 #workspaces button.active {
   color: @active-fg;
   background: @active-bg;
@@ -49,12 +55,6 @@ tooltip {
   box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.4);
   margin: 2px;
   padding: 0 6px;
-}
-#workspaces button:hover {
-  color: @hover-fg;
-  background: @hover-bg;
-  text-shadow: none;
-  box-shadow: none;
 }
 
 /* === General === */
@@ -244,6 +244,7 @@ tooltip {
   text-shadow: none;
   box-shadow: none;
 }
+
 #bluetooth {
   padding-right: 5px;
   background: @tray;
@@ -253,6 +254,7 @@ tooltip {
   text-shadow: none;
   box-shadow: none;
 }
+
 #custom-update {
   padding-right: 8px;
   background: @tray;
