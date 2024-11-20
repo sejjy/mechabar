@@ -203,7 +203,7 @@ Here are some features and improvements planned for future versions:
 - [ ] Theme switcher
 - [x] Install script
 - [x] Rofi Bluetooth menu
-- [ ] Improved logout menu
+- [x] Improved logout menu
 
 ## Credits
 
