@@ -79,7 +79,7 @@ install_dependencies() {
   printf "\n\033[1;32mInstalling dependencies...\033[0m\n"
 
   DEPENDENCIES=(
-    jq bluez-utils python brightnessctl ttf-jetbrains-mono-nerd pipewire wireplumber
+    bluez-utils brightnessctl jq pipewire python ttf-jetbrains-mono-nerd wireplumber
   )
 
   for PACKAGE in "${DEPENDENCIES[@]}"; do
