@@ -79,8 +79,7 @@ install_dependencies() {
   printf "\n\033[1;32mInstalling dependencies...\033[0m\n"
 
   DEPENDENCIES=(
-    libnotify jq networkmanager bluez bluez-utils python playerctl brightnessctl
-    ttf-jetbrains-mono-nerd pipewire wireplumber
+    jq bluez-utils python brightnessctl ttf-jetbrains-mono-nerd pipewire wireplumber
   )
 
   for PACKAGE in "${DEPENDENCIES[@]}"; do
@@ -91,6 +90,7 @@ install_dependencies() {
 # Install optional dependencies
 install_optional() {
   printf "\n\033[1;32mUsing %s to install optional dependencies...\033[0m\n" "$(get_aur_helper)"
+  check_aur_package bluetui
   check_aur_package rofi-lbonn-wayland-git
   check_aur_package wlogout
 }
@@ -117,7 +117,7 @@ setup_scripts() {
 
   # Waybar-exclusive
   mkdir -p ~/.config/waybar/scripts/
-  cp scripts/* ~/.config/waybar/scripts/
+  cp bluetooth-menu.sh cpu-temp.sh cpu-usage.sh media-player.py system-update.sh wifi-menu.sh wifi-status.sh ~/.config/waybar/
 
   # System-wide
   mkdir -p ~/.local/share/bin/
