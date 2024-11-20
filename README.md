@@ -111,7 +111,7 @@ A mecha-themed **[Waybar](https://github.com/Alexays/Waybar)** configuration ini
 
 | Package                   | Description                                                                               |
 | ------------------------- | ----------------------------------------------------------------------------------------- |
-| `bluetui    `             | TUI for managing bluetooth devices                                                        |
+| `bluetui`                 | TUI for managing bluetooth devices                                                        |
 | `bluez-utils`             | Development and debugging utilities for the bluetooth protocol stack                      |
 | `brightnessctl`           | Lightweight brightness control tool                                                       |
 | `jq`                      | Command-line JSON processor                                                               |
