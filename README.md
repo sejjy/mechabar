@@ -147,7 +147,7 @@ A mecha-themed **[Waybar](https://github.com/Alexays/Waybar)** configuration ini
 
    ```bash
    mkdir -p ~/.config/rofi
-   cp -r rofi/* ~/.config/rofi/
+   cp rofi/* ~/.config/rofi/
    ```
 
    Wlogout:
@@ -171,7 +171,7 @@ A mecha-themed **[Waybar](https://github.com/Alexays/Waybar)** configuration ini
 
    ```bash
    mkdir -p ~/.local/share/bin/
-   cp brightness-control.sh volume-control.sh logout-menu.sh ~/.local/share/bin/
+   cp brightness-control.sh logout-menu.sh volume-control.sh ~/.local/share/bin/
    ```
 
    Make scripts executable:
