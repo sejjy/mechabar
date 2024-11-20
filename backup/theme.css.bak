@@ -6,8 +6,8 @@
 
 /* Main Colors */
 
-@define-color main-bg         #11111b;
 @define-color main-fg         #cdd6f4;
+@define-color main-bg         #11111b;
 @define-color main-br         #cdd6f4;
 
 @define-color active-bg       #9399b2;
@@ -15,6 +15,9 @@
 
 @define-color hover-bg        #313244;
 @define-color hover-fg        rgba(205, 214, 244, 0.75);
+
+@define-color white           #ffffff;
+@define-color black           #000000;
 
 /* Module Colors */
 
