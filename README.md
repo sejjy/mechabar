@@ -94,7 +94,7 @@ A mecha-themed **[Waybar](https://github.com/Alexays/Waybar)** configuration ini
 - Required:
 
   ```bash
-  sudo pacman -S libnotify jq networkmanager bluez bluez-utils python playerctl brightnessctl
+  sudo pacman -S jq bluez-utils python brightnessctl
   ```
 
   With alternatives:
@@ -106,22 +106,19 @@ A mecha-themed **[Waybar](https://github.com/Alexays/Waybar)** configuration ini
 - Optional (but recommended):
 
   ```bash
-  yay -S rofi-lbonn-wayland-git wlogout
+  yay -S bluetui rofi-lbonn-wayland-git wlogout
   ```
 
 | Package                   | Description                                                                               |
 | ------------------------- | ----------------------------------------------------------------------------------------- |
-| `libnotify`               | Library for sending desktop notifications                                                 |
 | `jq`                      | Command-line JSON processor                                                               |
-| `networkmanager`          | Network connection manager and user applications                                          |
-| `bluez`                   | Daemons for the bluetooth protocol stack                                                  |
 | `bluez-utils`             | Development and debugging utilities for the bluetooth protocol stack                      |
 | `python`                  | The Python programming language                                                           |
-| `playerctl`               | MPRIS media player controller for Spotify, VLC, Audacious, BMP, XMMS2, and others         |
 | `brightnessctl`           | Lightweight brightness control tool                                                       |
 | `ttf-jetbrains-mono-nerd` | Patched font JetBrains Mono from the nerd fonts library                                   |
 | `pipewire`                | Low-latency audio/video router and processor                                              |
 | `wireplumber`             | Session/policy manager implementation for PipeWire                                        |
+| `bluetui    `             | TUI for managing bluetooth devices                                                        |
 | `rofi-lbonn-wayland-git`  | A window switcher, application launcher and dmenu replacement (fork with Wayland support) |
 | `wlogout`                 | Logout menu for Wayland                                                                   |
 
