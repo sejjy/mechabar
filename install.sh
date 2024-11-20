@@ -117,7 +117,7 @@ setup_scripts() {
 
   # Waybar-exclusive
   mkdir -p ~/.config/waybar/scripts/
-  cp bluetooth-menu.sh cpu-temp.sh cpu-usage.sh media-player.py system-update.sh wifi-menu.sh wifi-status.sh ~/.config/waybar/
+  cp scripts/bluetooth-menu.sh scripts/cpu-temp.sh scripts/cpu-usage.sh scripts/media-player.py scripts/system-update.sh scripts/wifi-menu.sh scripts/wifi-status.sh ~/.config/waybar/scripts/
 
   # System-wide
   mkdir -p ~/.local/share/bin/
