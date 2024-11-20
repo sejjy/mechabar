@@ -104,7 +104,7 @@ copy_configs() {
 
   # Rofi
   mkdir -p ~/.config/rofi
-  cp -r rofi/* ~/.config/rofi/
+  cp rofi/* ~/.config/rofi/
 
   # Wlogout
   mkdir -p ~/.config/wlogout
@@ -121,7 +121,7 @@ setup_scripts() {
 
   # System-wide
   mkdir -p ~/.local/share/bin/
-  cp scripts/brightness-control.sh scripts/volume-control.sh scripts/logout-menu.sh ~/.local/share/bin/
+  cp scripts/brightness-control.sh scripts/logout-menu.sh scripts/volume-control.sh ~/.local/share/bin/
 
   # Make scripts executable
   chmod +x ~/.config/waybar/scripts/*
