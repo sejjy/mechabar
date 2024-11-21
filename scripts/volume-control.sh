@@ -9,8 +9,8 @@ Usage: ./volumecontrol.sh -[device] <actions>
     o   -- output device
     p   -- player application
 ...valid actions are...
-    i   -- increase volume [+5]
-    d   -- decrease volume [-5]
+    i   -- increase volume [+2]
+    d   -- decrease volume [-2]
     m   -- mute [x]
 EOF
   exit 1
@@ -36,7 +36,7 @@ action_volume() {
     # Check current volume and increase only if below 100
     current_vol=$(pactl get-sink-volume @DEFAULT_SINK@ | awk '{print $5}' | sed 's/%//')
     if [ "$current_vol" -lt 100 ]; then
-      new_vol=$((current_vol + 5))
+      new_vol=$((current_vol + 2))
       if [ "$new_vol" -gt 100 ]; then
         new_vol=100
       fi
@@ -46,7 +46,7 @@ action_volume() {
   d)
     # Decrease volume, ensuring it doesn't drop below 0%
     current_vol=$(pactl get-sink-volume @DEFAULT_SINK@ | awk '{print $5}' | sed 's/%//')
-    new_vol=$((current_vol - 5))
+    new_vol=$((current_vol - 2))
     if [ "$new_vol" -lt 0 ]; then
       new_vol=0
     fi
