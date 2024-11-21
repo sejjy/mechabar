@@ -5,8 +5,8 @@ print_error() {
   cat <<"EOF"
 Usage: ./brightnesscontrol.sh <action>
 Valid actions are:
-    i -- <i>ncrease brightness [+5%]
-    d -- <d>ecrease brightness [-5%]
+    i -- <i>ncrease brightness [+2%]
+    d -- <d>ecrease brightness [-2%]
 EOF
 }
 
@@ -34,7 +34,7 @@ while getopts o: opt; do
       if [[ $brightness -lt 10 ]]; then
         brightnessctl set +1%
       else
-        brightnessctl set +5%
+        brightnessctl set +2%
       fi
       send_notification
       ;;
@@ -44,7 +44,7 @@ while getopts o: opt; do
       elif [[ $brightness -le 10 ]]; then
         brightnessctl set 1%-
       else
-        brightnessctl set 5%-
+        brightnessctl set 2%-
       fi
       send_notification
       ;;
