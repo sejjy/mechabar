@@ -3,7 +3,7 @@
 
   <table>
     <tr>
-      <td><img src="assets/v1.0.0.png" alt="Preview 1" /></td>
+      <td><img src="https://github.com/user-attachments/assets/db1b6e0c-adb0-4340-a809-9b3f72494a38" alt="Preview 1" /></td>
     </tr>
   </table>
 
@@ -12,13 +12,13 @@
     <br />
     <table>
       <tr>
-        <td><img src="assets/wifi.png" alt="Wi-Fi Menu" /></td>
+        <td><img src="https://github.com/user-attachments/assets/0a93980d-9978-4f11-bad2-aca71eadce46" alt="Wi-Fi Menu" /></td>
       </tr>
       <tr>
-        <td><img src="assets/bluetooth.png" alt="Bluetooth Menu" /></td>
+        <td><img src="https://github.com/user-attachments/assets/59532fc9-2c99-495f-8379-23a3a7c73712" alt="Bluetooth Menu" /></td>
       </tr>
       <tr>
-        <td><img src="assets/tui.png" alt="NMTUI and BlueTUI" /></td>
+        <td><img src="https://github.com/user-attachments/assets/7be2fb45-7437-4155-9c62-770592eeeb9c" alt="NMTUI and BlueTUI" /></td>
       </tr>
     </table>
   </details>
@@ -28,10 +28,10 @@
     <br />
     <table>
       <tr>
-        <td><img src="assets/logout-1.png" alt="Logout Menu 1" /></td>
+        <td><img src="https://github.com/user-attachments/assets/9095ebeb-e1ac-4fd5-a233-1fd25f41ae30" alt="Logout Menu 1" /></td>
       </tr>
       <tr>
-        <td><img src="assets/logout-2.png" alt="Logout Menu 2" /></td>
+        <td><img src="https://github.com/user-attachments/assets/cf7b50ab-763a-487c-957c-dd3fd40d8c08" alt="Logout Menu 2" /></td>
       </tr>
     </table>
   </details>
