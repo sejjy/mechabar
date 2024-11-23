@@ -24,7 +24,7 @@
   </details>
 
   <details>
-    <summary><strong>&nbsp;⏸️ Logout Menu</strong></summary>
+    <summary><strong>&nbsp;⏸️ Logout Menu</strong> (optional)</summary>
     <br />
     <table>
       <tr>
@@ -83,7 +83,7 @@ A mecha-themed **[Waybar](https://github.com/Alexays/Waybar)** configuration ini
    ./install.sh
    ```
 
-   This backs up existing files, installs all necessary dependencies, configurations, and scripts.
+   This backs up existing folders (`waybar`, `rofi`, `wlogout`) and installs all [dependencies](#dependencies), configuration files, and scripts.
 
 #
 
