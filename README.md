@@ -24,7 +24,7 @@
   </details>
 
   <details>
-    <summary><strong>&nbsp;⏸️ Logout Menu</strong> (optional)</summary>
+    <summary><strong>&nbsp;⏸️ Logout Menu</strong> (WIP)</summary>
     <br />
     <table>
       <tr>
@@ -200,7 +200,7 @@ Here are some features and improvements planned for future versions:
 - [ ] Theme switcher
 - [x] Install script
 - [x] Rofi Bluetooth menu
-- [x] Improved logout menu
+- [ ] Improved logout menu
 
 ## Credits
 
