@@ -31,7 +31,7 @@
         <td><img src="https://github.com/user-attachments/assets/9095ebeb-e1ac-4fd5-a233-1fd25f41ae30" alt="Logout Menu 1" /></td>
       </tr>
       <tr>
-        <td><img src="https://github.com/user-attachments/assets/cf7b50ab-763a-487c-957c-dd3fd40d8c08" alt="Logout Menu 2" /></td>
+        <td><img src="https://github.com/user-attachments/assets/d702d59e-1110-4b12-b42f-326193776c26" alt="Logout Menu 2" /></td>
       </tr>
     </table>
   </details>
