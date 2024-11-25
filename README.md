@@ -1,59 +1,79 @@
 <div align="center">
-  <h1>🤖 Mechabar</h1>
+  <h1>Mechabar 🤖</h1>
 
   <table>
     <tr>
-      <td><img src="https://github.com/user-attachments/assets/db1b6e0c-adb0-4340-a809-9b3f72494a38" alt="Preview 1" /></td>
+      <td><img src="assets/v1.0.0.png" alt="Preview 1" /></td>
     </tr>
   </table>
 
   <details>
-    <summary><strong>&nbsp;🛜 Wi-Fi</strong> &amp; <strong>Bluetooth Menu</strong></summary>
-    <br />
+    <summary>
+      <strong>&nbsp;🛜 Wi-Fi</strong> and <strong>Bluetooth Menu</strong>
+    </summary>
+    <p></p>
+    <p>
+      <code>on-click</code><strong>: <code>rofi</code></strong>
+    </p>
     <table>
       <tr>
-        <td><img src="https://github.com/user-attachments/assets/0a93980d-9978-4f11-bad2-aca71eadce46" alt="Wi-Fi Menu" /></td>
-        <td><img src="https://github.com/user-attachments/assets/59532fc9-2c99-495f-8379-23a3a7c73712" alt="Bluetooth Menu" /></td>
+        <td><img src="assets/wifi-menu.png" alt="Wi-Fi Menu" /></td>
+      </tr>
+      <tr>
+        <td><img src="assets/bluetooth-menu.png" alt="Bluetooth Menu" /></td>
+      </tr>
+    </table>
+    <p>
+      <code>on-click-right</code><strong>: <code>nmtui</code></strong> and
+      <strong><code>bluetui</code></strong>
+    </p>
+    <table>
+      <tr>
+        <td>
+          <img src="assets/wifi-bluetooth-tui.png" alt="Bluetooth Menu" />
+        </td>
       </tr>
     </table>
   </details>
 
   <details>
     <summary><strong>&nbsp;⏸️ Logout Menu</strong></summary>
-    <br />
+    <p></p>
+    <p>
+      <code>on-click</code>: <strong><code>wlogout</code></strong>
+    </p>
     <table>
       <tr>
-        <td><img src="https://github.com/user-attachments/assets/86280de2-46e7-4176-ae5b-9831712c4ab2" alt="Logout Menu" /></td>
+        <td><img src="assets/logout-menu.png" alt="Logout Menu" /></td>
       </tr>
     </table>
   </details>
 
-<a href="https://github.com/sejjy/mechabar/stargazers#gh-dark-mode-only"
+  <a href="https://github.com/sejjy/mechabar/stargazers#gh-dark-mode-only"
     ><img
       src="https://img.shields.io/github/stars/sejjy/mechabar?colorA=1e1e2e&colorB=f9e2af&style=for-the-badge"
   /></a>
-<a href="https://github.com/sejjy/mechabar/commits#gh-dark-mode-only"
+  <a href="https://github.com/sejjy/mechabar/commits#gh-dark-mode-only"
     ><img
       src="https://img.shields.io/github/last-commit/sejjy/mechabar?colorA=1e1e2e&colorB=a6e3a1&style=for-the-badge"
   /></a>
-<a href="https://github.com/sejjy/mechabar/contributors#gh-dark-mode-only"
+  <a href="https://github.com/sejjy/mechabar/contributors#gh-dark-mode-only"
     ><img
       src="https://img.shields.io/github/contributors/sejjy/mechabar?colorA=1e1e2e&colorB=b4befe&style=for-the-badge"
   /></a>
 
-<a href="https://github.com/sejjy/mechabar/stargazers#gh-light-mode-only"
+  <a href="https://github.com/sejjy/mechabar/stargazers#gh-light-mode-only"
     ><img
       src="https://img.shields.io/github/stars/sejjy/mechabar?colorA=cdd6f4&colorB=f9e2af&style=for-the-badge"
   /></a>
-<a href="https://github.com/sejjy/mechabar/commits#gh-light-mode-only"
+  <a href="https://github.com/sejjy/mechabar/commits#gh-light-mode-only"
     ><img
       src="https://img.shields.io/github/last-commit/sejjy/mechabar?colorA=cdd6f4&colorB=a6e3a1&style=for-the-badge"
   /></a>
-<a href="https://github.com/sejjy/mechabar/contributors#gh-light-mode-only"
+  <a href="https://github.com/sejjy/mechabar/contributors#gh-light-mode-only"
     ><img
       src="https://img.shields.io/github/contributors/sejjy/mechabar?colorA=cdd6f4&colorB=b4befe&style=for-the-badge"
   /></a>
-
 </div>
 
 A mecha-themed **[Waybar](https://github.com/Alexays/Waybar)** configuration initially designed for **[Hyprland](https://github.com/hyprwm/Hyprland)**, but also compatible with **Sway** and other **Wlroots-based compositors** with minimal adjustments. Contributions are welcome, including opening **[issues](https://github.com/sejjy/mechabar/issues)**, submitting **[pull requests](https://github.com/sejjy/mechabar/pulls)** for bug fixes or enhancements, and adding support for other distributions and compositors through new branches.
@@ -81,7 +101,7 @@ A mecha-themed **[Waybar](https://github.com/Alexays/Waybar)** configuration ini
 
 ### Manual
 
-#### Dependencies
+#### I. Dependencies
 
 - Required:
 
@@ -119,7 +139,7 @@ A mecha-themed **[Waybar](https://github.com/Alexays/Waybar)** configuration ini
 
 #
 
-#### Installation
+#### II. Installation
 
 1. **Clone the repository:**
 
@@ -197,5 +217,6 @@ Here are some features and improvements planned for future versions:
 ## Credits
 
 - The original files in the [modules](/modules/) folder are from [prasanthrangan / hyprdots](https://github.com/prasanthrangan/hyprdots).
-- Icons: [ryanoasis / nerd-fonts](https://github.com/ryanoasis/nerd-fonts)
+- Waybar icons: [ryanoasis / nerd-fonts](https://github.com/ryanoasis/nerd-fonts)
+- Wlogout icons: [freepik-company / flaticon-uicons](https://github.com/freepik-company/flaticon-uicons)
 - Color palette: [catppuccin / catppuccin](https://github.com/catppuccin/catppuccin) (Mocha)
