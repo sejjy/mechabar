@@ -24,14 +24,11 @@
   </details>
 
   <details>
-    <summary><strong>&nbsp;⏸️ Logout Menu</strong> (WIP)</summary>
+    <summary><strong>&nbsp;⏸️ Logout Menu</strong></summary>
     <br />
     <table>
       <tr>
-        <td><img src="https://github.com/user-attachments/assets/9095ebeb-e1ac-4fd5-a233-1fd25f41ae30" alt="Logout Menu 1" /></td>
-      </tr>
-      <tr>
-        <td><img src="https://github.com/user-attachments/assets/d702d59e-1110-4b12-b42f-326193776c26" alt="Logout Menu 2" /></td>
+        <td><img src="https://github.com/user-attachments/assets/86280de2-46e7-4176-ae5b-9831712c4ab2" alt="Logout Menu" /></td>
       </tr>
     </table>
   </details>
@@ -200,7 +197,7 @@ Here are some features and improvements planned for future versions:
 - [ ] Theme switcher
 - [x] Install script
 - [x] Rofi Bluetooth menu
-- [ ] Improved logout menu
+- [x] Improved logout menu
 
 ## Credits
 
