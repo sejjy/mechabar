@@ -13,12 +13,7 @@
     <table>
       <tr>
         <td><img src="https://github.com/user-attachments/assets/0a93980d-9978-4f11-bad2-aca71eadce46" alt="Wi-Fi Menu" /></td>
-      </tr>
-      <tr>
         <td><img src="https://github.com/user-attachments/assets/59532fc9-2c99-495f-8379-23a3a7c73712" alt="Bluetooth Menu" /></td>
-      </tr>
-      <tr>
-        <td><img src="https://github.com/user-attachments/assets/7be2fb45-7437-4155-9c62-770592eeeb9c" alt="NMTUI and BlueTUI" /></td>
       </tr>
     </table>
   </details>
