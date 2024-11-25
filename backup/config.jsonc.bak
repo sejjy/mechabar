@@ -373,8 +373,10 @@
   "custom/power": {
     "format": " ",
     "tooltip": false,
-    "on-click": "~/.local/share/bin/logout-menu.sh 2",
-    "on-click-right": "~/.local/share/bin/logout-menu.sh 1"
+
+    // Change this if you prefer your own wlogout config
+    // or if you use a different logout menu.
+    "on-click": "~/.local/share/bin/logout-menu.sh"
   },
 
   // === Padding ===
