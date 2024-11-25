@@ -16,7 +16,7 @@ x_center=$((monitor_res[0] / 2))
 y_center=$((monitor_res[1] / 2))
 
 # Rofi configuration
-config="$HOME/.config/rofi/network-menu.rasi"
+config="$HOME/.config/rofi/wifi-bluetooth-menu.rasi"
 override="window { anchor: center; x-offset: -${x_center}px; y-offset: -${y_center}px; }"
 
 # Initial notification

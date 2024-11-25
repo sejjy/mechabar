@@ -1,7 +1,7 @@
 configuration {
   modi:                     "drun";
   show-icons:               false;
-  font:                     "JetBrainsMono Nerd Font 9";
+  font:                     "JetBrainsMono Nerd Font Bold 9";
 }
 
 @theme "~/.config/rofi/theme.rasi"
