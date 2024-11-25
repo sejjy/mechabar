@@ -95,7 +95,7 @@ A mecha-themed **[Waybar](https://github.com/Alexays/Waybar)** configuration ini
    ./install.sh
    ```
 
-   This backs up existing folders (**waybar**, **rofi**, **wlogout**) and installs all [dependencies](#dependencies), configuration files, and scripts.
+   This backs up existing folders (**waybar**, **rofi**, **wlogout**) and installs all [dependencies](#i-dependencies), configuration files, and scripts.
 
 #
 
