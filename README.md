@@ -49,31 +49,32 @@
     </table>
   </details>
 
-  <a href="https://github.com/sejjy/mechabar/stargazers#gh-dark-mode-only"
+<a href="https://github.com/sejjy/mechabar/stargazers#gh-dark-mode-only"
     ><img
       src="https://img.shields.io/github/stars/sejjy/mechabar?colorA=1e1e2e&colorB=f9e2af&style=for-the-badge"
   /></a>
-  <a href="https://github.com/sejjy/mechabar/commits#gh-dark-mode-only"
+<a href="https://github.com/sejjy/mechabar/commits#gh-dark-mode-only"
     ><img
       src="https://img.shields.io/github/last-commit/sejjy/mechabar?colorA=1e1e2e&colorB=a6e3a1&style=for-the-badge"
   /></a>
-  <a href="https://github.com/sejjy/mechabar/contributors#gh-dark-mode-only"
+<a href="https://github.com/sejjy/mechabar/contributors#gh-dark-mode-only"
     ><img
       src="https://img.shields.io/github/contributors/sejjy/mechabar?colorA=1e1e2e&colorB=b4befe&style=for-the-badge"
   /></a>
 
-  <a href="https://github.com/sejjy/mechabar/stargazers#gh-light-mode-only"
+<a href="https://github.com/sejjy/mechabar/stargazers#gh-light-mode-only"
     ><img
       src="https://img.shields.io/github/stars/sejjy/mechabar?colorA=cdd6f4&colorB=f9e2af&style=for-the-badge"
   /></a>
-  <a href="https://github.com/sejjy/mechabar/commits#gh-light-mode-only"
+<a href="https://github.com/sejjy/mechabar/commits#gh-light-mode-only"
     ><img
       src="https://img.shields.io/github/last-commit/sejjy/mechabar?colorA=cdd6f4&colorB=a6e3a1&style=for-the-badge"
   /></a>
-  <a href="https://github.com/sejjy/mechabar/contributors#gh-light-mode-only"
+<a href="https://github.com/sejjy/mechabar/contributors#gh-light-mode-only"
     ><img
       src="https://img.shields.io/github/contributors/sejjy/mechabar?colorA=cdd6f4&colorB=b4befe&style=for-the-badge"
   /></a>
+
 </div>
 
 A mecha-themed **[Waybar](https://github.com/Alexays/Waybar)** configuration initially designed for **[Hyprland](https://github.com/hyprwm/Hyprland)**, but also compatible with **Sway** and other **Wlroots-based compositors** with minimal adjustments. Contributions are welcome, including opening **[issues](https://github.com/sejjy/mechabar/issues)**, submitting **[pull requests](https://github.com/sejjy/mechabar/pulls)** for bug fixes or enhancements, and adding support for other distributions and compositors through new branches.
@@ -103,23 +104,13 @@ A mecha-themed **[Waybar](https://github.com/Alexays/Waybar)** configuration ini
 
 #### I. Dependencies
 
-- Required:
+```bash
+sudo pacman -S bluez-utils brightnessctl jq pipewire python ttf-jetbrains-mono-nerd wireplumber
+```
 
-  ```bash
-  sudo pacman -S bluez-utils brightnessctl jq python
-  ```
-
-  With alternatives:
-
-  ```bash
-  sudo pacman -S pipewire ttf-jetbrains-mono-nerd wireplumber
-  ```
-
-- Optional (but recommended):
-
-  ```bash
-  yay -S bluetui rofi-lbonn-wayland-git wlogout
-  ```
+```bash
+yay -S bluetui rofi-lbonn-wayland-git wlogout
+```
 
 | Package                   | Description                                                                               |
 | ------------------------- | ----------------------------------------------------------------------------------------- |
@@ -132,7 +123,7 @@ A mecha-themed **[Waybar](https://github.com/Alexays/Waybar)** configuration ini
 | `rofi-lbonn-wayland-git`  | A window switcher, application launcher and dmenu replacement (fork with Wayland support) |
 | `ttf-jetbrains-mono-nerd` | Patched font JetBrains Mono from the nerd fonts library                                   |
 | `wireplumber`             | Session/policy manager implementation for PipeWire                                        |
-| `wlogout`                 | Logout menu for Wayland                                                                   |
+| `wlogout` (optional)      | Logout menu for Wayland                                                                   |
 
 > [!IMPORTANT]
 > If you use alternatives, you may need to modify the [scripts](/scripts/) and configuration files accordingly.
