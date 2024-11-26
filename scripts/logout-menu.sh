@@ -23,10 +23,10 @@ height=$(hyprctl -j monitors | jq '.[] | select(.focused==true) | .height')
 scale=$(hyprctl -j monitors | jq '.[] | select(.focused == true) | .scale' | sed 's/\.//')
 
 # Calculate margins
-export x_margin=$((width * 32 / scale))
-export y_margin=$((height * 28 / scale))
+export x_margin=$((width * 39 / scale))
+export y_margin=$((height * 21 / scale))
 
 stylesheet=$(envsubst <"$style")
 
 # Launch wlogout
-wlogout -b 3 -c 0 -r 0 -m 0 --layout "${layout}" --css <(echo "${stylesheet}") --protocol layer-shell
+wlogout -b 2 -c 0 -r 0 -m 0 --layout "${layout}" --css <(echo "${stylesheet}") --protocol layer-shell
