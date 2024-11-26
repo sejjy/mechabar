@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# Exit on error
+# exit on error
 set -e
 
 if [ "$(basename "$PWD")" != "mechabar" ]; then
@@ -13,7 +13,7 @@ if ! command -v pacman &>/dev/null; then
   exit 1
 fi
 
-backup() {
+backup_files() {
   printf "\n\033[1;34mBacking up existing config files...\033[0m\n"
 
   CONFIG_DIR=~/.config
@@ -35,8 +35,7 @@ backup() {
   done
 }
 
-# Check if a package is already installed
-check_package() {
+check_packages() {
   if pacman -Qi "$1" &>/dev/null; then
     printf "\033[1;33m%s is already installed.\033[0m\n" "$1"
   else
@@ -45,8 +44,7 @@ check_package() {
   fi
 }
 
-# Check if an AUR package is installed
-check_aur_package() {
+check_aur_packages() {
   AUR_HELPER=$(get_aur_helper)
 
   if $AUR_HELPER -Qi "$1" &>/dev/null; then
@@ -74,7 +72,6 @@ get_aur_helper() {
   fi
 }
 
-# Install required dependencies
 install_dependencies() {
   printf "\n\033[1;32mInstalling dependencies...\033[0m\n"
 
@@ -83,19 +80,17 @@ install_dependencies() {
   )
 
   for PACKAGE in "${DEPENDENCIES[@]}"; do
-    check_package "$PACKAGE"
+    check_packages "$PACKAGE"
   done
 }
 
-# Install optional dependencies
-install_optional() {
-  printf "\n\033[1;32mUsing %s to install optional dependencies...\033[0m\n" "$(get_aur_helper)"
-  check_aur_package bluetui
-  check_aur_package rofi-lbonn-wayland-git
-  check_aur_package wlogout
+install_aur_packages() {
+  printf "\n\033[1;32mUsing %s to install AUR packages...\033[0m\n" "$(get_aur_helper)"
+  check_aur_packages bluetui
+  check_aur_packages rofi-lbonn-wayland-git
+  check_aur_packages wlogout
 }
 
-# Copy configuration files
 copy_configs() {
   printf "\n\033[1;32mCopying config files...\033[0m\n"
 
@@ -111,7 +106,6 @@ copy_configs() {
   cp -r wlogout/* ~/.config/wlogout/
 }
 
-# Setup scripts
 setup_scripts() {
   printf "\n\033[1;32mSetting up scripts...\033[0m\n"
 
@@ -128,7 +122,6 @@ setup_scripts() {
   chmod +x ~/.local/share/bin/*
 }
 
-# Restart Waybar to apply changes
 restart_waybar() {
   printf "\n\033[1;32mRestarting Waybar...\033[0m\n"
 
@@ -137,9 +130,9 @@ restart_waybar() {
 }
 
 main() {
-  backup
+  backup_files
   install_dependencies
-  install_optional
+  install_aur_packages
   copy_configs
   setup_scripts
   restart_waybar
