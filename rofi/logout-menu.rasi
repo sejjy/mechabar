@@ -6,25 +6,27 @@ configuration {
 
 @theme "~/.config/rofi/theme.rasi"
 
-/* ------------------------- Main Window ------------------------- */
+/* ----------------------- Main Window ----------------------- */
 
 window {
   enabled:                  true;
-  location:                 north;
-  anchor:                   south;
+  location:                 northeast;
+  anchor:                   north;
   y-offset:                 3px;
-  width:                    250px;
+  x-offset:                 -3px;
+  height:                   192px;
+  width:                    150px;
   fullscreen:               false;
   transparency:             "real";
   border:                   2px;
   border-radius:            0;
   border-color:             @main-br;
   background-color:         @main-bg;
-
+  
   children:                 [ "mainbox" ];
 }
 
-/* ----------------------- Main Container ------------------------ */
+/* ---------------------- Main Container ---------------------- */
 
 mainbox {
   enabled:                  true;
@@ -32,55 +34,21 @@ mainbox {
   padding:                  2.2px 0;
   background-color:         inherit;
   text-color:               @main-fg;
-
-  children:                 [ "wallbox", "listbox" ];
+  
+  children:                 [ "listbox" ];
 }
 
-/* ----------------------- Input Container ----------------------- */
-
-wallbox {
-  enabled:                  false;
-  orientation:              horizontal;
-  expand:                   false;
-  margin:                   8px 8px;
-  padding:                  -22px;
-  border-radius:            0;
-  background-color:         @input-bg;
-
-  children:                 [ "inputbar" ];
-}
-
-/* --------------------------- Input Bar ------------------------- */
-
-inputbar {
-  enabled:                  true;
-  expand:                   true;
-  background-color:         inherit;
-
-  children:                 [ "entry" ];
-}
-
-/* ---------------------------- Entry ---------------------------- */
-
-entry {
-  enabled:                  true;
-  padding:                  28.8px;
-  cursor:                   text;
-  background-color:         inherit;
-  text-color:               @main-fg;
-}
-
-/* ----------------------- List Container ------------------------ */
+/* ------------------------ List Container -------------------- */
 
 listbox {
   enabled:                  true;
   orientation:              vertical;
   background-color:         inherit;
-
+  
   children:                 [ "listview" ];
 }
 
-/* -------------------------- List View -------------------------- */
+/* ------------------------- List View ------------------------ */
 
 listview {
   enabled:                  true;
@@ -92,14 +60,12 @@ listview {
   expand:                   false;
   reverse:                  false;
   columns:                  1;
-  lines:                    7;
+  lines:                    6;
   padding:                  6.4px 8px;
-  spacing:                  0;
   background-color:         inherit;
-  scrollbar:                false;
 }
 
-/* ------------------------ List Elements ------------------------ */
+/* ---------------------- List Elements ----------------------- */
 
 element {
   enabled:                  true;
@@ -115,12 +81,10 @@ element selected.normal {
   text-color:               @select-fg;
 }
 
-/* ----------------------- Element Text -------------------------- */
+/* ---------------------- Element Text ------------------------ */
 
 element-text {
   enabled:                  true;
-  vertical-align:           0;
-  horizontal-align:         0;
   cursor:                   inherit;
   background-color:         transparent;
   text-color:               inherit;
