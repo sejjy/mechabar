@@ -1,32 +1,39 @@
 #!/usr/bin/env bash
 
-# Check if wlogout is already running
-if pgrep -x "wlogout" >/dev/null; then
-  pkill -x "wlogout"
-  exit 0
-fi
+config="$HOME/.config/rofi/logout-menu.rasi"
 
-# File paths
-config="$HOME/.config/wlogout"
-layout="${config}/layout"
-style="${config}/style.css"
+actions=$(
+  cat <<EOF
+   Lock
+   Shutdown
+   Reboot
+ 󰏦  Suspend
+   Hibernate
+   Logout
+EOF
+)
 
-# Check if required configuration files exist
-if [ ! -f "${layout}" ] || [ ! -f "${style}" ]; then
-  echo "ERROR: Required configuration files not found."
-  exit 1
-fi
+# Display logout menu
+selected_option=$(echo -e "$actions" | rofi -dmenu -i -config "${config}")
 
-# Get monitor information
-width=$(hyprctl -j monitors | jq '.[] | select(.focused==true) | .width')
-height=$(hyprctl -j monitors | jq '.[] | select(.focused==true) | .height')
-scale=$(hyprctl -j monitors | jq '.[] | select(.focused == true) | .scale' | sed 's/\.//')
-
-# Calculate margins
-export x_margin=$((width * 39 / scale))
-export y_margin=$((height * 21 / scale))
-
-stylesheet=$(envsubst <"$style")
-
-# Launch wlogout
-wlogout -b 2 -c 0 -r 0 -m 0 --layout "${layout}" --css <(echo "${stylesheet}") --protocol layer-shell
+# Perform actions based on the selected option
+case "$selected_option" in
+"   Lock")
+  hyprlock
+  ;;
+"   Shutdown")
+  systemctl poweroff
+  ;;
+"   Reboot")
+  systemctl reboot
+  ;;
+" 󰏦  Suspend")
+  systemctl suspend
+  ;;
+"   Hibernate")
+  systemctl hibernate
+  ;;
+"   Logout")
+  hyprctl dispatch exit 0
+  ;;
+esac
