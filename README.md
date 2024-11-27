@@ -9,9 +9,10 @@
 
   <details>
     <summary>
-      <strong>&nbsp;🛜 Wi-Fi</strong> and <strong>Bluetooth Menu</strong>
+      <strong>&nbsp;🚀 Rofi Menus</strong>
     </summary>
     <p></p>
+    <p><strong>&nbsp;🛜 Wi-Fi</strong> and <strong>Bluetooth</strong></p>
     <p>
       <code>on-click</code><strong>: <code>rofi</code></strong>
     </p>
@@ -34,13 +35,9 @@
         </td>
       </tr>
     </table>
-  </details>
-
-  <details>
-    <summary><strong>&nbsp;⏸️ Logout Menu</strong></summary>
-    <p></p>
+    <p><strong>&nbsp;⏸️ Logout</strong></p>
     <p>
-      <code>on-click</code>: <strong><code>wlogout</code></strong>
+      <code>on-click</code><strong>: <code>rofi</code></strong>
     </p>
     <table>
       <tr>
@@ -49,33 +46,33 @@
     </table>
   </details>
 
-<a href="https://github.com/sejjy/mechabar/stargazers#gh-dark-mode-only"
+  <a href="https://github.com/sejjy/mechabar/stargazers#gh-dark-mode-only"
     ><img
       src="https://img.shields.io/github/stars/sejjy/mechabar?colorA=1e1e2e&colorB=f9e2af&style=for-the-badge"
   /></a>
-<a href="https://github.com/sejjy/mechabar/commits#gh-dark-mode-only"
+  <a href="https://github.com/sejjy/mechabar/commits#gh-dark-mode-only"
     ><img
       src="https://img.shields.io/github/last-commit/sejjy/mechabar?colorA=1e1e2e&colorB=a6e3a1&style=for-the-badge"
   /></a>
-<a href="https://github.com/sejjy/mechabar/contributors#gh-dark-mode-only"
+  <a href="https://github.com/sejjy/mechabar/contributors#gh-dark-mode-only"
     ><img
       src="https://img.shields.io/github/contributors/sejjy/mechabar?colorA=1e1e2e&colorB=b4befe&style=for-the-badge"
   /></a>
 
-<a href="https://github.com/sejjy/mechabar/stargazers#gh-light-mode-only"
+  <a href="https://github.com/sejjy/mechabar/stargazers#gh-light-mode-only"
     ><img
       src="https://img.shields.io/github/stars/sejjy/mechabar?colorA=cdd6f4&colorB=f9e2af&style=for-the-badge"
   /></a>
-<a href="https://github.com/sejjy/mechabar/commits#gh-light-mode-only"
+  <a href="https://github.com/sejjy/mechabar/commits#gh-light-mode-only"
     ><img
       src="https://img.shields.io/github/last-commit/sejjy/mechabar?colorA=cdd6f4&colorB=a6e3a1&style=for-the-badge"
   /></a>
-<a href="https://github.com/sejjy/mechabar/contributors#gh-light-mode-only"
+  <a href="https://github.com/sejjy/mechabar/contributors#gh-light-mode-only"
     ><img
       src="https://img.shields.io/github/contributors/sejjy/mechabar?colorA=cdd6f4&colorB=b4befe&style=for-the-badge"
   /></a>
-
 </div>
+
 
 A mecha-themed **[Waybar](https://github.com/Alexays/Waybar)** configuration initially designed for **[Hyprland](https://github.com/hyprwm/Hyprland)**, but also compatible with **Sway** and other **Wlroots-based compositors** with minimal adjustments. Contributions are welcome, including opening **[issues](https://github.com/sejjy/mechabar/issues)**, submitting **[pull requests](https://github.com/sejjy/mechabar/pulls)** for bug fixes or enhancements, and adding support for other distributions and compositors through new branches.
 
@@ -96,7 +93,7 @@ A mecha-themed **[Waybar](https://github.com/Alexays/Waybar)** configuration ini
    ./install.sh
    ```
 
-   This backs up existing folders (**waybar**, **rofi**, **wlogout**) and installs all [dependencies](#i-dependencies), configuration files, and scripts.
+   This backs up existing folders and installs all [dependencies](#i-dependencies), configuration files, and scripts.
 
 #
 
@@ -105,11 +102,11 @@ A mecha-themed **[Waybar](https://github.com/Alexays/Waybar)** configuration ini
 #### I. Dependencies
 
 ```bash
-sudo pacman -S bluez-utils brightnessctl jq pipewire python ttf-jetbrains-mono-nerd wireplumber
+sudo pacman -S bluez-utils brightnessctl hyprlock pipewire python ttf-jetbrains-mono-nerd wireplumber
 ```
 
 ```bash
-yay -S bluetui rofi-lbonn-wayland-git wlogout
+yay -S bluetui rofi-lbonn-wayland-git
 ```
 
 | Package                   | Description                                                                               |
@@ -117,13 +114,12 @@ yay -S bluetui rofi-lbonn-wayland-git wlogout
 | `bluetui`                 | TUI for managing bluetooth devices                                                        |
 | `bluez-utils`             | Development and debugging utilities for the bluetooth protocol stack                      |
 | `brightnessctl`           | Lightweight brightness control tool                                                       |
-| `jq`                      | Command-line JSON processor                                                               |
+| `hyprlock` (optional)     | Hyprland's GPU-accelerated screen locking utility                                         |
 | `pipewire`                | Low-latency audio/video router and processor                                              |
 | `python`                  | The Python programming language                                                           |
 | `rofi-lbonn-wayland-git`  | A window switcher, application launcher and dmenu replacement (fork with Wayland support) |
 | `ttf-jetbrains-mono-nerd` | Patched font JetBrains Mono from the nerd fonts library                                   |
 | `wireplumber`             | Session/policy manager implementation for PipeWire                                        |
-| `wlogout` (optional)      | Logout menu for Wayland                                                                   |
 
 > [!IMPORTANT]
 > If you use alternatives, you may need to modify the [scripts](/scripts/) and configuration files accordingly.
@@ -146,42 +142,20 @@ yay -S bluetui rofi-lbonn-wayland-git wlogout
    cp config.jsonc style.css theme.css ~/.config/waybar/
    ```
 
-   Rofi:
-
    ```bash
    mkdir -p ~/.config/rofi
    cp rofi/* ~/.config/rofi/
    ```
 
-   Wlogout:
-
-   ```bash
-   mkdir -p ~/.config/wlogout
-   cp -r wlogout/* ~/.config/wlogout/
-   ```
-
 3. **Setup scripts:**
 
-   Waybar-exclusive:
-
    ```bash
-   cd scripts
    mkdir -p ~/.config/waybar/scripts/
-   cp bluetooth-menu.sh cpu-temp.sh cpu-usage.sh media-player.py system-update.sh wifi-menu.sh wifi-status.sh ~/.config/waybar/scripts/
+   cp scripts/* ~/.config/waybar/scripts/
    ```
-
-   System-wide:
-
-   ```bash
-   mkdir -p ~/.local/share/bin/
-   cp brightness-control.sh logout-menu.sh volume-control.sh ~/.local/share/bin/
-   ```
-
-   Make scripts executable:
 
    ```bash
    chmod +x ~/.config/waybar/scripts/*
-   chmod +x ~/.local/share/bin/*
    ```
 
 4. **Restart Waybar to apply the changes:**
@@ -193,7 +167,7 @@ yay -S bluetui rofi-lbonn-wayland-git wlogout
 
 ## Customization
 
-- You can change the colors in [theme.css](/theme.css) (for Waybar and Wlogout) and [theme.rasi](/rofi/theme.rasi) (for Rofi) to match your system theme.
+- You can change the colors in [theme.css](/theme.css) and [theme.rasi](/rofi/theme.rasi) to match your system theme.
 - You can remove existing modules or add new ones from the [modules](/modules/) folder. For a complete list of available modules, visit the [Waybar Wiki](https://github.com/Alexays/Waybar/wiki).
 
 ## Roadmap
@@ -203,11 +177,10 @@ Here are some features and improvements planned for future versions:
 - [ ] Theme switcher
 - [x] Install script
 - [x] Rofi Bluetooth menu
-- [x] Improved logout menu
+- [x] Rofi logout menu
 
 ## Credits
 
 - The original files in the [modules](/modules/) folder are from [prasanthrangan / hyprdots](https://github.com/prasanthrangan/hyprdots).
-- Waybar icons: [ryanoasis / nerd-fonts](https://github.com/ryanoasis/nerd-fonts)
-- Wlogout icons: [freepik-company / flaticon-uicons](https://github.com/freepik-company/flaticon-uicons)
+- Icons: [ryanoasis / nerd-fonts](https://github.com/ryanoasis/nerd-fonts)
 - Color palette: [catppuccin / catppuccin](https://github.com/catppuccin/catppuccin) (Mocha)
