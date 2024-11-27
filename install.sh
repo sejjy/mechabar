@@ -21,7 +21,6 @@ backup_files() {
   declare -A FOLDERS=(
     ["waybar"]="waybar-backup-$TIMESTAMP"
     ["rofi"]="rofi-backup-$TIMESTAMP"
-    ["wlogout"]="wlogout-backup-$TIMESTAMP"
   )
 
   for SRC in "${!FOLDERS[@]}"; do
@@ -63,10 +62,10 @@ get_aur_helper() {
     echo "paru"
   else
     printf "\n\033[1;31mNeither yay nor paru were found. Install one to proceed:\033[0m\n"
-    printf "\033[1;32mFor yay: \033[0msudo pacman -S --needed git base-devel && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si\n"
-    printf "\033[1;32mFor paru: \033[0msudo pacman -S --needed base-devel && git clone https://aur.archlinux.org/paru.git && cd paru && makepkg -si\n"
+    printf "\033[1;32myay: \033[0msudo pacman -S --needed git base-devel && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si\n"
+    printf "\033[1;32mparu: \033[0msudo pacman -S --needed base-devel && git clone https://aur.archlinux.org/paru.git && cd paru && makepkg -si\n"
     printf "\n\033[1;31mor use your preferred AUR helper to install these packages:\033[0m\n"
-    printf "rofi-lbonn-wayland-git\nwlogout\n"
+    printf "bluetui\nrofi-lbonn-wayland-git\n"
     printf "\n\033[1;33mOnce installed, rerun the script.\033[0m\n"
     exit 1
   fi
@@ -76,7 +75,7 @@ install_dependencies() {
   printf "\n\033[1;32mInstalling dependencies...\033[0m\n"
 
   DEPENDENCIES=(
-    bluez-utils brightnessctl jq pipewire python ttf-jetbrains-mono-nerd wireplumber
+    bluez-utils brightnessctl hyprlock pipewire python ttf-jetbrains-mono-nerd wireplumber
   )
 
   for PACKAGE in "${DEPENDENCIES[@]}"; do
@@ -88,7 +87,6 @@ install_aur_packages() {
   printf "\n\033[1;32mUsing %s to install AUR packages...\033[0m\n" "$(get_aur_helper)"
   check_aur_packages bluetui
   check_aur_packages rofi-lbonn-wayland-git
-  check_aur_packages wlogout
 }
 
 copy_configs() {
@@ -97,29 +95,17 @@ copy_configs() {
   mkdir -p ~/.config/waybar/
   cp config.jsonc style.css theme.css ~/.config/waybar/
 
-  # Rofi
   mkdir -p ~/.config/rofi
   cp rofi/* ~/.config/rofi/
-
-  # Wlogout
-  mkdir -p ~/.config/wlogout
-  cp -r wlogout/* ~/.config/wlogout/
 }
 
 setup_scripts() {
   printf "\n\033[1;32mSetting up scripts...\033[0m\n"
 
-  # Waybar-exclusive
   mkdir -p ~/.config/waybar/scripts/
-  cp scripts/bluetooth-menu.sh scripts/cpu-temp.sh scripts/cpu-usage.sh scripts/media-player.py scripts/system-update.sh scripts/wifi-menu.sh scripts/wifi-status.sh ~/.config/waybar/scripts/
+  cp scripts/* ~/.config/waybar/scripts/
 
-  # System-wide
-  mkdir -p ~/.local/share/bin/
-  cp scripts/brightness-control.sh scripts/logout-menu.sh scripts/volume-control.sh ~/.local/share/bin/
-
-  # Make scripts executable
   chmod +x ~/.config/waybar/scripts/*
-  chmod +x ~/.local/share/bin/*
 }
 
 restart_waybar() {
