@@ -1,43 +1,32 @@
 #!/usr/bin/env bash
 
-# REQUIREMENTS:
-# - Rofi: A window switcher/launcher (for UI).
-# - bluetoothctl: A command-line tool for managing Bluetooth.
-# - hyprctl & jq: For getting focused monitor resolution.
-
-# Get monitor resolution and calculate center position
-readarray -t monitor_res < <(hyprctl -j monitors | jq '.[] | select(.focused==true) | .width,.height,.scale')
-
-monitor_res[2]="${monitor_res[2]//./}"
-monitor_res[0]=$((monitor_res[0] * 100 / monitor_res[2]))
-monitor_res[1]=$((monitor_res[1] * 100 / monitor_res[2]))
-
-x_center=$((monitor_res[0] / 2))
-y_center=$((monitor_res[1] / 2))
+# This script allows you to:
+# - Enable or disable Bluetooth.
+# - Scan for available devices.
+# - Connect to a device.
 
 # Rofi configuration
 config="$HOME/.config/rofi/wifi-bluetooth-menu.rasi"
-override="window { anchor: center; x-offset: -${x_center}px; y-offset: -${y_center}px; }"
 
 # Initial notification
 notify-send "Bluetooth" "Searching for available devices..."
 
 while true; do
   # Check Bluetooth status
-  bt_status=$(bluetoothctl show | grep "Powered:" | awk '{print $2}')
+  bluetooth_status=$(bluetoothctl show | grep "Powered:" | awk '{print $2}')
 
-  if [[ "$bt_status" == "yes" ]]; then
+  if [[ "$bluetooth_status" == "yes" ]]; then
     # Fetch available devices (names only)
-    available_devices=$(bluetoothctl devices | awk '{$1=$2=""; print substr($0, 3)}')
-    menu=" 󰂰  Rescan\n 󰂲  Disable Bluetooth\n$(echo "$available_devices" | awk '{print " 󰂱  " $0}')"
-    rofi_theme="entry { placeholder: \"Search\"; } window { height: 250px; }"
+    bluetooth_devices=$(bluetoothctl devices | awk '{$1=$2=""; print substr($0, 3)}')
+    options=" 󰂰  Rescan\n 󰂲  Disable Bluetooth\n$(echo "$bluetooth_devices" | awk '{print " 󰂱  " $0}')"
+    override="entry { placeholder: \"Search\"; } window { height: 182px; } listview { lines: 6; }"
   else
-    menu=" 󰂯  Enable Bluetooth"
-    rofi_theme="window { height: 48px; } mainbox { padding: 40px 0 -32px 0; } inputbar { enabled: false; }"
+    options=" 󰂯  Enable Bluetooth"
+    override="window { height: 47px; }"
   fi
 
   # Display menu using Rofi
-  selected_option=$(echo -e "$menu" | rofi -dmenu -i -selected-row 1 -theme-str "${override}" -config "${config}" -theme-str "${rofi_theme}")
+  selected_option=$(echo -e "$options" | rofi -dmenu -i -selected-row 1 -config "${config}" -theme-str "${override}")
 
   # Exit if no option is selected
   if [ -z "$selected_option" ]; then
@@ -66,15 +55,19 @@ while true; do
     notify-send "Bluetooth" "Device scan completed"
     ;;
   *)
+    # Extract the device name and remove the icon prefix
     device_name=${selected_option// 󰂱  /}
 
     if [[ -n "$device_name" ]]; then
+      # Find the device's MAC address
       device_mac=$(bluetoothctl devices | grep "$device_name" | awk '{print $2}')
 
       # Connect the device
       notify-send "Bluetooth" "Connecting to $device_name..."
       bluetoothctl connect "$device_mac" &
       sleep 3
+
+      # Check connection status
       connection_status=$(bluetoothctl info "$device_mac" | grep "Connected:" | awk '{print $2}')
 
       if [[ "$connection_status" == "yes" ]]; then
