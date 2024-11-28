@@ -1,78 +1,39 @@
 <div align="center">
-  <h1>Mechabar 🤖</h1>
 
-  <table>
-    <tr>
-      <td><img src="assets/v1.0.0.png" alt="Preview 1" /></td>
-    </tr>
-  </table>
+# Mechabar 🤖
 
-  <details>
-    <summary>
-      <strong>&nbsp;🚀 Rofi Menus</strong>
-    </summary>
-    <p></p>
-    <p><strong>&nbsp;🛜 Wi-Fi</strong> and <strong>Bluetooth</strong></p>
-    <p>
-      <code>on-click</code><strong>: <code>rofi</code></strong>
-    </p>
-    <table>
-      <tr>
-        <td><img src="assets/wifi-menu.png" alt="Wi-Fi Menu" /></td>
-      </tr>
-      <tr>
-        <td><img src="assets/bluetooth-menu.png" alt="Bluetooth Menu" /></td>
-      </tr>
-    </table>
-    <p>
-      <code>on-click-right</code><strong>: <code>nmtui</code></strong> and
-      <strong><code>bluetui</code></strong>
-    </p>
-    <table>
-      <tr>
-        <td>
-          <img src="assets/wifi-bluetooth-tui.png" alt="Bluetooth Menu" />
-        </td>
-      </tr>
-    </table>
-    <p><strong>&nbsp;⏸️ Logout</strong></p>
-    <p>
-      <code>on-click</code><strong>: <code>rofi</code></strong>
-    </p>
-    <table>
-      <tr>
-        <td><img src="assets/logout-menu.png" alt="Logout Menu" /></td>
-      </tr>
-    </table>
-  </details>
+| ![Preview 1](assets/v1.0.0.png)                  |
+| :----------------------------------------------: |
 
-  <a href="https://github.com/sejjy/mechabar/stargazers#gh-dark-mode-only"
-    ><img
-      src="https://img.shields.io/github/stars/sejjy/mechabar?colorA=1e1e2e&colorB=f9e2af&style=for-the-badge"
-  /></a>
-  <a href="https://github.com/sejjy/mechabar/commits#gh-dark-mode-only"
-    ><img
-      src="https://img.shields.io/github/last-commit/sejjy/mechabar?colorA=1e1e2e&colorB=a6e3a1&style=for-the-badge"
-  /></a>
-  <a href="https://github.com/sejjy/mechabar/contributors#gh-dark-mode-only"
-    ><img
-      src="https://img.shields.io/github/contributors/sejjy/mechabar?colorA=1e1e2e&colorB=b4befe&style=for-the-badge"
-  /></a>
+<details>
+<summary><strong>&nbsp;🚀 Rofi Menus</strong></summary>
 
-  <a href="https://github.com/sejjy/mechabar/stargazers#gh-light-mode-only"
-    ><img
-      src="https://img.shields.io/github/stars/sejjy/mechabar?colorA=cdd6f4&colorB=f9e2af&style=for-the-badge"
-  /></a>
-  <a href="https://github.com/sejjy/mechabar/commits#gh-light-mode-only"
-    ><img
-      src="https://img.shields.io/github/last-commit/sejjy/mechabar?colorA=cdd6f4&colorB=a6e3a1&style=for-the-badge"
-  /></a>
-  <a href="https://github.com/sejjy/mechabar/contributors#gh-light-mode-only"
-    ><img
-      src="https://img.shields.io/github/contributors/sejjy/mechabar?colorA=cdd6f4&colorB=b4befe&style=for-the-badge"
-  /></a>
+| 🛜 Wi-Fi and Bluetooth                           |
+| :----------------------------------------------: |
+| ![Wi-Fi Menu](assets/wifi-menu.png)              |
+| ![Bluetooth Menu](assets/bluetooth-menu.png)     |
+| `on-click-right`: **`nmtui`**, **`bluetui`**     |
+| ![Bluetooth Menu](assets/wifi-bluetooth-tui.png) |
+
+| ⏸️ Logout                                        |
+| :----------------------------------------------: |
+| ![Logout Menu](assets/logout-menu.png)           |
+
+</details>
+
+<!-- Dark Mode -->
+
+[![Stars](https://img.shields.io/github/stars/sejjy/mechabar?colorA=1e1e2e&colorB=f9e2af&style=for-the-badge#gh-dark-mode-only)](https://github.com/sejjy/mechabar/stargazers)
+[![Last Commit](https://img.shields.io/github/last-commit/sejjy/mechabar?colorA=1e1e2e&colorB=a6e3a1&style=for-the-badge#gh-dark-mode-only)](https://github.com/sejjy/mechabar/commits)
+[![Contributors](https://img.shields.io/github/contributors/sejjy/mechabar?colorA=1e1e2e&colorB=b4befe&style=for-the-badge#gh-dark-mode-only)](https://github.com/sejjy/mechabar/contributors)
+
+<!-- Light Mode -->
+
+[![Stars](https://img.shields.io/github/stars/sejjy/mechabar?colorA=cdd6f4&colorB=f9e2af&style=for-the-badge#gh-light-mode-only)](https://github.com/sejjy/mechabar/stargazers)
+[![Last Commit](https://img.shields.io/github/last-commit/sejjy/mechabar?colorA=cdd6f4&colorB=a6e3a1&style=for-the-badge#gh-light-mode-only)](https://github.com/sejjy/mechabar/commits)
+[![Contributors](https://img.shields.io/github/contributors/sejjy/mechabar?colorA=cdd6f4&colorB=b4befe&style=for-the-badge#gh-light-mode-only)](https://github.com/sejjy/mechabar/contributors)
+
 </div>
-
 
 A mecha-themed **[Waybar](https://github.com/Alexays/Waybar)** configuration initially designed for **[Hyprland](https://github.com/hyprwm/Hyprland)**, but also compatible with **Sway** and other **Wlroots-based compositors** with minimal adjustments. Contributions are welcome, including opening **[issues](https://github.com/sejjy/mechabar/issues)**, submitting **[pull requests](https://github.com/sejjy/mechabar/pulls)** for bug fixes or enhancements, and adding support for other distributions and compositors through new branches.
 
