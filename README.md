@@ -23,15 +23,33 @@
 
 <!-- Dark Mode -->
 
-[![Stars](https://img.shields.io/github/stars/sejjy/mechabar?colorA=1e1e2e&colorB=f9e2af&style=for-the-badge#gh-dark-mode-only)](https://github.com/sejjy/mechabar/stargazers)
-[![Last Commit](https://img.shields.io/github/last-commit/sejjy/mechabar?colorA=1e1e2e&colorB=a6e3a1&style=for-the-badge#gh-dark-mode-only)](https://github.com/sejjy/mechabar/commits)
-[![Contributors](https://img.shields.io/github/contributors/sejjy/mechabar?colorA=1e1e2e&colorB=b4befe&style=for-the-badge#gh-dark-mode-only)](https://github.com/sejjy/mechabar/contributors)
+<a href="https://github.com/sejjy/mechabar/stargazers#gh-dark-mode-only">
+  <img
+    src="https://img.shields.io/github/stars/sejjy/mechabar?colorA=1e1e2e&colorB=f9e2af&style=for-the-badge"
+/></a>
+<a href="https://github.com/sejjy/mechabar/commits#gh-dark-mode-only">
+  <img
+    src="https://img.shields.io/github/last-commit/sejjy/mechabar?colorA=1e1e2e&colorB=a6e3a1&style=for-the-badge"
+/></a>
+<a href="https://github.com/sejjy/mechabar/contributors#gh-dark-mode-only">
+  <img
+    src="https://img.shields.io/github/contributors/sejjy/mechabar?colorA=1e1e2e&colorB=b4befe&style=for-the-badge"
+/></a>
 
 <!-- Light Mode -->
 
-[![Stars](https://img.shields.io/github/stars/sejjy/mechabar?colorA=cdd6f4&colorB=f9e2af&style=for-the-badge#gh-light-mode-only)](https://github.com/sejjy/mechabar/stargazers)
-[![Last Commit](https://img.shields.io/github/last-commit/sejjy/mechabar?colorA=cdd6f4&colorB=a6e3a1&style=for-the-badge#gh-light-mode-only)](https://github.com/sejjy/mechabar/commits)
-[![Contributors](https://img.shields.io/github/contributors/sejjy/mechabar?colorA=cdd6f4&colorB=b4befe&style=for-the-badge#gh-light-mode-only)](https://github.com/sejjy/mechabar/contributors)
+<a href="https://github.com/sejjy/mechabar/stargazers#gh-light-mode-only">
+  <img
+    src="https://img.shields.io/github/stars/sejjy/mechabar?colorA=cdd6f4&colorB=f9e2af&style=for-the-badge"
+/></a>
+<a href="https://github.com/sejjy/mechabar/commits#gh-light-mode-only">
+  <img
+    src="https://img.shields.io/github/last-commit/sejjy/mechabar?colorA=cdd6f4&colorB=a6e3a1&style=for-the-badge"
+/></a>
+<a href="https://github.com/sejjy/mechabar/contributors#gh-light-mode-only">
+  <img
+    src="https://img.shields.io/github/contributors/sejjy/mechabar?colorA=cdd6f4&colorB=b4befe&style=for-the-badge"
+/></a>
 
 </div>
 
