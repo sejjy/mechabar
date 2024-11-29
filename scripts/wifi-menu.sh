@@ -25,7 +25,7 @@ while true; do
       rofi -dmenu -i -selected-row 2 -config "${config}" -theme-str "window { height: 209px; }")
   elif [[ "$wifi_status" =~ "disabled" ]]; then
     selected_option=$(echo -e " 󰤨  Enable Wi-Fi" |
-      rofi -dmenu -i -config "${config}" -theme-str "window { height: 47px; }")
+      rofi -dmenu -i -config "${config}" -theme-str "window { height: 47px; } wallbox { children: false; }")
   fi
 
   # Extract selected SSID

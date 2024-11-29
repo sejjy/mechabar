@@ -22,7 +22,7 @@ while true; do
     override="entry { placeholder: \"Search\"; } window { height: 182px; } listview { lines: 6; }"
   else
     options=" 󰂯  Enable Bluetooth"
-    override="window { height: 47px; }"
+    override="window { height: 47px; } wallbox { children: false; }"
   fi
 
   # Display menu using Rofi
