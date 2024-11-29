@@ -2,23 +2,23 @@
 
   # Mechabar 🤖
 
-  | ![Preview 1](assets/v1.0.0.png)                  |
-  | :----------------------------------------------: |
+  | ![Preview 1](assets/v1.0.0.png)                        |
+  | :----------------------------------------------------: |
 
   <details>
     <summary><strong>&nbsp;🚀 Rofi Menus</strong></summary>
     <br />
 
-  | 🛜 Wi-Fi and Bluetooth                           |
-  | :----------------------------------------------: |
-  | ![Wi-Fi Menu](assets/wifi-menu.png)              |
-  | ![Bluetooth Menu](assets/bluetooth-menu.png)     |
-  | `on-click-right`: **`nmtui`**, **`bluetui`**     |
-  | ![Bluetooth Menu](assets/wifi-bluetooth-tui.png) |
+  | 🛜 Wi-Fi and Bluetooth                                 |
+  | :----------------------------------------------------: |
+  | ![Wi-Fi Menu](assets/wifi-menu.png) <tr></tr>          |
+  | ![Bluetooth Menu](assets/bluetooth-menu.png) <tr></tr> |
+  | `on-click-right`: **`nmtui`**, **`bluetui`** <tr></tr> |
+  | ![Bluetooth Menu](assets/wifi-bluetooth-tui.png)       |
 
-  | ⏸️ Logout                                        |
-  | :----------------------------------------------: |
-  | ![Logout Menu](assets/logout-menu.png)           |
+  | ⏸️ Logout                                              |
+  | :----------------------------------------------------: |
+  | ![Logout Menu](assets/logout-menu.png)                 |
 
   </details>
 
@@ -89,17 +89,17 @@ sudo pacman -S bluez-utils brightnessctl hyprlock pipewire python ttf-jetbrains-
 yay -S bluetui rofi-lbonn-wayland-git
 ```
 
-| Package                   | Description                                                                               |
-| ------------------------- | ----------------------------------------------------------------------------------------- |
-| `bluetui`                 | TUI for managing bluetooth devices                                                        |
-| `bluez-utils`             | Development and debugging utilities for the bluetooth protocol stack                      |
-| `brightnessctl`           | Lightweight brightness control tool                                                       |
-| `hyprlock` (optional)     | Hyprland's GPU-accelerated screen locking utility                                         |
-| `pipewire`                | Low-latency audio/video router and processor                                              |
-| `python`                  | The Python programming language                                                           |
-| `rofi-lbonn-wayland-git`  | A window switcher, application launcher and dmenu replacement (fork with Wayland support) |
-| `ttf-jetbrains-mono-nerd` | Patched font JetBrains Mono from the nerd fonts library                                   |
-| `wireplumber`             | Session/policy manager implementation for PipeWire                                        |
+| Package                   | Description                                                                                         |
+| ------------------------- | --------------------------------------------------------------------------------------------------- |
+| `bluetui`                 | TUI for managing bluetooth devices <tr></tr>                                                        |
+| `bluez-utils`             | Development and debugging utilities for the bluetooth protocol stack <tr></tr>                      |
+| `brightnessctl`           | Lightweight brightness control tool <tr></tr>                                                       |
+| `hyprlock` (optional)     | Hyprland's GPU-accelerated screen locking utility <tr></tr>                                         |
+| `pipewire`                | Low-latency audio/video router and processor <tr></tr>                                              |
+| `python`                  | The Python programming language <tr></tr>                                                           |
+| `rofi-lbonn-wayland-git`  | A window switcher, application launcher and dmenu replacement (fork with Wayland support) <tr></tr> |
+| `ttf-jetbrains-mono-nerd` | Patched font JetBrains Mono from the nerd fonts library <tr></tr>                                   |
+| `wireplumber`             | Session/policy manager implementation for PipeWire                                                  |
 
 > [!IMPORTANT]
 > If you use alternatives, you may need to modify the [scripts](/scripts/) and configuration files accordingly.
