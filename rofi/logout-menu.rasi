@@ -6,82 +6,73 @@ configuration {
 
 @theme "~/.config/rofi/theme.rasi"
 
-/* ----------------------- Main Window ----------------------- */
+/* Main Window */
 
 window {
   enabled:                  true;
   location:                 northeast;
   anchor:                   north;
-  y-offset:                 3px;
   x-offset:                 -3px;
-  height:                   192px;
+  y-offset:                 3px;
+  height:                   178px;
   width:                    150px;
-  fullscreen:               false;
-  transparency:             "real";
   border:                   2px;
-  border-radius:            0;
+  border-radius:            10px;
   border-color:             @main-br;
   background-color:         @main-bg;
   
   children:                 [ "mainbox" ];
 }
 
-/* ---------------------- Main Container ---------------------- */
+/* Main Container */
 
 mainbox {
   enabled:                  true;
-  orientation:              vertical;
-  padding:                  2.2px 0;
   background-color:         inherit;
   text-color:               @main-fg;
   
   children:                 [ "listbox" ];
 }
 
-/* ------------------------ List Container -------------------- */
+/* List Container */
 
 listbox {
   enabled:                  true;
-  orientation:              vertical;
   background-color:         inherit;
   
   children:                 [ "listview" ];
 }
 
-/* ------------------------- List View ------------------------ */
+/* List View */
 
 listview {
   enabled:                  true;
   layout:                   vertical;
-  cycle:                    false;
-  dynamic:                  true;
-  fixed-height:             true;
-  fixed-columns:            false;
-  expand:                   false;
-  reverse:                  false;
+  cycle:                    true;
   columns:                  1;
   lines:                    6;
-  padding:                  6.4px 8px;
+  padding:                  6px;
+  spacing:                  0;
   background-color:         inherit;
 }
 
-/* ---------------------- List Elements ----------------------- */
+/* List Elements */
 
 element {
   enabled:                  true;
-  padding:                  6.4px;
+  padding:                  6px;
   cursor:                   pointer;
   background-color:         transparent;
   text-color:               @main-fg;
 }
 
 element selected.normal {
-  border-radius:            0;
+  border-radius:            6px;
   background-color:         @select-bg;
   text-color:               @select-fg;
 }
 
-/* ---------------------- Element Text ------------------------ */
+/* Element Text */
 
 element-text {
   enabled:                  true;
