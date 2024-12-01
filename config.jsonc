@@ -257,6 +257,7 @@
     },
 
     "actions": {
+      "on-click": "mode",
       "on-click-right": "mode"
     },
 
