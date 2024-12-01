@@ -19,10 +19,10 @@ while true; do
     # Fetch available devices (names only)
     bluetooth_devices=$(bluetoothctl devices | awk '{$1=$2=""; print substr($0, 3)}')
     options=" 󰂰  Rescan\n 󰂲  Disable Bluetooth\n$(echo "$bluetooth_devices" | awk '{print " 󰂱  " $0}')"
-    override="entry { placeholder: \"Search\"; } window { height: 182px; } listview { lines: 6; }"
+    override="entry { placeholder: \"Search\"; } window { height: 178px; } listview { lines: 6; }"
   else
     options=" 󰂯  Enable Bluetooth"
-    override="window { height: 47px; } wallbox { children: false; }"
+    override="window { height: 43px; } wallbox { children: false; }"
   fi
 
   # Display menu using Rofi
