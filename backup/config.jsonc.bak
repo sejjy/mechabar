@@ -247,7 +247,12 @@
       "on-click-right": "mode",
 
       "format": {
-        "today": "<span color='#f38ba8'><b>{}</b></span>"
+        "months": 
+          "<span color='#b4befe'><b>{}</b></span>",
+        "weekdays": 
+          "<span color='#a6adc8' font='7'>{}</span>",
+        "today": 
+          "<span color='#f38ba8'><b>{}</b></span>"
       }
     },
 
