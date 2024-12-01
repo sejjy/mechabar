@@ -24,12 +24,16 @@ window#waybar > box {
 /* === Tooltip === */
 
 tooltip {
-  color: @main-fg;
   background: @main-bg;
   border: solid;
   border-width: 1.5px;
   border-radius: 8px;
   border-color: @main-br;
+}
+tooltip label {
+  color: @main-fg;
+  font-weight: normal;
+  margin: 0.25px;
 }
 
 /* === Workspace Buttons === */
@@ -271,6 +275,7 @@ tooltip {
 /* == Media Info == */
 
 #custom-media {
+  font-weight: normal;
   background-color: @main-bg;
   padding-right: 8px;
   padding-left: 8px;
