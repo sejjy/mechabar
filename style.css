@@ -28,7 +28,7 @@ tooltip {
   background: @main-bg;
   border: solid;
   border-width: 1.5px;
-  border-radius: 0;
+  border-radius: 8px;
   border-color: @main-br;
 }
 
@@ -135,7 +135,6 @@ tooltip {
 #custom-left2 {
   color: @cpuinfo;
   background: @main-bg;
-  border-radius: 10px;
   padding-left: 3px;
 }
 #custom-cpuinfo {
@@ -348,7 +347,7 @@ tooltip {
   background: @power;
   text-shadow: 0 0 2px rgba(0, 0, 0, 0.6);
   box-shadow: 1px 0 2px 1px rgba(0, 0, 0, 0.6);
-  border-radius: 20px;
+  border-radius: 10px;
   margin: 2px 4px 2px 0;
   padding-right: 6px;
   padding-left: 9px;
