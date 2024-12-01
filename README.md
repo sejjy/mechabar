@@ -82,7 +82,7 @@ A mecha-themed **[Waybar](https://github.com/Alexays/Waybar)** configuration ini
 #### I. Dependencies
 
 ```bash
-sudo pacman -S bluez-utils brightnessctl hyprlock pipewire python ttf-jetbrains-mono-nerd wireplumber
+sudo pacman -S bluez-utils brightnessctl hyprlock pipewire pipewire-pulse python ttf-jetbrains-mono-nerd wireplumber
 ```
 
 ```bash
@@ -96,6 +96,7 @@ yay -S bluetui rofi-lbonn-wayland-git
 | `brightnessctl`           | Lightweight brightness control tool <tr></tr>                                                       |
 | `hyprlock` (optional)     | Hyprland's GPU-accelerated screen locking utility <tr></tr>                                         |
 | `pipewire`                | Low-latency audio/video router and processor <tr></tr>                                              |
+| `pipewire-pulse`          | Low-latency audio/video router and processor - PulseAudio replacement                               |
 | `python`                  | The Python programming language <tr></tr>                                                           |
 | `rofi-lbonn-wayland-git`  | A window switcher, application launcher and dmenu replacement (fork with Wayland support) <tr></tr> |
 | `ttf-jetbrains-mono-nerd` | Patched font JetBrains Mono from the nerd fonts library <tr></tr>                                   |
