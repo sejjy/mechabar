@@ -68,7 +68,7 @@ class PlayerManager:
     logger.debug(f"Writing output: {text}")
 
     # Determine the tooltip based on playback status
-    tooltip_status = "Paused: " if player.props.status != "Playing" else ""
+    tooltip_status = f"<span color='#f38ba8'><b>Paused:</b> </span>" if player.props.status != "Playing" else ""
 
     # Construct tooltip with track info
     tooltip = f"{tooltip_status}{text}"
@@ -125,7 +125,7 @@ class PlayerManager:
     if player_name == "spotify" and "mpris:trackid" in metadata and ":ad:" in player.props.metadata["mpris:trackid"]:
       track_info = "Advertisement"
     elif artist and title:
-      track_info = f"{artist} - {title}"
+      track_info = f"<b>{title}</b> - {artist}"
     else:
       track_info = title
 
@@ -133,7 +133,7 @@ class PlayerManager:
       track_info = (
         f"<span color='#a6e3a1'>󰓇  </span>" if player.props.status == "Playing" and player_name == "spotify" else
         f"<span color='#f38ba8'>󰗃  </span>" if player.props.status == "Playing" and player_name == "firefox" else
-        f"<span color='#9399b2'>󰏤  </span>"
+        f"<span color='#b4befe'>\u200A󰏤 \u2009\u2009\u200A</span>"
       ) + track_info
 
     # Only print output if no other player is playing
