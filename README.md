@@ -94,9 +94,9 @@ yay -S bluetui rofi-lbonn-wayland-git
 | `bluetui`                 | TUI for managing bluetooth devices <tr></tr>                                                        |
 | `bluez-utils`             | Development and debugging utilities for the bluetooth protocol stack <tr></tr>                      |
 | `brightnessctl`           | Lightweight brightness control tool <tr></tr>                                                       |
-| `hyprlock` (optional)     | Hyprland's GPU-accelerated screen locking utility <tr></tr>                                         |
+| `hyprlock`                | Hyprland's GPU-accelerated screen locking utility <tr></tr>                                         |
 | `pipewire`                | Low-latency audio/video router and processor <tr></tr>                                              |
-| `pipewire-pulse`          | Low-latency audio/video router and processor - PulseAudio replacement                               |
+| `pipewire-pulse`          | Low-latency audio/video router and processor - PulseAudio replacement <tr></tr>                     |
 | `python`                  | The Python programming language <tr></tr>                                                           |
 | `rofi-lbonn-wayland-git`  | A window switcher, application launcher and dmenu replacement (fork with Wayland support) <tr></tr> |
 | `ttf-jetbrains-mono-nerd` | Patched font JetBrains Mono from the nerd fonts library <tr></tr>                                   |
