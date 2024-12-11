@@ -93,7 +93,6 @@
     // === Window Titles ===
 
     "rewrite": {
-      
       // == Desktop ==
 
       "": 
@@ -109,10 +108,15 @@
 
       // == Browser ==
 
-      "(.*) — Mozilla Firefox": 
-        "<span foreground='#f38ba8'>󰈹 </span> $1",
       "(.*)Mozilla Firefox": 
         "<span foreground='#f38ba8'>󰈹 </span> Firefox",
+      "(.*) — Mozilla Firefox": 
+        "<span foreground='#f38ba8'>󰈹 </span> $1",
+
+      "(.*)Zen Browser": 
+        "<span foreground='#cdd6f4'>󰈹 </span> Zen Browser",
+      "(.*) — Zen Browser": 
+        "<span foreground='#cdd6f4'>󰈹 </span> $1",
 
       // == Development ==
 
@@ -257,6 +261,7 @@
     },
 
     "actions": {
+      "on-click": "mode",
       "on-click-right": "mode"
     },
 
@@ -428,7 +433,7 @@
     "tooltip": false
   },
 
-  // == Right Arrows==
+  // == Right Arrows ==
 
   "custom/right1": {
     "format": "",
