@@ -7,6 +7,7 @@ fi
 
 pkg_installed() {
   local pkg=$1
+
   if pacman -Qi "${pkg}" &>/dev/null; then
     return 0
   elif pacman -Qi "flatpak" &>/dev/null && flatpak info "${pkg}" &>/dev/null; then
@@ -28,7 +29,6 @@ get_aur_helper() {
 
 get_aur_helper
 export -f pkg_installed
-flatpak_update_cmd="pkg_installed flatpak && flatpak update"
 
 # Trigger upgrade
 if [ "$1" == "up" ]; then
@@ -36,7 +36,7 @@ if [ "$1" == "up" ]; then
   command="
     $0 upgrade
     ${aur_helper} -Syu
-    $flatpak_update_cmd
+    if pkg_installed flatpak; then flatpak update; fi
     printf '\n'
     read -n 1 -p 'Press any key to continue...'
     "
@@ -44,15 +44,21 @@ if [ "$1" == "up" ]; then
 fi
 
 # Check for AUR updates
-aur_updates=$(${aur_helper} -Qua | wc -l)
+if [ -n "$aur_helper" ]; then
+  aur_updates=$(${aur_helper} -Qua | grep -c '^')
+else
+  aur_updates=0
+fi
+
+# Check for official repository updates
 official_updates=$(
   (while pgrep -x checkupdates >/dev/null; do sleep 1; done)
-  checkupdates | wc -l
+  checkupdates | grep -c '^'
 )
 
 # Check for Flatpak updates
 if pkg_installed flatpak; then
-  flatpak_updates=$(flatpak remote-ls --updates | wc -l)
+  flatpak_updates=$(flatpak remote-ls --updates | grep -c '^')
 else
   flatpak_updates=0
 fi
@@ -60,13 +66,21 @@ fi
 # Calculate total available updates
 total_updates=$((official_updates + aur_updates + flatpak_updates))
 
-[ "${1}" == upgrade ] && printf "Official:   %-10s\nAUR ($aur_helper):  %-10s\nFlatpak:    %-10s\n\n" "$official_updates" "$aur_updates" "$flatpak_updates" && exit
+# Handle formatting based on AUR helper
+if [ "$aur_helper" == "yay" ]; then
+  [ "${1}" == upgrade ] && printf "Official:  %-10s\nAUR ($aur_helper): %-10s\nFlatpak:   %-10s\n\n" "$official_updates" "$aur_updates" "$flatpak_updates" && exit
 
-tooltip="Official:   $official_updates\nAUR ($aur_helper):  $aur_updates\nFlatpak:    $flatpak_updates"
+  tooltip="Official:  $official_updates\nAUR ($aur_helper): $aur_updates\nFlatpak:   $flatpak_updates"
+
+elif [ "$aur_helper" == "paru" ]; then
+  [ "${1}" == upgrade ] && printf "Official:   %-10s\nAUR ($aur_helper): %-10s\nFlatpak:    %-10s\n\n" "$official_updates" "$aur_updates" "$flatpak_updates" && exit
+
+  tooltip="Official:   $official_updates\nAUR ($aur_helper): $aur_updates\nFlatpak:    $flatpak_updates"
+fi
 
 # Module and tooltip
 if [ $total_updates -eq 0 ]; then
   echo "{\"text\":\"󰸟\", \"tooltip\":\"Packages are up to date\"}"
 else
-  echo "{\"text\":\"󰞒\", \"tooltip\":\"${tooltip}\"}"
+  echo "{\"text\":\"󰞒\", \"tooltip\":\"${tooltip//\"/\\\"}\"}"
 fi
