@@ -13,29 +13,27 @@ options=$(
 option_disabled="Enable Wi-Fi"
 
 # Rofi window override
-override_disabled="inputbar { enabled: false; } listview { lines: 1; padding: 6px; }"
 override_ssid="entry { placeholder: \"Enter SSID\"; } listview { enabled: false; }"
 override_password="entry { placeholder: \"Enter password\"; } listview { enabled: false; }"
+override_disabled="inputbar { enabled: false; } listview { lines: 1; padding: 6px; }"
 
 # Prompt for password
 get_password() {
-  rofi -dmenu -password \
-    -config "${config}" \
-    -theme-str "${override_password}" -p " "
+  rofi -dmenu -password -config "${config}" -theme-str "${override_password}" -p " "
 }
 
 while true; do
   wifi_list() {
     nmcli --fields "SECURITY,SSID" device wifi list |
-      tail -n +2 |               # Skip the header line
-      sed 's/  */ /g' |          # Reduce multiple spaces to a single space
-      sed -E "s/WPA*.?\S/󰤪 /g" | # Replace WPA-based security with a wifi lock icon
-      sed "s/^--/󰤨 /g" |         # Replace '--' (open networks) with an open wifi icon
+      tail -n +2 |               # Skip header line
+      sed 's/  */ /g' |          # Multiple spaces to single space
+      sed -E "s/WPA*.?\S/󰤪 /g" | # Replace WPA* with wifi lock icon
+      sed "s/^--/󰤨 /g" |         # Replace '--' (open networks) with wifi icon
       sed "s/󰤪  󰤪/󰤪/g" |         # Remove duplicate icons
       sed "/--/d"                # Remove lines containing '--'
   }
 
-  # (enabled/disabled)
+  # Get Wi-Fi status
   wifi_status=$(nmcli -fields WIFI g)
 
   case "$wifi_status" in
@@ -43,7 +41,6 @@ while true; do
     selected_option=$(echo "$options"$'\n'"$(wifi_list)" |
       rofi -dmenu -i -selected-row 1 -config "${config}" -p " ")
     ;;
-
   *"disabled"*)
     selected_option=$(echo "$option_disabled" |
       rofi -dmenu -i -config "${config}" -theme-str "${override_disabled}")
@@ -71,12 +68,9 @@ while true; do
     ;;
   "Manual Entry")
     # Prompt for SSID
-    manual_ssid=$(
-      rofi -dmenu \
-        -config "${config}" \
-        -theme-str "${override_ssid}" -p " "
-    )
+    manual_ssid=$(rofi -dmenu -config "${config}" -theme-str "${override_ssid}" -p " ")
 
+    # Exit if no option is selected
     if [ -z "$manual_ssid" ]; then
       exit
     fi
@@ -89,27 +83,21 @@ while true; do
       nmcli dev wifi con "$manual_ssid" password "$wifi_password"
     fi
 
-    nmcli device wifi connect "$manual_ssid" password "$wifi_password" |
-      grep "successfully" &&
-      notify-send "Connected to \"$manual_ssid\"."
+    nmcli device wifi connect "$manual_ssid" password "$wifi_password" | grep "successfully" && notify-send "Connected to \"$manual_ssid\"."
     ;;
   *)
     # Get saved connections
     saved_connections=$(nmcli -g NAME connection)
 
     if echo "$saved_connections" | grep -qw "$selected_ssid"; then
-      nmcli connection up id "$selected_ssid" |
-        grep "successfully" &&
-        notify-send "Connected to \"$selected_ssid\"."
+      nmcli connection up id "$selected_ssid" | grep "successfully" && notify-send "Connected to \"$selected_ssid\"."
     else
       # Handle secure network connection
       if [[ "$selected_option" =~ ^"󰤪" ]]; then
         wifi_password=$(get_password)
       fi
 
-      nmcli device wifi connect "$selected_ssid" password "$wifi_password" |
-        grep "successfully" &&
-        notify-send "Connected to \"$selected_ssid\"."
+      nmcli device wifi connect "$selected_ssid" password "$wifi_password" | grep "successfully" && notify-send "Connected to \"$selected_ssid\"."
     fi
     ;;
   esac
