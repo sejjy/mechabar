@@ -383,7 +383,7 @@
   "custom/power": {
     "format": " ",
     "tooltip": false,
-    "on-click": "~/.config/waybar/scripts/logout-menu.sh"
+    "on-click": "~/.config/waybar/scripts/power-menu.sh"
   },
 
   // === Padding ===
