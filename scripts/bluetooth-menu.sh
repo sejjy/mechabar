@@ -4,23 +4,51 @@
 # GitHub: https://github.com/sejjy/mechabar
 
 # Rofi config
-config="$HOME/.config/rofi/wifi-bluetooth-menu.rasi"
+config="$HOME/.config/rofi/bluetooth-menu.rasi"
 
 # Rofi window override
 override_disabled="inputbar { enabled: false; } listview { lines: 1; padding: 6px; }"
 
+# Function to determine device type and return appropriate icon
+get_device_icon() {
+  local device_mac=$1
+
+  # Get the Class and appearance of the device
+  device_info=$(bluetoothctl info "$device_mac")
+  appearance=$(echo "$device_info" | grep "Icon:" | awk '{print $2}')
+
+  # Assign icons based on class or appearance
+  case "$appearance" in
+  "audio-headphones" | "audio-headset") echo "󰋋 " ;; # Headphones
+  "video-display" | "computer") echo "󰍹 " ;;         # Monitor
+  "audio-input-microphone") echo "󰍬 " ;;             # Microphone
+  "audio-speakers") echo "󰓃 " ;;                     # Speakers
+  "input-keyboard") echo "󰌌 " ;;                     # Keyboard
+  "input-mouse") echo "󰍽 " ;;                        # Mouse
+  "phone") echo "󰏲 " ;;                              # Phone
+  *)
+    echo "󰂱 " # Default
+    ;;
+  esac
+}
+
 while true; do
-  # Fetch available devices (names only)
-  bluetooth_devices=$(bluetoothctl devices | awk '{$1=$2=""; print substr($0, 3)}')
+  # Fetch available devices (names and icons)
+  bluetooth_devices=$(bluetoothctl devices | while read -r line; do
+    device_mac=$(echo "$line" | awk '{print $2}')
+    device_name=$(echo "$line" | awk '{$1=$2=""; print substr($0, 3)}')
+    icon=$(get_device_icon "$device_mac")
+    echo "$icon $device_name"
+  done)
 
   options=$(
     echo "Scan for devices  "
     echo "Disable Bluetooth"
-    echo "$bluetooth_devices" | awk '{print "󰂱  " $0}'
+    echo "$bluetooth_devices"
   )
   option="Enable Bluetooth"
 
-  # (enabled/disabled)
+  # Get Bluetooth status (enabled/disabled)
   bluetooth_status=$(bluetoothctl show | grep "Powered:" | awk '{print $2}')
 
   if [[ "$bluetooth_status" == "yes" ]]; then
@@ -50,15 +78,20 @@ while true; do
     ;;
   "Scan for devices"*)
     notify-send "Press '?' to show help."
-    kitty --title '󰂯  Bluetooth TUI' bash -c "bluetui"
+    kitty --title '󰂱  Bluetooth TUI' bash -c "bluetui"
     ;;
   *)
     # Extract device name
-    device_name=${selected_option//󰂱  /}
+    device_name="${selected_option#* }"
+    device_name="${device_name## }"
 
     if [[ -n "$device_name" ]]; then
       # Find the device's MAC address
       device_mac=$(bluetoothctl devices | grep "$device_name" | awk '{print $2}')
+
+      # Trust and pair the device
+      bluetoothctl trust "$device_mac" >/dev/null 2>&1
+      bluetoothctl pair "$device_mac" >/dev/null 2>&1
 
       # Connect the device
       bluetoothctl connect "$device_mac" &
