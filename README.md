@@ -1,24 +1,29 @@
 <div align="center">
 
-  # Mechabar 🤖
+# Mechabar 🤖
 
-  | ![Preview 1](assets/v1.0.0.png)                        |
-  | :----------------------------------------------------: |
+| ![Preview 1](assets/v1.0.0.png) |
+| :-----------------------------: |
 
   <details>
-    <summary><strong>&nbsp;🚀 Rofi Menus</strong></summary>
+    <summary><strong>&nbsp;🚀 Menus</strong></summary>
     <br />
 
-  | 🛜 Wi-Fi and Bluetooth                                 |
-  | :----------------------------------------------------: |
-  | ![Wi-Fi Menu](assets/wifi-menu.png) <tr></tr>          |
-  | ![Bluetooth Menu](assets/bluetooth-menu.png) <tr></tr> |
-  | `on-click-right`: **`nmtui`**, **`bluetui`** <tr></tr> |
-  | ![Bluetooth Menu](assets/wifi-bluetooth-tui.png)       |
+|                Wi-Fi                |
+| :---------------------------------: |
+| ![Wi-Fi Menu](assets/wifi-menu.png) |
 
-  | ⏸️ Logout                                              |
-  | :----------------------------------------------------: |
-  | ![Logout Menu](assets/logout-menu.png)                 |
+|                  Bluetooth                   |
+| :------------------------------------------: |
+| ![Bluetooth Menu](assets/bluetooth-menu.png) |
+
+|        on-click-right: `nmtui`, `bluetui`        |
+| :----------------------------------------------: |
+| ![Bluetooth Menu](assets/wifi-bluetooth-tui.png) |
+
+|                 Power                 |
+| :-----------------------------------: |
+| ![Logout Menu](assets/power-menu.png) |
 
   </details>
 
@@ -54,7 +59,7 @@
 </div>  
 <br />
 
-A mecha-themed **[Waybar](https://github.com/Alexays/Waybar)** configuration initially designed for **[Hyprland](https://github.com/hyprwm/Hyprland)**, but also compatible with **Sway** and other **Wlroots-based compositors** with minimal adjustments. Contributions are welcome, including opening **[issues](https://github.com/sejjy/mechabar/issues)**, submitting **[pull requests](https://github.com/sejjy/mechabar/pulls)** for bug fixes or enhancements, and adding support for other distributions and compositors through new branches.
+A mecha-themed **[Waybar](https://github.com/Alexays/Waybar)** configuration initially designed for **[Hyprland](https://github.com/hyprwm/Hyprland)**, but also compatible with **Sway** and other **Wlroots-based compositors** with minimal adjustments.
 
 ## Installation (Arch Linux)
 
