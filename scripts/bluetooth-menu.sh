@@ -9,21 +9,17 @@ config="$HOME/.config/rofi/bluetooth-menu.rasi"
 # Rofi window override
 override_disabled="inputbar { enabled: false; } listview { lines: 1; padding: 6px; }"
 
-# Function to determine device type and return appropriate icon
 get_device_icon() {
   local device_mac=$1
-
-  # Get the Class and appearance of the device
   device_info=$(bluetoothctl info "$device_mac")
-  appearance=$(echo "$device_info" | grep "Icon:" | awk '{print $2}')
+  device_icon=$(echo "$device_info" | grep "Icon:" | awk '{print $2}')
 
-  # Assign icons based on class or appearance
-  case "$appearance" in
+  case "$device_icon" in
   "audio-headphones" | "audio-headset") echo "󰋋 " ;; # Headphones
   "video-display" | "computer") echo "󰍹 " ;;         # Monitor
   "audio-input-microphone") echo "󰍬 " ;;             # Microphone
-  "audio-speakers") echo "󰓃 " ;;                     # Speakers
   "input-keyboard") echo "󰌌 " ;;                     # Keyboard
+  "audio-speakers") echo "󰓃 " ;;                     # Speakers
   "input-mouse") echo "󰍽 " ;;                        # Mouse
   "phone") echo "󰏲 " ;;                              # Phone
   *)
@@ -33,7 +29,7 @@ get_device_icon() {
 }
 
 while true; do
-  # Fetch available devices (names and icons)
+  # Get list of paired devices
   bluetooth_devices=$(bluetoothctl devices | while read -r line; do
     device_mac=$(echo "$line" | awk '{print $2}')
     device_name=$(echo "$line" | awk '{$1=$2=""; print substr($0, 3)}')
@@ -48,7 +44,7 @@ while true; do
   )
   option="Enable Bluetooth"
 
-  # Get Bluetooth status (enabled/disabled)
+  # Get Bluetooth status
   bluetooth_status=$(bluetoothctl show | grep "Powered:" | awk '{print $2}')
 
   if [[ "$bluetooth_status" == "yes" ]]; then
@@ -78,7 +74,7 @@ while true; do
     ;;
   "Scan for devices"*)
     notify-send "Press '?' to show help."
-    kitty --title '󰂱  Bluetooth TUI' bash -c "bluetui"
+    kitty --title '󰂱  Bluetooth TUI' bash -c "bluetui" # Launch bluetui
     ;;
   *)
     # Extract device name
@@ -86,18 +82,16 @@ while true; do
     device_name="${device_name## }"
 
     if [[ -n "$device_name" ]]; then
-      # Find the device's MAC address
+      # Get MAC address
       device_mac=$(bluetoothctl devices | grep "$device_name" | awk '{print $2}')
 
-      # Trust and pair the device
+      # Trust and pair device
       bluetoothctl trust "$device_mac" >/dev/null 2>&1
       bluetoothctl pair "$device_mac" >/dev/null 2>&1
 
-      # Connect the device
+      # Connect to device
       bluetoothctl connect "$device_mac" &
       sleep 3
-
-      # Check connection status
       connection_status=$(bluetoothctl info "$device_mac" | grep "Connected:" | awk '{print $2}')
 
       if [[ "$connection_status" == "yes" ]]; then
