@@ -1,7 +1,7 @@
-/* WiFi and Bluetooth Menu */
+/* Bluetooth menu */
 
 configuration {
-  font:                     "JetBrainsMono Nerd Font Bold 8";
+  font:                     "JetBrainsMono Nerd Font 8";
 }
 
 @theme "~/.config/rofi/theme.rasi"
