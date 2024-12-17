@@ -17,10 +17,6 @@
 | :------------------------------------------: |
 | ![Bluetooth Menu](assets/bluetooth-menu.png) |
 
-|        on-click-right: `nmtui`, `bluetui`        |
-| :----------------------------------------------: |
-| ![Bluetooth Menu](assets/wifi-bluetooth-tui.png) |
-
 |                 Power                 |
 | :-----------------------------------: |
 | ![Logout Menu](assets/power-menu.png) |
