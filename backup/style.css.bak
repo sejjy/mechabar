@@ -3,6 +3,9 @@
   font-weight: bold;
   font-size: 10px;
   min-height: 0;
+  padding: 0;
+  border: none;
+  margin: 0;
 }
 
 @import "theme.css";
@@ -33,7 +36,7 @@ tooltip {
 tooltip label {
   color: @main-fg;
   font-weight: normal;
-  margin: 0.25px;
+  margin: -1.5px 3px;
 }
 
 /* === Workspace Buttons === */
