@@ -19,7 +19,7 @@ override_disabled="inputbar { enabled: false; } listview { lines: 1; padding: 6p
 
 # Prompt for password
 get_password() {
-  rofi -dmenu -password -config "${config}" -theme-str "${override_password}" -p " "
+  rofi -dmenu -password -config "${config}" -theme-str "${override_password}" -p " " || pkill -x rofi
 }
 
 while true; do
@@ -39,11 +39,11 @@ while true; do
   case "$wifi_status" in
   *"enabled"*)
     selected_option=$(echo "$options"$'\n'"$(wifi_list)" |
-      rofi -dmenu -i -selected-row 1 -config "${config}" -p " ")
+      rofi -dmenu -i -selected-row 1 -config "${config}" -p " " || pkill -x rofi)
     ;;
   *"disabled"*)
     selected_option=$(echo "$option_disabled" |
-      rofi -dmenu -i -config "${config}" -theme-str "${override_disabled}")
+      rofi -dmenu -i -config "${config}" -theme-str "${override_disabled}" || pkill -x rofi)
     ;;
   esac
 
@@ -64,11 +64,11 @@ while true; do
   "Disable Wi-Fi")
     notify-send "Wi-Fi Disabled"
     nmcli radio wifi off
-    sleep 1
+    exit
     ;;
   "Manual Entry")
     # Prompt for SSID
-    manual_ssid=$(rofi -dmenu -config "${config}" -theme-str "${override_ssid}" -p " ")
+    manual_ssid=$(rofi -dmenu -config "${config}" -theme-str "${override_ssid}" -p " " || pkill -x rofi)
 
     # Exit if no option is selected
     if [ -z "$manual_ssid" ]; then
