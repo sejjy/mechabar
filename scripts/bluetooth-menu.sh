@@ -48,9 +48,9 @@ while true; do
   bluetooth_status=$(bluetoothctl show | grep "Powered:" | awk '{print $2}')
 
   if [[ "$bluetooth_status" == "yes" ]]; then
-    selected_option=$(echo -e "$options" | rofi -dmenu -i -selected-row 1 -config "${config}" -p " ")
+    selected_option=$(echo -e "$options" | rofi -dmenu -i -selected-row 1 -config "${config}" -p " " || pkill -x rofi)
   else
-    selected_option=$(echo -e "$option" | rofi -dmenu -i -selected-row 1 -config "${config}" -theme-str "${override_disabled}" -p " ")
+    selected_option=$(echo -e "$option" | rofi -dmenu -i -selected-row 1 -config "${config}" -theme-str "${override_disabled}" -p " " || pkill -x rofi)
   fi
 
   # Exit if no option is selected
@@ -70,7 +70,7 @@ while true; do
     notify-send "Bluetooth Disabled"
     rfkill block bluetooth
     bluetoothctl power off
-    sleep 1
+    exit
     ;;
   "Scan for devices"*)
     notify-send "Press '?' to show help."
