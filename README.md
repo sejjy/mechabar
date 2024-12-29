@@ -17,9 +17,9 @@
 | :------------------------------------------: |
 | ![Bluetooth Menu](assets/bluetooth-menu.png) |
 
-|                 Power                 |
-| :-----------------------------------: |
-| ![Logout Menu](assets/power-menu.png) |
+|                Power                 |
+| :----------------------------------: |
+| ![Power Menu](assets/power-menu.png) |
 
   </details>
 
@@ -159,7 +159,7 @@ Here are some features and improvements planned for future versions:
 - [ ] Theme switcher
 - [x] Install script
 - [x] Rofi Bluetooth menu
-- [x] Rofi logout menu
+- [x] Rofi power menu
 
 ## Credits
 
