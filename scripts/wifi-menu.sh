@@ -15,7 +15,7 @@ option_disabled="Enable Wi-Fi"
 # Rofi window override
 override_ssid="entry { placeholder: \"Enter SSID\"; } listview { enabled: false; }"
 override_password="entry { placeholder: \"Enter password\"; } listview { enabled: false; }"
-override_disabled="inputbar { enabled: false; } listview { lines: 1; padding: 6px; }"
+override_disabled="mainbox { children: [ listview ]; } listview { lines: 1; padding: 6px; }"
 
 # Prompt for password
 get_password() {
@@ -75,29 +75,46 @@ while true; do
       exit
     fi
 
+    # Prompt for Wi-Fi password
     wifi_password=$(get_password)
 
     if [ -z "$wifi_password" ]; then
-      nmcli device wifi connect "$manual_ssid"
+      # Without password
+      if nmcli device wifi connect "$manual_ssid" | grep -q "successfully"; then
+        notify-send "Connected to \"$manual_ssid\"."
+      else
+        notify-send "Failed to connect to \"$manual_ssid\"."
+      fi
     else
-      nmcli dev wifi con "$manual_ssid" password "$wifi_password"
+      # With password
+      if nmcli device wifi connect "$manual_ssid" password "$wifi_password" | grep -q "successfully"; then
+        notify-send "Connected to \"$manual_ssid\"."
+      else
+        notify-send "Failed to connect to \"$manual_ssid\"."
+      fi
     fi
-
-    nmcli device wifi connect "$manual_ssid" password "$wifi_password" | grep "successfully" && notify-send "Connected to \"$manual_ssid\"."
     ;;
   *)
     # Get saved connections
     saved_connections=$(nmcli -g NAME connection)
 
     if echo "$saved_connections" | grep -qw "$selected_ssid"; then
-      nmcli connection up id "$selected_ssid" | grep "successfully" && notify-send "Connected to \"$selected_ssid\"."
+      if nmcli connection up id "$selected_ssid" | grep -q "successfully"; then
+        notify-send "Connected to \"$selected_ssid\"."
+      else
+        notify-send "Failed to connect to \"$selected_ssid\"."
+      fi
     else
       # Handle secure network connection
       if [[ "$selected_option" =~ ^"󰤪" ]]; then
         wifi_password=$(get_password)
       fi
 
-      nmcli device wifi connect "$selected_ssid" password "$wifi_password" | grep "successfully" && notify-send "Connected to \"$selected_ssid\"."
+      if nmcli device wifi connect "$selected_ssid" password "$wifi_password" | grep -q "successfully"; then
+        notify-send "Connected to \"$selected_ssid\"."
+      else
+        notify-send "Failed to connect to \"$selected_ssid\"."
+      fi
     fi
     ;;
   esac
