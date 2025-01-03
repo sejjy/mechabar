@@ -7,7 +7,7 @@
 config="$HOME/.config/rofi/bluetooth-menu.rasi"
 
 # Rofi window override
-override_disabled="inputbar { enabled: false; } listview { lines: 1; padding: 6px; }"
+override_disabled="mainbox { children: [ listview ]; } listview { lines: 1; padding: 6px; }"
 
 get_device_icon() {
   local device_mac=$1
