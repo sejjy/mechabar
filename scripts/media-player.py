@@ -114,31 +114,40 @@ class PlayerManager:
       self.clear_output()
 
   def on_metadata_changed(self, player, metadata, _=None):
-    # Handle metadata updates from a player.
     logger.debug(f"Metadata changed for player {player.props.player_name}")
     player_name = player.props.player_name
     artist = player.get_artist()
     title = player.get_title()
-    title = title.replace("&", "&amp;")
 
-    # Construct track info based on player type and status
-    if player_name == "spotify" and "mpris:trackid" in metadata and ":ad:" in player.props.metadata["mpris:trackid"]:
-      track_info = "Advertisement"
-    elif artist and title:
+    # Escape special characters in the title
+    title = title.replace("&", "&amp;") if title else "Unknown Title"
+
+    track_info = None
+    if metadata:
+      try:
+        # Access track ID safely
+        track_id_variant = metadata.lookup_value("mpris:trackid", GLib.VariantType("s"))
+        track_id = track_id_variant.unpack() if track_id_variant else ""
+        if player_name == "spotify" and ":ad:" in track_id:
+          track_info = "Advertisement"
+      except Exception as e:
+        logger.error(f"Error accessing metadata for player {player_name}: {e}")
+    
+    # Fallback to artist and title
+    if not track_info and artist and title:
       track_info = f"<b>{title}</b> - {artist}"
-    else:
+    elif not track_info:
       track_info = title
 
     if track_info:
-      track_info = (
+      prefix = (
         f"<span color='#a6e3a1'>󰓇  </span>" if player.props.status == "Playing" and player_name == "spotify" else
         f"<span color='#f38ba8'>󰗃  </span>" if player.props.status == "Playing" and player_name == "firefox" else
         f"<span color='#b4befe'>\u200A󰏤 \u2009\u2009\u200A</span>"
-      ) + track_info
+      )
+      track_info = prefix + track_info
 
-    # Only print output if no other player is playing
     current_playing = self.get_first_playing_player()
-    
     if current_playing is None or current_playing.props.player_name == player.props.player_name:
       self.write_output(track_info, player)
 
