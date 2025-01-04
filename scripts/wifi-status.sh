@@ -60,7 +60,7 @@
 #   a modern high-speed standard.
 
 if ! command -v nmcli &>/dev/null; then
-  echo "{\"text\": \"󰤮 Wi-Fi\", \"tooltip\": \"nmcli utility is missing\"}"
+  echo "{\"text\": \"󰤮\", \"tooltip\": \"nmcli utility is missing\"}"
   exit 1
 fi
 
@@ -68,9 +68,7 @@ fi
 wifi_status=$(nmcli radio wifi)
 
 if [ "$wifi_status" = "disabled" ]; then
-  tooltip="Wi-Fi Disabled"
-  icon="󰤮" # Icon for no connection or disabled
-  echo "{\"text\": \"${icon}\", \"tooltip\": \"${tooltip}\"}"
+  echo "{\"text\": \"󰤮\", \"tooltip\": \"Wi-Fi Disabled\"}"
   exit 0
 fi
 
@@ -90,9 +88,9 @@ else
   # bssid="N/A"
   chan="N/A"
   # rssi="N/A"
-  rx_bitrate=""
-  tx_bitrate=""
-  phy_mode=""
+  # rx_bitrate=""
+  # tx_bitrate=""
+  # phy_mode=""
   signal=$(echo "$wifi_info" | awk -F: '{print $3}')
 
   active_device=$(nmcli -t -f DEVICE,STATE device status |
@@ -114,25 +112,25 @@ else
     freq=$(echo "$line" | awk -F':' '{print $9}')
     chan="$chan ($freq)"
 
-    if command -v iw &>/dev/null; then
-      iw_output=$(iw dev "$active_device" station dump)
-      # rssi=$(echo "$iw_output" | grep "signal:" | awk '{print $2 " dBm"}')
+    # if command -v iw &>/dev/null; then
+    # iw_output=$(iw dev "$active_device" station dump)
+    # rssi=$(echo "$iw_output" | grep "signal:" | awk '{print $2 " dBm"}')
 
-      # Upload speed
-      rx_bitrate=$(echo "$iw_output" | grep "rx bitrate:" | awk '{print $3 " " $4}')
+    # Upload speed
+    # rx_bitrate=$(echo "$iw_output" | grep "rx bitrate:" | awk '{print $3 " " $4}')
 
-      # Download speed
-      tx_bitrate=$(echo "$iw_output" | grep "tx bitrate:" | awk '{print $3 " " $4}')
+    # Download speed
+    # tx_bitrate=$(echo "$iw_output" | grep "tx bitrate:" | awk '{print $3 " " $4}')
 
-      # Physical Layer Mode
-      if echo "$iw_output" | grep -E -q "rx bitrate:.* VHT"; then
-        phy_mode="802.11ac" # Wi-Fi 5
-      elif echo "$iw_output" | grep -E -q "rx bitrate:.* HT"; then
-        phy_mode="802.11n" # Wi-Fi 4
-      elif echo "$iw_output" | grep -E -q "rx bitrate:.* HE"; then
-        phy_mode="802.11ax" # Wi-Fi 6
-      fi
-    fi
+    # Physical Layer Mode
+    # if echo "$iw_output" | grep -E -q "rx bitrate:.* VHT"; then
+    #   phy_mode="802.11ac" # Wi-Fi 5
+    # elif echo "$iw_output" | grep -E -q "rx bitrate:.* HT"; then
+    #   phy_mode="802.11n" # Wi-Fi 4
+    # elif echo "$iw_output" | grep -E -q "rx bitrate:.* HE"; then
+    #   phy_mode="802.11ax" # Wi-Fi 6
+    # fi
+    # fi
 
     # Get the current Wi-Fi ESSID
     essid=$(echo "$wifi_info" | awk -F: '{print $2}')
@@ -147,17 +145,17 @@ else
     # tooltip+="\nRSSI:        ${rssi}"
     tooltip+="\nStrength:   ${signal} / 100"
 
-    if [ -n "$rx_bitrate" ]; then
-      tooltip+="\nRx Rate:     ${rx_bitrate}"
-    fi
+    # if [ -n "$rx_bitrate" ]; then
+    #   tooltip+="\nRx Rate:     ${rx_bitrate}"
+    # fi
 
-    if [ -n "$tx_bitrate" ]; then
-      tooltip+="\nTx Rate:     ${tx_bitrate}"
-    fi
+    # if [ -n "$tx_bitrate" ]; then
+    #   tooltip+="\nTx Rate:     ${tx_bitrate}"
+    # fi
 
-    if [ -n "$phy_mode" ]; then
-      tooltip+="\nPHY Mode:    ${phy_mode}"
-    fi
+    # if [ -n "$phy_mode" ]; then
+    #   tooltip+="\nPHY Mode:    ${phy_mode}"
+    # fi
   fi
 fi
 
@@ -174,5 +172,5 @@ else
   icon="󰤮" # No signal
 fi
 
-# Change "Wi-Fi" to "${essid}" to display network name
+# Module and tooltip
 echo "{\"text\": \"${icon}\", \"tooltip\": \"${tooltip}\"}"
