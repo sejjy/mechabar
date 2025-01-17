@@ -229,8 +229,7 @@
     "tooltip": true,
     "tooltip-format-activated": "Presentation Mode",
     "tooltip-format-deactivated": "Idle Mode",
-    "start-activated": false,
-    "timeout": 5
+    "start-activated": false
   },
 
   "clock#time": {
@@ -312,7 +311,6 @@
     "on-click": "hyprctl dispatch exec '~/.config/waybar/scripts/system-update.sh up'",
     "interval": 60,
     "tooltip": true,
-    "signal": 20, // I'm not sure what this does
     "min-length": 1,
     "max-length": 1
   },
