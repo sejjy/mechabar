@@ -82,6 +82,7 @@ while true; do
       # Without password
       if nmcli device wifi connect "$manual_ssid" | grep -q "successfully"; then
         notify-send "Connected to \"$manual_ssid\"."
+        exit
       else
         notify-send "Failed to connect to \"$manual_ssid\"."
       fi
@@ -89,6 +90,7 @@ while true; do
       # With password
       if nmcli device wifi connect "$manual_ssid" password "$wifi_password" | grep -q "successfully"; then
         notify-send "Connected to \"$manual_ssid\"."
+        exit
       else
         notify-send "Failed to connect to \"$manual_ssid\"."
       fi
@@ -101,6 +103,7 @@ while true; do
     if echo "$saved_connections" | grep -qw "$selected_ssid"; then
       if nmcli connection up id "$selected_ssid" | grep -q "successfully"; then
         notify-send "Connected to \"$selected_ssid\"."
+        exit
       else
         notify-send "Failed to connect to \"$selected_ssid\"."
       fi
@@ -112,6 +115,7 @@ while true; do
 
       if nmcli device wifi connect "$selected_ssid" password "$wifi_password" | grep -q "successfully"; then
         notify-send "Connected to \"$selected_ssid\"."
+        exit
       else
         notify-send "Failed to connect to \"$selected_ssid\"."
       fi
