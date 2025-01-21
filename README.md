@@ -1,6 +1,6 @@
 <div align="center">
 
-# Mechabar 🤖
+# 🤖 mechabar
 
 | ![Preview 1](assets/v1.0.0.png) |
 | :-----------------------------: |
@@ -22,40 +22,14 @@
 | ![Power Menu](assets/power-menu.png) |
 
   </details>
-
-  <!-- Dark Mode -->
-
-  <a href="https://github.com/sejjy/mechabar/stargazers#gh-dark-mode-only">
-    <img
-      src="https://img.shields.io/github/stars/sejjy/mechabar?colorA=1e1e2e&colorB=f9e2af&style=for-the-badge"
-  /></a>
-  <a href="https://github.com/sejjy/mechabar/commits#gh-dark-mode-only">
-    <img
-      src="https://img.shields.io/github/last-commit/sejjy/mechabar?colorA=1e1e2e&colorB=a6e3a1&style=for-the-badge"
-  /></a>
-  <a href="https://github.com/sejjy/mechabar/contributors#gh-dark-mode-only">
-    <img
-      src="https://img.shields.io/github/contributors/sejjy/mechabar?colorA=1e1e2e&colorB=b4befe&style=for-the-badge"
-  /></a>
-
-  <!-- Light Mode -->
-
-  <a href="https://github.com/sejjy/mechabar/stargazers#gh-light-mode-only">
-    <img
-      src="https://img.shields.io/github/stars/sejjy/mechabar?colorA=cdd6f4&colorB=f9e2af&style=for-the-badge"
-  /></a>
-  <a href="https://github.com/sejjy/mechabar/commits#gh-light-mode-only">
-    <img
-      src="https://img.shields.io/github/last-commit/sejjy/mechabar?colorA=cdd6f4&colorB=a6e3a1&style=for-the-badge"
-  /></a>
-  <a href="https://github.com/sejjy/mechabar/contributors#gh-light-mode-only">
-    <img
-      src="https://img.shields.io/github/contributors/sejjy/mechabar?colorA=cdd6f4&colorB=b4befe&style=for-the-badge"
-  /></a>
 </div>  
 <br />
 
-A mecha-themed **[Waybar](https://github.com/Alexays/Waybar)** configuration initially designed for **[Hyprland](https://github.com/hyprwm/Hyprland)**, but also compatible with **Sway** and other **Wlroots-based compositors** with minimal adjustments.
+A mecha-themed [Waybar](https://github.com/Alexays/Waybar) configuration initially designed for [Hyprland](https://github.com/hyprwm/Hyprland), but also compatible with [Sway](https://github.com/swaywm/sway)[^1] and other [wlroots-based compositors](https://github.com/solarkraft/awesome-wlroots#compositors) with minimal adjustments.
+
+[^1]:
+    Waybar configuration guide for Sway:  
+    https://github.com/Alexays/Waybar/wiki/Module:-Sway
 
 ## Installation (Arch Linux)
 
@@ -150,16 +124,16 @@ yay -S bluetui rofi-lbonn-wayland-git
 ## Customization
 
 - You can change the colors in [theme.css](/theme.css) and [theme.rasi](/rofi/theme.rasi) to match your system theme.
-- You can remove existing modules or add new ones from the [modules](/modules/) folder. For a complete list of available modules, visit the [Waybar Wiki](https://github.com/Alexays/Waybar/wiki).
+- You can replace existing modules or add new ones from the [modules](/modules/) folder. For a complete list of available modules, visit the [Waybar Wiki](https://github.com/Alexays/Waybar/wiki).
 
 ## Roadmap
 
 Here are some features and improvements planned for future versions:
 
-- [ ] Theme switcher
 - [x] Install script
 - [x] Rofi Bluetooth menu
 - [x] Rofi power menu
+- [ ] Theme switcher
 
 ## Credits
 
