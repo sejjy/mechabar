@@ -22,14 +22,15 @@
 | ![Power Menu](assets/power-menu.png) |
 
   </details>
-</div>  
-<br />
+</div>
 
 A mecha-themed [Waybar](https://github.com/Alexays/Waybar) configuration initially designed for [Hyprland](https://github.com/hyprwm/Hyprland), but also compatible with [Sway](https://github.com/swaywm/sway)[^1] and other [wlroots-based compositors](https://github.com/solarkraft/awesome-wlroots#compositors) with minimal adjustments.
 
 [^1]:
     Waybar configuration guide for Sway:  
     https://github.com/Alexays/Waybar/wiki/Module:-Sway
+
+<br />
 
 ## Installation (Arch Linux)
 
