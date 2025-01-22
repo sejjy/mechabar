@@ -25,12 +25,13 @@ get_password() {
 while true; do
   wifi_list() {
     nmcli --fields "SECURITY,SSID" device wifi list |
-      tail -n +2 |               # Skip header line
-      sed 's/  */ /g' |          # Multiple spaces to single space
-      sed -E "s/WPA*.?\S/󰤪 /g" | # Replace WPA* with wifi lock icon
-      sed "s/^--/󰤨 /g" |         # Replace '--' (open networks) with wifi icon
-      sed "s/󰤪  󰤪/󰤪/g" |         # Remove duplicate icons
-      sed "/--/d"                # Remove lines containing '--'
+      tail -n +2 |               # Skip the header line from nmcli output
+      sed 's/  */ /g' |          # Replace multiple spaces with a single space
+      sed -E "s/WPA*.?\S/󰤪 /g" | # Replace 'WPA*' with a Wi-Fi lock icon
+      sed "s/^--/󰤨 /g" |         # Replace '--' (open networks) with an open Wi-Fi icon
+      sed "s/󰤪  󰤪/󰤪/g" |         # Remove duplicate Wi-Fi lock icons
+      sed "/--/d" |              # Remove lines containing '--' (empty SSIDs)
+      awk '!seen[$0]++'          # Filter out duplicate SSIDs
   }
 
   # Get Wi-Fi status
