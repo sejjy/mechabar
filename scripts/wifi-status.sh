@@ -60,7 +60,7 @@
 #   a modern high-speed standard.
 
 if ! command -v nmcli &>/dev/null; then
-  echo "{\"text\": \"󰤮\", \"tooltip\": \"nmcli utility is missing\"}"
+  echo "{\"text\": \"󰤫\", \"tooltip\": \"nmcli utility is missing\"}"
   exit 1
 fi
 
@@ -169,7 +169,7 @@ elif [ "$signal" -ge 40 ]; then
 elif [ "$signal" -ge 20 ]; then
   icon="󰤟" # Very weak signal
 else
-  icon="󰤮" # No signal
+  icon="󰤯" # No signal
 fi
 
 # Module and tooltip
