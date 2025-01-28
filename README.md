@@ -2,7 +2,7 @@
 
 # 🤖 mechabar
 
-| ![Preview 1](assets/v1.0.0.png) |
+| ![Preview 1](assets/v1.1.0.png) |
 | :-----------------------------: |
 
   <details>
