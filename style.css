@@ -45,7 +45,7 @@ tooltip label {
   color: @module-fg;
   border-radius: 8px;
   box-shadow: none;
-  margin: 3px 0;
+  margin: 2px 0;
   padding: 0 2px;
   transition: none;
 }
@@ -60,7 +60,7 @@ tooltip label {
   background: @active-bg;
   text-shadow: 0 0 2px rgba(0, 0, 0, 0.6);
   box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.4);
-  margin: 3px;
+  margin: 2px;
   padding: 0 6px;
 }
 
