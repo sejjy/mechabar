@@ -2,8 +2,10 @@
 
 # 🤖 mechabar
 
-| ![Preview 1](assets/v1.1.0.png) |
-| :-----------------------------: |
+| ![Preview 1](assets/2x-scale.png) |
+| :-------------------------------: |
+
+> _<div align="left">See the [assets](/assets/) folder for more preview images.</div>_
 
   <details>
     <summary><strong>&nbsp;🚀 Menus</strong></summary>
@@ -43,7 +45,7 @@ A mecha-themed [Waybar](https://github.com/Alexays/Waybar) configuration initial
    cd mechabar
    ```
 
-2. **Run the [install](/install.sh) script:**
+2. **Run the [install script](/install.sh):**
 
    ```bash
    ./install.sh
