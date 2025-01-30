@@ -72,6 +72,7 @@ tooltip label {
 #custom-cpuinfo,
 #memory,
 #custom-cpu,
+#idle_inhibitor,
 #clock,
 #custom-wifi,
 #bluetooth,
@@ -83,7 +84,6 @@ tooltip label {
 #custom-power {
   opacity: 1;
   color: @module-fg;
-  margin-bottom: 0;
   padding: 0 4px;
   text-shadow: 0 0 2px rgba(0, 0, 0, 0.6);
 }
@@ -96,7 +96,8 @@ tooltip label {
 #custom-left6,
 #custom-left7,
 #custom-left8 {
-  font-size: 11pt;
+  font-size: 14.68px;
+  margin-bottom: 0;
   text-shadow: -2px 0 2px rgba(0, 0, 0, 0.5);
 }
 
@@ -105,7 +106,8 @@ tooltip label {
 #custom-right3,
 #custom-right4,
 #custom-right5 {
-  font-size: 11pt;
+  font-size: 14.68px;
+  margin-bottom: 0;
   padding-right: 3px;
   text-shadow: 2px 0 2px rgba(0, 0, 0, 0.5);
 }
@@ -123,6 +125,8 @@ tooltip label {
 #custom-left1 {
   color: @workspaces;
   background: @main-bg;
+  font-size: 14.68px;
+  margin-bottom: 0;
   padding-left: 2px;
 }
 #workspaces {
@@ -131,7 +135,9 @@ tooltip label {
 #custom-right1 {
   color: @workspaces;
   background: @main-bg;
+  font-size: 14.68px;
   text-shadow: 3px 0 2px rgba(0, 0, 0, 0.4);
+  margin-bottom: 0;
 }
 
 /* == Temperature == */
@@ -181,8 +187,8 @@ tooltip label {
 }
 #custom-leftin1 {
   color: @cpu;
-  font-size: 12.2pt;
-  margin-bottom: -2px;
+  font-size: 15.5px;
+  margin-bottom: -1px;
 }
 
 /* == Distro Icon == */
@@ -190,33 +196,41 @@ tooltip label {
 #custom-left5 {
   color: @distro-bg;
   background: @main-bg;
+  font-size: 15.68px;
   text-shadow: -2px 0 2px rgba(0, 0, 0, 0.6);
+  margin-bottom: -2px;
   padding-left: 3px;
 }
-#idle_inhibitor {
+#custom-distro {
   color: @distro-fg;
   background: @distro-bg;
-  font-size: 11pt;
-  margin-right: -1px;
-  margin-bottom: -2px;
-  padding-right: 0;
-  padding-left: 3px;
+  font-size: 14.6px;
+  margin: 0 -1px -2px 0;
+  padding: 0 0 0 3px;
   text-shadow: 0 0 1.5px rgba(0, 0, 0, 1);
 }
 #custom-right2 {
   color: @distro-bg;
   background: @main-bg;
+  font-size: 15.68px;
+  margin-bottom: -2px;
 }
 
 /* == Time == */
 
 #custom-rightin1 {
   color: @time;
-  font-size: 12.2pt;
-  margin-bottom: -2px;
+  font-size: 15.5px;
+  margin-bottom: -1px;
+}
+#idle_inhibitor {
+  background: @time;
+  margin-right: -2px;
+  padding: 0 0 0 7px;
 }
 #clock.time {
   background: @time;
+  padding: 0 3px 0 0;
 }
 #custom-right3 {
   color: @time;
@@ -347,8 +361,8 @@ tooltip label {
 #custom-leftin2 {
   color: @battery;
   background: @main-bg;
-  font-size: 12.2pt;
-  margin-bottom: -2px;
+  font-size: 15.5px;
+  margin-bottom: -1px;
 }
 #custom-power {
   color: @main-bg;
@@ -357,8 +371,7 @@ tooltip label {
   box-shadow: 1px 0 2px 1px rgba(0, 0, 0, 0.6);
   border-radius: 10px;
   margin: 2px 4px 2px 0;
-  padding-right: 6px;
-  padding-left: 9px;
+  padding: 0 6px 0 9px;
 }
 #custom-power:hover {
   color: @hover-fg;
