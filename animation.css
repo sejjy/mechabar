@@ -10,16 +10,10 @@
 
 /* == Phase 1 == */
 
-#custom-ws,
-#window {
+#custom-ws {
   color: transparent;
   text-shadow: none;
   animation: module_in 0.25s ease-in 0.5s forwards;
-}
-
-#workspaces label {
-  opacity: 0;
-  animation: hoverable_in 0.25s ease-in 0.5s forwards;
 }
 
 #custom-distro {
@@ -38,6 +32,11 @@
 }
 
 /* == Phase 2 == */
+
+#workspaces label {
+  opacity: 0;
+  animation: hoverable_in 0.25s ease-in 1s forwards;
+}
 
 #cpu,
 #clock.time {
@@ -119,6 +118,12 @@
 
 /* == Phase 4 == */
 
+#window {
+  color: transparent;
+  text-shadow: none;
+  animation: module_in 0.25s ease-in 1.75s forwards;
+}
+
 #custom-cpuinfo {
   color: transparent;
   font-size: 0;
@@ -135,6 +140,14 @@
   text-shadow: none;
   animation: module_expand 0.25s ease-in 1.5s forwards,
     hoverable_in 0.25s ease-in 1.75s forwards;
+}
+
+/* == Phase 5 == */
+
+#custom-media {
+  color: transparent;
+  text-shadow: none;
+  animation: module_in 0.25s ease-in 2s forwards;
 }
 
 /* === Keyframes === */
