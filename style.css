@@ -79,7 +79,7 @@ tooltip label {
 #custom-update,
 #custom-media,
 #pulseaudio,
-#custom-backlight,
+#backlight,
 #battery,
 #custom-power {
   opacity: 1;
@@ -228,6 +228,11 @@ tooltip label {
   margin-right: -2px;
   padding: 0 0 0 7px;
 }
+#idle_inhibitor:hover {
+  color: @hover-fg;
+  text-shadow: none;
+  box-shadow: none;
+}
 #clock.time {
   background: @time;
   padding: 0 3px 0 0;
@@ -326,7 +331,7 @@ tooltip label {
   background: @pulseaudio;
   padding-left: 2px;
 }
-#custom-backlight {
+#backlight {
   background: @backlight;
 }
 
@@ -338,13 +343,8 @@ tooltip label {
   padding-left: 2px;
 }
 #battery {
-  background: @battery;
-}
-#battery.full {
-  color: @full;
-}
-#battery.good {
   color: @module-fg;
+  background: @battery;
 }
 #battery.warning {
   color: @warning;
