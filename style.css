@@ -379,3 +379,5 @@ tooltip label {
   text-shadow: none;
   box-shadow: none;
 }
+
+@import "animation.css";

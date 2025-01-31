@@ -27,7 +27,7 @@
     "memory",               // memory
 
     "custom/left4",
-    "custom/cpu",           // cpu
+    "cpu",           // cpu
     "custom/leftin1",
 
     "custom/left5",
@@ -227,10 +227,9 @@
     "max-length": 7
   },
 
-  "custom/cpu": {
-    "exec": "~/.config/waybar/scripts/cpu-usage.sh",
-    "return-type": "json",
-    "tooltip": true,
+  "cpu": {
+    "format": "󰻠 {usage}%",
+    "tooltip": false,
     "interval": 5,
     "min-length": 6,
     "max-length": 6
