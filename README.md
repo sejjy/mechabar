@@ -1,3 +1,6 @@
+> [!NOTE]
+> You are currently on the **`animated`** branch, which is still in development. This branch introduces a new feature: **launch animations**.
+
 <div align="center">
 
 # 🤖 mechabar
