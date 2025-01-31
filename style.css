@@ -228,6 +228,11 @@ tooltip label {
   margin-right: -2px;
   padding: 0 0 0 7px;
 }
+#idle_inhibitor:hover {
+  color: @hover-fg;
+  text-shadow: none;
+  box-shadow: none;
+}
 #clock.time {
   background: @time;
   padding: 0 3px 0 0;
