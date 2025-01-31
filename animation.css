@@ -1,3 +1,5 @@
+/* use native cpu module instead of the default custom cpu script */
+
 #cpu {
   opacity: 1;
   color: @module-fg;
@@ -6,7 +8,20 @@
   text-shadow: 0 0 2px rgba(0, 0, 0, 0.6);
 }
 
-/* Phase 1 */
+/* == Phase 1 == */
+
+#custom-ws,
+#window {
+  color: transparent;
+  text-shadow: none;
+  animation: module_in 0.25s ease-in 0.5s forwards;
+}
+
+#workspaces label {
+  opacity: 0;
+  animation: hoverable_in 0.25s ease-in 0.5s forwards;
+}
+
 #custom-distro {
   color: transparent;
   font-size: 0;
@@ -16,23 +31,16 @@
 }
 
 #custom-power {
-  color: transparent;
   font-size: 0;
   text-shadow: none;
   animation: power_expand 0.25s ease-in 0.25s forwards,
     power_in 0.25s ease-in 0.5s forwards;
 }
 
-/* Phase 2 */
+/* == Phase 2 == */
+
 #cpu,
-#idle_inhibitor,
-#clock.time,
-#battery,
-#battery.full,
-#battery.good,
-#battery.warning,
-#battery.critical,
-#battery.charging {
+#clock.time {
   color: transparent;
   font-size: 0;
   text-shadow: none;
@@ -40,10 +48,45 @@
     module_in 0.25s ease-in 1s forwards;
 }
 
-/* Phase 3 */
+#idle_inhibitor {
+  font-size: 0;
+  text-shadow: none;
+  animation: module_expand 0.25s ease-in 0.75s forwards,
+    hoverable_in 0.25s ease-in 1s forwards;
+}
+
+#battery {
+  font-size: 0;
+  text-shadow: none;
+  animation: module_expand 0.25s ease-in 0.75s forwards,
+    battery_in 0.25s ease-in 1s forwards;
+}
+
+#battery.warning {
+  font-size: 0;
+  text-shadow: none;
+  animation: module_expand 0.25s ease-in 0.75s forwards,
+    state_warning_in 0.25s ease-in 1s forwards;
+}
+
+#battery.critical {
+  font-size: 0;
+  text-shadow: none;
+  animation: module_expand 0.25s ease-in 0.75s forwards,
+    state_critical_in 0.25s ease-in 1s forwards;
+}
+
+#battery.charging {
+  font-size: 0;
+  text-shadow: none;
+  animation: module_expand 0.25s ease-in 0.75s forwards,
+    state_charging_in 0.25s ease-in 1s forwards;
+}
+
+/* == Phase 3 == */
+
 #memory,
-#clock.date,
-#custom-backlight {
+#backlight {
   color: transparent;
   font-size: 0;
   text-shadow: none;
@@ -51,12 +94,32 @@
     module_in 0.25s ease-in 1.4s forwards;
 }
 
-/* Phase 4 */
-#custom-cpuinfo,
-#custom-wifi,
-#bluetooth,
-#custom-update,
-#pulseaudio {
+#memory.warning {
+  color: transparent;
+  font-size: 0;
+  text-shadow: none;
+  animation: module_expand 0.25s ease-in 1.15s forwards,
+    state_warning_in 0.25s ease-in 1.4s forwards;
+}
+
+#memory.critical {
+  color: transparent;
+  font-size: 0;
+  text-shadow: none;
+  animation: module_expand 0.25s ease-in 1.15s forwards,
+    state_critical_in 0.25s ease-in 1.4s forwards;
+}
+
+#clock.date {
+  font-size: 0;
+  text-shadow: none;
+  animation: module_expand 0.25s ease-in 1.15s forwards,
+    hoverable_in 0.25s ease-in 1.4s forwards;
+}
+
+/* == Phase 4 == */
+
+#custom-cpuinfo {
   color: transparent;
   font-size: 0;
   text-shadow: none;
@@ -64,10 +127,22 @@
     module_in 0.25s ease-in 1.75s forwards;
 }
 
-/* Keyframes */
+#custom-wifi,
+#bluetooth,
+#custom-update,
+#pulseaudio {
+  font-size: 0;
+  text-shadow: none;
+  animation: module_expand 0.25s ease-in 1.5s forwards,
+    hoverable_in 0.25s ease-in 1.75s forwards;
+}
+
+/* === Keyframes === */
+
+/* == Distro Icon == */
+
 @keyframes distro_expand {
   from {
-    font-size: 0;
   }
   to {
     font-size: 14.6px;
@@ -76,8 +151,6 @@
 
 @keyframes distro_in {
   from {
-    color: transparent;
-    text-shadow: none;
   }
   to {
     color: @distro-fg;
@@ -85,9 +158,10 @@
   }
 }
 
+/* == Power Button == */
+
 @keyframes power_expand {
   from {
-    font-size: 0;
   }
   to {
     font-size: 10px;
@@ -96,18 +170,16 @@
 
 @keyframes power_in {
   from {
-    color: transparent;
-    text-shadow: none;
   }
   to {
-    color: @main-bg;
-    text-shadow: 0 0 1.5px rgba(0, 0, 0, 1); /* Added text shadow */
+    text-shadow: 0 0 2px rgba(0, 0, 0, 0.6);
   }
 }
 
+/* == Modules == */
+
 @keyframes module_expand {
   from {
-    font-size: 0;
   }
   to {
     font-size: 10px;
@@ -116,10 +188,56 @@
 
 @keyframes module_in {
   from {
-    color: transparent;
   }
   to {
     color: @module-fg;
+    text-shadow: 0 0 2px rgba(0, 0, 0, 0.6);
+  }
+}
+
+/* fix states styling */
+
+@keyframes hoverable_in {
+  from {
+  }
+  to {
+    opacity: 1;
+    text-shadow: 0 0 2px rgba(0, 0, 0, 0.6);
+  }
+}
+
+@keyframes battery_in {
+  from {
+  }
+  to {
+    color: @module-fg;
+    text-shadow: 0 0 2px rgba(0, 0, 0, 0.6);
+  }
+}
+
+@keyframes state_warning_in {
+  from {
+  }
+  to {
+    color: @warning;
+    text-shadow: 0 0 2px rgba(0, 0, 0, 0.6);
+  }
+}
+
+@keyframes state_critical_in {
+  from {
+  }
+  to {
+    color: @critical;
+    text-shadow: 0 0 2px rgba(0, 0, 0, 0.6);
+  }
+}
+
+@keyframes state_charging_in {
+  from {
+  }
+  to {
+    color: @charging;
     text-shadow: 0 0 2px rgba(0, 0, 0, 0.6);
   }
 }
