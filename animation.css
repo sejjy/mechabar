@@ -1,0 +1,125 @@
+#cpu {
+  opacity: 1;
+  color: @module-fg;
+  background: @cpu;
+  padding: 0 4px;
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.6);
+}
+
+/* Phase 1 */
+#custom-distro {
+  color: transparent;
+  font-size: 0;
+  text-shadow: none;
+  animation: distro_expand 0.25s ease-in 0.25s forwards,
+    distro_in 0.25s ease-in 0.5s forwards;
+}
+
+#custom-power {
+  color: transparent;
+  font-size: 0;
+  text-shadow: none;
+  animation: power_expand 0.25s ease-in 0.25s forwards,
+    power_in 0.25s ease-in 0.5s forwards;
+}
+
+/* Phase 2 */
+#cpu,
+#idle_inhibitor,
+#clock.time,
+#battery,
+#battery.full,
+#battery.good,
+#battery.warning,
+#battery.critical,
+#battery.charging {
+  color: transparent;
+  font-size: 0;
+  text-shadow: none;
+  animation: module_expand 0.25s ease-in 0.75s forwards,
+    module_in 0.25s ease-in 1s forwards;
+}
+
+/* Phase 3 */
+#memory,
+#clock.date,
+#custom-backlight {
+  color: transparent;
+  font-size: 0;
+  text-shadow: none;
+  animation: module_expand 0.25s ease-in 1.15s forwards,
+    module_in 0.25s ease-in 1.4s forwards;
+}
+
+/* Phase 4 */
+#custom-cpuinfo,
+#custom-wifi,
+#bluetooth,
+#custom-update,
+#pulseaudio {
+  color: transparent;
+  font-size: 0;
+  text-shadow: none;
+  animation: module_expand 0.25s ease-in 1.5s forwards,
+    module_in 0.25s ease-in 1.75s forwards;
+}
+
+/* Keyframes */
+@keyframes distro_expand {
+  from {
+    font-size: 0;
+  }
+  to {
+    font-size: 14.6px;
+  }
+}
+
+@keyframes distro_in {
+  from {
+    color: transparent;
+    text-shadow: none;
+  }
+  to {
+    color: @distro-fg;
+    text-shadow: 0 0 1.5px rgba(0, 0, 0, 1);
+  }
+}
+
+@keyframes power_expand {
+  from {
+    font-size: 0;
+  }
+  to {
+    font-size: 10px;
+  }
+}
+
+@keyframes power_in {
+  from {
+    color: transparent;
+    text-shadow: none;
+  }
+  to {
+    color: @main-bg;
+    text-shadow: 0 0 1.5px rgba(0, 0, 0, 1); /* Added text shadow */
+  }
+}
+
+@keyframes module_expand {
+  from {
+    font-size: 0;
+  }
+  to {
+    font-size: 10px;
+  }
+}
+
+@keyframes module_in {
+  from {
+    color: transparent;
+  }
+  to {
+    color: @module-fg;
+    text-shadow: 0 0 2px rgba(0, 0, 0, 0.6);
+  }
+}
