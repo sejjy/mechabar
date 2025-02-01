@@ -52,7 +52,7 @@ You can choose between two (2) styles:
 
 - **Animated:**
 
-  Clone the [`animated`](https://github.com/sejjy/mechabar/tree/animated) branch to try the new launch animations.
+  Clone the `animated` branch to try the new launch animations.
 
   ```bash
     git clone -b animated https://github.com/sejjy/mechabar.git
