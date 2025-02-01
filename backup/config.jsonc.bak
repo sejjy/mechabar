@@ -27,6 +27,7 @@
     "memory",               // memory
 
     "custom/left4",
+    // "cpu",                  // cpu
     "custom/cpu",           // cpu
     "custom/leftin1",
 
@@ -55,6 +56,7 @@
     "pulseaudio",           // output device
 
     "custom/left7",
+    // "backlight",            // brightness
     "custom/backlight",     // brightness
 
     "custom/left8",
@@ -226,6 +228,14 @@
     "min-length": 7,
     "max-length": 7
   },
+  
+  // "cpu": {
+  //   "format": "󰻠 {usage}%",
+  //   "tooltip": false,
+  //   "interval": 5,
+  //   "min-length": 6,
+  //   "max-length": 6
+  // },
 
   "custom/cpu": {
     "exec": "~/.config/waybar/scripts/cpu-usage.sh",
@@ -367,6 +377,16 @@
     "max-length": 6
   },
 
+  // "backlight": {
+  //   "format": "{icon} {percent}%",
+  //   "format-icons": ["", "", "", "", "", "", "", "", ""],
+  //   "tooltip": false,
+  //   "on-scroll-up": "brightnessctl set 2%+",
+  //   "on-scroll-down": "brightnessctl set 2%-",
+  //   "min-length": 6,
+  //   "max-length": 6
+  // },
+
   "custom/backlight": {
     "exec": "~/.config/waybar/scripts/brightness-control.sh",
     "return-type": "json",
@@ -381,15 +401,12 @@
 
   "battery": {
     "states": {
-      "full": 100,
-      "good": 99,
       "warning": 30,
       "critical": 15
     },
 
     "format": "{icon} {capacity}%",
     "format-icons": ["󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂"],
-    "format-full": "󱃌 {capacity}%",
     "format-warning": "󰁻 {capacity}%",
     "format-critical": "󱃍 {capacity}%",
     "format-charging": "󱘖 {capacity}%",
