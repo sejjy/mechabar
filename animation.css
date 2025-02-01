@@ -1,4 +1,4 @@
-/* == Phase 1 == */
+/* <<--< PHASE 1 >-->> */
 
 #custom-ws {
   color: transparent;
@@ -21,7 +21,7 @@
     power_in 0.25s ease-in 0.5s forwards;
 }
 
-/* == Phase 2 == */
+/* <<--< PHASE 2 >-->> */
 
 #workspaces label {
   opacity: 0;
@@ -29,49 +29,54 @@
 }
 
 #cpu,
-#clock.time {
-  color: transparent;
+#clock.time,
+#idle_inhibitor,
+#battery,
+#battery.warning,
+#battery.critical,
+#battery.charging {
   font-size: 0;
   text-shadow: none;
   animation: module_expand 0.25s ease-in 0.75s forwards,
     module_in 0.25s ease-in 1s forwards;
 }
 
+#cpu {
+  animation: module_expand 0.25s ease-in 0.75s forwards,
+    module_in 0.25s ease-in 1s forwards;
+}
+
+#clock.time {
+  animation: module_expand 0.25s ease-in 0.75s forwards,
+    module_in 0.25s ease-in 1s forwards;
+}
+
 #idle_inhibitor {
-  font-size: 0;
   animation: module_expand 0.25s ease-in 0.75s forwards,
     hoverable_in 0.25s ease-in 1s forwards;
 }
 
 #battery {
-  font-size: 0;
-  text-shadow: none;
   animation: module_expand 0.25s ease-in 0.75s forwards,
     battery_in 0.25s ease-in 1s forwards;
 }
 
 #battery.warning {
-  font-size: 0;
-  text-shadow: none;
   animation: module_expand 0.25s ease-in 0.75s forwards,
     state_warning_in 0.25s ease-in 1s forwards;
 }
 
 #battery.critical {
-  font-size: 0;
-  text-shadow: none;
   animation: module_expand 0.25s ease-in 0.75s forwards,
     state_critical_in 0.25s ease-in 1s forwards;
 }
 
 #battery.charging {
-  font-size: 0;
-  text-shadow: none;
   animation: module_expand 0.25s ease-in 0.75s forwards,
     state_charging_in 0.25s ease-in 1s forwards;
 }
 
-/* == Phase 3 == */
+/* <<--< PHASE 3 >-->> */
 
 #memory,
 #backlight {
@@ -104,21 +109,15 @@
     hoverable_in 0.25s ease-in 1.4s forwards;
 }
 
-/* == Phase 4 == */
+/* <<--< PHASE 4 >-->> */
 
-#window {
+#window,
+#custom-media {
   opacity: 0;
   animation: hoverable_in 0.25s ease-in 1.75s forwards;
 }
 
-#custom-cpuinfo {
-  color: transparent;
-  font-size: 0;
-  text-shadow: none;
-  animation: module_expand 0.25s ease-in 1.5s forwards,
-    module_in 0.25s ease-in 1.75s forwards;
-}
-
+#custom-cpuinfo,
 #custom-wifi,
 #bluetooth,
 #custom-update,
@@ -128,93 +127,74 @@
     hoverable_in 0.25s ease-in 1.75s forwards;
 }
 
-/* == Phase 5 == */
+/* <<--< KEYFRAMES >-->> */
 
-#custom-media {
-  opacity: 0;
-  animation: hoverable_in 0.25s ease-in 2s forwards;
-}
-
-/* === Keyframes === */
-
-/* == Distro Icon == */
+/* <<--< distro icon >-->> */
 
 @keyframes distro_expand {
-  from {
-  }
   to {
     font-size: 14.6px;
   }
 }
 
 @keyframes distro_in {
-  from {
-  }
   to {
     color: @distro-fg;
     text-shadow: 0 0 1.5px rgba(0, 0, 0, 1);
   }
 }
 
-/* == Power Button == */
+/* <<--< power button >-->> */
 
 @keyframes power_expand {
-  from {
-  }
   to {
     font-size: 10px;
   }
 }
 
 @keyframes power_in {
-  from {
-  }
   to {
     text-shadow: 0 0 2px rgba(0, 0, 0, 0.6);
   }
 }
 
-/* == Modules == */
+/* <<--< modules >-->> */
 
 @keyframes module_expand {
-  from {
-  }
   to {
     font-size: 10px;
   }
 }
 
 @keyframes module_in {
-  from {
-  }
   to {
     color: @module-fg;
     text-shadow: 0 0 2px rgba(0, 0, 0, 0.6);
   }
 }
 
-/* fix states styling */
+/* <<--< FIXES >-->> */
+
+/* <<--< hoverables >-->> */
 
 @keyframes hoverable_in {
-  from {
-  }
   to {
     opacity: 1;
   }
 }
 
+/* <<--< battery >-->> */
+
 @keyframes battery_in {
-  from {
-  }
   to {
     color: @module-fg;
     text-shadow: 0 0 2px rgba(0, 0, 0, 0.6);
   }
 }
 
+/* <<--< states >-->> */
+
 @keyframes state_warning_in {
-  from {
-  }
   to {
     color: @warning;
     text-shadow: 0 0 2px rgba(0, 0, 0, 0.6);
@@ -222,8 +202,6 @@
 }
 
 @keyframes state_critical_in {
-  from {
-  }
   to {
     color: @critical;
     text-shadow: 0 0 2px rgba(0, 0, 0, 0.6);
@@ -231,8 +209,6 @@
 }
 
 @keyframes state_charging_in {
-  from {
-  }
   to {
     color: @charging;
     text-shadow: 0 0 2px rgba(0, 0, 0, 0.6);
