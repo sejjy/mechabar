@@ -345,12 +345,6 @@ tooltip label {
 #battery {
   background: @battery;
 }
-#battery.full {
-  color: @full;
-}
-#battery.good {
-  color: @module-fg;
-}
 #battery.warning {
   color: @warning;
 }

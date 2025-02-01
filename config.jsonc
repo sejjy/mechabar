@@ -381,15 +381,12 @@
 
   "battery": {
     "states": {
-      "full": 100,
-      "good": 99,
       "warning": 30,
       "critical": 15
     },
 
     "format": "{icon} {capacity}%",
     "format-icons": ["󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂"],
-    "format-full": "󱃌 {capacity}%",
     "format-warning": "󰁻 {capacity}%",
     "format-critical": "󱃍 {capacity}%",
     "format-charging": "󱘖 {capacity}%",
