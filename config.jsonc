@@ -92,6 +92,11 @@
     // === Window Titles ===
 
     "rewrite": {
+      // == Desktop ==
+
+      "": 
+        "<span foreground='#89b4fa'> </span> Hyprland",
+
       // == Terminal ==
 
       "~": "  Terminal",
