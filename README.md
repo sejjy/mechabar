@@ -37,18 +37,33 @@ A mecha-themed [Waybar](https://github.com/Alexays/Waybar) configuration initial
 
 <br />
 
+## Classic vs Animated
+
+You can choose between two (2) styles:
+
+- **Classic:**
+
+  Clone the [`main`](https://github.com/sejjy/mechabar) branch (default) for the classic, non-animated bar.
+
+  ```bash
+    git clone https://github.com/sejjy/mechabar.git
+    cd mechabar
+  ```
+
+- **Animated:**
+
+  Clone the [`animated`](https://github.com/sejjy/mechabar/tree/animated) branch to try the new launch animations.
+
+  ```bash
+    git clone -b animated https://github.com/sejjy/mechabar.git
+    cd mechabar
+  ```
+
 ## Installation (Arch Linux)
 
 ### Automatic
 
-1. **Clone the repository:**
-
-   ```bash
-   git clone https://github.com/sejjy/mechabar.git
-   cd mechabar
-   ```
-
-2. **Run the [install script](/install.sh):**
+1. **Run the [install script](/install.sh):**
 
    ```bash
    ./install.sh
@@ -90,14 +105,7 @@ yay -S bluetui rofi-lbonn-wayland-git
 
 #### II. Installation
 
-1. **Clone the repository:**
-
-   ```bash
-   git clone https://github.com/sejjy/mechabar.git
-   cd mechabar
-   ```
-
-2. **Copy configuration files:**
+1. **Copy configuration files:**
 
    ```bash
    mkdir -p ~/.config/waybar/
@@ -109,7 +117,7 @@ yay -S bluetui rofi-lbonn-wayland-git
    cp rofi/* ~/.config/rofi/
    ```
 
-3. **Setup scripts:**
+2. **Setup scripts:**
 
    ```bash
    mkdir -p ~/.config/waybar/scripts/
@@ -120,7 +128,7 @@ yay -S bluetui rofi-lbonn-wayland-git
    chmod +x ~/.config/waybar/scripts/*
    ```
 
-4. **Restart Waybar to apply the changes:**
+3. **Restart Waybar to apply the changes:**
 
    ```bash
    killall waybar
@@ -136,10 +144,8 @@ yay -S bluetui rofi-lbonn-wayland-git
 
 Here are some features and improvements planned for future versions:
 
-- [x] Install script
-- [x] Rofi Bluetooth menu
-- [x] Rofi power menu
 - [ ] Theme switcher
+- [ ] Style switcher
 
 ## Credits
 
