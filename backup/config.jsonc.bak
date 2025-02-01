@@ -27,7 +27,7 @@
     "memory",               // memory
 
     "custom/left4",
-    "cpu",           // cpu
+    "cpu",                  // cpu
     "custom/leftin1",
 
     "custom/left5",
@@ -55,7 +55,7 @@
     "pulseaudio",           // output device
 
     "custom/left7",
-    "custom/backlight",     // brightness
+    "backlight",            // brightness
 
     "custom/left8",
     "battery",              // battery
@@ -366,29 +366,24 @@
     "max-length": 6
   },
 
-  "custom/backlight": {
-    "exec": "~/.config/waybar/scripts/brightness-control.sh",
-    "return-type": "json",
-    "format": "{}",
-    "tooltip": true,
-    "on-scroll-up": "~/.config/waybar/scripts/brightness-control.sh -o i",
-    "on-scroll-down": "~/.config/waybar/scripts/brightness-control.sh -o d",
-    "interval": 1,
+  "backlight": {
+    "format": "{icon} {percent}%",
+    "format-icons": ["", "", "", "", "", "", "", "", ""],
+    "tooltip": false,
+    "on-scroll-up": "brightnessctl set 2%+",
+    "on-scroll-down": "brightnessctl set 2%-",
     "min-length": 6,
     "max-length": 6
   },
 
   "battery": {
     "states": {
-      "full": 100,
-      "good": 99,
       "warning": 30,
       "critical": 15
     },
 
     "format": "{icon} {capacity}%",
     "format-icons": ["󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂"],
-    "format-full": "󱃌 {capacity}%",
     "format-warning": "󰁻 {capacity}%",
     "format-critical": "󱃍 {capacity}%",
     "format-charging": "󱘖 {capacity}%",
