@@ -343,6 +343,7 @@ tooltip label {
   padding-left: 2px;
 }
 #battery {
+  color: @module-fg;
   background: @battery;
 }
 #battery.warning {
