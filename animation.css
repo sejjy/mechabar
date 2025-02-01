@@ -1,13 +1,3 @@
-/* use native cpu module instead of the default custom cpu script */
-
-#cpu {
-  opacity: 1;
-  color: @module-fg;
-  background: @cpu;
-  padding: 0 4px;
-  text-shadow: 0 0 2px rgba(0, 0, 0, 0.6);
-}
-
 /* == Phase 1 == */
 
 #custom-ws {
@@ -49,7 +39,6 @@
 
 #idle_inhibitor {
   font-size: 0;
-  text-shadow: none;
   animation: module_expand 0.25s ease-in 0.75s forwards,
     hoverable_in 0.25s ease-in 1s forwards;
 }
@@ -111,7 +100,6 @@
 
 #clock.date {
   font-size: 0;
-  text-shadow: none;
   animation: module_expand 0.25s ease-in 1.15s forwards,
     hoverable_in 0.25s ease-in 1.4s forwards;
 }
@@ -119,9 +107,8 @@
 /* == Phase 4 == */
 
 #window {
-  color: transparent;
-  text-shadow: none;
-  animation: module_in 0.25s ease-in 1.75s forwards;
+  opacity: 0;
+  animation: hoverable_in 0.25s ease-in 1.75s forwards;
 }
 
 #custom-cpuinfo {
@@ -137,7 +124,6 @@
 #custom-update,
 #pulseaudio {
   font-size: 0;
-  text-shadow: none;
   animation: module_expand 0.25s ease-in 1.5s forwards,
     hoverable_in 0.25s ease-in 1.75s forwards;
 }
@@ -145,9 +131,8 @@
 /* == Phase 5 == */
 
 #custom-media {
-  color: transparent;
-  text-shadow: none;
-  animation: module_in 0.25s ease-in 2s forwards;
+  opacity: 0;
+  animation: hoverable_in 0.25s ease-in 2s forwards;
 }
 
 /* === Keyframes === */
@@ -215,7 +200,6 @@
   }
   to {
     opacity: 1;
-    text-shadow: 0 0 2px rgba(0, 0, 0, 0.6);
   }
 }
 

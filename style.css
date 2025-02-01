@@ -71,7 +71,7 @@ tooltip label {
 #window,
 #custom-cpuinfo,
 #memory,
-#custom-cpu,
+#cpu,
 #idle_inhibitor,
 #clock,
 #custom-wifi,
@@ -182,7 +182,7 @@ tooltip label {
   background: @memory;
   padding-left: 3px;
 }
-#custom-cpu {
+#cpu {
   background: @cpu;
 }
 #custom-leftin1 {
