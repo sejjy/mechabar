@@ -228,15 +228,15 @@
     "min-length": 7,
     "max-length": 7
   },
-  
-  // "cpu": {
-  //   "format": "󰻠 {usage}%",
-  //   "tooltip": false,
-  //   "interval": 5,
-  //   "min-length": 6,
-  //   "max-length": 6
-  // },
-
+  /*  
+  "cpu": {
+    "format": "󰻠 {usage}%",
+    "tooltip": false,
+    "interval": 5,
+    "min-length": 6,
+    "max-length": 6
+  },
+  */
   "custom/cpu": {
     "exec": "~/.config/waybar/scripts/cpu-usage.sh",
     "return-type": "json",
@@ -376,17 +376,17 @@
     "min-length": 6,
     "max-length": 6
   },
-
-  // "backlight": {
-  //   "format": "{icon} {percent}%",
-  //   "format-icons": ["", "", "", "", "", "", "", "", ""],
-  //   "tooltip": false,
-  //   "on-scroll-up": "brightnessctl set 2%+",
-  //   "on-scroll-down": "brightnessctl set 2%-",
-  //   "min-length": 6,
-  //   "max-length": 6
-  // },
-
+  /*
+  "backlight": {
+    "format": "{icon} {percent}%",
+    "format-icons": ["", "", "", "", "", "", "", "", ""],
+    "tooltip": false,
+    "on-scroll-up": "brightnessctl set 2%+",
+    "on-scroll-down": "brightnessctl set 2%-",
+    "min-length": 6,
+    "max-length": 6
+  },
+  */
   "custom/backlight": {
     "exec": "~/.config/waybar/scripts/brightness-control.sh",
     "return-type": "json",
