@@ -28,6 +28,7 @@
   animation: hoverable_in 0.25s ease-in 1s forwards;
 }
 
+/* #custom-cpu, */
 #cpu,
 #clock.time,
 #idle_inhibitor,
@@ -41,6 +42,7 @@
     module_in 0.25s ease-in 1s forwards;
 }
 
+/* #custom-cpu, */
 #cpu {
   animation: module_expand 0.25s ease-in 0.75s forwards,
     module_in 0.25s ease-in 1s forwards;
@@ -79,6 +81,7 @@
 /* <<--< PHASE 3 >-->> */
 
 #memory,
+/* #custom-backlight, */
 #backlight {
   color: transparent;
   font-size: 0;
