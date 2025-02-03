@@ -71,6 +71,7 @@ tooltip label {
 #window,
 #custom-cpuinfo,
 #memory,
+/* #cpu, */
 #custom-cpu,
 #idle_inhibitor,
 #clock,
@@ -79,6 +80,7 @@ tooltip label {
 #custom-update,
 #custom-media,
 #pulseaudio,
+/* #backlight, */
 #custom-backlight,
 #battery,
 #custom-power {
@@ -182,6 +184,11 @@ tooltip label {
   background: @memory;
   padding-left: 3px;
 }
+/*
+#cpu {
+  background: @cpu;
+}
+*/
 #custom-cpu {
   background: @cpu;
 }
@@ -331,6 +338,11 @@ tooltip label {
   background: @pulseaudio;
   padding-left: 2px;
 }
+/*
+#backlight {
+  background: @backlight;
+}
+*/
 #custom-backlight {
   background: @backlight;
 }
