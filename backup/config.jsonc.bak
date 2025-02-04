@@ -354,7 +354,8 @@
     "format": "{}",
     "tooltip": "{tooltip}",
     "on-click": "playerctl play-pause",
-    "min-length": 5
+    "min-length": 5,
+    "max-length": 35
   },
 
   "pulseaudio": {
