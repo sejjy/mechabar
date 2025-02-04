@@ -354,8 +354,7 @@
     "format": "{}",
     "tooltip": "{tooltip}",
     "on-click": "playerctl play-pause",
-    "min-length": 5,
-    "max-length": 35
+    "min-length": 5
   },
 
   "pulseaudio": {
@@ -401,12 +400,14 @@
 
   "battery": {
     "states": {
+      "full": 100,
       "warning": 30,
       "critical": 15
     },
 
     "format": "{icon} {capacity}%",
     "format-icons": ["󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂"],
+    "format-full": "󰁹 {capacity}%",
     "format-warning": "󰁻 {capacity}%",
     "format-critical": "󱃍 {capacity}%",
     "format-charging": "󱘖 {capacity}%",
