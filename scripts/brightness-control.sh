@@ -13,7 +13,7 @@ EOF
 # Send a notification with brightness info
 send_notification() {
   brightness=$(brightnessctl info | grep -oP "(?<=\()\d+(?=%)")
-  notify-send -r 91190 "Brightness: ${brightness}%"
+  notify-send -a "state" -r 91190 -i "gpm-brightness-lcd" -h int:value:"$brightness" "Brightness: ${brightness}%" -u low
 }
 
 # Get the current brightness percentage and device name
