@@ -7,7 +7,8 @@
 # https://github.com/sejjy/mechabar
 
 # This script sends a notification when the battery is full, low, or critical.
-
+# icon theme used: tela-circle-icon-theme-dracula
+#
 # (see the bottom of the script for more information)
 
 export DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/1000/bus"
