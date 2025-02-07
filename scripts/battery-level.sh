@@ -34,8 +34,8 @@ elif [ "$BATTERY_STATE" == "charging" ]; then
   rm -f "$FILE_WARNING" "$FILE_CRITICAL"
 fi
 
-# if the battery is full and is charging
-if [ "$BATTERY_LEVEL" -eq 100 ] && [ "$BATTERY_STATE" == "charging" ] && [ ! -f $FILE_FULL ]; then
+# if the battery is full and is plugged in
+if [ "$BATTERY_LEVEL" -eq 100 ] && [ "$BATTERY_STATE" == "fully-charged" ] && [ ! -f $FILE_FULL ]; then
   notify-send -a "state" "Battery Charged (${BATTERY_LEVEL}%)" "You might want to unplug your PC." -i "battery-full" -r 9991
   touch $FILE_FULL
 
