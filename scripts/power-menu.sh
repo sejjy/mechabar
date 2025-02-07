@@ -25,6 +25,6 @@ case "$selected_option" in
   systemctl hibernate
   ;;
 *Logout)
-  loginctl kill-user "$(whoami)"
+  loginctl kill-session "$XDG_SESSION_ID"
   ;;
 esac
