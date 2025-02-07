@@ -393,8 +393,8 @@
     "format": "{icon} {percent}%",
     "format-icons": ["", "", "", "", "", "", "", "", ""],
     "tooltip": false,
-    "on-scroll-up": "brightnessctl set 2%+",
-    "on-scroll-down": "brightnessctl set 2%-",
+    "on-scroll-up": "~/.config/waybar/scripts/brightness-control.sh -o i",
+    "on-scroll-down": "~/.config/waybar/scripts/brightness-control.sh -o d",
     "min-length": 6,
     "max-length": 6
   },
