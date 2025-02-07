@@ -24,11 +24,11 @@ BATTERY_LEVEL=$(upower -i "$BAT_PATH" | awk '/percentage:/ {print $2}' | tr -d '
 case "$BATTERY_STATE" in
 "charging")
   BATTERY_CHARGING="Charging"
-  BATTERY_ICON="050-charging"
+  BATTERY_ICON="090-charging"
   ;;
 "discharging")
   BATTERY_CHARGING="Disharging"
-  BATTERY_ICON="050"
+  BATTERY_ICON="090"
   ;;
 esac
 
