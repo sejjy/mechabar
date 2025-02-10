@@ -1,12 +1,22 @@
 * {
   font-family: "JetBrainsMono Nerd Font";
   font-weight: bold;
-  font-size: 10px;
+  font-size: 10px; /* workspaces, window and media title */
   min-height: 0;
   padding: 0;
   border: none;
   margin: 0;
 }
+
+/*
+  Select all instances of `font-size: <value>px;`
+  to update them without affecting other properties.
+
+  font-size: 14.68px; -- left and right arrows 
+  font-size: 15.5px;  -- left and right inverse 
+  font-size: 14.6px;  -- distro icon 
+  font-size: 15.68px; -- distro arrows 
+*/
 
 @import "theme.css";
 
@@ -127,7 +137,6 @@ tooltip label {
 #custom-left1 {
   color: @workspaces;
   background: @main-bg;
-  font-size: 14.68px;
   margin-bottom: 0;
   padding-left: 2px;
 }
@@ -137,7 +146,6 @@ tooltip label {
 #custom-right1 {
   color: @workspaces;
   background: @main-bg;
-  font-size: 14.68px;
   text-shadow: 3px 0 2px rgba(0, 0, 0, 0.4);
   margin-bottom: 0;
 }
