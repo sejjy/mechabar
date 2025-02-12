@@ -488,9 +488,9 @@ tooltip label {
   distro icon, you should also update it in
   `distro_expand`.
 
-  - `distro_expand` for the distro icon
-  - `power_expand` for the power button
-  - `module_expand` for all other modules
+  - `distro_expand` for the distro icon (line 143)
+  - `power_expand` for the power button (line 158)
+  - `module_expand` for all other modules (line 172)
 */
 
 @import "animation.css";
