@@ -435,7 +435,7 @@ tooltip label {
   unless you know what you're doing.
 */
 
-/* workspace numbers, window title, and media title */
+/* workspace icon and buttons, window and media title */
 * {
   font-size: 10px;
 }
@@ -474,5 +474,23 @@ tooltip label {
 #custom-right2 {
   font-size: 15.68px;
 }
+
+/*
+  NOTE: If none of your changes are taking effect,
+  they may be overridden by the font sizes set in
+  `animation.css`.
+
+  If so, copy your new font sizes from this file
+  and paste them into the corresponding
+  `*_expand` keyframes.
+
+  For example, if you change the font size of the
+  distro icon, you should also update it in
+  `distro_expand`.
+
+  - `distro_expand` for the distro icon
+  - `power_expand` for the power button
+  - `module_expand` for all other modules
+*/
 
 @import "animation.css";
