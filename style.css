@@ -1,22 +1,11 @@
 * {
   font-family: "JetBrainsMono Nerd Font";
   font-weight: bold;
-  font-size: 10px; /* workspaces, window and media title */
   min-height: 0;
   padding: 0;
   border: none;
   margin: 0;
 }
-
-/*
-  Select all instances of `font-size: <value>px;`
-  to update them without affecting other properties.
-
-  font-size: 14.68px; -- left and right arrows 
-  font-size: 15.5px;  -- left and right inverse 
-  font-size: 14.6px;  -- distro icon 
-  font-size: 15.68px; -- distro arrows 
-*/
 
 @import "theme.css";
 
@@ -108,7 +97,6 @@ tooltip label {
 #custom-left6,
 #custom-left7,
 #custom-left8 {
-  font-size: 14.68px;
   margin-bottom: 0;
   text-shadow: -2px 0 2px rgba(0, 0, 0, 0.5);
 }
@@ -118,7 +106,6 @@ tooltip label {
 #custom-right3,
 #custom-right4,
 #custom-right5 {
-  font-size: 14.68px;
   margin-bottom: 0;
   padding-right: 3px;
   text-shadow: 2px 0 2px rgba(0, 0, 0, 0.5);
@@ -202,7 +189,6 @@ tooltip label {
 }
 #custom-leftin1 {
   color: @cpu;
-  font-size: 15.5px;
   margin-bottom: -1px;
 }
 
@@ -211,7 +197,6 @@ tooltip label {
 #custom-left5 {
   color: @distro-bg;
   background: @main-bg;
-  font-size: 15.68px;
   text-shadow: -2px 0 2px rgba(0, 0, 0, 0.6);
   margin-bottom: -2px;
   padding-left: 3px;
@@ -219,7 +204,6 @@ tooltip label {
 #custom-distro {
   color: @distro-fg;
   background: @distro-bg;
-  font-size: 14.6px;
   margin: 0 -1px -2px 0;
   padding: 0 0 0 3px;
   text-shadow: 0 0 1.5px rgba(0, 0, 0, 1);
@@ -227,7 +211,6 @@ tooltip label {
 #custom-right2 {
   color: @distro-bg;
   background: @main-bg;
-  font-size: 15.68px;
   margin-bottom: -2px;
 }
 
@@ -235,7 +218,6 @@ tooltip label {
 
 #custom-rightin1 {
   color: @time;
-  font-size: 15.5px;
   margin-bottom: -1px;
 }
 #idle_inhibitor {
@@ -381,7 +363,6 @@ tooltip label {
 #custom-leftin2 {
   color: @battery;
   background: @main-bg;
-  font-size: 15.5px;
   margin-bottom: -1px;
 }
 #custom-power {
@@ -398,4 +379,56 @@ tooltip label {
   background: @hover-bg;
   text-shadow: none;
   box-shadow: none;
+}
+
+/* <<--< FONT SIZES >-->> */
+
+/*
+  Font sizes for modules and dividers can be problematic.
+  By problematic, I mean they may not align properly
+  when using only whole numbers.
+
+  If you wish to change them, consider adjusting only
+  the whole numbers and keeping the decimals as they are,
+  unless you know what you're doing.
+*/
+
+/* workspace numbers, window title, and media title */
+* {
+  font-size: 10px;
+}
+
+/* left and right arrows */
+#custom-left1,
+#custom-left2,
+#custom-left3,
+#custom-left4,
+#custom-left5,
+#custom-left6,
+#custom-left7,
+#custom-left8,
+#custom-right1,
+#custom-right2,
+#custom-right3,
+#custom-right4,
+#custom-right5 {
+  font-size: 14.68px;
+}
+
+/* left and right inverse */
+#custom-leftin1,
+#custom-leftin2,
+#custom-rightin1 {
+  font-size: 15.5px;
+}
+
+/* distro icon */
+#custom-distro {
+  font-size: 14.6px;
+}
+
+/* distro arrows override */
+#custom-left5,
+#custom-right2 {
+  font-size: 15.68px;
 }
