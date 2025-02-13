@@ -383,48 +383,6 @@ tooltip label {
 
 /* <<--< FONT SIZES >-->> */
 
-/* workspace numbers, window title, and media title */
-* {
-  font-size: 10px;
-}
-
-/* left and right arrows */
-#custom-left1,
-#custom-left2,
-#custom-left3,
-#custom-left4,
-#custom-left5,
-#custom-left6,
-#custom-left7,
-#custom-left8,
-#custom-right1,
-#custom-right2,
-#custom-right3,
-#custom-right4,
-#custom-right5 {
-  font-size: 14.68px;
-}
-
-/* left and right inverse */
-#custom-leftin1,
-#custom-leftin2,
-#custom-rightin1 {
-  font-size: 15.5px;
-}
-
-/* distro icon */
-#custom-distro {
-  font-size: 14.6px;
-}
-
-/* distro arrows override */
-#custom-left5,
-#custom-right2 {
-  font-size: 15.68px;
-}
-
-/* <<--< FONT SIZES >-->> */
-
 /*
   Font sizes for modules and dividers can be problematic.
   By problematic, I mean they may not align properly
