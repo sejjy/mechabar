@@ -150,3 +150,4 @@ Here are some features and improvements planned for future versions:
 - Color palette: [catppuccin / catppuccin](https://github.com/catppuccin/catppuccin) (Mocha)
 - The original files in the [modules](/modules/) folder are from [prasanthrangan / hyprdots](https://github.com/prasanthrangan/hyprdots).
 - The original versions of [battery-level.sh](/scripts/battery-level.sh) and [battery-state.sh](/scripts/battery-state.sh) are from [ericmurphyxyz / dotfiles](https://github.com/ericmurphyxyz/dotfiles)
+- Special thanks to [JustLap](https://github.com/JustLap) for helping me organize font sizes into a dedicated section.
