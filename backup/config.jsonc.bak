@@ -27,8 +27,8 @@
     "memory",               // memory
 
     "custom/left4",
-    // "cpu",                  // cpu
-    "custom/cpu",           // cpu
+    // "custom/cpu",           // cpu
+    "cpu",                  // cpu
     "custom/leftin1",
 
     "custom/left5",
@@ -56,8 +56,8 @@
     "pulseaudio",           // output device
 
     "custom/left7",
-    // "backlight",            // brightness
-    "custom/backlight",     // brightness
+    // "custom/backlight",     // brightness
+    "backlight",            // brightness
 
     "custom/left8",
     "battery",              // battery
@@ -228,19 +228,19 @@
     "min-length": 7,
     "max-length": 7
   },
-  /*  
-  "cpu": {
-    "format": "󰻠 {usage}%",
-    "tooltip": false,
+  /*
+  "custom/cpu": {
+    "exec": "~/.config/waybar/scripts/cpu-usage.sh",
+    "return-type": "json",
+    "tooltip": true,
     "interval": 5,
     "min-length": 6,
     "max-length": 6
   },
   */
-  "custom/cpu": {
-    "exec": "~/.config/waybar/scripts/cpu-usage.sh",
-    "return-type": "json",
-    "tooltip": true,
+  "cpu": {
+    "format": "󰻠 {usage}%",
+    "tooltip": false,
     "interval": 5,
     "min-length": 6,
     "max-length": 6
@@ -377,16 +377,6 @@
     "max-length": 6
   },
   /*
-  "backlight": {
-    "format": "{icon} {percent}%",
-    "format-icons": ["", "", "", "", "", "", "", "", ""],
-    "tooltip": false,
-    "on-scroll-up": "brightnessctl set 2%+",
-    "on-scroll-down": "brightnessctl set 2%-",
-    "min-length": 6,
-    "max-length": 6
-  },
-  */
   "custom/backlight": {
     "exec": "~/.config/waybar/scripts/brightness-control.sh",
     "return-type": "json",
@@ -395,6 +385,16 @@
     "on-scroll-up": "~/.config/waybar/scripts/brightness-control.sh -o i",
     "on-scroll-down": "~/.config/waybar/scripts/brightness-control.sh -o d",
     "interval": 1,
+    "min-length": 6,
+    "max-length": 6
+  },
+  */
+  "backlight": {
+    "format": "{icon} {percent}%",
+    "format-icons": ["", "", "", "", "", "", "", "", ""],
+    "tooltip": false,
+    "on-scroll-up": "~/.config/waybar/scripts/brightness-control.sh -o i",
+    "on-scroll-down": "~/.config/waybar/scripts/brightness-control.sh -o d",
     "min-length": 6,
     "max-length": 6
   },

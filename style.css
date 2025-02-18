@@ -70,8 +70,8 @@ tooltip label {
 #window,
 #custom-cpuinfo,
 #memory,
-/* #cpu, */
-#custom-cpu,
+/* #custom-cpu, */
+#cpu,
 #idle_inhibitor,
 #clock,
 #custom-wifi,
@@ -79,8 +79,8 @@ tooltip label {
 #custom-update,
 #custom-media,
 #pulseaudio,
-/* #backlight, */
-#custom-backlight,
+/* #custom-backlight, */
+#backlight,
 #battery,
 #custom-power {
   opacity: 1;
@@ -180,11 +180,11 @@ tooltip label {
   padding-left: 3px;
 }
 /*
-#cpu {
+#custom-cpu {
   background: @cpu;
 }
 */
-#custom-cpu {
+#cpu {
   background: @cpu;
 }
 #custom-leftin1 {
@@ -329,11 +329,11 @@ tooltip label {
   padding-left: 2px;
 }
 /*
-#backlight {
+#custom-backlight {
   background: @backlight;
 }
 */
-#custom-backlight {
+#backlight {
   background: @backlight;
 }
 
