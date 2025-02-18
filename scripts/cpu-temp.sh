@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+model=$(awk -F ': ' '/model name/{print $2}' /proc/cpuinfo | head -n 1 | sed 's/@.*//; s/ *\((R)\|(TM)\)//g; s/^[ \t]*//; s/[ \t]*$//')
+
 # Get CPU clock speeds
 get_cpu_frequency() {
   freqlist=$(awk '/cpu MHz/ {print $4}' /proc/cpuinfo)
@@ -55,7 +57,8 @@ else
   text_output="${thermo_icon} ${temp}°C"
 fi
 
-tooltip="Temperature: ${temp_f}°F\nClock Speed: ${cpu_frequency}"
+tooltip="${model}\n"
+tooltip+="Clock Speed: ${cpu_frequency}\nTemperature: ${temp_f}°F"
 
 # Module and tooltip
 echo "{\"text\": \"$text_output\", \"tooltip\": \"$tooltip\"}"
