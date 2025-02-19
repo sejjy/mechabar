@@ -69,8 +69,10 @@
   // === Modules ===
 
   "custom/ws": {
-    "format": "  ",
-    "tooltip": false,
+    "exec": "~/.config/waybar/scripts/theme-status.sh",
+    "return-type": "json",
+    "on-click": "~/.config/waybar/scripts/theme-switcher.sh",
+    "tooltip": true,
     "min-length": 3,
     "max-length": 3
   },
