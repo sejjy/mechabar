@@ -71,6 +71,7 @@
   "custom/ws": {
     "exec": "~/.config/waybar/scripts/theme-status.sh",
     "return-type": "json",
+    "format": " 󰍜 ",
     "on-click": "~/.config/waybar/scripts/theme-switcher.sh",
     "tooltip": true,
     "min-length": 3,

@@ -13,5 +13,5 @@ else
   FORMATTED_THEME_NAME="Unknown"
 fi
 
-# Module and tooltip
-echo "{\"text\": \" 󰍜 \", \"tooltip\": \"Theme: $FORMATTED_THEME_NAME\"}"
+# Tooltip
+echo "{\"tooltip\": \"Theme: $FORMATTED_THEME_NAME\"}"
