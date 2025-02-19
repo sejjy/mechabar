@@ -69,7 +69,7 @@
   // === Modules ===
 
   "custom/ws": {
-    "exec": "~/.config/waybar/scripts/theme-status.sh",
+    "exec": "~/.config/waybar/scripts/current-theme.sh",
     "return-type": "json",
     "format": " 󰍜 ",
     "on-click": "~/.config/waybar/scripts/theme-switcher.sh",
