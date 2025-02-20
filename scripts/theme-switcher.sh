@@ -28,8 +28,8 @@ elif [[ $rofi_theme_count -eq 0 ]]; then
 fi
 
 # Check which theme is currently applied
-if [[ -L "$WAYBAR_THEME_FILE" ]]; then
-  current_theme=$(readlink "$WAYBAR_THEME_FILE")
+if [[ -f "$WAYBAR_THEME_FILE" ]]; then
+  current_theme=$(basename "$(readlink -f "$WAYBAR_THEME_FILE")")
 else
   current_theme=""
 fi
@@ -37,7 +37,7 @@ fi
 next_theme_index=0
 
 for i in "${!waybar_themes[@]}"; do
-  if [[ "${waybar_themes[$i]}" == "$current_theme" ]]; then
+  if [[ "$(basename "${waybar_themes[$i]}")" == "$current_theme" ]]; then
     next_theme_index=$(((i + 1) % waybar_theme_count))
     break
   fi
@@ -46,9 +46,9 @@ done
 new_waybar_theme="${waybar_themes[$next_theme_index]}"
 new_rofi_theme="${rofi_themes[$next_theme_index]}"
 
-# Apply new theme by creating a symlink instead of copying
-ln -sf "$new_waybar_theme" "$WAYBAR_THEME_FILE"
-ln -sf "$new_rofi_theme" "$ROFI_THEME_FILE"
+# Apply new theme
+cp "$new_waybar_theme" "$WAYBAR_THEME_FILE"
+cp "$new_rofi_theme" "$ROFI_THEME_FILE"
 
 # Restart Waybar to apply changes
 killall waybar || true
