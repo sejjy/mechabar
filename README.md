@@ -130,11 +130,18 @@ yay -S bluetui rofi-lbonn-wayland-git
    nohup waybar >/dev/null 2>&1 &
    ```
 
+   If you had a previous configuration, run this instead:
+
+   ```bash
+   killall waybar
+   nohup waybar --config "$HOME/.config/waybar/config.jsonc" --style "$HOME/.config/waybar/style.css" >/dev/null 2>&1 &
+   ```
+
 ## Customization
 
-- ~~You can change the colors in [theme.css](/theme.css) and [theme.rasi](/rofi/theme.rasi) to match your system theme.~~
+- Click the leftmost module to switch between predefined themes from the [css](/themes/css/), [jsonc](/themes/jsonc/), and [rofi](/rofi/themes/) theme directories. To use your own theme, add one file in each directory following the existing formats.
 - You can replace existing modules or add new ones from the [modules](/modules/) folder. For a complete list of available modules, visit the [Waybar Wiki](https://github.com/Alexays/Waybar/wiki).
-- See the instructions in [battery-level.sh](/scripts/battery-level.sh) and [battery-state.sh](/scripts/battery-state.sh) to manually set up battery-related notifications.
+- Follow the instructions in [battery-level.sh](/scripts/battery-level.sh) and [battery-state.sh](/scripts/battery-state.sh) to manually set up battery notifications.
 
 ## Roadmap
 

@@ -114,7 +114,7 @@ restart_waybar() {
   printf "\n\033[1;32mRestarting Waybar...\033[0m\n"
 
   killall waybar || true
-  nohup waybar >/dev/null 2>&1 &
+  nohup waybar --config "$HOME/.config/waybar/config.jsonc" --style "$HOME/.config/waybar/style.css" >/dev/null 2>&1 &
 }
 
 main() {
