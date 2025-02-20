@@ -13,5 +13,8 @@ else
   FORMATTED_THEME_NAME="Unknown"
 fi
 
+tooltip="Theme: $FORMATTED_THEME_NAME"
+tooltip+="\nStyle: Classic" # hard-coded for now
+
 # Tooltip
-echo "{\"tooltip\": \"Theme: $FORMATTED_THEME_NAME\"}"
+echo "{\"tooltip\": \"$tooltip\"}"

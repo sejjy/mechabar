@@ -1,0 +1,474 @@
+{
+  "layer": "top",
+  "position": "top",
+  "mode": "dock",
+  "reload_style_on_change": true,
+  "gtk-layer-shell": true,
+
+  // === Positions ===
+
+  "modules-left": [
+    "custom/ws",            // window icon
+    "custom/left1",
+
+    "hyprland/workspaces",  // workspaces
+    "custom/right1",
+
+    "custom/paddw",
+    "hyprland/window"       // window title
+  ],
+
+  "modules-center": [
+    "custom/paddc",
+    "custom/left2",
+    "custom/cpuinfo",       // temperature
+
+    "custom/left3",
+    "memory",               // memory
+
+    "custom/left4",
+    "cpu",                  // cpu
+    "custom/leftin1",
+
+    "custom/left5",
+    "custom/distro",        // distro icon
+    "custom/right2",
+
+    "custom/rightin1",
+    "idle_inhibitor",       // idle inhibitor
+    "clock#time",           // time
+    "custom/right3",
+
+    "clock#date",           // date
+    "custom/right4",
+
+    "custom/wifi",          // wi-fi
+    "bluetooth",            // bluetooth
+    "custom/update",        // system update
+    "custom/right5"
+  ],
+
+  "modules-right": [
+    "mpris",                // media info
+
+    "custom/left6",
+    "pulseaudio",           // output device
+
+    "custom/left7",
+    "backlight",            // brightness
+
+    "custom/left8",
+    "battery",              // battery
+
+    "custom/leftin2",
+    "custom/power"          // power button
+  ],
+
+  // === Modules ===
+
+  "custom/ws": {
+    "exec": "~/.config/waybar/scripts/current-theme.sh",
+    "return-type": "json",
+    "format": " 󰍜 ",
+    "on-click": "~/.config/waybar/scripts/theme-switcher.sh",
+    "min-length": 3,
+    "max-length": 3
+  },
+
+  "hyprland/workspaces": {
+    "on-scroll-up": "hyprctl dispatch workspace -1",
+    "on-scroll-down": "hyprctl dispatch workspace +1",
+    "persistent-workspaces": {
+      "1": [],
+      "2": [],
+      "3": [],
+      "4": [],
+      "5": []
+    }
+  },
+
+  "hyprland/window": {
+    "format": "{}",
+    "min-length": 5,
+
+    "rewrite": {
+      // == Desktop ==
+
+      "": 
+        "<span foreground='#458588'> </span> Hyprland",
+
+      // == Terminal ==
+
+      "~": "  Terminal",
+      "zsh": "  Terminal",
+      "kitty": "  Terminal",
+
+      // == Browser ==
+
+      "(.*)Mozilla Firefox": 
+        "<span foreground='#cc241d'>󰈹 </span> Firefox",
+      "(.*) — Mozilla Firefox": 
+        "<span foreground='#cc241d'>󰈹 </span> $1",
+
+      "(.*)Zen Browser": 
+        "<span foreground='#d65d0e'>󰺕 </span> Zen Browser",
+      "(.*) — Zen Browser": 
+        "<span foreground='#d65d0e'>󰺕 </span> $1",
+
+      // == Development ==
+
+      "(.*) - Visual Studio Code": 
+        "<span foreground='#458588'>󰨞 </span> $1",
+      "(.*)Visual Studio Code": 
+        "<span foreground='#458588'>󰨞 </span> Visual Studio Code",
+
+      "nvim": 
+        "<span foreground='#98971a'> </span> Neovim",
+      "nvim (.*)": 
+        "<span foreground='#98971a'> </span> $1",
+
+      "vim": 
+        "<span foreground='#98971a'> </span> Vim",
+      "vim (.*)": 
+        "<span foreground='#98971a'> </span> $1",
+
+      // == Media ==
+
+      "(.*)Spotify": 
+        "<span foreground='#98971a'> </span> Spotify",
+      "(.*)Spotify Premium": 
+        "<span foreground='#98971a'> </span> Spotify Premium",
+
+      "OBS(.*)": 
+        "<span foreground='#504945'> </span> OBS Studio",
+
+      "VLC media player": 
+        "<span foreground='#d65d0e'>󰕼 </span> VLC Media Player",
+      "(.*) - VLC media player": 
+        "<span foreground='#d65d0e'>󰕼 </span> $1",
+
+      "(.*) - mpv": 
+        "<span foreground='#b16286'> </span> $1",
+
+      "qView": "  qView",
+
+      "(.*).jpg": "  $1.jpg",
+      "(.*).png": "  $1.png",
+      "(.*).svg": "  $1.svg",
+
+      // == Social ==
+
+      "vesktop": 
+        "<span foreground='#458588'> </span> Discord",
+
+      "• Discord(.*)": "Discord$1",
+      "(.*)Discord(.*)": 
+        "<span foreground='#458588'> </span> $1Discord$2",
+
+      // == Documents ==
+
+      "ONLYOFFICE Desktop Editors": 
+        "<span foreground='#cc241d'> </span> OnlyOffice Desktop",
+
+      "(.*).docx": 
+        "<span foreground='#458588'> </span> $1.docx",
+      "(.*).xlsx": 
+        "<span foreground='#98971a'> </span> $1.xlsx",
+      "(.*).pptx": 
+        "<span foreground='#d65d0e'> </span> $1.pptx",
+      "(.*).pdf": 
+        "<span foreground='#cc241d'> </span> $1.pdf",
+
+      // == System ==
+
+      "Authenticate": "  Authenticate"
+    }
+  },
+
+  "custom/cpuinfo": {
+    "exec": "~/.config/waybar/scripts/cpu-temp.sh",
+    "return-type": "json",
+    "format": "{}",
+    "interval": 5,
+    "min-length": 8,
+    "max-length": 8
+  },
+
+  "memory": {
+    "states": {
+      "warning": 75,
+      "critical": 90
+    },
+
+    "format": "󰘚 {percentage}%",
+    "format-critical": "󰀦 {percentage}%",
+    "tooltip-format": "Memory Used: {used:0.1f} GB / {total:0.1f} GB",
+    "interval": 5,
+    "min-length": 7,
+    "max-length": 7
+  },
+
+  "cpu": {
+    "format": "󰻠 {usage}%",
+    "tooltip": false,
+    "interval": 5,
+    "min-length": 6,
+    "max-length": 6
+  },
+
+  "custom/distro": {
+    "format": " ",
+    "tooltip": false
+  },
+
+  "idle_inhibitor": {
+    "format": "{icon}",
+
+    "format-icons": {
+      "activated": "󱑎 ",
+      "deactivated": "󱑂 "
+    },
+
+    "tooltip-format-activated": "Presentation Mode",
+    "tooltip-format-deactivated": "Idle Mode",
+    "start-activated": false
+  },
+
+  "clock#time": {
+    "format": "{:%H:%M}",
+    "tooltip-format": "Standard Time: {:%I:%M %p}",
+    "min-length": 6,
+    "max-length": 6
+  },
+
+  "clock#date": {
+    "format": "󰨳 {:%m-%d}",
+    "tooltip-format": "<tt>{calendar}</tt>",
+
+    "calendar": {
+      "mode": "month",
+      "mode-mon-col": 6,
+      "on-click-right": "mode",
+
+      "format": {
+        "months": 
+          "<span color='#928374'><b>{}</b></span>",
+        "weekdays": 
+          "<span color='#504945' font='7'>{}</span>",
+        "today": 
+          "<span color='#cc241d'><b>{}</b></span>"
+      }
+    },
+
+    "actions": {
+      "on-click": "mode",
+      "on-click-right": "mode"
+    },
+
+    "min-length": 8,
+    "max-length": 8
+  },
+
+  "custom/wifi": {
+    "exec": "~/.config/waybar/scripts/wifi-status.sh",
+    "return-type": "json",
+    "format": "{}",
+    "on-click": "~/.config/waybar/scripts/wifi-menu.sh",
+    "on-click-right": "kitty --title '󰤨  Network Manager TUI' bash -c nmtui",
+    "interval": 1,
+    "min-length": 1,
+    "max-length": 1
+  },
+
+  "bluetooth": {
+    "format": "󰂰",
+    "format-disabled": "󰂲",
+    "format-connected": "󰂱",
+    "format-connected-battery": "󰂱",
+
+    "tooltip-format": 
+      "{num_connections} connected",
+    "tooltip-format-disabled": 
+      "Bluetooth Disabled",
+    "tooltip-format-connected": 
+      "{num_connections} connected\n{device_enumerate}",
+    "tooltip-format-enumerate-connected": 
+      "{device_alias}",
+    "tooltip-format-enumerate-connected-battery": 
+      "{device_alias}: {device_battery_percentage}%",
+
+    "on-click": "~/.config/waybar/scripts/bluetooth-menu.sh",
+    "on-click-right": "kitty --title '󰂯  Bluetooth TUI' bash -c bluetui",
+    "interval": 1,
+    "min-length": 1,
+    "max-length": 1
+  },
+
+  "custom/update": {
+    "exec": "~/.config/waybar/scripts/system-update.sh",
+    "return-type": "json",
+    "format": "{}",
+    "on-click": "hyprctl dispatch exec '~/.config/waybar/scripts/system-update.sh up'",
+    "interval": 30,
+    "min-length": 1,
+    "max-length": 1
+  },
+
+  "mpris": {
+    "format": "{player_icon} {title} - {artist}",
+    "format-paused": "{status_icon} {title} - {artist}",
+
+    "player-icons": {
+      "default": "󰝚 ",
+      "spotify": "<span foreground='#98971a'>󰓇 </span>",
+      "firefox": "<span foreground='#cc241d'>󰗃 </span>"
+    },
+    "status-icons": {
+      "paused": "<span color='#928374'>\u200A\u200A󰏤\u2009\u2009</span>"
+    },
+
+    "tooltip-format": "Playing: {title} - {artist}",
+    "tooltip-format-paused": "Paused: {title} - {artist}",
+    "min-length": 5,
+    "max-length": 35
+  },
+
+  "pulseaudio": {
+    "format": "{icon} {volume}%",
+    "format-muted": "󰝟 {volume}%",
+
+    "format-icons": {
+      "default": ["󰕿", "󰖀", "󰕾"],
+      "headphone": "󰋋",
+      "headset": "󰋋"
+    },
+
+    "tooltip-format": "Device: {desc}",
+    "on-click": "~/.config/waybar/scripts/volume-control.sh -o m",
+    "on-scroll-up": "~/.config/waybar/scripts/volume-control.sh -o i",
+    "on-scroll-down": "~/.config/waybar/scripts/volume-control.sh -o d",
+    "min-length": 6,
+    "max-length": 6
+  },
+
+  "backlight": {
+    "format": "{icon} {percent}%",
+    "format-icons": ["", "", "", "", "", "", "", "", ""],
+    "tooltip": false,
+    "on-scroll-up": "~/.config/waybar/scripts/brightness-control.sh -o i",
+    "on-scroll-down": "~/.config/waybar/scripts/brightness-control.sh -o d",
+    "min-length": 6,
+    "max-length": 6
+  },
+
+  "battery": {
+    "states": {
+      "warning": 20,
+      "critical": 10
+    },
+
+    "format": "{icon} {capacity}%",
+    "format-icons": ["󰂎", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+    "format-charging": "󱘖 {capacity}%",
+
+    "tooltip-format": "Discharging: {time}",
+    "tooltip-format-charging": "Charging: {time}",
+    "interval": 1,
+    "min-length": 6,
+    "max-length": 6
+  },
+
+  "custom/power": {
+    "format": " ",
+    "tooltip-format": "Power Menu",
+    "on-click": "~/.config/waybar/scripts/power-menu.sh"
+  },
+
+  // === Padding ===
+
+  "custom/paddw": {
+    "format": " ",
+    "tooltip": false
+  },
+
+  "custom/paddc": {
+    "format": " ",
+    "tooltip": false
+  },
+
+  // == Left Arrows ==
+
+  "custom/left1": {
+    "format": "",
+    "tooltip": false
+  },
+  "custom/left2": {
+    "format": "",
+    "tooltip": false
+  },
+  "custom/left3": {
+    "format": "",
+    "tooltip": false
+  },
+  "custom/left4": {
+    "format": "",
+    "tooltip": false
+  },
+  "custom/left5": {
+    "format": "",
+    "tooltip": false
+  },
+  "custom/left6": {
+    "format": "",
+    "tooltip": false
+  },
+  "custom/left7": {
+    "format": "",
+    "tooltip": false
+  },
+  "custom/left8": {
+    "format": "",
+    "tooltip": false
+  },
+
+  // == Right Arrows ==
+
+  "custom/right1": {
+    "format": "",
+    "tooltip": false
+  },
+  "custom/right2": {
+    "format": "",
+    "tooltip": false
+  },
+  "custom/right3": {
+    "format": "",
+    "tooltip": false
+  },
+  "custom/right4": {
+    "format": "",
+    "tooltip": false
+  },
+  "custom/right5": {
+    "format": "",
+    "tooltip": false
+  },
+
+  // == Left Inverse ==
+
+  "custom/leftin1": {
+    "format": "",
+    "tooltip": false
+  },
+  "custom/leftin2": {
+    "format": "",
+    "tooltip": false
+  },
+
+  // == Right Inverse ==
+
+  "custom/rightin1": {
+    "format": "",
+    "tooltip": false
+  }
+}
