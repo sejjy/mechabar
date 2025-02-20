@@ -139,7 +139,7 @@ yay -S bluetui rofi-lbonn-wayland-git
 
 ## Customization
 
-- Click the leftmost module to switch between predefined themes from the [css](/themes/css/), [jsonc](/themes/jsonc/), and [rofi](/rofi/themes/) theme directories. To use your own theme, add one file in each directory following the existing formats.
+- Click the leftmost module to switch between predefined [css](/themes/css/), [jsonc](/themes/jsonc/), and [rasi](/rofi/themes/) themes. To use your own theme, add a file in each directory following the existing formats.
 - You can replace existing modules or add new ones from the [modules](/modules/) folder. For a complete list of available modules, visit the [Waybar Wiki](https://github.com/Alexays/Waybar/wiki).
 - Follow the instructions in [battery-level.sh](/scripts/battery-level.sh) and [battery-state.sh](/scripts/battery-state.sh) to manually set up battery notifications.
 
