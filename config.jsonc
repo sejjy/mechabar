@@ -27,7 +27,6 @@
     "memory",               // memory
 
     "custom/left4",
-    // "custom/cpu",           // cpu
     "cpu",                  // cpu
     "custom/leftin1",
 
@@ -50,13 +49,12 @@
   ],
 
   "modules-right": [
-    "custom/media",         // media info
+    "mpris",                // media info
 
     "custom/left6",
     "pulseaudio",           // output device
 
     "custom/left7",
-    // "custom/backlight",     // brightness
     "backlight",            // brightness
 
     "custom/left8",
@@ -73,7 +71,6 @@
     "return-type": "json",
     "format": " 󰍜 ",
     "on-click": "~/.config/waybar/scripts/theme-switcher.sh",
-    "tooltip": true,
     "min-length": 3,
     "max-length": 3
   },
@@ -192,7 +189,6 @@
     "exec": "~/.config/waybar/scripts/cpu-temp.sh",
     "return-type": "json",
     "format": "{}",
-    "tooltip": true,
     "interval": 5,
     "min-length": 8,
     "max-length": 8
@@ -206,22 +202,12 @@
 
     "format": "󰘚 {percentage}%",
     "format-critical": "󰀦 {percentage}%",
-    "tooltip": true,
     "tooltip-format": "Memory Used: {used:0.1f} GB / {total:0.1f} GB",
     "interval": 5,
     "min-length": 7,
     "max-length": 7
   },
-  /*
-  "custom/cpu": {
-    "exec": "~/.config/waybar/scripts/cpu-usage.sh",
-    "return-type": "json",
-    "tooltip": true,
-    "interval": 5,
-    "min-length": 6,
-    "max-length": 6
-  },
-  */
+
   "cpu": {
     "format": "󰻠 {usage}%",
     "tooltip": false,
@@ -243,7 +229,6 @@
       "deactivated": "󱑂 "
     },
 
-    "tooltip": true,
     "tooltip-format-activated": "Presentation Mode",
     "tooltip-format-deactivated": "Idle Mode",
     "start-activated": false
@@ -251,7 +236,6 @@
 
   "clock#time": {
     "format": "{:%H:%M}",
-    "tooltip": true,
     "tooltip-format": "Standard Time: {:%I:%M %p}",
     "min-length": 6,
     "max-length": 6
@@ -289,7 +273,6 @@
     "exec": "~/.config/waybar/scripts/wifi-status.sh",
     "return-type": "json",
     "format": "{}",
-    "tooltip": true,
     "on-click": "~/.config/waybar/scripts/wifi-menu.sh",
     "on-click-right": "kitty --title '󰤨  Network Manager TUI' bash -c nmtui",
     "interval": 1,
@@ -327,17 +310,25 @@
     "format": "{}",
     "on-click": "hyprctl dispatch exec '~/.config/waybar/scripts/system-update.sh up'",
     "interval": 30,
-    "tooltip": true,
     "min-length": 1,
     "max-length": 1
   },
 
-  "custom/media": {
-    "exec": "~/.config/waybar/scripts/media-player.py",
-    "return-type": "json",
-    "format": "{}",
-    "tooltip": "{tooltip}",
-    "on-click": "playerctl play-pause",
+  "mpris": {
+    "format": "{player_icon} {title} - {artist}",
+    "format-paused": "{status_icon} {title} - {artist}",
+
+    "player-icons": {
+      "default": "󰝚 ",
+      "spotify": "<span foreground='#a6e3a1'>󰓇 </span>",
+      "firefox": "<span foreground='#f38ba8'>󰗃 </span>"
+    },
+    "status-icons": {
+      "paused": "<span color='#b4befe'>\u200A\u200A󰏤\u2009\u2009</span>"
+    },
+
+    "tooltip-format": "Playing: {title} - {artist}",
+    "tooltip-format-paused": "Paused: {title} - {artist}",
     "min-length": 5,
     "max-length": 35
   },
@@ -352,7 +343,6 @@
       "headset": "󰋋"
     },
 
-    "tooltip": true,
     "tooltip-format": "Device: {desc}",
     "on-click": "~/.config/waybar/scripts/volume-control.sh -o m",
     "on-scroll-up": "~/.config/waybar/scripts/volume-control.sh -o i",
@@ -360,19 +350,7 @@
     "min-length": 6,
     "max-length": 6
   },
-  /*
-  "custom/backlight": {
-    "exec": "~/.config/waybar/scripts/brightness-control.sh",
-    "return-type": "json",
-    "format": "{}",
-    "tooltip": true,
-    "on-scroll-up": "~/.config/waybar/scripts/brightness-control.sh -o i",
-    "on-scroll-down": "~/.config/waybar/scripts/brightness-control.sh -o d",
-    "interval": 1,
-    "min-length": 6,
-    "max-length": 6
-  },
-  */
+
   "backlight": {
     "format": "{icon} {percent}%",
     "format-icons": ["", "", "", "", "", "", "", "", ""],
@@ -402,7 +380,6 @@
 
   "custom/power": {
     "format": " ",
-    "tooltip": true,
     "tooltip-format": "Power Menu",
     "on-click": "~/.config/waybar/scripts/power-menu.sh"
   },
