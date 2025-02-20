@@ -5,7 +5,7 @@
   "reload_style_on_change": true,
   "gtk-layer-shell": true,
 
-  // === Positions ===
+  // <<--< Positions >-->>
 
   "modules-left": [
     "custom/ws",            // window icon
@@ -64,7 +64,7 @@
     "custom/power"          // power button
   ],
 
-  // === Modules ===
+  // <<--< Modules >-->>
 
   "custom/ws": {
     "exec": "~/.config/waybar/scripts/current-theme.sh",
@@ -92,18 +92,16 @@
     "min-length": 5,
 
     "rewrite": {
-      // == Desktop ==
-
+      // Desktop
       "": 
         "<span foreground='#458588'> </span> Hyprland",
 
-      // == Terminal ==
-
+      // Terminal
       "~": "  Terminal",
       "zsh": "  Terminal",
       "kitty": "  Terminal",
 
-      // == Browser ==
+      // Browser
 
       "(.*)Mozilla Firefox": 
         "<span foreground='#cc241d'>󰈹 </span> Firefox",
@@ -115,7 +113,7 @@
       "(.*) — Zen Browser": 
         "<span foreground='#d65d0e'>󰺕 </span> $1",
 
-      // == Development ==
+      // Development
 
       "(.*) - Visual Studio Code": 
         "<span foreground='#458588'>󰨞 </span> $1",
@@ -132,7 +130,7 @@
       "vim (.*)": 
         "<span foreground='#98971a'> </span> $1",
 
-      // == Media ==
+      // Media
 
       "(.*)Spotify": 
         "<span foreground='#98971a'> </span> Spotify",
@@ -156,7 +154,7 @@
       "(.*).png": "  $1.png",
       "(.*).svg": "  $1.svg",
 
-      // == Social ==
+      // Social
 
       "vesktop": 
         "<span foreground='#458588'> </span> Discord",
@@ -165,7 +163,7 @@
       "(.*)Discord(.*)": 
         "<span foreground='#458588'> </span> $1Discord$2",
 
-      // == Documents ==
+      // Documents
 
       "ONLYOFFICE Desktop Editors": 
         "<span foreground='#cc241d'> </span> OnlyOffice Desktop",
@@ -179,8 +177,7 @@
       "(.*).pdf": 
         "<span foreground='#cc241d'> </span> $1.pdf",
 
-      // == System ==
-
+      // System
       "Authenticate": "  Authenticate"
     }
   },
@@ -384,7 +381,7 @@
     "on-click": "~/.config/waybar/scripts/power-menu.sh"
   },
 
-  // === Padding ===
+  // <<--< Padding >-->>
 
   "custom/paddw": {
     "format": " ",
@@ -396,7 +393,7 @@
     "tooltip": false
   },
 
-  // == Left Arrows ==
+  // Left Arrows
 
   "custom/left1": {
     "format": "",
@@ -431,7 +428,7 @@
     "tooltip": false
   },
 
-  // == Right Arrows ==
+  // Right Arrows
 
   "custom/right1": {
     "format": "",
@@ -454,7 +451,7 @@
     "tooltip": false
   },
 
-  // == Left Inverse ==
+  // Left Inverse
 
   "custom/leftin1": {
     "format": "",
@@ -465,7 +462,7 @@
     "tooltip": false
   },
 
-  // == Right Inverse ==
+  // Right Inverse
 
   "custom/rightin1": {
     "format": "",
