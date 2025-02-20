@@ -8,77 +8,46 @@ ROFI_THEMES_DIR="$HOME/.config/rofi/themes"
 ROFI_THEME_FILE="$HOME/.config/rofi/theme.rasi"
 CURRENT_THEME_FILE="$HOME/.config/waybar/themes/current-theme"
 
-if [[ ! -d "$WAYBAR_CSS_DIR" ]]; then
-  echo "Error: $WAYBAR_CSS_DIR not found"
-  exit 1
-elif [[ ! -d "$WAYBAR_JSONC_DIR" ]]; then
-  echo "Error: $WAYBAR_JSONC_DIR not found"
-  exit 1
-elif [[ ! -d "$ROFI_THEMES_DIR" ]]; then
-  echo "Error: $ROFI_THEMES_DIR not found"
-  exit 1
-fi
+for dir in "$WAYBAR_CSS_DIR" "$WAYBAR_JSONC_DIR" "$ROFI_THEMES_DIR"; do
+  [[ ! -d "$dir" ]] && echo "Error: $dir not found" && exit 1
+done
 
 # Get all themes
-WAYBAR_CSS=("$WAYBAR_CSS_DIR"/*.css)
-WAYBAR_CSS_COUNT=${#WAYBAR_CSS[@]}
-WAYBAR_JSONC=("$WAYBAR_JSONC_DIR"/*.jsonc)
-WAYBAR_JSONC_COUNT=${#WAYBAR_JSONC[@]}
-ROFI_THEMES=("$ROFI_THEMES_DIR"/*.rasi)
-ROFI_THEME_COUNT=${#ROFI_THEMES[@]}
+waybar_css=("$WAYBAR_CSS_DIR"/*.css)
+waybar_jsonc=("$WAYBAR_JSONC_DIR"/*.jsonc)
+rofi_themes=("$ROFI_THEMES_DIR"/*.rasi)
 
-if [[ $WAYBAR_CSS_COUNT -eq 0 ]]; then
-  echo "Error: No themes found in $WAYBAR_CSS_DIR"
-  exit 1
-elif [[ $WAYBAR_JSONC_COUNT -eq 0 ]]; then
-  echo "Error: No themes found in $WAYBAR_JSONC_DIR"
-  exit 1
-elif [[ $ROFI_THEME_COUNT -eq 0 ]]; then
-  echo "Error: No themes found in $ROFI_THEMES_DIR"
+if [[ ${#waybar_css[@]} -eq 0 || ${#waybar_jsonc[@]} -eq 0 || ${#rofi_themes[@]} -eq 0 ]]; then
+  echo "Error: No themes found in one of the directories"
   exit 1
 fi
 
 # Get the current theme
-if [[ -f "$CURRENT_THEME_FILE" ]]; then
-  CURRENT_THEME=$(cat "$CURRENT_THEME_FILE")
-else
-  CURRENT_THEME=""
-fi
+current_theme=$(cat "$CURRENT_THEME_FILE" 2>/dev/null || echo "")
 
-NEXT_THEME_INDEX=0
-
-for i in "${!WAYBAR_CSS[@]}"; do
-  if [[ "${WAYBAR_CSS[$i]}" == "$CURRENT_THEME" ]]; then
-    NEXT_THEME_INDEX=$(((i + 1) % WAYBAR_CSS_COUNT))
-    break
-  fi
+# Find the index of the current theme
+next_theme_index=0
+for i in "${!waybar_css[@]}"; do
+  [[ "${waybar_css[$i]}" == "$current_theme" ]] && next_theme_index=$(((i + 1) % ${#waybar_css[@]})) && break
 done
 
-for i in "${!WAYBAR_JSONC[@]}"; do
-  if [[ "${WAYBAR_JSONC[$i]}" == "$CURRENT_THEME" ]]; then
-    NEXT_THEME_INDEX=$(((i + 1) % WAYBAR_JSONC_COUNT))
-    break
-  fi
-done
-
-for i in "${!ROFI_THEMES[@]}"; do
-  if [[ "${ROFI_THEMES[$i]}" == "$CURRENT_THEME" ]]; then
-    NEXT_THEME_INDEX=$(((i + 1) % ROFI_THEME_COUNT))
-    break
-  fi
-done
-
-NEW_WAYBAR_CSS="${WAYBAR_CSS[$NEXT_THEME_INDEX]}"
-NEW_WAYBAR_JSONC="${WAYBAR_JSONC[$NEXT_THEME_INDEX]}"
-NEW_ROFI_THEME="${ROFI_THEMES[$NEXT_THEME_INDEX]}"
+# Get the new theme
+new_waybar_css="${waybar_css[$next_theme_index]}"
+new_waybar_jsonc="${waybar_jsonc[$next_theme_index]}"
+new_rofi_theme="${rofi_themes[$next_theme_index]}"
 
 # Save the new theme
-echo "$NEW_WAYBAR_CSS" >"$CURRENT_THEME_FILE"
+echo "$new_waybar_css" >"$CURRENT_THEME_FILE"
 
-# Apply new theme
-cp "$NEW_WAYBAR_CSS" "$WAYBAR_CSS_FILE"
-cp "$NEW_WAYBAR_JSONC" "$WAYBAR_JSONC_FILE"
-cp "$NEW_ROFI_THEME" "$ROFI_THEME_FILE"
+declare -A theme_files=(
+  ["$new_waybar_css"]="$WAYBAR_CSS_FILE"
+  ["$new_waybar_jsonc"]="$WAYBAR_JSONC_FILE"
+  ["$new_rofi_theme"]="$ROFI_THEME_FILE"
+)
+
+for src in "${!theme_files[@]}"; do
+  cp "$src" "${theme_files[$src]}"
+done
 
 # Restart Waybar to apply changes
 killall waybar || true
