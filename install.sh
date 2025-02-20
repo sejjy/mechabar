@@ -92,18 +92,21 @@ install_aur_packages() {
 copy_configs() {
   printf "\n\033[1;32mCopying config files...\033[0m\n"
 
-  mkdir -p ~/.config/waybar/
-  cp config.jsonc style.css theme.css ~/.config/waybar/
+  mkdir -p ~/.config/waybar
+  cp config.jsonc style.css theme.css ~/.config/waybar
+
+  mkdir -p ~/.config/waybar/themes
+  cp themes/* ~/.config/waybar/themes
 
   mkdir -p ~/.config/rofi
-  cp rofi/* ~/.config/rofi/
+  cp rofi/* ~/.config/rofi
 }
 
 setup_scripts() {
   printf "\n\033[1;32mSetting up scripts...\033[0m\n"
 
-  mkdir -p ~/.config/waybar/scripts/
-  cp scripts/* ~/.config/waybar/scripts/
+  mkdir -p ~/.config/waybar/scripts
+  cp scripts/* ~/.config/waybar/scripts
 
   chmod +x ~/.config/waybar/scripts/*
 }
