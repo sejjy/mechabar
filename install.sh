@@ -17,10 +17,9 @@ backup_files() {
   printf "\n\033[1;34mBacking up existing config files...\033[0m\n"
 
   CONFIG_DIR=~/.config
-  TIMESTAMP=$(date +%m-%Y)
   declare -A FOLDERS=(
-    ["waybar"]="waybar-backup-$TIMESTAMP"
-    ["rofi"]="rofi-backup-$TIMESTAMP"
+    ["waybar"]="waybar-backup"
+    ["rofi"]="rofi-backup"
   )
 
   for SRC in "${!FOLDERS[@]}"; do
