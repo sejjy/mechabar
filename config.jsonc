@@ -94,8 +94,6 @@
     "format": "{}",
     "min-length": 5,
 
-    // === Window Titles ===
-
     "rewrite": {
       // == Desktop ==
 
@@ -107,8 +105,6 @@
       "~": "  Terminal",
       "zsh": "  Terminal",
       "kitty": "  Terminal",
-      "sejjy@archlinux:(.*)": "  Terminal",
-      "(.*)sejjy@archlinux:~": "  Terminal",
 
       // == Browser ==
 
@@ -118,9 +114,9 @@
         "<span foreground='#f38ba8'>󰈹 </span> $1",
 
       "(.*)Zen Browser": 
-        "<span foreground='#cdd6f4'>󰈹 </span> Zen Browser",
+        "<span foreground='#fab387'>󰺕 </span> Zen Browser",
       "(.*) — Zen Browser": 
-        "<span foreground='#cdd6f4'>󰈹 </span> $1",
+        "<span foreground='#fab387'>󰺕 </span> $1",
 
       // == Development ==
 
@@ -139,13 +135,6 @@
       "vim (.*)": 
         "<span foreground='#a6e3a1'> </span> $1",
 
-      "Godot": 
-        "<span foreground='#89b4fa'> </span> Godot Engine",
-      "Godot Engine - (.*)": 
-        "<span foreground='#89b4fa'> </span> $1",
-      "(.*) - Godot Engine": 
-        "<span foreground='#89b4fa'> </span> $1",
-
       // == Media ==
 
       "(.*)Spotify": 
@@ -154,7 +143,7 @@
         "<span foreground='#a6e3a1'> </span> Spotify Premium",
 
       "OBS(.*)": 
-        "<span foreground='#a6adc8'>󰐌 </span> OBS Studio",
+        "<span foreground='#a6adc8'> </span> OBS Studio",
 
       "VLC media player": 
         "<span foreground='#fab387'>󰕼 </span> VLC Media Player",
@@ -163,9 +152,6 @@
 
       "(.*) - mpv": 
         "<span foreground='#cba6f7'> </span> $1",
-
-      "GNU Image Manipulation Program": 
-        "<span foreground='#a6adc8'> </span> GNU Image Manipulation Program",
 
       "qView": "  qView",
 
@@ -196,12 +182,7 @@
       "(.*).pdf": 
         "<span foreground='#f38ba8'> </span> $1.pdf",
 
-      "/": "  File Manager",
-
       // == System ==
-
-      "Timeshift-gtk": 
-        "<span foreground='#a6e3a1'> </span> Timeshift",
 
       "Authenticate": "  Authenticate"
     }
