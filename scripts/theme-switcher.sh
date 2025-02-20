@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
 
-WAYBAR_THEMES_DIR="$HOME/.config/waybar/themes"
+WAYBAR_THEMES_DIR="$HOME/.config/waybar/themes/css"
 WAYBAR_THEME_FILE="$HOME/.config/waybar/theme.css"
 ROFI_THEMES_DIR="$HOME/.config/rofi/themes"
 ROFI_THEME_FILE="$HOME/.config/rofi/theme.rasi"
+CURRENT_THEME_FILE="$HOME/.config/waybar/themes/current-theme"
 
 if [[ ! -d "$WAYBAR_THEMES_DIR" ]]; then
   echo "Error: $WAYBAR_THEMES_DIR not found"
@@ -14,41 +15,51 @@ elif [[ ! -d "$ROFI_THEMES_DIR" ]]; then
 fi
 
 # Get all themes
-waybar_themes=("$WAYBAR_THEMES_DIR"/*.css)
-waybar_theme_count=${#waybar_themes[@]}
-rofi_themes=("$ROFI_THEMES_DIR"/*.rasi)
-rofi_theme_count=${#rofi_themes[@]}
+WAYBAR_THEMES=("$WAYBAR_THEMES_DIR"/*.css)
+WAYBAR_THEME_COUNT=${#WAYBAR_THEMES[@]}
+ROFI_THEMES=("$ROFI_THEMES_DIR"/*.rasi)
+ROFI_THEME_COUNT=${#ROFI_THEMES[@]}
 
-if [[ $waybar_theme_count -eq 0 ]]; then
+if [[ $WAYBAR_THEME_COUNT -eq 0 ]]; then
   echo "Error: No themes found in $WAYBAR_THEMES_DIR"
   exit 1
-elif [[ $rofi_theme_count -eq 0 ]]; then
+elif [[ $ROFI_THEME_COUNT -eq 0 ]]; then
   echo "Error: No themes found in $ROFI_THEMES_DIR"
   exit 1
 fi
 
-# Check which theme is currently applied
-if [[ -f "$WAYBAR_THEME_FILE" ]]; then
-  current_theme=$(basename "$(readlink -f "$WAYBAR_THEME_FILE")")
+# Get the current theme
+if [[ -f "$CURRENT_THEME_FILE" ]]; then
+  CURRENT_THEME=$(cat "$CURRENT_THEME_FILE")
 else
-  current_theme=""
+  CURRENT_THEME=""
 fi
 
-next_theme_index=0
+NEXT_THEME_INDEX=0
 
-for i in "${!waybar_themes[@]}"; do
-  if [[ "$(basename "${waybar_themes[$i]}")" == "$current_theme" ]]; then
-    next_theme_index=$(((i + 1) % waybar_theme_count))
+for i in "${!WAYBAR_THEMES[@]}"; do
+  if [[ "${WAYBAR_THEMES[$i]}" == "$CURRENT_THEME" ]]; then
+    NEXT_THEME_INDEX=$(((i + 1) % WAYBAR_THEME_COUNT))
     break
   fi
 done
 
-new_waybar_theme="${waybar_themes[$next_theme_index]}"
-new_rofi_theme="${rofi_themes[$next_theme_index]}"
+for i in "${!ROFI_THEMES[@]}"; do
+  if [[ "${ROFI_THEMES[$i]}" == "$CURRENT_THEME" ]]; then
+    NEXT_THEME_INDEX=$(((i + 1) % ROFI_THEME_COUNT))
+    break
+  fi
+done
+
+NEW_WAYBAR_THEME="${WAYBAR_THEMES[$NEXT_THEME_INDEX]}"
+NEW_ROFI_THEME="${ROFI_THEMES[$NEXT_THEME_INDEX]}"
+
+# Save the new theme
+echo "$NEW_WAYBAR_THEME" >"$CURRENT_THEME_FILE"
 
 # Apply new theme
-cp "$new_waybar_theme" "$WAYBAR_THEME_FILE"
-cp "$new_rofi_theme" "$ROFI_THEME_FILE"
+cp "$NEW_WAYBAR_THEME" "$WAYBAR_THEME_FILE"
+cp "$NEW_ROFI_THEME" "$ROFI_THEME_FILE"
 
 # Restart Waybar to apply changes
 killall waybar || true

@@ -1,17 +1,17 @@
 #!/usr/bin/env bash
 
-WAYBAR_THEME_FILE="$HOME/.config/waybar/theme.css"
+CURRENT_THEME_FILE="$HOME/.config/waybar/themes/current-theme"
 
-# Check if the theme file exists
-if [[ -f "$WAYBAR_THEME_FILE" ]]; then
-  # Read the first line and extract the theme name
-  current_theme=$(head -n 1 "$WAYBAR_THEME_FILE" | sed -E 's|/\* *(.*) *\*/|\1|')
+# Get the current theme
+if [[ -f "$CURRENT_THEME_FILE" ]]; then
+  CURRENT_THEME=$(cat "$CURRENT_THEME_FILE")
+  CURRENT_THEME_NAME=$(basename "$CURRENT_THEME" | sed 's/\.css$//')
+
+  # Format theme name: "theme-name" -> "Theme Name"
+  FORMATTED_THEME_NAME=$(echo "$CURRENT_THEME_NAME" | sed 's/-/ /g' | awk '{for(i=1;i<=NF;i++) $i=toupper(substr($i,1,1)) substr($i,2)}1')
 else
-  current_theme="Unknown"
+  FORMATTED_THEME_NAME="Unknown"
 fi
 
-tooltip="Theme: $current_theme"
-tooltip+="\nStyle: Classic" # hard-coded for now
-
 # Tooltip
-echo "{\"tooltip\": \"$tooltip\"}"
+echo "{\"tooltip\": \"Theme: $FORMATTED_THEME_NAME\"}"
