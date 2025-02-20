@@ -38,8 +38,8 @@
 * {
   main-bg:        @bg0h;
   main-fg:        @fg0;
-  main-br:        @brightyellow;
+  main-br:        @yellow;
   input-bg:       @bg1;
-  select-bg:      @brightyellow;
+  select-bg:      @yellow;
   select-fg:      @bg0h;
 }

@@ -96,10 +96,10 @@ copy_configs() {
   cp config.jsonc style.css theme.css ~/.config/waybar
 
   mkdir -p ~/.config/waybar/themes
-  cp themes/* ~/.config/waybar/themes
+  cp -r themes/* ~/.config/waybar/themes
 
   mkdir -p ~/.config/rofi
-  cp rofi/* ~/.config/rofi
+  cp -r rofi/* ~/.config/rofi
 }
 
 setup_scripts() {
