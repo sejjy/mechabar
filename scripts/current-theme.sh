@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-CURRENT_THEME_FILE="$HOME/.config/waybar/current-theme"
+CURRENT_THEME_FILE="$HOME/.config/waybar/themes/current-theme"
 
 # Get the current theme
 if [[ -f "$CURRENT_THEME_FILE" ]]; then

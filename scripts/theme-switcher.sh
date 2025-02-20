@@ -4,7 +4,7 @@ WAYBAR_THEMES_DIR="$HOME/.config/waybar/themes"
 WAYBAR_THEME_FILE="$HOME/.config/waybar/theme.css"
 ROFI_THEMES_DIR="$HOME/.config/rofi/themes"
 ROFI_THEME_FILE="$HOME/.config/rofi/theme.rasi"
-CURRENT_THEME_FILE="$HOME/.config/waybar/current-theme"
+CURRENT_THEME_FILE="$HOME/.config/waybar/themes/current-theme"
 
 if [[ ! -d "$WAYBAR_THEMES_DIR" ]]; then
   echo "Error: $WAYBAR_THEMES_DIR not found"
