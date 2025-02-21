@@ -2,8 +2,38 @@
 
 # 🤖 mechabar
 
-| ![Preview 1](assets/2x-scale.png) |
-| :-------------------------------: |
+| ![Catppuccin Mocha](assets/catppuccin-mocha.png) |
+| :----------------------------------------------: |
+
+  <details>
+    <summary><strong>&nbsp;🎨 Themes</strong></summary>
+    <br />
+
+**Catppuccin**
+
+|                   Macchiato                   |
+| :-------------------------------------------: |
+| ![Macchiato](assets/catppuccin-macchiato.png) |
+
+|                 Frappe                  |
+| :-------------------------------------: |
+| ![Frappe](assets/catppuccin-frappe.png) |
+
+|                 Latte                 |
+| :-----------------------------------: |
+| ![Latte](assets/catppuccin-latte.png) |
+
+**Gruvbox**
+
+|               Dark               |
+| :------------------------------: |
+| ![Dark](assets/gruvbox-dark.png) |
+
+|               Light                |
+| :--------------------------------: |
+| ![Light](assets/gruvbox-light.png) |
+
+  </details>
 
   <details>
     <summary><strong>&nbsp;🚀 Menus</strong></summary>
@@ -154,7 +184,7 @@ Here are some features and improvements planned for future versions:
 ## Credits
 
 - Font icons: [ryanoasis / nerd-fonts](https://github.com/ryanoasis/nerd-fonts)
-- Color palette: [catppuccin / catppuccin](https://github.com/catppuccin/catppuccin) (Mocha)
+- Color palette: [catppuccin / catppuccin](https://github.com/catppuccin/catppuccin), [morhetz / gruvbox](https://github.com/morhetz/gruvbox)
 - The original files in the [modules](/modules/) folder are from [prasanthrangan / hyprdots](https://github.com/prasanthrangan/hyprdots).
 - The original versions of [battery-level.sh](/scripts/battery-level.sh) and [battery-state.sh](/scripts/battery-state.sh) are from [ericmurphyxyz / dotfiles](https://github.com/ericmurphyxyz/dotfiles)
 - Special thanks to [JustLap](https://github.com/JustLap) for helping me organize font sizes into a dedicated section.
