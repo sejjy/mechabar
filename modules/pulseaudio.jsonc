@@ -3,11 +3,9 @@
     "format": "{icon} {volume}",
 
     "format-muted": "󰝟",
-    "on-click": "pavucontrol -t 3",
-    "on-click-right": "volumecontrol.sh -s ''",
-    "on-click-middle": "volumecontrol.sh -o m",
-    "on-scroll-up": "volumecontrol.sh -o i",
-    "on-scroll-down": "volumecontrol.sh -o d",
+    "on-click": "~/.config/waybar/scripts/volume-control.sh -o m",
+    "on-scroll-up": "~/.config/waybar/scripts/volume-control.sh -o i",
+    "on-scroll-down": "~/.config/waybar/scripts/volume-control.sh -o d",
     "tooltip-format": "{icon} {desc} // {volume}%",
     "scroll-step": 5,
 
@@ -25,12 +23,11 @@
   "pulseaudio#microphone": {
     "format": "{format_source}",
 
-    "format-source": "",
+    "format-source": "󰍬",
     "format-source-muted": "󰍭",
-    "on-click": "pavucontrol -t 4",
-    "on-click-middle": "volumecontrol.sh -i m",
-    "on-scroll-up": "volumecontrol.sh -i i",
-    "on-scroll-down": "volumecontrol.sh -i d",
+    "on-click": "~/.config/waybar/scripts/volume-control.sh -o m",
+    "on-scroll-up": "~/.config/waybar/scripts/volume-control.sh -o i",
+    "on-scroll-down": "~/.config/waybar/scripts/volume-control.sh -o d",
     "tooltip-format": "{format_source} {source_desc} // {source_volume}%",
     "scroll-step": 5
   }
