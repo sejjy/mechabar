@@ -10,6 +10,9 @@
     "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
     "format-charging": " {capacity}%",
     "format-plugged": " {capacity}%",
-    "format-alt": "{time} {icon}"
+    "format-alt": "{time} {icon}",
+    "interval": 1,
+    "min-length": 6,
+    "max-length": 6
   }
 }

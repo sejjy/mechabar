@@ -1,9 +1,0 @@
-{
-  // script:
-  // https://github.com/prasanthrangan/hyprdots/blob/main/Configs/.local/share/bin/keybinds_hint.sh
-
-  "custom/keybindhint": {
-    "format": " ",
-    "on-click": "keybinds_hint.sh"
-  }
-}

@@ -17,10 +17,9 @@ backup_files() {
   printf "\n\033[1;34mBacking up existing config files...\033[0m\n"
 
   CONFIG_DIR=~/.config
-  TIMESTAMP=$(date +%m-%Y)
   declare -A FOLDERS=(
-    ["waybar"]="waybar-backup-$TIMESTAMP"
-    ["rofi"]="rofi-backup-$TIMESTAMP"
+    ["waybar"]="waybar-backup"
+    ["rofi"]="rofi-backup"
   )
 
   for SRC in "${!FOLDERS[@]}"; do
@@ -75,7 +74,7 @@ install_dependencies() {
   printf "\n\033[1;32mInstalling dependencies...\033[0m\n"
 
   DEPENDENCIES=(
-    bluez-utils brightnessctl pipewire pipewire-pulse python ttf-jetbrains-mono-nerd wireplumber
+    bluez-utils brightnessctl pipewire pipewire-pulse ttf-jetbrains-mono-nerd wireplumber
   )
 
   for PACKAGE in "${DEPENDENCIES[@]}"; do
@@ -92,18 +91,21 @@ install_aur_packages() {
 copy_configs() {
   printf "\n\033[1;32mCopying config files...\033[0m\n"
 
-  mkdir -p ~/.config/waybar/
-  cp config.jsonc style.css theme.css ~/.config/waybar/
+  mkdir -p ~/.config/waybar
+  cp config.jsonc style.css theme.css ~/.config/waybar
+
+  mkdir -p ~/.config/waybar/themes
+  cp -r themes/* ~/.config/waybar/themes
 
   mkdir -p ~/.config/rofi
-  cp rofi/* ~/.config/rofi/
+  cp -r rofi/* ~/.config/rofi
 }
 
 setup_scripts() {
   printf "\n\033[1;32mSetting up scripts...\033[0m\n"
 
-  mkdir -p ~/.config/waybar/scripts/
-  cp scripts/* ~/.config/waybar/scripts/
+  mkdir -p ~/.config/waybar/scripts
+  cp scripts/* ~/.config/waybar/scripts
 
   chmod +x ~/.config/waybar/scripts/*
 }
@@ -112,7 +114,7 @@ restart_waybar() {
   printf "\n\033[1;32mRestarting Waybar...\033[0m\n"
 
   killall waybar || true
-  nohup waybar >/dev/null 2>&1 &
+  nohup waybar --config "$HOME/.config/waybar/config.jsonc" --style "$HOME/.config/waybar/style.css" >/dev/null 2>&1 &
 }
 
 main() {

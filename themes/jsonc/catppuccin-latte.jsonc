@@ -5,7 +5,7 @@
   "reload_style_on_change": true,
   "gtk-layer-shell": true,
 
-  // === Positions ===
+  // <<--< Positions >-->>
 
   "modules-left": [
     "custom/ws",            // window icon
@@ -27,7 +27,6 @@
     "memory",               // memory
 
     "custom/left4",
-    // "custom/cpu",           // cpu
     "cpu",                  // cpu
     "custom/leftin1",
 
@@ -50,13 +49,12 @@
   ],
 
   "modules-right": [
-    "custom/media",         // media info
+    "mpris",                // media info
 
     "custom/left6",
     "pulseaudio",           // output device
 
     "custom/left7",
-    // "custom/backlight",     // brightness
     "backlight",            // brightness
 
     "custom/left8",
@@ -66,11 +64,13 @@
     "custom/power"          // power button
   ],
 
-  // === Modules ===
+  // <<--< Modules >-->>
 
   "custom/ws": {
-    "format": "  ",
-    "tooltip": false,
+    "exec": "~/.config/waybar/scripts/current-theme.sh",
+    "return-type": "json",
+    "format": " 󰍜 ",
+    "on-click": "~/.config/waybar/scripts/theme-switcher.sh",
     "min-length": 3,
     "max-length": 3
   },
@@ -91,78 +91,62 @@
     "format": "{}",
     "min-length": 5,
 
-    // === Window Titles ===
-
     "rewrite": {
-      // == Desktop ==
-
+      // Desktop
       "": 
-        "<span foreground='#89b4fa'> </span> Hyprland",
+        "<span foreground='#1e66f5'> </span> Hyprland",
 
-      // == Terminal ==
-
+      // Terminal
       "~": "  Terminal",
       "zsh": "  Terminal",
       "kitty": "  Terminal",
-      "sejjy@archlinux:(.*)": "  Terminal",
-      "(.*)sejjy@archlinux:~": "  Terminal",
 
-      // == Browser ==
+      // Browser
 
       "(.*)Mozilla Firefox": 
-        "<span foreground='#f38ba8'>󰈹 </span> Firefox",
+        "<span foreground='#d20f39'>󰈹 </span> Firefox",
       "(.*) — Mozilla Firefox": 
-        "<span foreground='#f38ba8'>󰈹 </span> $1",
+        "<span foreground='#d20f39'>󰈹 </span> $1",
 
       "(.*)Zen Browser": 
-        "<span foreground='#cdd6f4'>󰈹 </span> Zen Browser",
+        "<span foreground='#fe640b'>󰺕 </span> Zen Browser",
       "(.*) — Zen Browser": 
-        "<span foreground='#cdd6f4'>󰈹 </span> $1",
+        "<span foreground='#fe640b'>󰺕 </span> $1",
 
-      // == Development ==
+      // Development
 
       "(.*) - Visual Studio Code": 
-        "<span foreground='#89b4fa'>󰨞 </span> $1",
+        "<span foreground='#1e66f5'>󰨞 </span> $1",
       "(.*)Visual Studio Code": 
-        "<span foreground='#89b4fa'>󰨞 </span> Visual Studio Code",
+        "<span foreground='#1e66f5'>󰨞 </span> Visual Studio Code",
 
       "nvim": 
-        "<span foreground='#a6e3a1'> </span> Neovim",
+        "<span foreground='#40a02b'> </span> Neovim",
       "nvim (.*)": 
-        "<span foreground='#a6e3a1'> </span> $1",
+        "<span foreground='#40a02b'> </span> $1",
 
       "vim": 
-        "<span foreground='#a6e3a1'> </span> Vim",
+        "<span foreground='#40a02b'> </span> Vim",
       "vim (.*)": 
-        "<span foreground='#a6e3a1'> </span> $1",
+        "<span foreground='#40a02b'> </span> $1",
 
-      "Godot": 
-        "<span foreground='#89b4fa'> </span> Godot Engine",
-      "Godot Engine - (.*)": 
-        "<span foreground='#89b4fa'> </span> $1",
-      "(.*) - Godot Engine": 
-        "<span foreground='#89b4fa'> </span> $1",
-
-      // == Media ==
+      // Media
 
       "(.*)Spotify": 
-        "<span foreground='#a6e3a1'> </span> Spotify",
+        "<span foreground='#40a02b'> </span> Spotify",
       "(.*)Spotify Premium": 
-        "<span foreground='#a6e3a1'> </span> Spotify Premium",
+        "<span foreground='#40a02b'> </span> Spotify Premium",
 
       "OBS(.*)": 
-        "<span foreground='#a6adc8'>󰐌 </span> OBS Studio",
+        "<span foreground='#6c6f85'> </span> OBS Studio",
 
       "VLC media player": 
-        "<span foreground='#fab387'>󰕼 </span> VLC Media Player",
+        "<span foreground='#fe640b'>󰕼 </span> VLC Media Player",
       "(.*) - VLC media player": 
-        "<span foreground='#fab387'>󰕼 </span> $1",
+        "<span foreground='#fe640b'>󰕼 </span> $1",
 
       "(.*) - mpv": 
-        "<span foreground='#cba6f7'> </span> $1",
-
-      "GNU Image Manipulation Program": 
-        "<span foreground='#a6adc8'> </span> GNU Image Manipulation Program",
+        "<span foreground='#8839ef'> </span> $1",
 
       "qView": "  qView",
 
@@ -170,36 +154,30 @@
       "(.*).png": "  $1.png",
       "(.*).svg": "  $1.svg",
 
-      // == Social ==
+      // Social
 
       "vesktop": 
-        "<span foreground='#89b4fa'> </span> Discord",
+        "<span foreground='#1e66f5'> </span> Discord",
 
       "• Discord(.*)": "Discord$1",
       "(.*)Discord(.*)": 
-        "<span foreground='#89b4fa'> </span> $1Discord$2",
+        "<span foreground='#1e66f5'> </span> $1Discord$2",
 
-      // == Documents ==
+      // Documents
 
       "ONLYOFFICE Desktop Editors": 
-        "<span foreground='#f38ba8'> </span> OnlyOffice Desktop",
+        "<span foreground='#d20f39'> </span> OnlyOffice Desktop",
 
       "(.*).docx": 
-        "<span foreground='#89b4fa'> </span> $1.docx",
+        "<span foreground='#1e66f5'> </span> $1.docx",
       "(.*).xlsx": 
-        "<span foreground='#a6e3a1'> </span> $1.xlsx",
+        "<span foreground='#40a02b'> </span> $1.xlsx",
       "(.*).pptx": 
-        "<span foreground='#fab387'> </span> $1.pptx",
+        "<span foreground='#fe640b'> </span> $1.pptx",
       "(.*).pdf": 
-        "<span foreground='#f38ba8'> </span> $1.pdf",
+        "<span foreground='#d20f39'> </span> $1.pdf",
 
-      "/": "  File Manager",
-
-      // == System ==
-
-      "Timeshift-gtk": 
-        "<span foreground='#a6e3a1'> </span> Timeshift",
-
+      // System
       "Authenticate": "  Authenticate"
     }
   },
@@ -208,7 +186,6 @@
     "exec": "~/.config/waybar/scripts/cpu-temp.sh",
     "return-type": "json",
     "format": "{}",
-    "tooltip": true,
     "interval": 5,
     "min-length": 8,
     "max-length": 8
@@ -222,22 +199,12 @@
 
     "format": "󰘚 {percentage}%",
     "format-critical": "󰀦 {percentage}%",
-    "tooltip": true,
     "tooltip-format": "Memory Used: {used:0.1f} GB / {total:0.1f} GB",
     "interval": 5,
     "min-length": 7,
     "max-length": 7
   },
-  /*
-  "custom/cpu": {
-    "exec": "~/.config/waybar/scripts/cpu-usage.sh",
-    "return-type": "json",
-    "tooltip": true,
-    "interval": 5,
-    "min-length": 6,
-    "max-length": 6
-  },
-  */
+
   "cpu": {
     "format": "󰻠 {usage}%",
     "tooltip": false,
@@ -259,7 +226,6 @@
       "deactivated": "󱑂 "
     },
 
-    "tooltip": true,
     "tooltip-format-activated": "Presentation Mode",
     "tooltip-format-deactivated": "Idle Mode",
     "start-activated": false
@@ -267,7 +233,6 @@
 
   "clock#time": {
     "format": "{:%H:%M}",
-    "tooltip": true,
     "tooltip-format": "Standard Time: {:%I:%M %p}",
     "min-length": 6,
     "max-length": 6
@@ -284,11 +249,11 @@
 
       "format": {
         "months": 
-          "<span color='#b4befe'><b>{}</b></span>",
+          "<span color='#7287fd'><b>{}</b></span>",
         "weekdays": 
-          "<span color='#a6adc8' font='7'>{}</span>",
+          "<span color='#6c6f85' font='7'>{}</span>",
         "today": 
-          "<span color='#f38ba8'><b>{}</b></span>"
+          "<span color='#d20f39'><b>{}</b></span>"
       }
     },
 
@@ -305,7 +270,6 @@
     "exec": "~/.config/waybar/scripts/wifi-status.sh",
     "return-type": "json",
     "format": "{}",
-    "tooltip": true,
     "on-click": "~/.config/waybar/scripts/wifi-menu.sh",
     "on-click-right": "kitty --title '󰤨  Network Manager TUI' bash -c nmtui",
     "interval": 1,
@@ -343,17 +307,25 @@
     "format": "{}",
     "on-click": "hyprctl dispatch exec '~/.config/waybar/scripts/system-update.sh up'",
     "interval": 30,
-    "tooltip": true,
     "min-length": 1,
     "max-length": 1
   },
 
-  "custom/media": {
-    "exec": "~/.config/waybar/scripts/media-player.py",
-    "return-type": "json",
-    "format": "{}",
-    "tooltip": "{tooltip}",
-    "on-click": "playerctl play-pause",
+  "mpris": {
+    "format": "{player_icon} {title} - {artist}",
+    "format-paused": "{status_icon} {title} - {artist}",
+
+    "player-icons": {
+      "default": "󰝚 ",
+      "spotify": "<span foreground='#40a02b'>󰓇 </span>",
+      "firefox": "<span foreground='#d20f39'>󰗃 </span>"
+    },
+    "status-icons": {
+      "paused": "<span color='#7287fd'>\u200A\u200A󰏤\u2009\u2009</span>"
+    },
+
+    "tooltip-format": "Playing: {title} - {artist}",
+    "tooltip-format-paused": "Paused: {title} - {artist}",
     "min-length": 5,
     "max-length": 35
   },
@@ -368,7 +340,6 @@
       "headset": "󰋋"
     },
 
-    "tooltip": true,
     "tooltip-format": "Device: {desc}",
     "on-click": "~/.config/waybar/scripts/volume-control.sh -o m",
     "on-scroll-up": "~/.config/waybar/scripts/volume-control.sh -o i",
@@ -376,19 +347,7 @@
     "min-length": 6,
     "max-length": 6
   },
-  /*
-  "custom/backlight": {
-    "exec": "~/.config/waybar/scripts/brightness-control.sh",
-    "return-type": "json",
-    "format": "{}",
-    "tooltip": true,
-    "on-scroll-up": "~/.config/waybar/scripts/brightness-control.sh -o i",
-    "on-scroll-down": "~/.config/waybar/scripts/brightness-control.sh -o d",
-    "interval": 1,
-    "min-length": 6,
-    "max-length": 6
-  },
-  */
+
   "backlight": {
     "format": "{icon} {percent}%",
     "format-icons": ["", "", "", "", "", "", "", "", ""],
@@ -418,12 +377,11 @@
 
   "custom/power": {
     "format": " ",
-    "tooltip": true,
     "tooltip-format": "Power Menu",
     "on-click": "~/.config/waybar/scripts/power-menu.sh"
   },
 
-  // === Padding ===
+  // <<--< Padding >-->>
 
   "custom/paddw": {
     "format": " ",
@@ -435,7 +393,7 @@
     "tooltip": false
   },
 
-  // == Left Arrows ==
+  // Left Arrows
 
   "custom/left1": {
     "format": "",
@@ -470,7 +428,7 @@
     "tooltip": false
   },
 
-  // == Right Arrows ==
+  // Right Arrows
 
   "custom/right1": {
     "format": "",
@@ -493,7 +451,7 @@
     "tooltip": false
   },
 
-  // == Left Inverse ==
+  // Left Inverse
 
   "custom/leftin1": {
     "format": "",
@@ -504,7 +462,7 @@
     "tooltip": false
   },
 
-  // == Right Inverse ==
+  // Right Inverse
 
   "custom/rightin1": {
     "format": "",

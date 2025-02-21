@@ -6,6 +6,7 @@
 
     "on-scroll-up": "brightnessctl set 1%+",
     "on-scroll-down": "brightnessctl set 1%-",
-    "min-length": 6
+    "min-length": 6,
+    "max-length": 6
   }
 }
