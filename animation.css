@@ -119,7 +119,7 @@
 /* <<--< PHASE 4 >-->> */
 
 #window,
-#custom-media {
+#mpris {
   opacity: 0;
   animation: hoverable_in 0.25s ease-in 1.75s forwards;
 }
