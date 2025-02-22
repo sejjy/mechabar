@@ -11,16 +11,15 @@
 
 /* <<--< Main Background >-->> */
 
-window#waybar {
-  background: @main-bg;
+window#waybar > box {
+  background-color: @main-bg;
+  margin: 2px;
 }
 
 /* <<--< Drop Shadow >-->> */
 
-window#waybar > box {
-  background-color: transparent;
-  box-shadow: 0 0 2px 1px rgba(0, 0, 0, 1);
-  margin: 2px;
+window#waybar {
+  background: @shadow;
 }
 
 /* <<--< Tooltip >-->> */

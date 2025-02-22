@@ -96,6 +96,7 @@ while true; do
 
       if [[ "$connection_status" == "yes" ]]; then
         notify-send "Connected to \"$device_name\"." -i "package-installed-outdated"
+        exit
       else
         notify-send "Failed to connect to \"$device_name\"." -i "package-broken"
       fi
