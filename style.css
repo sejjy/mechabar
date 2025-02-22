@@ -1,3 +1,5 @@
+@import "theme.css";
+
 * {
   font-family: "JetBrainsMono Nerd Font";
   font-weight: bold;
@@ -7,15 +9,13 @@
   margin: 0;
 }
 
-@import "theme.css";
-
-/* === Main Background === */
+/* <<--< Main Background >-->> */
 
 window#waybar {
   background: @main-bg;
 }
 
-/* === Drop Shadow === */
+/* <<--< Drop Shadow >-->> */
 
 window#waybar > box {
   background-color: transparent;
@@ -23,7 +23,7 @@ window#waybar > box {
   margin: 2px;
 }
 
-/* === Tooltip === */
+/* <<--< Tooltip >-->> */
 
 tooltip {
   background: @main-bg;
@@ -38,7 +38,7 @@ tooltip label {
   margin: -1.5px 3px;
 }
 
-/* === Workspace Buttons === */
+/* <<--< Workspace Buttons >-->> */
 
 #workspaces button {
   color: @module-fg;
@@ -52,7 +52,6 @@ tooltip label {
   color: @hover-fg;
   background: @hover-bg;
   text-shadow: none;
-  box-shadow: none;
 }
 #workspaces button.active {
   color: @active-fg;
@@ -63,30 +62,27 @@ tooltip label {
   padding: 0 6px;
 }
 
-/* === General === */
+/* <<--< General >-->> */
 
 #custom-ws,
 #workspaces,
 #window,
 #custom-cpuinfo,
 #memory,
-/* #custom-cpu, */
 #cpu,
 #idle_inhibitor,
 #clock,
 #custom-wifi,
 #bluetooth,
 #custom-update,
-#custom-media,
+#mpris,
 #pulseaudio,
-/* #custom-backlight, */
 #backlight,
 #battery,
 #custom-power {
   opacity: 1;
   color: @module-fg;
   padding: 0 4px;
-  text-shadow: 0 0 2px rgba(0, 0, 0, 0.6);
 }
 
 #custom-left1,
@@ -111,15 +107,18 @@ tooltip label {
   text-shadow: 2px 0 2px rgba(0, 0, 0, 0.5);
 }
 
-/* === Modules === */
+/* <<--< Modules >-->> */
 
-/* == Window Icon == */
+/* Window Icon */
 
 #custom-ws {
   background: @main-bg;
 }
+#custom-ws:hover {
+  color: @hover-fg;
+}
 
-/* == Workspaces == */
+/* Workspaces */
 
 #custom-left1 {
   color: @workspaces;
@@ -137,7 +136,7 @@ tooltip label {
   margin-bottom: 0;
 }
 
-/* == Temperature == */
+/* Temperature */
 
 #custom-paddc {
   padding-right: 22px;
@@ -153,7 +152,7 @@ tooltip label {
   padding-right: 0;
 }
 
-/* == Memory == */
+/* Memory */
 
 #custom-left3 {
   color: @memory;
@@ -172,15 +171,14 @@ tooltip label {
   color: @critical;
 }
 
-/* == CPU == */
+/* CPU */
 
 #custom-left4 {
   color: @cpu;
   background: @memory;
   padding-left: 3px;
 }
-/*
-#custom-cpu {
+#cpu {
   background: @cpu;
 }
 */
@@ -192,12 +190,12 @@ tooltip label {
   margin-bottom: -1px;
 }
 
-/* == Distro Icon == */
+/* Distro Icon */
 
 #custom-left5 {
   color: @distro-bg;
   background: @main-bg;
-  text-shadow: -2px 0 2px rgba(0, 0, 0, 0.6);
+  text-shadow: none;
   margin-bottom: -2px;
   padding-left: 3px;
 }
@@ -211,10 +209,11 @@ tooltip label {
 #custom-right2 {
   color: @distro-bg;
   background: @main-bg;
+  text-shadow: none;
   margin-bottom: -2px;
 }
 
-/* == Time == */
+/* Time */
 
 #custom-rightin1 {
   color: @time;
@@ -227,8 +226,6 @@ tooltip label {
 }
 #idle_inhibitor:hover {
   color: @hover-fg;
-  text-shadow: none;
-  box-shadow: none;
 }
 #clock.time {
   background: @time;
@@ -239,22 +236,20 @@ tooltip label {
   background: @date;
 }
 
-/* == Date == */
+/* Date */
 
 #clock.date {
   background: @date;
 }
 #clock.date:hover {
   color: @hover-fg;
-  text-shadow: none;
-  box-shadow: none;
 }
 #custom-right4 {
   color: @date;
   background: @tray;
 }
 
-/* == Tray == */
+/* Tray */
 
 #custom-wifi {
   padding-left: 5px;
@@ -263,8 +258,6 @@ tooltip label {
 }
 #custom-wifi:hover {
   color: @hover-fg;
-  text-shadow: none;
-  box-shadow: none;
 }
 
 #bluetooth {
@@ -273,8 +266,6 @@ tooltip label {
 }
 #bluetooth:hover {
   color: @hover-fg;
-  text-shadow: none;
-  box-shadow: none;
 }
 
 #custom-update {
@@ -283,29 +274,25 @@ tooltip label {
 }
 #custom-update:hover {
   color: @hover-fg;
-  text-shadow: none;
-  box-shadow: none;
 }
 #custom-right5 {
   color: @tray;
   background: @main-bg;
 }
 
-/* == Media Info == */
+/* Media Info */
 
-#custom-media {
+#mpris {
   font-weight: normal;
   background-color: @main-bg;
   padding-right: 8px;
   padding-left: 8px;
 }
-#custom-media:hover {
+#mpris:hover {
   color: @hover-fg;
-  text-shadow: none;
-  box-shadow: none;
 }
 
-/* == Output Device == */
+/* Output Device */
 
 #custom-left6 {
   color: @pulseaudio;
@@ -317,19 +304,16 @@ tooltip label {
 }
 #pulseaudio:hover {
   color: @hover-fg;
-  text-shadow: none;
-  box-shadow: none;
 }
 
-/* == Brightness == */
+/* Brightness */
 
 #custom-left7 {
   color: @backlight;
   background: @pulseaudio;
   padding-left: 2px;
 }
-/*
-#custom-backlight {
+#backlight {
   background: @backlight;
 }
 */
@@ -337,7 +321,7 @@ tooltip label {
   background: @backlight;
 }
 
-/* == Battery == */
+/* Battery */
 
 #custom-left8 {
   color: @battery;
@@ -358,7 +342,7 @@ tooltip label {
   color: @charging;
 }
 
-/* == Power Button == */
+/* Power Button */
 
 #custom-leftin2 {
   color: @battery;
@@ -369,7 +353,7 @@ tooltip label {
   color: @main-bg;
   background: @power;
   text-shadow: 0 0 2px rgba(0, 0, 0, 0.6);
-  box-shadow: 1px 0 2px 1px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.6);
   border-radius: 10px;
   margin: 2px 4px 2px 0;
   padding: 0 6px 0 9px;
