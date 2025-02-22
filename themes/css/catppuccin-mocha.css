@@ -38,6 +38,7 @@
 
 /* Main Colors */
 
+@define-color shadow          shade(@crust, 0.5);
 @define-color main-fg         @text;
 @define-color main-bg         @crust;
 @define-color main-br         @text;
