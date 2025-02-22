@@ -181,10 +181,6 @@ tooltip label {
 #cpu {
   background: @cpu;
 }
-*/
-#cpu {
-  background: @cpu;
-}
 #custom-leftin1 {
   color: @cpu;
   margin-bottom: -1px;
@@ -313,10 +309,6 @@ tooltip label {
   background: @pulseaudio;
   padding-left: 2px;
 }
-#backlight {
-  background: @backlight;
-}
-*/
 #backlight {
   background: @backlight;
 }
