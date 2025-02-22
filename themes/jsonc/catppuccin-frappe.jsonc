@@ -292,7 +292,7 @@
     "tooltip-format-enumerate-connected": 
       "{device_alias}",
     "tooltip-format-enumerate-connected-battery": 
-      "{device_alias}: {device_battery_percentage}%",
+      "{device_alias}: 󰥉 {device_battery_percentage}%",
 
     "on-click": "~/.config/waybar/scripts/bluetooth-menu.sh",
     "on-click-right": "kitty --title '󰂯  Bluetooth TUI' bash -c bluetui",
