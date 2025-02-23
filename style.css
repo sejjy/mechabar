@@ -359,8 +359,8 @@ tooltip label {
 /* <<--< FONT SIZES >-->> */
 
 /*
-  Be careful when changing font sizes, as they can
-  affect alignment.
+  NOTE: Be careful when changing font sizes, as they
+  can affect alignment.
 
   Try adjusting whole numbers first, then refine with
   decimals.
