@@ -31,6 +31,7 @@ FILE_CRITICAL=/tmp/battery-critical
 if [ "$BATTERY_STATE" == "discharging" ]; then
   rm -f $FILE_FULL
 elif [ "$BATTERY_STATE" == "charging" ]; then
+  brightnessctl -r
   rm -f "$FILE_WARNING" "$FILE_CRITICAL"
 fi
 
@@ -41,11 +42,13 @@ if [ "$BATTERY_LEVEL" -eq 100 ] && [ "$BATTERY_STATE" == "fully-charged" ] && [ 
 
 # if the battery is low and is discharging
 elif [ "$BATTERY_LEVEL" -le $WARNING_LEVEL ] && [ "$BATTERY_STATE" == "discharging" ] && [ ! -f $FILE_WARNING ]; then
+  brightnessctl -s set 20%
   notify-send -a "state" "Battery Low (${BATTERY_LEVEL}%)" "You might want to plug in your PC." -u critical -i "battery-caution" -r 9991 -h string:fgcolor:\#fab387 -h string:frcolor:\#fab387
   touch $FILE_WARNING
 
 # if the battery is critical and is discharging
 elif [ "$BATTERY_LEVEL" -le $CRITICAL_LEVEL ] && [ "$BATTERY_STATE" == "discharging" ] && [ ! -f $FILE_CRITICAL ]; then
+  brightnessctl set 10%
   notify-send -a "state" "Battery Critical (${BATTERY_LEVEL}%)" "Plug in your PC now." -u critical -i "battery-empty" -r 9991
   touch $FILE_CRITICAL
 fi
