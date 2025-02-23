@@ -366,7 +366,7 @@
 
     "format": "{icon} {capacity}%",
     "format-icons": ["󰂎", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
-    "format-charging": "󱘖 {capacity}%",
+    "format-charging": " {capacity}%",
 
     "tooltip-format": "Discharging: {time}",
     "tooltip-format-charging": "Charging: {time}",
