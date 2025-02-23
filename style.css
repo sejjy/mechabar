@@ -359,13 +359,15 @@ tooltip label {
 /* <<--< FONT SIZES >-->> */
 
 /*
-  Font sizes for modules and dividers can be problematic.
-  By problematic, I mean they may not align properly
-  when using only whole numbers.
+  NOTE: Be careful when changing font sizes, as they
+  can affect alignment.
 
-  If you wish to change them, consider adjusting only
-  the whole numbers and keeping the decimals as they are,
-  unless you know what you're doing.
+  Try adjusting whole numbers first, then refine with
+  decimals.
+
+  If you increase or decrease a value, make the same
+  change to all properties in this section to keep
+  the layout consistent.
 */
 
 /* workspace icon and buttons, window and media title */
@@ -409,21 +411,37 @@ tooltip label {
 }
 
 /*
-  NOTE: If none of your changes are taking effect,
-  they may be overridden by the font sizes set in
-  `animation.css`.
+  Adjust these properties as well to keep the design
+  consistent.
+*/
 
-  If so, copy your new font sizes from this file
-  and paste them into the corresponding
-  `*_expand` keyframes.
+#workspaces button {
+  border-radius: 8px;
+  padding: 0 2px;
+}
+#workspaces button.active {
+  padding: 0 6px;
+}
+
+#custom-power {
+  border-radius: 10px;
+  padding: 0 6px 0 9px;
+}
+
+/*
+  NOTE: If your changes don’t take effect, they might
+  be overridden by `animation.css`.
+
+  To fix this, copy your updated font sizes from this
+  file and paste them into the corresponding `*_expand`
+  keyframes.
 
   For example, if you change the font size of the
-  distro icon, you should also update it in
-  `distro_expand`.
+  distro icon, update it in `distro_expand`.
 
-  - `distro_expand` for the distro icon (line 143)
-  - `power_expand` for the power button (line 158)
-  - `module_expand` for all other modules (line 172)
+  - distro icon → `distro_expand` (line 143)
+  - power button → `power_expand` (line 158)
+  - all other modules → `module_expand` (line 172)
 */
 
 @import "animation.css";
