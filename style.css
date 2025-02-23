@@ -359,13 +359,15 @@ tooltip label {
 /* <<--< FONT SIZES >-->> */
 
 /*
-  Font sizes for modules and dividers can be problematic.
-  By problematic, I mean they may not align properly
-  when using only whole numbers.
+  Be careful when changing font sizes, as they can
+  affect alignment.
 
-  If you wish to change them, consider adjusting only
-  the whole numbers and keeping the decimals as they are,
-  unless you know what you're doing.
+  Try adjusting whole numbers first, then refine with
+  decimals.
+
+  If you increase or decrease a value, make the same
+  change to all properties in this section to keep
+  the layout consistent.
 */
 
 /* modules */
@@ -406,4 +408,22 @@ tooltip label {
 #custom-left5,
 #custom-right2 {
   font-size: 15.68px;
+}
+
+/*
+  Adjust these properties as well to keep the design
+  consistent.
+*/
+
+#workspaces button {
+  border-radius: 8px;
+  padding: 0 2px;
+}
+#workspaces button.active {
+  padding: 0 6px;
+}
+
+#custom-power {
+  border-radius: 10px;
+  padding: 0 6px 0 9px;
 }
