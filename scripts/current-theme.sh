@@ -18,7 +18,7 @@ else
 fi
 
 tooltip="Theme: $formatted_theme_name"
-tooltip+="\nStyle: Classic" # hard-coded for now
+tooltip+="\nStyle: Animated" # hard-coded for now
 
 # Tooltip
 echo "{\"tooltip\": \"$tooltip\"}"
