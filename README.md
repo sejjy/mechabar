@@ -55,8 +55,6 @@ A mecha-themed [Waybar](https://github.com/Alexays/Waybar) configuration initial
     Waybar configuration guide for Sway:  
     https://github.com/Alexays/Waybar/wiki/Module:-Sway
 
-<br />
-
 ## Classic vs Animated
 
 You can choose between two (2) styles:
@@ -135,7 +133,7 @@ yay -S bluetui rofi-lbonn-wayland-git
    cp rofi/* ~/.config/rofi/
    ```
 
-2. **Setup scripts:**
+2. **Set up scripts:**
 
    ```bash
    mkdir -p ~/.config/waybar/scripts/
@@ -162,11 +160,13 @@ yay -S bluetui rofi-lbonn-wayland-git
 
 ## Customization
 
-- You can switch between predefined [css](/themes/css/), [jsonc](/themes/jsonc/), and [rasi](/rofi/themes/) themes by clicking the leftmost module. To use your own theme, add a file in each directory following each of their own formats.
+- You can switch between predefined [css](/themes/css/), [jsonc](/themes/jsonc/), and [rasi](/rofi/themes/) themes by clicking the leftmost module. To use your own theme, add a file in each directory following its format.
 
-- You can replace modules or add new ones from the [modules](/modules/) folder. For a complete list of available modules, see the [Waybar Wiki](https://github.com/Alexays/Waybar/wiki).
+- You can replace modules with ones from the [modules](/modules/) folder. For a complete list of available modules, see the [Waybar Wiki](https://github.com/Alexays/Waybar/wiki).
 
-- To manually setup battery notifications, follow the instructions in [battery-level.sh](/scripts/battery-level.sh) and [battery-state.sh](/scripts/battery-state.sh).
+- To change the bar height manually, see the notes in [style.css](/style.css)
+
+- To set up battery notifications, follow the instructions in [battery-level.sh](/scripts/battery-level.sh) and [battery-state.sh](/scripts/battery-state.sh).
 
 ## Roadmap
 
