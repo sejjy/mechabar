@@ -92,7 +92,7 @@ copy_configs() {
   printf "\n\033[1;32mCopying config files...\033[0m\n"
 
   mkdir -p ~/.config/waybar
-  cp config.jsonc style.css theme.css ~/.config/waybar
+  cp config.jsonc style.css theme.css animation.css ~/.config/waybar
 
   mkdir -p ~/.config/waybar/themes
   cp -r themes/* ~/.config/waybar/themes
