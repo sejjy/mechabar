@@ -124,20 +124,25 @@ yay -S bluetui rofi-lbonn-wayland-git
 1. **Copy config files:**
 
    ```bash
-   mkdir -p ~/.config/waybar/
-   cp config.jsonc style.css theme.css ~/.config/waybar/
+   mkdir -p ~/.config/waybar
+   cp config.jsonc style.css theme.css animation.css ~/.config/waybar
+   ```
+
+   ```bash
+   mkdir -p ~/.config/waybar/themes
+   cp -r themes/* ~/.config/waybar/themes
    ```
 
    ```bash
    mkdir -p ~/.config/rofi
-   cp rofi/* ~/.config/rofi/
+   cp rofi/* ~/.config/rofi
    ```
 
 2. **Set up scripts:**
 
    ```bash
-   mkdir -p ~/.config/waybar/scripts/
-   cp scripts/* ~/.config/waybar/scripts/
+   mkdir -p ~/.config/waybar/scripts
+   cp scripts/* ~/.config/waybar/scripts
    ```
 
    ```bash
