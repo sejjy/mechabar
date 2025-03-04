@@ -199,7 +199,8 @@
 
     "format": "󰘚 {percentage}%",
     "format-critical": "󰀦 {percentage}%",
-    "tooltip-format": "Memory Used: {used:0.1f} GB / {total:0.1f} GB",
+    "tooltip": false,
+    // "tooltip-format": "Memory Used: {used:0.1f} GB / {total:0.1f} GB",
     "interval": 5,
     "min-length": 7,
     "max-length": 7
@@ -233,7 +234,8 @@
 
   "clock#time": {
     "format": "{:%H:%M}",
-    "tooltip-format": "Standard Time: {:%I:%M %p}",
+    "tooltip": false,
+    // "tooltip-format": "Standard Time: {:%I:%M %p}",
     "min-length": 6,
     "max-length": 6
   },
@@ -288,11 +290,11 @@
     "tooltip-format-disabled": 
       "Bluetooth Disabled",
     "tooltip-format-connected": 
-      "{num_connections} connected\n{device_enumerate}",
+      "{device_enumerate}",
     "tooltip-format-enumerate-connected": 
       "{device_alias}",
     "tooltip-format-enumerate-connected-battery": 
-      "{device_alias}: 󰥉 {device_battery_percentage}%",
+      ":: {device_alias}: 󱊣 {device_battery_percentage}%",
 
     "on-click": "~/.config/waybar/scripts/bluetooth-menu.sh",
     "on-click-right": "kitty --title '󰂯  Bluetooth TUI' bash -c bluetui",
@@ -377,7 +379,8 @@
 
   "custom/power": {
     "format": " ",
-    "tooltip-format": "Power Menu",
+    "tooltip": false,
+    // "tooltip-format": "Power Menu",
     "on-click": "~/.config/waybar/scripts/power-menu.sh"
   },
 
