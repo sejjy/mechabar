@@ -57,7 +57,7 @@ else
   text_output="${thermo_icon} ${temp}°C"
 fi
 
-tooltip="${model}\n"
+tooltip=":: ${model}\n"
 tooltip+="Clock Speed: ${cpu_frequency}\nTemperature: ${temp_f}°F"
 
 # Module and tooltip
