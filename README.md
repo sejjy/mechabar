@@ -87,7 +87,7 @@ You can choose between two (2) styles:
    ./install.sh
    ```
 
-   This backs up existing directories and installs all [dependencies](#i-dependencies), config files, and scripts.
+   This backs up existing directories and installs all [dependencies](#dependencies), config files, and scripts.
 
 #
 
