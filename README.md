@@ -169,9 +169,9 @@ yay -S bluetui rofi-lbonn-wayland-git
 
 - You can replace modules with ones from the [modules](/modules/) folder. For a complete list of available modules, see the [Waybar Wiki](https://github.com/Alexays/Waybar/wiki).
 
-- To change the bar height manually, see the notes in [style.css](/style.css)
+- To change the bar height manually, see the notes in [style.css](/style.css#L359-L429)
 
-- To set up battery notifications, follow the instructions in [battery-level.sh](/scripts/battery-level.sh) and [battery-state.sh](/scripts/battery-state.sh).
+- To set up battery notifications, follow the instructions in [battery-level.sh](/scripts/battery-level.sh#L56-L83) and [battery-state.sh](/scripts/battery-state.sh#L38-L50).
 
 ## Roadmap
 
@@ -187,4 +187,4 @@ Here are some features and improvements planned for future versions:
 - Color palette: [catppuccin / catppuccin](https://github.com/catppuccin/catppuccin), [morhetz / gruvbox](https://github.com/morhetz/gruvbox)
 - The original files in the [modules](/modules/) folder are from [prasanthrangan / hyprdots](https://github.com/prasanthrangan/hyprdots).
 - The original versions of [battery-level.sh](/scripts/battery-level.sh) and [battery-state.sh](/scripts/battery-state.sh) are from [ericmurphyxyz / dotfiles](https://github.com/ericmurphyxyz/dotfiles)
-- Special thanks to [JustLap](https://github.com/JustLap) for helping me organize font sizes into a dedicated section.
+- Special thanks to [JustLap](https://github.com/JustLap) for helping me organize font sizes into a [dedicated section](/style.css#L359-L429).
