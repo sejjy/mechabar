@@ -101,6 +101,9 @@
       "zsh": "  Terminal",
       "kitty": "  Terminal",
 
+      "tmux(.*)": 
+        "<span foreground='#a6e3a1'> </span> Tmux",
+
       // Browser
 
       "(.*)Mozilla Firefox": 
@@ -223,8 +226,8 @@
     "format": "{icon}",
 
     "format-icons": {
-      "activated": "󱑎 ",
-      "deactivated": "󱑂 "
+      "activated": "󰈈 ",
+      "deactivated": "󰈉 "
     },
 
     "tooltip-format-activated": "Presentation Mode",
