@@ -11,11 +11,11 @@
     "custom/ws",            // window icon
     "custom/left1",
 
-    "hyprland/workspaces",  // workspaces
+    "sway/workspaces",      // workspaces
     "custom/right1",
 
     "custom/paddw",
-    "hyprland/window"       // window title
+    "sway/window"           // window title
   ],
 
   "modules-center": [
@@ -75,9 +75,8 @@
     "max-length": 3
   },
 
-  "hyprland/workspaces": {
-    "on-scroll-up": "hyprctl dispatch workspace -1",
-    "on-scroll-down": "hyprctl dispatch workspace +1",
+  "sway/workspaces": {
+    "enable-bar-scroll": true,
     "persistent-workspaces": {
       "1": [],
       "2": [],
@@ -87,14 +86,14 @@
     }
   },
 
-  "hyprland/window": {
+  "sway/window": {
     "format": "{}",
     "min-length": 5,
 
     "rewrite": {
       // Desktop
       "": 
-        "<span foreground='#8caaee'> </span> Hyprland",
+        "<span foreground='#a6d189'> </span> Sway",
 
       // Terminal
       "~": "  Terminal",
@@ -102,7 +101,7 @@
       "kitty": "  Terminal",
 
       "tmux(.*)": 
-        "<span foreground='#a6e3a1'> </span> Tmux",
+        "<span foreground='#a6d189'> </span> Tmux",
 
       // Browser
 
@@ -310,7 +309,7 @@
     "exec": "~/.config/waybar/scripts/system-update.sh",
     "return-type": "json",
     "format": "{}",
-    "on-click": "hyprctl dispatch exec '~/.config/waybar/scripts/system-update.sh up'",
+    "on-click": "~/.config/waybar/scripts/system-update.sh up",
     "interval": 30,
     "min-length": 1,
     "max-length": 1
