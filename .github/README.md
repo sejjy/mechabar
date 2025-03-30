@@ -127,7 +127,7 @@ yay -S bluetui rofi-lbonn-wayland-git
 
    ```bash
    mkdir -p ~/.config/waybar
-   cp config.jsonc style.css theme.css ~/.config/waybar
+   cp config.jsonc style.css theme.css animation.css ~/.config/waybar
    ```
 
    ```bash
