@@ -51,6 +51,8 @@
 
 A mecha-themed [Waybar](https://github.com/Alexays/Waybar) configuration initially designed for [Hyprland](https://github.com/hyprwm/Hyprland), but also compatible with [Sway](https://github.com/swaywm/sway)[^1] and other [wlroots-based compositors](https://github.com/solarkraft/awesome-wlroots#compositors) with minimal adjustments.
 
+> _You are currently on the **sway** branch._
+
 [^1]:
     Waybar configuration guide for Sway:  
     https://github.com/Alexays/Waybar/wiki/Module:-Sway
@@ -61,19 +63,19 @@ You can choose between two (2) styles:
 
 - **Classic:**
 
-  Clone the **main** branch for the classic, non-animated bar.
+  Clone the **sway** branch for the classic, non-animated bar.
 
   ```bash
-    git clone https://github.com/sejjy/mechabar.git
+    git clone -b sway https://github.com/sejjy/mechabar.git
     cd mechabar
   ```
 
 - **Animated:**
 
-  Clone the **[animated](https://github.com/sejjy/mechabar/tree/animated)** branch to try the new launch animations.
+  Clone the **[sway_animated](https://github.com/sejjy/mechabar/tree/sway_animated)** branch to try the new launch animations.
 
   ```bash
-    git clone -b animated https://github.com/sejjy/mechabar.git
+    git clone -b sway_animated https://github.com/sejjy/mechabar.git
     cd mechabar
   ```
 
@@ -177,6 +179,7 @@ yay -S bluetui rofi-lbonn-wayland-git
 
 Here are some features and improvements planned for future versions:
 
+- [x] Add Sway support
 - [x] Theme switcher
 - [ ] Style switcher
 - [ ] Add more themes
