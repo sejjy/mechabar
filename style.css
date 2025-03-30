@@ -52,7 +52,7 @@ tooltip label {
   background: @hover-bg;
   text-shadow: none;
 }
-#workspaces button.active {
+#workspaces button.focused {
   color: @active-fg;
   background: @active-bg;
   text-shadow: 0 0 2px rgba(0, 0, 0, 0.6);
@@ -419,7 +419,7 @@ tooltip label {
   border-radius: 8px;
   padding: 0 2px;
 }
-#workspaces button.active {
+#workspaces button.focused {
   padding: 0 6px;
 }
 
