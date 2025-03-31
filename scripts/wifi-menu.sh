@@ -13,9 +13,9 @@ options=$(
 option_disabled="Enable Wi-Fi"
 
 # Rofi window override
-override_ssid="entry { placeholder: \"Enter SSID\"; } listview { enabled: false; }"
-override_password="entry { placeholder: \"Enter password\"; } listview { enabled: false; }"
-override_disabled="mainbox { children: [ listview ]; } listview { lines: 1; padding: 6px; }"
+override_ssid="entry { placeholder: \"Enter SSID\"; } listview { lines: 0; padding: 20px 6px; }"
+override_password="entry { placeholder: \"Enter password\"; } listview { lines: 0; padding: 20px 6px; }"
+override_disabled="mainbox { children: [ textbox-custom, listview ]; } listview { lines: 1; padding: 6px 6px 8px; }"
 
 # Prompt for password
 get_password() {
@@ -40,7 +40,7 @@ while true; do
   case "$wifi_status" in
   *"enabled"*)
     selected_option=$(echo "$options"$'\n'"$(wifi_list)" |
-      rofi -dmenu -i -selected-row 1 -config "${config}" -p " " || pkill -x rofi)
+      rofi -dmenu -i -selected-row 1 -config "${config}" -p " " || pkill -x rofi)
     ;;
   *"disabled"*)
     selected_option=$(echo "$option_disabled" |
