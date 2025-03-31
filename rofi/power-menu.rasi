@@ -1,10 +1,10 @@
 /* Power menu */
 
+@theme "~/.config/rofi/theme.rasi"
+
 configuration {
   font:                     "JetBrainsMono Nerd Font 8";
 }
-
-@theme "~/.config/rofi/theme.rasi"
 
 /* Window */
 
@@ -14,7 +14,7 @@ window {
   x-offset:                 -3px;
   y-offset:                 3px;
   width:                    150px;
-  border:                   2px;
+  border:                   3px;
   border-radius:            10px;
   border-color:             @main-br;
   background-color:         @main-bg;
@@ -22,17 +22,32 @@ window {
 }
 
 mainbox {
-  background-color:         inherit;
+  spacing:                  0;
+  background-color:         @main-br;
   text-color:               @main-fg;
-  children:                 [ listview ];
+  children:                 [ textbox-custom, listview ];
+}
+
+textbox-custom {
+  font:                     "JetBrainsMono Nerd Font Bold 8";
+  horizontal-align:         0.5;
+  padding:                  1px 0;
+  expand:                   false;
+  background-color:         @select-bg;
+  text-color:               @select-fg;
+  expand:                   false;
+  content:                  "  Power";
 }
 
 /* List */
 
 listview {
+  border:                   2px 0 0 0;
+  border-radius:            8px;
+  border-color:             @main-br;
   lines:                    6;
   padding:                  6px;
-  background-color:         inherit;
+  background-color:         @main-bg;
 }
 
 element {

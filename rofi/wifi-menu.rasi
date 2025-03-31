@@ -1,10 +1,10 @@
 /* WiFi menu */
 
+@theme "~/.config/rofi/theme.rasi"
+
 configuration {
   font:                     "JetBrainsMono Nerd Font 8";
 }
-
-@theme "~/.config/rofi/theme.rasi"
 
 /* Window */
 
@@ -13,7 +13,7 @@ window {
   anchor:                   south;
   y-offset:                 3px;
   width:                    240px;
-  border:                   2px;
+  border:                   3px;
   border-radius:            10px;
   border-color:             @main-br;
   background-color:         @main-bg;
@@ -22,15 +22,26 @@ window {
 
 mainbox {
   spacing:                  0;
-  background-color:         inherit;
+  background-color:         @main-br;
   text-color:               @main-fg;
-  children:                 [ inputbar, listview ];
+  children:                 [ textbox-custom, listview, inputbar ];
+}
+
+textbox-custom {
+  font:                     "JetBrainsMono Nerd Font Bold 8";
+  horizontal-align:         0.5;
+  padding:                  1px 0;
+  expand:                   false;
+  background-color:         @select-bg;
+  text-color:               @select-fg;
+  expand:                   false;
+  content:                  "󰖩  Wi-Fi";
 }
 
 /* Input */
 
 inputbar {
-  margin:                   6px;
+  margin:                   -32px 6px 6px;
   border-radius:            6px;
   spacing:                  inherit;
   background-color:         @input-bg;
@@ -53,10 +64,16 @@ entry {
 /* List */
 
 listview {
+  border:                   2px 0 0 0;
+  border-radius:            8px;
+  border-color:             @main-br;
   lines:                    6;
+  fixed-height:             false;
+  dynamic:                  false;
   cycle:                    false;
-  padding:                  0 6px 6px 6px;
-  background-color:         inherit;
+  margin:                   0 0 -2px;
+  padding:                  6px 6px 40px;
+  background-color:         @main-bg;
 }
 
 element {
