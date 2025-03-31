@@ -7,7 +7,7 @@
 config="$HOME/.config/rofi/bluetooth-menu.rasi"
 
 # Rofi window override
-override_disabled="mainbox { children: [ listview ]; } listview { lines: 1; padding: 6px; }"
+override_disabled="mainbox { children: [ textbox-custom, listview ]; } listview { lines: 1; padding: 6px 6px 8px; }"
 
 get_device_icon() {
   local device_mac=$1
@@ -38,7 +38,7 @@ while true; do
   done)
 
   options=$(
-    echo "Scan for devices  "
+    echo "Scan for devices 󰏌"
     echo "Disable Bluetooth"
     echo "$bluetooth_devices"
   )
@@ -48,9 +48,9 @@ while true; do
   bluetooth_status=$(bluetoothctl show | grep "Powered:" | awk '{print $2}')
 
   if [[ "$bluetooth_status" == "yes" ]]; then
-    selected_option=$(echo -e "$options" | rofi -dmenu -i -selected-row 1 -config "${config}" -p " " || pkill -x rofi)
+    selected_option=$(echo -e "$options" | rofi -dmenu -i -selected-row 1 -config "${config}" -p " " || pkill -x rofi)
   else
-    selected_option=$(echo -e "$option" | rofi -dmenu -i -selected-row 1 -config "${config}" -theme-str "${override_disabled}" -p " " || pkill -x rofi)
+    selected_option=$(echo -e "$option" | rofi -dmenu -i -selected-row 1 -config "${config}" -theme-str "${override_disabled}" -p " " || pkill -x rofi)
   fi
 
   # Exit if no option is selected

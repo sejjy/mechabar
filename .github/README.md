@@ -51,7 +51,7 @@
 
 A mecha-themed [Waybar](https://github.com/Alexays/Waybar) configuration initially designed for [Hyprland](https://github.com/hyprwm/Hyprland), but also compatible with [Sway](https://github.com/swaywm/sway)[^1] and other [wlroots-based compositors](https://github.com/solarkraft/awesome-wlroots#compositors) with minimal adjustments.
 
-> _You are currently on the **sway** branch._
+> _You are currently on the **sway-classic** branch._
 
 [^1]:
     Waybar configuration guide for Sway:  
@@ -59,23 +59,23 @@ A mecha-themed [Waybar](https://github.com/Alexays/Waybar) configuration initial
 
 ## Classic vs Animated
 
-You can choose between two (2) styles:
+You can choose between two styles:
 
 - **Classic:**
 
-  Clone the **sway** branch for the classic, non-animated bar.
+  Clone the **sway-classic** branch for the classic, non-animated bar.
 
   ```bash
-    git clone -b sway https://github.com/sejjy/mechabar.git
+    git clone -b sway-classic https://github.com/sejjy/mechabar.git
     cd mechabar
   ```
 
 - **Animated:**
 
-  Clone the **[sway_animated](https://github.com/sejjy/mechabar/tree/sway_animated)** branch to try the new launch animations.
+  Clone the **[sway-animated](https://github.com/sejjy/mechabar/tree/sway-animated)** branch, which includes launch animations.
 
   ```bash
-    git clone -b sway_animated https://github.com/sejjy/mechabar.git
+    git clone -b sway-animated https://github.com/sejjy/mechabar.git
     cd mechabar
   ```
 
