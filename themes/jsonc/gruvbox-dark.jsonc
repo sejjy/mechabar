@@ -88,6 +88,7 @@
 
   "sway/window": {
     "format": "{}",
+    "tooltip": false,
     "min-length": 5,
 
     "rewrite": {
