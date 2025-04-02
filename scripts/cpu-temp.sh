@@ -7,7 +7,7 @@ get_cpu_frequency() {
   freqlist=$(awk '/cpu MHz/ {print $4}' /proc/cpuinfo)
   maxfreq=$(sed 's/...$//' /sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_max_freq)
   if [ -z "$freqlist" ] || [ -z "$maxfreq" ]; then
-    echo "N/A"
+    echo "--"
     return
   fi
   average_freq=$(echo "$freqlist" | tr ' ' '\n' | awk "{sum+=\$1} END {printf \"%.0f/%s MHz\", sum/NR, $maxfreq}")
@@ -21,19 +21,19 @@ get_cpu_temperature() {
     temp=$(sensors | awk '/Tctl/ {print $2}' | tr -d '+°C')
   fi
   if [[ -z "$temp" ]]; then
-    temp="N/A"
-    temp_f="N/A"
+    temp="--"
+    temp_f="--"
   else
     temp=${temp%.*}
     temp_f=$(awk "BEGIN {printf \"%.1f\", ($temp * 9 / 5) + 32}")
   fi
   # Celsius and Fahrenheit
-  echo "${temp:-N/A} ${temp_f:-N/A}"
+  echo "${temp:---} ${temp_f:---}"
 }
 
 get_temperature_icon() {
   temp_value=$1
-  if [ "$temp_value" = "N/A" ]; then
+  if [ "$temp_value" = "--" ]; then
     icon="󱔱" # none
   elif [ "$temp_value" -ge 80 ]; then
     icon="󰸁" # high
@@ -54,7 +54,7 @@ temp_f=$(echo "$temp_info" | awk '{print $2}')
 thermo_icon=$(get_temperature_icon "$temp")
 
 # high temp warning
-if [ "$temp" != "N/A" ] && [ "$temp" -ge 80 ]; then
+if [ "$temp" == "--" ] || [ "$temp" -ge 80 ]; then
   text_output="<span color='#f38ba8'>${thermo_icon} ${temp}°C</span>"
 else
   text_output="${thermo_icon} ${temp}°C"
