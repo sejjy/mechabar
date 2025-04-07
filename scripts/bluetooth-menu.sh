@@ -38,11 +38,11 @@ while true; do
   done)
 
   options=$(
-    echo "Scan for devices 󰏌"
-    echo "Disable Bluetooth"
+    echo "󰏌  Scan for devices"
+    echo "󰂲  Disable Bluetooth"
     echo "$bluetooth_devices"
   )
-  option="Enable Bluetooth"
+  option="󰂯  Enable Bluetooth"
 
   # Get Bluetooth status
   bluetooth_status=$(bluetoothctl show | grep "Powered:" | awk '{print $2}')
@@ -60,19 +60,19 @@ while true; do
 
   # Actions based on selected option
   case "$selected_option" in
-  "Enable Bluetooth")
+  *"Enable Bluetooth")
     notify-send "Bluetooth Enabled" -i "package-installed-outdated"
     rfkill unblock bluetooth
     bluetoothctl power on
     sleep 1
     ;;
-  "Disable Bluetooth")
+  *"Disable Bluetooth")
     notify-send "Bluetooth Disabled" -i "package-broken"
     rfkill block bluetooth
     bluetoothctl power off
     exit
     ;;
-  "Scan for devices"*)
+  *"Scan for devices")
     notify-send "Press '?' to show help." -i "package-installed-outdated"
     kitty --title '󰂱  Bluetooth TUI' bash -c "bluetui" # Launch bluetui
     ;;
