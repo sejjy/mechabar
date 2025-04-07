@@ -95,7 +95,7 @@ else
 
   active_device=$(nmcli -t -f DEVICE,STATE device status |
     grep -w "connected" |
-    grep -v -E "^(dummy|lo:)" |
+    grep -v -E "^(dummy|lo:|virbr0)" |
     awk -F: '{print $1}')
 
   if [ -n "$active_device" ]; then
