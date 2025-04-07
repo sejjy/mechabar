@@ -53,12 +53,15 @@ tooltip label {
   text-shadow: none;
 }
 #workspaces button.active {
-  color: @active-fg;
-  background: @active-bg;
+  color: @hover-fg;
+  background: @hover-bg;
   text-shadow: 0 0 2px rgba(0, 0, 0, 0.6);
   box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.4);
   margin: 2px;
   padding: 0 6px;
+}
+#workspaces button.current_output.focused {
+  background: @hover-bg;
 }
 
 /* <<--< General >-->> */
@@ -78,6 +81,7 @@ tooltip label {
 #pulseaudio,
 #backlight,
 #battery,
+#custom-keyboard,
 #custom-power {
   opacity: 1;
   color: @module-fg;
@@ -91,7 +95,8 @@ tooltip label {
 #custom-left5,
 #custom-left6,
 #custom-left7,
-#custom-left8 {
+#custom-left8,
+#custom-left9 {
   margin-bottom: 0;
   text-shadow: -2px 0 2px rgba(0, 0, 0, 0.5);
 }
@@ -216,6 +221,7 @@ tooltip label {
 }
 #idle_inhibitor {
   background: @time;
+  margin-right: -2px;
   padding: 0 0 0 7px;
 }
 #idle_inhibitor:hover {
@@ -223,7 +229,6 @@ tooltip label {
 }
 #clock.time {
   background: @time;
-  margin-left: -2px;
   padding: 0 3px 0 0;
 }
 #custom-right3 {
@@ -319,6 +324,7 @@ tooltip label {
   background: @backlight;
   padding-left: 2px;
 }
+
 #battery {
   color: @module-fg;
   background: @battery;
@@ -333,10 +339,20 @@ tooltip label {
   color: @charging;
 }
 
+/* Keyboard Layout */
+#custom-left9 {
+  color: @keyboard;
+  background: @battery;
+  padding-left: 1px;
+}
+#custom-keyboard {
+  color: @module-fg;
+  background: @keyboard;
+}
 /* Power Button */
 
 #custom-leftin2 {
-  color: @battery;
+  color: @keyboard;
   background: @main-bg;
   margin-bottom: -1px;
 }
@@ -370,9 +386,9 @@ tooltip label {
   the layout consistent.
 */
 
-/* modules */
+/* workspace icon and buttons, window and media title */
 * {
-  font-size: 10px;
+  font-size: 15px;
 }
 
 /* left and right arrows */
@@ -384,30 +400,31 @@ tooltip label {
 #custom-left6,
 #custom-left7,
 #custom-left8,
+#custom-left9,
 #custom-right1,
 #custom-right2,
 #custom-right3,
 #custom-right4,
 #custom-right5 {
-  font-size: 14.68px;
+  font-size: 19.68px;
 }
 
 /* left and right inverse */
 #custom-leftin1,
 #custom-leftin2,
 #custom-rightin1 {
-  font-size: 15.5px;
+  font-size: 19.5px;
 }
 
 /* distro icon */
 #custom-distro {
-  font-size: 14.6px;
+  font-size: 19.6px;
 }
 
 /* distro arrows override */
 #custom-left5,
 #custom-right2 {
-  font-size: 15.68px;
+  font-size: 19.68px;
 }
 
 /*
@@ -427,3 +444,21 @@ tooltip label {
   border-radius: 10px;
   padding: 0 6px 0 9px;
 }
+
+/*
+  NOTE: If your changes don’t take effect, they might
+  be overridden by `animation.css`.
+
+  To fix this, copy your updated font sizes from this
+  file and paste them into the corresponding `*_expand`
+  keyframes.
+
+  For example, if you change the font size of the
+  distro icon, update it in `distro_expand`.
+
+  - distro icon → `distro_expand` (line 143)
+  - power button → `power_expand` (line 158)
+  - all other modules → `module_expand` (line 172)
+*/
+
+@import "animation.css";

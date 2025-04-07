@@ -1,0 +1,8 @@
+{
+    "custom/keyboard": {
+        "exec": "~/.config/waybar/scripts/keyboard-layout.sh",
+        "return-type": "string",
+        "format": "{}",
+        "interval": 1
+    }
+}
