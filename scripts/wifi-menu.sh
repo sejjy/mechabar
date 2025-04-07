@@ -7,10 +7,10 @@
 config="$HOME/.config/rofi/wifi-menu.rasi"
 
 options=$(
-  echo "Manual Entry"
-  echo "Disable Wi-Fi"
+  echo "  Manual Entry"
+  echo "󰤮  Disable Wi-Fi"
 )
-option_disabled="Enable Wi-Fi"
+option_disabled="󰤥  Enable Wi-Fi"
 
 # Rofi window override
 override_ssid="entry { placeholder: \"Enter SSID\"; } listview { lines: 0; padding: 20px 6px; }"
@@ -56,18 +56,18 @@ while true; do
   "")
     exit
     ;;
-  "Enable Wi-Fi")
+  *"Enable Wi-Fi")
     notify-send "Scanning for networks..." -i "package-installed-outdated"
     nmcli radio wifi on
     nmcli device wifi rescan
     sleep 3
     ;;
-  "Disable Wi-Fi")
+  *"Disable Wi-Fi")
     notify-send "Wi-Fi Disabled" -i "package-broken"
     nmcli radio wifi off
     exit
     ;;
-  "Manual Entry")
+  *"Manual Entry")
     # Prompt for SSID
     manual_ssid=$(rofi -dmenu -config "${config}" -theme-str "${override_ssid}" -p " " || pkill -x rofi)
 
