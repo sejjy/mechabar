@@ -1,43 +1,39 @@
 @import "theme.css";
 
 * {
-  font-family: "JetBrainsMono Nerd Font";
-  font-weight: bold;
   min-height: 0;
-  padding: 0;
   border: none;
   margin: 0;
+  padding: 0;
 }
 
-/* <<--< Main Background >-->> */
+/* ----------------------------------------------------- MAIN BACKGROUND --- */
 
-window#waybar > box {
-  background-color: @main-bg;
+window#waybar>box {
+  background: @main-bg;
   margin: 2px;
 }
 
-/* <<--< Drop Shadow >-->> */
+/* --------------------------------------------------------- DROP SHADOW --- */
 
 window#waybar {
   background: @shadow;
 }
 
-/* <<--< Tooltip >-->> */
+/* ------------------------------------------------------------ TOOLTIPS --- */
 
 tooltip {
   background: @main-bg;
-  border: solid;
-  border-width: 1.5px;
+  border: 1.5px solid @main-br;
   border-radius: 8px;
-  border-color: @main-br;
 }
+
 tooltip label {
   color: @main-fg;
-  font-weight: normal;
   margin: -1.5px 3px;
 }
 
-/* <<--< Workspace Buttons >-->> */
+/* ---------------------------------------- WORKSPACE BUTTONS and LABELS --- */
 
 #workspaces button {
   color: @module-fg;
@@ -47,11 +43,13 @@ tooltip label {
   padding: 0 2px;
   transition: none;
 }
+
 #workspaces button:hover {
   color: @hover-fg;
   background: @hover-bg;
   text-shadow: none;
 }
+
 #workspaces button.active {
   color: @active-fg;
   background: @active-bg;
@@ -61,7 +59,7 @@ tooltip label {
   padding: 0 6px;
 }
 
-/* <<--< General >-->> */
+/* ------------------------------------------------------------- GENERAL --- */
 
 #custom-ws,
 #workspaces,
@@ -106,18 +104,19 @@ tooltip label {
   text-shadow: 2px 0 2px rgba(0, 0, 0, 0.5);
 }
 
-/* <<--< Modules >-->> */
+/* ------------------------------------------------------------- MODULES --- */
 
-/* Window Icon */
+/* --------------------------------------------------------- window icon --- */
 
 #custom-ws {
   background: @main-bg;
 }
+
 #custom-ws:hover {
   color: @hover-fg;
 }
 
-/* Workspaces */
+/* ---------------------------------------------------------- workspaces --- */
 
 #custom-left1 {
   color: @workspaces;
@@ -125,9 +124,11 @@ tooltip label {
   margin-bottom: 0;
   padding-left: 2px;
 }
+
 #workspaces {
   background: @workspaces;
 }
+
 #custom-right1 {
   color: @workspaces;
   background: @main-bg;
@@ -135,57 +136,62 @@ tooltip label {
   margin-bottom: 0;
 }
 
-/* Temperature */
+/* --------------------------------------------------------- temperature --- */
 
 #custom-paddc {
   padding-right: 22px;
 }
+
 #custom-left2 {
   color: @cpuinfo;
   background: @main-bg;
   padding-left: 3px;
 }
+
 #custom-cpuinfo {
   background: @cpuinfo;
-  padding-left: 1px;
-  padding-right: 0;
+  padding: 0 0 0 1px;
 }
 
-/* Memory */
+/* -------------------------------------------------------------- memory --- */
 
 #custom-left3 {
   color: @memory;
   background: @cpuinfo;
   padding-left: 3px;
 }
+
 #memory {
   background: @memory;
-  padding-left: 1px;
-  padding-right: 0;
+  padding: 0 0 0 1px;
 }
+
 #memory.warning {
   color: @warning;
 }
+
 #memory.critical {
   color: @critical;
 }
 
-/* CPU */
+/* ----------------------------------------------------------------- cpu --- */
 
 #custom-left4 {
   color: @cpu;
   background: @memory;
   padding-left: 3px;
 }
+
 #cpu {
   background: @cpu;
 }
+
 #custom-leftin1 {
   color: @cpu;
   margin-bottom: -1px;
 }
 
-/* Distro Icon */
+/* --------------------------------------------------------- distro icon --- */
 
 #custom-left5 {
   color: @distro-bg;
@@ -194,6 +200,7 @@ tooltip label {
   margin-bottom: -2px;
   padding-left: 3px;
 }
+
 #custom-distro {
   color: @distro-fg;
   background: @distro-bg;
@@ -201,6 +208,7 @@ tooltip label {
   padding: 0 0 0 3px;
   text-shadow: 0 0 1.5px rgba(0, 0, 0, 1);
 }
+
 #custom-right2 {
   color: @distro-bg;
   background: @main-bg;
@@ -208,57 +216,64 @@ tooltip label {
   margin-bottom: -2px;
 }
 
-/* Time */
+/* ---------------------------------------------------------------- time --- */
 
 #custom-rightin1 {
   color: @time;
   margin-bottom: -1px;
 }
+
 #idle_inhibitor {
   background: @time;
   padding: 0 0 0 7px;
 }
+
 #idle_inhibitor:hover {
   color: @hover-fg;
 }
+
 #clock.time {
   background: @time;
   margin-left: -2px;
   padding: 0 3px 0 0;
 }
+
 #custom-right3 {
   color: @time;
   background: @date;
 }
 
-/* Date */
+/* ---------------------------------------------------------------- date --- */
 
 #clock.date {
   background: @date;
 }
+
 #clock.date:hover {
   color: @hover-fg;
 }
+
 #custom-right4 {
   color: @date;
   background: @tray;
 }
 
-/* Tray */
+/* ---------------------------------------------------------------- tray --- */
 
 #custom-wifi {
-  padding-left: 5px;
-  padding-right: 8px;
   background: @tray;
+  padding: 0 8px 0 5px;
 }
+
 #custom-wifi:hover {
   color: @hover-fg;
 }
 
 #bluetooth {
-  padding-right: 5px;
   background: @tray;
+  padding-right: 5px;
 }
+
 #bluetooth:hover {
   color: @hover-fg;
 }
@@ -267,79 +282,90 @@ tooltip label {
   padding-right: 8px;
   background: @tray;
 }
+
 #custom-update:hover {
   color: @hover-fg;
 }
+
 #custom-right5 {
   color: @tray;
   background: @main-bg;
 }
 
-/* Media Info */
+/* ---------------------------------------------------------- media info --- */
 
 #mpris {
-  font-weight: normal;
-  background-color: @main-bg;
-  padding-right: 8px;
-  padding-left: 8px;
+  background: @main-bg;
+  padding: 0 8px 0;
 }
+
 #mpris:hover {
   color: @hover-fg;
 }
 
-/* Output Device */
+/*
+    output device
+*/
 
 #custom-left6 {
   color: @pulseaudio;
   background: @main-bg;
   padding-left: 3px;
 }
+
 #pulseaudio {
   background: @pulseaudio;
 }
+
 #pulseaudio:hover {
   color: @hover-fg;
 }
 
-/* Brightness */
+/* ---------------------------------------------------------- brightness --- */
 
 #custom-left7 {
   color: @backlight;
   background: @pulseaudio;
   padding-left: 2px;
 }
+
 #backlight {
   background: @backlight;
 }
 
-/* Battery */
+/* ------------------------------------------------------------- battery --- */
 
 #custom-left8 {
   color: @battery;
   background: @backlight;
   padding-left: 2px;
 }
+
 #battery {
   color: @module-fg;
   background: @battery;
 }
+
 #battery.warning {
   color: @warning;
 }
+
 #battery.critical {
   color: @critical;
 }
+
 #battery.charging {
   color: @charging;
 }
 
-/* Power Button */
+/* -------------------------------------------------------- power button --- */
 
 #custom-leftin2 {
   color: @battery;
   background: @main-bg;
   margin-bottom: -1px;
 }
+
 #custom-power {
   color: @main-bg;
   background: @power;
@@ -349,6 +375,7 @@ tooltip label {
   margin: 2px 4px 2px 0;
   padding: 0 6px 0 9px;
 }
+
 #custom-power:hover {
   color: @hover-fg;
   background: @hover-bg;
@@ -356,26 +383,34 @@ tooltip label {
   box-shadow: none;
 }
 
-/* <<--< FONT SIZES >-->> */
+/* ---------------------------------------------------------- FONT SIZES --- */
 
 /*
-  NOTE: Be careful when changing font sizes, as they
-  can affect alignment.
+    NOTE: Be careful when changing font sizes, as they
+    can affect alignment.
 
-  Try adjusting whole numbers first, then refine with
-  decimals.
+    Try adjusting whole numbers first, then refine with
+    decimals.
 
-  If you increase or decrease a value, make the same
-  change to all properties in this section to keep
-  the layout consistent.
+    If you increase or decrease a value, make the same
+    change to all properties in this section to keep
+    the layout consistent.
 */
 
-/* workspace icon and buttons, window and media title */
 * {
+  font-family: "JetBrainsMono Nerd Font";
   font-size: 10px;
+  font-weight: bold;
 }
 
-/* left and right arrows */
+tooltip label,
+#window label,
+#mpris {
+  font-weight: normal;
+}
+
+/* ----------------------------------------------- left and right arrows --- */
+
 #custom-left1,
 #custom-left2,
 #custom-left3,
@@ -392,33 +427,35 @@ tooltip label {
   font-size: 14.68px;
 }
 
-/* left and right inverse */
+/* ---------------------------------------------- left and right inverse --- */
+
 #custom-leftin1,
 #custom-leftin2,
 #custom-rightin1 {
   font-size: 15.5px;
 }
 
-/* distro icon */
+/* -------------------------------------------------------------- distro --- */
+
 #custom-distro {
   font-size: 14.6px;
 }
 
-/* distro arrows override */
 #custom-left5,
 #custom-right2 {
   font-size: 15.68px;
 }
 
 /*
-  Adjust these properties as well to keep the design
-  consistent.
+    Adjust these properties as well to keep the design
+    consistent.
 */
 
 #workspaces button {
   border-radius: 8px;
   padding: 0 2px;
 }
+
 #workspaces button.active {
   padding: 0 6px;
 }
@@ -429,19 +466,19 @@ tooltip label {
 }
 
 /*
-  NOTE: If your changes don’t take effect, they might
-  be overridden by `animation.css`.
+    NOTE: If your changes don’t take effect, they might
+    be overridden by `animation.css`.
 
-  To fix this, copy your updated font sizes from this
-  file and paste them into the corresponding `*_expand`
-  keyframes.
+    To fix this, copy your updated font sizes from this
+    file and paste them into the corresponding `*_expand`
+    keyframes.
 
-  For example, if you change the font size of the
-  distro icon, update it in `distro_expand`.
+    For example, if you change the font size of the
+    distro icon, update it in `distro_expand`.
 
-  - distro icon → `distro_expand` (line 143)
-  - power button → `power_expand` (line 158)
-  - all other modules → `module_expand` (line 172)
+    - distro icon → `distro_expand` (line 143)
+    - power button → `power_expand` (line 158)
+    - all other modules → `module_expand` (line 172)
 */
 
 @import "animation.css";
