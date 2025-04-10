@@ -85,7 +85,7 @@ You can choose between two styles:
    ./install.sh
    ```
 
-   This backs up existing directories and installs all [dependencies](#dependencies), config files, and scripts.
+   This backs up existing directories and installs all [dependencies](#dependencies), configs, and scripts.
 
 #
 
@@ -113,7 +113,7 @@ yay -S bluetui rofi-lbonn-wayland-git
 | `wireplumber`               | Session/policy manager implementation for PipeWire                                                  |
 
 > [!IMPORTANT]
-> If you use other packages, you may need to modify the scripts and config files to match your setup.
+> If you use other packages, you may need to modify the scripts and configs to match your setup.
 
 #
 
@@ -165,9 +165,9 @@ yay -S bluetui rofi-lbonn-wayland-git
 
 - You can switch between predefined [css](/themes/css/), [jsonc](/themes/jsonc/), and [rasi](/rofi/themes/) themes by clicking the leftmost module. To use your own theme, add a file in each directory following its format.
 
-- You can replace modules with ones from the [modules](/modules/) folder. For a complete list of available modules, see the [Waybar Wiki](https://github.com/Alexays/Waybar/wiki).
+- You can replace modules with ones from the [modules](/modules/) folder. For a complete list of available modules, see the [Waybar wiki](https://github.com/Alexays/Waybar/wiki).
 
-- To change the bar height manually, see the notes in [style.css](/style.css#L386-L466)
+- To change the bar height manually, see the notes in [style.css](/style.css#L386-L466).
 
 - To set up battery notifications, follow the instructions in [battery-level.sh](/scripts/battery-level.sh#L56-L80) and [battery-state.sh](/scripts/battery-state.sh#L38-L50).
 
