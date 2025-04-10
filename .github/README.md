@@ -49,13 +49,9 @@
   </details>
 </div>
 
-A mecha-themed [Waybar](https://github.com/Alexays/Waybar) configuration initially designed for [Hyprland](https://github.com/hyprwm/Hyprland), but also compatible with [Sway](https://github.com/swaywm/sway)[^1] and other [wlroots-based compositors](https://github.com/solarkraft/awesome-wlroots#compositors) with minimal adjustments.
+A mecha-themed [Waybar](https://github.com/Alexays/Waybar) configuration originally designed for [Hyprland](https://github.com/Alexays/Waybar/wiki/Module:-Hyprland), but also compatible with wlroots-based compositors like [DWL](https://github.com/Alexays/Waybar/wiki/Module:-Dwl), [Niri](https://github.com/Alexays/Waybar/wiki/Module:-Niri), [River](https://github.com/Alexays/Waybar/wiki/Module:-River), and [Sway](https://github.com/Alexays/Waybar/wiki/Module:-Sway), with minimal adjustments.
 
 > _See the **[sway-animated](https://github.com/sejjy/mechabar/tree/sway-animated)** branch for Sway support._
-
-[^1]:
-    Waybar configuration guide for Sway:  
-    https://github.com/Alexays/Waybar/wiki/Module:-Sway
 
 ## Classic vs Animated
 
@@ -105,19 +101,19 @@ sudo pacman -S bluez-utils brightnessctl pipewire pipewire-pulse ttf-jetbrains-m
 yay -S bluetui rofi-lbonn-wayland-git
 ```
 
-| Package                   | Description                                                                                         |
-| ------------------------- | --------------------------------------------------------------------------------------------------- |
-| `bluetui`                 | TUI for managing bluetooth devices <tr></tr>                                                        |
-| `bluez-utils`             | Development and debugging utilities for the bluetooth protocol stack <tr></tr>                      |
-| `brightnessctl`           | Lightweight brightness control tool <tr></tr>                                                       |
-| `pipewire`                | Low-latency audio/video router and processor <tr></tr>                                              |
-| `pipewire-pulse`          | Low-latency audio/video router and processor - PulseAudio replacement <tr></tr>                     |
-| `rofi-lbonn-wayland-git`  | A window switcher, application launcher and dmenu replacement (fork with Wayland support) <tr></tr> |
-| `ttf-jetbrains-mono-nerd` | Patched font JetBrains Mono from the nerd fonts library <tr></tr>                                   |
-| `wireplumber`             | Session/policy manager implementation for PipeWire                                                  |
+| Package                     | Description                                                                                         |
+| --------------------------- | --------------------------------------------------------------------------------------------------- |
+| `bluetui`ᴬᵁᴿ                | TUI for managing bluetooth devices <tr></tr>                                                        |
+| `bluez-utils`               | Development and debugging utilities for the bluetooth protocol stack <tr></tr>                      |
+| `brightnessctl`             | Lightweight brightness control tool <tr></tr>                                                       |
+| `pipewire`                  | Low-latency audio/video router and processor <tr></tr>                                              |
+| `pipewire-pulse`            | Low-latency audio/video router and processor - PulseAudio replacement <tr></tr>                     |
+| `rofi-lbonn-wayland-git`ᴬᵁᴿ | A window switcher, application launcher and dmenu replacement (fork with Wayland support) <tr></tr> |
+| `ttf-jetbrains-mono-nerd`   | Patched font JetBrains Mono from the nerd fonts library <tr></tr>                                   |
+| `wireplumber`               | Session/policy manager implementation for PipeWire                                                  |
 
 > [!IMPORTANT]
-> If you use other packages, you may need to modify the [scripts](/scripts/) and config files to match your setup.
+> If you use other packages, you may need to modify the scripts and config files to match your setup.
 
 #
 
@@ -181,8 +177,8 @@ Here are some features and improvements planned for future versions:
 
 - [x] Add Sway support
 - [x] Theme switcher
-- [ ] Style switcher
 - [ ] Add more themes
+- [ ] Rewrite scripts
 
 ## Credits
 
