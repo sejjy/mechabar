@@ -169,7 +169,7 @@ yay -S bluetui rofi-lbonn-wayland-git
 
 - To change the bar height manually, see the notes in [style.css](/style.css#L386-L466)
 
-- To set up battery notifications, follow the instructions in [battery-level.sh](/scripts/battery-level.sh#L56-L83) and [battery-state.sh](/scripts/battery-state.sh#L38-L50).
+- To set up battery notifications, follow the instructions in [battery-level.sh](/scripts/battery-level.sh#L56-L80) and [battery-state.sh](/scripts/battery-state.sh#L38-L50).
 
 ## Roadmap
 
