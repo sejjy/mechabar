@@ -69,7 +69,7 @@
   "custom/ws": {
     "exec": "~/.config/waybar/scripts/current-theme.sh",
     "return-type": "json",
-    "format": " 󰍜 ",
+    "format": " 󰤕 ",
     "on-click": "~/.config/waybar/scripts/theme-switcher.sh",
     "min-length": 3,
     "max-length": 3
@@ -372,7 +372,7 @@
 
     "format": "{icon} {capacity}%",
     "format-icons": ["󰂎", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
-    "format-charging": " {capacity}%",
+    "format-charging": " {capacity}%",
 
     "tooltip-format": "Discharging: {time}",
     "tooltip-format-charging": "Charging: {time}",
