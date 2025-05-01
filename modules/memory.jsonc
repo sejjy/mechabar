@@ -4,6 +4,7 @@
       "warning": 75,
       "critical": 90
     },
+
     "format": "󰘚 {percentage}%",
     "format-critical": "󰀦 {percentage}%",
     "tooltip": false,

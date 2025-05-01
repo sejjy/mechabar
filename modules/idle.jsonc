@@ -1,10 +1,12 @@
 {
   "idle_inhibitor": {
     "format": "{icon}",
+
     "format-icons": {
       "activated": "󰈈 ",
       "deactivated": "󰈉 "
     },
+
     "tooltip-format-activated": "Presentation Mode",
     "tooltip-format-deactivated": "Idle Mode",
     "start-activated": false

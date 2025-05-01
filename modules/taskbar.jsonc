@@ -2,12 +2,14 @@
   "wlr/taskbar": {
     "format": " {icon} ",
     "icon-size": 14,
-    "tooltip-format": "{title}",
     "on-click": "activate",
     "on-click-middle": "close",
+
     "ignore-list": [
       "~",
       "Discord Updater"
-    ]
+    ],
+
+    "tooltip-format": "{title}"
   }
 }
