@@ -1,21 +1,15 @@
 {
   "memory": {
     "states": {
-      "medium": 30,
-      "high": 60,
+      "warning": 75,
       "critical": 90
     },
-
-    "format": "󰾆 {used}GB",
-    "format-medium": "󰾅 {used}GB",
-    "format-high": "󰓅 {used}GB",
-    "format-critical": "󰀦 {used}GB",
-    "format-alt": "󰾆 {percentage}%",
-
-    "tooltip": true,
-    "tooltip-format": "󰾆 {percentage}%\n󰘚 {used:0.1f}GB/{total:0.1f}GB",
-
-    "interval": 30,
-    "max-length": 10
+    "format": "󰘚 {percentage}%",
+    "format-critical": "󰀦 {percentage}%",
+    "tooltip": false,
+    // "tooltip-format": "Memory Used: {used:0.1f} GB / {total:0.1f} GB",
+    "interval": 5,
+    "min-length": 7,
+    "max-length": 7
   }
 }
