@@ -64,7 +64,7 @@ tooltip label {
 #custom-ws,
 #workspaces,
 #window,
-#custom-cpuinfo,
+#custom-temperature,
 #memory,
 #cpu,
 #idle_inhibitor,
@@ -143,13 +143,13 @@ tooltip label {
 }
 
 #custom-left2 {
-  color: @cpuinfo;
+  color: @temperature;
   background: @main-bg;
   padding-left: 3px;
 }
 
-#custom-cpuinfo {
-  background: @cpuinfo;
+#custom-temperature {
+  background: @temperature;
   padding: 0 0 0 1px;
 }
 
@@ -157,7 +157,7 @@ tooltip label {
 
 #custom-left3 {
   color: @memory;
-  background: @cpuinfo;
+  background: @temperature;
   padding-left: 3px;
 }
 

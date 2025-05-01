@@ -1,0 +1,29 @@
+{
+  "clock#date": {
+    "format": "󰨳 {:%m-%d}",
+    "tooltip-format": "<tt>{calendar}</tt>",
+
+    "calendar": {
+      "mode": "month",
+      "mode-mon-col": 6,
+      "on-click-right": "mode",
+
+      "format": {
+        "months": 
+          "<span color='#b4befe'><b>{}</b></span>",
+        "weekdays": 
+          "<span color='#a6adc8' font='7'>{}</span>",
+        "today": 
+          "<span color='#f38ba8'><b>{}</b></span>"
+      }
+    },
+
+    "actions": {
+      "on-click": "mode",
+      "on-click-right": "mode"
+    },
+
+    "min-length": 8,
+    "max-length": 8
+  }
+}

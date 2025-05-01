@@ -1,0 +1,9 @@
+{
+  "clock#time": {
+    "format": "{:%H:%M}",
+    "tooltip": false,
+    // "tooltip-format": "Standard Time: {:%I:%M %p}",
+    "min-length": 6,
+    "max-length": 6
+  }
+}

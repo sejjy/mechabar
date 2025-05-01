@@ -21,7 +21,7 @@
   "modules-center": [
     "custom/paddc",
     "custom/left2",
-    "custom/cpuinfo",       // temperature
+    "custom/temperature",   // temperature
 
     "custom/left3",
     "memory",               // memory
@@ -186,7 +186,7 @@
     }
   },
 
-  "custom/cpuinfo": {
+  "custom/temperature": {
     "exec": "~/.config/waybar/scripts/cpu-temp.sh",
     "return-type": "json",
     "format": "{}",

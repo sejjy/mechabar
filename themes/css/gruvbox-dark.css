@@ -54,7 +54,7 @@
 @define-color module-fg       @fg0;
 @define-color workspaces      @bg0;
 
-@define-color cpuinfo         @bg0;
+@define-color temperature     @bg0;
 @define-color memory          @bg1;
 @define-color cpu             @bg2;
 @define-color distro-fg       @black;

@@ -1,16 +1,15 @@
 {
   "wlr/taskbar": {
-    "format": "{icon}",
-    "icon-theme": "${i_theme}",
-    "spacing": 0,
-    "tooltip-format": "{title}",
+    "format": " {icon} ",
+    "icon-size": 14,
     "on-click": "activate",
     "on-click-middle": "close",
 
-    "ignore-list": ["Alacritty"],
+    "ignore-list": [
+      "~",
+      "Discord Updater"
+    ],
 
-    "app_ids-mapping": {
-      "firefoxdeveloperedition": "firefox-developer-edition"
-    }
+    "tooltip-format": "{title}"
   }
 }
