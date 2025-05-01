@@ -1,21 +1,25 @@
 {
   "bluetooth": {
-    "format": "",
-    "format-disabled": "",
-    "format-connected": "󰂯 {num_connections}",
-    "format-connected-battery": "{icon} {num_connections}",
-
-    "format-icons": ["󰥇", "󰤾", "󰤿", "󰥀", "󰥁", "󰥂", "󰥃", "󰥄", "󰥅", "󰥆", "󰥈"],
+    "format": "󰂰",
+    "format-disabled": "󰂲",
+    "format-connected": "󰂱",
+    "format-connected-battery": "󰂱",
 
     "tooltip-format": 
-      "{controller_alias}\n{num_connections} connected",
+      "{num_connections} connected",
+    "tooltip-format-disabled": 
+      "Bluetooth Disabled",
     "tooltip-format-connected": 
-      "{controller_alias}\n{num_connections} connected\n\n{device_enumerate}",
+      "{device_enumerate}",
     "tooltip-format-enumerate-connected": 
       "{device_alias}",
     "tooltip-format-enumerate-connected-battery": 
-      "{device_alias}\t{icon} {device_battery_percentage}%",
-    
-    "interval": 1
+      ":: {device_alias}: 󱊣 {device_battery_percentage}%",
+
+    "on-click": "~/.config/waybar/scripts/bluetooth-menu.sh",
+    "on-click-right": "kitty --title '󰂯  Bluetooth TUI' bash -c bluetui",
+    "interval": 1,
+    "min-length": 1,
+    "max-length": 1
   }
 }

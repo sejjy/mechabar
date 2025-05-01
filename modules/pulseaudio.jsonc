@@ -1,34 +1,19 @@
 {
   "pulseaudio": {
-    "format": "{icon} {volume}",
-
-    "format-muted": "󰝟",
-    "on-click": "~/.config/waybar/scripts/volume-control.sh -o m",
-    "on-scroll-up": "~/.config/waybar/scripts/volume-control.sh -o i",
-    "on-scroll-down": "~/.config/waybar/scripts/volume-control.sh -o d",
-    "tooltip-format": "{icon} {desc} // {volume}%",
-    "scroll-step": 5,
+    "format": "{icon} {volume}%",
+    "format-muted": "󰝟 {volume}%",
 
     "format-icons": {
+      "default": ["󰕿", "󰖀", "󰕾"],
       "headphone": "󰋋",
-      "hands-free": "󰋋",
-      "headset": "󰋋",
-      "phone": "󰏲",
-      "portable": "󰏲",
-      "car": "󰄋",
-      "default": ["󰕿", "󰖀", "󰕾"]
-    }
-  },
+      "headset": "󰋋"
+    },
 
-  "pulseaudio#microphone": {
-    "format": "{format_source}",
-
-    "format-source": "󰍬",
-    "format-source-muted": "󰍭",
+    "tooltip-format": "Device: {desc}",
     "on-click": "~/.config/waybar/scripts/volume-control.sh -o m",
     "on-scroll-up": "~/.config/waybar/scripts/volume-control.sh -o i",
     "on-scroll-down": "~/.config/waybar/scripts/volume-control.sh -o d",
-    "tooltip-format": "{format_source} {source_desc} // {source_volume}%",
-    "scroll-step": 5
+    "min-length": 6,
+    "max-length": 6
   }
 }

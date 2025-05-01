@@ -1,18 +1,20 @@
 {
   "mpris": {
-    "format": "{player_icon} {dynamic}",
-    "format-paused": "{status_icon} <i>{dynamic}</i>",
+    "format": "{player_icon} {title} - {artist}",
+    "format-paused": "{status_icon} {title} - {artist}",
 
     "player-icons": {
       "default": "󰝚 ",
-      "spotify": "<span foreground='#40a02b'>󰓇 </span>",
-      "firefox": "<span foreground='#d20f39'>󰗃 </span>"
+      "spotify": "<span foreground='#a6e3a1'>󰓇 </span>",
+      "firefox": "<span foreground='#f38ba8'>󰗃 </span>"
     },
-
     "status-icons": {
-      "paused": "󰏤 "
+      "paused": "<span color='#b4befe'>\u200A\u200A󰏤\u2009\u2009</span>"
     },
 
-    "interval": 1
+    "tooltip-format": "Playing: {title} - {artist}",
+    "tooltip-format-paused": "Paused: {title} - {artist}",
+    "min-length": 5,
+    "max-length": 35
   }
 }
