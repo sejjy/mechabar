@@ -476,9 +476,9 @@ tooltip label,
     For example, if you change the font size of the
     distro icon, update it in `distro_expand`.
 
-    - distro icon → `distro_expand` (line 143)
-    - power button → `power_expand` (line 158)
-    - all other modules → `module_expand` (line 172)
+    - distro icon → `distro_expand` (line 136)
+    - power button → `power_expand` (line 151)
+    - all other modules → `module_expand` (line 165)
 */
 
 @import "animation.css";

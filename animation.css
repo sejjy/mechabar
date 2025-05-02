@@ -1,8 +1,8 @@
 /*
-  NOTE: Restart Waybar to apply changes.
+    NOTE: Restart Waybar to apply changes.
 */
 
-/* <<--< PHASE 1 >-->> */
+/* ------------------------------------------------------------- PHASE 1 --- */
 
 #custom-ws {
   color: transparent;
@@ -25,67 +25,58 @@
     power_in 0.25s ease-in 0.5s forwards;
 }
 
-/* <<--< PHASE 2 >-->> */
+/* ------------------------------------------------------------- PHASE 2 --- */
 
 #workspaces label {
   opacity: 0;
   animation: hoverable_in 0.25s ease-in 1s forwards;
 }
 
-/* #custom-cpu, */
 #cpu,
-#clock.time,
-#idle_inhibitor,
-#battery,
-#battery.warning,
-#battery.critical,
-#battery.charging {
+#clock.time {
   font-size: 0;
   text-shadow: none;
-  animation: module_expand 0.25s ease-in 0.75s forwards,
-    module_in 0.25s ease-in 1s forwards;
-}
-
-/* #custom-cpu, */
-#cpu {
-  animation: module_expand 0.25s ease-in 0.75s forwards,
-    module_in 0.25s ease-in 1s forwards;
-}
-
-#clock.time {
+  color: transparent;
   animation: module_expand 0.25s ease-in 0.75s forwards,
     module_in 0.25s ease-in 1s forwards;
 }
 
 #idle_inhibitor {
+  font-size: 0;
+  text-shadow: none;
   animation: module_expand 0.25s ease-in 0.75s forwards,
     hoverable_in 0.25s ease-in 1s forwards;
 }
 
 #battery {
+  color: transparent;
+  font-size: 0;
+  text-shadow: none;
   animation: module_expand 0.25s ease-in 0.75s forwards,
     battery_in 0.25s ease-in 1s forwards;
 }
 
 #battery.warning {
+  color: transparent;
   animation: module_expand 0.25s ease-in 0.75s forwards,
     state_warning_in 0.25s ease-in 1s forwards;
 }
 
 #battery.critical {
+  color: transparent;
   animation: module_expand 0.25s ease-in 0.75s forwards,
     state_critical_in 0.25s ease-in 1s forwards;
 }
 
 #battery.charging {
+  color: transparent;
   animation: module_expand 0.25s ease-in 0.75s forwards,
     state_charging_in 0.25s ease-in 1s forwards;
 }
 
-/* <<--< PHASE 3 >-->> */
+/* ------------------------------------------------------------- PHASE 3 --- */
 
 #memory,
-/* #custom-backlight, */
 #backlight {
   color: transparent;
   font-size: 0;
@@ -96,16 +87,12 @@
 
 #memory.warning {
   color: transparent;
-  font-size: 0;
-  text-shadow: none;
   animation: module_expand 0.25s ease-in 1.15s forwards,
     state_warning_in 0.25s ease-in 1.4s forwards;
 }
 
 #memory.critical {
   color: transparent;
-  font-size: 0;
-  text-shadow: none;
   animation: module_expand 0.25s ease-in 1.15s forwards,
     state_critical_in 0.25s ease-in 1.4s forwards;
 }
@@ -116,7 +103,7 @@
     hoverable_in 0.25s ease-in 1.4s forwards;
 }
 
-/* <<--< PHASE 4 >-->> */
+/* ------------------------------------------------------------- PHASE 4 --- */
 
 #window,
 #mpris {
@@ -124,7 +111,6 @@
   animation: hoverable_in 0.25s ease-in 1.75s forwards;
 }
 
-#custom-cpuinfo,
 #custom-wifi,
 #bluetooth,
 #custom-update,
@@ -134,9 +120,16 @@
     hoverable_in 0.25s ease-in 1.75s forwards;
 }
 
-/* <<--< KEYFRAMES >-->> */
+#custom-temperature {
+  font-size: 0;
+  color: transparent;
+  animation: module_expand 0.25s ease-in 1.5s forwards,
+    module_in 0.25s ease-in 1.75s forwards;
+}
 
-/* <<--< distro icon >-->> */
+/* ----------------------------------------------------------- KEYFRAMES --- */
+
+/* --------------------------------------------------------- distro icon --- */
 
 @keyframes distro_expand {
   to {
@@ -151,7 +144,7 @@
   }
 }
 
-/* <<--< power button >-->> */
+/* -------------------------------------------------------- power button --- */
 
 @keyframes power_expand {
   to {
@@ -165,7 +158,7 @@
   }
 }
 
-/* <<--< modules >-->> */
+/* ------------------------------------------------------------- modules --- */
 
 @keyframes module_expand {
   to {
@@ -180,9 +173,9 @@
   }
 }
 
-/* <<--< FIXES >-->> */
+/* --------------------------------------------------------------- FIXES --- */
 
-/* <<--< hoverables >-->> */
+/* ---------------------------------------------------------- hoverables --- */
 
 @keyframes hoverable_in {
   to {
@@ -190,7 +183,7 @@
   }
 }
 
-/* <<--< battery >-->> */
+/* ------------------------------------------------------------- battery --- */
 
 @keyframes battery_in {
   to {
@@ -199,7 +192,7 @@
   }
 }
 
-/* <<--< states >-->> */
+/* -------------------------------------------------------------- states --- */
 
 @keyframes state_warning_in {
   to {
