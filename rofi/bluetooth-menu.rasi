@@ -4,6 +4,9 @@
 
 configuration {
   font:                     "JetBrainsMono Nerd Font 8";
+  hover-select:             true;
+  me-select-entry:          "MousePrimary";
+  me-accept-entry:          "!MousePrimary";
 }
 
 /* Window */
@@ -35,7 +38,7 @@ textbox-custom {
   background-color:         @select-bg;
   text-color:               @select-fg;
   expand:                   false;
-  content:                  "󰂴  Bluetooth";
+  content:                  "󰂱  Bluetooth";
 }
 
 /* Input */
