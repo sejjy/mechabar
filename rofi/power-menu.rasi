@@ -4,6 +4,9 @@
 
 configuration {
   font:                     "JetBrainsMono Nerd Font 8";
+  hover-select:             true;
+  me-select-entry:          "MousePrimary";
+  me-accept-entry:          "!MousePrimary";
 }
 
 /* Window */
@@ -29,14 +32,14 @@ mainbox {
 }
 
 textbox-custom {
-  font:                     "JetBrainsMono Nerd Font Bold 8";
+  font:                     "JetBrainsMono Nerd Font Bold 2";
   horizontal-align:         0.5;
-  padding:                  1px 0;
+  padding:                  0;
   expand:                   false;
   background-color:         @select-bg;
   text-color:               @select-fg;
   expand:                   false;
-  content:                  "  Power";
+  // content:                  "  Power";
 }
 
 /* List */
