@@ -1,7 +1,7 @@
-/* ───────────────────────────────────────────────────────────────┤ global ├───
-*/
 @import "theme.css";
 
+/* ───────────────────────────────────────────────────────────────┤ global ├───
+*/
 * {
   min-height: 0;
   border: none;
@@ -17,7 +17,7 @@ window#waybar {
 
 /* ───────────────────────────────────────────────────────────┤ background ├───
 */
-window#waybar>box {
+window#waybar > box {
   background: @main-bg;
   margin: 2px;
 }
@@ -304,7 +304,6 @@ tooltip label {
 #mpris:hover {
   color: @hover-fg;
 }
-
 
 /* ────────────────────────────────────────────────────────┤ output device ├───
 */
