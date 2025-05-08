@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🤖 mechabar
+## 🤖 mechabar
 
 | ![Catppuccin Mocha](assets/catppuccin-mocha.png) |
 | :----------------------------------------------: |
@@ -34,32 +34,37 @@
     <summary><strong>&nbsp;🚀 Menus</strong></summary>
     <br />
 
-|                Wi-Fi                |
-| :---------------------------------: |
+**Wi-Fi**
+
 | ![Wi-Fi Menu](assets/wifi-menu.png) |
+| :---------------------------------: |
 
-|                  Bluetooth                   |
-| :------------------------------------------: |
+**Bluetooth**
+
 | ![Bluetooth Menu](assets/bluetooth-menu.png) |
+| :------------------------------------------: |
 
-|                Power                 |
-| :----------------------------------: |
+**Power**
+
 | ![Power Menu](assets/power-menu.png) |
+| :----------------------------------: |
 
   </details>
 </div>
 
-A mecha-themed [Waybar](https://github.com/Alexays/Waybar) configuration originally designed for [Hyprland](https://github.com/Alexays/Waybar/wiki/Module:-Hyprland), but also compatible with wlroots-based compositors like [DWL](https://github.com/Alexays/Waybar/wiki/Module:-Dwl), [Niri](https://github.com/Alexays/Waybar/wiki/Module:-Niri), [River](https://github.com/Alexays/Waybar/wiki/Module:-River), and [Sway](https://github.com/Alexays/Waybar/wiki/Module:-Sway), with minimal adjustments.
+A mecha-themed [Waybar](https://github.com/Alexays/Waybar) configuration originally designed for [Hyprland](https://github.com/Alexays/Waybar/wiki/Module:-Hyprland), but also compatible with [DWL](https://github.com/Alexays/Waybar/wiki/Module:-Dwl), [Niri](https://github.com/Alexays/Waybar/wiki/Module:-Niri), [River](https://github.com/Alexays/Waybar/wiki/Module:-River), and [Sway](https://github.com/Alexays/Waybar/wiki/Module:-Sway) with minimal adjustments.
 
-> _See the **[sway-classic](https://github.com/sejjy/mechabar/tree/sway-classic)** branch for Sway support._
+> _See the [sway-classic](https://github.com/sejjy/mechabar/tree/sway-classic) branch for Sway support._
 
-## Classic vs Animated
+#
+
+### Classic vs Animated
 
 You can choose between two styles:
 
 - **Classic:**
 
-  Clone the default branch for the classic, non-animated bar.
+  Clone the default `classic` branch for a simple, non-animated bar.
 
   ```bash
     git clone https://github.com/sejjy/mechabar.git
@@ -68,58 +73,51 @@ You can choose between two styles:
 
 - **Animated:**
 
-  Clone the **[animated](https://github.com/sejjy/mechabar/tree/animated)** branch, which includes launch animations.
+  Clone the [`animated`](https://github.com/sejjy/mechabar/tree/animated) branch for added launch animations.
 
   ```bash
     git clone -b animated https://github.com/sejjy/mechabar.git
     cd mechabar
   ```
 
-## Installation (Arch Linux)
+#
 
-### Automatic
+### Automatic Installation
 
-1. **Run the [install script](/install.sh):**
+1. Run the [install script](/install.sh):
 
    ```bash
    ./install.sh
    ```
 
-   This backs up existing directories and installs all [dependencies](#dependencies), configs, and scripts.
+   _This backs up your current **Waybar** and **Rofi** configs and performs the steps listed below._
 
 #
 
-### Manual
+### Manual Installation
 
-#### Dependencies
+1. Install dependencies
 
-```bash
-sudo pacman -S bluez-utils brightnessctl pipewire pipewire-pulse ttf-jetbrains-mono-nerd wireplumber
-```
+   ```bash
+   sudo pacman -S bluez-utils brightnessctl pipewire pipewire-pulse ttf-jetbrains-mono-nerd wireplumber
+   ```
 
-```bash
-yay -S bluetui rofi-lbonn-wayland-git
-```
+   ```bash
+   yay -S bluetui rofi-lbonn-wayland-git
+   ```
 
-| Package                     | Description                                                                                         |
-| --------------------------- | --------------------------------------------------------------------------------------------------- |
-| `bluetui`ᴬᵁᴿ                | TUI for managing bluetooth devices <tr></tr>                                                        |
-| `bluez-utils`               | Development and debugging utilities for the bluetooth protocol stack <tr></tr>                      |
-| `brightnessctl`             | Lightweight brightness control tool <tr></tr>                                                       |
-| `pipewire`                  | Low-latency audio/video router and processor <tr></tr>                                              |
-| `pipewire-pulse`            | Low-latency audio/video router and processor - PulseAudio replacement <tr></tr>                     |
-| `rofi-lbonn-wayland-git`ᴬᵁᴿ | A window switcher, application launcher and dmenu replacement (fork with Wayland support) <tr></tr> |
-| `ttf-jetbrains-mono-nerd`   | Patched font JetBrains Mono from the nerd fonts library <tr></tr>                                   |
-| `wireplumber`               | Session/policy manager implementation for PipeWire                                                  |
+   | Package                     | Description                                                                                         |
+   | --------------------------- | --------------------------------------------------------------------------------------------------- |
+   | `bluetui`ᴬᵁᴿ                | TUI for managing bluetooth devices <tr></tr>                                                        |
+   | `bluez-utils`               | Development and debugging utilities for the bluetooth protocol stack <tr></tr>                      |
+   | `brightnessctl`             | Lightweight brightness control tool <tr></tr>                                                       |
+   | `pipewire`                  | Low-latency audio/video router and processor <tr></tr>                                              |
+   | `pipewire-pulse`            | Low-latency audio/video router and processor - PulseAudio replacement <tr></tr>                     |
+   | `rofi-lbonn-wayland-git`ᴬᵁᴿ | A window switcher, application launcher and dmenu replacement (fork with Wayland support) <tr></tr> |
+   | `ttf-jetbrains-mono-nerd`   | Patched font JetBrains Mono from the nerd fonts library <tr></tr>                                   |
+   | `wireplumber`               | Session/policy manager implementation for PipeWire                                                  |
 
-> [!IMPORTANT]
-> If you use other packages, you may need to modify the scripts and configs to match your setup.
-
-#
-
-#### Installation
-
-1. **Copy config files:**
+2. Copy config files:
 
    ```bash
    mkdir -p ~/.config/waybar
@@ -136,7 +134,7 @@ yay -S bluetui rofi-lbonn-wayland-git
    cp rofi/* ~/.config/rofi
    ```
 
-2. **Set up scripts:**
+3. Set up scripts:
 
    ```bash
    mkdir -p ~/.config/waybar/scripts
@@ -147,13 +145,13 @@ yay -S bluetui rofi-lbonn-wayland-git
    chmod +x ~/.config/waybar/scripts/*
    ```
 
-3. **Restart Waybar:**
+4. Restart Waybar:
 
    ```bash
    killall waybar; waybar & disown
    ```
 
-   Or specify the config paths:
+   _Or specify the config paths explicitly:_
 
    ```bash
    killall waybar
@@ -161,17 +159,21 @@ yay -S bluetui rofi-lbonn-wayland-git
    disown
    ```
 
-## Customization
+#
 
-- You can switch between predefined [css](/themes/css/), [jsonc](/themes/jsonc/), and [rasi](/rofi/themes/) themes by clicking the leftmost module. To use your own theme, add a file in each directory following its format.
+### Customization
 
-- You can replace modules with ones from the [modules](/modules/) folder. For a complete list of available modules, see the [Waybar wiki](https://github.com/Alexays/Waybar/wiki).
+- You can switch between predefined [CSS](/themes/css/), [JSONC](/themes/jsonc/), and [Rasi](/rofi/themes/) themes by clicking the leftmost module. To use your own theme, add a file to each directory following the respective format.
+
+- You can replace modules with alternatives from the [modules](/modules/) folder. For a full list of available modules, see the [Waybar wiki](https://github.com/Alexays/Waybar/wiki).
 
 - To change the bar height manually, see the notes in [style.css](/style.css#L386-L466).
 
-- To set up battery notifications, follow the instructions in [battery-level.sh](/scripts/battery-level.sh#L56-L80) and [battery-state.sh](/scripts/battery-state.sh#L38-L50).
+- To enable battery notifications, follow the instructions in [battery-level.sh](/scripts/battery-level.sh#L56-L80) and [battery-state.sh](/scripts/battery-state.sh#L38-L50).
 
-## Roadmap
+#
+
+### Roadmap
 
 Here are some features and improvements planned for future versions:
 
@@ -180,7 +182,9 @@ Here are some features and improvements planned for future versions:
 - [ ] Add more themes
 - [ ] Rewrite scripts
 
-## Credits
+#
+
+### Credits
 
 - Font icons: [ryanoasis / nerd-fonts](https://github.com/ryanoasis/nerd-fonts)
 - Color palette: [catppuccin / catppuccin](https://github.com/catppuccin/catppuccin), [morhetz / gruvbox](https://github.com/morhetz/gruvbox)
