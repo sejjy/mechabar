@@ -110,7 +110,7 @@
       "kitty": "  Terminal",
 
       "tmux(.*)": 
-        "<span foreground='#a6e3a1'> </span> Tmux",
+        "<span foreground='#98971a'> </span> Tmux",
 
       // ────────────────────────────────────────────────────────── browser ───
 
