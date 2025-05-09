@@ -1,11 +1,13 @@
 {
+  // ─────────────────────────────────────────────────────────────┤ header ├───
+
   "layer": "top",
   "position": "top",
   "mode": "dock",
   "reload_style_on_change": true,
   "gtk-layer-shell": true,
 
-  // <<--< Positions >-->>
+  // ──────────────────────────────────────────────────────────┤ positions ├───
 
   "modules-left": [
     "custom/ws",            // window icon
@@ -64,7 +66,7 @@
     "custom/power"          // power button
   ],
 
-  // <<--< Modules >-->>
+  // ────────────────────────────────────────────────────────┤ window icon ├───
 
   "custom/ws": {
     "exec": "~/.config/waybar/scripts/current-theme.sh",
@@ -74,6 +76,8 @@
     "min-length": 3,
     "max-length": 3
   },
+
+  // ─────────────────────────────────────────────────────────┤ workspaces ├───
 
   "hyprland/workspaces": {
     "on-scroll-up": "hyprctl dispatch workspace -1",
@@ -87,17 +91,20 @@
     }
   },
 
+  // ─────────────────────────────────────────────────────────────┤ window ├───
+
   "hyprland/window": {
     "format": "{}",
     "tooltip": false,
     "min-length": 5,
 
     "rewrite": {
-      // Desktop
+      // ────────────────────────────────────────────────────────── desktop ───
       "": 
         "<span foreground='#1e66f5'> </span> Hyprland",
 
-      // Terminal
+      // ───────────────────────────────────────────────────────── terminal ───
+
       "~": "  Terminal",
       "zsh": "  Terminal",
       "kitty": "  Terminal",
@@ -105,7 +112,7 @@
       "tmux(.*)": 
         "<span foreground='#a6e3a1'> </span> Tmux",
 
-      // Browser
+      // ────────────────────────────────────────────────────────── browser ───
 
       "(.*)Mozilla Firefox": 
         "<span foreground='#d20f39'>󰈹 </span> Firefox",
@@ -117,7 +124,7 @@
       "(.*) — Zen Browser": 
         "<span foreground='#fe640b'>󰺕 </span> $1",
 
-      // Development
+      // ────────────────────────────────────────────────────── development ───
 
       "(.*) - Visual Studio Code": 
         "<span foreground='#1e66f5'>󰨞 </span> $1",
@@ -134,7 +141,7 @@
       "vim (.*)": 
         "<span foreground='#40a02b'> </span> $1",
 
-      // Media
+      // ──────────────────────────────────────────────────────────── media ───
 
       "(.*)Spotify": 
         "<span foreground='#40a02b'> </span> Spotify",
@@ -158,16 +165,16 @@
       "(.*).png": "  $1.png",
       "(.*).svg": "  $1.svg",
 
-      // Social
-
-      "vesktop": 
-        "<span foreground='#1e66f5'> </span> Discord",
+      // ─────────────────────────────────────────────────────────── social ───
 
       "• Discord(.*)": "Discord$1",
       "(.*)Discord(.*)": 
         "<span foreground='#1e66f5'> </span> $1Discord$2",
 
-      // Documents
+      "vesktop": 
+        "<span foreground='#1e66f5'> </span> Discord",
+
+      // ──────────────────────────────────────────────────────── documents ───
 
       "ONLYOFFICE Desktop Editors": 
         "<span foreground='#d20f39'> </span> OnlyOffice Desktop",
@@ -181,10 +188,12 @@
       "(.*).pdf": 
         "<span foreground='#d20f39'> </span> $1.pdf",
 
-      // System
+      // ─────────────────────────────────────────────────────────── system ───
       "Authenticate": "  Authenticate"
     }
   },
+
+  // ────────────────────────────────────────────────────────┤ temperature ├───
 
   "custom/temperature": {
     "exec": "~/.config/waybar/scripts/cpu-temp.sh",
@@ -194,6 +203,8 @@
     "min-length": 8,
     "max-length": 8
   },
+
+  // ─────────────────────────────────────────────────────────────┤ memory ├───
 
   "memory": {
     "states": {
@@ -210,6 +221,8 @@
     "max-length": 7
   },
 
+  // ────────────────────────────────────────────────────────────────┤ cpu ├───
+
   "cpu": {
     "format": "󰻠 {usage}%",
     "tooltip": false,
@@ -218,10 +231,14 @@
     "max-length": 6
   },
 
+  // ─────────────────────────────────────────────────────────────┤ distro ├───
+
   "custom/distro": {
     "format": " ",
     "tooltip": false
   },
+
+  // ─────────────────────────────────────────────────────┤ idle inhibitor ├───
 
   "idle_inhibitor": {
     "format": "{icon}",
@@ -236,6 +253,8 @@
     "start-activated": false
   },
 
+  // ───────────────────────────────────────────────────────────────┤ time ├───
+
   "clock#time": {
     "format": "{:%H:%M}",
     "tooltip": false,
@@ -243,6 +262,8 @@
     "min-length": 6,
     "max-length": 6
   },
+
+  // ───────────────────────────────────────────────────────────────┤ date ├───
 
   "clock#date": {
     "format": "󰨳 {:%m-%d}",
@@ -272,6 +293,8 @@
     "max-length": 8
   },
 
+  // ──────────────────────────────────────────────────────────────┤ wi-fi ├───
+
   "custom/wifi": {
     "exec": "~/.config/waybar/scripts/wifi-status.sh",
     "return-type": "json",
@@ -282,6 +305,8 @@
     "min-length": 1,
     "max-length": 1
   },
+
+  // ──────────────────────────────────────────────────────────┤ bluetooth ├───
 
   "bluetooth": {
     "format": "󰂰",
@@ -307,15 +332,19 @@
     "max-length": 1
   },
 
+  // ──────────────────────────────────────────────────────┤ system update ├───
+
   "custom/update": {
     "exec": "~/.config/waybar/scripts/system-update.sh",
     "return-type": "json",
     "format": "{}",
-    "on-click": "hyprctl dispatch exec '~/.config/waybar/scripts/system-update.sh up'",
+    "on-click": "~/.config/waybar/scripts/system-update.sh up",
     "interval": 30,
     "min-length": 1,
     "max-length": 1
   },
+
+  // ─────────────────────────────────────────────────────────┤ media info ├───
 
   "mpris": {
     "format": "{player_icon} {title} - {artist}",
@@ -336,6 +365,8 @@
     "max-length": 35
   },
 
+  // ──────────────────────────────────────────────────────┤ output device ├───
+
   "pulseaudio": {
     "format": "{icon} {volume}%",
     "format-muted": "󰝟 {volume}%",
@@ -354,6 +385,8 @@
     "max-length": 6
   },
 
+  // ─────────────────────────────────────────────────────────┤ brightness ├───
+
   "backlight": {
     "format": "{icon} {percent}%",
     "format-icons": ["", "", "", "", "", "", "", "", ""],
@@ -363,6 +396,8 @@
     "min-length": 6,
     "max-length": 6
   },
+
+  // ────────────────────────────────────────────────────────────┤ battery ├───
 
   "battery": {
     "states": {
@@ -381,6 +416,8 @@
     "max-length": 6
   },
 
+  // ───────────────────────────────────────────────────────┤ power button ├───
+
   "custom/power": {
     "format": " ",
     "tooltip": false,
@@ -388,7 +425,7 @@
     "on-click": "~/.config/waybar/scripts/power-menu.sh"
   },
 
-  // <<--< Padding >-->>
+  // ────────────────────────────────────────────────────────────┤ padding ├───
 
   "custom/paddw": {
     "format": " ",
@@ -400,7 +437,7 @@
     "tooltip": false
   },
 
-  // Left Arrows
+  // ────────────────────────────────────────────────────────┤ left arrows ├───
 
   "custom/left1": {
     "format": "",
@@ -435,7 +472,7 @@
     "tooltip": false
   },
 
-  // Right Arrows
+  // ───────────────────────────────────────────────────────┤ right arrows ├───
 
   "custom/right1": {
     "format": "",
@@ -458,7 +495,7 @@
     "tooltip": false
   },
 
-  // Left Inverse
+  // ───────────────────────────────────────────────────────┤ left inverse ├───
 
   "custom/leftin1": {
     "format": "",
@@ -469,7 +506,7 @@
     "tooltip": false
   },
 
-  // Right Inverse
+  // ──────────────────────────────────────────────────────┤ right inverse ├───
 
   "custom/rightin1": {
     "format": "",
