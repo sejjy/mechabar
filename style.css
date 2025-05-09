@@ -1,7 +1,7 @@
-/* ───────────────────────────────────────────────────────────────┤ global ├───
-*/
 @import "theme.css";
 
+/* ───────────────────────────────────────────────────────────────┤ global ├───
+*/
 * {
   min-height: 0;
   border: none;
@@ -17,7 +17,7 @@ window#waybar {
 
 /* ───────────────────────────────────────────────────────────┤ background ├───
 */
-window#waybar>box {
+window#waybar > box {
   background: @main-bg;
   margin: 2px;
 }
@@ -305,10 +305,8 @@ tooltip label {
   color: @hover-fg;
 }
 
-
 /* ────────────────────────────────────────────────────────┤ output device ├───
 */
-
 #custom-left6 {
   color: @pulseaudio;
   background: @main-bg;
