@@ -37,7 +37,7 @@ tooltip label {
 
 /* ──────────────────────────────────────────────────────────────┤ general ├───
 */
-#custom-ws,
+#custom-theme,
 #workspaces,
 #window,
 #custom-temperature,
@@ -80,13 +80,13 @@ tooltip label {
   text-shadow: 2px 0 2px rgba(0, 0, 0, 0.5);
 }
 
-/* ──────────────────────────────────────────────────────────┤ window icon ├───
+/* ───────────────────────────────────────────────────────┤ theme switcher ├───
 */
-#custom-ws {
+#custom-theme {
   background: @main-bg;
 }
 
-#custom-ws:hover {
+#custom-theme:hover {
   color: @hover-fg;
 }
 
