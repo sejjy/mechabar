@@ -10,7 +10,7 @@
   // ──────────────────────────────────────────────────────────┤ positions ├───
 
   "modules-left": [
-    "custom/ws",            // window icon
+    "custom/theme",         // theme switcher
     "custom/left1",
 
     "hyprland/workspaces",  // workspaces
@@ -66,9 +66,9 @@
     "custom/power"          // power button
   ],
 
-  // ────────────────────────────────────────────────────────┤ window icon ├───
+  // ─────────────────────────────────────────────────────┤ theme switcher ├───
 
-  "custom/ws": {
+  "custom/theme": {
     "exec": "~/.config/waybar/scripts/current-theme.sh",
     "return-type": "json",
     "format": " 󰤕 ",
@@ -105,9 +105,9 @@
 
       // ───────────────────────────────────────────────────────── terminal ───
 
-      "~": "  Terminal",
-      "zsh": "  Terminal",
-      "kitty": "  Terminal",
+      "~": "  Terminal",
+      "zsh": "  Terminal",
+      "kitty": "  Terminal",
 
       "tmux(.*)": 
         "<span foreground='#98971a'> </span> Tmux",
@@ -149,7 +149,7 @@
         "<span foreground='#98971a'> </span> Spotify Premium",
 
       "OBS(.*)": 
-        "<span foreground='#d5c4a1'> </span> OBS Studio",
+        "<span foreground='#d5c4a1'>󰻃 </span> OBS Studio",
 
       "VLC media player": 
         "<span foreground='#d65d0e'>󰕼 </span> VLC Media Player",
@@ -159,11 +159,11 @@
       "(.*) - mpv": 
         "<span foreground='#b16286'> </span> $1",
 
-      "qView": "  qView",
+      "qView": "󰋩  qView",
 
-      "(.*).jpg": "  $1.jpg",
-      "(.*).png": "  $1.png",
-      "(.*).svg": "  $1.svg",
+      "(.*).jpg": "󰋩  $1.jpg",
+      "(.*).png": "󰋩  $1.png",
+      "(.*).svg": "󰋩  $1.svg",
 
       // ─────────────────────────────────────────────────────────── social ───
 
@@ -180,13 +180,13 @@
         "<span foreground='#cc241d'> </span> OnlyOffice Desktop",
 
       "(.*).docx": 
-        "<span foreground='#458588'> </span> $1.docx",
+        "<span foreground='#458588'>󰈭 </span> $1.docx",
       "(.*).xlsx": 
-        "<span foreground='#98971a'> </span> $1.xlsx",
+        "<span foreground='#98971a'>󰈜 </span> $1.xlsx",
       "(.*).pptx": 
-        "<span foreground='#d65d0e'> </span> $1.pptx",
+        "<span foreground='#d65d0e'>󰈨 </span> $1.pptx",
       "(.*).pdf": 
-        "<span foreground='#cc241d'> </span> $1.pdf",
+        "<span foreground='#cc241d'> </span> $1.pdf",
 
       // ─────────────────────────────────────────────────────────── system ───
       "Authenticate": "  Authenticate"
@@ -224,7 +224,7 @@
   // ────────────────────────────────────────────────────────────────┤ cpu ├───
 
   "cpu": {
-    "format": "󰻠 {usage}%",
+    "format": "󰍛 {usage}%",
     "tooltip": false,
     "interval": 5,
     "min-length": 6,
@@ -266,7 +266,7 @@
   // ───────────────────────────────────────────────────────────────┤ date ├───
 
   "clock#date": {
-    "format": "󰨳 {:%m-%d}",
+    "format": "󰸗 {:%m-%d}",
     "tooltip-format": "<tt>{calendar}</tt>",
 
     "calendar": {
