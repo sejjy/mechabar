@@ -50,5 +50,5 @@ for src in "${!theme_files[@]}"; do
 done
 
 # Restart Waybar to apply changes
-killall waybar || true
+pkill waybar 2>/dev/null || true
 nohup waybar --config "$HOME/.config/waybar/config.jsonc" --style "$HOME/.config/waybar/style.css" >/dev/null 2>&1 &
