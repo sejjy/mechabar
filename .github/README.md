@@ -149,13 +149,13 @@ You can choose between two styles:
 4. Restart Waybar:
 
    ```bash
-   killall waybar; waybar & disown
+   pkill waybar 2>/dev/null; waybar & disown
    ```
 
    _Or specify the config paths explicitly:_
 
    ```bash
-   killall waybar
+   pkill waybar 2>/dev/null
    waybar --config "$HOME/.config/waybar/config.jsonc" --style "$HOME/.config/waybar/style.css" &
    disown
    ```
