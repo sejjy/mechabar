@@ -99,7 +99,7 @@ You can choose between two styles:
 1. Install dependencies
 
    ```bash
-   sudo pacman -S bluez-utils brightnessctl pipewire pipewire-pulse ttf-jetbrains-mono-nerd wireplumber
+   sudo pacman -S bluez-utils brightnessctl pacman-contrib pipewire pipewire-pulse ttf-jetbrains-mono-nerd wireplumber
    ```
 
    ```bash
@@ -111,6 +111,7 @@ You can choose between two styles:
    | `bluetui`ᴬᵁᴿ                | TUI for managing bluetooth devices <tr></tr>                                                        |
    | `bluez-utils`               | Development and debugging utilities for the bluetooth protocol stack <tr></tr>                      |
    | `brightnessctl`             | Lightweight brightness control tool <tr></tr>                                                       |
+   | `pacman-contrib`            | Contributed scripts and tools for pacman systems <tr></tr>                                          |
    | `pipewire`                  | Low-latency audio/video router and processor <tr></tr>                                              |
    | `pipewire-pulse`            | Low-latency audio/video router and processor - PulseAudio replacement <tr></tr>                     |
    | `rofi-lbonn-wayland-git`ᴬᵁᴿ | A window switcher, application launcher and dmenu replacement (fork with Wayland support) <tr></tr> |
