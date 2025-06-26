@@ -94,6 +94,7 @@
   // ─────────────────────────────────────────────────────────────┤ window ├───
 
   "hyprland/window": {
+    "swap-icon-label": true,
     "format": "{}",
     "tooltip": false,
     "min-length": 5,
