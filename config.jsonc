@@ -71,7 +71,7 @@
   "custom/theme": {
     "exec": "~/.config/waybar/scripts/current-theme.sh",
     "return-type": "json",
-    "format": " 󰤕 ",
+    "format": " 󰍜 ",
     "on-click": "~/.config/waybar/scripts/theme-switcher.sh",
     "min-length": 3,
     "max-length": 3
