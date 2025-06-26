@@ -72,4 +72,4 @@
 
 @define-color warning         @yellow;
 @define-color critical        @red;
-@define-color charging        @text;
+@define-color charging        @green;
