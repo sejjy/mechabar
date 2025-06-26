@@ -72,4 +72,4 @@
 
 @define-color warning         @bright_orange;
 @define-color critical        @bright_red;
-@define-color charging        @fg0;
+@define-color charging        @bright_green;
