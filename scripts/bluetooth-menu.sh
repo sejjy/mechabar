@@ -31,6 +31,8 @@ get_device_info() {
     fi
   done <<< "$(bluetoothctl info "$device_address")"
 
+  # source:
+  # https://git.kernel.org/pub/scm/bluetooth/bluez.git/tree/src/dbus-common.c
   case "$device_type" in
     "audio-card")         device_icon="󱡫 " ;;
     "audio-headphones")   device_icon="󰋋 " ;;
@@ -57,7 +59,7 @@ get_device_info() {
 
 # main loop
 while true; do
-  is_bluetooth_powered=$(
+  is_powered=$(
     bluetoothctl show |
       while read -r line; do
         if [[ $line == Powered:* ]]; then
@@ -67,11 +69,11 @@ while true; do
       done
   )
 
-  rofi_rows=()
+  rofi_options=()
 
-  if [[ $is_bluetooth_powered == "yes" ]]; then
-    rofi_rows+=("󰂲  Disable Bluetooth")
-    rofi_rows+=("󰏌  Scan for devices")
+  if [[ $is_powered == "yes" ]]; then
+    rofi_options+=("󰂲  Disable Bluetooth")
+    rofi_options+=("󰏌  Scan for devices")
 
     while read -r line; do
       if [[ $line == Device* ]]; then
@@ -80,18 +82,18 @@ while true; do
         device_address="${device_address%% *}"
 
         device_info=$(get_device_info "$device_address")
-        rofi_rows+=("${device_info}")
+        rofi_options+=("${device_info}")
       else
         continue
       fi
     done <<< "$(bluetoothctl devices)"
 
-    rofi_config_override=()
+    rofi_override=()
 
   else
     # bluetooth is disabled
-    rofi_rows=("󰂯  Enable Bluetooth")
-    rofi_config_override=(
+    rofi_options=("󰂯  Enable Bluetooth")
+    rofi_override=(
       -theme-str \
         "mainbox { children: [ textbox-custom, listview ]; } \
         listview { lines: 1; padding: 6px 6px 8px; }"
@@ -100,17 +102,19 @@ while true; do
 
   rofi_prompt=" "
 
-  rofi_selected_row=$(
-    printf "%s\n" "${rofi_rows[@]}" |
+  rofi_selected=$(
+    # launch rofi
+    printf "%s\n" "${rofi_options[@]}" |
       rofi -dmenu -selected-row 0 -p "$rofi_prompt" \
-      -config "$rofi_config" "${rofi_config_override[@]}"
+           -config "$rofi_config" "${rofi_override[@]}" ||
+      pkill -x rofi
   )
 
-  if [[ -z $rofi_selected_row ]]; then
+  if [[ -z $rofi_selected ]]; then
     exit
   fi
 
-  case $rofi_selected_row in
+  case $rofi_selected in
     *"Enable Bluetooth")
       notify-send "Bluetooth enabled" \
         --icon="package-installed-outdated"
@@ -130,11 +134,11 @@ while true; do
         --icon="package-installed-outdated"
       kitty --title "󰂱  Bluetooth TUI" bash -c "bluetui"
       ;;
-    *)
-      device_name="${rofi_selected_row%% (*}"
+    *) # device selected
+      device_name="${rofi_selected%% (*}"
       device_name="${device_name:3}" # removes the icon and leading spaces
 
-      device_address="${rofi_selected_row##*(}"
+      device_address="${rofi_selected##*(}"
       device_address="${device_address%)}"
 
       if [[ -n $device_address ]]; then
@@ -146,16 +150,16 @@ while true; do
         bluetoothctl connect "$device_address"
         sleep 3
 
-        is_device_connected=""
+        is_connected=""
 
         while read -r line; do
           if [[ $line == Connected:* ]]; then
-            is_device_connected="${line#Connected: }"
+            is_connected="${line#Connected: }"
             break
           fi
         done <<< "$(bluetoothctl info "$device_address")"
 
-        if [[ $is_device_connected == "yes" ]]; then
+        if [[ $is_connected == "yes" ]]; then
           notify-send "Connected to $device_name" \
             --icon="package-install"
           exit
