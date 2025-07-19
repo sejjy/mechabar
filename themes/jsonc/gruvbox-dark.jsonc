@@ -215,8 +215,8 @@
 
     "format": "󰘚 {percentage}%",
     "format-critical": "󰀦 {percentage}%",
-    "tooltip": false,
-    // "tooltip-format": "Memory Used: {used:0.1f} GB / {total:0.1f} GB",
+    "tooltip": true,
+    "tooltip-format": "Memory Used: {used:0.1f} GB / {total:0.1f} GB",
     "interval": 5,
     "min-length": 7,
     "max-length": 7
@@ -226,7 +226,8 @@
 
   "cpu": {
     "format": "󰍛 {usage}%",
-    "tooltip": false,
+    "tooltip": true,
+    "tooltip-format": "CPU: {usage}%",
     "interval": 5,
     "min-length": 6,
     "max-length": 6
