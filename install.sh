@@ -74,7 +74,7 @@ install_dependencies() {
   printf "\n\033[1;32mInstalling dependencies...\033[0m\n"
 
   DEPENDENCIES=(
-    bluez-utils brightnessctl pacman-contrib pipewire pipewire-pulse ttf-jetbrains-mono-nerd wireplumber
+    bluez-utils brightnessctl pacman-contrib pipewire pipewire-pulse pulseaudio-utils libnotify ttf-jetbrains-mono-nerd wireplumber
   )
 
   for PACKAGE in "${DEPENDENCIES[@]}"; do

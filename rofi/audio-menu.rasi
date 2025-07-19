@@ -1,0 +1,61 @@
+/* Audio menu */
+
+@theme "~/.config/rofi/theme.rasi"
+
+configuration {
+  font:                     "JetBrainsMono Nerd Font 8";
+  hover-select:             true;
+  me-select-entry:          "MousePrimary";
+  me-accept-entry:          "!MousePrimary";
+}
+
+/* Window */
+
+window {
+  location:                 northeast;
+  anchor:                   north;
+  x-offset:                 -3px;
+  y-offset:                 3px;
+  width:                    400px;
+  border:                   3px;
+  border-radius:            10px;
+  border-color:             @main-br;
+  background-color:         @main-bg;
+  children:                 [ mainbox ];
+}
+
+mainbox {
+  spacing:                  0;
+  background-color:         @main-br;
+  text-color:               @main-fg;
+  children:                 [ listview ];
+}
+
+/* List */
+
+listview {
+  border:                   2px 0 0 0;
+  border-radius:            8px;
+  border-color:             @main-br;
+  lines:                    8;
+  padding:                  6px;
+  background-color:         @main-bg;
+}
+
+element {
+  padding:                  6px;
+  cursor:                   pointer;
+  background-color:         inherit;
+  text-color:               @main-fg;
+}
+element selected.normal {
+  border-radius:            6px;
+  background-color:         @select-bg;
+  text-color:               @select-fg;
+}
+element-text {
+  padding:                  0 6px;
+  cursor:                   inherit;
+  background-color:         inherit;
+  text-color:               inherit;
+}
