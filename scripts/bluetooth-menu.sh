@@ -7,9 +7,9 @@
 # License: MIT
 #
 # Created: July 12, 2025
-# Updated: July 12, 2025
+# Updated: July 19, 2025
 
-rofi_config="$HOME/.config/rofi/bluetooth-menu.rasi"
+ROFI_CONFIG="$HOME/.config/rofi/bluetooth-menu.rasi"
 
 get_device_info() {
   local device_address="$1"
@@ -57,7 +57,6 @@ get_device_info() {
   echo "${device_icon} ${device_name} (${device_address})"
 }
 
-# main loop
 while true; do
   is_powered=$(
     bluetoothctl show |
@@ -75,9 +74,9 @@ while true; do
     rofi_options+=("󰂲  Disable Bluetooth")
     rofi_options+=("󰏌  Scan for devices")
 
+    # extract the address
     while read -r line; do
       if [[ $line == Device* ]]; then
-        # extract only the address
         device_address="${line#Device }"
         device_address="${device_address%% *}"
 
@@ -90,8 +89,8 @@ while true; do
 
     rofi_override=()
 
+  # bluetooth is disabled
   else
-    # bluetooth is disabled
     rofi_options=("󰂯  Enable Bluetooth")
     rofi_override=(
       -theme-str \
@@ -100,13 +99,13 @@ while true; do
     )
   fi
 
-  rofi_prompt=" "
+  ROFI_PROMPT=" "
 
+  # launch rofi
   rofi_selected=$(
-    # launch rofi
     printf "%s\n" "${rofi_options[@]}" |
-      rofi -dmenu -selected-row 0 -p "$rofi_prompt" \
-           -config "$rofi_config" "${rofi_override[@]}" ||
+      rofi -dmenu -selected-row 0 -p "$ROFI_PROMPT" \
+           -config "$ROFI_CONFIG" "${rofi_override[@]}" ||
       pkill -x rofi
   )
 
@@ -116,25 +115,24 @@ while true; do
 
   case $rofi_selected in
     *"Enable Bluetooth")
-      notify-send "Bluetooth enabled" \
-        --icon="package-installed-outdated"
+      notify-send "Bluetooth enabled" --icon="package-installed-outdated"
       rfkill unblock bluetooth
       bluetoothctl power on
       sleep 1
       ;;
     *"Disable Bluetooth")
-      notify-send "Bluetooth disabled" \
-        --icon="package-broken"
+      notify-send "Bluetooth disabled" --icon="package-broken"
       rfkill block bluetooth
       bluetoothctl power off
       exit
       ;;
     *"Scan for devices")
-      notify-send "Press '?' to show help" \
-        --icon="package-installed-outdated"
+      notify-send "Press '?' to show help" --icon="package-installed-outdated"
       kitty --title "󰂱  Bluetooth TUI" bash -c "bluetui"
       ;;
-    *) # device selected
+
+    # device selected
+    *)
       device_name="${rofi_selected%% (*}"
       device_name="${device_name:3}" # removes the icon and leading spaces
 
@@ -143,14 +141,10 @@ while true; do
 
       if [[ -n $device_address ]]; then
         notify-send "Connecting to $device_name" \
-          --icon="package-installed-outdated"
-
+                    --icon="package-installed-outdated"
         bluetoothctl trust "$device_address" &&
-        bluetoothctl pair "$device_address" &&
         bluetoothctl connect "$device_address"
         sleep 3
-
-        is_connected=""
 
         while read -r line; do
           if [[ $line == Connected:* ]]; then
@@ -160,18 +154,18 @@ while true; do
         done <<< "$(bluetoothctl info "$device_address")"
 
         if [[ $is_connected == "yes" ]]; then
-          notify-send "Connected to $device_name" \
-            --icon="package-install"
+          notify-send "Connected to $device_name" --icon="package-install"
           exit
         else
           notify-send "Failed to connect to $device_name" \
-            --icon="package-broken"
+                      --icon="package-broken"
         fi
 
+      # this should not happen
       else
-        notify-send "Device not found" \
-          --icon="package-broken"
+        notify-send "Device not found" --icon="package-broken"
       fi
       ;;
   esac
 done
+
