@@ -142,7 +142,7 @@ while true; do
       if [[ -n $device_address ]]; then
         notify-send "Connecting to $device_name" \
                     --icon="package-installed-outdated"
-        bluetoothctl trust "$device_address" &&
+        bluetoothctl pair "$device_address" &&
         bluetoothctl connect "$device_address"
         sleep 3
 
