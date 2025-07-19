@@ -33,6 +33,7 @@
 }
 
 #cpu,
+#custom-gpu,
 #clock.time {
   font-size: 0;
   text-shadow: none;

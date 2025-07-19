@@ -57,6 +57,7 @@
 @define-color temperature     @mantle;
 @define-color memory          @base;
 @define-color cpu             @surface0;
+@define-color gpu             @surface1;
 @define-color distro-fg       @black;
 @define-color distro-bg       @overlay2;
 @define-color time            @surface0;

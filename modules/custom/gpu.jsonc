@@ -1,0 +1,10 @@
+{
+  "custom/gpu": {
+    "exec": "~/.config/waybar/scripts/gpu-usage.sh",
+    "return-type": "json",
+    "format": "{}",
+    "interval": 5,
+    "min-length": 6,
+    "max-length": 6
+  }
+}

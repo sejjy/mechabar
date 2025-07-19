@@ -43,6 +43,7 @@ tooltip label {
 #custom-temperature,
 #memory,
 #cpu,
+#custom-gpu,
 #idle_inhibitor,
 #clock,
 #custom-wifi,
@@ -62,6 +63,7 @@ tooltip label {
 #custom-left2,
 #custom-left3,
 #custom-left4,
+#custom-left4_5,
 #custom-left5,
 #custom-left6,
 #custom-left7,
@@ -184,8 +186,18 @@ tooltip label {
   background: @cpu;
 }
 
+#custom-left4_5 {
+  color: @gpu;
+  background: @cpu;
+  padding-left: 3px;
+}
+
+#custom-gpu {
+  background: @gpu;
+}
+
 #custom-leftin1 {
-  color: @cpu;
+  color: @gpu;
   margin-bottom: -1px;
 }
 
@@ -412,6 +424,7 @@ tooltip label,
 #custom-left2,
 #custom-left3,
 #custom-left4,
+#custom-left4_5,
 #custom-left5,
 #custom-left6,
 #custom-left7,

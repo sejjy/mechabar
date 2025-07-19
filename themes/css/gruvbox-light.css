@@ -57,6 +57,7 @@
 @define-color temperature     @bg0;
 @define-color memory          @bg1;
 @define-color cpu             @bg2;
+@define-color gpu             @bg3;
 @define-color distro-fg       @black;
 @define-color distro-bg       @yellow;
 @define-color time            @bg2;

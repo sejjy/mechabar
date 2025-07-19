@@ -30,6 +30,9 @@
 
     "custom/left4",
     "cpu",                  // cpu
+
+    "custom/left4_5",
+    "custom/gpu",           // gpu
     "custom/leftin1",
 
     "custom/left5",
@@ -230,6 +233,18 @@
     "interval": 5,
     "min-length": 6,
     "max-length": 6
+  },
+
+  // ────────────────────────────────────────────────────────────────┤ gpu ├───
+
+  "custom/gpu": {
+    "exec": "~/.config/waybar/scripts/gpu-usage.sh",
+    "return-type": "json",
+    "format": "{}",
+    "interval": 5,
+    "min-length": 6,
+    "max-length": 6,
+    "tooltip": true
   },
 
   // ─────────────────────────────────────────────────────────────┤ distro ├───
@@ -453,6 +468,10 @@
     "tooltip": false
   },
   "custom/left4": {
+    "format": "",
+    "tooltip": false
+  },
+  "custom/left4_5": {
     "format": "",
     "tooltip": false
   },
