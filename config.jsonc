@@ -1,0 +1,32 @@
+{
+	"include": [
+		"$HOME/.config/waybar/modules/*.jsonc",
+		"$HOME/.config/waybar/modules/custom/*.jsonc",
+		"$HOME/.config/waybar/modules/hyprland/*.jsonc"
+	],
+	"modules-left": [
+		"custom/theme_switcher",
+		"custom/left_div#1",
+		"hyprland/workspaces",
+		"custom/right_div#1",
+		"hyprland/window"
+	],
+	"modules-center": [
+		"custom/left_div#5",
+		"custom/distro",
+		"custom/right_div#2",
+		"custom/right_inv#1",
+		"clock#time",
+		"custom/right_div#3"
+	],
+	"modules-right": [
+		"battery"
+	],
+	"layer": "top",
+	"height": 0,
+	"width": 0,
+	"margin": 0,
+	"spacing": 0,
+	"mode": "dock",
+	"reload_style_on_change": true
+}

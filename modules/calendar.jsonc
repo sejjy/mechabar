@@ -1,0 +1,40 @@
+{
+	"clock#date": {
+		// "interval":
+		"format": "󰸗 {:%m-%d}",
+		// "timezone":
+		// "timezones":
+		// "locale":
+		"min-length": 8,
+		"max-length": 8,
+		// "rotate":
+		// "on-click":
+		// "on-click-middle":
+		// "on-click-right":
+		// "on-scroll-up":
+		// "on-scroll-down":
+		// "smooth-scrolling-threshold":
+		// "tooltip":
+		"tooltip-format": "{calendar}",
+		"calendar": {
+			// "mode":
+			"mode-mon-col": 6,
+			// "week-pos":
+			// "on-scroll":
+			"format": {
+				// "months":
+				// "days":
+				// "weeks":
+				// "weekdays":
+				// "today":
+			}
+		},
+		"actions": {
+			"on-click": "mode"
+			// "on-click-middle":
+			// "on-click-right":
+			// "on-scroll-up":
+			// "on-scroll-down":
+		}
+	}
+}

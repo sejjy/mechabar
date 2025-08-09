@@ -1,0 +1,20 @@
+{
+	"clock#time": {
+		// "interval":
+		"format": "{:%H:%M}",
+		// "timezone":
+		// "timezones":
+		// "locale":
+		"min-length": 6,
+		"max-length": 6,
+		// "rotate": 0,
+		// "on-click":
+		// "on-click-middle":
+		// "on-click-right":
+		// "on-scroll-up":
+		// "on-scroll-down":
+		// "smooth-scrolling-threshold":
+		// "tooltip":
+		"tooltip-format": "Standard Time: {:%I:%M %p}"
+	}
+}

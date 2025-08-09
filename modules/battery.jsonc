@@ -1,0 +1,28 @@
+{
+	"battery": {
+		// "bat":
+		// "adapter":
+		// "design-capacity":
+		// "full-at":
+		"interval": 1,
+		"states": { "warning": 20, "critical": 10 },
+		"format": "{icon} {capacity}%",
+		"format-time": "{H} hr {M} min",
+		"format-icons": [ "󰂎", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹" ],
+		"format-charging": "󰉁 {capacity}%",
+		"min-length": 7,
+		"max-length": 7,
+		// "rotate":
+		// "on-click":
+		// "on-click-middle":
+		// "on-click-right":
+		// "on-scroll-up":
+		// "on-scroll-down":
+		// "smooth-scrolling-threshold":
+		// "tooltip":
+		"tooltip-format": "Discharging: {time}",
+		"tooltip-format-charging": "Charging: {time}"
+		// "weighted-average":
+		// "bat-compatibility":
+	}
+}

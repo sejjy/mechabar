@@ -1,0 +1,22 @@
+{
+	"hyprland/workspaces": {
+		// "active-only":
+		// "hide-active":
+		// "all-outputs":
+		"format": "{icon}",
+		"format-icons": { "active": "󰣏", "default": "" },
+		"persistent-workspaces": { "*": 5 },
+		// "persistent-only":
+		// "show-special":
+		// "special-visible-only":
+		// "sort-by":
+		// "window-rewrite":
+		// "window-rewrite-default":
+		// "format-window-separator":
+		// "move-to-monitor":
+		// "ignore-workspaces":
+		// "on-scroll-up":
+		// "on-scroll-down":
+		"cursor": true
+	}
+}

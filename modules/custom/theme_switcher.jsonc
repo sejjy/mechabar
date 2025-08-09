@@ -1,0 +1,8 @@
+{
+	"custom/theme_switcher": {
+		"format": "󰍜",
+		"min-length": 4,
+		"max-length": 4,
+		"tooltip": false
+	}
+}

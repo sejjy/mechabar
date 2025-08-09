@@ -1,0 +1,19 @@
+{
+	"hyprland/window": {
+		"format": "{}",
+		"rewrite": {
+			"^$": " Hyprland",
+			"^(?:kitty|zsh|~)$": " Terminal",
+			"^tmux\\b.*$": " Tmux",
+			"^Mozilla Firefox$": "󰈹 Mozilla Firefox",
+			"^(.*) — Mozilla Firefox$": "󰈹 $1",
+			"^Zen Browser$": "󰺕 Zen Browser",
+			"^(.*) — Zen Browser$": "󰺕 $1"
+		},
+		// "separate-outputs":
+		// "icon":
+		// "icon-size":
+		"tooltip": false,
+		"swap-icon-label": false
+	}
+}

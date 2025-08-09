@@ -1,0 +1,140 @@
+@import "theme.css";
+
+* {
+	font-size: 16px;
+	font-family: "0xProto Nerd Font";
+	font-weight: bold;
+}
+
+/* outline */
+window#waybar {
+	background-color: @shadow;
+}
+
+/* backround */
+window#waybar>box {
+	margin: 4px;
+	background-color: @main-bg;
+}
+
+tooltip {
+	border: 2px solid @main-br;
+	border-radius: 10px;
+	background-color: @main-bg;
+}
+
+tooltip label {
+	margin: 0 4px;
+	font-weight: normal;
+	color: @main-fg;
+}
+
+tooltip decoration {
+	border: none;
+	background-color: transparent;
+}
+
+#custom-theme_switcher,
+#workspaces,
+#window,
+#clock,
+#battery {
+	color: @main-fg;
+}
+
+#custom-left_div.1,
+#custom-left_div.2,
+#custom-left_div.3,
+#custom-left_div.4,
+#custom-left_div.5,
+#custom-left_div.6,
+#custom-left_div.7,
+#custom-left_div.8,
+#custom-right_div.1,
+#custom-right_div.2,
+#custom-right_div.3,
+#custom-right_div.4,
+#custom-right_div.5,
+#custom-left_inv.1,
+#custom-left_inv.2,
+#custom-right_inv.1 {
+	font-size: 23.1px;
+	/* +0.1 for perfectionism, please don't ask me why */
+}
+
+/* per-module styling */
+
+#custom-left_div.1,
+#custom-right_div.1 {
+	color: @workspaces;
+}
+
+#workspaces {
+	padding: 0 1px;
+	background-color: @workspaces;
+}
+
+#workspaces button {
+	border-radius: 16px;
+	padding: 0 8px;
+	transition: none;
+}
+
+#workspaces button:hover {
+	background-color: @hover-bg;
+	color: @hover-fg;
+}
+
+#workspaces button.active {
+	padding: 0 16px;
+	background-color: @accent-bg;
+	color: @accent-fg;
+	text-shadow: 0 0 2px @shadow;
+}
+
+#window {
+	margin-left: 12px;
+}
+
+#window label {
+	font-weight: normal;
+}
+
+#custom-left_div.5,
+#custom-right_div.2 {
+	background-color: @accent-fg;
+	color: @accent-bg;
+}
+
+#custom-distro {
+	padding: 0 10px 0 5px;
+	background-color: @accent-bg;
+	font-size: 23px;
+	color: @accent-fg;
+	text-shadow: 0 0 2px @shadow;
+}
+
+#custom-right_inv.1,
+#custom-right_div.3 {
+	color: @time;
+}
+
+#clock.time {
+	background-color: @time;
+}
+
+#battery {
+	background-color: @battery;
+}
+
+#battery.warning {
+	color: @warning;
+}
+
+#battery.critical {
+	color: @critical;
+}
+
+#battery.charging {
+	color: @charging;
+}
