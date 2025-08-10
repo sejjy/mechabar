@@ -1,6 +1,6 @@
 {
 	"memory": {
-		"interval": 5,
+		"interval": 10,
 		"format": "󰘚 {percentage}%",
 		"format-critical": "󰀦 {percentage}%",
 		// "rotate":
