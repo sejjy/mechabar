@@ -1,4 +1,4 @@
-@import "theme.css";
+@import "themes/catppuccin-mocha.css";
 
 * {
 	font-size: 16px;
@@ -6,37 +6,24 @@
 	font-weight: bold;
 }
 
-/* outline */
+/*---------------------
+	general styling
+---------------------*/
+
 window#waybar {
 	background-color: @shadow;
 }
 
-/* backround */
 window#waybar>box {
 	margin: 4px;
 	background-color: @main-bg;
 }
 
-tooltip {
-	border: 2px solid @main-br;
-	border-radius: 10px;
-	background-color: @main-bg;
-}
-
-tooltip label {
-	margin: 0 4px;
-	font-weight: normal;
-	color: @main-fg;
-}
-
-tooltip decoration {
-	border: none;
-	background-color: transparent;
-}
-
 #custom-theme_switcher,
 #workspaces,
 #window,
+#memory,
+#cpu,
 #clock,
 #battery {
 	color: @main-fg;
@@ -59,10 +46,30 @@ tooltip decoration {
 #custom-left_inv.2,
 #custom-right_inv.1 {
 	font-size: 23.1px;
-	/* +0.1 for perfectionism, please don't ask me why */
 }
 
-/* per-module styling */
+tooltip {
+	border: 2px solid @main-br;
+	border-radius: 10px;
+	background-color: @main-bg;
+}
+
+tooltip label {
+	margin: 0 4px;
+	font-weight: normal;
+	color: @main-fg;
+}
+
+tooltip decoration {
+	border: none;
+	background-color: transparent;
+}
+
+/*------------------------
+	per-module styling
+------------------------*/
+
+/* workspaces */
 
 #custom-left_div.1,
 #custom-right_div.1 {
@@ -72,6 +79,10 @@ tooltip decoration {
 #workspaces {
 	padding: 0 1px;
 	background-color: @workspaces;
+}
+
+#workspaces label {
+	font-size: 20px;
 }
 
 #workspaces button {
@@ -92,13 +103,51 @@ tooltip decoration {
 	text-shadow: 0 0 2px @shadow;
 }
 
+/* window */
+
 #window {
-	margin-left: 12px;
+	margin: 0 12px;
 }
 
 #window label {
 	font-weight: normal;
 }
+
+/* memory */
+
+#custom-left_div.3 {
+	color: @memory;
+	background-color: @temperature;
+}
+
+#memory {
+	background-color: @memory;
+}
+
+#memory.warning {
+	color: @warning;
+}
+
+#memory.critical {
+	color: @critical;
+}
+
+/* cpu */
+
+#custom-left_div.4 {
+	color: @cpu;
+	background-color: @memory;
+}
+
+#cpu {
+	background-color: @cpu;
+}
+
+#custom-left_inv.1 {
+	color: @cpu;
+}
+
+/* distro */
 
 #custom-left_div.5,
 #custom-right_div.2 {
@@ -114,14 +163,22 @@ tooltip decoration {
 	text-shadow: 0 0 2px @shadow;
 }
 
-#custom-right_inv.1,
-#custom-right_div.3 {
+/* time */
+
+#custom-right_inv.1 {
 	color: @time;
 }
 
 #clock.time {
 	background-color: @time;
 }
+
+#custom-right_div.3 {
+	color: @time;
+	background-color: @date;
+}
+
+/* battery */
 
 #battery {
 	background-color: @battery;

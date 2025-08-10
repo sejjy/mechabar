@@ -4,6 +4,11 @@
 		"$HOME/.config/waybar/modules/custom/*.jsonc",
 		"$HOME/.config/waybar/modules/hyprland/*.jsonc"
 	],
+
+	/*------------
+		layout
+	------------*/
+
 	"modules-left": [
 		"custom/theme_switcher",
 		"custom/left_div#1",
@@ -12,6 +17,11 @@
 		"hyprland/window"
 	],
 	"modules-center": [
+		"custom/left_div#3",
+		"memory",
+		"custom/left_div#4",
+		"cpu",
+		"custom/left_inv#1",
 		"custom/left_div#5",
 		"custom/distro",
 		"custom/right_div#2",
@@ -22,11 +32,31 @@
 	"modules-right": [
 		"battery"
 	],
+
+	/*-------------
+		options
+	-------------*/
+
 	"layer": "top",
+	// "output":
+	// "position":
 	"height": 0,
 	"width": 0,
 	"margin": 0,
+	// "margin-top":
+	// "margin-left":
+	// "margin-bottom":
+	// "margin-right":
 	"spacing": 0,
+	// "name":
 	"mode": "dock",
+	// "start_hidden":
+	// "modifier-reset":
+	// "exclusive":
+	// "fixed-center":
+	// "passthrough":
+	// "ipc":
+	// "id":
 	"reload_style_on_change": true
+	// "gtk-layer-shell":
 }

@@ -1,5 +1,4 @@
 /* catppuccin mocha */
-
 @define-color rosewater		#f5e0dc;
 @define-color flamingo		#f2cdcd;
 @define-color pink			#f5c2e7;
@@ -28,9 +27,9 @@
 @define-color crust			#11111b;
 
 /*
-	fg - foreground
-	bg - background
 	br - border
+	bg - background
+	fg - foreground
 */
 
 /* main colors */
