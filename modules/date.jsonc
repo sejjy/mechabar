@@ -5,8 +5,8 @@
 		// "timezone":
 		// "timezones":
 		// "locale":
-		"min-length": 8,
-		"max-length": 8,
+		"min-length": 9,
+		"max-length": 9,
 		// "rotate":
 		// "on-click":
 		// "on-click-middle":
@@ -17,7 +17,7 @@
 		// "tooltip":
 		"tooltip-format": "{calendar}",
 		"calendar": {
-			// "mode":
+			"mode": "month",
 			"mode-mon-col": 6,
 			// "week-pos":
 			// "on-scroll":

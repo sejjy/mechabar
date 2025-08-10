@@ -22,6 +22,7 @@ window#waybar>box {
 #custom-theme_switcher,
 #workspaces,
 #window,
+#temperature,
 #memory,
 #cpu,
 #clock,
@@ -113,6 +114,16 @@ tooltip decoration {
 	font-weight: normal;
 }
 
+/* temperature */
+
+#custom-left_div.2 {
+	color: @temperature;
+}
+
+#temperature {
+	background-color: @temperature;
+}
+
 /* memory */
 
 #custom-left_div.3 {
@@ -176,6 +187,17 @@ tooltip decoration {
 #custom-right_div.3 {
 	color: @time;
 	background-color: @date;
+}
+
+/* date */
+
+#clock.date {
+	background-color: @date;
+}
+
+#custom-right_div.4 {
+	color: @date;
+	background-color: @tray;
 }
 
 /* battery */
