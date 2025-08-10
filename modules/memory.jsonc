@@ -1,0 +1,19 @@
+{
+	"memory": {
+		"interval": 5,
+		"format": "󰘚 {percentage}%",
+		"format-critical": "󰀦 {percentage}%",
+		// "rotate":
+		"states": { "warning": 75, "critical": 90 },
+		"min-length": 7,
+		"max-length": 7,
+		// "on-click":
+		// "on-click-middle":
+		// "on-click-right":
+		// "on-scroll-up":
+		// "on-scroll-down":
+		// "smooth-scrolling-threshold":
+		// "tooltip":
+		"tooltip-format": "Memory Used: {used:0.1f} GB / {total:0.1f} GB"
+	}
+}

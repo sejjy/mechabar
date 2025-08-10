@@ -1,0 +1,17 @@
+{
+	"cpu": {
+		"interval": 5,
+		"format": "󰍛 {usage}%",
+		"min-length": 7,
+		"max-length": 7,
+		// "rotate":
+		"states": { "warning": 20, "critical": 10 },
+		// "on-click":
+		// "on-click-middle":
+		// "on-click-right":
+		// "on-scroll-up":
+		// "on-scroll-down":
+		// "smooth-scrolling-threshold":
+		"tooltip": false
+	}
+}
