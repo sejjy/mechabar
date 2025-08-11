@@ -25,9 +25,17 @@ window#waybar>box {
 #temperature,
 #memory,
 #cpu,
+#idle_inhibitor,
 #clock,
+#network,
 #battery {
 	color: @main-fg;
+}
+
+#idle_inhibitor:hover,
+#clock.date:hover,
+#network:hover {
+	color: @hover-fg;
 }
 
 #custom-left_div.1,
@@ -56,7 +64,7 @@ tooltip {
 }
 
 tooltip label {
-	margin: 0 4px;
+	margin: 2px 4px;
 	font-weight: normal;
 	color: @main-fg;
 }
@@ -101,7 +109,6 @@ tooltip decoration {
 	padding: 0 16px;
 	background-color: @accent-bg;
 	color: @accent-fg;
-	text-shadow: 0 0 2px @shadow;
 }
 
 /* window */
@@ -174,14 +181,19 @@ tooltip decoration {
 	text-shadow: 0 0 2px @shadow;
 }
 
-/* time */
+/* idle inhibitor and time */
 
 #custom-right_inv.1 {
 	color: @time;
 }
 
+#idle_inhibitor {
+	background-color: @time;
+}
+
 #clock.time {
 	background-color: @time;
+	padding-right: 6px;
 }
 
 #custom-right_div.3 {
@@ -193,11 +205,22 @@ tooltip decoration {
 
 #clock.date {
 	background-color: @date;
+	padding-left: 6px;
 }
 
 #custom-right_div.4 {
 	color: @date;
 	background-color: @tray;
+}
+
+/* tray */
+
+#network {
+	background-color: @tray;
+}
+
+#custom-right_div.5 {
+	color: @tray;
 }
 
 /* battery */

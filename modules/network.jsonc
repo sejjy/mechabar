@@ -1,0 +1,31 @@
+{
+	"network": {
+		// "interface":
+		"interval": 10,
+		// "family":
+		// "format":
+		"format-ethernet": "󰈀",
+		"format-wifi": "{icon}",
+		// "format-linked":
+		"format-disconnected": "󰤯",
+		"format-disabled": "󰤮",
+		// "format-alt":
+		"format-icons": [ "󰤟", "󰤢", "󰤥", "󰤨" ],
+		// "rotate":
+		"min-length": 3,
+		"max-length": 3,
+		"on-click": "kitty --title '󰤨 Wi-Fi Networks' ~/.config/waybar/scripts/network.sh",
+		// "on-click-middle":
+		"on-click-right": "nmcli radio wifi off && notify-send 'Wi-Fi' 'Disabled'",
+		// "on-scroll-up":
+		// "on-scroll-down":
+		// "smooth-scrolling-threshold":
+		// "tooltip":
+		"tooltip-format": "{ifname}",
+		"tooltip-format-ethernet": "{ifname}",
+		"tooltip-format-wifi": "SSID: {essid}\nIP Addr: {ipaddr}/{cidr}\nStrength: {signalStrength}%\nFrequency: {frequency} GHz",
+		"tooltip-format-disconnected": "Wi-Fi Disconnected",
+		"tooltip-format-disabled": "Wi-Fi Disabled",
+		"cursor": true
+	}
+}

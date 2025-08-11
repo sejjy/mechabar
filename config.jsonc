@@ -28,10 +28,13 @@
 		"custom/distro",
 		"custom/right_div#2",
 		"custom/right_inv#1",
+		"idle_inhibitor",
 		"clock#time",
 		"custom/right_div#3",
 		"clock#date",
-		"custom/right_div#4"
+		"custom/right_div#4",
+		"network",
+		"custom/right_div#5"
 	],
 	"modules-right": [
 		"battery"

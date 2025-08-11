@@ -1,0 +1,20 @@
+{
+	"idle_inhibitor": {
+		"format": "{icon}",
+		"format-icons": { "activated": "󰈈", "deactivated": "󰈉" },
+		// "rotate":
+		"min-length": 3,
+		"max-length": 3,
+		// "on-click":
+		// "on-click-middle":
+		// "on-click-right":
+		// "on-scroll-up":
+		// "on-scroll-down":
+		// "smooth-scrolling-threshold":
+		// "tooltip":
+		"tooltip-format-activated": "Presentation Mode ({status})",
+		"tooltip-format-deactivated": "Idle Mode ({status})",
+		"start-activated": false
+		// "timeout":
+	}
+}
