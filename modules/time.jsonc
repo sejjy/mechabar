@@ -5,8 +5,8 @@
 		// "timezone":
 		// "timezones":
 		// "locale":
-		"min-length": 6,
-		"max-length": 6,
+		"min-length": 5,
+		"max-length": 5,
 		// "rotate": 0,
 		// "on-click":
 		// "on-click-middle":

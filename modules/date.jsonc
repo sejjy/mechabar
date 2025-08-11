@@ -5,8 +5,8 @@
 		// "timezone":
 		// "timezones":
 		// "locale":
-		"min-length": 9,
-		"max-length": 9,
+		"min-length": 8,
+		"max-length": 8,
 		// "rotate":
 		// "on-click":
 		// "on-click-middle":
@@ -22,11 +22,11 @@
 			// "week-pos":
 			// "on-scroll":
 			"format": {
-				// "months":
+				"months": "<b>{}</b>",
 				// "days":
 				// "weeks":
 				// "weekdays":
-				// "today":
+				"today": "<b>{}</b>"
 			}
 		},
 		"actions": {
