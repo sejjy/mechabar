@@ -28,13 +28,15 @@ window#waybar>box {
 #idle_inhibitor,
 #clock,
 #network,
+#bluetooth,
 #battery {
 	color: @main-fg;
 }
 
 #idle_inhibitor:hover,
 #clock.date:hover,
-#network:hover {
+#network:hover,
+#bluetooth:hover {
 	color: @hover-fg;
 }
 
@@ -111,14 +113,19 @@ tooltip decoration {
 	color: @accent-fg;
 }
 
-/* window */
+/* window and windowcount */
 
 #window {
-	margin: 0 12px;
+	margin-left: 12px;
 }
 
 #window label {
 	font-weight: normal;
+}
+
+#windowcount {
+	color: @hover-fg;
+	margin-right: 12px;
 }
 
 /* temperature */
@@ -215,7 +222,8 @@ tooltip decoration {
 
 /* tray */
 
-#network {
+#network,
+#bluetooth {
 	background-color: @tray;
 }
 
