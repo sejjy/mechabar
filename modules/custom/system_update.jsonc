@@ -1,19 +1,19 @@
 {
-	"custom/theme_switcher": {
-		"exec": "~/.config/waybar/scripts/theme-switcher.sh",
+	"custom/system_update": {
+		"exec": "~/.config/waybar/scripts/system-update.sh",
 		// "exec-if":
 		// "exec-on-event":
 		// "hide-empty-text":
 		"return-type": "json",
-		// "interval":
+		"interval": 3600,
 		// "restart-interval":
 		// "signal":
 		"format": "{}",
 		// "format-icons":
 		// "rotate":
-		"min-length": 4,
-		"max-length": 4,
-		"on-click": "~/.config/waybar/scripts/theme-switcher.sh"
+		"min-length": 3,
+		"max-length": 3,
+		"on-click": "~/.config/waybar/scripts/system-update.sh"
 		// "on-click-middle":
 		// "on-click-right":
 		// "on-scroll-up":

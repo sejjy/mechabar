@@ -1,8 +1,8 @@
 {
 	"include": [
-		"$HOME/.config/waybar/modules/*.jsonc",
-		"$HOME/.config/waybar/modules/custom/*.jsonc",
-		"$HOME/.config/waybar/modules/hyprland/*.jsonc"
+		"~/.config/waybar/modules/*.jsonc",
+		"~/.config/waybar/modules/custom/*.jsonc",
+		"~/.config/waybar/modules/hyprland/*.jsonc"
 	],
 
 	/*------------
@@ -36,10 +36,13 @@
 		"custom/right_div#4",
 		"network",
 		"bluetooth",
+		"custom/system_update",
 		"custom/right_div#5"
 	],
 	"modules-right": [
-		"battery"
+		"custom/left_div#8",
+		"battery",
+		"custom/left_inv#2"
 	],
 
 	/*-------------

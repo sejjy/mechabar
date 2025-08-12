@@ -29,14 +29,17 @@ window#waybar>box {
 #clock,
 #network,
 #bluetooth,
+#custom-system_update,
 #battery {
 	color: @main-fg;
 }
 
+#custom-theme_switcher:hover,
 #idle_inhibitor:hover,
 #clock.date:hover,
 #network:hover,
-#bluetooth:hover {
+#bluetooth:hover,
+#custom-system_update:hover {
 	color: @hover-fg;
 }
 
@@ -223,7 +226,8 @@ tooltip decoration {
 /* tray */
 
 #network,
-#bluetooth {
+#bluetooth,
+#custom-system_update {
 	background-color: @tray;
 }
 
@@ -232,6 +236,12 @@ tooltip decoration {
 }
 
 /* battery */
+
+
+#custom-left_div.8 {
+	color: @battery;
+	background-color: @backlight;
+}
 
 #battery {
 	background-color: @battery;
@@ -247,4 +257,8 @@ tooltip decoration {
 
 #battery.charging {
 	color: @charging;
+}
+
+#custom-left_inv.2 {
+	color: @battery;
 }
