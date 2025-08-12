@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
 
+# connect to a Wi-Fi network using nmcli and fzf
+#
+# Author: Jesse Mirabel <github.com/sejjy>
+# Created: August 11, 2025
+# License: MIT
+
 status=$(nmcli radio wifi)
 
 if [[ $status == "disabled" ]]; then
@@ -7,26 +13,28 @@ if [[ $status == "disabled" ]]; then
 	notify-send "Wi-Fi" "Enabled"
 fi
 
-echo "Scanning for networks..."
+echo -n "Retrieving networks..."
 
-for _ in {1..10}; do
+for i in {1..5}; do
 	output=$(nmcli device wifi list)
-	header=$(head -n 1 <<<"$output")
 	list=$(tail -n +2 <<<"$output")
 
 	# networks found
 	[[ -n "$list" ]] && break
 
-	nmcli device wifi rescan &>/dev/null
+	((i < 5)) && echo -en "\nScanning for networks... ($i/5)"
+	nmcli device wifi rescan 2>/dev/null
 	sleep 1
 done
 
 if [[ -z "$list" ]]; then
-	notify-send "Wi-Fi" "No networks found" --urgency=critical
+	notify-send "Wi-Fi" "No networks found"
 	exit 1
 fi
 
-# fzf config
+header=$(head -n 1 <<<"$output")
+
+# fzf options
 options=(
 	--border=sharp
 	--border-label=" Wi-Fi Networks "
@@ -38,8 +46,8 @@ options=(
 	--reverse
 )
 
-# catppuccin mocha
-# https://github.com/catppuccin/fzf
+# fzf theme (catppuccin mocha)
+# source: https://github.com/catppuccin/fzf
 colors=(
 	--color="bg+:#313244,bg:#1E1E2E,spinner:#F5E0DC,hl:#F38BA8"
 	--color="fg:#CDD6F4,header:#F38BA8,info:#CBA6F7,pointer:#F5E0DC"
@@ -50,7 +58,7 @@ colors=(
 
 options+=("${colors[@]}")
 
-# selected network
+# extract the BSSID of the selected network
 bssid=$(fzf "${options[@]}" <<<"$list" | awk '{print $1}')
 
 [[ -z "$bssid" ]] && exit 0
@@ -60,10 +68,10 @@ if [[ $bssid == "*" ]]; then
 	exit 0
 fi
 
-echo "Connecting..."
+echo -en "\nConnecting..."
 
 if nmcli device wifi connect "$bssid" --ask; then
 	notify-send "Wi-Fi" "Successfully connected"
 else
-	notify-send "Wi-Fi" "Connection failed" --urgency=critical
+	notify-send "Wi-Fi" "Connection failed"
 fi
