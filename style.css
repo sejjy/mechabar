@@ -20,7 +20,6 @@ window#waybar>box {
 }
 
 #custom-theme_switcher,
-.group-profile,
 #workspaces,
 #window,
 #temperature,
@@ -94,6 +93,7 @@ tooltip decoration {
 
 #custom-user {
 	padding-right: 12px;
+	color: @accent-bg;
 }
 
 /* workspaces */
@@ -109,13 +109,12 @@ tooltip decoration {
 }
 
 #workspaces label {
-	font-size: 20px;
+	font-size: 23px;
 }
 
 #workspaces button {
 	border-radius: 16px;
-	padding: 0 8px;
-	transition: none;
+	padding: 0 10px;
 }
 
 #workspaces button:hover {
@@ -124,9 +123,7 @@ tooltip decoration {
 }
 
 #workspaces button.active {
-	padding: 0 16px;
-	background-color: @accent-bg;
-	color: @accent-fg;
+	color: @accent-bg;
 }
 
 /* window and window count */
@@ -306,16 +303,13 @@ tooltip decoration {
 /* power */
 
 #custom-power {
-	margin: 0 4px;
 	border-radius: 16px;
 	padding: 0 19px 0 16px;
-	background-color: @accent-bg;
+	background-color: @accent-fg;
 	font-size: 20px;
-	color: @accent-fg;
+	color: @accent-bg;
 }
 
 #custom-power:hover {
 	background-color: @hover-bg;
-	color: @hover-fg;
-	text-shadow: none;
 }
