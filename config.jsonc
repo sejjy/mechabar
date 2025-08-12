@@ -40,9 +40,15 @@
 		"custom/right_div#5"
 	],
 	"modules-right": [
+		"mpris",
+		"custom/left_div#6",
+		"wireplumber",
+		"custom/left_div#7",
+		"backlight",
 		"custom/left_div#8",
 		"battery",
-		"custom/left_inv#2"
+		"custom/left_inv#2",
+		"custom/power"
 	],
 
 	/*-------------

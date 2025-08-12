@@ -30,7 +30,11 @@ window#waybar>box {
 #network,
 #bluetooth,
 #custom-system_update,
-#battery {
+#mpris,
+#wireplumber,
+#backlight,
+#battery,
+#custom-power {
 	color: @main-fg;
 }
 
@@ -39,7 +43,9 @@ window#waybar>box {
 #clock.date:hover,
 #network:hover,
 #bluetooth:hover,
-#custom-system_update:hover {
+#custom-system_update:hover,
+#mpris:hover,
+#wireplumber:hover {
 	color: @hover-fg;
 }
 
@@ -116,7 +122,7 @@ tooltip decoration {
 	color: @accent-fg;
 }
 
-/* window and windowcount */
+/* window and window count */
 
 #window {
 	margin-left: 12px;
@@ -235,6 +241,33 @@ tooltip decoration {
 	color: @tray;
 }
 
+/* mpris */
+
+#mpris {
+	padding: 0 12px;
+}
+
+/* wireplumber */
+
+#custom-left_div.6 {
+	color: @wireplumber;
+}
+
+#wireplumber {
+	background-color: @wireplumber;
+}
+
+/* backlight */
+
+#custom-left_div.7 {
+	color: @backlight;
+	background-color: @wireplumber;
+}
+
+#backlight {
+	background-color: @backlight;
+}
+
 /* battery */
 
 
@@ -261,4 +294,21 @@ tooltip decoration {
 
 #custom-left_inv.2 {
 	color: @battery;
+}
+
+/* power */
+
+#custom-power {
+	margin: 0 4px;
+	border-radius: 16px;
+	padding: 0 19px 0 16px;
+	background-color: @accent-bg;
+	font-size: 20px;
+	color: @accent-fg;
+}
+
+#custom-power:hover {
+	background-color: @hover-bg;
+	color: @hover-fg;
+	text-shadow: none;
 }

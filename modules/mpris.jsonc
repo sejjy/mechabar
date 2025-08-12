@@ -1,0 +1,29 @@
+{
+	"mpris": {
+		// "player":
+		// "ignored-players":
+		// "interval":
+		"format": "{player_icon} {title} - {artist}",
+		"format-paused": "{status_icon} {title} - {artist}",
+		"tooltip-format": "Playing: {title} - {artist}",
+		"tooltip-format-paused": "Paused: {title} - {artist}",
+		// "enable-tooltip-len-limits":
+		// "on-click":
+		// "on-click-middle":
+		// "on-click-right":
+		"player-icons": {
+			"default": "󰝚",
+			"spotify": "󰓇",
+			"firefox": "󰗃"
+		},
+		"status-icons": {
+			"paused": "󰏤"
+		},
+		// "dynamic-order":
+		// "dynamic-len":
+		// "dynamic-separator":
+		// "dynamic-importance-order":
+		// "min-length":
+		"max-length": 1000
+	}
+}

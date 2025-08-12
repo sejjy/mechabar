@@ -1,0 +1,22 @@
+{
+	"backlight": {
+		// "interval":
+		"format": "{icon} {percent}%",
+		"format-icons": [ "", "", "", "", "", "", "", "", "" ],
+		"min-length": 7,
+		"max-length": 7,
+		// "rotate":
+		// "states":
+		// "on-click":
+		// "on-click-middle":
+		// "on-click-right":
+		"on-scroll-up": "brightnessctl set 1%+",
+		"on-scroll-down": "brightnessctl set 1%-",
+		// "smooth-scrolling-threshold":
+		// "reverse-scrolling":
+		// "reverse-mouse-scrolling":
+		// "scroll-step":
+		"tooltip": false
+		// "tooltip-format":
+	}
+}

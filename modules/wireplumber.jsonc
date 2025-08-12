@@ -1,0 +1,29 @@
+{
+	"wireplumber": {
+		"format": "{icon} {volume}%",
+		"format-muted": "󰝟 {volume}%",
+		// "format-source":
+		// "format-source-muted":
+		"format-icons": {
+			"default": [ "󰕿", "󰖀", "󰕾" ],
+			"headphone": "󰋋",
+			"headset": "󰋋"
+		},
+		// "rotate":
+		// "states":
+		"min-length": 7,
+		"max-length": 7,
+		// "scroll-step":
+		"on-click": "wpctl set-mute @DEFAULT_SINK@ toggle",
+		// "on-click-middle":
+		// "on-click-right":
+		// "on-scroll-up":
+		// "on-scroll-down":
+		// "tooltip":
+		"tooltip-format": "Device: {node_name}",
+		// "max-volume":
+		// "reverse-scrolling":
+		// "node-type":
+		"cursor": true
+	}
+}
