@@ -10,7 +10,7 @@
 	------------*/
 
 	"modules-left": [
-		"custom/theme_switcher",
+		"group/user",
 		"custom/left_div#1",
 		"hyprland/workspaces",
 		"custom/right_div#1",

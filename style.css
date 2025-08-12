@@ -20,6 +20,7 @@ window#waybar>box {
 }
 
 #custom-theme_switcher,
+.group-user,
 #workspaces,
 #window,
 #temperature,
@@ -88,6 +89,12 @@ tooltip decoration {
 /*------------------------
 	per-module styling
 ------------------------*/
+
+/* group-user */
+
+#custom-user {
+	padding-right: 12px;
+}
 
 /* workspaces */
 

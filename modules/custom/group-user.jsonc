@@ -1,0 +1,15 @@
+{
+	"group/user": {
+		"orientation": "horizontal",
+		"modules": [
+			"custom/theme_switcher",
+			"custom/user"
+		],
+		"drawer": {
+			// "transition-duration":
+			// "transition-left-to-right":
+			"children-class": "group-user"
+			// "click-to-reveal":
+		}
+	}
+}
