@@ -2,6 +2,7 @@
 	"include": [
 		"~/.config/waybar/modules/*.jsonc",
 		"~/.config/waybar/modules/custom/*.jsonc",
+		"~/.config/waybar/modules/group/*.jsonc",
 		"~/.config/waybar/modules/hyprland/*.jsonc"
 	],
 
@@ -10,7 +11,7 @@
 	------------*/
 
 	"modules-left": [
-		"group/user",
+		"group/profile",
 		"custom/left_div#1",
 		"hyprland/workspaces",
 		"custom/right_div#1",
