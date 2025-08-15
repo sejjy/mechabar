@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# connect to a Wi-Fi network using nmcli and fzf
+# Connect to a Wi-Fi network using nmcli and fzf
 #
 # Author: Jesse Mirabel <github.com/sejjy>
 # Created: August 11, 2025
