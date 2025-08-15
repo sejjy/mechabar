@@ -25,13 +25,10 @@ batt_level=$(upower -i "$battery_path" | awk '/percentage:/ {print $2}')
 case $battery_state in
 	"charging")
 		batt_state="Charging"
-		# Icon theme: tela-circle-icon-theme-dracula
-		batt_icon="090-charging"
 		;;
 	"discharging")
 		batt_state="Discharging"
-		batt_icon="090"
 		;;
 esac
 
-notify-send "Battery ${batt_state} (${batt_level})" -i "battery-${batt_icon}" -r 50
+notify-send "Battery ${batt_state} (${batt_level})" -r 50
