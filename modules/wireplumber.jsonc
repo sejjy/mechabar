@@ -17,8 +17,8 @@
 		"on-click": "wpctl set-mute @DEFAULT_SINK@ toggle",
 		// "on-click-middle":
 		// "on-click-right":
-		// "on-scroll-up":
-		// "on-scroll-down":
+		"on-scroll-up": "wpctl set-volume @DEFAULT_SINK@ 1%+",
+		"on-scroll-down": "wpctl set-volume @DEFAULT_SINK@ 1%-",
 		// "tooltip":
 		"tooltip-format": "Device: {node_name}",
 		// "max-volume":
