@@ -3,12 +3,14 @@
 		"format": "{}",
 		"rewrite": {
 			"^$": " Hyprland",
-			"^(?:kitty|zsh|~)$": " Terminal",
-			"^tmux\\b.*$": " Tmux",
-			"^Mozilla Firefox$": "󰈹 Mozilla Firefox",
-			"^(.*) — Mozilla Firefox$": "󰈹 $1",
-			"^Zen Browser$": "󰺕 Zen Browser",
-			"^(.*) — Zen Browser$": "󰺕 $1"
+			"^(kitty|~|zsh)$": " Terminal",
+			"^(~/|…|/)(.*)$": " $1$2",
+			"^(tmux) (.*)$": " $1 $2",
+			"^(nvim) (.*)$": " $1 $2",
+			"^(vim) (.*)$": " $1 $2",
+			"^((Mozilla Firefox)|(.*) — Mozilla Firefox)$": "󰈹 $2$3",
+			"^((Zen Browser)|(.*) — Zen Browser)$": "󰺕 $2$3",
+			"^((Visual Studio Code)|(.*) - Visual Studio Code)$": "󰨞 $2$3"
 		},
 		// "separate-outputs":
 		// "icon":
