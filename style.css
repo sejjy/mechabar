@@ -108,7 +108,6 @@ button.active label {
 	font-size: 23px;
 	background-color: @accent;
 	color: @main-bg;
-	text-shadow: 0 0 2px @shadow;
 }
 
 /* idle inhibitor and time */
