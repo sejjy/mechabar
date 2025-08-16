@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-
+#
 # Connect to a Wi-Fi network using nmcli and fzf
 #
 # Author: Jesse Mirabel <github.com/sejjy>
@@ -17,17 +17,17 @@ echo -n "Retrieving networks..."
 
 for i in {1..5}; do
 	output=$(nmcli device wifi list)
-	list=$(tail -n +2 <<<"$output")
+	list=$(tail -n +2 <<<"$output" | awk '$2 != "--"') # skip hidden networks
 
 	# networks found
-	[[ -n "$list" ]] && break
+	[[ -n $list ]] && break
 
 	((i < 5)) && echo -en "\nScanning for networks... ($i/5)"
 	nmcli device wifi rescan 2>/dev/null
 	sleep 1
 done
 
-if [[ -z "$list" ]]; then
+if [[ -z $list ]]; then
 	notify-send "Wi-Fi" "No networks found"
 	exit 1
 fi
@@ -61,7 +61,7 @@ options+=("${colors[@]}")
 # extract the BSSID of the selected network
 bssid=$(fzf "${options[@]}" <<<"$list" | awk '{print $1}')
 
-[[ -z "$bssid" ]] && exit 0
+[[ -z $bssid ]] && exit 0
 
 if [[ $bssid == "*" ]]; then
 	notify-send "Wi-Fi" "Already connected to this network"
