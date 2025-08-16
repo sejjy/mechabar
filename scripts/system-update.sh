@@ -1,27 +1,60 @@
 #!/usr/bin/env bash
 #
-# Check for system updates using pacman and AUR helpers
+# Check for package updates using pacman and AUR helper
 #
 # Author: Jesse Mirabel <github.com/sejjy>
 # Created: August 16, 2025
 # License: MIT
 
-repo_updates=$(pacman -Quq | wc -l)
+check_updates() {
+	repo_updates=$(pacman -Quq | wc -l)
 
-helper=$(
-	basename "$(
-		command -v yay trizen pikaur paru pakku pacaur aurman aura 2>/dev/null |
-			head -n 1
-	)"
-)
+	helper=$(
+		basename "$(command -v yay trizen pikaur paru pakku pacaur aurman aura |
+			head -n 1)"
+	)
 
-if [[ -z $helper ]]; then
-	helper="none"
-	aur_updates=0
-else
-	aur_updates=$($helper -Quaq | wc -l)
+	if [[ -n $helper ]]; then
+		aur_updates=$($helper -Quaq | wc -l)
+	else
+		aur_updates=0
+	fi
+}
+
+update_packages() {
+	if ((repo_updates > 0)); then
+		echo -e "\nUpdating pacman packages..."
+		sudo pacman -Syu
+	fi
+
+	if ((aur_updates > 0)); then
+		echo -e "\nUpdating AUR packages..."
+		"$helper" -Syu
+	fi
+}
+
+if [[ $1 == "start" ]]; then
+	echo -n "Checking for updates..."
+
+	check_updates
+	update_packages
+
+	echo
+	read -rs -n 1 -p "Press any key to exit..."
 fi
 
-tooltip="Pacman: $repo_updates\nAUR ($helper): $aur_updates"
+check_updates
 
-echo "{\"text\": \" \", \"tooltip\": \"$tooltip\"}"
+tooltip="Official: $repo_updates"
+
+if [[ -n $helper ]]; then
+	tooltip+="\nAUR($helper): $aur_updates"
+fi
+
+total_updates=$((repo_updates + aur_updates))
+
+if ((total_updates > 0)); then
+	echo "{\"text\": \" \", \"tooltip\": \"$tooltip\"}"
+else
+	echo "{\"text\": \"󰸟 \", \"tooltip\": \"No updates available\"}"
+fi
