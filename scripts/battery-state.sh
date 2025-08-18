@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# Send a notification when the battery state changes
+# Send a notification when the battery state changes using udev rules
 #
 # Add the following to /etc/udev/rules.d/60-power.rules
 # (replace USERNAME with your actual username):
@@ -15,20 +15,20 @@
 # Created: August 15, 2025
 # License: MIT
 
-export DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/1000/bus"
+export DBUS_SESSION_BUS_ADDRESS='unix:path=/run/user/1000/bus'
 
 state=$1
 
 case $state in
-	"charging")
-		batt_state="Charging"
+	'charging')
+		batt_state='Charging'
 		;;
-	"discharging")
-		batt_state="Discharging"
+	'discharging')
+		batt_state='Discharging'
 		;;
 esac
 
 batt_path=$(upower -e | grep BAT | head -n 1)
 batt_level=$(upower -i "$batt_path" | awk '/percentage:/ {print $2}')
 
-notify-send "Battery ${batt_state} (${batt_level})" -r 60
+notify-send "Battery ${batt_state} (${batt_level})" -r 1525

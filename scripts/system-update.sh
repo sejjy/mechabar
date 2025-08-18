@@ -29,24 +29,24 @@ check_updates() {
 
 update_packages() {
 	if ((repo_updates > 0)); then
-		echo -e "\nUpdating pacman packages..."
+		echo 'Updating pacman packages...'
 		sudo pacman -Syu
 	fi
 
 	if ((aur_updates > 0)); then
-		echo -e "\nUpdating AUR packages..."
+		echo -e '\nUpdating AUR packages...'
 		"$helper" -Syu
 	fi
 }
 
-if [[ $1 == "start" ]]; then
-	echo -n "Checking for updates..."
+if [[ $1 == 'start' ]]; then
+	echo 'Checking for updates...'
 
 	check_updates
 	update_packages
 
 	echo
-	read -rs -n 1 -p "Press any key to exit..."
+	read -rs -n 1 -p 'Press any key to exit...'
 	exit 0
 fi
 
