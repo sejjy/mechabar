@@ -16,7 +16,7 @@
 		"max-length": 3,
 		"on-click": "kitty ~/.config/waybar/scripts/network.sh",
 		// "on-click-middle":
-		"on-click-right": "nmcli radio wifi off && notify-send 'Wi-Fi' 'Disabled'",
+		"on-click-right": "nmcli radio wifi off && notify-send 'Wi-Fi Disabled' -r 1125",
 		// "on-scroll-up":
 		// "on-scroll-down":
 		// "smooth-scrolling-threshold":
