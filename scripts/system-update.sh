@@ -9,7 +9,7 @@
 check_updates() {
 	local s=5
 
-	if ! repo_updates=$(timeout $s pacman -Quq 2>/dev/null | wc -l); then
+	if ! repo_updates=$(timeout $s pacman -Quq | wc -l); then
 		repo_updates=0
 	fi
 
@@ -47,6 +47,7 @@ if [[ $1 == "start" ]]; then
 
 	echo
 	read -rs -n 1 -p "Press any key to exit..."
+	exit 0
 fi
 
 check_updates
