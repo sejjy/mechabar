@@ -7,7 +7,11 @@
 # License: MIT
 
 check_updates() {
-	repo_updates=$(pacman -Quq | wc -l)
+	local s=5
+
+	if ! repo_updates=$(timeout $s pacman -Quq 2>/dev/null | wc -l); then
+		repo_updates=0
+	fi
 
 	helper=$(
 		basename "$(command -v yay trizen pikaur paru pakku pacaur aurman aura |
@@ -15,7 +19,9 @@ check_updates() {
 	)
 
 	if [[ -n $helper ]]; then
-		aur_updates=$($helper -Quaq | wc -l)
+		if ! aur_updates=$(timeout $s "$helper" -Quaq 2>/dev/null | wc -l); then
+			aur_updates=0
+		fi
 	else
 		aur_updates=0
 	fi
@@ -54,7 +60,7 @@ fi
 total_updates=$((repo_updates + aur_updates))
 
 if ((total_updates > 0)); then
-	echo "{\"text\": \" \", \"tooltip\": \"$tooltip\"}"
+	echo "{ \"text\": \" \", \"tooltip\": \"$tooltip\" }"
 else
-	echo "{\"text\": \"󰸟 \", \"tooltip\": \"No updates available\"}"
+	echo "{ \"text\": \"󰸟 \", \"tooltip\": \"No updates available\" }"
 fi
