@@ -1,5 +1,23 @@
 {
-	"wireplumber": {
+	"group/wireplumber": {
+		"orientation": "horizontal",
+		"modules": [
+			"wireplumber#sink",
+			"wireplumber#source"
+		],
+		"drawer": {
+			// "transition-duration":
+			"transition-left-to-right": false
+			// "children-class":
+			// "click-to-reveal":
+		}
+	},
+
+	/*-------------------
+		output device
+	-------------------*/
+
+	"wireplumber#sink": {
 		"format": "{icon} {volume}%",
 		"format-muted": "󰝟 {volume}%",
 		// "format-source":
@@ -17,13 +35,40 @@
 		"on-click": "wpctl set-mute @DEFAULT_SINK@ toggle",
 		// "on-click-middle":
 		// "on-click-right":
-		"on-scroll-up": "wpctl set-volume @DEFAULT_SINK@ 1%+",
-		"on-scroll-down": "wpctl set-volume @DEFAULT_SINK@ 1%-",
+		// "on-scroll-up":
+		// "on-scroll-down":
 		// "tooltip":
 		"tooltip-format": "Device: {node_name}",
 		// "max-volume":
 		// "reverse-scrolling":
 		// "node-type":
+		"cursor": true
+	},
+
+	/*----------------
+		microphone
+	----------------*/
+
+	"wireplumber#source": {
+		"format": "󰍬 {volume}%",
+		"format-muted": "󰍭 {volume}%",
+		// "format-source":
+		// "format-source-muted":
+		// "rotate":
+		// "states":
+		"min-length": 7,
+		"max-length": 7,
+		// "scroll-step":
+		"on-click": "wpctl set-mute @DEFAULT_SOURCE@ toggle",
+		// "on-click-middle":
+		// "on-click-right":
+		// "on-scroll-up":
+		// "on-scroll-down":
+		// "tooltip":
+		"tooltip-format": "Device: {node_name}",
+		// "max-volume":
+		// "reverse-scrolling":
+		"node-type": "Audio/Source",
 		"cursor": true
 	}
 }

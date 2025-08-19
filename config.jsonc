@@ -2,7 +2,6 @@
 	"include": [
 		"~/.config/waybar/modules/*.jsonc",
 		"~/.config/waybar/modules/custom/*.jsonc",
-		"~/.config/waybar/modules/group/*.jsonc",
 		"~/.config/waybar/modules/hyprland/*.jsonc"
 	],
 
@@ -11,7 +10,7 @@
 	------------*/
 
 	"modules-left": [
-		"group/user",
+		"group/profile",
 		"custom/left_div#1",
 		"hyprland/workspaces",
 		"custom/right_div#1",
@@ -43,13 +42,13 @@
 	"modules-right": [
 		"mpris",
 		"custom/left_div#6",
-		"wireplumber",
+		"group/wireplumber",
 		"custom/left_div#7",
 		"backlight",
 		"custom/left_div#8",
 		"battery",
 		"custom/left_inv#2",
-		"group/power_menu"
+		"custom/power_menu"
 	],
 
 	/*-------------

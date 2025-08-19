@@ -1,5 +1,8 @@
 {
-	// left dividers
+	/*-------------------
+		left dividers
+	-------------------*/
+
 	"custom/left_div#1": {
 		"format": "",
 		"tooltip": false
@@ -32,7 +35,19 @@
 		"format": "",
 		"tooltip": false
 	},
-	// right dividers
+	"custom/left_inv#1": {
+		"format": "",
+		"tooltip": false
+	},
+	"custom/left_inv#2": {
+		"format": "",
+		"tooltip": false
+	},
+
+	/*--------------------
+		right dividers
+	--------------------*/
+
 	"custom/right_div#1": {
 		"format": "",
 		"tooltip": false
@@ -53,16 +68,6 @@
 		"format": "",
 		"tooltip": false
 	},
-	// left inverses
-	"custom/left_inv#1": {
-		"format": "",
-		"tooltip": false
-	},
-	"custom/left_inv#2": {
-		"format": "",
-		"tooltip": false
-	},
-	// right inverses
 	"custom/right_inv#1": {
 		"format": "",
 		"tooltip": false

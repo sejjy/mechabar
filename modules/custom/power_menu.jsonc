@@ -1,33 +1,7 @@
 {
-	"custom/power_lock": {
-		"format": "",
-		"on-click": "kitty ~/.config/waybar/scripts/power-menu.sh",
-		"on-click-right": "loginctl lock-session",
-		"tooltip-format": "Lock"
-	},
-	"custom/power_suspend": {
-		"format": "󰏤",
-		"on-click-right": "systemctl suspend",
-		"tooltip-format": "Suspend"
-	},
-	"custom/power_hibernate": {
+	"custom/power_menu": {
 		"format": "󰤄",
-		"on-click-right": "systemctl hibernate",
-		"tooltip-format": "Hibernate"
-	},
-	"custom/power_logout": {
-		"format": "󰀓",
-		"on-click-right": "loginctl terminate-session $XDG_SESSION_ID",
-		"tooltip-format": "Logout"
-	},
-	"custom/power_reboot": {
-		"format": "",
-		"on-click-right": "systemctl reboot",
-		"tooltip-format": "Reboot"
-	},
-	"custom/power_shutdown": {
-		"format": "󰐥",
-		"on-click-right": "systemctl poweroff",
-		"tooltip-format": "Shutdown"
+		"on-click": "kitty ~/.config/waybar/scripts/power-menu.sh",
+		"tooltip": false
 	}
 }

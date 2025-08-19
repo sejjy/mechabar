@@ -1,0 +1,69 @@
+{
+	"group/profile": {
+		"orientation": "horizontal",
+		"modules": [
+			"custom/theme_switcher",
+			"custom/user"
+		],
+		"drawer": {
+			// "transition-duration":
+			// "transition-left-to-right":
+			// "children-class":
+			// "click-to-reveal":
+		}
+	},
+
+	"custom/theme_switcher": {
+		"exec": "~/.config/waybar/scripts/theme-switcher.sh",
+		// "exec-if":
+		// "exec-on-event":
+		// "hide-empty-text":
+		"return-type": "json",
+		// "interval":
+		// "restart-interval":
+		// "signal":
+		"format": "{}",
+		// "format-icons":
+		// "rotate":
+		"min-length": 4,
+		"max-length": 4,
+		"on-click": "~/.config/waybar/scripts/theme-switcher.sh"
+		// "on-click-middle":
+		// "on-click-right":
+		// "on-scroll-up":
+		// "on-scroll-down":
+		// "smooth-scrolling-threshold":
+		// "tooltip":
+		// "tooltip-format":
+		// "escape":
+	},
+
+	/*--------------
+		username
+	--------------*/
+
+	"custom/user": {
+		"exec": "echo $USER",
+		// "exec-if":
+		// "exec-on-event":
+		// "hide-empty-text":
+		// "return-type":
+		// "interval":
+		// "restart-interval":
+		// "signal":
+		"format": "{}",
+		// "format-icons":
+		// "rotate":
+		// "min-length":
+		// "max-length":
+		// "on-click":
+		// "on-click-middle":
+		// "on-click-right":
+		// "on-scroll-up":
+		// "on-scroll-down":
+		// "smooth-scrolling-threshold":
+		"tooltip": false
+		// "tooltip-format":
+		// "escape":
+	}
+}
