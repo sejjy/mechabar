@@ -61,7 +61,7 @@ fi
 total_updates=$((repo_updates + aur_updates))
 
 if ((total_updates > 0)); then
-	echo "{ \"text\": \" \", \"tooltip\": \"$tooltip\" }"
+	echo "{ \"text\": \"\", \"tooltip\": \"$tooltip\" }"
 else
-	echo "{ \"text\": \"󰸟 \", \"tooltip\": \"No updates available\" }"
+	echo "{ \"text\": \"󰸟\", \"tooltip\": \"No updates available\" }"
 fi

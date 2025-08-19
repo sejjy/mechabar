@@ -140,10 +140,17 @@ button.active label {
 
 /* tray */
 
-#network,
-#bluetooth,
+#network {
+	background-color: @tray;
+	padding: 0 6px 0 4px;
+}
+#bluetooth {
+	background-color: @tray;
+	padding: 0 5px;
+}
 #custom-system_update {
 	background-color: @tray;
+	padding: 0 8px 0 2px;
 }
 #custom-right_div.5 {
 	color: @tray;

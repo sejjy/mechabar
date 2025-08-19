@@ -10,8 +10,8 @@
 		// "format-connected-battery":
 		// "format-no-controller":
 		// "rotate":
-		"min-length": 3,
-		"max-length": 3,
+		"min-length": 2,
+		"max-length": 2,
 		"on-click": "kitty ~/.config/waybar/scripts/bluetooth.sh",
 		// "on-click-middle":
 		"on-click-right": "bluetoothctl power off && notify-send 'Bluetooth Off' -r 1925",

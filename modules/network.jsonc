@@ -12,8 +12,8 @@
 		// "format-alt":
 		"format-icons": [ "󰤟", "󰤢", "󰤥", "󰤨" ],
 		// "rotate":
-		"min-length": 3,
-		"max-length": 3,
+		"min-length": 2,
+		"max-length": 2,
 		"on-click": "kitty ~/.config/waybar/scripts/network.sh",
 		// "on-click-middle":
 		"on-click-right": "nmcli radio wifi off && notify-send 'Wi-Fi Disabled' -r 1125",
