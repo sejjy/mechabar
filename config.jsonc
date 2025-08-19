@@ -11,7 +11,7 @@
 	------------*/
 
 	"modules-left": [
-		"group/profile",
+		"group/user",
 		"custom/left_div#1",
 		"hyprland/workspaces",
 		"custom/right_div#1",
@@ -49,7 +49,7 @@
 		"custom/left_div#8",
 		"battery",
 		"custom/left_inv#2",
-		"custom/power"
+		"group/power_menu"
 	],
 
 	/*-------------

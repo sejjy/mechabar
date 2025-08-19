@@ -11,7 +11,7 @@
 	per-module styling
 ------------------------*/
 
-/* group-profile */
+/* group-user */
 
 #custom-theme_switcher {
 	color: @accent;
@@ -184,7 +184,6 @@ button.active label {
 
 /* battery */
 
-
 #custom-left_div.8 {
 	background-color: @backlight;
 	color: @battery;
@@ -205,15 +204,38 @@ button.active label {
 	color: @battery;
 }
 
-/* power */
+/* group-power_menu */
 
-#custom-power {
-	border-radius: 16px;
-	padding: 0 19px 0 16px;
-	font-size: 20px;
+#custom-power_lock {
+	padding: 0 18px 0 16px;
 	color: @accent;
 }
-#custom-power:hover {
+#custom-power_suspend,
+#custom-power_logout {
+	padding: 2px 17px 0 17px;
+	font-size: 20px;
+}
+#custom-power_hibernate {
+	padding: 2px 17px 0 17px;
+	font-size: 17px;
+}
+#custom-power_reboot {
+	padding: 1px 18px 0 16px;
+	font-size: 18px;
+	color: @critical;
+}
+#custom-power_shutdown {
+	padding: 2px 17px 0 17px;
+	font-size: 21px;
+	color: @critical;
+}
+#custom-power_lock:hover,
+#custom-power_suspend:hover,
+#custom-power_hibernate:hover,
+#custom-power_logout:hover ,
+#custom-power_reboot:hover,
+#custom-power_shutdown:hover{
+	border-radius: 16px;
 	background-color: @hover-bg;
 }
 

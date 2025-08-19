@@ -1,0 +1,19 @@
+{
+	"group/power_menu": {
+		"orientation": "horizontal",
+		"modules": [
+			"custom/power_lock",
+			"custom/power_suspend",
+			"custom/power_hibernate",
+			"custom/power_logout",
+			"custom/power_reboot",
+			"custom/power_shutdown"
+		],
+		"drawer": {
+			// "transition-duration":
+			"transition-left-to-right": false
+			// "children-class":
+			// "click-to-reveal":
+		}
+	}
+}

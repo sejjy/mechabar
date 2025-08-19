@@ -1,5 +1,5 @@
 {
-	"group/profile": {
+	"group/user": {
 		"orientation": "horizontal",
 		"modules": [
 			"custom/theme_switcher",
@@ -8,7 +8,7 @@
 		"drawer": {
 			// "transition-duration":
 			// "transition-left-to-right":
-			"children-class": "group-profile"
+			// "children-class":
 			// "click-to-reveal":
 		}
 	}

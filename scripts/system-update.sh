@@ -45,6 +45,7 @@ if [[ $1 == 'start' ]]; then
 	check_updates
 	update_packages
 
+	notify-send 'Update Complete'
 	echo
 	read -rs -n 1 -p 'Press any key to exit...'
 	exit 0
