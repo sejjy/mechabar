@@ -1,6 +1,7 @@
 {
 	"custom/power_lock": {
 		"format": "",
+		"on-click": "kitty ~/.config/waybar/scripts/power-menu.sh",
 		"on-click-right": "loginctl lock-session",
 		"tooltip-format": "Lock"
 	},

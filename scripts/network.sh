@@ -39,6 +39,7 @@ options=(
 	--border-label=' Wi-Fi Networks '
 	--ghost='Search'
 	--header="$header"
+	--height=~100%
 	--highlight-line
 	--info=inline-right
 	--pointer=

@@ -42,6 +42,7 @@ options=(
 	--border=sharp
 	--border-label=' Bluetooth Devices '
 	--ghost='Search'
+	--height=~100%
 	--header="$header"
 	--highlight-line
 	--info=inline-right
