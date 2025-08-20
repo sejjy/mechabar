@@ -1,4 +1,4 @@
-@import "themes/catppuccin-mocha.css";
+@import "theme.css";
 
 * {
 	font-family: "0xProto Nerd Font";
@@ -242,6 +242,7 @@ window#waybar > box {
 tooltip {
 	border: 2px solid @main-br;
 	border-radius: 10px;
+	background-color: @main-bg;
 }
 tooltip label {
 	margin: 2px 4px;
