@@ -46,8 +46,6 @@ options=(
 	--reverse
 )
 
-# fzf theme
-# source: https://github.com/catppuccin/fzf
 mechadir="$HOME/.config/waybar"
 source "$mechadir/scripts/theme-switcher.sh" fzf
 
