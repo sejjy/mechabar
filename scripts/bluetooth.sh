@@ -6,6 +6,9 @@
 # Created: August 19, 2025
 # License: MIT
 
+gray='\033[1;30m'
+reset='\033[0m'
+
 status=$(bluetoothctl show | grep PowerState | awk '{print $2}')
 
 if [[ $status == 'off' ]]; then
@@ -16,8 +19,8 @@ fi
 s=10
 bluetoothctl --timeout $s scan on >/dev/null &
 
-for i in {1..10}; do
-	echo -en "\rScanning for devices... ($i/$s) (press 'q' to stop)"
+for ((i = 1; i <= s; i++)); do
+	echo -en "\rScanning for devices... ${gray}press 'q' to stop${reset} ($i/$s)"
 	read -rs -n 1 -t 1
 
 	if [[ $REPLY == 'q' ]]; then
@@ -26,7 +29,7 @@ for i in {1..10}; do
 	fi
 done
 
-echo
+printf '\n\n'
 
 list=$(bluetoothctl devices | grep Device | cut -d' ' -f2-)
 

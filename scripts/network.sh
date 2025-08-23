@@ -15,8 +15,9 @@ fi
 
 nmcli device wifi rescan 2>/dev/null
 
-for i in {1..5}; do
-	echo -en "\rScanning for networks... ($i/5)"
+s=5
+for ((i = 1; i <= s; i++)); do
+	echo -en "\rScanning for networks... ($i/$s)"
 
 	output=$(timeout 1 nmcli device wifi list)
 	list=$(tail -n +2 <<<"$output" | awk '$2 != "--"') # skip hidden networks
@@ -24,7 +25,7 @@ for i in {1..5}; do
 	[[ -n $list ]] && break
 done
 
-echo
+printf '\n\n'
 
 if [[ -z $list ]]; then
 	notify-send 'Wi-Fi' 'No networks found'
