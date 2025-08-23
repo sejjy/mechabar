@@ -1,5 +1,5 @@
 {
-	"group/profile": {
+	"group/theme_switcher": {
 		"orientation": "horizontal",
 		"modules": [
 			"custom/theme_switcher",

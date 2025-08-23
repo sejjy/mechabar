@@ -69,4 +69,4 @@ if [[ $1 == "fzf" ]]; then
 	return 0
 fi
 
-echo "{\"text\": \">\", \"tooltip\": \"Theme: $current_theme\"}"
+echo "{\"text\": \"󰏘\", \"tooltip\": \"Theme: $current_theme\"}"

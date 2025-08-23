@@ -6,6 +6,10 @@
 # Created: August 16, 2025
 # License: MIT
 
+green="\033[1;32m"
+blue="\033[1;34m"
+reset="\033[0m"
+
 check_updates() {
 	local s=5
 
@@ -29,24 +33,26 @@ check_updates() {
 
 update_packages() {
 	if ((repo_updates > 0)); then
-		echo 'Updating pacman packages...'
+		printf '\n\n'
+		echo -e "${blue}Updating pacman packages...${reset}"
 		sudo pacman -Syu
 	fi
 
 	if ((aur_updates > 0)); then
-		echo -e '\nUpdating AUR packages...'
+		echo -e "\n${blue}Updating AUR packages...${reset}"
 		"$helper" -Syu
 	fi
 }
 
 if [[ $1 == 'start' ]]; then
-	echo 'Checking for updates...'
+	echo -en "${blue}Checking for updates...${reset}"
 
 	check_updates
 	update_packages
 
 	notify-send 'Update Complete'
-	echo
+	echo -e "\n${green}Update complete!${reset}\n"
+
 	read -rs -n 1 -p 'Press any key to exit...'
 	exit 0
 fi

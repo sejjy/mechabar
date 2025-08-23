@@ -20,7 +20,13 @@ s=10
 bluetoothctl --timeout $s scan on >/dev/null &
 
 for ((i = 1; i <= s; i++)); do
-	echo -en "\rScanning for devices... ${gray}press 'q' to stop${reset} ($i/$s)"
+	echo -en "\rScanning for devices... ${gray}press q to stop${reset} ($i/$s)"
+	echo -en '\033[s'
+
+	n=$(bluetoothctl devices | grep -c Device)
+	echo -en "\n\rDevices: $n"
+	echo -en '\033[u'
+
 	read -rs -n 1 -t 1
 
 	if [[ $REPLY == 'q' ]]; then
@@ -29,7 +35,7 @@ for ((i = 1; i <= s; i++)); do
 	fi
 done
 
-printf '\n\n'
+printf '\n\n\n'
 
 list=$(bluetoothctl devices | grep Device | cut -d' ' -f2-)
 
