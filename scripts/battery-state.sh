@@ -17,18 +17,18 @@
 
 export DBUS_SESSION_BUS_ADDRESS='unix:path=/run/user/1000/bus'
 
-state=$1
-
-case $state in
+case $1 in
 	'charging')
-		batt_state='Charging'
+		state='Charging'
+		icon='battery-full-charging'
 		;;
 	'discharging')
-		batt_state='Discharging'
+		state='Discharging'
+		icon='battery-full'
 		;;
 esac
 
-batt_path=$(upower -e | grep BAT | head -n 1)
-batt_level=$(upower -i "$batt_path" | awk '/percentage:/ {print $2}')
+path=$(upower -e | grep BAT | head -n 1)
+level=$(upower -i "$path" | awk '/percentage:/ {print $2}')
 
-notify-send "Battery ${batt_state} (${batt_level})" -r 1525
+notify-send "Battery ${state} (${level})" -i "$icon" -r 1525

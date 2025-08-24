@@ -25,7 +25,6 @@
 		"tooltip-format-ethernet": "Interface: {ifname}",
 		"tooltip-format-wifi": "Network: {essid}\nIP Addr: {ipaddr}/{cidr}\nStrength: {signalStrength}%\nFrequency: {frequency} GHz",
 		"tooltip-format-disconnected": "Wi-Fi Disconnected",
-		"tooltip-format-disabled": "Wi-Fi Disabled",
-		"cursor": true
+		"tooltip-format-disabled": "Wi-Fi Disabled"
 	}
 }

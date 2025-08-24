@@ -32,17 +32,16 @@
 		"min-length": 7,
 		"max-length": 7,
 		// "scroll-step":
-		"on-click": "wpctl set-mute @DEFAULT_SINK@ toggle",
+		"on-click": "~/.config/waybar/scripts/wireplumber.sh out",
 		// "on-click-middle":
 		// "on-click-right":
-		// "on-scroll-up":
-		// "on-scroll-down":
+		"on-scroll-up": "~/.config/waybar/scripts/wireplumber.sh out raise",
+		"on-scroll-down": "~/.config/waybar/scripts/wireplumber.sh out lower",
 		// "tooltip":
-		"tooltip-format": "Device: {node_name}",
+		"tooltip-format": "Device: {node_name}"
 		// "max-volume":
 		// "reverse-scrolling":
 		// "node-type":
-		"cursor": true
 	},
 
 	/*----------------
@@ -59,16 +58,15 @@
 		"min-length": 7,
 		"max-length": 7,
 		// "scroll-step":
-		"on-click": "wpctl set-mute @DEFAULT_SOURCE@ toggle",
+		"on-click": "~/.config/waybar/scripts/wireplumber.sh mic",
 		// "on-click-middle":
 		// "on-click-right":
-		// "on-scroll-up":
-		// "on-scroll-down":
+		"on-scroll-up": "~/.config/waybar/scripts/wireplumber.sh mic raise",
+		"on-scroll-down": "~/.config/waybar/scripts/wireplumber.sh mic lower",
 		// "tooltip":
 		"tooltip-format": "Device: {node_name}",
 		// "max-volume":
 		// "reverse-scrolling":
-		"node-type": "Audio/Source",
-		"cursor": true
+		"node-type": "Audio/Source"
 	}
 }

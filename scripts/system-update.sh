@@ -6,9 +6,9 @@
 # Created: August 16, 2025
 # License: MIT
 
-green="\033[1;32m"
-blue="\033[1;34m"
-reset="\033[0m"
+green='\033[1;32m'
+blue='\033[1;34m'
+reset='\033[0m'
 
 check_updates() {
 	local s=5

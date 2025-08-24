@@ -26,7 +26,6 @@
 		"tooltip-format-connected": "Device: {device_alias}",
 		"tooltip-format-enumerate-connected": "Device: {device_alias}",
 		"tooltip-format-connected-battery": "Device: {device_alias}\nBattery: {device_battery_percentage}%",
-		"tooltip-format-enumerate-connected-battery": "Device: {device_alias}\nBattery: {device_battery_percentage}%",
-		"cursor": true
+		"tooltip-format-enumerate-connected-battery": "Device: {device_alias}\nBattery: {device_battery_percentage}%"
 	}
 }
