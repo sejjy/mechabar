@@ -5,10 +5,15 @@
 		// "design-capacity":
 		// "full-at":
 		// "interval":
-		"states": { "warning": 20, "critical": 10 },
+		"states": {
+			"warning": 20,
+			"critical": 10
+		},
 		"format": "{icon} {capacity}%",
 		"format-time": "{H} hr {M} min",
-		"format-icons": [ "󰂎", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹" ],
+		"format-icons": [
+			"󰂎", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"
+		],
 		"format-charging": "󰉁 {capacity}%",
 		"min-length": 7,
 		"max-length": 7,

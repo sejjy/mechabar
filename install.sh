@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
-red="\033[1;31m"
-green="\033[1;32m"
-blue="\033[1;34m"
-reset="\033[0m"
+red='\033[1;31m'
+green='\033[1;32m'
+blue='\033[1;34m'
+reset='\033[0m'
 
 install() {
 	if pacman -Qi "$1" &>/dev/null; then

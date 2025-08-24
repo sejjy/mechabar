@@ -9,6 +9,9 @@
 gray='\033[1;30m'
 reset='\033[0m'
 
+# shellcheck disable=SC1091
+source "$HOME/.config/waybar/scripts/theme-switcher.sh" 'fzf'
+
 status=$(bluetoothctl show | grep PowerState | awk '{print $2}')
 
 if [[ $status == 'off' ]]; then
@@ -46,7 +49,6 @@ fi
 
 header=$(printf '%-17s %s' 'Address' 'Name')
 
-# fzf options
 options=(
 	--border=sharp
 	--border-label=' Bluetooth Devices '
@@ -58,13 +60,9 @@ options=(
 	--pointer=
 	--reverse
 )
-
-mechadir="$HOME/.config/waybar"
-source "$mechadir/scripts/theme-switcher.sh" fzf
-
+# shellcheck disable=SC2154
 options+=("${colors[@]}")
 
-# extract the address of the selected device
 address=$(fzf "${options[@]}" <<<"$list" | awk '{print $1}')
 
 [[ -z $address ]] && exit 0

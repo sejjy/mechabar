@@ -4,8 +4,13 @@
 		// "hide-active":
 		// "all-outputs":
 		"format": "{icon}",
-		"format-icons": { "active": "", "default": "" },
-		"persistent-workspaces": { "*": 5 },
+		"format-icons": {
+			"active": "",
+			"default": ""
+		},
+		"persistent-workspaces": {
+			"*": 5
+		},
 		// "persistent-only":
 		// "show-special":
 		// "special-visible-only":

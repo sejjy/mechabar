@@ -5,7 +5,10 @@
 		"format-warning": "󰀧 {percentage}%",
 		"format-critical": "󰀧 {percentage}%",
 		// "rotate":
-		"states": { "warning": 75, "critical": 90 },
+		"states": {
+			"warning": 75,
+			"critical": 90
+		},
 		"min-length": 7,
 		"max-length": 7,
 		// "on-click":

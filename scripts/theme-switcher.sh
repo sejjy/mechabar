@@ -1,72 +1,82 @@
 #!/usr/bin/env bash
 
-mechadir="$HOME/.config/waybar"
-theme_css="$mechadir/theme.css"
+theme_css="$HOME/.config/waybar/theme.css"
+theme_dir="$HOME/.config/waybar/themes"
 
 current_theme=$(head -n 1 "$theme_css" | awk '{print $2}')
 
-if [[ $1 == 'next' || $1 == 'prev' ]]; then
-	themes=("$mechadir/themes/"*.css)
-	index=-1
+case $1 in
+	'next' | 'prev')
+		themes=("$theme_dir/"*.css)
+		index=-1
 
-	for i in "${!themes[@]}"; do
-		theme=$(basename "${themes[$i]}" .css)
+		for i in "${!themes[@]}"; do
+			theme=$(basename "${themes[$i]}" .css)
 
-		if [[ $theme == "$current_theme" ]]; then
-			index=$i
-			break
-		fi
-	done
+			if [[ $theme == "$current_theme" ]]; then
+				index=$i
+				break
+			fi
+		done
 
-	if [[ $1 == 'next' ]]; then
-		new_index=$(((index + 1) % ${#themes[@]}))
-	else # prev
-		new_index=$(((index - 1 + ${#themes[@]}) % ${#themes[@]}))
-	fi
+		case $1 in
+			'next')
+				new_index=$(((index + 1) % ${#themes[@]}))
+				;;
+			'prev')
+				new_index=$(((index - 1 + ${#themes[@]}) % ${#themes[@]}))
+				;;
+		esac
 
-	new_theme="${themes[$new_index]}"
-	cp "$new_theme" "$theme_css"
+		new_theme="${themes[$new_index]}"
+		cp "$new_theme" "$theme_css"
 
-	pkill waybar 2>/dev/null || true
-	nohup waybar >/dev/null 2>&1 &
-fi
+		pkill waybar 2>/dev/null || true
+		nohup waybar >/dev/null 2>&1 &
+		;;
 
-if [[ $1 == 'fzf' ]]; then
-	if [[ $current_theme == 'catppuccin-frappe' ]]; then
-		export colors=(
-			--color='bg+:#414559,bg:#303446,spinner:#F2D5CF,hl:#E78284'
-			--color='fg:#C6D0F5,header:#E78284,info:#CA9EE6,pointer:#F2D5CF'
-			--color='marker:#BABBF1,fg+:#C6D0F5,prompt:#CA9EE6,hl+:#E78284'
-			--color='selected-bg:#51576D'
-			--color='border:#737994,label:#C6D0F5'
-		)
-	elif [[ $current_theme == 'catppuccin-latte' ]]; then
-		export colors=(
-			--color='bg+:#CCD0DA,bg:#EFF1F5,spinner:#DC8A78,hl:#D20F39'
-			--color='fg:#4C4F69,header:#D20F39,info:#8839EF,pointer:#DC8A78'
-			--color='marker:#7287FD,fg+:#4C4F69,prompt:#8839EF,hl+:#D20F39'
-			--color='selected-bg:#BCC0CC'
-			--color='border:#9CA0B0,label:#4C4F69'
-		)
-	elif [[ $current_theme == 'catppuccin-macchiato' ]]; then
-		export colors=(
-			--color='bg+:#363A4F,bg:#24273A,spinner:#F4DBD6,hl:#ED8796'
-			--color='fg:#CAD3F5,header:#ED8796,info:#C6A0F6,pointer:#F4DBD6'
-			--color='marker:#B7BDF8,fg+:#CAD3F5,prompt:#C6A0F6,hl+:#ED8796'
-			--color='selected-bg:#494D64'
-			--color='border:#6E738D,label:#CAD3F5'
-		)
-	elif [[ $current_theme == 'catppuccin-mocha' ]]; then
-		export colors=(
-			--color='bg+:#313244,bg:#1E1E2E,spinner:#F5E0DC,hl:#F38BA8'
-			--color='fg:#CDD6F4,header:#F38BA8,info:#CBA6F7,pointer:#F5E0DC'
-			--color='marker:#B4BEFE,fg+:#CDD6F4,prompt:#CBA6F7,hl+:#F38BA8'
-			--color='selected-bg:#45475A'
-			--color='border:#6C7086,label:#CDD6F4'
-		)
-	fi
+	'fzf')
+		case $current_theme in
+			'catppuccin-frappe')
+				export colors=(
+					--color='bg+:#414559,bg:#303446,spinner:#f2d5cf,hl:#e78284'
+					--color='fg:#c6d0f5,header:#e78284,info:#ca9ee6,pointer:#f2d5cf'
+					--color='marker:#babbf1,fg+:#c6d0f5,prompt:#ca9ee6,hl+:#e78284'
+					--color='selected-bg:#51576d'
+					--color='border:#737994,label:#c6d0f5'
+				)
+				;;
+			'catppuccin-latte')
+				export colors=(
+					--color='bg+:#ccd0da,bg:#eff1f5,spinner:#dc8a78,hl:#d20f39'
+					--color='fg:#4c4f69,header:#d20f39,info:#8839ef,pointer:#dc8a78'
+					--color='marker:#7287fd,fg+:#4c4f69,prompt:#8839ef,hl+:#d20f39'
+					--color='selected-bg:#bcc0cc'
+					--color='border:#9ca0b0,label:#4c4f69'
+				)
+				;;
+			'catppuccin-macchiato')
+				export colors=(
+					--color='bg+:#363a4f,bg:#24273a,spinner:#f4dbd6,hl:#ed8796'
+					--color='fg:#cad3f5,header:#ed8796,info:#c6a0f6,pointer:#f4dbd6'
+					--color='marker:#b7bdf8,fg+:#cad3f5,prompt:#c6a0f6,hl+:#ed8796'
+					--color='selected-bg:#494d64'
+					--color='border:#6e738d,label:#cad3f5'
+				)
+				;;
+			'catppuccin-mocha')
+				export colors=(
+					--color='bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8'
+					--color='fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc'
+					--color='marker:#b4befe,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8'
+					--color='selected-bg:#45475a'
+					--color='border:#6c7086,label:#cdd6f4'
+				)
+				;;
+		esac
 
-	return 0
-fi
+		return 0
+		;;
+esac
 
-echo "{\"text\": \"󰏘\", \"tooltip\": \"Theme: $current_theme\"}"
+echo "{\"text\": \">\", \"tooltip\": \"Theme: $current_theme\"}"

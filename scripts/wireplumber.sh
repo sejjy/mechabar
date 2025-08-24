@@ -28,7 +28,7 @@ notify_send() {
 	get_icon "$1"
 
 	case $output in
-		*"MUTED"*)
+		*'MUTED'*)
 			icon="${prefix}-muted"
 			body='Muted'
 			;;
@@ -50,7 +50,7 @@ case $1 in
 		prefix='microphone-sensitivity'
 		title='Microphone'
 		;;
-	'out' | *)
+	'out')
 		default='@DEFAULT_SINK@'
 		prefix='volume-level'
 		title='Volume'

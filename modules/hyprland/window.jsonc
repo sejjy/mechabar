@@ -2,15 +2,10 @@
 	"hyprland/window": {
 		"format": "{}",
 		"rewrite": {
-			"^$": " Hyprland",
-			"^(kitty|zsh|~)$": " Terminal",
-			"^(~/|/|…)(.*)$": " $1$2",
-			"^((tmux)|(tmux .*))$": " $2$3",
-			"^((nvim)|nvim (.*))$": " $2$3",
-			"^((vim)|vim (.*))$": " $2$3",
-			"^((Mozilla Firefox)|(.*) — Mozilla Firefox)$": "󰈹 $2$3",
-			"^((Zen Browser)|(.*) — Zen Browser)$": "󰺕 $2$3",
-			"^((Visual Studio Code)|(.*) - Visual Studio Code)$": "󰨞 $2$3"
+			"^$": "Desktop",
+			"^kitty$": "Terminal",
+			"^zsh$": "Terminal",
+			"^~$": "Terminal"
 		},
 		// "separate-outputs":
 		// "icon":

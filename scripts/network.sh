@@ -6,6 +6,9 @@
 # Created: August 11, 2025
 # License: MIT
 
+# shellcheck disable=SC1091
+source "$HOME/.config/waybar/scripts/theme-switcher.sh" 'fzf'
+
 status=$(nmcli radio wifi)
 
 if [[ $status == 'disabled' ]]; then
@@ -20,7 +23,7 @@ for ((i = 1; i <= s; i++)); do
 	echo -en "\rScanning for networks... ($i/$s)"
 
 	output=$(timeout 1 nmcli device wifi list)
-	list=$(tail -n +2 <<<"$output" | awk '$2 != "--"') # skip hidden networks
+	list=$(tail -n +2 <<<"$output" | awk '$2 != "--"')
 
 	[[ -n $list ]] && break
 done
@@ -34,7 +37,6 @@ fi
 
 header=$(head -n 1 <<<"$output")
 
-# fzf options
 options=(
 	--border=sharp
 	--border-label=' Wi-Fi Networks '
@@ -46,13 +48,9 @@ options=(
 	--pointer=
 	--reverse
 )
-
-mechadir="$HOME/.config/waybar"
-source "$mechadir/scripts/theme-switcher.sh" fzf
-
+# shellcheck disable=SC2154
 options+=("${colors[@]}")
 
-# extract the BSSID of the selected network
 bssid=$(fzf "${options[@]}" <<<"$list" | awk '{print $1}')
 
 [[ -z $bssid ]] && exit 0

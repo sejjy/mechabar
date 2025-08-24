@@ -11,47 +11,28 @@ _  / / / / /  __/ /__ _  / / / /_/ /_  /_/ / /_/ /_  /
 | ![Catppuccin Mocha](assets/catppuccin-mocha.png) |
 | :----------------------------------------------: |
 
-> <sup>Preview images are scaled to 125%</sup>
+   <sup>Preview images are scaled to 125%</sup>
 
    <details>
-      <summary>&nbsp;
+      <summary>
          <strong>Themes</strong>
       </summary>
-      <br>
 
-Mocha
-
+<sub>Mocha</sub>
 | ![Catppuccin Mocha](assets/catppuccin-mocha.png) |
 | :----------------------------------------------: |
 
-Macchiato
-
+<sub>Macchiato</sub>
 | ![Catppuccin Macchiato](assets/catppuccin-macchiato.png) |
 | :------------------------------------------------------: |
 
-Frappe
-
+<sub>Frappe</sub>
 | ![Catppuccin Frappe](assets/catppuccin-frappe.png) |
 | :------------------------------------------------: |
 
-Latte
-
+<sub>Latte</sub>
 | ![Catppuccin Latte](assets/catppuccin-latte.png) |
 | :----------------------------------------------: |
-
-   </details>
-
-   <details>
-      <summary>&nbsp;
-         <strong>
-            <a href="https://github.com/junegunn/fzf">fzf</a>
-            Menus
-         </strong>
-      </summary>
-      <br>
-
-| ![fzf Menus](assets/fzf-menus.png) |
-| :--------------------------------: |
 
    </details>
 </div>
@@ -60,12 +41,12 @@ Latte
 
 ### Requirements
 
-- Waybar <= **v0.13.0**
+- [Waybar](https://github.com/Alexays/Waybar) <= **v0.13.0**
 
   > Version **0.14.0** has an issue with wildcard includes. See [#4354](https://github.com/Alexays/Waybar/issues/4354).
 
 > [!IMPORTANT]
-> This config uses [`kitty`](https://github.com/kovidgoyal/kitty) to open `fzf` menus.
+> This config uses [`kitty`](https://github.com/kovidgoyal/kitty) to open [`fzf`](https://github.com/junegunn/fzf) menus.
 > If you use a different terminal, replace all instances of `kitty` and add flags if necessary.
 
 #

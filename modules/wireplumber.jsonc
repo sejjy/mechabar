@@ -22,11 +22,9 @@
 		"format-muted": "󰝟 {volume}%",
 		// "format-source":
 		// "format-source-muted":
-		"format-icons": {
-			"default": [ "󰕿", "󰖀", "󰕾" ],
-			"headphone": "󰋋",
-			"headset": "󰋋"
-		},
+		"format-icons": [
+			"󰕿", "󰖀", "󰕾"
+		],
 		// "rotate":
 		// "states":
 		"min-length": 7,

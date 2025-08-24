@@ -8,7 +8,9 @@
 		"interval": 10,
 		"format-critical": "󰀦 {temperatureC}°C",
 		"format": "{icon} {temperatureC}°C",
-		"format-icons": [ "󱃃", "󰔏", "󱃂" ],
+		"format-icons": [
+			"󱃃", "󰔏", "󱃂"
+		],
 		// "rotate":
 		"min-length": 8,
 		"max-length": 8,

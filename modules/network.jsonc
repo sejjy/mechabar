@@ -10,7 +10,9 @@
 		"format-disconnected": "󰤯",
 		"format-disabled": "󰤮",
 		// "format-alt":
-		"format-icons": [ "󰤟", "󰤢", "󰤥", "󰤨" ],
+		"format-icons": [
+			"󰤟", "󰤢", "󰤥", "󰤨"
+		],
 		// "rotate":
 		"min-length": 2,
 		"max-length": 2,
