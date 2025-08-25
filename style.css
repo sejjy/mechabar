@@ -36,8 +36,11 @@ button:hover {
 	background-color: @hover-bg;
 	color: @hover-fg;
 }
+button label {
+	color: @pink;
+}
 button.active label {
-	font-size: 23px;
+	font-size: 20px;
 	color: @accent;
 }
 

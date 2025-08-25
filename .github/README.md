@@ -18,21 +18,36 @@ _  / / / / /  __/ /__ _  / / / /_/ /_  /_/ / /_/ /_  /
          <strong>Themes</strong>
       </summary>
 
-<sub>Mocha</sub>
+   **<sub>Mocha</sub>**
 | ![Catppuccin Mocha](assets/catppuccin-mocha.png) |
 | :----------------------------------------------: |
 
-<sub>Macchiato</sub>
+   **<sub>Macchiato</sub>**
 | ![Catppuccin Macchiato](assets/catppuccin-macchiato.png) |
 | :------------------------------------------------------: |
 
-<sub>Frappe</sub>
+   **<sub>Frappe</sub>**
 | ![Catppuccin Frappe](assets/catppuccin-frappe.png) |
 | :------------------------------------------------: |
 
-<sub>Latte</sub>
+   **<sub>Latte</sub>**
 | ![Catppuccin Latte](assets/catppuccin-latte.png) |
 | :----------------------------------------------: |
+
+   </details>
+   <details>
+      <summary>
+         <strong>Variants</strong>
+      </summary>
+
+   <sub><strong>pacman</strong> (Pac-Man)</sub>
+
+| ![Pac-Man](assets/var-pacman.png) |
+| :-------------------------------: |
+
+   <sup>Also comes in 4 flavors</sup>
+
+   <sub>More variants soon!</sub>
 
    </details>
 </div>
@@ -61,10 +76,21 @@ _  / / / / /  __/ /__ _  / / / /_/ /_  /_/ / /_/ /_  /
 
 2. Clone the repository:
 
-   ```sh
-   git clone https://github.com/sejjy/mechabar.git ~/.config/waybar
-   cd ~/.config/waybar
-   ```
+   - Default:
+
+     ```sh
+     git clone https://github.com/sejjy/mechabar.git ~/.config/waybar
+     cd ~/.config/waybar
+     ```
+
+   - Variant:
+
+     ```sh
+     # git clone -b var/<name> https://github.com/sejjy/mechabar.git ~/.config/waybar
+     # Example:
+     git clone -b var/pacman https://github.com/sejjy/mechabar.git ~/.config/waybar
+     cd ~/.config/waybar
+     ```
 
 3. Run the [install script](/install.sh):
 
