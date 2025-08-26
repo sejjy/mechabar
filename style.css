@@ -13,6 +13,9 @@
 
 /* group-theme_switcher */
 
+#custom-theme_switcher {
+	color: @teal;
+}
 #custom-user {
 	padding-right: 12px;
 	font-weight: normal;
@@ -31,10 +34,14 @@
 button {
 	border-radius: 16px;
 	padding: 0 10px;
+	transition: none;
 }
 button:hover {
 	background-color: @hover-bg;
 	color: @hover-fg;
+}
+button.active {
+	padding: 0 11px 0 9px;
 }
 button label {
 	color: @pink;
@@ -195,7 +202,7 @@ button.active label {
 	border-radius: 16px;
 	padding: 0 19px 0 16px;
 	font-size: 20px;
-	color: @accent;
+	color: @red;
 }
 #custom-power_menu:hover {
 	background-color: @hover-bg;

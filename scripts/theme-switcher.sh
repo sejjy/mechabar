@@ -79,4 +79,4 @@ case $1 in
 		;;
 esac
 
-echo "{\"text\": \">\", \"tooltip\": \"Theme: $current_theme\"}"
+echo "{\"text\": \"󰊠\", \"tooltip\": \"Theme: $current_theme\"}"
