@@ -43,7 +43,7 @@
 	--------------*/
 
 	"custom/user": {
-		"exec": "echo $USER",
+		"exec": "id --user --name",
 		// "exec-if":
 		// "exec-on-event":
 		// "hide-empty-text":
