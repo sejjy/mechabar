@@ -45,11 +45,11 @@
 			// "week-pos":
 			// "on-scroll":
 			"format": {
-				"months": "<b>{}</b>",
-				// "days":
+				"months": "<span alpha='100%'><b>{}</b></span>",
+				"days": "<span alpha='90%'>{}</span>",
 				// "weeks":
-				// "weekdays":
-				"today": "<b>{}</b>"
+				"weekdays": "<span alpha='80%'><i>{}</i></span>",
+				"today": "<span alpha='100%'><b><u>{}</u></b></span>"
 			}
 		},
 		"actions": {
