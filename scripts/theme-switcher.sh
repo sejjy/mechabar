@@ -79,4 +79,6 @@ case $1 in
 		;;
 esac
 
-echo "{\"text\": \">\", \"tooltip\": \"Theme: $current_theme\"}"
+tooltip=$(tr '-' ' ' <<<"$current_theme")
+
+echo "{ \"text\": \">\", \"tooltip\": \"Theme: <span text_transform='capitalize'>${tooltip}</span>\" }"
