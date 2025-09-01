@@ -1,14 +1,11 @@
 <div align="center">
-<pre>
-                      ______        ______                
-_______ _________________  /_______ ___  /_______ ________
-__  __ `__ \  _ \  ___/_  __ \  __ `/_  __ \  __ `/_  ___/
-_  / / / / /  __/ /__ _  / / / /_/ /_  /_/ / /_/ /_  /    
-/_/ /_/ /_/\___/\___/ /_/ /_/\__,_/ /_.___/\__,_/ /_/     
-</pre>
-
-| ![Catppuccin Mocha](assets/catppuccin-mocha.png) |
-| :----------------------------------------------: |
+   <table>
+      <tr>
+         <td>
+            <img src="assets/social-preview.png" alt="Social Preview" />
+         </td>
+      </tr>
+   </table>
 
    <sup>Preview images are scaled to 125%</sup>
 
@@ -17,22 +14,48 @@ _  / / / / /  __/ /__ _  / / / /_/ /_  /_/ / /_/ /_  /
          <strong>Themes</strong>
       </summary>
 
-   **<sub>Mocha</sub>**
-| ![Catppuccin Mocha](assets/catppuccin-mocha.png) |
-| :----------------------------------------------: |
+   <sub><strong>Mocha (Default)</strong></sub>
 
-   **<sub>Macchiato</sub>**
-| ![Catppuccin Macchiato](assets/catppuccin-macchiato.png) |
-| :------------------------------------------------------: |
+   <table>
+      <tr>
+         <td>
+            <img src="assets/catppuccin-mocha.png" alt="Catppuccin Mocha" />
+         </td>
+      </tr>
+   </table>
 
-   **<sub>Frappe</sub>**
-| ![Catppuccin Frappe](assets/catppuccin-frappe.png) |
-| :------------------------------------------------: |
+   <sub><strong>Macchiato</strong></sub>
 
-   **<sub>Latte</sub>**
-| ![Catppuccin Latte](assets/catppuccin-latte.png) |
-| :----------------------------------------------: |
+   <table>
+      <tr>
+         <td>
+            <img
+            src="assets/catppuccin-macchiato.png"
+            alt="Catppuccin Macchiato"
+            />
+         </td>
+      </tr>
+   </table>
 
+   <sub><strong>Frappe</strong></sub>
+
+   <table>
+      <tr>
+         <td>
+            <img src="assets/catppuccin-frappe.png" alt="Catppuccin Frappe" />
+         </td>
+      </tr>
+   </table>
+
+   <sub><strong>Latte</strong></sub>
+
+   <table>
+      <tr>
+         <td>
+            <img src="assets/catppuccin-latte.png" alt="Catppuccin Latte" />
+         </td>
+      </tr>
+   </table>
    </details>
    <details>
       <summary>
@@ -41,13 +64,17 @@ _  / / / / /  __/ /__ _  / / / /_/ /_  /_/ / /_/ /_  /
 
    <sub><strong>pacman</strong> (Pac-Man)</sub>
 
-| ![Pac-Man](assets/var-pacman.png) |
-| :-------------------------------: |
+   <table>
+      <tr>
+         <td>
+            <img src="assets/var-pacman.png" alt="Pac-Man Variant" />
+         </td>
+      </tr>
+   </table>
 
-   <sup>Also comes in 4 flavors</sup>
+   <sup>Variants also come in 4 flavors</sup>
 
    <sub>More variants soon!</sub>
-
    </details>
 </div>
 
