@@ -1,21 +1,16 @@
-<div align="center">
-   <table>
-      <tr>
-         <td>
-            <img src="assets/social-preview.png" alt="Social Preview" />
-         </td>
-      </tr>
-   </table>
+<table>
+   <tr>
+      <td>
+         <img src="assets/social-preview.png" alt="Social Preview" />
+      </td>
+   </tr>
+</table>
+<blockquote>Preview images are scaled to 125%.</blockquote>
 
-   <sup>Preview images are scaled to 125%</sup>
+<div align="center"><details>
+   <summary><strong>Themes</strong></summary>
 
-   <details>
-      <summary>
-         <strong>Themes</strong>
-      </summary>
-
-   <sub><strong>Mocha (Default)</strong></sub>
-
+   <div align="left"><p>Catppuccin <strong>Mocha</strong> (<i>Default</i>)</p>
    <table>
       <tr>
          <td>
@@ -24,21 +19,16 @@
       </tr>
    </table>
 
-   <sub><strong>Macchiato</strong></sub>
-
+   <p>Catppuccin <strong>Macchiato</strong></p>
    <table>
       <tr>
          <td>
-            <img
-            src="assets/catppuccin-macchiato.png"
-            alt="Catppuccin Macchiato"
-            />
+            <img src="assets/catppuccin-macchiato.png" alt="Catppuccin Macchiato" />
          </td>
       </tr>
    </table>
 
-   <sub><strong>Frappe</strong></sub>
-
+   <p>Catppuccin <strong>Frappe</strong></p>
    <table>
       <tr>
          <td>
@@ -47,23 +37,20 @@
       </tr>
    </table>
 
-   <sub><strong>Latte</strong></sub>
-
+   <p>Catppuccin <strong>Latte</strong></p>
    <table>
       <tr>
          <td>
             <img src="assets/catppuccin-latte.png" alt="Catppuccin Latte" />
          </td>
       </tr>
-   </table>
-   </details>
-   <details>
-      <summary>
-         <strong>Variants</strong>
-      </summary>
+   </table></div>
+</details>
 
-   <sub><strong>pacman</strong> (Pac-Man)</sub>
+<details>
+   <summary><strong>Variants</strong></summary>
 
+   <div align="left"><p><strong>pacman</strong> (<i>Pac-Man</i>)</p>
    <table>
       <tr>
          <td>
@@ -71,12 +58,10 @@
          </td>
       </tr>
    </table>
+   <blockquote>Variants also come in 4 themes.</blockquote>
 
-   <sup>Variants also come in 4 flavors</sup>
-
-   <sub>More variants soon!</sub>
-   </details>
-</div>
+   <p>More variants soon!</p></div>
+</details></div>
 
 #
 
@@ -96,7 +81,7 @@
 
 1. Backup your current config:
 
-   ```sh
+   ```bash
    mv ~/.config/waybar{,.bak}
    ```
 
@@ -104,14 +89,14 @@
 
    - Default:
 
-     ```sh
+     ```bash
      git clone https://github.com/sejjy/mechabar.git ~/.config/waybar
      cd ~/.config/waybar
      ```
 
    - Variant:
 
-     ```sh
+     ```bash
      # git clone -b var/<name> https://github.com/sejjy/mechabar.git ~/.config/waybar
      # Example:
      git clone -b var/pacman https://github.com/sejjy/mechabar.git ~/.config/waybar
@@ -120,7 +105,7 @@
 
 3. Run the [install script](/install.sh):
 
-   ```sh
+   ```bash
    ./install.sh
    ```
 
