@@ -41,7 +41,7 @@
 @define-color accent		@yellow;
 @define-color hover-bg		@base;
 @define-color hover-fg		alpha(@text, 0.75);
-@define-color shadow		shade(@crust, 0.5);
+@define-color outline		shade(@crust, 0.5);
 
 /* module colors */
 
@@ -61,3 +61,8 @@
 @define-color warning		@yellow;
 @define-color critical		@red;
 @define-color charging		@green;
+
+/* Ghost Gang */
+@define-color speedy		@pink;
+@define-color bashful		@teal;
+@define-color pokey			@peach;

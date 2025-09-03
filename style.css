@@ -14,7 +14,7 @@
 /* group-theme_switcher */
 
 #custom-theme_switcher {
-	color: @teal;
+	color: @bashful;
 }
 #custom-user {
 	padding-right: 12px;
@@ -44,7 +44,7 @@ button.active {
 	padding: 0 11px 0 9px;
 }
 button label {
-	color: @pink;
+	color: @speedy;
 }
 button.active label {
 	font-size: 20px;
@@ -200,9 +200,8 @@ button.active label {
 
 #custom-power_menu {
 	border-radius: 16px;
-	padding: 0 19px 0 16px;
-	font-size: 20px;
-	color: @red;
+	padding: 0 18px 0 17px;
+	color: @pokey;
 }
 #custom-power_menu:hover {
 	background-color: @hover-bg;
@@ -237,7 +236,7 @@ button.active label {
 
 /* outline */
 window#waybar {
-	background-color: @shadow;
+	background-color: @outline;
 }
 
 /* background */
