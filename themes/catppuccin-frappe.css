@@ -41,7 +41,7 @@
 @define-color accent		@lavender;
 @define-color hover-bg		@base;
 @define-color hover-fg		alpha(@text, 0.75);
-@define-color shadow		shade(@crust, 0.5);
+@define-color outline		shade(@crust, 0.5);
 
 /* module colors */
 

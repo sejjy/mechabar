@@ -227,7 +227,7 @@ button.active label {
 
 /* outline */
 window#waybar {
-	background-color: @shadow;
+	background-color: @outline;
 }
 
 /* background */
