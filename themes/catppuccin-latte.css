@@ -52,7 +52,7 @@
 @define-color time			@surface0;
 @define-color date			@base;
 @define-color tray			@mantle;
-@define-color wireplumber	@mantle;
+@define-color volume		@mantle;
 @define-color backlight		@base;
 @define-color battery		@surface0;
 
