@@ -1,9 +1,9 @@
 {
-	"group/wireplumber": {
+	"group/pulseaudio": {
 		"orientation": "horizontal",
 		"modules": [
-			"wireplumber#output",
-			"wireplumber#input"
+			"pulseaudio#output",
+			"pulseaudio#input"
 		],
 		"drawer": {
 			// "transition-duration":
@@ -17,14 +17,17 @@
 		output device
 	-------------------*/
 
-	"wireplumber#output": {
+	"pulseaudio#output": {
 		"format": "{icon} {volume}%",
+		// "format-bluetooth":
 		"format-muted": "󰝟 {volume}%",
 		// "format-source":
 		// "format-source-muted":
-		"format-icons": [
-			"󰕿", "󰖀", "󰕾"
-		],
+		"format-icons": {
+			"default": [ "󰕿", "󰖀", "󰕾" ],
+			"headphone": "󰋋",
+			"headset": "󰋋"
+		},
 		// "rotate":
 		// "states":
 		"min-length": 7,
@@ -35,22 +38,26 @@
 		// "on-click-right":
 		"on-scroll-up": "~/.config/waybar/scripts/volume.sh output raise",
 		"on-scroll-down": "~/.config/waybar/scripts/volume.sh output lower",
+		// "smooth-scrolling-threshold":
 		// "tooltip":
-		"tooltip-format": "Device: {node_name}",
+		"tooltip-format": "Output Device: {desc}"
 		// "max-volume":
+		// "ignored-sinks":
 		// "reverse-scrolling":
-		"node-type": "Audio/Sink"
+		// "reverse-mouse-scrolling":
 	},
 
 	/*----------------
 		microphone
 	----------------*/
 
-	"wireplumber#input": {
-		"format": "󰍬 {volume}%",
-		"format-muted": "󰍭 {volume}%",
-		// "format-source":
-		// "format-source-muted":
+	"pulseaudio#input": {
+		"format": "{format_source}",
+		// "format-bluetooth":
+		// "format-muted":
+		"format-source": "󰍬 {volume}%",
+		"format-source-muted": "󰍭 {volume}%",
+		// "format-icons":
 		// "rotate":
 		// "states":
 		"min-length": 7,
@@ -61,10 +68,12 @@
 		// "on-click-right":
 		"on-scroll-up": "~/.config/waybar/scripts/volume.sh input raise",
 		"on-scroll-down": "~/.config/waybar/scripts/volume.sh input lower",
+		// "smooth-scrolling-threshold":
 		// "tooltip":
-		"tooltip-format": "Device: {node_name}",
+		"tooltip-format": "Input Device: {desc}"
 		// "max-volume":
+		// "ignored-sinks":
 		// "reverse-scrolling":
-		"node-type": "Audio/Source"
+		// "reverse-mouse-scrolling":
 	}
 }

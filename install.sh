@@ -23,7 +23,7 @@ install() {
 
 echo -e "\n${blue}Installing dependencies...${reset}"
 dependencies=(
-	bluez bluez-utils brightnessctl fzf pipewire ttf-0xproto-nerd wireplumber
+	bluez bluez-utils brightnessctl fzf pipewire-pulse ttf-0xproto-nerd
 )
 
 n=0

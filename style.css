@@ -154,19 +154,19 @@ button.active label {
 	font-weight: normal;
 }
 
-/* group-wireplumber */
+/* group-volume */
 
 #custom-left_div.6 {
-	color: @wireplumber;
+	color: @volume;
 }
-#wireplumber {
-	background-color: @wireplumber;
+#pulseaudio {
+	background-color: @volume;
 }
 
 /* backlight */
 
 #custom-left_div.7 {
-	background-color: @wireplumber;
+	background-color: @volume;
 	color: @backlight;
 }
 #backlight {
@@ -209,7 +209,7 @@ button.active label {
 #bluetooth:hover,
 #custom-system_update:hover,
 #mpris:hover,
-#wireplumber:hover {
+#pulseaudio:hover {
 	color: @hover-fg;
 }
 
