@@ -111,16 +111,15 @@
 
    > This makes [scripts](/scripts/) executable and installs all dependencies listed below:
 
-   |                        Package | Description                                                                   |
-   | -----------------------------: | ----------------------------------------------------------------------------- |
-   |                        `bluez` | Daemons for the bluetooth protocol stack<tr></tr>                             |
-   | (_bluetoothctl_) `bluez-utils` | Development and debugging utilities for the bluetooth protocol stack<tr></tr> |
-   |                `brightnessctl` | Lightweight brightness control tool<tr></tr>                                  |
-   |                          `fzf` | Command-line fuzzy finder<tr></tr>                                            |
-   |     (_nmcli_) `networkmanager` | Network connection manager and user applications<tr></tr>                     |
-   |                     `pipewire` | Low-latency audio/video router and processor<tr></tr>                         |
-   |             `ttf-0xproto-nerd` | Patched font 0xProto from nerd fonts library<tr></tr>                         |
-   |        (_wpctl_) `wireplumber` | Session/policy manager implementation for PipeWire                            |
+   |                        Package | Description                                                                    |
+   | -----------------------------: | ------------------------------------------------------------------------------ |
+   |                        `bluez` | Daemons for the bluetooth protocol stack<tr></tr>                              |
+   | (_bluetoothctl_) `bluez-utils` | Development and debugging utilities for the bluetooth protocol stack<tr></tr>  |
+   |                `brightnessctl` | Lightweight brightness control tool<tr></tr>                                   |
+   |                          `fzf` | Command-line fuzzy finder<tr></tr>                                             |
+   |     (_nmcli_) `networkmanager` | Network connection manager and user applications<tr></tr>                      |
+   |               `pipewire-pulse` | Low-latency audio/video router and processor - PulseAudio replacement<tr></tr> |
+   |             `ttf-0xproto-nerd` | Patched font 0xProto from nerd fonts library                                   |
 
 > [!TIP]
 > To enable battery notifications, see the instructions in [battery-state.sh](/scripts/battery-state.sh#L5-L12).
