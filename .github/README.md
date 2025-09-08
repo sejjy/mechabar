@@ -67,9 +67,10 @@
 
 ### Requirements
 
-- [Waybar](https://github.com/Alexays/Waybar) <= **v0.13.0**
+- [Waybar](https://github.com/Alexays/Waybar) **v0.13.0** is required.
 
-  > Version **0.14.0** has an issue with wildcard includes. See [#4354](https://github.com/Alexays/Waybar/issues/4354).
+  > Version **0.14.0** has an [issue](https://github.com/Alexays/Waybar/issues/4354) that breaks the module layout
+  > ([#31](https://github.com/sejjy/mechabar/issues/31)).
 
 > [!IMPORTANT]
 > This config uses [`kitty`](https://github.com/kovidgoyal/kitty) to open [`fzf`](https://github.com/junegunn/fzf) menus.
@@ -103,7 +104,7 @@
      cd ~/.config/waybar
      ```
 
-3. Run the [install script](/install.sh):
+3. Run the [install](/install.sh) script:
 
    ```bash
    ./install.sh
