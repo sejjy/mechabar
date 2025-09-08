@@ -1,3 +1,5 @@
+<div align="center"><h2>🤖 mechabar</h2></div>
+
 <table>
    <tr>
       <td>
@@ -5,7 +7,6 @@
       </td>
    </tr>
 </table>
-<blockquote>Preview images are scaled to 125%.</blockquote>
 
 <div align="center"><details>
    <summary><strong>Themes</strong></summary>
