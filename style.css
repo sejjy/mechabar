@@ -131,16 +131,24 @@ button.active label {
 
 /* tray */
 
-#network {
-	background-color: @tray;
-	padding: 0 6px 0 4px;
-}
-#bluetooth {
-	background-color: @tray;
-	padding: 0 5px;
-}
+#network,
+#bluetooth,
 #custom-system_update {
 	background-color: @tray;
+}
+#network.icon {
+	padding: 0 6px 0 4px;
+}
+#network.name {
+	padding: 0 4px;
+}
+#bluetooth.icon {
+	padding: 0 5px;
+}
+#bluetooth.device {
+	padding: 0 4px;
+}
+#custom-system_update {
 	padding: 0 8px 0 2px;
 }
 #custom-right_div.5 {
@@ -205,8 +213,8 @@ button.active label {
 #custom-theme_switcher:hover,
 #idle_inhibitor:hover,
 #clock.date:hover,
-#network:hover,
-#bluetooth:hover,
+#network.name:hover,
+#bluetooth.device:hover,
 #custom-system_update:hover,
 #mpris:hover,
 #pulseaudio:hover {

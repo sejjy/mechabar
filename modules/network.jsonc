@@ -1,5 +1,19 @@
 {
-	"network": {
+	"group/network": {
+		"orientation": "horizontal",
+		"modules": [
+			"network#icon",
+			"network#name"
+		],
+		"drawer": {
+			// "transition-duration":
+			// "transition-left-to-right":
+			// "children-class":
+			// "click-to-reveal":
+		}
+	},
+
+	"network#icon": {
 		// "interface":
 		"interval": 10,
 		// "family":
@@ -16,6 +30,35 @@
 		// "rotate":
 		"min-length": 2,
 		"max-length": 2,
+		// "on-click":
+		// "on-click-middle":
+		// "on-click-right":
+		// "on-scroll-up":
+		// "on-scroll-down":
+		// "smooth-scrolling-threshold":
+		"tooltip": false
+		// "tooltip-format":
+		// "tooltip-format-ethernet":
+		// "tooltip-format-wifi":
+		// "tooltip-format-disconnected":
+		// "tooltip-format-disabled":
+	},
+
+	"network#name": {
+		// "interface":
+		// "interval":
+		// "family":
+		"format": "Wi-Fi",
+		"format-ethernet": "{ifname}",
+		"format-wifi": "{essid}",
+		// "format-linked":
+		"format-disconnected": "Disconnected",
+		"format-disabled": "Disabled",
+		// "format-alt":
+		// "format-icons":
+		// "rotate":
+		// "min-length":
+		// "max-length":
 		"on-click": "kitty ~/.config/waybar/scripts/network.sh",
 		// "on-click-middle":
 		"on-click-right": "nmcli radio wifi off && notify-send 'Wi-Fi Disabled' -r 1125",

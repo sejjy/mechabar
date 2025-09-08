@@ -1,5 +1,19 @@
 {
-	"bluetooth": {
+	"group/bluetooth": {
+		"orientation": "horizontal",
+		"modules": [
+			"bluetooth#icon",
+			"bluetooth#device"
+		],
+		"drawer": {
+			// "transition-duration":
+			// "transition-left-to-right":
+			// "children-class":
+			// "click-to-reveal":
+		}
+	},
+
+	"bluetooth#icon": {
 		// "controller":
 		// "format-device-preference":
 		"format": "󰂯",
@@ -12,6 +26,36 @@
 		// "rotate":
 		"min-length": 2,
 		"max-length": 2,
+		// "on-click":
+		// "on-click-middle":
+		// "on-click-right":
+		// "on-scroll-up":
+		// "on-scroll-down":
+		// "smooth-scrolling-threshold":
+		"tooltip": false
+		// "tooltip-format":
+		// "tooltip-format-disabled":
+		// "tooltip-format-off":
+		// "tooltip-format-on":
+		// "tooltip-format-connected":
+		// "tooltip-format-enumerate-connected":
+		// "tooltip-format-connected-battery":
+		// "tooltip-format-enumerate-connected-battery":
+	},
+
+	"bluetooth#device": {
+		// "controller":
+		// "format-device-preference":
+		"format": "Bluetooth",
+		"format-disabled": "Disabled",
+		"format-off": "Off",
+		"format-on": "Disconnected",
+		"format-connected": "{device_alias}",
+		// "format-connected-battery":
+		// "format-no-controller":
+		// "rotate":
+		// "min-length":
+		// "max-length":
 		"on-click": "kitty ~/.config/waybar/scripts/bluetooth.sh",
 		// "on-click-middle":
 		"on-click-right": "bluetoothctl power off && notify-send 'Bluetooth Off' -r 1925",

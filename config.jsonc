@@ -34,8 +34,8 @@
 		"custom/right_div#3",
 		"clock#date",
 		"custom/right_div#4",
-		"network",
-		"bluetooth",
+		"group/network",
+		"group/bluetooth",
 		"custom/system_update",
 		"custom/right_div#5"
 	],
