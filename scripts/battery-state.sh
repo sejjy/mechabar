@@ -3,10 +3,10 @@
 # Send a notification when the battery state changes using udev rules
 #
 # Add the following to /etc/udev/rules.d/60-power.rules
-# (replace USERNAME with your actual username):
+# (replace <username> with your actual username):
 #
-# ACTION=="change", SUBSYSTEM=="power_supply", ATTR{type}=="Mains", ATTR{online}=="1", RUN+="/usr/bin/su USERNAME --command '~/.config/waybar/scripts/battery-state.sh charging'"
-# ACTION=="change", SUBSYSTEM=="power_supply", ATTR{type}=="Mains", ATTR{online}=="0", RUN+="/usr/bin/su USERNAME --command '~/.config/waybar/scripts/battery-state.sh discharging'"
+# ACTION=="change", SUBSYSTEM=="power_supply", ATTR{type}=="Mains", ATTR{online}=="1", RUN+="/usr/bin/su <username> --command '~/.config/waybar/scripts/battery-state.sh charging'"
+# ACTION=="change", SUBSYSTEM=="power_supply", ATTR{type}=="Mains", ATTR{online}=="0", RUN+="/usr/bin/su <username> --command '~/.config/waybar/scripts/battery-state.sh discharging'"
 #
 # Reload udev rules by running:
 # sudo udevadm control --reload
@@ -17,13 +17,14 @@
 
 export DBUS_SESSION_BUS_ADDRESS='unix:path=/run/user/1000/bus'
 
-case $1 in
+state=$1
+case $state in
 	'charging')
-		state='Charging'
+		state=${state^}
 		icon='battery-100-charging'
 		;;
 	'discharging')
-		state='Discharging'
+		state=${state^}
 		icon='battery-100'
 		;;
 esac
