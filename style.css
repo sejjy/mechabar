@@ -154,7 +154,7 @@ button.active label {
 	font-weight: normal;
 }
 
-/* group-volume */
+/* group-pulseaudio */
 
 #custom-left_div.6 {
 	color: @volume;
