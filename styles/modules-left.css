@@ -1,0 +1,47 @@
+@import "../theme.css";
+
+/* theme switcher */
+
+#custom-theme_switcher {
+	color: @bashful;
+}
+#custom-user {
+	padding-right: 12px;
+	font-weight: normal;
+}
+
+/* workspaces */
+
+#custom-left_div.1,
+#custom-right_div.1 {
+	color: @workspaces;
+}
+#workspaces {
+	padding: 0 1px;
+	background-color: @workspaces;
+}
+#workspaces .active label {
+	font-size: 20px;
+	color: @accent;
+}
+#workspaces button.active {
+	padding: 0 11px 0 9px;
+}
+#workspaces button label {
+	color: @speedy;
+}
+
+/* window title & count */
+
+#window {
+	margin-left: 12px;
+}
+#window label {
+	font-weight: normal;
+}
+#windowcount {
+	margin-right: 12px;
+}
+#windowcount label {
+	color: @hover-fg;
+}
