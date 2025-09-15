@@ -1,0 +1,21 @@
+{
+	"wlr/taskbar": {
+		// "all-outputs":
+		// "format":
+		// "icon-theme":
+		// "icon-size":
+		// "markup":
+		// "tooltip":
+		// "tooltip-format":
+		// "active-first":
+		// "sort-by-app-id":
+		"on-click": "activate",
+		// "on-click-middle":
+		// "on-click-right":
+		// "on-update":
+		"ignore-list": [ "kitty" ],
+		// "app_ids-mapping":
+		// "rewrite":
+		"cursor": true
+	}
+}
