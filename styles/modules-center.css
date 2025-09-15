@@ -1,0 +1,92 @@
+@import "../theme.css";
+
+/* temperature */
+
+#custom-left_div.2 {
+	color: @temperature;
+}
+#temperature {
+	background-color: @temperature;
+}
+
+/* memory */
+
+#custom-left_div.3 {
+	background-color: @temperature;
+	color: @memory;
+}
+#memory {
+	background-color: @memory;
+}
+
+/* cpu */
+
+#custom-left_div.4 {
+	background-color: @memory;
+	color: @cpu;
+}
+#cpu {
+	background-color: @cpu;
+}
+#custom-left_inv.1 {
+	color: @cpu;
+}
+
+/* distro icon */
+
+#custom-left_div.5,
+#custom-right_div.2 {
+	color: @accent;
+}
+#custom-distro {
+	padding: 0 10px 0 5px;
+	font-size: 23px;
+	background-color: @accent;
+	color: @main-bg;
+}
+
+/* idle inhibitor & time */
+
+#custom-right_inv.1 {
+	color: @time;
+}
+#idle_inhibitor {
+	background-color: @time;
+}
+#clock.time {
+	padding-right: 6px;
+	background-color: @time;
+}
+#custom-right_div.3 {
+	background-color: @date;
+	color: @time;
+}
+
+/* date */
+
+#clock.date {
+	padding-left: 6px;
+	background-color: @date;
+}
+#custom-right_div.4 {
+	background-color: @tray;
+	color: @date;
+}
+
+/* quick settings */
+
+#network {
+	background-color: @tray;
+	padding: 0 6px 0 4px;
+}
+#bluetooth {
+	background-color: @tray;
+	padding: 0 5px;
+}
+#custom-system_update {
+	background-color: @tray;
+	padding: 0 8px 0 2px;
+}
+#custom-right_div.5 {
+	color: @tray;
+}
