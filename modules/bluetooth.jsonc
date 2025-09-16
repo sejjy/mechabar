@@ -12,7 +12,7 @@
 		// "rotate":
 		"min-length": 2,
 		"max-length": 2,
-		"on-click": "kitty ~/.config/waybar/scripts/bluetooth.sh",
+		"on-click": "kitty -e ~/.config/waybar/scripts/bluetooth.sh",
 		// "on-click-middle":
 		"on-click-right": "bluetoothctl power off && notify-send 'Bluetooth Off' -r 1925",
 		// "on-scroll-up":
