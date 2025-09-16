@@ -148,7 +148,7 @@
 		// "rotate":
 		"min-length": 2,
 		"max-length": 2,
-		"on-click": "ghostty -e ~/.config/waybar/scripts/bluetooth.sh",
+		"on-click": "kitty -e ~/.config/waybar/scripts/bluetooth.sh",
 		// "on-click-middle":
 		"on-click-right": "bluetoothctl power off && notify-send 'Bluetooth Off' -r 1925",
 		// "on-scroll-up":
@@ -335,7 +335,7 @@
 		// "rotate":
 		"min-length": 2,
 		"max-length": 2,
-		"on-click": "ghostty -e ~/.config/waybar/scripts/network.sh",
+		"on-click": "kitty -e ~/.config/waybar/scripts/network.sh",
 		// "on-click-middle":
 		"on-click-right": "nmcli radio wifi off && notify-send 'Wi-Fi Disabled' -r 1125",
 		// "on-scroll-up":
@@ -448,7 +448,7 @@
 		"format": "{}",
 		"rewrite": {
 			"^$": "Desktop",
-			"^ghostty$": "Terminal",
+			"^kitty$": "Terminal",
 			"^zsh$": "Terminal",
 			"^~$": "Terminal"
 		},
@@ -643,7 +643,7 @@
 
 	"custom/power_menu": {
 		"format": "󰤄",
-		"on-click": "ghostty -e ~/.config/waybar/scripts/power-menu.sh",
+		"on-click": "kitty -e ~/.config/waybar/scripts/power-menu.sh",
 		"tooltip": false
 	},
 
@@ -661,7 +661,7 @@
 		// "rotate":
 		"min-length": 2,
 		"max-length": 2,
-		"on-click": "ghostty -e ~/.config/waybar/scripts/system-update.sh start"
+		"on-click": "kitty -e ~/.config/waybar/scripts/system-update.sh start"
 		// "on-click-middle":
 		// "on-click-right":
 		// "on-scroll-up":
