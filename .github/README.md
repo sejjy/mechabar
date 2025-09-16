@@ -68,14 +68,22 @@
 
 ### Requirements
 
-- [Waybar](https://github.com/Alexays/Waybar) **v0.13.0** is required.
+- [waybar](https://github.com/Alexays/Waybar) **v0.13.0**
 
-  > Version **0.14.0** has an [issue](https://github.com/Alexays/Waybar/issues/4354) that breaks the module layout
-  > ([#31](https://github.com/sejjy/mechabar/issues/31)).
+  > Version **0.14.0** has an [issue](https://github.com/Alexays/Waybar/issues/4354) that breaks the module layout.
+  > See [#31](https://github.com/sejjy/mechabar/issues/31).
 
-> [!IMPORTANT]
-> This config uses [`kitty`](https://github.com/kovidgoyal/kitty) to open [`fzf`](https://github.com/junegunn/fzf) menus.
-> If you use a different terminal, replace all instances of `kitty` and add flags if necessary.
+- [kitty](https://github.com/kovidgoyal/kitty) (_optional_)
+
+  > If you use a different terminal emulator (e.g., [ghostty](https://github.com/ghostty-org/ghostty)),
+  > replace all occurrences of `kitty` with the corresponding command.
+
+  Example:
+
+  ```jsonc
+  // modules/bluetooth.jsonc:
+  "on-click": "ghostty -e ~/.config/waybar/scripts/bluetooth.sh"
+  ```
 
 #
 
@@ -93,7 +101,6 @@
 
      ```bash
      git clone https://github.com/sejjy/mechabar.git ~/.config/waybar
-     cd ~/.config/waybar
      ```
 
    - Variant:
@@ -102,13 +109,12 @@
      # git clone -b var/<name> https://github.com/sejjy/mechabar.git ~/.config/waybar
      # Example:
      git clone -b var/pacman https://github.com/sejjy/mechabar.git ~/.config/waybar
-     cd ~/.config/waybar
      ```
 
 3. Run the [install](/install.sh) script:
 
    ```bash
-   ./install.sh
+   ~/.config/waybar/install.sh
    ```
 
    > This makes [scripts](/scripts/) executable and installs all dependencies listed below:

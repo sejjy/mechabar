@@ -5,43 +5,49 @@ green='\033[1;32m'
 blue='\033[1;34m'
 reset='\033[0m'
 
+dependencies=(
+	bluez
+	bluez-utils # bluetoothctl
+	brightnessctl
+	fzf
+	networkmanager # nmcli
+	pipewire-pulse
+	ttf-0xproto-nerd
+)
+
 install() {
-	if pacman -Qi "$1" &>/dev/null; then
-		echo -e "[${green}/${reset}] $1"
-		return 0
+	local package=$1
+
+	if pacman -Qi "$package" &>/dev/null; then
+		printf "[%b/%b] %s\n" "$green" "$reset" "$package"
 	else
-		echo -e "[ ] $1..."
-		if sudo pacman -S --noconfirm "$1"; then
-			echo -e "[${green}+${reset}] $1"
-			return 0
+		printf "[ ] %s...\n" "$package"
+
+		if sudo pacman -S --noconfirm "$package"; then
+			printf "[%b+%b] %s\n" "$green" "$reset" "$package"
 		else
-			echo -e "[${red}x${reset}] $1" >&2
+			printf "[%b-%b] %s\n" "$red" "$reset" "$package"
 			return 1
 		fi
 	fi
 }
 
-echo -e "\n${blue}Installing dependencies...${reset}"
-dependencies=(
-	bluez bluez-utils brightnessctl fzf networkmanager pipewire-pulse ttf-0xproto-nerd
-)
+printf "%bInstalling dependencies...%b\n" "$blue" "$reset"
 
 n=0
 for package in "${dependencies[@]}"; do
-	if ! install "$package"; then
-		((n++))
-	fi
+	! install "$package" && ((n++))
 done
 
-echo -e "\n${blue}Setting up scripts...${reset}"
-chmod +x scripts/*.sh
+printf "\n%bSetting up scripts...%b\n" "$blue" "$reset"
+chmod +x ~/.config/waybar/scripts/*.sh
 
-echo -e "\n${blue}Restarting Waybar...${reset}"
+printf "\n%bRestarting Waybar...%b\n" "$blue" "$reset"
 pkill waybar 2>/dev/null || true
 nohup waybar >/dev/null 2>&1 &
 
 if ((n > 0)); then
-	echo -e "\nInstallation completed with ${red}${n} error/s${reset}"
+	printf "\nInstallation completed with %b%d error(s)%b\n" "$red" "$n" "$reset"
 else
-	echo -e "\n${green}Installation complete!${reset}"
+	printf "\n%bInstallation complete!%b\n" "$green" "$reset"
 fi

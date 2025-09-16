@@ -16,7 +16,7 @@
 		// "rotate":
 		"min-length": 2,
 		"max-length": 2,
-		"on-click": "kitty ~/.config/waybar/scripts/network.sh",
+		"on-click": "kitty -e ~/.config/waybar/scripts/network.sh",
 		// "on-click-middle":
 		"on-click-right": "nmcli radio wifi off && notify-send 'Wi-Fi Disabled' -r 1125",
 		// "on-scroll-up":
