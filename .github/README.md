@@ -67,10 +67,14 @@
 
 ### Requirements
 
-- [waybar](https://github.com/Alexays/Waybar) **v0.13.0**
+- [waybar](https://github.com/Alexays/Waybar)
 
-	> Version **0.14.0** has an [issue](https://github.com/Alexays/Waybar/issues/4354) that breaks the module layout.
-	> See [#31](https://github.com/sejjy/mechabar/issues/31).
+	> Version **0.14.0** has an [issue](https://github.com/Alexays/Waybar/issues/4354) that breaks modular configs
+	> ([#31](https://github.com/sejjy/mechabar/issues/31)). As a temporary fix, clone the `fix/v14` branch instead:
+
+   ```bash
+   git clone -b fix/v14 https://github.com/sejjy/mechabar.git ~/.config/waybar
+   ```
 
 - [kitty](https://github.com/kovidgoyal/kitty) (_optional_)
 
