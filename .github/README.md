@@ -49,11 +49,11 @@
 	<details>
 		<summary><b>Variants</b></summary>
 		<div align="left">
-			<p><b>pacman</b> (<i>Pac-Man</i>)</p>
+			<p><b>pac-man</b> (<i>Pac-Man</i>)</p>
 			<table>
 				<tr>
 					<td>
-						<img src="assets/var-pacman.png" alt="Pac-Man Variant" />
+						<img src="assets/variant-pac-man.png" alt="Pac-Man Variant" />
 					</td>
 				</tr>
 			</table>
@@ -79,10 +79,10 @@
 
 	Example:
 
-	```jsonc
-	// modules/bluetooth.jsonc:
-	"on-click": "ghostty -e ~/.config/waybar/scripts/bluetooth.sh"
-	```
+   ```jsonc
+   // modules/bluetooth.jsonc:
+   "on-click": "ghostty -e ~/.config/waybar/scripts/bluetooth.sh"
+   ```
 
 #
 
@@ -98,17 +98,17 @@
 
 	- Default:
 
-		```bash
-		git clone https://github.com/sejjy/mechabar.git ~/.config/waybar
-		```
+	   ```bash
+	   git clone https://github.com/sejjy/mechabar.git ~/.config/waybar
+	   ```
 
 	- Variant:
 
-		```bash
-		# git clone -b var/<name> https://github.com/sejjy/mechabar.git ~/.config/waybar
-		# Example:
-		git clone -b var/pacman https://github.com/sejjy/mechabar.git ~/.config/waybar
-		```
+	   ```bash
+	   # git clone -b <variant> https://github.com/sejjy/mechabar.git ~/.config/waybar
+	   # Example:
+	   git clone -b pac-man https://github.com/sejjy/mechabar.git ~/.config/waybar
+	   ```
 
 3. Run the [install](/install.sh) script:
 
