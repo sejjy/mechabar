@@ -6,6 +6,20 @@
 # Created: August 19, 2025
 # License: MIT
 
+BLUETOOTH_PID="/tmp/bluetooth_script.pid"
+# Check if already running
+if [[ -f $BLUETOOTH_PID ]] && kill -0 "$(<"$BLUETOOTH_PID")" 2>/dev/null; then
+    echo "Script already running, killing and turning off bluetooth..."
+    kill "$(<"$BLUETOOTH_PID")"
+    rm -f "$BLUETOOTH_PID"
+    bluetoothctl power off >/dev/null
+    notify-send 'Bluetooth' 'Turned off'
+    exit 0
+fi
+# Store PID
+echo $$ > "$BLUETOOTH_PID"
+trap 'rm -f "$BLUETOOTH_PID"' EXIT
+
 gray='\033[1;30m'
 reset='\033[0m'
 
@@ -70,8 +84,14 @@ address=$(fzf "${options[@]}" <<<"$list" | awk '{print $1}')
 connected=$(bluetoothctl info "$address" | grep Connected | awk '{print $2}')
 
 if [[ $connected == 'yes' ]]; then
-	notify-send 'Bluetooth' 'Already connected to this device'
-	exit 0
+    echo 'Disconnecting...'
+    if timeout $s bluetoothctl disconnect "$address" >/dev/null; then
+        notify-send 'Bluetooth' 'Successfully disconnected'
+        exit 0
+    else
+        notify-send 'Bluetooth' 'Failed to disconnect'
+        exit 1
+    fi
 fi
 
 paired=$(bluetoothctl info "$address" | grep Paired | awk '{print $2}')
