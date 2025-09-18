@@ -17,19 +17,25 @@
 
 export DBUS_SESSION_BUS_ADDRESS='unix:path=/run/user/1000/bus'
 
-state=$1
-case $state in
-	'charging')
-		state=${state^}
-		icon='battery-100-charging'
-		;;
-	'discharging')
-		state=${state^}
-		icon='battery-100'
-		;;
-esac
+main() {
+	local state=$1
+	local icon path level
 
-path=$(upower -e | grep BAT | head -n 1)
-level=$(upower -i "$path" | awk '/percentage:/ {print $2}')
+	case $state in
+		charging)
+			state=${state^}
+			icon='battery-100-charging'
+			;;
+		discharging)
+			state=${state^}
+			icon='battery-100'
+			;;
+	esac
 
-notify-send "Battery $state ($level)" -i "$icon" -r 1525
+	path=$(upower -e | grep BAT | head -n 1)
+	level=$(upower -i "$path" | awk '/percentage:/ {print $2}')
+
+	notify-send "Battery $state ($level)" -i "$icon" -r 1525
+}
+
+main "$@"

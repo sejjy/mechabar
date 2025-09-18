@@ -39,7 +39,7 @@ for package in "${dependencies[@]}"; do
 	! install "$package" && ((n++))
 done
 
-printf "\n%bSetting up scripts...%b\n" "$blue" "$reset"
+printf "\n%bMaking scripts executable...%b\n" "$blue" "$reset"
 chmod +x ~/.config/waybar/scripts/*.sh
 
 printf "\n%bRestarting Waybar...%b\n" "$blue" "$reset"
