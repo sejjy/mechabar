@@ -1,84 +1,98 @@
 #!/usr/bin/env bash
+#
+# Switch waybar themes and export matching fzf colors
+#
+# Author: Jesse Mirabel <github.com/sejjy>
+# Created: August 22, 2025
+# License: MIT
 
-theme_css="$HOME/.config/waybar/theme.css"
-theme_dir="$HOME/.config/waybar/themes"
+FILES=("$HOME/.config/waybar/themes/"*.css)
+FILE=$HOME/.config/waybar/theme.css
+THEME=$(head -n 1 "$FILE" | awk '{print $2}')
 
-current_theme=$(head -n 1 "$theme_css" | awk '{print $2}')
+switch-theme() {
+	local action=$1
+	local i theme new_index new_theme
+	local index=-1
 
-case $1 in
-	'next' | 'prev')
-		themes=("$theme_dir/"*.css)
-		index=-1
+	for i in "${!FILES[@]}"; do
+		theme=$(basename "${FILES[$i]}" .css)
 
-		for i in "${!themes[@]}"; do
-			theme=$(basename "${themes[$i]}" .css)
+		if [[ $theme == "$THEME" ]]; then
+			index=$i
+			break
+		fi
+	done
 
-			if [[ $theme == "$current_theme" ]]; then
-				index=$i
-				break
-			fi
-		done
+	case $action in
+		next)
+			new_index=$(((index + 1) % ${#FILES[@]}))
+			;;
+		prev)
+			new_index=$(((index - 1 + ${#FILES[@]}) % ${#FILES[@]}))
+			;;
+	esac
 
-		case $1 in
-			'next')
-				new_index=$(((index + 1) % ${#themes[@]}))
-				;;
-			'prev')
-				new_index=$(((index - 1 + ${#themes[@]}) % ${#themes[@]}))
-				;;
-		esac
+	new_theme="${FILES[$new_index]}"
+	cp "$new_theme" "$FILE"
+}
 
-		new_theme="${themes[$new_index]}"
-		cp "$new_theme" "$theme_css"
+export-colors() {
+	local rosewater mauve red lavender text overlay0 surface1 surface0 base
 
-		pkill waybar 2>/dev/null || true
-		nohup waybar >/dev/null 2>&1 &
-		;;
+	case $THEME in
+		catppuccin-frappe)
+			rosewater='#f2d5cf' mauve='#ca9ee6'    red='#e78284'
+			lavender='#babbf1'  text='#c6d0f5'     overlay0='#737994'
+			surface1='#51576d'  surface0='#414559' base='#303446'
+			;;
+		catppuccin-latte)
+			rosewater='#dc8a78' mauve='#8839ef'    red='#d20f39'
+			lavender='#7287fd'  text='#4c4f69'     overlay0='#9ca0b0'
+			surface1='#bcc0cc'  surface0='#ccd0da' base='#eff1f5'
+			;;
+		catppuccin-macchiato)
+			rosewater='#f4dbd6' mauve='#c6a0f6'    red='#ed8796'
+			lavender='#b7bdf8'  text='#cad3f5'     overlay0='#6e738d'
+			surface1='#494d64'  surface0='#363a4f' base='#24273a'
+			;;
+		catppuccin-mocha)
+			rosewater='#f5e0dc' mauve='#cba6f7'    red='#f38ba8'
+			lavender='#b4befe'  text='#cdd6f4'     overlay0='#6c7086'
+			surface1='#45475a'  surface0='#313244' base='#1e1e2e'
+			;;
+	esac
 
-	'fzf')
-		case $current_theme in
-			'catppuccin-frappe')
-				export colors=(
-					--color='bg+:#414559,bg:#303446,spinner:#f2d5cf,hl:#e78284'
-					--color='fg:#c6d0f5,header:#e78284,info:#ca9ee6,pointer:#f2d5cf'
-					--color='marker:#babbf1,fg+:#c6d0f5,prompt:#ca9ee6,hl+:#e78284'
-					--color='selected-bg:#51576d'
-					--color='border:#737994,label:#c6d0f5'
-				)
-				;;
-			'catppuccin-latte')
-				export colors=(
-					--color='bg+:#ccd0da,bg:#eff1f5,spinner:#dc8a78,hl:#d20f39'
-					--color='fg:#4c4f69,header:#d20f39,info:#8839ef,pointer:#dc8a78'
-					--color='marker:#7287fd,fg+:#4c4f69,prompt:#8839ef,hl+:#d20f39'
-					--color='selected-bg:#bcc0cc'
-					--color='border:#9ca0b0,label:#4c4f69'
-				)
-				;;
-			'catppuccin-macchiato')
-				export colors=(
-					--color='bg+:#363a4f,bg:#24273a,spinner:#f4dbd6,hl:#ed8796'
-					--color='fg:#cad3f5,header:#ed8796,info:#c6a0f6,pointer:#f4dbd6'
-					--color='marker:#b7bdf8,fg+:#cad3f5,prompt:#c6a0f6,hl+:#ed8796'
-					--color='selected-bg:#494d64'
-					--color='border:#6e738d,label:#cad3f5'
-				)
-				;;
-			'catppuccin-mocha')
-				export colors=(
-					--color='bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8'
-					--color='fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc'
-					--color='marker:#b4befe,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8'
-					--color='selected-bg:#45475a'
-					--color='border:#6c7086,label:#cdd6f4'
-				)
-				;;
-		esac
+	export COLORS=(
+		--color="bg+:$surface0,bg:$base,spinner:$rosewater,hl:$red"
+		--color="fg:$text,header:$red,info:$mauve,pointer:$rosewater"
+		--color="marker:$lavender,fg+:$text,prompt:$mauve,hl+:$red"
+		--color="selected-bg:$surface1"
+		--color="border:$overlay0,label:$text"
+	)
+}
 
-		return 0
-		;;
-esac
+display-tooltip() {
+	local name
+	name=${THEME//-/ }
+	name="<span text_transform='capitalize'>$name</span>"
 
-tooltip=$(tr '-' ' ' <<<"$current_theme")
+	echo "{ \"text\": \">\", \"tooltip\": \"Theme: $name\" }"
+}
 
-echo "{ \"text\": \">\", \"tooltip\": \"Theme: <span text_transform='capitalize'>${tooltip}</span>\" }"
+main() {
+	local action=$1
+
+	case $action in
+		next | prev)
+			switch-theme "$action"
+
+			pkill waybar 2>/dev/null || true
+			nohup waybar >/dev/null 2>&1 &
+			;;
+		fzf) export-colors ;;
+		*) display-tooltip ;;
+	esac
+}
+
+main "$@"

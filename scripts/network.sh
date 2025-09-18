@@ -7,63 +7,106 @@
 # License: MIT
 
 # shellcheck disable=SC1091
-source "$HOME/.config/waybar/scripts/theme-switcher.sh" 'fzf'
+source "$HOME/.config/waybar/scripts/theme-switcher.sh" fzf
 
-status=$(nmcli radio wifi)
+ensure-enabled() {
+	local status
+	status=$(nmcli radio wifi)
 
-if [[ $status == 'disabled' ]]; then
-	nmcli radio wifi on
-	notify-send 'Wi-Fi Enabled' -r 1125
-fi
+	if [[ $status == 'disabled' ]]; then
+		nmcli radio wifi on
+		notify-send 'Wi-Fi Enabled' -i 'network-wireless-on' -r 1125
+	fi
+}
 
-nmcli device wifi rescan 2>/dev/null
+scan-for-networks() {
+	local i list
+	local s=5
 
-s=5
-for ((i = 1; i <= s; i++)); do
-	echo -en "\rScanning for networks... ($i/$s)"
+	nmcli device wifi rescan 2>/dev/null
 
-	output=$(timeout 1 nmcli device wifi list)
-	list=$(tail -n +2 <<<"$output" | awk '$2 != "--"')
+	for ((i = 1; i <= s; i++)); do
+		echo -en "\rScanning for networks... ($i/$s)" >&2
 
-	[[ -n $list ]] && break
-done
+		list=$(timeout 1 nmcli device wifi list)
 
-printf '\n\n'
+		if [[ -n $list ]]; then
+			break
+		fi
+	done
 
-if [[ -z $list ]]; then
-	notify-send 'Wi-Fi' 'No networks found'
-	exit 1
-fi
+	echo "$list"
+}
 
-header=$(head -n 1 <<<"$output")
+get-network-list() {
+	local list=$1
+	local header
 
-options=(
-	--border=sharp
-	--border-label=' Wi-Fi Networks '
-	--ghost='Search'
-	--header="$header"
-	--height=~100%
-	--highlight-line
-	--info=inline-right
-	--pointer=
-	--reverse
-)
-# shellcheck disable=SC2154
-options+=("${colors[@]}")
+	header=$(head -n 1 <<<"$list")
+	list=$(tail -n +2 <<<"$list" | awk '$2 != "--"')
 
-bssid=$(fzf "${options[@]}" <<<"$list" | awk '{print $1}')
+	if [[ -z $list ]]; then
+		notify-send 'Wi-Fi' 'No networks found' -i 'package-broken'
+		return 1
+	fi
 
-[[ -z $bssid ]] && exit 0
+	REPLY=("$header" "$list")
+}
 
-if [[ $bssid == '*' ]]; then
-	notify-send 'Wi-Fi' 'Already connected to this network'
-	exit 0
-fi
+select-network() {
+	local header=${REPLY[0]}
+	local list=${REPLY[1]}
+	local opts bssid
 
-echo 'Connecting...'
+	opts=(
+		--border=sharp
+		--border-label=' Wi-Fi Networks '
+		--ghost='Search'
+		--header="$header"
+		--height=~100%
+		--highlight-line
+		--info=inline-right
+		--pointer=
+		--reverse
+	)
+	opts+=("${COLORS[@]}")
 
-if nmcli device wifi connect "$bssid" --ask; then
-	notify-send 'Wi-Fi' 'Successfully connected'
-else
-	notify-send 'Wi-Fi' 'Failed to connect'
-fi
+	bssid=$(fzf "${opts[@]}" <<<"$list" | awk '{print $1}')
+
+	if [[ -z $bssid ]]; then
+		return 1
+	elif [[ $bssid == '*' ]]; then
+		notify-send 'Wi-Fi' 'Already connected to this network' \
+			-i 'package-install'
+		return 1
+	else
+		echo "$bssid"
+	fi
+}
+
+connect-to-network() {
+	local bssid=$1
+
+	echo 'Connecting...'
+
+	if nmcli --ask device wifi connect "$bssid"; then
+		notify-send 'Wi-Fi' 'Successfully connected' -i 'package-install'
+	else
+		notify-send 'Wi-Fi' 'Failed to connect' -i 'package-purge'
+	fi
+}
+
+main() {
+	local list bssid
+
+	ensure-enabled
+
+	list=$(scan-for-networks)
+	get-network-list "$list" || exit 1
+
+	printf '\n\n'
+	bssid=$(select-network) || exit 1
+	connect-to-network "$bssid"
+}
+
+main "$@"
