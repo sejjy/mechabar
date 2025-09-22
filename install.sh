@@ -1,11 +1,17 @@
 #!/usr/bin/env bash
+#
+# Install mechabar dependencies using pacman
+#
+# Author: Jesse Mirabel <github.com/sejjy>
+# Created: August 22, 2025
+# License: MIT
 
 red='\033[1;31m'
 green='\033[1;32m'
 blue='\033[1;34m'
 reset='\033[0m'
 
-dependencies=(
+DEPS=(
 	bluez
 	bluez-utils # bluetoothctl
 	brightnessctl
@@ -15,39 +21,59 @@ dependencies=(
 	ttf-0xproto-nerd
 )
 
-install() {
-	local package=$1
+install-deps() {
+	local package
+	local errors=0
 
-	if pacman -Qi "$package" &>/dev/null; then
-		printf "[%b/%b] %s\n" "$green" "$reset" "$package"
-	else
-		printf "[ ] %s...\n" "$package"
+	echo -e "${blue}Installing dependencies...${reset}" >&2
 
-		if sudo pacman -S --noconfirm "$package"; then
-			printf "[%b+%b] %s\n" "$green" "$reset" "$package"
+	for package in "${DEPS[@]}"; do
+		if pacman -Qi "$package" &>/dev/null; then
+			echo -e "[${green}/${reset}] $package" >&2
 		else
-			printf "[%b-%b] %s\n" "$red" "$reset" "$package"
-			return 1
+			echo "[ ] $package..." >&2
+
+			if sudo pacman -S --noconfirm "$package"; then
+				echo -e "[${green}+${reset}] $package" >&2
+			else
+				echo -e "[${red}-${reset}] $package" >&2
+				((errors++))
+			fi
 		fi
+	done
+
+	echo "$errors"
+}
+
+setup-scripts() {
+	echo -e "\n${blue}Making scripts executable...${reset}"
+	chmod +x ~/.config/waybar/scripts/*.sh
+}
+
+restart-waybar() {
+	echo -e "\n${blue}Restarting Waybar...${reset}"
+
+	pkill waybar 2>/dev/null || true
+	nohup waybar >/dev/null 2>&1 &
+}
+
+display-result() {
+	local errors=$1
+
+	if ((errors > 0)); then
+		echo -e "\nInstallation completed with ${red}$errors error(s)${reset}"
+	else
+		echo -e "\n${green}Installation complete!${reset}"
 	fi
 }
 
-printf "%bInstalling dependencies...%b\n" "$blue" "$reset"
+main() {
+	local errors
+	errors=$(install-deps)
 
-n=0
-for package in "${dependencies[@]}"; do
-	! install "$package" && ((n++))
-done
+	setup-scripts
+	restart-waybar
+	display-result "$errors"
+}
 
-printf "\n%bSetting up scripts...%b\n" "$blue" "$reset"
-chmod +x ~/.config/waybar/scripts/*.sh
-
-printf "\n%bRestarting Waybar...%b\n" "$blue" "$reset"
-pkill waybar 2>/dev/null || true
-nohup waybar >/dev/null 2>&1 &
-
-if ((n > 0)); then
-	printf "\nInstallation completed with %b%d error(s)%b\n" "$red" "$n" "$reset"
-else
-	printf "\n%bInstallation complete!%b\n" "$green" "$reset"
-fi
+main "$@"
