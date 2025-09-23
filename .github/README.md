@@ -49,21 +49,6 @@
 			</table>
 		</div>
 	</details>
-	<details>
-		<summary><b>Variants</b></summary>
-		<div align="left">
-			<p><b>pac-man</b> (Pac-Man)</p>
-			<table>
-				<tr>
-					<td>
-						<img src="assets/variant-pac-man.png" alt="Pac-Man Variant" />
-					</td>
-				</tr>
-			</table>
-			<blockquote>Variants also come in 4 themes.</blockquote>
-			<p>More variants soon!</p>
-		</div>
-	</details>
 </div>
 
 #
@@ -93,35 +78,24 @@
 
 1. Backup your current config:
 
-	```bash
-	mv ~/.config/waybar{,.bak}
-	```
+    ```bash
+    mv ~/.config/waybar{,.bak}
+    ```
 
 2. Clone the repository:
 
-	- Default:
+    ```bash
+    git clone https://github.com/sejjy/mechabar.git ~/.config/waybar
 
-	   ```bash
-	   git clone https://github.com/sejjy/mechabar.git ~/.config/waybar
-
-       # Version 14 fix:
-       # git clone -b fix/v14 https://github.com/sejjy/mechabar.git ~/.config/waybar
-	   ```
-
-	- Variant:
-
-	   ```bash
-	   # git clone -b <variant> https://github.com/sejjy/mechabar.git ~/.config/waybar
-
-	   # Example:
-	   git clone -b pac-man https://github.com/sejjy/mechabar.git ~/.config/waybar
-	   ```
+    # Version 14 fix:
+    # git clone -b fix/v14 https://github.com/sejjy/mechabar.git ~/.config/waybar
+    ```
 
 3. Run the [install](/install.sh) script:
 
-	```bash
-	~/.config/waybar/install.sh
-	```
+    ```bash
+    ~/.config/waybar/install.sh
+    ```
 
 	> This makes the [scripts](/scripts/) executable and installs all dependencies listed below:
 
