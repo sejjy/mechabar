@@ -12,7 +12,8 @@
 #custom-left_div.6 {
 	color: @volume;
 }
-#pulseaudio {
+#pulseaudio,
+#wireplumber {
 	background-color: @volume;
 }
 

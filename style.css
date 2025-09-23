@@ -32,7 +32,8 @@ window#waybar > box {
 #bluetooth:hover,
 #custom-system_update:hover,
 #mpris:hover,
-#pulseaudio:hover {
+#pulseaudio:hover,
+#wireplumber:hover {
 	color: @hover-fg;
 }
 
@@ -41,7 +42,13 @@ window#waybar > box {
 .warning { color: @warning; }
 .critical { color: @critical; }
 .charging { color: @charging; }
-.muted { color: @hover-fg; }
+.deactivated,
+.paused,
+#pulseaudio.output.muted,
+#pulseaudio.input.source-muted,
+#wireplumber.muted {
+	color: @hover-fg;
+}
 
 /* dividers */
 

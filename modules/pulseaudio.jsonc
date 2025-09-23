@@ -20,13 +20,16 @@
 	"pulseaudio#output": {
 		"format": "{icon} {volume}%",
 		// "format-bluetooth":
-		"format-muted": "󰝟 {volume}%",
+		"format-muted": "{icon} {volume}%",
 		// "format-source":
 		// "format-source-muted":
 		"format-icons": {
 			"default": [ "󰕿", "󰖀", "󰕾" ],
+			"default-muted": "󰝟",
 			"headphone": "󰋋",
-			"headset": "󰋋"
+			"headphone-muted": "󰟎",
+			"headset": "󰋎",
+			"headset-muted": "󰋐"
 		},
 		// "rotate":
 		// "states":
