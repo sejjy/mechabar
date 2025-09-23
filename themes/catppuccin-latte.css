@@ -35,13 +35,13 @@
 
 /* main colors */
 
+@define-color accent		@lavender;
 @define-color main-br		@subtext0;
 @define-color main-bg		@crust;
 @define-color main-fg		@text;
-@define-color accent		@lavender;
 @define-color hover-bg		@base;
-@define-color hover-fg		alpha(@text, 0.75);
-@define-color outline		shade(@crust, 0.5);
+@define-color hover-fg		alpha(@main-fg, 0.75);
+@define-color outline		shade(@main-bg, 0.5);
 
 /* module colors */
 
