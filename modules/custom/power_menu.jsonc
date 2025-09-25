@@ -1,7 +1,26 @@
 {
 	"custom/power_menu": {
+		// "exec":
+		// "exec-if":
+		// "exec-on-event":
+		// "hide-empty-text":
+		// "return-type":
+		// "interval":
+		// "restart-interval":
+		// "signal":
 		"format": "󰤄",
+		// "format-icons":
+		// "rotate":
+		// "min-length":
+		// "max-length":
 		"on-click": "kitty -e ~/.config/waybar/scripts/power-menu.sh",
-		"tooltip": false
+		// "on-click-middle":
+		// "on-click-right":
+		// "on-scroll-up":
+		// "on-scroll-down":
+		// "smooth-scrolling-threshold":
+		// "tooltip":
+		"tooltip-format": "Power Menu"
+		// "escape":
 	}
 }
