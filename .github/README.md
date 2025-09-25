@@ -1,57 +1,35 @@
 <div align="center">
-	<h2>🤖 mechabar</h2>
-	<p>A mecha-themed Waybar configuration.</p>
-	<table>
-		<tr>
-			<td>
-				<img src="assets/social-preview.png" alt="Social Preview">
-			</td>
-		</tr>
-	</table>
-	<details>
-		<summary><b>Themes</b></summary><br>
-		<p><b>Catppuccin:</b></p>
-		<table>
-			<tr>
-				<td>
-					<p align="center">Mocha (default)</p><tr></tr>
-				</td>
-				<td>
-					<img src="assets/catppuccin-mocha.png" alt="Catppuccin Mocha">
-				</td>
-			</tr>
-		</table>
-		<table>
-			<tr>
-				<td>
-					<p align="center">Macchiato</p><tr></tr>
-				</td>
-				<td>
-					<img src="assets/catppuccin-macchiato.png" alt="Catppuccin Macchiato">
-				</td>
-			</tr>
-		</table>
-		<table>
-			<tr>
-				<td>
-					<p align="center">Frappe</p><tr></tr>
-				</td>
-				<td>
-					<img src="assets/catppuccin-frappe.png" alt="Catppuccin Frappe">
-				</td>
-			</tr>
-		</table>
-		<table>
-			<tr>
-				<td>
-					<p align="center">Latte</p><tr></tr>
-				</td>
-				<td>
-					<img src="assets/catppuccin-latte.png" alt="Catppuccin Latte">
-				</td>
-			</tr>
-		</table>
-	</details>
+
+## 🤖 mechabar
+
+A mecha-themed Waybar configuration.
+
+| ![Preview](assets/catppuccin-mocha.png) |
+| --------------------------------------- |
+
+<details>
+<summary><b>Themes</b></summary>
+<br>
+
+**Catppuccin:**
+
+|           Mocha _(default)_           |
+| :-----------------------------------: |
+| ![Mocha](assets/catppuccin-mocha.png) |
+
+|                   Macchiato                   |
+| :-------------------------------------------: |
+| ![Macchiato](assets/catppuccin-macchiato.png) |
+
+|                 Frappe                  |
+| :-------------------------------------: |
+| ![Frappe](assets/catppuccin-frappe.png) |
+
+|                 Latte                 |
+| :-----------------------------------: |
+| ![Latte](assets/catppuccin-latte.png) |
+
+</details>
 </div>
 
 #
@@ -64,7 +42,7 @@
 > Version **0.14.0** has an [issue](https://github.com/Alexays/Waybar/issues/4354) that breaks modular configs.
 > As a temporary fix, clone the `fix/v0.14.0` branch instead.
 
-2. A terminal emulator (default: [kitty](https://github.com/kovidgoyal/kitty))
+2. A terminal emulator _(default: [kitty](https://github.com/kovidgoyal/kitty))_
 
 > [!IMPORTANT]
 > If you use a different terminal emulator (e.g., [ghostty](https://github.com/ghostty-org/ghostty)),
@@ -105,10 +83,10 @@
 	|                        Package | Description                                                                    |
 	| -----------------------------: | ------------------------------------------------------------------------------ |
 	|                        `bluez` | Daemons for the bluetooth protocol stack<tr></tr>                              |
-	| (_bluetoothctl_) `bluez-utils` | Development and debugging utilities for the bluetooth protocol stack<tr></tr>  |
+	| _(bluetoothctl)_ `bluez-utils` | Development and debugging utilities for the bluetooth protocol stack<tr></tr>  |
 	|                `brightnessctl` | Lightweight brightness control tool<tr></tr>                                   |
 	|                          `fzf` | Command-line fuzzy finder<tr></tr>                                             |
-	|     (_nmcli_) `networkmanager` | Network connection manager and user applications<tr></tr>                      |
+	|     _(nmcli)_ `networkmanager` | Network connection manager and user applications<tr></tr>                      |
 	|               `pipewire-pulse` | Low-latency audio/video router and processor - PulseAudio replacement<tr></tr> |
 	|             `ttf-0xproto-nerd` | Patched font 0xProto from nerd fonts library                                   |
 
