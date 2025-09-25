@@ -15,8 +15,8 @@
 		// "on-scroll-down":
 		// "smooth-scrolling-threshold":
 		// "tooltip":
-		"tooltip-format-activated": "Presentation Mode (<span text_transform='capitalize'>{status}</span>)",
-		"tooltip-format-deactivated": "Idle Mode (<span text_transform='capitalize'>{status}</span>)",
+		"tooltip-format-activated": "Keep Screen On: <span text_transform='capitalize'>{status}</span>",
+		"tooltip-format-deactivated": "Keep Screen On: <span text_transform='capitalize'>{status}</span>",
 		"start-activated": false
 		// "timeout":
 	}

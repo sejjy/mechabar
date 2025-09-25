@@ -150,7 +150,7 @@
 		"max-length": 2,
 		"on-click": "kitty -e ~/.config/waybar/scripts/bluetooth.sh",
 		// "on-click-middle":
-		"on-click-right": "bluetoothctl power off && notify-send 'Bluetooth Off' -r 1925",
+		"on-click-right": "bluetoothctl power off && notify-send 'Bluetooth Off' -i 'network-bluetooth-inactive' -r 1925",
 		// "on-scroll-up":
 		// "on-scroll-down":
 		// "smooth-scrolling-threshold":
@@ -264,8 +264,8 @@
 		// "on-scroll-down":
 		// "smooth-scrolling-threshold":
 		// "tooltip":
-		"tooltip-format-activated": "Presentation Mode (<span text_transform='capitalize'>{status}</span>)",
-		"tooltip-format-deactivated": "Idle Mode (<span text_transform='capitalize'>{status}</span>)",
+		"tooltip-format-activated": "Keep Screen On: <span text_transform='capitalize'>{status}</span>",
+		"tooltip-format-deactivated": "Keep Screen On: <span text_transform='capitalize'>{status}</span>",
 		"start-activated": false
 		// "timeout":
 	},
@@ -337,7 +337,7 @@
 		"max-length": 2,
 		"on-click": "kitty -e ~/.config/waybar/scripts/network.sh",
 		// "on-click-middle":
-		"on-click-right": "nmcli radio wifi off && notify-send 'Wi-Fi Disabled' -r 1125",
+		"on-click-right": "nmcli radio wifi off && notify-send 'Wi-Fi Disabled' -i 'network-wireless-off' -r 1125",
 		// "on-scroll-up":
 		// "on-scroll-down":
 		// "smooth-scrolling-threshold":
@@ -450,17 +450,17 @@
 	"hyprland/window": {
 		"format": "{}",
 		"rewrite": {
-			"^$": "Desktop",
-			"^kitty$": "Terminal",
-			"^zsh$": "Terminal",
-			"^~$": "Terminal"
+			"": "Desktop",
+			"kitty": "Terminal",
+			"zsh": "Terminal",
+			"~": "Terminal"
 		},
 		// "separate-outputs":
 		// "icon":
 		// "icon-size":
 		// "min-length":
 		// "max-length":
-		"tooltip": false,
+		// "tooltip":
 		"swap-icon-label": false
 	},
 
@@ -496,8 +496,8 @@
 		// "format-window-separator":
 		// "move-to-monitor":
 		// "ignore-workspaces":
-		// "on-scroll-up":
-		// "on-scroll-down":
+		"on-scroll-up": "hyprctl dispatch workspace +1",
+		"on-scroll-down": "hyprctl dispatch workspace -1",
 		"cursor": true
 	},
 
@@ -645,9 +645,28 @@
 	},
 
 	"custom/power_menu": {
+		// "exec":
+		// "exec-if":
+		// "exec-on-event":
+		// "hide-empty-text":
+		// "return-type":
+		// "interval":
+		// "restart-interval":
+		// "signal":
 		"format": "󰤄",
+		// "format-icons":
+		// "rotate":
+		// "min-length":
+		// "max-length":
 		"on-click": "kitty -e ~/.config/waybar/scripts/power-menu.sh",
-		"tooltip": false
+		// "on-click-middle":
+		// "on-click-right":
+		// "on-scroll-up":
+		// "on-scroll-down":
+		// "smooth-scrolling-threshold":
+		// "tooltip":
+		"tooltip-format": "Power Menu"
+		// "escape":
 	},
 
 	"custom/system_update": {

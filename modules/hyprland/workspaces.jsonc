@@ -20,8 +20,8 @@
 		// "format-window-separator":
 		// "move-to-monitor":
 		// "ignore-workspaces":
-		// "on-scroll-up":
-		// "on-scroll-down":
+		"on-scroll-up": "hyprctl dispatch workspace +1",
+		"on-scroll-down": "hyprctl dispatch workspace -1",
 		"cursor": true
 	}
 }

@@ -32,7 +32,7 @@ print-usage() {
 set-brightness() {
 	local action=$1
 	local value=$2
-	local level op
+	local op level
 
 	case $action in
 		up) op='+' ;;

@@ -62,9 +62,9 @@ toggle-mute() {
 
 	pactl "set-$MUTE" "$DEV" toggle
 
-	case $(pactl "get-$MUTE" "$DEV") in
-		*yes) mute='Muted' ;;
-		*no) mute='Unmuted' ;;
+	case $(pactl "get-$MUTE" "$DEV" | awk '{print $2}') in
+		yes) mute='Muted' ;;
+		no) mute='Unmuted' ;;
 	esac
 
 	icon=$(get-icon "$mute")
@@ -100,6 +100,8 @@ main() {
 	local action=$2
 	local value=${3:-$VALUE}
 
+	! ((value > 0 )) && print-usage
+
 	case $device in
 		input)
 			DEV='@DEFAULT_SOURCE@'
@@ -113,8 +115,6 @@ main() {
 			;;
 		*) print-usage ;;
 	esac
-
-	! ((value > 0 )) && print-usage
 
 	case $action in
 		mute) toggle-mute ;;

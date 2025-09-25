@@ -2,17 +2,17 @@
 	"hyprland/window": {
 		"format": "{}",
 		"rewrite": {
-			"^$": "Desktop",
-			"^kitty$": "Terminal",
-			"^zsh$": "Terminal",
-			"^~$": "Terminal"
+			"": "Desktop",
+			"kitty": "Terminal",
+			"zsh": "Terminal",
+			"~": "Terminal"
 		},
 		// "separate-outputs":
 		// "icon":
 		// "icon-size":
 		// "min-length":
 		// "max-length":
-		"tooltip": false,
+		// "tooltip":
 		"swap-icon-label": false
 	}
 }
