@@ -9,6 +9,9 @@
 # shellcheck disable=SC1091
 source "$HOME/.config/waybar/scripts/theme-switcher.sh" fzf
 
+red='\033[1;31m'
+reset='\033[0m'
+
 ensure-enabled() {
 	local status
 	status=$(nmcli radio wifi)
@@ -27,6 +30,7 @@ scan-for-networks() {
 
 	for ((i = 1; i <= s; i++)); do
 		echo -en "\rScanning for networks... ($i/$s)" >&2
+		echo -en '\033[s'
 
 		list=$(timeout 1 nmcli device wifi list)
 
@@ -35,6 +39,8 @@ scan-for-networks() {
 		fi
 	done
 
+	echo -en "\n${red}Scanning stopped.${reset}" >&2
+	echo -en '\033[u'
 	echo "$list"
 }
 

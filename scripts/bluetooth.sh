@@ -9,7 +9,7 @@
 # shellcheck disable=SC1091
 source "$HOME/.config/waybar/scripts/theme-switcher.sh" fzf
 
-gray='\033[1;30m'
+red='\033[1;31m'
 reset='\033[0m'
 
 ensure-on() {
@@ -29,21 +29,23 @@ scan-for-devices() {
 	bluetoothctl --timeout $s scan on >/dev/null &
 
 	for ((i = 1; i <= s; i++)); do
-		echo -en "\rScanning for devices... " \
-			"${gray}press [q] to stop${reset} ($i/$s)"
+		echo -en "\rScanning for devices... ($i/$s)"
 		echo -en '\033[s'
+		echo -en "\n${red}Press [q] to stop${reset}"
 
 		n=$(bluetoothctl devices | grep -c Device)
-		echo -en "\n\rDevices: $n"
+		echo -en "\n\n\rDevices: $n"
 		echo -en '\033[u'
 
 		read -rs -n 1 -t 1
 
 		if [[ $REPLY == 'q' ]]; then
-			echo -en '\nScanning stopped'
 			break
 		fi
 	done
+
+	echo -en "\n${red}Scanning stopped.${reset}"
+	echo -en '\033[u'
 }
 
 get-device-list() {
