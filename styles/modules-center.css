@@ -1,4 +1,11 @@
-@import "../theme.css";
+/* window count */
+
+#windowcount {
+	margin-right: 12px;
+}
+#windowcount label {
+	color: @hover-fg;
+}
 
 /* temperature */
 

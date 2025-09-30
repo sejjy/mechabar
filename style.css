@@ -1,5 +1,5 @@
-@import "styles/modules-center.css";
 @import "styles/modules-left.css";
+@import "styles/modules-center.css";
 @import "styles/modules-right.css";
 @import "theme.css";
 
@@ -39,9 +39,6 @@ window#waybar > box {
 
 /* states */
 
-.warning { color: @warning; }
-.critical { color: @critical; }
-.charging { color: @charging; }
 .deactivated,
 .paused,
 #pulseaudio.output.muted,
@@ -49,6 +46,9 @@ window#waybar > box {
 #wireplumber.muted {
 	color: @hover-fg;
 }
+.warning { color: @warning; }
+.critical { color: @critical; }
+.charging { color: @charging; }
 
 /* dividers */
 
