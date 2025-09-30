@@ -19,8 +19,10 @@ LIST=(
 )
 
 select-action() {
+	local opts=("${COLORS[@]}")
 	local action
-	local opts=(
+
+	opts+=(
 		--border=sharp
 		--border-label=' Power Menu '
 		--height=~100%
@@ -29,7 +31,6 @@ select-action() {
 		--pointer=
 		--reverse
 	)
-	opts+=("${COLORS[@]}")
 
 	action=$(printf '%s\n' "${LIST[@]}" | fzf "${opts[@]}")
 

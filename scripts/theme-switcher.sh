@@ -73,8 +73,8 @@ export-colors() {
 }
 
 display-tooltip() {
-	local name=${THEME//-/ }
-	name="<span text_transform='capitalize'>$name</span>"
+	local name=$THEME
+	name="<span text_transform='capitalize'>${name//-/ }</span>"
 
 	echo "{ \"text\": \"󰍜\", \"tooltip\": \"Theme: $name\" }"
 }

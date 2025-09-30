@@ -6,9 +6,9 @@
 # Created: August 16, 2025
 # License: MIT
 
-green='\033[1;32m'
-blue='\033[1;34m'
-reset='\033[0m'
+GRN='\033[1;32m'
+BLU='\033[1;34m'
+RST='\033[0m'
 
 HELPER=$(command -v yay trizen pikaur paru pakku pacaur aurman aura |
 	head -n 1 | xargs -- basename)
@@ -34,18 +34,18 @@ update-packages() {
 
 	if ((repo > 0)); then
 		printf '\n\n'
-		echo -e "${blue}Updating pacman packages...${reset}"
+		echo -e "${BLU}Updating pacman packages...${RST}"
 		sudo pacman -Syu
 	fi
 
 	if ((aur > 0)); then
-		echo -e "\n${blue}Updating AUR packages...${reset}"
+		echo -e "\n${BLU}Updating AUR packages...${RST}"
 		"$HELPER" -Syu
 	fi
 
 	notify-send 'Update Complete' -i 'package-installed-updated'
 
-	echo -e "\n${green}Update complete!${reset}\n"
+	echo -e "\n${GRN}Update complete!${RST}\n"
 	read -rs -n 1 -p 'Press any key to exit...'
 }
 
@@ -75,7 +75,7 @@ main() {
 
 	case $action in
 		start)
-			echo -en "${blue}Checking for updates...${reset}"
+			echo -en "${BLU}Checking for updates...${RST}"
 
 			read -r repo aur < <(check-updates)
 			update-packages "$repo" "$aur"

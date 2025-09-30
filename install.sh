@@ -6,10 +6,10 @@
 # Created: August 22, 2025
 # License: MIT
 
-red='\033[1;31m'
-green='\033[1;32m'
-blue='\033[1;34m'
-reset='\033[0m'
+RED='\033[1;31m'
+GRN='\033[1;32m'
+BLU='\033[1;34m'
+RST='\033[0m'
 
 DEPS=(
 	bluez
@@ -25,18 +25,18 @@ install-deps() {
 	local package
 	local errors=0
 
-	echo -e "${blue}Installing dependencies...${reset}" >&2
+	echo -e "${BLU}Installing dependencies...${RST}" >&2
 
 	for package in "${DEPS[@]}"; do
 		if pacman -Qi "$package" &>/dev/null; then
-			echo -e "[${green}/${reset}] $package" >&2
+			echo -e "[${GRN}/${RST}] $package" >&2
 		else
 			echo "[ ] $package..." >&2
 
 			if sudo pacman -S --noconfirm "$package"; then
-				echo -e "[${green}+${reset}] $package" >&2
+				echo -e "[${GRN}+${RST}] $package" >&2
 			else
-				echo -e "[${red}-${reset}] $package" >&2
+				echo -e "[${RED}-${RST}] $package" >&2
 				((errors++))
 			fi
 		fi
@@ -46,12 +46,12 @@ install-deps() {
 }
 
 setup-scripts() {
-	echo -e "\n${blue}Making scripts executable...${reset}"
+	echo -e "\n${BLU}Making scripts executable...${RST}"
 	chmod +x ~/.config/waybar/scripts/*.sh
 }
 
 restart-waybar() {
-	echo -e "\n${blue}Restarting Waybar...${reset}"
+	echo -e "\n${BLU}Restarting Waybar...${RST}"
 
 	pkill waybar 2>/dev/null || true
 	nohup waybar >/dev/null 2>&1 &
@@ -61,9 +61,9 @@ display-result() {
 	local errors=$1
 
 	if ((errors > 0)); then
-		echo -e "\nInstallation completed with ${red}$errors error(s)${reset}"
+		echo -e "\nInstallation completed with ${RED}$errors error(s)${RST}"
 	else
-		echo -e "\n${green}Installation complete!${reset}"
+		echo -e "\n${GRN}Installation complete!${RST}"
 	fi
 }
 

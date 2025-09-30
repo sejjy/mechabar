@@ -9,8 +9,10 @@
 # shellcheck disable=SC1091
 source "$HOME/.config/waybar/scripts/theme-switcher.sh" fzf
 
-red='\033[1;31m'
-reset='\033[0m'
+RED='\033[1;31m'
+RST='\033[0m'
+
+TIMEOUT=5
 
 ensure-enabled() {
 	local status
@@ -24,12 +26,11 @@ ensure-enabled() {
 
 scan-for-networks() {
 	local i list
-	local s=5
 
 	nmcli device wifi rescan 2>/dev/null
 
-	for ((i = 1; i <= s; i++)); do
-		echo -en "\rScanning for networks... ($i/$s)" >&2
+	for ((i = 1; i <= TIMEOUT; i++)); do
+		echo -en "\rScanning for networks... ($i/$TIMEOUT)" >&2
 		echo -en '\033[s'
 
 		list=$(timeout 1 nmcli device wifi list)
@@ -39,7 +40,7 @@ scan-for-networks() {
 		fi
 	done
 
-	echo -en "\n${red}Scanning stopped.${reset}" >&2
+	echo -en "\n${RED}Scanning stopped.${RST}" >&2
 	echo -en '\033[u'
 	echo "$list"
 }
@@ -62,9 +63,10 @@ get-network-list() {
 select-network() {
 	local header=${REPLY[0]}
 	local list=${REPLY[1]}
-	local opts bssid
+	local opts=("${COLORS[@]}")
+	local bssid
 
-	opts=(
+	opts+=(
 		--border=sharp
 		--border-label=' Wi-Fi Networks '
 		--ghost='Search'
@@ -75,7 +77,6 @@ select-network() {
 		--pointer=
 		--reverse
 	)
-	opts+=("${COLORS[@]}")
 
 	bssid=$(fzf "${opts[@]}" <<<"$list" | awk '{print $1}')
 
@@ -93,7 +94,7 @@ select-network() {
 connect-to-network() {
 	local bssid=$1
 
-	echo 'Connecting...'
+	echo -n 'Connecting...'
 
 	if nmcli --ask device wifi connect "$bssid"; then
 		notify-send 'Wi-Fi' 'Successfully connected' -i 'package-install'
@@ -106,11 +107,11 @@ main() {
 	local list bssid
 
 	ensure-enabled
-
 	list=$(scan-for-networks)
 	get-network-list "$list" || exit 1
 
 	printf '\n\n'
+
 	bssid=$(select-network) || exit 1
 	connect-to-network "$bssid"
 }
