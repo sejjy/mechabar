@@ -20,17 +20,11 @@
 	color: @accent;
 }
 
-/* window title & count */
+/* window title */
 
 #window {
 	margin-left: 12px;
 }
 #window label {
 	font-weight: normal;
-}
-#windowcount {
-	margin-right: 12px;
-}
-#windowcount label {
-	color: @hover-fg;
 }

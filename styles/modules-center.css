@@ -1,3 +1,12 @@
+/* window count */
+
+#windowcount {
+	margin-right: 12px;
+}
+#windowcount label {
+	color: @hover-fg;
+}
+
 /* temperature */
 
 #custom-left_div.2 {
