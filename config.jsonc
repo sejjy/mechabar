@@ -375,9 +375,9 @@
 		"tooltip-format": "Discharging: {time}",
 		"tooltip-format-charging": "Charging: {time}",
 		"events": {
-			"on-discharging-warning": "notify-send 'Low Battery' '{capacity}% battery remaining'",
-			"on-discharging-critical": "notify-send 'Low Battery' '{capacity}% battery remaining' -u critical",
-			"on-charging-100": "notify-send 'Battery full' 'Battery is at {capacity}%'"
+			"on-discharging-warning": "notify-send 'Battery Low' -i 'battery-020'",
+			"on-discharging-critical": "notify-send 'Battery Critical' -u critical -i 'battery-010'",
+			"on-charging-100": "notify-send 'Battery Full' -i 'battery-100-charged'"
 		}
 	},
 
