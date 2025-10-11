@@ -30,13 +30,12 @@ scan-for-devices() {
 	bluetoothctl --timeout $TIMEOUT scan on >/dev/null &
 
 	for ((i = 1; i <= TIMEOUT; i++)); do
-		echo -en "\rScanning for devices... ($i/$TIMEOUT)"
-		echo -en '\033[s'
-		echo -en "\n${RED}Press [q] to stop${RST}"
+		echo -e "\rScanning for devices... ($i/$TIMEOUT)"
+		echo -e "${RED}Press [q] to stop${RST}"
 
 		num=$(bluetoothctl devices | grep -c Device)
-		echo -en "\n\n\rDevices: $num"
-		echo -en '\033[u'
+		echo -en "\n\rDevices: $num"
+		printf '\033[3A' # move cursor up 3 lines
 
 		read -rs -n 1 -t 1
 		if [[ $REPLY == [Qq] ]]; then
@@ -44,8 +43,7 @@ scan-for-devices() {
 		fi
 	done
 
-	echo -en "\n${RED}Scanning stopped.${RST}"
-	echo -en '\033[u'
+	echo -e "\n${RED}Scanning stopped.${RST}\n"
 }
 
 get-device-list() {
@@ -125,11 +123,10 @@ main() {
 	local list address
 
 	ensure-on
+	tput civis # set to cursor to be invisible
 	scan-for-devices
+	tput cnorm # set the cursor to its normal state
 	list=$(get-device-list) || exit 1
-
-	printf '\n\n\n'
-
 	address=$(select-device "$list") || exit 1
 	pair-and-connect "$address" || exit 1
 }

@@ -31,7 +31,7 @@ scan-for-networks() {
 
 	for ((i = 1; i <= TIMEOUT; i++)); do
 		echo -en "\rScanning for networks... ($i/$TIMEOUT)" >&2
-		echo -en '\033[s'
+		printf '\033[1A' # move cursor up 1 line
 
 		list=$(timeout 1 nmcli device wifi list)
 
@@ -40,8 +40,7 @@ scan-for-networks() {
 		fi
 	done
 
-	echo -en "\n${RED}Scanning stopped.${RST}" >&2
-	echo -en '\033[u'
+	echo -e "\n${RED}Scanning stopped.${RST}\n" >&2
 	echo "$list"
 }
 
@@ -107,11 +106,10 @@ main() {
 	local list bssid
 
 	ensure-enabled
+	tput civis # set to cursor to be invisible
 	list=$(scan-for-networks)
+	tput cnorm # set the cursor to its normal state
 	get-network-list "$list" || exit 1
-
-	printf '\n\n'
-
 	bssid=$(select-network) || exit 1
 	connect-to-network "$bssid"
 }
