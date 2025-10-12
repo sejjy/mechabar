@@ -10,79 +10,65 @@ GRN='\033[1;32m'
 BLU='\033[1;34m'
 RST='\033[0m'
 
+TIMEOUT=5
 HELPER=$(command -v yay trizen pikaur paru pakku pacaur aurman aura |
 	head -n 1 | xargs -- basename)
 
 check-updates() {
-	local repo
-	local aur=0
-	local s=5
+	repo=$(timeout $TIMEOUT pacman -Quq | wc -l) || repo=0
 
-	repo=$(timeout $s pacman -Quq | wc -l) || repo=0
-
+	aur=0
 	if [[ -n $HELPER ]]; then
-		aur=$(timeout $s "$HELPER" -Quaq 2>/dev/null | wc -l) ||
+		aur=$(timeout $TIMEOUT "$HELPER" -Quaq 2>/dev/null | wc -l) ||
 			aur=0
 	fi
-
-	echo "$repo" "$aur"
 }
 
 update-packages() {
-	local repo=$1
-	local aur=$2
+	if ((repo + aur == 0)); then
+		notify-send 'No updates available' -i 'package-installed-updated'
+	else
+		if ((repo > 0)); then
+			printf '\n%bUpdating pacman packages...%b\n' "$BLU" "$RST"
+			sudo pacman -Syu
+		fi
 
-	if ((repo > 0)); then
-		printf '\n\n'
-		echo -e "${BLU}Updating pacman packages...${RST}"
-		sudo pacman -Syu
+		if ((aur > 0)); then
+			printf '\n%bUpdating AUR packages...%b\n' "$BLU" "$RST"
+			"$HELPER" -Syu
+		fi
+
+		notify-send 'Update Complete' -i 'package-install'
+
+		printf '\n%bUpdate Complete!%b\n' "$GRN" "$RST"
+		read -rs -n 1 -p 'Press any key to exit...'
 	fi
-
-	if ((aur > 0)); then
-		echo -e "\n${BLU}Updating AUR packages...${RST}"
-		"$HELPER" -Syu
-	fi
-
-	notify-send 'Update Complete' -i 'package-installed-updated'
-
-	echo -e "\n${GRN}Update complete!${RST}\n"
-	read -rs -n 1 -p 'Press any key to exit...'
 }
 
 display-tooltip() {
-	local repo=$1
-	local aur=$2
-	local tooltip total
-
-	tooltip="Official: $repo"
-
+	local tooltip="Official: $repo"
 	if [[ -n $HELPER ]]; then
 		tooltip+="\nAUR($HELPER): $aur"
 	fi
 
-	total=$((repo + aur))
-
-	if ((total > 0)); then
-		echo "{ \"text\": \"\", \"tooltip\": \"$tooltip\" }"
-	else
+	if ((repo + aur == 0)); then
 		echo "{ \"text\": \"󰸟\", \"tooltip\": \"No updates available\" }"
+	else
+		echo "{ \"text\": \"\", \"tooltip\": \"$tooltip\" }"
 	fi
 }
 
 main() {
 	local action=$1
-	local repo aur
-
 	case $action in
 		start)
-			echo -en "${BLU}Checking for updates...${RST}"
-
-			read -r repo aur < <(check-updates)
-			update-packages "$repo" "$aur"
+			printf '%bChecking for updates...%b' "$BLU" "$RST"
+			check-updates
+			update-packages
 			;;
 		*)
-			read -r repo aur < <(check-updates)
-			display-tooltip "$repo" "$aur"
+			check-updates
+			display-tooltip
 			;;
 	esac
 }

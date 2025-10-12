@@ -6,9 +6,6 @@
 # Created: August 19, 2025
 # License: MIT
 
-# shellcheck disable=SC1091
-source "$HOME/.config/waybar/scripts/theme-switcher.sh" fzf
-
 LIST=(
 	'Lock'
 	'Shutdown'
@@ -19,9 +16,10 @@ LIST=(
 )
 
 select-action() {
-	local opts=("${COLORS[@]}")
-	local action
+	# shellcheck disable=SC1090
+	. ~/.config/waybar/scripts/theme-switcher.sh 'fzf' # get fzf colors
 
+	local opts=("${COLORS[@]}")
 	opts+=(
 		--border=sharp
 		--border-label=' Power Menu '
@@ -36,15 +34,10 @@ select-action() {
 
 	if [[ -z $action ]]; then
 		return 1
-	else
-		echo "$action"
 	fi
 }
 
-main() {
-	local action
-	action=$(select-action) || exit 1
-
+do-action() {
 	case $action in
 		'Lock') loginctl lock-session ;;
 		'Shutdown') systemctl poweroff ;;
@@ -53,6 +46,11 @@ main() {
 		'Hibernate') systemctl hibernate ;;
 		'Suspend') systemctl suspend ;;
 	esac
+}
+
+main() {
+	select-action || exit 1
+	do-action
 }
 
 main "$@"

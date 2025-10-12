@@ -6,15 +6,13 @@
 # Created: August 22, 2025
 # License: MIT
 
-FILES=("$HOME/.config/waybar/themes/"*.css)
-FILE=$HOME/.config/waybar/theme.css
+FILES=(~/.config/waybar/themes/*.css)
+FILE=~/.config/waybar/theme.css
 THEME=$(head -n 1 "$FILE" | awk '{print $2}')
 
 switch-theme() {
-	local action=$1
-	local i theme new_index new_theme
+	local i theme
 	local index=-1
-
 	for i in "${!FILES[@]}"; do
 		theme=$(basename "${FILES[$i]}" .css)
 
@@ -24,16 +22,13 @@ switch-theme() {
 		fi
 	done
 
+	local new_index
 	case $action in
-		next)
-			new_index=$(((index + 1) % ${#FILES[@]}))
-			;;
-		prev)
-			new_index=$(((index - 1 + ${#FILES[@]}) % ${#FILES[@]}))
-			;;
+		next) new_index=$(((index + 1) % ${#FILES[@]})) ;;
+		prev) new_index=$(((index - 1 + ${#FILES[@]}) % ${#FILES[@]})) ;;
 	esac
 
-	new_theme="${FILES[$new_index]}"
+	local new_theme="${FILES[$new_index]}"
 	cp "$new_theme" "$FILE"
 }
 
@@ -81,10 +76,9 @@ display-tooltip() {
 
 main() {
 	local action=$1
-
 	case $action in
 		next | prev)
-			switch-theme "$action"
+			switch-theme
 
 			pkill waybar 2>/dev/null || true
 			nohup waybar >/dev/null 2>&1 &
