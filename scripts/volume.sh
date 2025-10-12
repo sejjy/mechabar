@@ -41,43 +41,42 @@ print-usage() {
 }
 
 get-icon() {
-	local new_vol=$1
+	local level=$1
 	local icon
 
-	if [[ $new_vol == 'Muted' ]]; then
-		icon="$ICON-muted"
-	elif ((new_vol < ((MAX * 33) / 100))); then
-		icon="$ICON-low"
-	elif ((new_vol < ((MAX * 66) / 100))); then
-		icon="$ICON-medium"
+	if [[ $level == 'Muted' ]]; then
+		icon="$dev_icon-muted"
+	elif ((level < ((MAX * 33) / 100))); then
+		icon="$dev_icon-low"
+	elif ((level < ((MAX * 66) / 100))); then
+		icon="$dev_icon-medium"
 	else
-		icon="$ICON-high"
+		icon="$dev_icon-high"
 	fi
 
 	echo "$icon"
 }
 
 toggle-mute() {
-	local mute icon
+	pactl "set-$dev_mute" "$dev" toggle
 
-	pactl "set-$MUTE" "$DEV" toggle
-
-	case $(pactl "get-$MUTE" "$DEV" | awk '{print $2}') in
-		yes) mute='Muted' ;;
-		no) mute='Unmuted' ;;
+	local state
+	case $(pactl "get-$dev_mute" "$dev" | awk '{print $2}') in
+		yes) state='Muted' ;;
+		no) state='Unmuted' ;;
 	esac
 
-	icon=$(get-icon "$mute")
-	notify-send "$TITLE: $mute" -i "$icon" -r $ID
+	local icon
+	icon=$(get-icon "$state")
+
+	notify-send "$title: $state" -i "$icon" -r $ID
 }
 
 set-volume() {
-	local action=$1
-	local value=$2
-	local vol new_vol icon
+	local vol
+	vol=$(pactl "get-$dev_vol" "$dev" | awk '{print $5}' | tr -d '%')
 
-	vol=$(pactl "get-$VOL" "$DEV" | awk '{print $5}' | tr -d '%')
-
+	local new_vol
 	case $action in
 		raise)
 			new_vol=$((vol + value))
@@ -89,36 +88,38 @@ set-volume() {
 			;;
 	esac
 
-	pactl "set-$VOL" "$DEV" "${new_vol}%"
+	pactl "set-$dev_vol" "$dev" "${new_vol}%"
 
-	icon=$(get-icon "$new_vol")
-	notify-send "$TITLE: $new_vol" -h int:value:"$new_vol" -i "$icon" -r $ID
+	local icon
+	icon=$(get-icon $new_vol)
+
+	notify-send "$title: $new_vol" -h int:value:$new_vol -i "$icon" -r $ID
 }
 
 main() {
-	local device=$1
-	local action=$2
-	local value=${3:-$VALUE}
+	device=$1
+	action=$2
+	value=${3:-$VALUE}
 
-	! ((value > 0 )) && print-usage
+	! ((value > 0)) && print-usage
 
 	case $device in
 		input)
-			DEV='@DEFAULT_SOURCE@'
-			MUTE='source-mute' VOL='source-volume'
-			TITLE='Microphone' ICON='mic-volume'
+			dev='@DEFAULT_SOURCE@'
+			dev_mute='source-mute' dev_vol='source-volume'
+			title='Microphone'     dev_icon='mic-volume'
 			;;
 		output)
-			DEV='@DEFAULT_SINK@'
-			MUTE='sink-mute'   VOL='sink-volume'
-			TITLE='Volume'     ICON='audio-volume'
+			dev='@DEFAULT_SINK@'
+			dev_mute='sink-mute' dev_vol='sink-volume'
+			title='Volume'       dev_icon='audio-volume'
 			;;
 		*) print-usage ;;
 	esac
 
 	case $action in
 		mute) toggle-mute ;;
-		raise | lower) set-volume "$action" "$value" ;;
+		raise | lower) set-volume ;;
 		*) print-usage ;;
 	esac
 }
