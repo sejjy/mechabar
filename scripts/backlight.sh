@@ -30,10 +30,7 @@ print-usage() {
 }
 
 set-brightness() {
-	local action=$1
-	local value=$2
-	local op level
-
+	local op
 	case $action in
 		up) op='+' ;;
 		down) op='-' ;;
@@ -41,7 +38,9 @@ set-brightness() {
 
 	brightnessctl -n set "${value}%${op}" &>/dev/null
 
-	level=$(brightnessctl -m | awk -F',' '{print $4}')
+	local level
+	level=$(brightnessctl -m | awk -F ',' '{print $4}')
+
 	notify-send "Brightness: $level" -h int:value:"$level" -i 'contrast' -r 2825
 }
 
@@ -49,10 +48,10 @@ main() {
 	local action=$1
 	local value=${2:-$VALUE}
 
-	! ((value > 0 )) && print-usage
+	! ((value > 0)) && print-usage
 
 	case $action in
-		up | down) set-brightness "$action" "$value" ;;
+		up | down) set-brightness ;;
 		*) print-usage ;;
 	esac
 }

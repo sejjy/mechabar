@@ -22,58 +22,48 @@ DEPS=(
 )
 
 install-deps() {
+	printf '%bInstalling dependencies...%b\n' "$BLU" "$RST"
+
 	local package
-	local errors=0
-
-	echo -e "${BLU}Installing dependencies...${RST}" >&2
-
+	errors=0
 	for package in "${DEPS[@]}"; do
 		if pacman -Qi "$package" &>/dev/null; then
-			echo -e "[${GRN}/${RST}] $package" >&2
+			printf '[%b/%b] %s\n' "$GRN" "$RST" "$package"
 		else
-			echo "[ ] $package..." >&2
+			printf '[ ] %s...\n' "$package"
 
 			if sudo pacman -S --noconfirm "$package"; then
-				echo -e "[${GRN}+${RST}] $package" >&2
+				printf '[%b+%b] %s\n' "$GRN" "$RST" "$package"
 			else
-				echo -e "[${RED}-${RST}] $package" >&2
+				printf '[%bx%b] %s\n' "$RED" "$RST" "$package"
 				((errors++))
 			fi
 		fi
 	done
-
-	echo "$errors"
 }
 
 setup-scripts() {
-	echo -e "\n${BLU}Making scripts executable...${RST}"
-	chmod +x ~/.config/waybar/scripts/*.sh
-}
-
-restart-waybar() {
-	echo -e "\n${BLU}Restarting Waybar...${RST}"
-
-	pkill waybar 2>/dev/null || true
-	nohup waybar >/dev/null 2>&1 &
+	printf '\n%bMaking scripts executable...%b\n' "$BLU" "$RST"
+	chmod -v +x ~/.config/waybar/scripts/*.sh
 }
 
 display-result() {
-	local errors=$1
-
 	if ((errors > 0)); then
-		echo -e "\nInstallation completed with ${RED}$errors error(s)${RST}"
+		printf '\nInstallation completed with %b%d error(s)%b\n' \
+			"$RED" "$errors" "$RST"
 	else
-		echo -e "\n${GRN}Installation complete!${RST}"
+		printf '\n%bInstallation complete!%b\n' "$GRN" "$RST"
 	fi
 }
 
 main() {
-	local errors
-	errors=$(install-deps)
-
+	install-deps
 	setup-scripts
-	restart-waybar
-	display-result "$errors"
+
+	pkill waybar 2>/dev/null || true
+	nohup waybar >/dev/null 2>&1 &
+
+	display-result
 }
 
 main "$@"

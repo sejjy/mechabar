@@ -6,9 +6,6 @@
 # Created: August 19, 2025
 # License: MIT
 
-# shellcheck disable=SC1091
-source "$HOME/.config/waybar/scripts/theme-switcher.sh" fzf
-
 RED='\033[1;31m'
 RST='\033[0m'
 
@@ -24,47 +21,41 @@ ensure-on() {
 	fi
 }
 
-scan-for-devices() {
-	local i num
-
+get-device-list() {
 	bluetoothctl --timeout $TIMEOUT scan on >/dev/null &
 
+	local i num
 	for ((i = 1; i <= TIMEOUT; i++)); do
-		echo -e "\rScanning for devices... ($i/$TIMEOUT)"
-		echo -e "${RED}Press [q] to stop${RST}"
+		printf '\rScanning for devices... (%d/%d)' $i $TIMEOUT
+		printf '\n%bPress [q] to stop%b\n\n' "$RED" "$RST"
 
 		num=$(bluetoothctl devices | grep -c Device)
-		echo -en "\n\rDevices: $num"
+
+		printf '\rDevices: %s' "$num"
 		printf '\033[3A' # move cursor up 3 lines
 
 		read -rs -n 1 -t 1
-		if [[ $REPLY == [Qq] ]]; then
-			break
-		fi
+		[[ $REPLY == [Qq] ]] && break
 	done
 
-	echo -e "\n${RED}Scanning stopped.${RST}\n"
-}
+	printf '\n%bScanning stopped.%b\n\n' "$RED" "$RST"
 
-get-device-list() {
-	local list
 	list=$(bluetoothctl devices | grep Device | cut -d ' ' -f 2-)
 
 	if [[ -z $list ]]; then
 		notify-send 'Bluetooth' 'No devices found' -i 'package-broken'
 		return 1
 	fi
-
-	echo "$list"
 }
 
 select-device() {
-	local list=$1
-	local opts=("${COLORS[@]}")
-	local header address connected
+	# shellcheck disable=SC1090
+	. ~/.config/waybar/scripts/theme-switcher.sh 'fzf' # get fzf colors
 
+	local header
 	header=$(printf '%-17s %s' 'Address' 'Name')
 
+	local opts=("${COLORS[@]}")
 	opts+=(
 		--border=sharp
 		--border-label=' Bluetooth Devices '
@@ -79,10 +70,9 @@ select-device() {
 
 	address=$(fzf "${opts[@]}" <<<"$list" | awk '{print $1}')
 
-	if [[ -z $address ]]; then
-		return 1
-	fi
+	[[ -z $address ]] && return 1
 
+	local connected
 	connected=$(bluetoothctl info "$address" | grep Connected |
 		awk '{print $2}')
 
@@ -90,19 +80,15 @@ select-device() {
 		notify-send 'Bluetooth' 'Already connected to this device' \
 			-i 'package-install'
 		return 1
-	else
-		echo "$address"
 	fi
 }
 
 pair-and-connect() {
-	local address=$1
 	local paired
-
 	paired=$(bluetoothctl info "$address" | grep Paired | awk '{print $2}')
 
 	if [[ $paired == 'no' ]]; then
-		echo -n 'Pairing...'
+		printf 'Pairing...'
 
 		if ! timeout $TIMEOUT bluetoothctl pair "$address" >/dev/null; then
 			notify-send 'Bluetooth' 'Failed to pair' -i 'package-purge'
@@ -110,7 +96,7 @@ pair-and-connect() {
 		fi
 	fi
 
-	echo -en '\nConnecting...'
+	printf '\nConnecting...'
 
 	if timeout $TIMEOUT bluetoothctl connect "$address" >/dev/null; then
 		notify-send 'Bluetooth' 'Successfully connected' -i 'package-install'
@@ -120,15 +106,14 @@ pair-and-connect() {
 }
 
 main() {
-	local list address
-
 	ensure-on
-	tput civis # set to cursor to be invisible
-	scan-for-devices
-	tput cnorm # set the cursor to its normal state
-	list=$(get-device-list) || exit 1
-	address=$(select-device "$list") || exit 1
-	pair-and-connect "$address" || exit 1
+
+	tput civis # make cursor invisible
+	get-device-list || exit 1
+	tput cnorm # make cursor visible
+
+	select-device || exit 1
+	pair-and-connect || exit 1
 }
 
 main "$@"
