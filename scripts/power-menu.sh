@@ -1,56 +1,19 @@
 #!/usr/bin/env bash
-#
-# Launch power menu using fzf
-#
-# Author: Jesse Mirabel <github.com/sejjy>
-# Created: August 19, 2025
-# License: MIT
 
-LIST=(
-	'Lock'
-	'Shutdown'
-	'Reboot'
-	'Logout'
-	'Hibernate'
-	'Suspend'
-)
+options=" Lock
+ Shutdown
+ Reboot
+ Logout
+ Hibernate
+ Suspend"
 
-select-action() {
-	# shellcheck disable=SC1090
-	. ~/.config/waybar/scripts/theme-switcher.sh 'fzf' # get fzf colors
+chosen=$(echo -e "$options" | rofi -dmenu -p "Power Menu" -location 3 -yoffset 35 -lines 6 -show-icons -theme-str 'window {width: 200px; height: 190px;}' -no-fullscreen)
 
-	local opts=("${COLORS[@]}")
-	opts+=(
-		--border=sharp
-		--border-label=' Power Menu '
-		--height=~100%
-		--highlight-line
-		--no-input
-		--pointer=
-		--reverse
-	)
-
-	action=$(printf '%s\n' "${LIST[@]}" | fzf "${opts[@]}")
-
-	if [[ -z $action ]]; then
-		return 1
-	fi
-}
-
-do-action() {
-	case $action in
-		'Lock') loginctl lock-session ;;
-		'Shutdown') systemctl poweroff ;;
-		'Reboot') systemctl reboot ;;
-		'Logout') loginctl terminate-session "$XDG_SESSION_ID" ;;
-		'Hibernate') systemctl hibernate ;;
-		'Suspend') systemctl suspend ;;
-	esac
-}
-
-main() {
-	select-action || exit 1
-	do-action
-}
-
-main "$@"
+case "$chosen" in
+    " Lock") loginctl lock-session ;;
+    " Shutdown") systemctl poweroff ;;
+    " Reboot") systemctl reboot ;;
+    " Logout") loginctl terminate-session "$XDG_SESSION_ID" ;;
+    " Hibernate") systemctl hibernate ;;
+    " Suspend") systemctl suspend ;;
+esac

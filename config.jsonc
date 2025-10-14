@@ -380,13 +380,11 @@
 		}
 	},
 
-	"custom/power_menu": {
-		"format": "󰤄",
-		"on-click": "kitty -e ~/.config/waybar/scripts/power-menu.sh",
-		"tooltip-format": "Power Menu"
-	},
-
-	/*-------------------
+	        "custom/power_menu": {
+	            "format": "󰤄",
+	            "on-click": "~/.config/waybar/scripts/power-menu.sh",
+	            "tooltip-format": "Power Menu"
+	        },	/*-------------------
 		left dividers
 	-------------------*/
 
