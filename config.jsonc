@@ -26,7 +26,7 @@
 		"hyprland/window"
 	],
 	"modules-center": [
-		"hyprland/windowcount",
+
 		"custom/left_div#2",
 		"temperature",
 		"custom/left_div#3",
