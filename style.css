@@ -20,7 +20,7 @@ window#waybar {
 
 window#waybar > box {
 	margin: 4px;
-	background-color: @main-bg;
+	background-color: rgba(17, 17, 27, 0.85);
 }
 
 /* hoverables */

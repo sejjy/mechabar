@@ -7,7 +7,7 @@ options=" Lock
  Hibernate
  Suspend"
 
-chosen=$(echo -e "$options" | rofi -dmenu -p "Power Menu" -location 3 -yoffset 35 -lines 6 -show-icons -theme-str 'window {width: 200px; height: 190px;}' -no-fullscreen)
+chosen=$(echo -e "$options" | rofi -dmenu -p "Power Menu" -location 3 -yoffset 35 -lines 6 -show-icons -theme-str 'window {width: 200px; height: 190px; opacity: 85%;}' -no-fullscreen)
 
 case "$chosen" in
     " Lock") loginctl lock-session ;;
