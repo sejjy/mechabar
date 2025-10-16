@@ -9,8 +9,10 @@
 VALUE=1
 
 print-usage() {
+	local scr=${0##*/}
+
 	cat <<-EOF
-		USAGE: ${0} [OPTIONS]
+		USAGE: $scr [OPTIONS]
 
 		Adjust brightness level using brightnessctl
 
@@ -21,10 +23,10 @@ print-usage() {
 
 		EXAMPLES:
 		    Increase brightness:
-		      $ ${0} up
+		      $ $scr up
 
 		    Decrease brightness by 5:
-		      $ ${0} down 5
+		      $ $scr down 5
 	EOF
 	exit 1
 }
