@@ -6,14 +6,16 @@
 # Created: September 07, 2025
 # License: MIT
 
+SCR=${0##*/}
+NID=2425
+
 VALUE=1
 MIN=0
 MAX=100
-ID=2425
 
 print-usage() {
 	cat <<-EOF
-		USAGE: ${0} [OPTIONS]
+		USAGE: $SCR [OPTIONS]
 
 		Control default input and output device volume using pactl
 
@@ -29,29 +31,55 @@ print-usage() {
 
 		EXAMPLES:
 		    Toggle microphone mute:
-		      $ ${0} input mute
+		      $ $SCR input mute
 
 		    Raise speaker volume:
-		      $ ${0} output raise
+		      $ $SCR output raise
 
 		    Lower speaker volume by 5:
-		      $ ${0} output lower 5
+		      $ $SCR output lower 5
 	EOF
 	exit 1
 }
 
-get-icon() {
-	local level=$1
-	local icon
+check-muted() {
+	local muted
+	muted=$(pactl "get-$dev_mute" "$dev" | awk '{print $2}')
 
-	if [[ $level == 'Muted' ]]; then
+	local state
+	case $muted in
+		yes) state='Muted' ;;
+		no) state='Unmuted' ;;
+	esac
+
+	echo "$state"
+}
+
+get-volume() {
+	local vol
+	vol=$(pactl "get-$dev_vol" "$dev" | awk '{print $5}' | tr -d '%')
+
+	echo "$vol"
+}
+
+get-icon() {
+	local state vol
+	state=$(check-muted)
+	vol=$(get-volume)
+
+	local icon
+	local new_vol=${1:-$vol}
+
+	if [[ $state == 'Muted' ]]; then
 		icon="$dev_icon-muted"
-	elif ((level < ((MAX * 33) / 100))); then
-		icon="$dev_icon-low"
-	elif ((level < ((MAX * 66) / 100))); then
-		icon="$dev_icon-medium"
 	else
-		icon="$dev_icon-high"
+		if ((new_vol < ((MAX * 33) / 100))); then
+			icon="$dev_icon-low"
+		elif ((new_vol < ((MAX * 66) / 100))); then
+			icon="$dev_icon-medium"
+		else
+			icon="$dev_icon-high"
+		fi
 	fi
 
 	echo "$icon"
@@ -60,21 +88,16 @@ get-icon() {
 toggle-mute() {
 	pactl "set-$dev_mute" "$dev" toggle
 
-	local state
-	case $(pactl "get-$dev_mute" "$dev" | awk '{print $2}') in
-		yes) state='Muted' ;;
-		no) state='Unmuted' ;;
-	esac
+	local state icon
+	state=$(check-muted)
+	icon=$(get-icon)
 
-	local icon
-	icon=$(get-icon "$state")
-
-	notify-send "$title: $state" -i "$icon" -r $ID
+	notify-send "$title: $state" -i "$icon" -r $NID
 }
 
 set-volume() {
 	local vol
-	vol=$(pactl "get-$dev_vol" "$dev" | awk '{print $5}' | tr -d '%')
+	vol=$(get-volume)
 
 	local new_vol
 	case $action in
@@ -91,9 +114,9 @@ set-volume() {
 	pactl "set-$dev_vol" "$dev" "${new_vol}%"
 
 	local icon
-	icon=$(get-icon $new_vol)
+	icon=$(get-icon "$new_vol")
 
-	notify-send "$title: $new_vol" -h int:value:$new_vol -i "$icon" -r $ID
+	notify-send "$title: ${new_vol}%" -h int:value:$new_vol -i "$icon" -r $NID
 }
 
 main() {
@@ -106,13 +129,17 @@ main() {
 	case $device in
 		input)
 			dev='@DEFAULT_SOURCE@'
-			dev_mute='source-mute' dev_vol='source-volume'
-			title='Microphone'     dev_icon='mic-volume'
+			dev_mute='source-mute'
+			dev_vol='source-volume'
+			dev_icon='mic-volume'
+			title='Microphone'
 			;;
 		output)
 			dev='@DEFAULT_SINK@'
-			dev_mute='sink-mute' dev_vol='sink-volume'
-			title='Volume'       dev_icon='audio-volume'
+			dev_mute='sink-mute'
+			dev_vol='sink-volume'
+			dev_icon='audio-volume'
+			title='Volume'
 			;;
 		*) print-usage ;;
 	esac
