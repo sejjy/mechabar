@@ -6,16 +6,16 @@
 # Created: September 07, 2025
 # License: MIT
 
-SCR=${0##*/}
-NID=2425
-
 VALUE=1
 MIN=0
 MAX=100
+NID=2425
 
 print-usage() {
+	local scr=${0##*/}
+
 	cat <<-EOF
-		USAGE: $SCR [OPTIONS]
+		USAGE: $scr [OPTIONS]
 
 		Control default input and output device volume using pactl
 
@@ -31,13 +31,13 @@ print-usage() {
 
 		EXAMPLES:
 		    Toggle microphone mute:
-		      $ $SCR input mute
+		      $ $scr input mute
 
 		    Raise speaker volume:
-		      $ $SCR output raise
+		      $ $scr output raise
 
 		    Lower speaker volume by 5:
-		      $ $SCR output lower 5
+		      $ $scr output lower 5
 	EOF
 	exit 1
 }
