@@ -34,8 +34,8 @@ print-usage() {
 set-brightness() {
 	local op
 	case $action in
-		up) op='+' ;;
-		down) op='-' ;;
+		'up') op='+' ;;
+		'down') op='-' ;;
 	esac
 
 	brightnessctl -n set "${value}%${op}" &>/dev/null
@@ -53,7 +53,7 @@ main() {
 	! ((value > 0)) && print-usage
 
 	case $action in
-		up | down) set-brightness ;;
+		'up' | 'down') set-brightness ;;
 		*) print-usage ;;
 	esac
 }

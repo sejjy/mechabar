@@ -116,4 +116,4 @@ main() {
 	pair-and-connect || exit 1
 }
 
-main "$@"
+main

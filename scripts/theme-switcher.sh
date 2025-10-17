@@ -25,11 +25,11 @@ switch-theme() {
 
 	local new_index
 	case $action in
-		next) new_index=$(((index + 1) % ${#FILES[@]})) ;;
-		prev) new_index=$(((index - 1 + ${#FILES[@]}) % ${#FILES[@]})) ;;
+		'next') new_index=$(((index + 1) % ${#FILES[@]})) ;;
+		'prev') new_index=$(((index - 1 + ${#FILES[@]}) % ${#FILES[@]})) ;;
 	esac
 
-	local new_theme="${FILES[$new_index]}"
+	local new_theme=${FILES[$new_index]}
 	cp "$new_theme" "$FILE"
 }
 
@@ -37,22 +37,22 @@ export-colors() {
 	local rosewater mauve red lavender text overlay0 surface1 surface0 base
 
 	case $THEME in
-		catppuccin-frappe)
+		*'frappe')
 			rosewater='#f2d5cf' mauve='#ca9ee6'    red='#e78284'
 			lavender='#babbf1'  text='#c6d0f5'     overlay0='#737994'
 			surface1='#51576d'  surface0='#414559' base='#303446'
 			;;
-		catppuccin-latte)
+		*'latte')
 			rosewater='#dc8a78' mauve='#8839ef'    red='#d20f39'
 			lavender='#7287fd'  text='#4c4f69'     overlay0='#9ca0b0'
 			surface1='#bcc0cc'  surface0='#ccd0da' base='#eff1f5'
 			;;
-		catppuccin-macchiato)
+		*'macchiato')
 			rosewater='#f4dbd6' mauve='#c6a0f6'    red='#ed8796'
 			lavender='#b7bdf8'  text='#cad3f5'     overlay0='#6e738d'
 			surface1='#494d64'  surface0='#363a4f' base='#24273a'
 			;;
-		catppuccin-mocha)
+		*'mocha')
 			rosewater='#f5e0dc' mauve='#cba6f7'    red='#f38ba8'
 			lavender='#b4befe'  text='#cdd6f4'     overlay0='#6c7086'
 			surface1='#45475a'  surface0='#313244' base='#1e1e2e'
@@ -78,7 +78,7 @@ display-tooltip() {
 main() {
 	local action=$1
 	case $action in
-		next | prev)
+		'next' | 'prev')
 			switch-theme
 
 			pkill waybar 2>/dev/null || true
