@@ -95,4 +95,4 @@ main() {
 	connect-to-network
 }
 
-main "$@"
+main

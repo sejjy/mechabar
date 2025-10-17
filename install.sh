@@ -68,4 +68,4 @@ main() {
 	display-result
 }
 
-main "$@"
+main

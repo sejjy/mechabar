@@ -48,8 +48,8 @@ check-muted() {
 
 	local state
 	case $muted in
-		yes) state='Muted' ;;
-		no) state='Unmuted' ;;
+		'yes') state='Muted' ;;
+		'no') state='Unmuted' ;;
 	esac
 
 	echo "$state"
@@ -101,11 +101,11 @@ set-volume() {
 
 	local new_vol
 	case $action in
-		raise)
+		'raise')
 			new_vol=$((vol + value))
 			((new_vol > MAX)) && new_vol=$MAX
 			;;
-		lower)
+		'lower')
 			new_vol=$((vol - value))
 			((new_vol < MIN)) && new_vol=$MIN
 			;;
@@ -127,14 +127,14 @@ main() {
 	! ((value > 0)) && print-usage
 
 	case $device in
-		input)
+		'input')
 			dev='@DEFAULT_SOURCE@'
 			dev_mute='source-mute'
 			dev_vol='source-volume'
 			dev_icon='mic-volume'
 			title='Microphone'
 			;;
-		output)
+		'output')
 			dev='@DEFAULT_SINK@'
 			dev_mute='sink-mute'
 			dev_vol='sink-volume'
@@ -145,8 +145,8 @@ main() {
 	esac
 
 	case $action in
-		mute) toggle-mute ;;
-		raise | lower) set-volume ;;
+		'mute') toggle-mute ;;
+		'raise' | 'lower') set-volume ;;
 		*) print-usage ;;
 	esac
 }

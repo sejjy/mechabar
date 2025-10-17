@@ -22,10 +22,12 @@ check-updates() {
 	if [[ -n $HELPER ]]; then
 		aur=$(timeout $TIMEOUT "$HELPER" -Quaq 2>/dev/null | wc -l)
 	fi
+
+	total=$((repo + aur))
 }
 
 update-packages() {
-	if ((repo + aur == 0)); then
+	if ((total == 0)); then
 		notify-send 'No updates available' -i 'package-installed-updated'
 	else
 		if ((repo > 0)); then
@@ -52,7 +54,7 @@ display-tooltip() {
 		tooltip+="\nAUR($HELPER): $aur"
 	fi
 
-	if ((repo + aur == 0)); then
+	if ((total == 0)); then
 		echo "{ \"text\": \"󰸟\", \"tooltip\": \"No updates available\" }"
 	else
 		echo "{ \"text\": \"\", \"tooltip\": \"$tooltip\" }"
@@ -62,7 +64,7 @@ display-tooltip() {
 main() {
 	local action=$1
 	case $action in
-		start)
+		'start')
 			printf '%bChecking for updates...%b' "$BLU" "$RST"
 			check-updates
 			update-packages

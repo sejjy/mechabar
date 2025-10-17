@@ -7,12 +7,12 @@
 # License: MIT
 
 LIST=(
-	'Lock'
-	'Shutdown'
-	'Reboot'
-	'Logout'
-	'Hibernate'
-	'Suspend'
+	Lock
+	Shutdown
+	Reboot
+	Logout
+	Hibernate
+	Suspend
 )
 
 select-action() {
@@ -31,13 +31,11 @@ select-action() {
 	)
 
 	action=$(printf '%s\n' "${LIST[@]}" | fzf "${opts[@]}")
-
-	if [[ -z $action ]]; then
-		return 1
-	fi
 }
 
-do-action() {
+main() {
+	select-action
+
 	case $action in
 		'Lock') loginctl lock-session ;;
 		'Shutdown') systemctl poweroff ;;
@@ -48,9 +46,4 @@ do-action() {
 	esac
 }
 
-main() {
-	select-action || exit 1
-	do-action
-}
-
-main "$@"
+main
