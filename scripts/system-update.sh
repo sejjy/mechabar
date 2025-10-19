@@ -22,29 +22,19 @@ check-updates() {
 	if [[ -n $HELPER ]]; then
 		aur=$(timeout $TIMEOUT "$HELPER" -Quaq 2>/dev/null | wc -l)
 	fi
-
-	total=$((repo + aur))
 }
 
 update-packages() {
-	if ((total == 0)); then
-		notify-send 'No updates available' -i 'package-installed-updated'
-	else
-		if ((repo > 0)); then
-			printf '\n%bUpdating pacman packages...%b\n' "$BLU" "$RST"
-			sudo pacman -Syu
-		fi
+	printf '\n%bUpdating pacman packages...%b\n' "$BLU" "$RST"
+	sudo pacman -Syu
 
-		if ((aur > 0)); then
-			printf '\n%bUpdating AUR packages...%b\n' "$BLU" "$RST"
-			"$HELPER" -Syu
-		fi
+	printf '\n%bUpdating AUR packages...%b\n' "$BLU" "$RST"
+	"$HELPER" -Syu
 
-		notify-send 'Update Complete' -i 'package-install'
+	notify-send 'Update Complete' -i 'package-install'
 
-		printf '\n%bUpdate Complete!%b\n' "$GRN" "$RST"
-		read -rs -n 1 -p 'Press any key to exit...'
-	fi
+	printf '\n%bUpdate Complete!%b\n' "$GRN" "$RST"
+	read -rs -n 1 -p 'Press any key to exit...'
 }
 
 display-tooltip() {
@@ -53,6 +43,8 @@ display-tooltip() {
 	if [[ -n $HELPER ]]; then
 		tooltip+="\nAUR($HELPER): $aur"
 	fi
+
+	local total=$((repo + aur))
 
 	if ((total == 0)); then
 		echo "{ \"text\": \"󰸟\", \"tooltip\": \"No updates available\" }"
