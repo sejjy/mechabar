@@ -6,18 +6,19 @@
 # Created: August 22, 2025
 # License: MIT
 
-FILES=(~/.config/waybar/themes/*.css)
-FILE=~/.config/waybar/theme.css
-THEME=$(head -n 1 "$FILE" | awk '{print $2}')
+THEMES=(~/.config/waybar/themes/*.css)
+THEME_FILE=~/.config/waybar/theme.css
+CUR_THEME=$(head -n 1 "$THEME_FILE" | awk '{print $2}')
 
 switch-theme() {
 	local i theme
 	local index=-1
 
-	for i in "${!FILES[@]}"; do
-		theme=$(basename "${FILES[$i]}" .css)
+	for i in "${!THEMES[@]}"; do
+		theme=${THEMES[$i]##*/}
+		theme=${theme%.css}
 
-		if [[ $theme == "$THEME" ]]; then
+		if [[ $theme == "$CUR_THEME" ]]; then
 			index=$i
 			break
 		fi
@@ -25,18 +26,18 @@ switch-theme() {
 
 	local new_index
 	case $action in
-		'next') new_index=$(((index + 1) % ${#FILES[@]})) ;;
-		'prev') new_index=$(((index - 1 + ${#FILES[@]}) % ${#FILES[@]})) ;;
+		'next') new_index=$(((index + 1) % ${#THEMES[@]})) ;;
+		'prev') new_index=$(((index - 1 + ${#THEMES[@]}) % ${#THEMES[@]})) ;;
 	esac
 
-	local new_theme=${FILES[$new_index]}
-	cp "$new_theme" "$FILE"
+	local new_theme=${THEMES[$new_index]}
+	cp "$new_theme" "$THEME_FILE"
 }
 
 export-colors() {
 	local rosewater mauve red lavender text overlay0 surface1 surface0 base
 
-	case $THEME in
+	case $CUR_THEME in
 		*'frappe')
 			rosewater='#f2d5cf' mauve='#ca9ee6'    red='#e78284'
 			lavender='#babbf1'  text='#c6d0f5'     overlay0='#737994'
@@ -69,7 +70,7 @@ export-colors() {
 }
 
 display-tooltip() {
-	local name=$THEME
+	local name=$CUR_THEME
 	name="<span text_transform='capitalize'>${name//-/ }</span>"
 
 	echo "{ \"text\": \"󰍜\", \"tooltip\": \"Theme: $name\" }"

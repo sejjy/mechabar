@@ -11,8 +11,8 @@ BLU='\033[1;34m'
 RST='\033[0m'
 
 TIMEOUT=5
-HELPER=$(command -v yay trizen pikaur paru pakku pacaur aurman aura |
-	head -n 1 | xargs -- basename)
+HELPER=$(command -v yay trizen pikaur paru pakku pacaur aurman aura | head -n 1)
+HELPER=${HELPER##*/}
 
 check-updates() {
 	repo=0
