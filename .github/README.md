@@ -80,15 +80,16 @@ A mecha-themed Waybar configuration.
 
 	> This makes the [scripts](/scripts/) executable and installs all dependencies listed below:
 
-	|                        Package | Description                                                                    |
-	| -----------------------------: | ------------------------------------------------------------------------------ |
-	|                        `bluez` | Daemons for the bluetooth protocol stack<tr></tr>                              |
-	| _(bluetoothctl)_ `bluez-utils` | Development and debugging utilities for the bluetooth protocol stack<tr></tr>  |
-	|                `brightnessctl` | Lightweight brightness control tool<tr></tr>                                   |
-	|                          `fzf` | Command-line fuzzy finder<tr></tr>                                             |
-	|     _(nmcli)_ `networkmanager` | Network connection manager and user applications<tr></tr>                      |
-	|               `pipewire-pulse` | Low-latency audio/video router and processor - PulseAudio replacement<tr></tr> |
-	|             `ttf-0xproto-nerd` | Patched font 0xProto from nerd fonts library                                   |
+	|                           Package | Description                                                                    |
+	| --------------------------------: | ------------------------------------------------------------------------------ |
+	|                           `bluez` | Daemons for the bluetooth protocol stack<tr></tr>                              |
+	|    _(bluetoothctl)_ `bluez-utils` | Development and debugging utilities for the bluetooth protocol stack<tr></tr>  |
+	|                   `brightnessctl` | Lightweight brightness control tool<tr></tr>                                   |
+	|                             `fzf` | Command-line fuzzy finder<tr></tr>                                             |
+	|        _(nmcli)_ `networkmanager` | Network connection manager and user applications<tr></tr>                      |
+	| _(checkupdates)_ `pacman-contrib` | Contributed scripts and tools for pacman systems<tr></tr>                      |
+	|                  `pipewire-pulse` | Low-latency audio/video router and processor - PulseAudio replacement<tr></tr> |
+	|                `ttf-0xproto-nerd` | Patched font 0xProto from nerd fonts library                                   |
 
 #
 

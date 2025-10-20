@@ -17,6 +17,7 @@ DEPS=(
 	brightnessctl
 	fzf
 	networkmanager # nmcli
+	pacman-contrib
 	pipewire-pulse
 	ttf-0xproto-nerd
 )
