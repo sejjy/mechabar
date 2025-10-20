@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# Launch power menu using fzf
+# Display a power menu using fzf and execute the selected action
 #
 # Author: Jesse Mirabel <github.com/sejjy>
 # Created: August 19, 2025

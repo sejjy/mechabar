@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# Install mechabar dependencies using pacman
+# Install dependencies and set up Waybar scripts
 #
 # Author: Jesse Mirabel <github.com/sejjy>
 # Created: August 22, 2025
@@ -17,7 +17,7 @@ DEPS=(
 	brightnessctl
 	fzf
 	networkmanager # nmcli
-	pacman-contrib
+	pacman-contrib # checkupdates
 	pipewire-pulse
 	ttf-0xproto-nerd
 )

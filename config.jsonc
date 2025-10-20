@@ -2,10 +2,10 @@
 	"include": [
 		"~/.config/waybar/modules/*.jsonc",
 		"~/.config/waybar/modules/custom/*.jsonc",
-		"~/.config/waybar/modules/hyprland/*.jsonc",
+		"~/.config/waybar/modules/hyprland/*.jsonc"
 
 		// modules that are not included by default:
-		"~/.config/waybar/modules/extras/*.jsonc"
+		// "~/.config/waybar/modules/extras/*.jsonc"
 	],
 
 	/*------------
