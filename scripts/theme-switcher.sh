@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# Switch waybar themes and export matching fzf colors
+# Switch Waybar themes and export colors for fzf
 #
 # Author: Jesse Mirabel <github.com/sejjy>
 # Created: August 22, 2025
