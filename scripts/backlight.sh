@@ -2,7 +2,7 @@
 #
 # Adjust brightness level using brightnessctl
 #
-# Author: Jesse Mirabel <github.com/sejjy>
+# Author: Jesse Mirabel <sejjymvm@gmail.com>
 # Created: August 28, 2025
 # License: MIT
 

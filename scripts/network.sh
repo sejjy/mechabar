@@ -2,7 +2,7 @@
 #
 # Connect to a Wi-Fi network using nmcli and fzf
 #
-# Author: Jesse Mirabel <github.com/sejjy>
+# Author: Jesse Mirabel <sejjymvm@gmail.com>
 # Created: August 11, 2025
 # License: MIT
 

@@ -7,7 +7,7 @@
 #  - checkupdates (from pacman-contrib)
 #  - An AUR helper (optional)
 #
-# Author: Jesse Mirabel <github.com/sejjy>
+# Author: Jesse Mirabel <sejjymvm@gmail.com>
 # Created: August 16, 2025
 # License: MIT
 

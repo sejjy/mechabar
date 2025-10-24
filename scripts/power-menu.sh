@@ -2,7 +2,7 @@
 #
 # Display a power menu using fzf and execute the selected action
 #
-# Author: Jesse Mirabel <github.com/sejjy>
+# Author: Jesse Mirabel <sejjymvm@gmail.com>
 # Created: August 19, 2025
 # License: MIT
 

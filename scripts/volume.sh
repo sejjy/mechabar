@@ -2,7 +2,7 @@
 #
 # Control default input and output device volume using pactl
 #
-# Author: Jesse Mirabel <github.com/sejjy>
+# Author: Jesse Mirabel <sejjymvm@gmail.com>
 # Created: September 07, 2025
 # License: MIT
 
