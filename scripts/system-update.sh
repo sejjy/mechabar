@@ -23,7 +23,6 @@ check-updates() {
 	repo=0
 	repo=$(timeout $TIMEOUT checkupdates 2>/dev/null | wc -l)
 
-	# This might remain 0 until update-packages is run.
 	aur=0
 	if [[ -n $HELPER ]]; then
 		aur=$(timeout $TIMEOUT "$HELPER" -Quaq 2>/dev/null | wc -l)
@@ -60,8 +59,7 @@ display-tooltip() {
 }
 
 main() {
-	local action=$1
-	case $action in
+	case $1 in
 		'start')
 			printf '%bChecking for updates...%b' "$BLU" "$RST"
 			check-updates

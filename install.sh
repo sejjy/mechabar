@@ -63,8 +63,9 @@ main() {
 	install-deps
 	setup-scripts
 
-	pkill waybar 2>/dev/null || true
-	nohup waybar >/dev/null 2>&1 &
+	pkill waybar
+	waybar >/dev/null 2>&1 &
+	disown
 
 	display-result
 }

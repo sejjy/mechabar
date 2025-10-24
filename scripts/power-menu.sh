@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# Display a power menu using fzf and execute the selected action
+# Display a power menu using fzf.
 #
 # Author: Jesse Mirabel <sejjymvm@gmail.com>
 # Created: August 19, 2025
@@ -15,12 +15,11 @@ LIST=(
 	Suspend
 )
 
-select-action() {
+main() {
 	# shellcheck disable=SC1090
 	. ~/.config/waybar/scripts/theme-switcher.sh 'fzf' # get fzf colors
 
-	local opts=("${COLORS[@]}")
-	opts+=(
+	local opts=(
 		--border=sharp
 		--border-label=' Power Menu '
 		--height=~100%
@@ -28,15 +27,13 @@ select-action() {
 		--no-input
 		--pointer=
 		--reverse
+		"${COLORS[@]}"
 	)
 
-	action=$(printf '%s\n' "${LIST[@]}" | fzf "${opts[@]}")
-}
+	local selected
+	selected=$(printf '%s\n' "${LIST[@]}" | fzf "${opts[@]}")
 
-main() {
-	select-action
-
-	case $action in
+	case $selected in
 		'Lock') loginctl lock-session ;;
 		'Shutdown') systemctl poweroff ;;
 		'Reboot') systemctl reboot ;;
