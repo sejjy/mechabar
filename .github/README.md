@@ -2,7 +2,7 @@
 
 ## 🤖 mechabar
 
-A mecha-themed Waybar configuration.
+A mecha-themed, modular Waybar configuration.
 
 | ![Preview](assets/catppuccin-mocha.png) |
 | --------------------------------------- |
@@ -46,7 +46,7 @@ A mecha-themed Waybar configuration.
 
 > [!IMPORTANT]
 > If you use a different terminal emulator (e.g., [ghostty](https://github.com/ghostty-org/ghostty)),
-> replace all invocations of `kitty` with its executable name:
+> replace all invocations of `kitty` with your terminal command:
 >
 > ```diff
 > - "on-click": "kitty -e ..."
@@ -90,6 +90,19 @@ A mecha-themed Waybar configuration.
 	| _(checkupdates)_ `pacman-contrib` | Contributed scripts and tools for pacman systems<tr></tr>                      |
 	|                  `pipewire-pulse` | Low-latency audio/video router and processor - PulseAudio replacement<tr></tr> |
 	|                `ttf-0xproto-nerd` | Patched font 0xProto from nerd fonts library                                   |
+
+#
+
+### Theme
+
+To change the theme, overwrite [theme.css](/theme.css) with your preferred theme from the [themes](/themes/) directory.
+
+For example, to use **Catppuccin Latte**:
+
+```bash
+cd ~/.config/waybar
+cp themes/catppuccin-latte.css theme.css
+```
 
 #
 
