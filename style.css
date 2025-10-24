@@ -1,87 +1,12 @@
-@import "styles/modules-left.css";
-@import "styles/modules-center.css";
-@import "styles/modules-right.css";
-@import "theme.css";
-
 * {
-	font-family: "0xProto Nerd Font";
-	font-weight: bold;
-	font-size: 16px;
+	all: initial; /* ignore GTK theme */
 	color: @main-fg;
 }
 
-/* main outline */
-
-window#waybar {
-	background-color: @outline;
-}
-
-/* main background */
-
-window#waybar > box {
-	margin: 4px;
-	background-color: @main-bg;
-}
-
-/* hoverables */
-
-#custom-theme_switcher:hover,
-#idle_inhibitor:hover,
-#clock.date:hover,
-#network:hover,
-#bluetooth:hover,
-#custom-system_update:hover,
-#mpris:hover,
-#pulseaudio:hover,
-#wireplumber:hover {
-	color: @hover-fg;
-}
-
-/* states */
-
-.deactivated,
-.paused,
-#pulseaudio.output.muted,
-#pulseaudio.input.source-muted,
-#wireplumber.muted {
-	color: @hover-fg;
-}
-.warning { color: @warning; }
-.critical { color: @critical; }
-.charging { color: @charging; }
-
-/* dividers */
-
-#custom-left_div,
-#custom-left_inv,
-#custom-right_div,
-#custom-right_inv {
-	font-size: 23.1px;
-}
-
-/* buttons */
-
-button {
-	border-radius: 16px;
-	padding: 0 10px;
-}
-button:hover {
-	background-color: @hover-bg;
-	color: @hover-fg;
-}
-
-/* tooltips */
-
-tooltip {
-	border: 2px solid @main-br;
-	border-radius: 10px;
-	background-color: @main-bg;
-}
-tooltip label {
-	margin: 2px 4px;
-	font-weight: normal;
-}
-tooltip decoration {
-	border: none;
-	background-color: transparent;
-}
+@import "styles/modules-center.css";
+@import "styles/modules-left.css";
+@import "styles/modules-right.css";
+@import "styles/states.css";
+@import "styles/typeface.css";
+@import "styles/waybar.css";
+@import "theme.css";
