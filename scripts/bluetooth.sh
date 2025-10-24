@@ -55,8 +55,7 @@ select-device() {
 	# shellcheck disable=SC1090
 	. ~/.config/waybar/scripts/theme-switcher.sh 'fzf' # get fzf colors
 
-	local opts=("${COLORS[@]}")
-	opts+=(
+	local opts=(
 		--border=sharp
 		--border-label=' Bluetooth Devices '
 		--ghost='Search'
@@ -66,6 +65,7 @@ select-device() {
 		--info=inline-right
 		--pointer=
 		--reverse
+		"${COLORS[@]}"
 	)
 
 	address=$(fzf "${opts[@]}" <<<"$list" | awk '{print $1}')
