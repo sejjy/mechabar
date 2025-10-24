@@ -5,7 +5,6 @@
 #windowcount {
 	margin-right: 12px;
 }
-
 #windowcount label {
 	color: @hover-fg;
 }
@@ -17,7 +16,6 @@
 #custom-left_div.2 {
 	color: @temperature;
 }
-
 #temperature {
 	background-color: @temperature;
 }
@@ -30,7 +28,6 @@
 	background-color: @temperature;
 	color: @memory;
 }
-
 #memory {
 	background-color: @memory;
 }
@@ -43,7 +40,6 @@
 	background-color: @memory;
 	color: @cpu;
 }
-
 #cpu {
 	background-color: @cpu;
 }
@@ -60,7 +56,6 @@
 #custom-right_div.2 {
 	color: @accent;
 }
-
 #custom-distro {
 	padding: 0 10px 0 5px;
 	background-color: @accent;
@@ -74,7 +69,6 @@
 #custom-right_inv.1 {
 	color: @time;
 }
-
 #idle_inhibitor {
 	background-color: @time;
 }
@@ -87,7 +81,6 @@
 	padding-right: 6px;
 	background-color: @time;
 }
-
 #custom-right_div.3 {
 	background-color: @date;
 	color: @time;
@@ -101,7 +94,6 @@
 	padding-left: 6px;
 	background-color: @date;
 }
-
 #custom-right_div.4 {
 	background-color: @tray;
 	color: @date;
@@ -115,17 +107,14 @@
 	background-color: @tray;
 	padding: 0 6px 0 4px;
 }
-
 #bluetooth {
 	background-color: @tray;
 	padding: 0 5px;
 }
-
 #custom-system_update {
 	background-color: @tray;
 	padding: 0 8px 0 2px;
 }
-
 #custom-right_div.5 {
 	color: @tray;
 }
