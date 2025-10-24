@@ -2,7 +2,7 @@
 #
 # Connect to a Bluetooth device using bluetoothctl and fzf
 #
-# Author: Jesse Mirabel <github.com/sejjy>
+# Author: Jesse Mirabel <sejjymvm@gmail.com>
 # Created: August 19, 2025
 # License: MIT
 

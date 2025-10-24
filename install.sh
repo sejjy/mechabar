@@ -2,7 +2,7 @@
 #
 # Install dependencies and set up Waybar scripts
 #
-# Author: Jesse Mirabel <github.com/sejjy>
+# Author: Jesse Mirabel <sejjymvm@gmail.com>
 # Created: August 22, 2025
 # License: MIT
 
