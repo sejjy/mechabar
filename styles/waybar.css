@@ -1,0 +1,32 @@
+window#waybar {
+	background-color: @outline;
+}
+
+window#waybar > box {
+	margin: 4px;
+	background-color: @main-bg;
+}
+
+/*--------------
+	tooltips
+--------------*/
+
+tooltip {
+	border: 2px solid @main-br;
+	border-radius: 10px;
+	background-color: @main-bg;
+}
+
+tooltip > box {
+	margin: -6px;
+	min-height: 24px;
+	padding: 4px 8px;
+}
+
+tooltip label {
+	margin: 2px 4px;
+}
+
+tooltip decoration {
+	background-color: transparent;
+}
