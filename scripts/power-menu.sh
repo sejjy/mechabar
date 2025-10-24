@@ -7,18 +7,15 @@
 # License: MIT
 
 LIST=(
-	Lock
-	Shutdown
-	Reboot
-	Logout
-	Hibernate
-	Suspend
+	'Lock'
+	'Shutdown'
+	'Reboot'
+	'Logout'
+	'Hibernate'
+	'Suspend'
 )
 
 main() {
-	# shellcheck disable=SC1090
-	. ~/.config/waybar/scripts/theme-switcher.sh 'fzf' # get fzf colors
-
 	local opts=(
 		--border=sharp
 		--border-label=' Power Menu '
@@ -27,7 +24,6 @@ main() {
 		--no-input
 		--pointer=
 		--reverse
-		"${COLORS[@]}"
 	)
 
 	local selected

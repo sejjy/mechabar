@@ -21,7 +21,7 @@
 	------------*/
 
 	"modules-left": [
-		"group/theme_switcher",
+		"group/user",
 		"custom/left_div#1",
 		"hyprland/workspaces",
 		"custom/right_div#1",
@@ -96,22 +96,22 @@
 		modules-left
 	------------------*/
 
-	"group/theme_switcher": {
+	"group/user": {
 		"orientation": "horizontal",
 		"modules": [
-			"custom/theme_switcher",
+			"custom/trigger",
 			"custom/user"
 		],
 		"drawer": {}
 	},
-	"custom/theme_switcher": {
+	"custom/trigger": {
 		"format": "󰍜",
 		"min-length": 4,
 		"max-length": 4,
 		"tooltip": false
 	},
 	"custom/user": {
-		"exec": "id --user --name",
+		"exec": "id -un",
 		"format": "{}",
 		"tooltip": false
 	},

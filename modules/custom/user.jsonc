@@ -1,8 +1,8 @@
 {
-	"group/theme_switcher": {
+	"group/user": {
 		"orientation": "horizontal",
 		"modules": [
-			"custom/theme_switcher",
+			"custom/trigger",
 			"custom/user"
 		],
 		"drawer": {
@@ -13,7 +13,7 @@
 		}
 	},
 
-	"custom/theme_switcher": {
+	"custom/trigger": {
 		// "exec":
 		// "exec-if":
 		// "exec-on-event":
@@ -43,7 +43,7 @@
 	--------------*/
 
 	"custom/user": {
-		"exec": "id --user --name",
+		"exec": "id -un",
 		// "exec-if":
 		// "exec-on-event":
 		// "hide-empty-text":
