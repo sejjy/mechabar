@@ -1,15 +1,3 @@
-/*--------------
-	disabled
----------------*/
-
-#idle_inhibitor.deactivated,
-#mpris.paused,
-#pulseaudio.output.muted,
-#pulseaudio.input.source-muted,
-#wireplumber.muted {
-	color: @hover-fg;
-}
-
 /*-----------
 	hover
 -----------*/
@@ -23,6 +11,18 @@
 #mpris:hover,
 #pulseaudio:hover,
 #wireplumber:hover {
+	color: @hover-fg;
+}
+
+/*--------------
+	disabled
+---------------*/
+
+#idle_inhibitor.deactivated,
+#mpris.paused,
+#pulseaudio.output.muted,
+#pulseaudio.input.source-muted,
+#wireplumber.muted {
 	color: @hover-fg;
 }
 
