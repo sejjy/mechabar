@@ -37,6 +37,9 @@ select-network() {
 	local header
 	header=$(head -n 1 <<<"$list")
 
+	# shellcheck disable=SC1090
+	. ~/.config/waybar/scripts/fzf-colors.sh
+
 	local opts=(
 		--border=sharp
 		--border-label=' Wi-Fi Networks '
@@ -47,6 +50,7 @@ select-network() {
 		--info=inline-right
 		--pointer=
 		--reverse
+		"${COLORS[@]}"
 	)
 
 	bssid=$(fzf "${opts[@]}" <<<"$networks" | awk '{print $1}')
