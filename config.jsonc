@@ -5,16 +5,16 @@
 		 - https://github.com/Alexays/Waybar/issues/4354
 		 - https://github.com/sejjy/mechabar/issues/31
 	------------------------------------------------------*/
-	/*------------------------------------------------------
-		"include": [
-			"~/.config/waybar/modules/*.jsonc",
-			"~/.config/waybar/modules/custom/*.jsonc",
-			"~/.config/waybar/modules/hyprland/*.jsonc"
+	/*
+	"include": [
+		"~/.config/waybar/modules/*.jsonc",
+		"~/.config/waybar/modules/custom/*.jsonc",
+		"~/.config/waybar/modules/hyprland/*.jsonc"
 
-			// modules that are not included by default:
-			// "~/.config/waybar/modules/extras/*.jsonc"
-		],
-	------------------------------------------------------*/
+		// modules that are not included by default:
+		// "~/.config/waybar/modules/extras/*.jsonc"
+	],
+	*/
 
 	/*------------
 		layout
@@ -88,10 +88,11 @@
 	// "id":
 	"reload_style_on_change": true,
 
-	/*-------------------------------------------------------------------
+	/*--------------------------------------------------------
 		HINT:
-		See the modules directory for more per-module config options.
-	-------------------------------------------------------------------*/
+		See the modules directory for more config options.
+	--------------------------------------------------------*/
+
 	/*------------------
 		modules-left
 	------------------*/
