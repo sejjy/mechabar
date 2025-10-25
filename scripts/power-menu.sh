@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# Display a power menu using fzf.
+# Displays a power menu using fzf
 #
 # Author: Jesse Mirabel <sejjymvm@gmail.com>
 # Created: August 19, 2025

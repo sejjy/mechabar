@@ -11,16 +11,6 @@ RST='\033[0m'
 
 TIMEOUT=5
 
-ensure-enabled() {
-	local status
-	status=$(nmcli radio wifi)
-
-	if [[ $status == 'disabled' ]]; then
-		nmcli radio wifi on
-		notify-send 'Wi-Fi Enabled' -i 'network-wireless-on' -r 1125
-	fi
-}
-
 get-network-list() {
 	nmcli device wifi rescan 2>/dev/null
 
@@ -81,7 +71,13 @@ connect-to-network() {
 }
 
 main() {
-	ensure-enabled
+	local status
+	status=$(nmcli radio wifi)
+
+	if [[ $status == 'disabled' ]]; then
+		nmcli radio wifi on
+		notify-send 'Wi-Fi Enabled' -i 'network-wireless-on' -r 1125
+	fi
 
 	tput civis # make cursor invisible
 	get-network-list || exit 1

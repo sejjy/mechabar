@@ -11,16 +11,6 @@ RST='\033[0m'
 
 TIMEOUT=10
 
-ensure-on() {
-	local status
-	status=$(bluetoothctl show | grep PowerState | awk '{print $2}')
-
-	if [[ $status == 'off' ]]; then
-		bluetoothctl power on >/dev/null
-		notify-send 'Bluetooth On' -i 'network-bluetooth-activated' -r 1925
-	fi
-}
-
 get-device-list() {
 	bluetoothctl --timeout $TIMEOUT scan on >/dev/null &
 
@@ -102,7 +92,13 @@ pair-and-connect() {
 }
 
 main() {
-	ensure-on
+	local status
+	status=$(bluetoothctl show | grep PowerState | awk '{print $2}')
+
+	if [[ $status == 'off' ]]; then
+		bluetoothctl power on >/dev/null
+		notify-send 'Bluetooth On' -i 'network-bluetooth-activated' -r 1925
+	fi
 
 	tput civis # make cursor invisible
 	get-device-list || exit 1
