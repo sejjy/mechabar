@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# Control default input and output device volume using pactl
+# Adjust default input and output device volume using pactl
 #
 # Author: Jesse Mirabel <sejjymvm@gmail.com>
 # Created: September 07, 2025
@@ -9,15 +9,15 @@
 VALUE=1
 MIN=0
 MAX=100
-NID=2425
+ID=2425
 
 print-usage() {
-	local scr=${0##*/}
+	local script=${0##*/}
 
 	cat <<-EOF
-		USAGE: $scr [OPTIONS]
+		USAGE: $script [OPTIONS]
 
-		Control default input and output device volume using pactl
+		Adjust default input and output device volume using pactl
 
 		OPTIONS:
 		    input            Set device as '@DEFAULT_SOURCE@'
@@ -31,14 +31,15 @@ print-usage() {
 
 		EXAMPLES:
 		    Toggle microphone mute:
-		      $ $scr input mute
+		      $ $script input mute
 
 		    Raise speaker volume:
-		      $ $scr output raise
+		      $ $script output raise
 
 		    Lower speaker volume by 5:
-		      $ $scr output lower 5
+		      $ $script output lower 5
 	EOF
+
 	exit 1
 }
 
@@ -92,7 +93,7 @@ toggle-mute() {
 	state=$(check-muted)
 	icon=$(get-icon)
 
-	notify-send "$title: $state" -i "$icon" -r $NID
+	notify-send "$title: $state" -i "$icon" -r $ID
 }
 
 set-volume() {
@@ -116,7 +117,7 @@ set-volume() {
 	local icon
 	icon=$(get-icon "$new_vol")
 
-	notify-send "$title: ${new_vol}%" -h int:value:$new_vol -i "$icon" -r $NID
+	notify-send "$title: ${new_vol}%" -h int:value:$new_vol -i "$icon" -r $ID
 }
 
 main() {

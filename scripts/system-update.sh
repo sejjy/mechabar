@@ -4,7 +4,7 @@
 # pacman and an AUR helper if available.
 #
 # Dependencies:
-#  - checkupdates (from pacman-contrib)
+#  - pacman-contrib (checkupdates)
 #  - An AUR helper (optional)
 #
 # Author: Jesse Mirabel <sejjymvm@gmail.com>
@@ -16,16 +16,17 @@ BLU='\033[1;34m'
 RST='\033[0m'
 
 TIMEOUT=5
+REPO=0
+AUR=0
+
 HELPER=$(command -v yay trizen pikaur paru pakku pacaur aurman aura | head -n 1)
 HELPER=${HELPER##*/}
 
 check-updates() {
-	repo=0
-	repo=$(timeout $TIMEOUT checkupdates 2>/dev/null | wc -l)
+	REPO=$(timeout $TIMEOUT checkupdates 2>/dev/null | wc -l)
 
-	aur=0
 	if [[ -n $HELPER ]]; then
-		aur=$(timeout $TIMEOUT "$HELPER" -Quaq 2>/dev/null | wc -l)
+		AUR=$(timeout $TIMEOUT "$HELPER" -Quaq 2>/dev/null | wc -l)
 	fi
 }
 
@@ -43,13 +44,13 @@ update-packages() {
 }
 
 display-tooltip() {
-	local tooltip="Official: $repo"
+	local tooltip="Official: $REPO"
 
 	if [[ -n $HELPER ]]; then
-		tooltip+="\nAUR($HELPER): $aur"
+		tooltip+="\nAUR($HELPER): $AUR"
 	fi
 
-	local total=$((repo + aur))
+	local total=$((REPO + AUR))
 
 	if ((total == 0)); then
 		echo "{ \"text\": \"󰸟\", \"tooltip\": \"No updates available\" }"

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# Install dependencies and set up Waybar scripts
+# Installs required dependencies and makes scripts executable
 #
 # Author: Jesse Mirabel <sejjymvm@gmail.com>
 # Created: August 22, 2025
@@ -22,52 +22,40 @@ DEPS=(
 	ttf-0xproto-nerd
 )
 
-install-deps() {
+ERR=0
+
+main() {
 	printf '%bInstalling dependencies...%b\n' "$BLU" "$RST"
 
-	local pkg
-	err=0
-
-	for pkg in "${DEPS[@]}"; do
-		if pacman -Qi "$pkg" &>/dev/null; then
-			printf '[%b/%b] %s\n' "$GRN" "$RST" "$pkg"
+	local package
+	for package in "${DEPS[@]}"; do
+		if pacman -Qi "$package" >/dev/null; then
+			printf '[%b/%b] %s\n' "$GRN" "$RST" "$package"
 		else
-			printf '[ ] %s...\n' "$pkg"
+			printf '[ ] %s...\n' "$package"
 
-			if sudo pacman -S --noconfirm "$pkg"; then
-				printf '[%b+%b] %s\n' "$GRN" "$RST" "$pkg"
+			if sudo pacman -S --noconfirm "$package"; then
+				printf '[%b+%b] %s\n' "$GRN" "$RST" "$package"
 			else
-				printf '[%bx%b] %s\n' "$RED" "$RST" "$pkg"
-				((err++))
+				printf '[%bx%b] %s\n' "$RED" "$RST" "$package"
+				((ERR++))
 			fi
 		fi
 	done
-}
 
-setup-scripts() {
 	printf '\n%bMaking scripts executable...%b\n' "$BLU" "$RST"
-
 	chmod -v +x ~/.config/waybar/scripts/*.sh
-}
 
-display-result() {
-	if ((err > 0)); then
+	pkill waybar
+	waybar &>/dev/null &
+	disown
+
+	if ((ERR > 0)); then
 		printf '\nInstallation completed with %b%d error(s)%b\n' \
-			"$RED" "$err" "$RST"
+			"$RED" "$ERR" "$RST"
 	else
 		printf '\n%bInstallation complete!%b\n' "$GRN" "$RST"
 	fi
-}
-
-main() {
-	install-deps
-	setup-scripts
-
-	pkill waybar
-	waybar >/dev/null 2>&1 &
-	disown
-
-	display-result
 }
 
 main
