@@ -42,6 +42,9 @@ select-device() {
 	local header
 	header=$(printf '%-17s %s' 'Address' 'Name')
 
+	# shellcheck disable=SC1090
+	. ~/.config/waybar/scripts/fzf-colors.sh
+
 	local opts=(
 		--border=sharp
 		--border-label=' Bluetooth Devices '
@@ -52,6 +55,7 @@ select-device() {
 		--info=inline-right
 		--pointer=
 		--reverse
+		"${COLORS[@]}"
 	)
 
 	address=$(fzf "${opts[@]}" <<<"$list" | awk '{print $1}')

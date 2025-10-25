@@ -16,6 +16,9 @@ LIST=(
 )
 
 main() {
+	# shellcheck disable=SC1090
+	. ~/.config/waybar/scripts/fzf-colors.sh
+
 	local opts=(
 		--border=sharp
 		--border-label=' Power Menu '
@@ -24,6 +27,7 @@ main() {
 		--no-input
 		--pointer=
 		--reverse
+		"${COLORS[@]}"
 	)
 
 	local selected
