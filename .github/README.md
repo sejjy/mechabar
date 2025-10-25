@@ -93,7 +93,7 @@ A mecha-themed, modular Waybar configuration.
 
 #
 
-### Theme
+### Customization
 
 To change the theme, overwrite [theme.css](/theme.css) with your preferred theme from the [themes](/themes/) directory.
 
