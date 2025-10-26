@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
 #
-# Connect to a Wi-Fi network using nmcli and fzf
+# Scan, select, and connect to Wi-Fi networks
+#
+# Requirements:
+# 	- nmcli (networkmanager)
+# 	- fzf
+# 	- notify-send (libnotify)
 #
 # Author: Jesse Mirabel <sejjymvm@gmail.com>
 # Created: August 11, 2025

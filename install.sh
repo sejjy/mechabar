@@ -1,10 +1,4 @@
 #!/usr/bin/env bash
-#
-# Installs required dependencies and makes scripts executable
-#
-# Author: Jesse Mirabel <sejjymvm@gmail.com>
-# Created: August 22, 2025
-# License: MIT
 
 RED='\033[1;31m'
 GRN='\033[1;32m'

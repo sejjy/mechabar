@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 #
-# Adjust default input and output device volume using pactl
+# Adjust default device volume and send a notification with the current level
+#
+# Requirements:
+# 	- pactl (libpulse)
+# 	- notify-send (libnotify)
 #
 # Author: Jesse Mirabel <sejjymvm@gmail.com>
 # Created: September 07, 2025
@@ -17,7 +21,7 @@ print-usage() {
 	cat <<-EOF
 		USAGE: $script [OPTIONS]
 
-		Adjust default input and output device volume using pactl
+		Adjust default device volume and send a notification with the current level
 
 		OPTIONS:
 		    input            Set device as '@DEFAULT_SOURCE@'
@@ -27,17 +31,17 @@ print-usage() {
 
 		    raise <value>    Raise volume by <value>
 		    lower <value>    Lower volume by <value>
-		                       Default value: $VALUE
+		                         Default value: $VALUE
 
 		EXAMPLES:
 		    Toggle microphone mute:
-		      $ $script input mute
+		        $ $script input mute
 
 		    Raise speaker volume:
-		      $ $script output raise
+		        $ $script output raise
 
 		    Lower speaker volume by 5:
-		      $ $script output lower 5
+		        $ $script output lower 5
 	EOF
 
 	exit 1

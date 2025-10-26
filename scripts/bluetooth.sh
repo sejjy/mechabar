@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
 #
-# Connect to a Bluetooth device using bluetoothctl and fzf
+# Scan, select, pair, and connect to Bluetooth devices
+#
+# Requirements:
+# 	- bluetoothctl (bluez-utils)
+# 	- fzf
+# 	- notify-send (libnotify)
 #
 # Author: Jesse Mirabel <sejjymvm@gmail.com>
 # Created: August 19, 2025
