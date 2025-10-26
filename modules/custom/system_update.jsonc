@@ -1,6 +1,6 @@
 {
 	"custom/system_update": {
-		"exec": "~/.config/waybar/scripts/system-update.sh",
+		"exec": "~/.config/waybar/scripts/system-update.sh module",
 		// "exec-if":
 		// "exec-on-event":
 		// "hide-empty-text":
@@ -13,7 +13,7 @@
 		// "rotate":
 		"min-length": 2,
 		"max-length": 2,
-		"on-click": "kitty -e ~/.config/waybar/scripts/system-update.sh start"
+		"on-click": "kitty -e ~/.config/waybar/scripts/system-update.sh"
 		// "on-click-middle":
 		// "on-click-right":
 		// "on-scroll-up":
