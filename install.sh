@@ -16,12 +16,11 @@ DEPS=(
 	ttf-0xproto-nerd
 )
 
-ERR=0
-
 main() {
 	printf '%bInstalling dependencies...%b\n' "$BLU" "$RST"
 
 	local package
+	local errors=0
 	for package in "${DEPS[@]}"; do
 		if pacman -Qi "$package" >/dev/null; then
 			printf '[%b/%b] %s\n' "$GRN" "$RST" "$package"
@@ -32,7 +31,7 @@ main() {
 				printf '[%b+%b] %s\n' "$GRN" "$RST" "$package"
 			else
 				printf '[%bx%b] %s\n' "$RED" "$RST" "$package"
-				((ERR++))
+				((errors++))
 			fi
 		fi
 	done
@@ -44,9 +43,9 @@ main() {
 	waybar &>/dev/null &
 	disown
 
-	if ((ERR > 0)); then
-		printf '\nInstallation completed with %b%d error(s)%b\n' \
-			"$RED" "$ERR" "$RST"
+	if ((errors > 0)); then
+		printf '\nInstallation completed with %b%d errors%b\n' \
+			"$RED" "$errors" "$RST"
 	else
 		printf '\n%bInstallation complete!%b\n' "$GRN" "$RST"
 	fi
