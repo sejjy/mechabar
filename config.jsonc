@@ -279,13 +279,13 @@
 	},
 
 	"custom/system_update": {
-		"exec": "~/.config/waybar/scripts/system-update.sh",
+		"exec": "~/.config/waybar/scripts/system-update.sh module",
 		"return-type": "json",
 		"interval": 3600,
 		"format": "{}",
 		"min-length": 2,
 		"max-length": 2,
-		"on-click": "kitty -e ~/.config/waybar/scripts/system-update.sh start"
+		"on-click": "kitty -e ~/.config/waybar/scripts/system-update.sh"
 	},
 
 	/*-------------------
