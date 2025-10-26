@@ -19,7 +19,7 @@ TIMEOUT=5
 REPO=0
 AUR=0
 
-HELPER=$(command -v yay trizen pikaur paru pakku pacaur aurman aura | head -n 1)
+HELPER=$(command -v aura paru pikaur trizen yay | head -n 1)
 HELPER=${HELPER##*/}
 
 check-updates() {
