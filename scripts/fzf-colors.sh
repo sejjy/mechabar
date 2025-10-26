@@ -1,10 +1,4 @@
 #!/usr/bin/env bash
-#
-# Sets fzf colors based on the current theme
-#
-# Author: Jesse Mirabel <sejjymvm@gmail.com>
-# Created: August 22, 2025
-# License: MIT
 
 main() {
 	local file=$XDG_CONFIG_HOME/waybar/theme.css

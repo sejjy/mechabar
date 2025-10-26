@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 #
-# Displays a power menu using fzf
+# Display a power menu to perform system actions
+#
+# Requirements:
+# 	- fzf
 #
 # Author: Jesse Mirabel <sejjymvm@gmail.com>
 # Created: August 19, 2025

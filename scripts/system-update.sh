@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 #
-# Checks for pending updates using checkupdates and upgrades packages using
-# pacman and an AUR helper if available.
+# Check for available updates and optionally upgrade packages on Arch Linux.
 #
-# Dependencies:
-#  - pacman-contrib (checkupdates)
-#  - An AUR helper (optional)
+# Requirements:
+# 	- checkupdates (pacman-contrib)
+# 	- notify-send (libnotify)
+# 	- optional: an AUR helper (aura, paru, pikaur, trizen, yay)
 #
 # Author: Jesse Mirabel <sejjymvm@gmail.com>
 # Created: August 16, 2025

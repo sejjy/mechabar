@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 #
-# Adjust brightness level using brightnessctl
+# Adjust screen brightness and send a notification with the current level
+#
+# Requirements:
+# 	- brightnessctl
+# 	- notify-send (libnotify)
 #
 # Author: Jesse Mirabel <sejjymvm@gmail.com>
 # Created: August 28, 2025
@@ -14,19 +18,19 @@ print-usage() {
 	cat <<-EOF
 		USAGE: $script [OPTIONS]
 
-		Adjust brightness level using brightnessctl
+		Adjust screen brightness and send a notification with the current level
 
 		OPTIONS:
 		    up   <value>    Increase brightness by <value>
 		    down <value>    Decrease brightness by <value>
-		                      Default value: $VALUE
+		                        Default value: $VALUE
 
 		EXAMPLES:
 		    Increase brightness:
-		      $ $script up
+		        $ $script up
 
 		    Decrease brightness by 5:
-		      $ $script down 5
+		        $ $script down 5
 	EOF
 
 	exit 1
