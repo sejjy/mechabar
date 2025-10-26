@@ -20,7 +20,7 @@ LIST=(
 
 main() {
 	# shellcheck disable=SC1090
-	. ~/.config/waybar/scripts/fzf-colors.sh
+	. ~/.config/waybar/scripts/fzf-colors.sh 2>/dev/null
 
 	local opts=(
 		--border=sharp
