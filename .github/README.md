@@ -4,8 +4,8 @@
 
 A mecha-themed, modular Waybar configuration.
 
-| ![Preview](assets/catppuccin-mocha.png) |
-| --------------------------------------- |
+| ![Mechabar](assets/catppuccin-mocha.png) |
+| ---------------------------------------- |
 
 <details>
 <summary><b>Themes</b></summary>
@@ -13,21 +13,21 @@ A mecha-themed, modular Waybar configuration.
 
 **Catppuccin:**
 
-|           Mocha _(default)_           |
-| :-----------------------------------: |
-| ![Mocha](assets/catppuccin-mocha.png) |
+|                Mocha _(default)_                 |
+| :----------------------------------------------: |
+| ![Catppuccin Mocha](assets/catppuccin-mocha.png) |
 
-|                   Macchiato                   |
-| :-------------------------------------------: |
-| ![Macchiato](assets/catppuccin-macchiato.png) |
+|                        Macchiato                         |
+| :------------------------------------------------------: |
+| ![Catppuccin Macchiato](assets/catppuccin-macchiato.png) |
 
-|                 Frappe                  |
-| :-------------------------------------: |
-| ![Frappe](assets/catppuccin-frappe.png) |
+|                       Frappe                       |
+| :------------------------------------------------: |
+| ![Catppuccin Frappe](assets/catppuccin-frappe.png) |
 
-|                 Latte                 |
-| :-----------------------------------: |
-| ![Latte](assets/catppuccin-latte.png) |
+|                      Latte                       |
+| :----------------------------------------------: |
+| ![Catppuccin Latte](assets/catppuccin-latte.png) |
 
 </details>
 </div>
