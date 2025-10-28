@@ -1,5 +1,5 @@
 /*------------------
-	window count
+    window count
 ------------------*/
 
 #windowcount {
@@ -10,7 +10,7 @@
 }
 
 /*-----------------
-	temperature
+    temperature
 -----------------*/
 
 #custom-left_div.2 {
@@ -21,7 +21,7 @@
 }
 
 /*------------
-	memory
+    memory
 ------------*/
 
 #custom-left_div.3 {
@@ -33,7 +33,7 @@
 }
 
 /*---------
-	cpu
+    cpu
 ---------*/
 
 #custom-left_div.4 {
@@ -49,7 +49,7 @@
 }
 
 /*-----------------
-	distro icon
+    distro icon
 -----------------*/
 
 #custom-left_div.5,
@@ -63,7 +63,7 @@
 }
 
 /*--------------------
-	idle inhibitor
+    idle inhibitor
 --------------------*/
 
 #custom-right_inv.1 {
@@ -74,7 +74,7 @@
 }
 
 /*----------
-	time
+    time
 ----------*/
 
 #clock.time {
@@ -87,7 +87,7 @@
 }
 
 /*----------
-	date
+    date
 ----------*/
 
 #clock.date {
@@ -100,7 +100,7 @@
 }
 
 /*-----------------
-	system tray
+    system tray
 -----------------*/
 
 #network {

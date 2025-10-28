@@ -1,6 +1,6 @@
 {
 	/*-------------------
-		left dividers
+	    left dividers
 	-------------------*/
 
 	"custom/left_div#1": {
@@ -45,7 +45,7 @@
 	},
 
 	/*--------------------
-		right dividers
+	    right dividers
 	--------------------*/
 
 	"custom/right_div#1": {

@@ -9,7 +9,7 @@
 	],
 
 	/*------------
-		layout
+	    layout
 	------------*/
 
 	"modules-left": [
@@ -55,7 +55,7 @@
 	],
 
 	/*-------------
-		options
+	    options
 	-------------*/
 
 	"layer": "top",
