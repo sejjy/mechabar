@@ -18,7 +18,7 @@ ID=2425
 print-usage() {
 	local script=${0##*/}
 
-	cat <<-EOF
+	cat <<- EOF
 		USAGE: $script [OPTIONS]
 
 		Adjust default device volume and send a notification with the current level

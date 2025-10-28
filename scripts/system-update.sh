@@ -20,10 +20,10 @@ REPO=0
 AUR=0
 
 check-updates() {
-	REPO=$(timeout $TIMEOUT checkupdates 2>/dev/null | wc -l)
+	REPO=$(timeout $TIMEOUT checkupdates 2> /dev/null | wc -l)
 
 	if [[ -n $helper ]]; then
-		AUR=$(timeout $TIMEOUT "$helper" -Quaq 2>/dev/null | wc -l)
+		AUR=$(timeout $TIMEOUT "$helper" -Quaq 2> /dev/null | wc -l)
 	fi
 }
 

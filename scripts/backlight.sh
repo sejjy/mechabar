@@ -15,7 +15,7 @@ VALUE=1
 print-usage() {
 	local script=${0##*/}
 
-	cat <<-EOF
+	cat <<- EOF
 		USAGE: $script [OPTIONS]
 
 		Adjust screen brightness and send a notification with the current level
@@ -43,7 +43,7 @@ set-brightness() {
 		'down') op='-' ;;
 	esac
 
-	brightnessctl -n set "${value}%${op}" &>/dev/null
+	brightnessctl -n set "${value}%${op}" &> /dev/null
 
 	local level
 	level=$(brightnessctl -m | awk -F ',' '{print $4}')

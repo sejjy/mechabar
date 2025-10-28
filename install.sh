@@ -22,7 +22,7 @@ main() {
 	local package
 	local errors=0
 	for package in "${DEPS[@]}"; do
-		if pacman -Qi "$package" >/dev/null; then
+		if pacman -Qi "$package" > /dev/null; then
 			printf '[%b/%b] %s\n' "$GRN" "$RST" "$package"
 		else
 			printf '[ ] %s...\n' "$package"
@@ -40,7 +40,7 @@ main() {
 	chmod -v +x ~/.config/waybar/scripts/*.sh
 
 	pkill waybar
-	waybar &>/dev/null &
+	waybar &> /dev/null &
 	disown
 
 	if ((errors > 0)); then
