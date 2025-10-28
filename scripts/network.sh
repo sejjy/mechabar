@@ -17,7 +17,7 @@ RST='\033[0m'
 TIMEOUT=5
 
 get-network-list() {
-	nmcli device wifi rescan 2>/dev/null
+	nmcli device wifi rescan 2> /dev/null
 
 	local i
 	for ((i = 1; i <= TIMEOUT; i++)); do
@@ -25,7 +25,7 @@ get-network-list() {
 		printf '\033[1A' # move cursor up 1 line
 
 		list=$(timeout 1 nmcli device wifi list)
-		networks=$(tail -n +2 <<<"$list" | awk '$2 != "--"')
+		networks=$(tail -n +2 <<< "$list" | awk '$2 != "--"')
 
 		[[ -n $networks ]] && break
 	done
@@ -40,10 +40,10 @@ get-network-list() {
 
 select-network() {
 	local header
-	header=$(head -n 1 <<<"$list")
+	header=$(head -n 1 <<< "$list")
 
 	# shellcheck disable=SC1090
-	. ~/.config/waybar/scripts/fzf-colors.sh 2>/dev/null
+	. ~/.config/waybar/scripts/fzf-colors.sh 2> /dev/null
 
 	local opts=(
 		--border=sharp
@@ -58,7 +58,7 @@ select-network() {
 		"${COLORS[@]}"
 	)
 
-	bssid=$(fzf "${opts[@]}" <<<"$networks" | awk '{print $1}')
+	bssid=$(fzf "${opts[@]}" <<< "$networks" | awk '{print $1}')
 
 	if [[ -z $bssid ]]; then
 		return 1

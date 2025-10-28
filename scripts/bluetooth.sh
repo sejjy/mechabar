@@ -17,7 +17,7 @@ RST='\033[0m'
 TIMEOUT=10
 
 get-device-list() {
-	bluetoothctl --timeout $TIMEOUT scan on >/dev/null &
+	bluetoothctl --timeout $TIMEOUT scan on > /dev/null &
 
 	local i num
 	for ((i = 1; i <= TIMEOUT; i++)); do
@@ -48,7 +48,7 @@ select-device() {
 	header=$(printf '%-17s %s' 'Address' 'Name')
 
 	# shellcheck disable=SC1090
-	. ~/.config/waybar/scripts/fzf-colors.sh 2>/dev/null
+	. ~/.config/waybar/scripts/fzf-colors.sh 2> /dev/null
 
 	local opts=(
 		--border=sharp
@@ -63,7 +63,7 @@ select-device() {
 		"${COLORS[@]}"
 	)
 
-	address=$(fzf "${opts[@]}" <<<"$list" | awk '{print $1}')
+	address=$(fzf "${opts[@]}" <<< "$list" | awk '{print $1}')
 
 	[[ -z $address ]] && return 1
 
@@ -85,7 +85,7 @@ pair-and-connect() {
 	if [[ $paired == 'no' ]]; then
 		printf 'Pairing...'
 
-		if ! timeout $TIMEOUT bluetoothctl pair "$address" >/dev/null; then
+		if ! timeout $TIMEOUT bluetoothctl pair "$address" > /dev/null; then
 			notify-send 'Bluetooth' 'Failed to pair' -i 'package-purge'
 			return 1
 		fi
@@ -93,7 +93,7 @@ pair-and-connect() {
 
 	printf '\nConnecting...'
 
-	if timeout $TIMEOUT bluetoothctl connect "$address" >/dev/null; then
+	if timeout $TIMEOUT bluetoothctl connect "$address" > /dev/null; then
 		notify-send 'Bluetooth' 'Successfully connected' -i 'package-install'
 	else
 		notify-send 'Bluetooth' 'Failed to connect' -i 'package-purge'
@@ -105,7 +105,7 @@ main() {
 	status=$(bluetoothctl show | grep PowerState | awk '{print $2}')
 
 	if [[ $status == 'off' ]]; then
-		bluetoothctl power on >/dev/null
+		bluetoothctl power on > /dev/null
 		notify-send 'Bluetooth On' -i 'network-bluetooth-activated' -r 1925
 	fi
 
