@@ -1,10 +1,10 @@
 {
-	/*------------------------------------------------------
-		NOTE:
-		Wildcard includes are broken after v0.14.0:
-		 - https://github.com/Alexays/Waybar/issues/4354
-		 - https://github.com/sejjy/mechabar/issues/31
-	------------------------------------------------------*/
+	/*-------------------------------------------------------
+	    NOTE:
+	    Wildcard includes are broken after v0.14.0:
+	      - https://github.com/Alexays/Waybar/issues/4354
+	      - https://github.com/sejjy/mechabar/issues/31
+	-------------------------------------------------------*/
 	/*
 	"include": [
 		"~/.config/waybar/modules/*.jsonc",
@@ -17,7 +17,7 @@
 	*/
 
 	/*------------
-		layout
+	    layout
 	------------*/
 
 	"modules-left": [
@@ -63,7 +63,7 @@
 	],
 
 	/*-------------
-		options
+	    options
 	-------------*/
 
 	"layer": "top",
@@ -89,12 +89,12 @@
 	"reload_style_on_change": true,
 
 	/*--------------------------------------------------------
-		HINT:
-		See the modules directory for more config options.
+	    HINT:
+	    See the modules directory for more config options.
 	--------------------------------------------------------*/
 
 	/*------------------
-		modules-left
+	    modules-left
 	------------------*/
 
 	"group/user": {
@@ -142,7 +142,7 @@
 	},
 
 	/*--------------------
-		modules-center
+	    modules-center
 	--------------------*/
 
 	"hyprland/windowcount": {
@@ -289,7 +289,7 @@
 	},
 
 	/*-------------------
-		modules-right
+	    modules-right
 	-------------------*/
 
 	"mpris": {
@@ -387,7 +387,7 @@
 	},
 
 	/*-------------------
-		left dividers
+	    left dividers
 	-------------------*/
 
 	"custom/left_div#1": {
@@ -432,7 +432,7 @@
 	},
 
 	/*--------------------
-		right dividers
+	    right dividers
 	--------------------*/
 
 	"custom/right_div#1": {

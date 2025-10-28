@@ -1,5 +1,5 @@
 /*-----------
-	hover
+    hover
 -----------*/
 
 #custom-trigger:hover,
@@ -15,7 +15,7 @@
 }
 
 /*--------------
-	disabled
+    disabled
 ---------------*/
 
 #idle_inhibitor.deactivated,
@@ -27,7 +27,7 @@
 }
 
 /*-------------
-	warning
+    warning
 -------------*/
 
 #memory.warning,
@@ -37,7 +37,7 @@
 }
 
 /*--------------
-	critical
+    critical
 --------------*/
 
 #temperature.critical,
@@ -48,7 +48,7 @@
 }
 
 /*--------------
-	charging
+    charging
 --------------*/
 
 #battery.charging {

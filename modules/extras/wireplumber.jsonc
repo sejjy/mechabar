@@ -14,7 +14,7 @@
 	},
 
 	/*-------------------
-		output device
+	    output device
 	-------------------*/
 
 	"wireplumber#output": {
@@ -43,7 +43,7 @@
 	},
 
 	/*----------------
-		microphone
+	    microphone
 	----------------*/
 
 	"wireplumber#input": {
