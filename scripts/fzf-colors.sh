@@ -8,11 +8,14 @@ def-colors() {
 
 	declare -ga names
 
-	# add themes here
+	# Add themes here:
 	if [[ $theme == *"catppuccin"* ]]; then
 		names=(
-			'surface0' 'base' 'rosewater' 'red' 'text' 'red' 'mauve' 'rosewater'
-			'lavender' 'text' 'mauve' 'red' 'surface1' 'overlay0' 'text'
+			'surface0' 'base'      'rosewater'
+			'red'      'text'      'red'
+			'mauve'    'rosewater' 'lavender'
+			'text'     'mauve'     'red'
+			'surface1' 'overlay0'  'text'
 		)
 	fi
 }
@@ -34,8 +37,11 @@ get-hex() {
 
 map-colors() {
 	local -a maps=(
-		'bgp' 'bg' 'spinner' 'hl' 'fg' 'header' 'info' 'pointer' 'marker' 'fgp'
-		'prompt' 'hlp' 'selected_bg' 'border' 'label'
+		'_cur_bg' '_bg'      '_spinner'
+		'_hl'     '_fg'      '_header'
+		'_info'   '_pointer' '_marker'
+		'_cur_fg' '_prompt'  '_cur_hl'
+		'_sel_bg' '_border'  '_label'
 	)
 
 	local n
@@ -52,12 +58,14 @@ main() {
 	get-hex
 	map-colors
 
+	# shellcheck disable=SC2154
+	# These variables are defined dynamically
 	declare -ga COLORS=(
-		"--color=bg+:${bgp:?},bg:${bg:?},spinner:${spinner:?},hl:${hl:?}"
-		"--color=fg:${fg:?},header:${header:?},info:${info:?}"
-		"--color=pointer:${pointer:?},marker:${marker:?},fg+:${fgp:?}"
-		"--color=prompt:${prompt:?},hl+:${hlp:?},selected-bg:${selected_bg:?}"
-		"--color=border:${border:?},label:${label:?}"
+		"--color=bg+:$_cur_bg,         bg:$_bg,           spinner:$_spinner"
+		"--color=hl:$_hl,              fg:$_fg,           header:$_header"
+		"--color=info:$_info,          pointer:$_pointer, marker:$_marker"
+		"--color=fg+:$_cur_fg,         prompt:$_prompt,   hl+:$_cur_hl"
+		"--color=selected-bg:$_sel_bg, border:$_border,   label:$_label"
 	)
 
 	export COLORS
