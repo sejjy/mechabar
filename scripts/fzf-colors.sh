@@ -1,4 +1,12 @@
 #!/usr/bin/env bash
+#
+# NOTE:
+# The names, maps, and COLORS arrays are all parallel:
+# 	- names[i]: the color name as defined in theme.css
+# 	- maps[i]:  variable to store the hex value
+# 	- COLORS:   color config passed to fzf
+#
+# Add themes by defining the names array in def-colors().
 
 FILE="$XDG_CONFIG_HOME/waybar/theme.css"
 
@@ -61,11 +69,11 @@ main() {
 	# shellcheck disable=SC2154
 	# These variables are defined dynamically
 	declare -ga COLORS=(
-		"--color=bg+:$_cur_bg,         bg:$_bg,           spinner:$_spinner"
-		"--color=hl:$_hl,              fg:$_fg,           header:$_header"
-		"--color=info:$_info,          pointer:$_pointer, marker:$_marker"
-		"--color=fg+:$_cur_fg,         prompt:$_prompt,   hl+:$_cur_hl"
-		"--color=selected-bg:$_sel_bg, border:$_border,   label:$_label"
+		"--color=        bg+:$_cur_bg,      bg:$_bg,      spinner:$_spinner"
+		"--color=         hl:$_hl,          fg:$_fg,       header:$_header"
+		"--color=       info:$_info,   pointer:$_pointer,  marker:$_marker"
+		"--color=        fg+:$_cur_fg,  prompt:$_prompt,      hl+:$_cur_hl"
+		"--color=selected-bg:$_sel_bg,  border:$_border,    label:$_label"
 	)
 
 	export COLORS
