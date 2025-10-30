@@ -14,11 +14,11 @@ tooltip label {
 
 #workspaces button.active label,
 #custom-distro {
-	font-size: 23px;
+	font-size: 22px;
 }
 
 #custom-power_menu {
-	font-size: 20px;
+	font-size: 19px;
 }
 
 /*--------------
@@ -29,5 +29,14 @@ tooltip label {
 #custom-left_inv,
 #custom-right_div,
 #custom-right_inv {
-	font-size: 23.1px;
+	font-size: 22px;
+}
+
+/* ... */
+.module,
+#custom-left_div,
+#custom-left_inv,
+#custom-right_div,
+#custom-right_inv {
+	margin-bottom: -1px;
 }
