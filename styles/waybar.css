@@ -18,3 +18,12 @@ tooltip {
 tooltip > box {
 	padding: 0 6px;
 }
+
+/* alignment */
+.module,
+#custom-left_div,
+#custom-left_inv,
+#custom-right_div,
+#custom-right_inv {
+	margin-bottom: -1px;
+}
