@@ -6,9 +6,15 @@
 	background-color: @main-bg;
 }
 
-/*--------------
-    tooltips
---------------*/
+button {
+	border-radius: 16px;
+	min-width: 16px;
+	padding: 0 10px;
+}
+button:hover {
+	background-color: @hover-bg;
+	color: @hover-fg;
+}
 
 tooltip {
 	border: 2px solid @main-br;
