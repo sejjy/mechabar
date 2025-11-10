@@ -21,22 +21,9 @@ tooltip label {
 	font-size: 19px;
 }
 
-/*--------------
-    dividers
---------------*/
-
 #custom-left_div,
 #custom-left_inv,
 #custom-right_div,
 #custom-right_inv {
 	font-size: 22px;
-}
-
-/* ... */
-.module,
-#custom-left_div,
-#custom-left_inv,
-#custom-right_div,
-#custom-right_inv {
-	margin-bottom: -1px;
 }
