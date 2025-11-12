@@ -39,7 +39,7 @@ A mecha-themed, modular Waybar configuration.
 1. [waybar](https://github.com/Alexays/Waybar)
 
 > [!WARNING]
-> Version **0.14.0** has an [issue](https://github.com/Alexays/Waybar/issues/4354) that breaks modular configs.
+> Version **0.14.0** has an [issue](https://github.com/Alexays/Waybar/issues/4354) that breaks wildcard includes.
 > As a temporary fix, clone the `fix/v0.14.0` branch instead.
 
 2. A terminal emulator _(default: [kitty](https://github.com/kovidgoyal/kitty))_
@@ -67,9 +67,12 @@ A mecha-themed, modular Waybar configuration.
 
 	```bash
 	git clone https://github.com/sejjy/mechabar.git ~/.config/waybar
+	```
 
-	# Version 0.14.0 fix:
-	# git clone -b fix/v0.14.0 https://github.com/sejjy/mechabar.git ~/.config/waybar
+	For Waybar **v0.14.0**:
+
+	```bash
+	git clone -b fix/v0.14.0 https://github.com/sejjy/mechabar.git ~/.config/waybar
 	```
 
 3. Run the [install](/install.sh) script:
