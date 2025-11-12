@@ -9,9 +9,12 @@
 		"format-connected": "󰂱",
 		// "format-connected-battery":
 		// "format-no-controller":
+		// "format-icons":
 		// "rotate":
 		"min-length": 2,
 		"max-length": 2,
+		// "align":
+		// "justify":
 		"on-click": "kitty -e ~/.config/waybar/scripts/bluetooth.sh",
 		// "on-click-middle":
 		"on-click-right": "bluetoothctl power off && notify-send 'Bluetooth Off' -i 'network-bluetooth-inactive' -r 1925",
@@ -27,5 +30,9 @@
 		"tooltip-format-enumerate-connected": "Device: {device_alias}",
 		"tooltip-format-connected-battery": "Device: {device_alias}\nBattery: {device_battery_percentage}%",
 		"tooltip-format-enumerate-connected-battery": "Device: {device_alias}\nBattery: {device_battery_percentage}%"
+		// "menu":
+		// "menu-file":
+		// "menu-actions":
+		// "expand":
 	}
 }

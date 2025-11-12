@@ -16,6 +16,10 @@
 		// "smooth-scrolling-threshold":
 		// "tooltip":
 		"tooltip-format": "Standard Time: {:%I:%M %p}"
+		// "menu":
+		// "menu-file":
+		// "menu-actions":
+		// "expand":
 	},
 
 	/*--------------
@@ -39,6 +43,10 @@
 		// "smooth-scrolling-threshold":
 		// "tooltip":
 		"tooltip-format": "{calendar}",
+		// "menu":
+		// "menu-file":
+		// "menu-actions":
+		// "expand":
 		"calendar": {
 			"mode": "month",
 			"mode-mon-col": 6,

@@ -18,10 +18,21 @@
 		// "window-rewrite":
 		// "window-rewrite-default":
 		// "format-window-separator":
+		"workspace-taskbar": {
+			// "enable":
+			// "update-active-window":
+			// "format":
+			// "icon-size":
+			// "icon-theme":
+			// "orientation":
+			// "ignore-list":
+			// "on-click-window":
+		},
 		// "move-to-monitor":
 		// "ignore-workspaces":
 		"on-scroll-up": "hyprctl dispatch workspace +1",
 		"on-scroll-down": "hyprctl dispatch workspace -1",
+		// "expand":
 		"cursor": true
 	}
 }

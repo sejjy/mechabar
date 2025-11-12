@@ -29,10 +29,13 @@
 		// "states":
 		"min-length": 7,
 		"max-length": 7,
+		// "align":
+		// "justify":
 		// "scroll-step":
 		"on-click": "~/.config/waybar/scripts/volume.sh output mute",
 		// "on-click-middle":
 		// "on-click-right":
+		// "on-update":
 		"on-scroll-up": "~/.config/waybar/scripts/volume.sh output raise",
 		"on-scroll-down": "~/.config/waybar/scripts/volume.sh output lower",
 		// "tooltip":
@@ -40,6 +43,9 @@
 		// "max-volume":
 		// "reverse-scrolling":
 		"node-type": "Audio/Sink"
+		// "menu":
+		// "menu-file":
+		// "menu-actions":
 	},
 
 	/*----------------
@@ -55,10 +61,13 @@
 		// "states":
 		"min-length": 7,
 		"max-length": 7,
+		// "align":
+		// "justify":
 		// "scroll-step":
 		"on-click": "~/.config/waybar/scripts/volume.sh input mute",
 		// "on-click-middle":
 		// "on-click-right":
+		// "on-update":
 		"on-scroll-up": "~/.config/waybar/scripts/volume.sh input raise",
 		"on-scroll-down": "~/.config/waybar/scripts/volume.sh input lower",
 		// "tooltip":
@@ -66,5 +75,8 @@
 		// "max-volume":
 		// "reverse-scrolling":
 		"node-type": "Audio/Source"
+		// "menu":
+		// "menu-file":
+		// "menu-actions":
 	}
 }

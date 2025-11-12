@@ -35,6 +35,8 @@
 		"format": "",
 		"tooltip": false
 	},
+
+	// inverse
 	"custom/left_inv#1": {
 		"format": "",
 		"tooltip": false
@@ -68,6 +70,8 @@
 		"format": "",
 		"tooltip": false
 	},
+
+	// inverse
 	"custom/right_inv#1": {
 		"format": "",
 		"tooltip": false

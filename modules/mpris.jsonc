@@ -17,11 +17,20 @@
 		"status-icons": {
 			"paused": "󰏤"
 		},
-		// "dynamic-order":
+		// "artist-len":
+		// "album-len":
+		// "title-len":
 		// "dynamic-len":
+		// "dynamic-order":
 		// "dynamic-separator":
 		// "dynamic-importance-order":
+		// "truncate-hours":
+		// "ellipsis":
+		// "rotate":
 		// "min-length":
 		"max-length": 1000
+		// "align":
+		// "justify":
+		// "expand":
 	}
 }
