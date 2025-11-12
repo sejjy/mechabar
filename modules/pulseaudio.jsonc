@@ -35,10 +35,13 @@
 		// "states":
 		"min-length": 7,
 		"max-length": 7,
+		// "align":
+		// "justify":
 		// "scroll-step":
 		"on-click": "~/.config/waybar/scripts/volume.sh output mute",
 		// "on-click-middle":
 		// "on-click-right":
+		// "on-update":
 		"on-scroll-up": "~/.config/waybar/scripts/volume.sh output raise",
 		"on-scroll-down": "~/.config/waybar/scripts/volume.sh output lower",
 		// "smooth-scrolling-threshold":
@@ -48,6 +51,10 @@
 		// "ignored-sinks":
 		// "reverse-scrolling":
 		// "reverse-mouse-scrolling":
+		// "menu":
+		// "menu-file":
+		// "menu-actions":
+		// "expand":
 	},
 
 	/*----------------
@@ -65,10 +72,13 @@
 		// "states":
 		"min-length": 7,
 		"max-length": 7,
+		// "align":
+		// "justify":
 		// "scroll-step":
 		"on-click": "~/.config/waybar/scripts/volume.sh input mute",
 		// "on-click-middle":
 		// "on-click-right":
+		// "on-update":
 		"on-scroll-up": "~/.config/waybar/scripts/volume.sh input raise",
 		"on-scroll-down": "~/.config/waybar/scripts/volume.sh input lower",
 		// "smooth-scrolling-threshold":
@@ -78,5 +88,9 @@
 		// "ignored-sinks":
 		// "reverse-scrolling":
 		// "reverse-mouse-scrolling":
+		// "menu":
+		// "menu-file":
+		// "menu-actions":
+		// "expand":
 	}
 }

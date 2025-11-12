@@ -17,10 +17,13 @@
 		"format-charging": "󰉁 {capacity}%",
 		"min-length": 7,
 		"max-length": 7,
+		// "align":
+		// "justify":
 		// "rotate":
 		// "on-click":
 		// "on-click-middle":
 		// "on-click-right":
+		// "on-update":
 		// "on-scroll-up":
 		// "on-scroll-down":
 		// "smooth-scrolling-threshold":
@@ -29,6 +32,10 @@
 		"tooltip-format-charging": "Charging: {time}",
 		// "weighted-average":
 		// "bat-compatibility":
+		// "menu":
+		// "menu-file":
+		// "menu-actions":
+		// "expand":
 		"events": {
 			"on-discharging-warning": "notify-send 'Battery Low (20%)' -i 'battery-020'",
 			"on-discharging-critical": "notify-send 'Battery Critical (10%)' -u critical -i 'battery-010'",

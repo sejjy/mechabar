@@ -1,6 +1,7 @@
 {
 	"network": {
 		// "interface":
+		// "rfkill":
 		"interval": 10,
 		// "family":
 		"format": "󰤨",
@@ -16,9 +17,12 @@
 		// "rotate":
 		"min-length": 2,
 		"max-length": 2,
+		// "align":
+		// "justify":
 		"on-click": "kitty -e ~/.config/waybar/scripts/network.sh",
 		// "on-click-middle":
 		"on-click-right": "nmcli radio wifi off && notify-send 'Wi-Fi Disabled' -i 'network-wireless-off' -r 1125",
+		// "on-update":
 		// "on-scroll-up":
 		// "on-scroll-down":
 		// "smooth-scrolling-threshold":
@@ -28,5 +32,9 @@
 		"tooltip-format-wifi": "Network: {essid}\nIP Addr: {ipaddr}/{cidr}\nStrength: {signalStrength}%\nFrequency: {frequency} GHz",
 		"tooltip-format-disconnected": "Wi-Fi Disconnected",
 		"tooltip-format-disabled": "Wi-Fi Disabled"
+		// "menu":
+		// "menu-file":
+		// "menu-actions":
+		// "expand":
 	}
 }

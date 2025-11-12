@@ -8,9 +8,12 @@
 		// "rotate":
 		"min-length": 3,
 		"max-length": 3,
+		// "align":
+		// "justify":
 		// "on-click":
 		// "on-click-middle":
 		// "on-click-right":
+		// "on-update":
 		// "on-scroll-up":
 		// "on-scroll-down":
 		// "smooth-scrolling-threshold":
@@ -19,5 +22,9 @@
 		"tooltip-format-deactivated": "Keep Screen On: <span text_transform='capitalize'>{status}</span>",
 		"start-activated": false
 		// "timeout":
+		// "menu":
+		// "menu-file":
+		// "menu-actions":
+		// "expand":
 	}
 }

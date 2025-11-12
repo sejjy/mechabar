@@ -5,6 +5,8 @@
 		// "smooth-scrolling-threshold":
 		"spacing": 12,
 		// "reverse-direction":
+		// "on-update":
+		// "expand":
 		// "icons":
 		"cursor": true
 	}

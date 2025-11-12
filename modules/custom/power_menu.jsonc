@@ -13,14 +13,21 @@
 		// "rotate":
 		// "min-length":
 		// "max-length":
+		// "align":
+		// "justify":
 		"on-click": "kitty -e ~/.config/waybar/scripts/power-menu.sh",
 		// "on-click-middle":
 		// "on-click-right":
+		// "on-update":
 		// "on-scroll-up":
 		// "on-scroll-down":
 		// "smooth-scrolling-threshold":
 		// "tooltip":
 		"tooltip-format": "Power Menu"
 		// "escape":
+		// "menu":
+		// "menu-file":
+		// "menu-actions":
+		// "expand":
 	}
 }

@@ -11,16 +11,23 @@
 		"format": "{}",
 		// "format-icons":
 		// "rotate":
+		// "align":
+		// "justify":
 		"min-length": 2,
 		"max-length": 2,
 		"on-click": "kitty -e ~/.config/waybar/scripts/system-update.sh"
 		// "on-click-middle":
 		// "on-click-right":
+		// "on-update":
 		// "on-scroll-up":
 		// "on-scroll-down":
 		// "smooth-scrolling-threshold":
 		// "tooltip":
 		// "tooltip-format":
 		// "escape":
+		// "menu":
+		// "menu-file":
+		// "menu-actions":
+		// "expand":
 	}
 }
