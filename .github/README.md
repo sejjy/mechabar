@@ -5,7 +5,7 @@
 A mecha-themed, modular Waybar configuration.
 
 | ![Mechabar](assets/catppuccin-mocha.png) |
-| ---------------------------------------- |
+| :--------------------------------------: |
 
 <details>
 <summary><b>Themes</b></summary>
@@ -98,12 +98,24 @@ A mecha-themed, modular Waybar configuration.
 
 ### Customization
 
-To use a different theme (e.g., Catppuccin Latte), copy the file from the [themes](/themes/) directory to `theme.css`:
+- To use a different theme (e.g., Catppuccin Latte), copy the file from the [themes](/themes/) directory to `theme.css`:
 
-```bash
-cd ~/.config/waybar
-cp themes/catppuccin-latte.css theme.css
-```
+    ```bash
+    cd ~/.config/waybar
+    cp themes/catppuccin-latte.css theme.css
+    ```
+
+#
+
+### Documentation
+
+- [Waybar wiki](https://github.com/Alexays/Waybar/wiki)
+
+- Man page:
+
+    ```bash
+    man waybar
+    ```
 
 #
 
