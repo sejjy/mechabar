@@ -1,3 +1,7 @@
+* {
+	color: @main-fg;
+}
+
 #waybar {
 	background-color: @outline;
 }
@@ -25,7 +29,6 @@ tooltip > box {
 	padding: 0 6px;
 }
 
-/* alignment */
 .module,
 #custom-left_div,
 #custom-left_inv,
