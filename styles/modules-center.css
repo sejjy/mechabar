@@ -43,7 +43,6 @@
 #cpu {
 	background-color: @cpu;
 }
-
 #custom-left_inv.1 {
 	color: @cpu;
 }

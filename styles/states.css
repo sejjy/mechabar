@@ -1,7 +1,3 @@
-/*-----------
-    hover
------------*/
-
 #custom-trigger:hover,
 #idle_inhibitor:hover,
 #clock.date:hover,
@@ -14,10 +10,7 @@
 	color: @hover-fg;
 }
 
-/*--------------
-    disabled
----------------*/
-
+/* inactive state */
 #idle_inhibitor.deactivated,
 #mpris.paused,
 #pulseaudio.output.muted,
@@ -26,19 +19,11 @@
 	color: @hover-fg;
 }
 
-/*-------------
-    warning
--------------*/
-
 #memory.warning,
 #cpu.warning,
 #battery.warning {
 	color: @warning;
 }
-
-/*--------------
-    critical
---------------*/
 
 #temperature.critical,
 #memory.critical,
@@ -46,10 +31,6 @@
 #battery.critical {
 	color: @critical;
 }
-
-/*--------------
-    charging
---------------*/
 
 #battery.charging {
 	color: @charging;
