@@ -16,14 +16,12 @@ BLU='\033[1;34m'
 RST='\033[0m'
 
 TIMEOUT=5
-REPO=0
-AUR=0
 
 check-updates() {
-	REPO=$(timeout $TIMEOUT checkupdates 2> /dev/null | wc -l)
+	repo=$(timeout $TIMEOUT checkupdates 2> /dev/null | wc -l)
 
 	if [[ -n $helper ]]; then
-		AUR=$(timeout $TIMEOUT "$helper" -Quaq 2> /dev/null | wc -l)
+		aur=$(timeout $TIMEOUT "$helper" -Quaq 2> /dev/null | wc -l)
 	fi
 }
 
@@ -34,20 +32,22 @@ update-packages() {
 	printf '\n%bUpdating AUR packages...%b\n' "$BLU" "$RST"
 	"$helper" -Syu
 
-	notify-send 'Update Complete' -i 'package-install'
+	# use signal to update the module
+	pkill -RTMIN+1 waybar
 
+	notify-send 'Update Complete' -i 'package-install'
 	printf '\n%bUpdate Complete!%b\n' "$GRN" "$RST"
 	read -rs -n 1 -p 'Press any key to exit...'
 }
 
 display-module() {
-	local tooltip="Official: $REPO"
+	local tooltip="Official: $repo"
 
 	if [[ -n $helper ]]; then
-		tooltip+="\nAUR($helper): $AUR"
+		tooltip+="\nAUR($helper): $aur"
 	fi
 
-	local total=$((REPO + AUR))
+	local total=$((repo + aur))
 
 	if ((total == 0)); then
 		echo "{ \"text\": \"󰸟\", \"tooltip\": \"No updates available\" }"
@@ -60,8 +60,11 @@ main() {
 	local arg=$1
 	local helpers=(aura paru pikaur trizen yay)
 	local bin
+
 	bin=$(command -v "${helpers[@]}" | head -n 1)
 	helper=${bin##*/}
+	repo=0
+	aur=0
 
 	case $arg in
 		'module')

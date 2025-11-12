@@ -7,7 +7,7 @@
 		"return-type": "json",
 		"interval": 3600,
 		// "restart-interval":
-		// "signal":
+		"signal": 1,
 		"format": "{}",
 		// "format-icons":
 		// "rotate":
