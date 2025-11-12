@@ -95,9 +95,7 @@ A mecha-themed, modular Waybar configuration.
 
 ### Customization
 
-To change the theme, overwrite [theme.css](/theme.css) with your preferred theme from the [themes](/themes/) directory.
-
-For example, to use **Catppuccin Latte**:
+To use a different theme (e.g., Catppuccin Latte), copy the file from the [themes](/themes/) directory to `theme.css`:
 
 ```bash
 cd ~/.config/waybar
