@@ -58,6 +58,9 @@
 	    options
 	-------------*/
 
+	// "expand-center":
+	// "expand-left":
+	// "expand-right":
 	"layer": "top",
 	// "output":
 	// "position":
@@ -68,6 +71,7 @@
 	// "margin-left":
 	// "margin-bottom":
 	// "margin-right":
+	// "no-center":
 	"spacing": 0,
 	// "name":
 	"mode": "dock",
@@ -79,4 +83,6 @@
 	// "ipc":
 	// "id":
 	"reload_style_on_change": true
+	// "on-sigusr1":
+	// "on-sigusr2":
 }
