@@ -36,17 +36,17 @@ A mecha-themed, modular Waybar configuration.
 
 ### Requirements
 
-1. [waybar](https://github.com/Alexays/Waybar)
+1. [Waybar](https://github.com/Alexays/Waybar)
 
 > [!WARNING]
-> Version **0.14.0** has an [issue](https://github.com/Alexays/Waybar/issues/4354) that breaks wildcard includes.
-> As a temporary fix, clone the `fix/v0.14.0` branch instead.
+> **Version 0.14.0** has an [issue](https://github.com/Alexays/Waybar/issues/4354) with wildcard includes.
+> Use the `fix/v0.14.0` branch as a temporary workaround.
 
-2. A terminal emulator _(default: [kitty](https://github.com/kovidgoyal/kitty))_
+2. A terminal emulator _(default: **Kitty**)_
 
 > [!IMPORTANT]
-> If you use a different terminal emulator (e.g., [ghostty](https://github.com/ghostty-org/ghostty)),
-> replace all invocations of `kitty` with your terminal command:
+> If you use a different terminal emulator (e.g., **Ghostty**),
+> you need to replace all instances of `kitty` with your terminal command:
 >
 > ```diff
 > - "on-click": "kitty -e ..."
@@ -57,7 +57,7 @@ A mecha-themed, modular Waybar configuration.
 
 ### Installation
 
-1. Backup your current config:
+1. Back up your current configuration:
 
 	```bash
 	mv ~/.config/waybar{,.bak}
@@ -69,19 +69,19 @@ A mecha-themed, modular Waybar configuration.
 	git clone https://github.com/sejjy/mechabar.git ~/.config/waybar
 	```
 
-	For Waybar **v0.14.0**:
+	For **Waybar v0.14.0**:
 
 	```bash
 	git clone -b fix/v0.14.0 https://github.com/sejjy/mechabar.git ~/.config/waybar
 	```
 
-3. Run the [install](/install.sh) script:
+3. Run the [install script](/install.sh):
 
 	```bash
 	~/.config/waybar/install.sh
 	```
 
-	> This makes the [scripts](/scripts/) executable and installs all dependencies listed below:
+	This makes the [scripts](/scripts/) executable and installs all dependencies listed below:
 
 	|                           Package | Description                                                                    |
 	| --------------------------------: | ------------------------------------------------------------------------------ |
@@ -98,7 +98,7 @@ A mecha-themed, modular Waybar configuration.
 
 ### Customization
 
-- To use a different theme (e.g., Catppuccin Latte), copy the file from the [themes](/themes/) directory to `theme.css`:
+- To change the theme, copy the file with your preferred theme (e.g., `catppuccin-latte.css`) to `theme.css`:
 
     ```bash
     cd ~/.config/waybar
