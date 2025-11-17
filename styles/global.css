@@ -2,6 +2,10 @@
 	color: @main-fg;
 }
 
+.module {
+	margin-bottom: -1px;
+}
+
 #waybar {
 	background-color: @outline;
 }
@@ -27,12 +31,4 @@ tooltip {
 }
 tooltip > box {
 	padding: 0 6px;
-}
-
-.module,
-#custom-left_div,
-#custom-left_inv,
-#custom-right_div,
-#custom-right_inv {
-	margin-bottom: -1px;
 }

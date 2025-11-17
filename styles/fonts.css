@@ -1,5 +1,5 @@
 * {
-	font-family: "0xProto Nerd Font";
+	font-family: "Commit Mono Nerd Font";
 	font-weight: bold;
 	font-size: 16px;
 }
@@ -14,11 +14,11 @@ tooltip label {
 #workspaces button.active label,
 #workspaces button.focused label,
 #custom-distro {
-	font-size: 22px;
+	font-size: 20px;
 }
 
 #custom-power_menu {
-	font-size: 19px;
+	font-size: 18px;
 }
 
 #custom-left_div,
