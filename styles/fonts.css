@@ -12,6 +12,7 @@ tooltip label {
 }
 
 #workspaces button.active label,
+#workspaces button.focused label,
 #custom-distro {
 	font-size: 22px;
 }
