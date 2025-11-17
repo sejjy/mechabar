@@ -13,19 +13,19 @@ A mecha-themed, modular Waybar configuration.
 
 **Catppuccin:**
 
-|                Mocha _(default)_                 |
+| Mocha (default)                                  |
 | :----------------------------------------------: |
 | ![Catppuccin Mocha](assets/catppuccin-mocha.png) |
 
-|                        Macchiato                         |
+| Macchiato                                                |
 | :------------------------------------------------------: |
 | ![Catppuccin Macchiato](assets/catppuccin-macchiato.png) |
 
-|                       Frappe                       |
+| Frappe                                             |
 | :------------------------------------------------: |
 | ![Catppuccin Frappe](assets/catppuccin-frappe.png) |
 
-|                      Latte                       |
+| Latte                                            |
 | :----------------------------------------------: |
 | ![Catppuccin Latte](assets/catppuccin-latte.png) |
 
@@ -40,13 +40,13 @@ A mecha-themed, modular Waybar configuration.
 
 > [!WARNING]
 > **Version 0.14.0** has an [issue](https://github.com/Alexays/Waybar/issues/4354) with wildcard includes.
-> Use the `fix/v0.14.0` branch as a temporary workaround.
+> Clone the `fix/v0.14.0` branch as a temporary workaround.
 
-2. A terminal emulator _(default: **Kitty**)_
+2. A terminal emulator (default: `kitty`)
 
 > [!IMPORTANT]
-> If you use a different terminal emulator (e.g., **Ghostty**),
-> you need to replace all instances of `kitty` with your terminal command:
+> If you use a different terminal emulator (e.g., `ghostty`),
+> you need to replace all invocations of `kitty` with your terminal command:
 >
 > ```diff
 > - "on-click": "kitty -e ..."
@@ -57,7 +57,7 @@ A mecha-themed, modular Waybar configuration.
 
 ### Installation
 
-1. Back up your current configuration:
+1. Back up your current config:
 
 	```bash
 	mv ~/.config/waybar{,.bak}
@@ -75,35 +75,68 @@ A mecha-themed, modular Waybar configuration.
 	git clone -b fix/v0.14.0 https://github.com/sejjy/mechabar.git ~/.config/waybar
 	```
 
-3. Run the [install script](/install.sh):
+3. Run [`install.sh`](/install.sh):
 
 	```bash
 	~/.config/waybar/install.sh
 	```
 
-	This makes the [scripts](/scripts/) executable and installs all dependencies listed below:
+	> This makes the [scripts](/scripts/) executable and installs the following dependencies:
 
-	|                           Package | Description                                                                    |
-	| --------------------------------: | ------------------------------------------------------------------------------ |
-	|                           `bluez` | Daemons for the bluetooth protocol stack<tr></tr>                              |
-	|    _(bluetoothctl)_ `bluez-utils` | Development and debugging utilities for the bluetooth protocol stack<tr></tr>  |
-	|                   `brightnessctl` | Lightweight brightness control tool<tr></tr>                                   |
-	|                             `fzf` | Command-line fuzzy finder<tr></tr>                                             |
-	|        _(nmcli)_ `networkmanager` | Network connection manager and user applications<tr></tr>                      |
-	| _(checkupdates)_ `pacman-contrib` | Contributed scripts and tools for pacman systems<tr></tr>                      |
-	|                  `pipewire-pulse` | Low-latency audio/video router and processor - PulseAudio replacement<tr></tr> |
-	|                `ttf-0xproto-nerd` | Patched font 0xProto from nerd fonts library                                   |
+	| Package                | Command         | Description                                                                   |
+	| ---------------------- | --------------- | ----------------------------------------------------------------------------- |
+	| `bluez`                | -               | Daemons for the bluetooth protocol stack<tr></tr>                             |
+	| `bluez-utils`          | `bluetoothctl`  | Development and debugging utilities for the bluetooth protocol stack<tr></tr> |
+	| `brightnessctl`        | `brightnessctl` | Lightweight brightness control tool<tr></tr>                                  |
+	| `fzf`                  | `fzf`           | Command-line fuzzy finder<tr></tr>                                            |
+	| `networkmanager`       | `nmcli`         | Network connection manager and user applications<tr></tr>                     |
+	| `pacman-contrib`       | `checkupdates`  | Contributed scripts and tools for pacman systems<tr></tr>                     |
+	| `otf-commit-mono-nerd` | -               | Patched font Commit Mono from nerd fonts library                              |
 
 #
 
 ### Customization
 
-- To change the theme, copy the file with your preferred theme (e.g., `catppuccin-latte.css`) to `theme.css`:
+- #### Height
 
-    ```bash
-    cd ~/.config/waybar
-    cp themes/catppuccin-latte.css theme.css
-    ```
+	Adjust the font sizes in [`fonts.css`](/styles/fonts.css).
+
+- #### Icons
+
+	You can search icons from [Nerd Fonts: Cheat Sheet](https://www.nerdfonts.com/cheat-sheet):
+
+   ```
+   <icon_name>
+   Ex. fedora
+   ```
+
+	Most modules use icons from `md` (Material Design) icon set. To search icons from a set, use:
+
+   ```
+   nf-<set> <icon_name>
+   Ex. nf-md fedora
+   ```
+
+	See [Nerd Fonts wiki: Glyph Sets](https://github.com/ryanoasis/nerd-fonts/wiki/Glyph-Sets-and-Code-Points#glyph-sets) for more details.
+
+- #### Theme
+
+	Copy your preferred theme from the [themes](/themes/) directory into `theme.css`:
+
+   ```bash
+   cd ~/.config/waybar
+   cp themes/<theme-name>.css theme.css
+   ```
+
+	Feel free to open a pull request if you'd like to add themes. :^)
+
+#
+
+### Roadmap
+
+- [ ] Support other compositors out of the box
+- [ ] Add a vertical layout
+- [ ] Add variants (e.g., Pac-Man)
 
 #
 
@@ -111,16 +144,20 @@ A mecha-themed, modular Waybar configuration.
 
 - [Waybar wiki](https://github.com/Alexays/Waybar/wiki)
 
-- Man page:
+- Man pages:
 
-    ```bash
-    man waybar
-    ```
+   ```bash
+   man waybar
+   man waybar-styles
+   man waybar-custom
+   man waybar-<module>
+   man waybar-<compositor>-<module>
+   ```
 
 #
 
 ### Credits
 
-- Font: [0xProto](https://github.com/0xType/0xProto)
-- Icons: [Nerd Fonts](https://github.com/ryanoasis/nerd-fonts)
 - Themes: [Catppuccin](https://github.com/catppuccin/waybar)
+- Original font: [Commit Mono](https://github.com/eigilnikolajsen/commit-mono)
+- Patched font & icons: [Nerd Fonts](https://github.com/ryanoasis/nerd-fonts)
