@@ -13,7 +13,7 @@ DEPS=(
 	networkmanager # nmcli
 	pacman-contrib # checkupdates
 	pipewire-pulse
-	ttf-0xproto-nerd
+	otf-commit-mono-nerd
 )
 
 main() {
