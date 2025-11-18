@@ -15,25 +15,25 @@ GRN='\033[1;32m'
 BLU='\033[1;34m'
 RST='\033[0m'
 
-TMPFILE=/tmp/mechabar-updates.txt
+TMP=/tmp/mechabar-updates.txt
 TIMEOUT=5
 
 check-updates() {
 	repo=0
 	aur=0
 
-	[[ -f $TMPFILE ]] || touch "$TMPFILE"
+	[[ -f $TMP ]] || touch "$TMP"
 
 	# get prev count before updating
 	local cached
-	cached=$(wc -l < "$TMPFILE")
+	cached=$(wc -l < "$TMP")
 
 	if output=$(timeout $TIMEOUT checkupdates 2> /dev/null); then
-		echo "$output" > "$TMPFILE"
+		echo "$output" > "$TMP"
 		repo=$(wc -l <<< "$output")
 	else
 		repo=$cached
-		timeout $TIMEOUT checkupdates > "$TMPFILE" 2> /dev/null &
+		timeout $TIMEOUT checkupdates > "$TMP" 2> /dev/null &
 	fi
 
 	if [[ -n $helper ]]; then
