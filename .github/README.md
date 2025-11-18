@@ -9,9 +9,8 @@ A mecha-themed, modular Waybar configuration.
 
 <details>
 <summary><b>Themes</b></summary>
-<br>
 
-**Catppuccin:**
+<ins><b>Catppuccin:</b></ins>
 
 | Mocha (default)                                  |
 | :----------------------------------------------: |
