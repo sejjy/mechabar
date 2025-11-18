@@ -1,0 +1,19 @@
+{
+	"catppuccin": {
+		"_current_bg":  "surface0",
+		"_bg":          "base",
+		"_spinner":     "rosewater",
+		"_hl":          "red",
+		"_fg":          "text",
+		"_header":      "red",
+		"_info":        "mauve",
+		"_pointer":     "rosewater",
+		"_marker":      "lavender",
+		"_current_fg":  "text",
+		"_prompt":      "mauve",
+		"_current_hl":  "red",
+		"_selected_bg": "surface1",
+		"_border":      "overlay0",
+		"_label":       "text"
+	}
+}

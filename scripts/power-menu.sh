@@ -9,6 +9,10 @@
 # Created: August 19, 2025
 # License: MIT
 
+# get fzf color config
+# shellcheck disable=SC1090
+. ~/.config/waybar/scripts/fzf-colors.sh 2> /dev/null
+
 LIST=(
 	'Lock'
 	'Shutdown'
@@ -19,9 +23,6 @@ LIST=(
 )
 
 main() {
-	# shellcheck disable=SC1090
-	. ~/.config/waybar/scripts/fzf-colors.sh 2> /dev/null
-
 	local opts=(
 		--border=sharp
 		--border-label=' Power Menu '

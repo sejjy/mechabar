@@ -11,6 +11,10 @@
 # Created: August 19, 2025
 # License: MIT
 
+# get fzf color config
+# shellcheck disable=SC1090
+. ~/.config/waybar/scripts/fzf-colors.sh 2> /dev/null
+
 RED='\033[1;31m'
 RST='\033[0m'
 
@@ -46,9 +50,6 @@ get-device-list() {
 select-device() {
 	local header
 	header=$(printf '%-17s %s' 'Address' 'Name')
-
-	# shellcheck disable=SC1090
-	. ~/.config/waybar/scripts/fzf-colors.sh 2> /dev/null
 
 	local opts=(
 		--border=sharp
