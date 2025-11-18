@@ -13,6 +13,7 @@ DEPS=(
 	jq
 	networkmanager # nmcli
 	pacman-contrib # checkupdates
+	pipewire-pulse
 	otf-commit-mono-nerd
 )
 
