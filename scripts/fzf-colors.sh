@@ -1,82 +1,40 @@
 #!/usr/bin/env bash
-#
-# NOTE:
-# The names, maps, and COLORS arrays are all parallel:
-# 	- names[i]: the color name as defined in theme.css
-# 	- maps[i]:  variable to store the hex value
-# 	- COLORS:   color config passed to fzf
-#
-# Add themes by defining the names array in def-colors().
 
-FILE="$XDG_CONFIG_HOME/waybar/theme.css"
+themefile=~/.config/waybar/theme.css
+fzfconf=~/.config/waybar/themes/fzf_color_config.jsonc
 
-def-colors() {
-	local theme
-	theme=$(sed 1q "$FILE")
+theme=$(sed 1q $themefile | awk '{print $2}')
+colordefs=$(sed -n '3,28p' $themefile)
 
-	declare -ga names
+mapfile -t keys < <(jq -r ".\"$theme\" | keys_unsorted[]" $fzfconf)
+mapfile -t values < <(jq -r ".\"$theme\"[]" $fzfconf)
 
-	# Add themes here:
-	if [[ $theme == *"catppuccin"* ]]; then
-		names=(
-			'surface0' 'base'      'rosewater'
-			'red'      'text'      'red'
-			'mauve'    'rosewater' 'lavender'
-			'text'     'mauve'     'red'
-			'surface1' 'overlay0'  'text'
-		)
-	fi
-}
+for i in "${!keys[@]}"; do
+	key=${keys[i]}
+	value=${values[i]}
 
-get-hex() {
-	local defs
-	defs=$(sed -n '3,28p' "$FILE")
+	read -r _ _ hex < <(grep " $value " <<< "$colordefs")
+	hex=${hex%;}
 
-	local n hex
-	declare -gA colors
+	declare "$key=$hex"
+done
 
-	for n in "${names[@]}"; do
-		read -r _ _ hex < <(grep " $n " <<< "$defs")
-		hex=${hex%;}
-
-		colors[$n]=$hex
-	done
-}
-
-map-colors() {
-	local -a maps=(
-		'_cur_bg' '_bg'      '_spinner'
-		'_hl'     '_fg'      '_header'
-		'_info'   '_pointer' '_marker'
-		'_cur_fg' '_prompt'  '_cur_hl'
-		'_sel_bg' '_border'  '_label'
-	)
-
-	local n
-	local i=0
-
-	for n in "${names[@]}"; do
-		declare -g "${maps[i]}"="${colors[$n]}"
-		((i++))
-	done
-}
-
-main() {
-	def-colors
-	get-hex
-	map-colors
-
-	# shellcheck disable=SC2154
-	# These variables are defined dynamically
-	declare -ga COLORS=(
-		"--color=        bg+:$_cur_bg,      bg:$_bg,      spinner:$_spinner"
-		"--color=         hl:$_hl,          fg:$_fg,       header:$_header"
-		"--color=       info:$_info,   pointer:$_pointer,  marker:$_marker"
-		"--color=        fg+:$_cur_fg,  prompt:$_prompt,      hl+:$_cur_hl"
-		"--color=selected-bg:$_sel_bg,  border:$_border,    label:$_label"
-	)
-
-	export COLORS
-}
-
-main
+# shellcheck disable=SC2034
+# shellcheck disable=SC2154
+COLORS=(
+	"--color= current-bg:$_current_bg"
+	"--color=         bg:$_bg"
+	"--color=    spinner:$_spinner"
+	"--color=         hl:$_hl"
+	"--color=         fg:$_fg"
+	"--color=     header:$_header"
+	"--color=       info:$_info"
+	"--color=    pointer:$_pointer"
+	"--color=     marker:$_marker"
+	"--color= current-fg:$_current_fg"
+	"--color=     prompt:$_prompt"
+	"--color= current-hl:$_current_hl"
+	"--color=selected-bg:$_selected_bg"
+	"--color=     border:$_border"
+	"--color=      label:$_label"
+)
