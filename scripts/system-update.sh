@@ -15,10 +15,26 @@ GRN='\033[1;32m'
 BLU='\033[1;34m'
 RST='\033[0m'
 
+TMPFILE=/tmp/mechabar-updates.txt
 TIMEOUT=5
 
 check-updates() {
-	repo=$(timeout $TIMEOUT checkupdates 2> /dev/null | wc -l)
+	repo=0
+	aur=0
+
+	[[ -f $TMPFILE ]] || touch "$TMPFILE"
+
+	# get prev count before updating
+	local cached
+	cached=$(wc -l < "$TMPFILE")
+
+	if output=$(timeout $TIMEOUT checkupdates 2> /dev/null); then
+		echo "$output" > "$TMPFILE"
+		repo=$(wc -l <<< "$output")
+	else
+		repo=$cached
+		timeout $TIMEOUT checkupdates > "$TMPFILE" 2> /dev/null &
+	fi
 
 	if [[ -n $helper ]]; then
 		aur=$(timeout $TIMEOUT "$helper" -Quaq 2> /dev/null | wc -l)
@@ -42,13 +58,11 @@ update-packages() {
 
 display-module() {
 	local tooltip="Official: $repo"
-
 	if [[ -n $helper ]]; then
 		tooltip+="\nAUR($helper): $aur"
 	fi
 
 	local total=$((repo + aur))
-
 	if ((total == 0)); then
 		echo "{ \"text\": \"󰸟\", \"tooltip\": \"No updates available\" }"
 	else
@@ -63,8 +77,6 @@ main() {
 
 	bin=$(command -v "${helpers[@]}" | head -n 1)
 	helper=${bin##*/}
-	repo=0
-	aur=0
 
 	case $arg in
 		'module')
