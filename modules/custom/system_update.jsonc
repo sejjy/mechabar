@@ -15,9 +15,9 @@
 		// "justify":
 		"min-length": 2,
 		"max-length": 2,
-		"on-click": "kitty -e ~/.config/waybar/scripts/system-update.sh"
+		"on-click": "kitty -e ~/.config/waybar/scripts/system-update.sh",
 		// "on-click-middle":
-		// "on-click-right":
+		"on-click-right": "pkill -RTMIN+1 waybar"
 		// "on-update":
 		// "on-scroll-up":
 		// "on-scroll-down":

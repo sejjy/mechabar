@@ -15,29 +15,32 @@ GRN='\033[1;32m'
 BLU='\033[1;34m'
 RST='\033[0m'
 
-TMP=/tmp/mechabar-updates.txt
-TIMEOUT=5
+TIMEOUT=10
 
 check-updates() {
-	repo=0
-	aur=0
+	is_online=true
 
-	[[ -f $TMP ]] || touch "$TMP"
-
-	# get prev count before updating
-	local cached
-	cached=$(wc -l < "$TMP")
-
-	if output=$(timeout $TIMEOUT checkupdates 2> /dev/null); then
-		echo "$output" > "$TMP"
-		repo=$(wc -l <<< "$output")
-	else
-		repo=$cached
-		timeout $TIMEOUT checkupdates > "$TMP" 2> /dev/null &
+	local rout rstat
+	rout=$(timeout $TIMEOUT checkupdates)
+	rstat=$?
+	# return early if the exit status is neither 0 nor 2 (no updates available)
+	if ((rstat != 0 && rstat != 2)); then
+		is_online=false
+		return 1
 	fi
+	repo=0
+	repo=$(printf '%s' "$rout" | wc -l)
 
+	aur=0
 	if [[ -n $helper ]]; then
-		aur=$(timeout $TIMEOUT "$helper" -Quaq 2> /dev/null | wc -l)
+		local aout astat
+		aout=$(timeout $TIMEOUT "$helper" -Quaq)
+		astat=$?
+		if ((${#aout} > 0 && astat != 0)); then
+			is_online=false
+			return 1
+		fi
+		aur=$(printf '%s' "$aout" | wc -l)
 	fi
 }
 
@@ -48,16 +51,21 @@ update-packages() {
 	printf '\n%bUpdating AUR packages...%b\n' "$BLU" "$RST"
 	"$helper" -Syu
 
-	# use signal to update the module
-	pkill -RTMIN+1 waybar
-
 	notify-send 'Update Complete' -i 'package-install'
 	printf '\n%bUpdate Complete!%b\n' "$GRN" "$RST"
 	read -rs -n 1 -p 'Press any key to exit...'
 }
 
 display-module() {
-	local tooltip="Official: $repo"
+	local tooltip
+	if [[ $is_online == false ]]; then
+		tooltip='Cannot fetch updates'
+		tooltip+='\nRight-click to retry'
+		echo "{ \"text\": \"󰒑\", \"tooltip\": \"$tooltip\" }"
+		return
+	fi
+
+	tooltip="Official: $repo"
 	if [[ -n $helper ]]; then
 		tooltip+="\nAUR($helper): $aur"
 	fi
@@ -66,7 +74,7 @@ display-module() {
 	if ((total == 0)); then
 		echo "{ \"text\": \"󰸟\", \"tooltip\": \"No updates available\" }"
 	else
-		echo "{ \"text\": \"\", \"tooltip\": \"$tooltip\" }"
+		echo "{ \"text\": \"󰄠\", \"tooltip\": \"$tooltip\" }"
 	fi
 }
 
@@ -87,6 +95,8 @@ main() {
 			printf '%bChecking for updates...%b' "$BLU" "$RST"
 			check-updates
 			update-packages
+			# use signal to update the module
+			pkill -RTMIN+1 waybar
 			;;
 	esac
 }
