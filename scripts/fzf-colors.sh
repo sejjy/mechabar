@@ -24,7 +24,6 @@ main() {
 	for i in "${!keys[@]}"; do
 		key=${keys[i]}
 		value=${values[i]}
-
 		get-hex "$value"
 		declare "$key=$hex"
 	done

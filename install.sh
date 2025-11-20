@@ -21,32 +21,31 @@ main() {
 	printf '%bInstalling dependencies...%b\n' "$BLU" "$RST"
 
 	local package
-	local errors=0
+	local error=0
 	for package in "${DEPS[@]}"; do
 		if pacman -Qi "$package" > /dev/null; then
 			printf '[%b/%b] %s\n' "$GRN" "$RST" "$package"
 		else
 			printf '[ ] %s...\n' "$package"
-
 			if sudo pacman -S --noconfirm "$package"; then
 				printf '[%b+%b] %s\n' "$GRN" "$RST" "$package"
 			else
 				printf '[%bx%b] %s\n' "$RED" "$RST" "$package"
-				((errors++))
+				((error++))
 			fi
 		fi
 	done
 
 	printf '\n%bMaking scripts executable...%b\n' "$BLU" "$RST"
-	chmod -v +x ~/.config/waybar/scripts/*.sh
+	chmod +x ~/.config/waybar/scripts/*.sh --verbose
 
 	pkill waybar
 	waybar &> /dev/null &
 	disown
 
-	if ((errors > 0)); then
+	if ((error > 0)); then
 		printf '\nInstallation completed with %b%d errors%b\n' \
-			"$RED" "$errors" "$RST"
+			"$RED" "$error" "$RST"
 	else
 		printf '\n%bInstallation complete!%b\n' "$GRN" "$RST"
 	fi

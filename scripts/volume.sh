@@ -17,7 +17,6 @@ ID=2425
 
 print-usage() {
 	local script=${0##*/}
-
 	cat <<- EOF
 		USAGE: $script [OPTIONS]
 
@@ -43,14 +42,12 @@ print-usage() {
 		    Lower speaker volume by 5:
 		        $ $script output lower 5
 	EOF
-
 	exit 1
 }
 
 check-muted() {
 	local muted
 	muted=$(pactl "get-$dev_mute" "$dev" | awk '{print $2}')
-
 	local state
 	case $muted in
 		'yes') state='Muted' ;;
@@ -61,21 +58,14 @@ check-muted() {
 }
 
 get-volume() {
-	local vol
-	vol=$(pactl "get-$dev_vol" "$dev" | awk '{print $5}' | tr -d '%')
-
-	echo "$vol"
+	pactl "get-$dev_vol" "$dev" | awk '{print $5}' | tr -d '%'
 }
 
 get-icon() {
-	local state vol
-	state=$(check-muted)
-	vol=$(get-volume)
-
 	local icon
-	local new_vol=${1:-$vol}
+	local new_vol=${1:-$(get-volume)}
 
-	if [[ $state == 'Muted' ]]; then
+	if [[ $(check-muted) == 'Muted' ]]; then
 		icon="$dev_icon-muted"
 	else
 		if ((new_vol < ((MAX * 33) / 100))); then
@@ -92,19 +82,14 @@ get-icon() {
 
 toggle-mute() {
 	pactl "set-$dev_mute" "$dev" toggle
-
-	local state icon
-	state=$(check-muted)
-	icon=$(get-icon)
-
-	notify-send "$title: $state" -i "$icon" -r $ID
+	notify-send "$title: $(check-muted)" -i "$(get-icon)" -r $ID
 }
 
 set-volume() {
 	local vol
 	vol=$(get-volume)
-
 	local new_vol
+
 	case $action in
 		'raise')
 			new_vol=$((vol + value))

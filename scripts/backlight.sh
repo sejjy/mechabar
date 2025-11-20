@@ -14,7 +14,6 @@ VALUE=1
 
 print-usage() {
 	local script=${0##*/}
-
 	cat <<- EOF
 		USAGE: $script [OPTIONS]
 
@@ -32,7 +31,6 @@ print-usage() {
 		    Decrease brightness by 5:
 		        $ $script down 5
 	EOF
-
 	exit 1
 }
 
