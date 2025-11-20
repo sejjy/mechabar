@@ -11,7 +11,7 @@
 # Created: August 19, 2025
 # License: MIT
 
-# get fzf color config
+# Get fzf color config
 # shellcheck disable=SC1090
 . ~/.config/waybar/scripts/fzf-colors.sh 2> /dev/null
 
@@ -20,7 +20,7 @@ RST='\033[0m'
 
 TIMEOUT=10
 
-check-status() {
+ensure-on() {
 	local status
 	status=$(bluetoothctl show | grep PowerState | awk '{print $2}')
 	if [[ $status == 'off' ]]; then
@@ -98,15 +98,15 @@ pair-and-connect() {
 	fi
 
 	printf '\nConnecting...'
-	if timeout $TIMEOUT bluetoothctl connect "$address" > /dev/null; then
-		notify-send 'Bluetooth' 'Successfully connected' -i 'package-install'
-	else
+	if ! timeout $TIMEOUT bluetoothctl connect "$address" > /dev/null; then
 		notify-send 'Bluetooth' 'Failed to connect' -i 'package-purge'
+		return 1
 	fi
+	notify-send 'Bluetooth' 'Successfully connected' -i 'package-install'
 }
 
 main() {
-	check-status
+	ensure-on
 	tput civis
 	get-device-list || exit 1
 	tput cnorm

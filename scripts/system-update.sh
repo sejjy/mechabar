@@ -36,7 +36,7 @@ check-updates() {
 		local aout astat
 		aout=$(timeout $TIMEOUT "$helper" -Quaq)
 		astat=$?
-		# return only if the exit status is non-zero and there is an error
+		# Return only if the exit status is non-zero and there is an error
 		# message
 		if ((${#aout} > 0 && astat != 0)); then
 			is_online=false

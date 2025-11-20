@@ -9,7 +9,7 @@
 # Created: August 19, 2025
 # License: MIT
 
-# get fzf color config
+# Get fzf color config
 # shellcheck disable=SC1090
 . ~/.config/waybar/scripts/fzf-colors.sh 2> /dev/null
 
@@ -33,6 +33,7 @@ main() {
 		--reverse
 		"${COLORS[@]}"
 	)
+
 	local selected
 	selected=$(printf '%s\n' "${LIST[@]}" | fzf "${opts[@]}")
 	case $selected in
