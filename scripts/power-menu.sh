@@ -33,10 +33,8 @@ main() {
 		--reverse
 		"${COLORS[@]}"
 	)
-
 	local selected
 	selected=$(printf '%s\n' "${LIST[@]}" | fzf "${opts[@]}")
-
 	case $selected in
 		'Lock') loginctl lock-session ;;
 		'Shutdown') systemctl poweroff ;;

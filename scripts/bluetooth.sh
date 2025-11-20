@@ -20,6 +20,15 @@ RST='\033[0m'
 
 TIMEOUT=10
 
+check-status() {
+	local status
+	status=$(bluetoothctl show | grep PowerState | awk '{print $2}')
+	if [[ $status == 'off' ]]; then
+		bluetoothctl power on > /dev/null
+		notify-send 'Bluetooth On' -i 'network-bluetooth-activated' -r 1925
+	fi
+}
+
 get-device-list() {
 	bluetoothctl --timeout $TIMEOUT scan on > /dev/null &
 
@@ -29,18 +38,17 @@ get-device-list() {
 		printf '\n%bPress [q] to stop%b\n\n' "$RED" "$RST"
 
 		num=$(bluetoothctl devices | grep -c Device)
-
 		printf '\rDevices: %s' "$num"
-		printf '\033[3A' # move cursor up 3 lines
+		printf '\033[3A'
 
 		read -rs -n 1 -t 1
-		[[ $REPLY == [Qq] ]] && break
+		if [[ $REPLY == [Qq] ]]; then
+			break
+		fi
 	done
-
 	printf '\n%bScanning stopped.%b\n\n' "$RED" "$RST"
 
 	list=$(bluetoothctl devices | grep Device | cut -d ' ' -f 2-)
-
 	if [[ -z $list ]]; then
 		notify-send 'Bluetooth' 'No devices found' -i 'package-broken'
 		return 1
@@ -50,7 +58,6 @@ get-device-list() {
 select-device() {
 	local header
 	header=$(printf '%-17s %s' 'Address' 'Name')
-
 	local opts=(
 		--border=sharp
 		--border-label=' Bluetooth Devices '
@@ -65,13 +72,13 @@ select-device() {
 	)
 
 	address=$(fzf "${opts[@]}" <<< "$list" | awk '{print $1}')
-
-	[[ -z $address ]] && return 1
+	if [[ -z $address ]]; then
+		return 1
+	fi
 
 	local connected
 	connected=$(bluetoothctl info "$address" | grep Connected |
 		awk '{print $2}')
-
 	if [[ $connected == 'yes' ]]; then
 		notify-send 'Bluetooth' 'Already connected to this device' \
 			-i 'package-install'
@@ -82,10 +89,8 @@ select-device() {
 pair-and-connect() {
 	local paired
 	paired=$(bluetoothctl info "$address" | grep Paired | awk '{print $2}')
-
 	if [[ $paired == 'no' ]]; then
 		printf 'Pairing...'
-
 		if ! timeout $TIMEOUT bluetoothctl pair "$address" > /dev/null; then
 			notify-send 'Bluetooth' 'Failed to pair' -i 'package-purge'
 			return 1
@@ -93,7 +98,6 @@ pair-and-connect() {
 	fi
 
 	printf '\nConnecting...'
-
 	if timeout $TIMEOUT bluetoothctl connect "$address" > /dev/null; then
 		notify-send 'Bluetooth' 'Successfully connected' -i 'package-install'
 	else
@@ -102,18 +106,10 @@ pair-and-connect() {
 }
 
 main() {
-	local status
-	status=$(bluetoothctl show | grep PowerState | awk '{print $2}')
-
-	if [[ $status == 'off' ]]; then
-		bluetoothctl power on > /dev/null
-		notify-send 'Bluetooth On' -i 'network-bluetooth-activated' -r 1925
-	fi
-
-	tput civis # make cursor invisible
+	check-status
+	tput civis
 	get-device-list || exit 1
-	tput cnorm # make cursor visible
-
+	tput cnorm
 	select-device || exit 1
 	pair-and-connect || exit 1
 }

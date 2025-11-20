@@ -23,24 +23,26 @@ check-updates() {
 	local rout rstat
 	rout=$(timeout $TIMEOUT checkupdates)
 	rstat=$?
-	# return early if the exit status is neither 0 nor 2 (no updates available)
+	# 2 means no updates are available
 	if ((rstat != 0 && rstat != 2)); then
 		is_online=false
 		return 1
 	fi
 	repo=0
-	repo=$(printf '%s' "$rout" | wc -l)
+	repo=$(grep -cve '^\s*$' <<< "$rout")
 
 	aur=0
 	if [[ -n $helper ]]; then
 		local aout astat
 		aout=$(timeout $TIMEOUT "$helper" -Quaq)
 		astat=$?
+		# return only if the exit status is non-zero and there is an error
+		# message
 		if ((${#aout} > 0 && astat != 0)); then
 			is_online=false
 			return 1
 		fi
-		aur=$(printf '%s' "$aout" | wc -l)
+		aur=$(grep -cve '^\s*$' <<< "$aout")
 	fi
 }
 
@@ -79,14 +81,12 @@ display-module() {
 }
 
 main() {
-	local arg=$1
 	local helpers=(aura paru pikaur trizen yay)
 	local bin
-
 	bin=$(command -v "${helpers[@]}" | head -n 1)
 	helper=${bin##*/}
 
-	case $arg in
+	case $1 in
 		'module')
 			check-updates
 			display-module
