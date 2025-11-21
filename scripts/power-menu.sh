@@ -10,7 +10,7 @@
 # License: MIT
 
 # Get fzf color config
-# shellcheck disable=SC1090
+# shellcheck disable=SC1090,SC2154
 . ~/.config/waybar/scripts/fzf-colors.sh 2> /dev/null
 
 LIST=(
@@ -31,7 +31,7 @@ main() {
 		--no-input
 		--pointer=
 		--reverse
-		"${COLORS[@]}"
+		"${fcconf[@]}"
 	)
 
 	local selected
