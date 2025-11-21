@@ -88,7 +88,6 @@ A mecha-themed, modular Waybar configuration.
 	| `bluez-utils`          | `bluetoothctl`  | Development and debugging utilities for the bluetooth protocol stack<tr></tr>  |
 	| `brightnessctl`        | `brightnessctl` | Lightweight brightness control tool<tr></tr>                                   |
 	| `fzf`                  | `fzf`           | Command-line fuzzy finder<tr></tr>                                             |
-	| `jq`                   | `jq`            | Command-line JSON processor<tr></tr>                                           |
 	| `networkmanager`       | `nmcli`         | Network connection manager and user applications<tr></tr>                      |
 	| `pacman-contrib`       | `checkupdates`  | Contributed scripts and tools for pacman systems<tr></tr>                      |
 	| `pipewire-pulse`       | -               | Low-latency audio/video router and processor - PulseAudio replacement<tr></tr> |

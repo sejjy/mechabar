@@ -10,7 +10,6 @@ DEPS=(
 	bluez-utils # bluetoothctl
 	brightnessctl
 	fzf
-	jq
 	networkmanager # nmcli
 	pacman-contrib # checkupdates
 	pipewire-pulse
