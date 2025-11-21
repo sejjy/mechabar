@@ -1,35 +1,24 @@
 #!/usr/bin/env bash
 
-CSS=~/.config/waybar/theme.css
-DEFS=$(sed -n '3,28p' $CSS)
-
-get-hex() {
-	read -r _ _ hex < <(grep " $1 " <<< "$DEFS")
-	hex=${hex%;}
-}
-
-get-defs() {
-	local theme
-	theme=$(sed 1q $CSS | awk '{print $2}')
-	local fzfconf=~/.config/waybar/themes/fzf/$theme.jsonc
-
-	mapfile -t keys < <(jq -r ".\"$theme\" | keys_unsorted[]" "$fzfconf")
-	mapfile -t values < <(jq -r ".\"$theme\"[]" "$fzfconf")
-}
-
 main() {
-	get-defs
+	local wcss=~/.config/waybar/theme.css
+	local wtheme
+	wtheme=$(sed 1q $wcss | awk '{print $2}')
+	local fcolors=~/.config/waybar/themes/fzf/$wtheme.txt
+	local wcolors
+	wcolors=$(sed -n '3,28p' $wcss)
 
-	local i key value
-	for i in "${!keys[@]}"; do
-		key=${keys[i]}
-		value=${values[i]}
-		get-hex "$value"
-		declare "$key=$hex"
-	done
+	local line element color hex
+	while read -r line; do
+		read -r element color <<< "$line"
+		read -r _ _ hex < <(grep " $color " <<< "$wcolors")
+		hex=${hex%;}
+		declare "_$element=$hex"
+	done < "$fcolors"
 
 	# shellcheck disable=SC2034,SC2154
-	COLORS=(
+	# These variables are declared dynamically
+	fcconf=(
 		"--color= current-bg:$_current_bg"
 		"--color=         bg:$_bg"
 		"--color=    spinner:$_spinner"

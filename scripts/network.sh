@@ -12,7 +12,7 @@
 # License: MIT
 
 # Get fzf color config
-# shellcheck disable=SC1090
+# shellcheck disable=SC1090,SC2154
 . ~/.config/waybar/scripts/fzf-colors.sh 2> /dev/null
 
 RED='\033[1;31m'
@@ -87,7 +87,7 @@ select-network() {
 		--info=inline-right
 		--pointer=
 		--reverse
-		"${COLORS[@]}"
+		"${fcconf[@]}"
 	)
 
 	bssid=$(fzf "${opts[@]}" <<< "$networks" | awk '{print $1}')
