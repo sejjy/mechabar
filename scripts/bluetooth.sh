@@ -59,15 +59,15 @@ select-device() {
 	local header
 	header=$(printf '%-17s %s' 'Address' 'Name')
 	local opts=(
-		--border=sharp
-		--border-label=' Bluetooth Devices '
-		--ghost='Search'
-		--header="$header"
-		--height=~100%
-		--highlight-line
-		--info=inline-right
-		--pointer=
-		--reverse
+		'--border=sharp'
+		'--border-label= Bluetooth Devices '
+		'--ghost=Search'
+		"--header=$header"
+		'--height=~100%'
+		'--highlight-line'
+		'--info=inline-right'
+		'--pointer='
+		'--reverse'
 		"${fcconf[@]}"
 	)
 
@@ -106,8 +106,8 @@ pair-and-connect() {
 }
 
 main() {
-	ensure-on
 	tput civis
+	ensure-on
 	get-device-list || exit 1
 	tput cnorm
 	select-device || exit 1

@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+#
+# Sync fzf colors with the current Waybar theme
 
 main() {
 	local wcss=~/.config/waybar/theme.css
