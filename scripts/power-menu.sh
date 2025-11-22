@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# Display a power menu to perform system actions
+# Launch a power menu
 #
 # Requirements:
 # 	- fzf
@@ -13,29 +13,28 @@
 # shellcheck disable=SC1090,SC2154
 . ~/.config/waybar/scripts/fzf-colors.sh 2> /dev/null
 
-LIST=(
-	'Lock'
-	'Shutdown'
-	'Reboot'
-	'Logout'
-	'Hibernate'
-	'Suspend'
-)
-
 main() {
+	local list=(
+		'Lock'
+		'Shutdown'
+		'Reboot'
+		'Logout'
+		'Hibernate'
+		'Suspend'
+	)
 	local opts=(
-		--border=sharp
-		--border-label=' Power Menu '
-		--height=~100%
-		--highlight-line
-		--no-input
-		--pointer=
-		--reverse
+		'--border=sharp'
+		'--border-label= Power Menu '
+		'--height=~100%'
+		'--highlight-line'
+		'--no-input'
+		'--pointer='
+		'--reverse'
 		"${fcconf[@]}"
 	)
 
 	local selected
-	selected=$(printf '%s\n' "${LIST[@]}" | fzf "${opts[@]}")
+	selected=$(printf '%s\n' "${list[@]}" | fzf "${opts[@]}")
 	case $selected in
 		'Lock') loginctl lock-session ;;
 		'Shutdown') systemctl poweroff ;;

@@ -24,7 +24,7 @@ ensure-enabled() {
 	local radio
 	radio=$(nmcli radio wifi)
 	if [[ $radio == 'enabled' ]]; then
-		return
+		return 0
 	fi
 	nmcli radio wifi on
 
@@ -48,7 +48,6 @@ ensure-enabled() {
 		notify-send 'Wi-Fi' 'Failed to enable' -i 'package-broken' -r 1125
 		return 1
 	fi
-
 	notify-send 'Wi-Fi Enabled' -i 'network-wireless-on' -r 1125
 }
 
@@ -78,15 +77,15 @@ select-network() {
 	local header
 	header=$(head -n 1 <<< "$list")
 	local opts=(
-		--border=sharp
-		--border-label=' Wi-Fi Networks '
-		--ghost='Search'
-		--header="$header"
-		--height=~100%
-		--highlight-line
-		--info=inline-right
-		--pointer=
-		--reverse
+		'--border=sharp'
+		'--border-label= Wi-Fi Networks '
+		'--ghost=Search'
+		"--header=$header"
+		'--height=~100%'
+		'--highlight-line'
+		'--info=inline-right'
+		'--pointer='
+		'--reverse'
 		"${fcconf[@]}"
 	)
 
@@ -111,8 +110,8 @@ connect-to-network() {
 }
 
 main() {
-	ensure-enabled || exit 1
 	tput civis
+	ensure-enabled || exit 1
 	get-network-list || exit 1
 	tput cnorm
 	select-network || exit 1

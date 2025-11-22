@@ -13,7 +13,6 @@
 VALUE=1
 MIN=0
 MAX=100
-ID=2425
 
 print-usage() {
 	local script=${0##*/}
@@ -82,7 +81,7 @@ get-icon() {
 
 toggle-mute() {
 	pactl "set-$dev_mute" "$dev" toggle
-	notify-send "$title: $(check-muted)" -i "$(get-icon)" -r $ID
+	notify-send "$title: $(check-muted)" -i "$(get-icon)" -r 2425
 }
 
 set-volume() {
@@ -106,7 +105,7 @@ set-volume() {
 	local icon
 	icon=$(get-icon "$new_vol")
 
-	notify-send "$title: ${new_vol}%" -h int:value:$new_vol -i "$icon" -r $ID
+	notify-send "$title: ${new_vol}%" -h int:value:$new_vol -i "$icon" -r 2425
 }
 
 main() {
