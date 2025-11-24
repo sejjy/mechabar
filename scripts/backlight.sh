@@ -41,7 +41,7 @@ set-brightness() {
 		'down') op='-' ;;
 	esac
 
-	brightnessctl -n set "${value}%${op}" &> /dev/null
+	brightnessctl -n set "${value}%${op}" > /dev/null
 
 	local level
 	level=$(brightnessctl -m | awk -F ',' '{print $4}')

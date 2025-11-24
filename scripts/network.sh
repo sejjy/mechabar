@@ -52,7 +52,7 @@ ensure-enabled() {
 }
 
 get-network-list() {
-	nmcli device wifi rescan 2> /dev/null
+	nmcli device wifi rescan
 
 	local i
 	for ((i = 1; i <= TIMEOUT; i++)); do
