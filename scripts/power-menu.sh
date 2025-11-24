@@ -42,6 +42,7 @@ main() {
 		'Logout') loginctl terminate-session "$XDG_SESSION_ID" ;;
 		'Hibernate') systemctl hibernate ;;
 		'Suspend') systemctl suspend ;;
+		*) exit 1 ;;
 	esac
 }
 
