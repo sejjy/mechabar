@@ -1,4 +1,4 @@
-current_bg  surface0
+current-bg  surface0
 bg          base
 spinner     rosewater
 hl          red
@@ -7,9 +7,9 @@ header      red
 info        mauve
 pointer     rosewater
 marker      lavender
-current_fg  text
+current-fg  text
 prompt      mauve
-current_hl  red
-selected_bg surface1
+current-hl  red
+selected-bg surface1
 border      overlay0
 label       text
