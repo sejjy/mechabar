@@ -18,8 +18,8 @@
 		// "on-scroll-down":
 		// "smooth-scrolling-threshold":
 		// "tooltip":
-		"tooltip-format-activated": "Keep Screen On: <span text_transform='capitalize'>{status}</span>",
-		"tooltip-format-deactivated": "Keep Screen On: <span text_transform='capitalize'>{status}</span>",
+		"tooltip-format-activated": "<b>Idle Inhibitor</b>: <span text_transform='capitalize'>{status}</span>",
+		"tooltip-format-deactivated": "<b>Idle Inhibitor</b>: <span text_transform='capitalize'>{status}</span>",
 		"start-activated": false
 		// "timeout":
 		// "menu":

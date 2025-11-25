@@ -76,17 +76,14 @@ update-packages() {
 }
 
 display-module() {
-	local tooltip
 	if [[ $is_online == false ]]; then
-		tooltip='Cannot fetch updates'
-		tooltip+='\nRight-click to retry'
-		echo "{ \"text\": \"󰒑\", \"tooltip\": \"$tooltip\" }"
+		echo "{ \"text\": \"󰒑\", \"tooltip\": \"Cannot fetch updates. Right-click to retry.\" }"
 		return 0
 	fi
 
-	tooltip="Official: $repo"
+	local tooltip="<b>Official</b>: $repo"
 	if [[ -n $helper ]]; then
-		tooltip+="\nAUR($helper): $aur"
+		tooltip+="\n<b>AUR($helper)</b>: $aur"
 	fi
 
 	local total=$((repo + aur))
