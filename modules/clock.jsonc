@@ -15,7 +15,7 @@
 		// "on-scroll-down":
 		// "smooth-scrolling-threshold":
 		// "tooltip":
-		"tooltip-format": "Standard Time: {:%I:%M %p}"
+		"tooltip-format": "<b>Standard Time</b>: {:%I:%M %p}"
 		// "menu":
 		// "menu-file":
 		// "menu-actions":
