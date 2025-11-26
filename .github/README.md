@@ -8,7 +8,7 @@ A mecha-themed, modular Waybar configuration.
 | :--------------------------------------: |
 
 <details>
-<summary><b>Themes</b></summary>
+<summary>Themes</summary>
 
 <ins><b>Catppuccin:</b></ins>
 
@@ -28,20 +28,22 @@ A mecha-themed, modular Waybar configuration.
 | :----------------------------------------------: |
 | ![Catppuccin Latte](assets/catppuccin-latte.png) |
 
+Feel free to open a pull request if you'd like to add themes. :^)
+
 </details>
 </div>
 
 #
 
-### Requirements
+### Prerequisites
 
-1. [Waybar](https://github.com/Alexays/Waybar)
+1. **[Waybar](https://github.com/Alexays/Waybar)**
 
 > [!WARNING]
-> **Version 0.14.0** has an [issue](https://github.com/Alexays/Waybar/issues/4354) with wildcard includes.
-> Clone the `fix/v0.14.0` branch as a temporary workaround.
+> **Waybar v0.14.0** introduced an [issue](https://github.com/Alexays/Waybar/issues/4354) that breaks [wildcard includes](/config.jsonc#L3-L10).
+> [Clone the `fix/v0.14.0` branch](#clone-anchor-point) as a temporary workaround.
 
-2. A terminal emulator (default: `kitty`)
+2. A **terminal emulator** (default: `kitty`)
 
 > [!IMPORTANT]
 > If you use a different terminal emulator (e.g., `ghostty`),
@@ -51,6 +53,8 @@ A mecha-themed, modular Waybar configuration.
 > - "on-click": "kitty -e ..."
 > + "on-click": "ghostty -e ..."
 > ```
+
+3. **Bash 3.1 or newer**
 
 #
 
@@ -68,7 +72,7 @@ A mecha-themed, modular Waybar configuration.
 	git clone https://github.com/sejjy/mechabar.git ~/.config/waybar
 	```
 
-	For **Waybar v0.14.0**:
+	<a name="clone-anchor-point">For **Waybar v0.14.0**</a>:
 
 	```bash
 	git clone -b fix/v0.14.0 https://github.com/sejjy/mechabar.git ~/.config/waybar
@@ -80,10 +84,13 @@ A mecha-themed, modular Waybar configuration.
 	~/.config/waybar/install.sh
 	```
 
-	> This makes the [scripts](/scripts/) executable and installs the following dependencies:
+	This makes the [scripts](/scripts/) executable and installs the following dependencies:
+
+	<details>
+	<summary>Packages (8)</summary>
 
 	| Package                | Command         | Description                                                                    |
-	| ---------------------- | --------------- | -----------------------------------------------------------------------------  |
+	| ---------------------- | --------------- | ------------------------------------------------------------------------------ |
 	| `bluez`                | -               | Daemons for the bluetooth protocol stack<tr></tr>                              |
 	| `bluez-utils`          | `bluetoothctl`  | Development and debugging utilities for the bluetooth protocol stack<tr></tr>  |
 	| `brightnessctl`        | `brightnessctl` | Lightweight brightness control tool<tr></tr>                                   |
@@ -93,42 +100,75 @@ A mecha-themed, modular Waybar configuration.
 	| `pipewire-pulse`       | -               | Low-latency audio/video router and processor - PulseAudio replacement<tr></tr> |
 	| `otf-commit-mono-nerd` | -               | Patched font Commit Mono from nerd fonts library                               |
 
+	</details>
+
 #
 
 ### Customization
 
-- #### Height
+<details>
+<summary>Icons</summary>
 
-	Adjust the font sizes in [`fonts.css`](/styles/fonts.css).
+You can search icons on [Nerd Fonts: Cheat Sheet](https://www.nerdfonts.com/cheat-sheet):
 
-- #### Icons
+```
+<icon_name>
+fedora
+```
 
-	You can search icons from [Nerd Fonts: Cheat Sheet](https://www.nerdfonts.com/cheat-sheet):
+Most modules use icons from `md` (Material Design) icon set. To search icons from a set, use:
 
-   ```
-   <icon_name>
-   Ex. fedora
-   ```
+```
+nf-<set> <icon_name>
+nf-md fedora
+```
 
-	Most modules use icons from `md` (Material Design) icon set. To search icons from a set, use:
+See [Nerd Fonts wiki: Glyph Sets](https://github.com/ryanoasis/nerd-fonts/wiki/Glyph-Sets-and-Code-Points#glyph-sets) for more details.
 
-   ```
-   nf-<set> <icon_name>
-   Ex. nf-md fedora
-   ```
+#
 
-	See [Nerd Fonts wiki: Glyph Sets](https://github.com/ryanoasis/nerd-fonts/wiki/Glyph-Sets-and-Code-Points#glyph-sets) for more details.
+</details>
 
-- #### Theme
+<details>
+<summary>Keybinds</summary>
 
-	Copy your preferred theme from the [themes](/themes/) directory into `theme.css`:
+You can use the [scripts](/scripts/) to interact with modules through keybinds:
 
-   ```bash
-   cd ~/.config/waybar
-   cp themes/<theme-name>.css theme.css
-   ```
+```properties
+# ~/.config/hypr/hyprland.conf
 
-	Feel free to open a pull request if you'd like to add themes. :^)
+$mod     = SUPER
+$term    = kitty
+$scripts = ~/.config/waybar/scripts
+
+bind = $mod, B, exec, $term -e $scripts/bluetooth.sh
+bind = $mod, N, exec, $term -e $scripts/network.sh
+bind = $mod, O, exec, $term -e $scripts/power-menu.sh
+bind = $mod, U, exec, $term -e $scripts/system-update.sh
+
+bindl  = , XF86AudioMicMute,      exec, $scripts/volume.sh input mute
+bindl  = , XF86AudioMute,         exec, $scripts/volume.sh output mute
+bindel = , XF86AudioLowerVolume,  exec, $scripts/volume.sh output lower
+bindel = , XF86AudioRaiseVolume,  exec, $scripts/volume.sh output raise
+bindel = , XF86MonBrightnessDown, exec, $scripts/backlight.sh down
+bindel = , XF86MonBrightnessUp,   exec, $scripts/backlight.sh up
+```
+
+#
+
+</details>
+
+<details open>
+<summary>Theme</summary>
+
+Copy your preferred theme from the [themes](/themes/) directory into `theme.css`:
+
+```bash
+cd ~/.config/waybar
+cp themes/<theme-name>.css theme.css
+```
+
+</details>
 
 #
 
