@@ -1,9 +1,4 @@
 {
-	/*------------------------------------------------------------
-	    regression: wildcard includes are broken after v0.14.0
-	      - https://github.com/Alexays/Waybar/issues/4354
-	      - https://github.com/sejjy/mechabar/issues/31
-	------------------------------------------------------------*/
 	/*
 	"include": [
 		"~/.config/waybar/modules/*.jsonc",
