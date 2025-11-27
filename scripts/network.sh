@@ -11,9 +11,11 @@
 # Created: August 11, 2025
 # License: MIT
 
+fcconf=()
 # Get fzf color config
 # shellcheck disable=SC1090,SC2154
-. ~/.config/waybar/scripts/fzf-colors.sh 2> /dev/null
+. ~/.config/waybar/scripts/_fzf-colorizer.sh 2> /dev/null || true
+# If the file is missing, fzf will fall back to its default colors
 
 RED='\033[1;31m'
 RST='\033[0m'
