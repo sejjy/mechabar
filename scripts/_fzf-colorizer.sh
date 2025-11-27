@@ -3,7 +3,7 @@
 # A helper script that syncs fzf colors with the current Waybar theme
 
 main() {
-	local wcss=~/.config/waybar/theme.css
+	local wcss=~/.config/waybar/current-theme.css
 	local wtheme fcolors wcolors
 
 	wtheme=$(sed 1q $wcss | awk '{print $2}')

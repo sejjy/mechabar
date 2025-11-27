@@ -161,11 +161,11 @@ bindel = , XF86MonBrightnessUp,   exec, $scripts/backlight.sh up
 <details open>
 <summary>Theme</summary>
 
-Copy your preferred theme from the [themes](/themes/) directory into `theme.css`:
+Copy your preferred theme from the [themes](/themes/) directory into `current-theme.css`:
 
 ```bash
 cd ~/.config/waybar
-cp themes/<theme-name>.css theme.css
+cp themes/<theme-name>.css current-theme.css
 ```
 
 </details>

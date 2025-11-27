@@ -3,7 +3,7 @@
 	all: initial;
 }
 
-@import "theme.css";
+@import "current-theme.css";
 @import "styles/fonts.css";
 @import "styles/global.css";
 @import "styles/modules-center.css";
