@@ -15,7 +15,7 @@
 		// "on-scroll-down":
 		// "smooth-scrolling-threshold":
 		// "tooltip":
-		"tooltip-format": "<b>Standard Time</b>: {:%I:%M %p}"
+		"tooltip-format": "<b>Standard Time</b>: {:%I:%M <span text_transform='lowercase'>%p</span>}"
 		// "menu":
 		// "menu-file":
 		// "menu-actions":
@@ -28,7 +28,7 @@
 
 	"clock#date": {
 		// "interval":
-		"format": "󰸗 {:%m-%d}",
+		"format": "󰸗 {:%d-%m}",
 		// "timezone":
 		// "timezones":
 		// "locale":

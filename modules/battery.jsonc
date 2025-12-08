@@ -10,7 +10,7 @@
 			"critical": 10
 		},
 		"format": "{icon} {capacity}%",
-		"format-time": "{H} hr {M} min",
+		"format-time": "{H}h {M}min",
 		"format-icons": [
 			"󰂎", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"
 		],
@@ -37,8 +37,8 @@
 		// "menu-actions":
 		// "expand":
 		"events": {
-			"on-discharging-warning": "notify-send 'Battery Low (20%)' -u critical -i 'battery-020'",
-			"on-discharging-critical": "notify-send 'Battery Critical (10%)' -u critical -i 'battery-010'",
+			"on-discharging-warning": "notify-send 'Battery Low (20%)' -u critical -i 'battery-020' -r 1525",
+			"on-discharging-critical": "notify-send 'Battery Critical (10%)' -u critical -i 'battery-010' -r 1525",
 			"on-charging-100": "notify-send 'Battery Full (100%)' -i 'battery-100-charged'"
 		}
 	}
