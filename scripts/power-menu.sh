@@ -12,7 +12,7 @@
 fcconf=()
 # Get fzf color config
 # shellcheck disable=SC1090,SC2154
-. ~/.config/waybar/scripts/_fzf-colorizer.sh 2> /dev/null || true
+. ~/.config/waybar/scripts/_fzf_colorizer.sh 2> /dev/null || true
 # If the file is missing, fzf will fall back to its default colors
 
 main() {
