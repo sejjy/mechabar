@@ -24,11 +24,34 @@ TIMEOUT=10
 
 ensure-on() {
 	local status
-	status=$(bluetoothctl show | grep PowerState | awk '{print $2}')
-	if [[ $status == 'off' ]]; then
-		bluetoothctl power on > /dev/null
-		notify-send 'Bluetooth On' -i 'network-bluetooth-activated' -r 1925
-	fi
+	status=$(bluetoothctl show | awk '/PowerState/ {print $2}')
+
+	case $status in
+		'off') bluetoothctl power on > /dev/null ;;
+		'off-blocked')
+			rfkill unblock bluetooth
+
+			local i new_status
+			for ((i = 1; i <= TIMEOUT; i++)); do
+				printf '\rUnblocking Bluetooth... (%d/%d)' $i $TIMEOUT
+
+				new_status=$(bluetoothctl show | awk '/PowerState/ {print $2}')
+				if [[ $new_status == 'on' ]]; then
+					break
+				fi
+				sleep 1
+			done
+
+			# Bluetooth could be hard blocked
+			if [[ $new_status != 'on' ]]; then
+				notify-send 'Bluetooth' 'Failed to unblock' -i 'package-purge'
+				return 1
+			fi
+			;;
+		*) return 0 ;;
+	esac
+
+	notify-send 'Bluetooth On' -i 'network-bluetooth-activated' -r 1925
 }
 
 get-device-list() {
@@ -108,7 +131,7 @@ pair-and-connect() {
 
 main() {
 	tput civis
-	ensure-on
+	ensure-on || exit 1
 	get-device-list || exit 1
 	tput cnorm
 	select-device || exit 1
