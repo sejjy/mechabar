@@ -33,7 +33,6 @@ ensure-enabled() {
 	local i state
 	for ((i = 1; i <= TIMEOUT; i++)); do
 		printf '\rEnabling Wi-Fi... (%d/%d)' $i $TIMEOUT
-		printf '\033[1A'
 
 		state=$(nmcli -t -f STATE general)
 		# If STATE returns anything other than this, we assume that Wi-Fi is
@@ -52,7 +51,6 @@ get-network-list() {
 	local i
 	for ((i = 1; i <= TIMEOUT; i++)); do
 		printf '\rScanning for networks... (%d/%d)' $i $TIMEOUT
-		printf '\033[1A'
 
 		list=$(timeout 1 nmcli device wifi list)
 		networks=$(tail -n +2 <<< "$list" | awk '$2 != "--"')
