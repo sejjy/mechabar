@@ -28,7 +28,7 @@ A mecha-themed, modular Waybar configuration.
 | :----------------------------------------------: |
 | ![Catppuccin Latte](assets/catppuccin-latte.png) |
 
-Feel free to open a pull request if you'd like to add themes. :^)
+Feel free to open a pull request if you'd like to add themes! :^)
 
 </details>
 </div>
@@ -41,7 +41,7 @@ Feel free to open a pull request if you'd like to add themes. :^)
 
 > [!WARNING]
 > **Waybar v0.14.0** introduced an [issue](https://github.com/Alexays/Waybar/issues/4354) that breaks [wildcard includes](/config.jsonc#L3-L10).
-> [Clone the `fix/v0.14.0` branch](#clone-anchor-point) as a temporary workaround.
+> [Clone the `fix/v0.14.0` branch](#clone-fix-branch) as a temporary workaround.
 
 2. A **terminal emulator** (default: `kitty`)
 
@@ -53,8 +53,6 @@ Feel free to open a pull request if you'd like to add themes. :^)
 > - "on-click": "kitty -e ..."
 > + "on-click": "ghostty -e ..."
 > ```
-
-3. **Bash 3.1 or newer**
 
 #
 
@@ -72,7 +70,7 @@ Feel free to open a pull request if you'd like to add themes. :^)
 	git clone https://github.com/sejjy/mechabar.git ~/.config/waybar
 	```
 
-	<a name="clone-anchor-point">For **Waybar v0.14.0**</a>:
+	<a name="clone-fix-branch">For **Waybar v0.14.0**</a>:
 
 	```bash
 	git clone -b fix/v0.14.0 https://github.com/sejjy/mechabar.git ~/.config/waybar
@@ -107,52 +105,50 @@ Feel free to open a pull request if you'd like to add themes. :^)
 ### Customization
 
 <details>
-<summary>Icons</summary>
+<summary>Binds</summary>
 
-You can search icons on [Nerd Fonts: Cheat Sheet](https://www.nerdfonts.com/cheat-sheet):
+You can set keybinds to interact with modules via [scripts](/scripts/). Example:
 
+```properties
+# ~/.config/hypr/hyprland.conf
+
+$mod  = SUPER
+$term = kitty
+$scr  = ~/.config/waybar/scripts
+
+bind = $mod, B, exec, $term -e $scr/bluetooth.sh
+bind = $mod, N, exec, $term -e $scr/network.sh
+bind = $mod, O, exec, $term -e $scr/power-menu.sh
+bind = $mod, U, exec, $term -e $scr/system-update.sh
+
+bindl  = , XF86AudioMicMute,      exec, $scr/volume.sh input mute
+bindl  = , XF86AudioMute,         exec, $scr/volume.sh output mute
+bindel = , XF86AudioLowerVolume,  exec, $scr/volume.sh output lower
+bindel = , XF86AudioRaiseVolume,  exec, $scr/volume.sh output raise
+bindel = , XF86MonBrightnessDown, exec, $scr/backlight.sh down
+bindel = , XF86MonBrightnessUp,   exec, $scr/backlight.sh up
 ```
-<icon_name>
-fedora
-```
-
-Most modules use icons from `md` (Material Design) icon set. To search icons from a set, use:
-
-```
-nf-<set> <icon_name>
-nf-md fedora
-```
-
-See [Nerd Fonts wiki: Glyph Sets](https://github.com/ryanoasis/nerd-fonts/wiki/Glyph-Sets-and-Code-Points#glyph-sets) for more details.
 
 #
 
 </details>
 
 <details>
-<summary>Keybinds</summary>
+<summary>Icons</summary>
 
-You can use the [scripts](/scripts/) to interact with modules through keybinds:
+You can search for icons on [Nerd Fonts: Cheat Sheet ↗](https://www.nerdfonts.com/cheat-sheet). Example:
 
-```properties
-# ~/.config/hypr/hyprland.conf
-
-$mod     = SUPER
-$term    = kitty
-$scripts = ~/.config/waybar/scripts
-
-bind = $mod, B, exec, $term -e $scripts/bluetooth.sh
-bind = $mod, N, exec, $term -e $scripts/network.sh
-bind = $mod, O, exec, $term -e $scripts/power-menu.sh
-bind = $mod, U, exec, $term -e $scripts/system-update.sh
-
-bindl  = , XF86AudioMicMute,      exec, $scripts/volume.sh input mute
-bindl  = , XF86AudioMute,         exec, $scripts/volume.sh output mute
-bindel = , XF86AudioLowerVolume,  exec, $scripts/volume.sh output lower
-bindel = , XF86AudioRaiseVolume,  exec, $scripts/volume.sh output raise
-bindel = , XF86MonBrightnessDown, exec, $scripts/backlight.sh down
-bindel = , XF86MonBrightnessUp,   exec, $scripts/backlight.sh up
 ```
+battery charging
+```
+
+For consistency, most modules use icons from Material Design, prefixed with `nf-md`:
+
+```
+nf-md battery charging
+```
+
+See [Nerd Fonts wiki: Glyph Sets](https://github.com/ryanoasis/nerd-fonts/wiki/Glyph-Sets-and-Code-Points#glyph-sets) for more info.
 
 #
 
@@ -161,22 +157,14 @@ bindel = , XF86MonBrightnessUp,   exec, $scripts/backlight.sh up
 <details open>
 <summary>Theme</summary>
 
-Copy your preferred theme from the [themes](/themes/) directory into `current-theme.css`:
+Copy your preferred theme from the [themes](/themes/) directory into `current-theme.css`. Example:
 
 ```bash
 cd ~/.config/waybar
-cp themes/<theme-name>.css current-theme.css
+cp themes/catppuccin-latte.css current-theme.css
 ```
 
 </details>
-
-#
-
-### Roadmap
-
-- [ ] Support other compositors out of the box
-- [ ] Add a vertical layout
-- [ ] Add variants (e.g., Pac-Man)
 
 #
 
@@ -200,4 +188,4 @@ cp themes/<theme-name>.css current-theme.css
 
 - Themes: [Catppuccin](https://github.com/catppuccin/waybar)
 - Original font: [Commit Mono](https://github.com/eigilnikolajsen/commit-mono)
-- Patched font & icons: [Nerd Fonts](https://github.com/ryanoasis/nerd-fonts)
+- Patched font: [CommitMono Nerd Font](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/CommitMono)
