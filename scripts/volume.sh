@@ -81,7 +81,7 @@ get-icon() {
 
 toggle-mute() {
 	pactl "set-$dev_mute" "$dev" toggle
-	notify-send "$title: $(check-muted)" -i "$(get-icon)" -r 2425
+	notify-send "$title: $(check-muted)" -i "$(get-icon)" -h string:x-canonical-private-synchronous:volume
 }
 
 set-volume() {
@@ -105,7 +105,7 @@ set-volume() {
 	local icon
 	icon=$(get-icon "$new_vol")
 
-	notify-send "$title: ${new_vol}%" -h int:value:$new_vol -i "$icon" -r 2425
+	notify-send "$title: ${new_vol}%" -h int:value:$new_vol -i "$icon" -h string:x-canonical-private-synchronous:volume
 }
 
 main() {
