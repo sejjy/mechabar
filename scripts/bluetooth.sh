@@ -3,97 +3,96 @@
 # Scan, select, pair, and connect to Bluetooth devices
 #
 # Requirements:
-# 	- bluetoothctl (bluez-utils)
-# 	- fzf
-# 	- notify-send (libnotify)
+# 	bluetoothctl (bluez-utils)
+# 	fzf
+# 	notify-send (libnotify)
 #
-# Author: Jesse Mirabel <sejjymvm@gmail.com>
-# Created: August 19, 2025
+# Author:  Jesse Mirabel <sejjymvm@gmail.com>
+# Date:    August 19, 2025
 # License: MIT
 
-fcconf=()
-# Get fzf color config
-# shellcheck disable=SC1090,SC2154
-. ~/.config/waybar/scripts/_fzf_colorizer.sh 2> /dev/null || true
-# If the file is missing, fzf will fall back to its default colors
+# shellcheck disable=SC1090
+colors=()
+source ~/.config/waybar/scripts/fzf-theme.sh &> /dev/null || true
 
-RED='\033[1;31m'
-RST='\033[0m'
+RED="\e[31m"
+RESET="\e[39m"
 
 TIMEOUT=10
 
 ensure-on() {
-	local status
-	status=$(bluetoothctl show | awk '/PowerState/ {print $2}')
+	local state; state=$(bluetoothctl show | awk '/PowerState/ {print $2}')
 
-	case $status in
-		'off') bluetoothctl power on > /dev/null ;;
-		'off-blocked')
+	case $state in
+		"off") bluetoothctl power on > /dev/null ;;
+		"off-blocked")
 			rfkill unblock bluetooth
 
-			local i new_status
+			local i s
 			for ((i = 1; i <= TIMEOUT; i++)); do
-				printf '\rUnblocking Bluetooth... (%d/%d)' $i $TIMEOUT
+				printf "\rUnblocking Bluetooth... (%d/%d)" $i $TIMEOUT
 
-				new_status=$(bluetoothctl show | awk '/PowerState/ {print $2}')
-				if [[ $new_status == 'on' ]]; then
+				s=$(bluetoothctl show | awk '/PowerState/ {print $2}')
+				if [[ $s == "on" ]]; then
 					break
 				fi
+
 				sleep 1
 			done
 
-			# Bluetooth could be hard blocked
-			if [[ $new_status != 'on' ]]; then
-				notify-send 'Bluetooth' 'Failed to unblock' -i 'package-purge'
+			if [[ $s != "on" ]]; then
+				notify-send "Bluetooth" "Failed to unblock" -i "package-purge"
 				return 1
 			fi
 			;;
 		*) return 0 ;;
 	esac
 
-	notify-send 'Bluetooth On' -i 'network-bluetooth-activated' -h string:x-canonical-private-synchronous:bluetooth
+	notify-send "Bluetooth On" -i "network-bluetooth-activated" \
+		-h string:x-canonical-private-synchronous:bluetooth
 }
 
 get-device-list() {
-	bluetoothctl --timeout $TIMEOUT scan on > /dev/null &
+	bluetoothctl -t $TIMEOUT scan on > /dev/null &
 
-	local i num
+	local i n
 	for ((i = 1; i <= TIMEOUT; i++)); do
-		printf '\rScanning for devices... (%d/%d)' $i $TIMEOUT
-		printf '\n%bPress [q] to stop%b\n\n' "$RED" "$RST"
+		printf "Scanning for devices... (%d/%d)\n" $i $TIMEOUT
+		printf "%bPress [q] to stop%b\n" "$RED" "$RESET"
 
-		num=$(bluetoothctl devices | grep -c 'Device')
-		printf '\rDevices: %s' "$num"
-		printf '\033[3A'
+		n=$(bluetoothctl devices | grep -c "Device")
+		printf "\nDevices: %s" "$n"
+		printf "\e[H"
 
-		read -rs -n 1 -t 1
+		read -rsn 1 -t 1
 		if [[ $REPLY == [Qq] ]]; then
 			break
 		fi
 	done
-	printf '\n%bScanning stopped.%b\n\n' "$RED" "$RST"
 
-	list=$(bluetoothctl devices | sed 's/^Device //')
+	printf "\n%bScanning stopped.%b\n" "$RED" "$RESET"
+	printf "\e[1B"
+
+	list=$(bluetoothctl devices | sed "s/^Device //")
 	if [[ -z $list ]]; then
-		notify-send 'Bluetooth' 'No devices found' -i 'package-broken'
+		notify-send "Bluetooth" "No devices found" -i "package-broken"
 		return 1
 	fi
 }
 
 select-device() {
-	local header
-	header=$(printf '%-17s %s' 'Address' 'Name')
+	local header; header=$(printf "%-17s %s" "Address" "Name")
 	local opts=(
-		'--border=sharp'
-		'--border-label= Bluetooth Devices '
-		'--ghost=Search'
+		"--border=sharp"
+		"--border-label= Bluetooth Devices "
+		"--ghost=Search"
 		"--header=$header"
-		'--height=~100%'
-		'--highlight-line'
-		'--info=inline-right'
-		'--pointer='
-		'--reverse'
-		"${fcconf[@]}"
+		"--height=~100%"
+		"--highlight-line"
+		"--info=inline-right"
+		"--pointer="
+		"--reverse"
+		"${colors[@]}"
 	)
 
 	address=$(fzf "${opts[@]}" <<< "$list" | awk '{print $1}')
@@ -103,9 +102,10 @@ select-device() {
 
 	local connected
 	connected=$(bluetoothctl info "$address" | awk '/Connected/ {print $2}')
-	if [[ $connected == 'yes' ]]; then
-		notify-send 'Bluetooth' 'Already connected to this device' \
-			-i 'package-install'
+
+	if [[ $connected == "yes" ]]; then
+		notify-send "Bluetooth" "Already connected to this device" \
+			-i "package-install"
 		return 1
 	fi
 }
@@ -113,27 +113,31 @@ select-device() {
 pair-and-connect() {
 	local paired
 	paired=$(bluetoothctl info "$address" | awk '/Paired/ {print $2}')
-	if [[ $paired == 'no' ]]; then
-		printf 'Pairing...'
+
+	if [[ $paired == "no" ]]; then
+		printf "Pairing..."
+
 		if ! timeout $TIMEOUT bluetoothctl pair "$address" > /dev/null; then
-			notify-send 'Bluetooth' 'Failed to pair' -i 'package-purge'
+			notify-send "Bluetooth" "Failed to pair" -i "package-purge"
 			return 1
 		fi
 	fi
 
-	printf '\nConnecting...'
+	printf "\nConnecting..."
+
 	if ! timeout $TIMEOUT bluetoothctl connect "$address" > /dev/null; then
-		notify-send 'Bluetooth' 'Failed to connect' -i 'package-purge'
+		notify-send "Bluetooth" "Failed to connect" -i "package-purge"
 		return 1
 	fi
-	notify-send 'Bluetooth' 'Successfully connected' -i 'package-install'
+
+	notify-send "Bluetooth" "Successfully connected" -i "package-install"
 }
 
 main() {
-	tput civis
+	printf "\e[?25l"
 	ensure-on || exit 1
 	get-device-list || exit 1
-	tput cnorm
+	printf "\e[?25h"
 	select-device || exit 1
 	pair-and-connect || exit 1
 }
