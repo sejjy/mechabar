@@ -1,52 +1,54 @@
 #!/usr/bin/env bash
 
-RED='\033[1;31m'
-GRN='\033[1;32m'
-BLU='\033[1;34m'
-RST='\033[0m'
+RED="\e[31m"
+GREEN="\e[32m"
+BLUE="\e[34m"
+RESET="\e[39m"
 
 DEPS=(
-	bluez
-	bluez-utils # bluetoothctl
-	brightnessctl
-	fzf
-	networkmanager # nmcli
-	pacman-contrib # checkupdates
-	pipewire-pulse
-	otf-commit-mono-nerd
+	"bluez"
+	"bluez-utils" # bluetoothctl
+	"brightnessctl"
+	"fzf"
+	"networkmanager" # nmcli
+	"pacman"-contrib # checkupdates
+	"pipewire-pulse"
+	"otf-commit-mono-nerd"
 )
 
 main() {
-	printf '%bInstalling dependencies...%b\n' "$BLU" "$RST"
+	local errors=0
 
-	local package
-	local error=0
-	for package in "${DEPS[@]}"; do
-		if pacman -Qi "$package" > /dev/null; then
-			printf '[%b/%b] %s\n' "$GRN" "$RST" "$package"
+	printf "%bInstalling dependencies...%b\n" "$BLUE" "$RESET"
+
+	local d
+	for d in "${DEPS[@]}"; do
+		if pacman -Qi "$d" > /dev/null; then
+			printf "[%b/%b] %s\n" "$GREEN" "$RESET" "$d"
 		else
-			printf '[ ] %s...\n' "$package"
-			if sudo pacman -S --noconfirm "$package"; then
-				printf '[%b+%b] %s\n' "$GRN" "$RST" "$package"
+			printf "[ ] %s...\n" "$d"
+
+			if sudo pacman -S --noconfirm "$d"; then
+				printf "[%b+%b] %s\n" "$GREEN" "$RESET" "$d"
 			else
-				printf '[%bx%b] %s\n' "$RED" "$RST" "$package"
-				((error++))
+				printf "[%bx%b] %s\n" "$RED" "$RESET" "$d"
+				((errors += 1))
 			fi
 		fi
 	done
 
-	printf '\n%bMaking scripts executable...%b\n' "$BLU" "$RST"
-	chmod +x ~/.config/waybar/scripts/*.sh --verbose
+	printf "\n%bMaking scripts executable...%b\n" "$BLUE" "$RESET"
+	chmod -v +x ~/.config/waybar/scripts/*.sh
 
 	pkill waybar
 	waybar &> /dev/null &
 	disown
 
-	if ((error > 0)); then
-		printf '\nInstallation completed with %b%d errors%b\n' \
-			"$RED" "$error" "$RST"
+	if ((errors > 0)); then
+		printf "\nInstallation completed with %b%d errors%b\n" \
+			"$RED" "$errors" "$RESET"
 	else
-		printf '\n%bInstallation complete!%b\n' "$GRN" "$RST"
+		printf "\n%bInstallation complete!%b\n" "$GREEN" "$RESET"
 	fi
 }
 
