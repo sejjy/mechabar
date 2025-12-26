@@ -1,24 +1,24 @@
 #!/usr/bin/env bash
 #
 # Check for official and AUR package updates and upgrade them. When run with the
-# 'module' argument, output the status icon and update counts in JSON format for
+# "module" argument, output the status icon and update counts in JSON format for
 # Waybar
 #
 # Requirements:
-# 	- checkupdates (pacman-contrib)
-# 	- notify-send (libnotify)
-# 	- optional: an AUR helper
+# 	checkupdates (pacman-contrib)
+# 	notify-send (libnotify)
+# 	Optional: An AUR helper
 #
-# Author: Jesse Mirabel <sejjymvm@gmail.com>
-# Created: August 16, 2025
+# Author:  Jesse Mirabel <sejjymvm@gmail.com>
+# Date:    August 16, 2025
 # License: MIT
 
-GRN='\033[1;32m'
-BLU='\033[1;34m'
-RST='\033[0m'
+GREEN="\e[32m"
+BLUE="\e[34m"
+RESET="\e[39m"
 
 TIMEOUT=10
-HELPERS=('aura' 'paru' 'pikaur' 'trizen' 'yay')
+HELPERS=("aura" "paru" "pikaur" "trizen" "yay")
 
 detect-helper() {
 	local h
@@ -31,63 +31,64 @@ detect-helper() {
 }
 
 check-updates() {
-	is_online=true
-	repo=0
+	success=true
+	pacman=0
 	aur=0
 
-	local rout rstat
-	rout=$(timeout $TIMEOUT checkupdates)
-	rstat=$?
-	# 2 means no updates are available
-	if ((rstat != 0 && rstat != 2)); then
-		is_online=false
+	local p_output p_status
+	p_output=$(timeout $TIMEOUT checkupdates)
+	p_status=$?
+
+	if ((p_status != 0 && p_status != 2)); then
+		success=false
 		return 1
 	fi
-	repo=$(grep -cve '^\s*$' <<< "$rout")
+
+	pacman=$(grep -cve "^\s*$" <<< "$p_output")
 
 	if [[ -z $helper ]]; then
 		return 0
 	fi
 
-	local aout astat
-	aout=$(timeout $TIMEOUT "$helper" -Quaq)
-	astat=$?
-	# Return only if the exit status is non-zero and there is an error
-	# message
-	if ((${#aout} > 0 && astat != 0)); then
-		is_online=false
+	local a_output a_status
+	a_output=$(timeout $TIMEOUT "$helper" -Quaq)
+	a_status=$?
+
+	if ((${#a_output} > 0 && a_status != 0)); then
+		success=false
 		return 1
 	fi
-	aur=$(grep -cve '^\s*$' <<< "$aout")
+
+	aur=$(grep -cve "^\s*$" <<< "$a_output")
 }
 
 update-packages() {
-	printf '\n%bUpdating pacman packages...%b\n' "$BLU" "$RST"
+	printf "\n%bUpdating pacman packages...%b\n" "$BLUE" "$RESET"
 	sudo pacman -Syu
 
 	if [[ -n $helper ]]; then
-		printf '\n%bUpdating AUR packages...%b\n' "$BLU" "$RST"
-		"$helper" -Syu
+		printf "\n%bUpdating AUR packages...%b\n" "$BLUE" "$RESET"
+		command "$helper" -Syu
 	fi
 
-	notify-send 'Update Complete' -i 'package-install'
-	printf '\n%bUpdate Complete!%b\n' "$GRN" "$RST"
-	read -rs -n 1 -p 'Press any key to exit...'
+	notify-send "Update Complete" -i "package-install"
+
+	printf "\n%bUpdate Complete!%b\n" "$GREEN" "$RESET"
+	read -rsn 1 -p "Press any key to exit..."
 }
 
 display-module() {
-	if [[ $is_online == false ]]; then
+	if [[ $success == false ]]; then
 		echo "{ \"text\": \"󰒑\", \"tooltip\": \"Cannot fetch updates. Right-click to retry.\" }"
 		return 0
 	fi
 
-	local tooltip="<b>Official</b>: $repo"
+	local tooltip="<b>Official</b>: $pacman"
 	if [[ -n $helper ]]; then
 		tooltip+="\n<b>AUR($helper)</b>: $aur"
 	fi
 
-	local total=$((repo + aur))
-	if ((total == 0)); then
+	if ((pacman + aur == 0)); then
 		echo "{ \"text\": \"󰸟\", \"tooltip\": \"No updates available\" }"
 	else
 		echo "{ \"text\": \"󰄠\", \"tooltip\": \"$tooltip\" }"
@@ -98,15 +99,14 @@ main() {
 	detect-helper
 
 	case $1 in
-		'module')
+		"module")
 			check-updates
 			display-module
 			;;
 		*)
-			printf '%bChecking for updates...%b' "$BLU" "$RST"
+			printf "%bChecking for updates...%b" "$BLUE" "$RESET"
 			check-updates
 			update-packages
-			# use signal to update the module
 			pkill -RTMIN+1 waybar
 			;;
 	esac
