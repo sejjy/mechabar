@@ -42,7 +42,7 @@ ensure-enabled() {
 		fi
 		sleep 1
 	done
-	notify-send 'Wi-Fi Enabled' -i 'network-wireless-on' -r 1125
+	notify-send 'Wi-Fi Enabled' -i 'network-wireless-on' -h string:x-canonical-private-synchronous:network
 }
 
 get-network-list() {
