@@ -51,7 +51,7 @@ ensure-on() {
 		*) return 0 ;;
 	esac
 
-	notify-send 'Bluetooth On' -i 'network-bluetooth-activated' -r 1925
+	notify-send 'Bluetooth On' -i 'network-bluetooth-activated' -h string:x-canonical-private-synchronous:bluetooth
 }
 
 get-device-list() {

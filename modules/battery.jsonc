@@ -37,9 +37,9 @@
 		// "menu-actions":
 		// "expand":
 		"events": {
-			"on-discharging-warning": "notify-send 'Battery Low (20%)' -u critical -i 'battery-020' -r 1525",
-			"on-discharging-critical": "notify-send 'Battery Critical (10%)' -u critical -i 'battery-010' -r 1525",
-			"on-charging-100": "notify-send 'Battery Full (100%)' -i 'battery-100-charged'"
+			"on-discharging-warning": "notify-send 'Battery Low (20%)' -u critical -i 'battery-020' -h string:x-canonical-private-synchronous:battery",
+			"on-discharging-critical": "notify-send 'Battery Critical (10%)' -u critical -i 'battery-010' -h string:x-canonical-private-synchronous:battery",
+			"on-charging-100": "notify-send 'Battery Full (100%)' -i 'battery-100-charged' -h string:x-canonical-private-synchronous:battery"
 		}
 	}
 }
