@@ -105,7 +105,7 @@ set-volume() {
 	local icon
 	icon=$(get-icon "$new_vol")
 
-	notify-send "$title: ${new_vol}%" -i "$icon" -h string:x-canonical-private-synchronous:volume -h int:value:$new_vol
+	notify-send "$title: ${new_vol}%" -h int:value:$new_vol -i "$icon" -h string:x-canonical-private-synchronous:volume
 }
 
 main() {
