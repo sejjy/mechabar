@@ -4,7 +4,7 @@
 
 A mecha-themed, modular Waybar configuration.
 
-| ![Mechabar](assets/catppuccin-mocha.png) |
+| ![Mechabar](./assets/catppuccin-mocha.png) |
 | :--------------------------------------: |
 
 <details>
@@ -14,19 +14,19 @@ A mecha-themed, modular Waybar configuration.
 
 | Mocha (default)                                  |
 | :----------------------------------------------: |
-| ![Catppuccin Mocha](assets/catppuccin-mocha.png) |
+| ![Catppuccin Mocha](./assets/catppuccin-mocha.png) |
 
 | Macchiato                                                |
 | :------------------------------------------------------: |
-| ![Catppuccin Macchiato](assets/catppuccin-macchiato.png) |
+| ![Catppuccin Macchiato](./assets/catppuccin-macchiato.png) |
 
 | Frappe                                             |
 | :------------------------------------------------: |
-| ![Catppuccin Frappe](assets/catppuccin-frappe.png) |
+| ![Catppuccin Frappe](./assets/catppuccin-frappe.png) |
 
 | Latte                                            |
 | :----------------------------------------------: |
-| ![Catppuccin Latte](assets/catppuccin-latte.png) |
+| ![Catppuccin Latte](./assets/catppuccin-latte.png) |
 
 Feel free to open a pull request if you'd like to add themes! :^)
 
@@ -40,7 +40,7 @@ Feel free to open a pull request if you'd like to add themes! :^)
 1. **[Waybar](https://github.com/Alexays/Waybar)**
 
 > [!WARNING]
-> **Waybar v0.14.0** introduced an [issue](https://github.com/Alexays/Waybar/issues/4354) that breaks [wildcard includes](/config.jsonc#L3-L10).
+> **Waybar v0.14.0** introduced an [issue](https://github.com/Alexays/Waybar/issues/4354) that breaks [wildcard includes](./config.jsonc#L2-L9).
 > [Clone the `fix/v0.14.0` branch](#clone-fix-branch) as a temporary workaround.
 
 2. A **terminal emulator** (default: `kitty`)
@@ -76,13 +76,13 @@ Feel free to open a pull request if you'd like to add themes! :^)
 	git clone -b fix/v0.14.0 https://github.com/sejjy/mechabar.git ~/.config/waybar
 	```
 
-3. Run [`install.sh`](/install.sh):
+3. Run [`install.sh`](./install.sh):
 
 	```bash
 	~/.config/waybar/install.sh
 	```
 
-	This makes the [scripts](/scripts/) executable and installs the following dependencies:
+	This makes the [scripts](./scripts/) executable and installs the following dependencies:
 
 	<details>
 	<summary>Packages (8)</summary>
@@ -107,7 +107,7 @@ Feel free to open a pull request if you'd like to add themes! :^)
 <details>
 <summary>Binds</summary>
 
-You can set keybinds to interact with modules via [scripts](/scripts/). Example:
+You can set keybinds to interact with modules via [scripts](./scripts/). Example:
 
 ```properties
 # ~/.config/hypr/hyprland.conf
@@ -157,7 +157,7 @@ See [Nerd Fonts wiki: Glyph Sets](https://github.com/ryanoasis/nerd-fonts/wiki/G
 <details open>
 <summary>Theme</summary>
 
-Copy your preferred theme from the [themes](/themes/) directory into `current-theme.css`. Example:
+Copy your preferred theme from the [themes](./themes/) directory into `current-theme.css`. Example:
 
 ```bash
 cd ~/.config/waybar
