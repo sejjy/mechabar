@@ -11,7 +11,7 @@ DEPS=(
 	"brightnessctl"
 	"fzf"
 	"networkmanager" # nmcli
-	"pacman"-contrib # checkupdates
+	"pacman-contrib" # checkupdates
 	"pipewire-pulse"
 	"otf-commit-mono-nerd"
 )
