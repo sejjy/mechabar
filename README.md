@@ -102,7 +102,7 @@ Feel free to open a pull request if you'd like to add themes! :^)
 
 #
 
-### Customization
+### Configuration
 
 <details>
 <summary>Binds</summary>
@@ -184,8 +184,9 @@ cp themes/catppuccin-latte.css theme.css
 
 #
 
-### Credits
+### References
 
-- Themes: [Catppuccin](https://github.com/catppuccin/waybar)
-- Original font: [Commit Mono](https://github.com/eigilnikolajsen/commit-mono)
-- Patched font: [CommitMono Nerd Font](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/CommitMono)
+- [Catppuccin Waybar theme](https://github.com/catppuccin/waybar)
+- [Commit Mono Font](https://github.com/eigilnikolajsen/commit-mono)
+- [CommitMono Nerd Font](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/CommitMono)
+- [Hyprland wiki: Binds ↗](https://wiki.hypr.land/Configuring/Binds/)
