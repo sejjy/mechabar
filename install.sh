@@ -1,10 +1,5 @@
 #!/usr/bin/env bash
 
-RED="\e[31m"
-GREEN="\e[32m"
-BLUE="\e[34m"
-RESET="\e[39m"
-
 DEPS=(
 	"bluez"
 	"bluez-utils" # bluetoothctl
@@ -16,39 +11,50 @@ DEPS=(
 	"otf-commit-mono-nerd"
 )
 
-main() {
-	local errors=0
+ERRORS=0
 
-	printf "%bInstalling dependencies...%b\n" "$BLUE" "$RESET"
+cprintf() {
+	case $1 in
+		red)   printf "\e[31m" ;;
+		green) printf "\e[32m" ;;
+		blue)  printf "\e[34m" ;;
+	esac
+
+	printf "%b%b\n" "${@:2}" "\e[39m" >&2
+}
+
+main() {
+	cprintf blue "Installing dependencies..."
 
 	local d
 	for d in "${DEPS[@]}"; do
 		if pacman -Qi "$d" > /dev/null; then
-			printf "[%b/%b] %s\n" "$GREEN" "$RESET" "$d"
+			cprintf green "[/] $d"
 		else
 			printf "[ ] %s...\n" "$d"
 
 			if sudo pacman -S --noconfirm "$d"; then
-				printf "[%b+%b] %s\n" "$GREEN" "$RESET" "$d"
+				cprintf green "[+] $d"
 			else
-				printf "[%bx%b] %s\n" "$RED" "$RESET" "$d"
-				((errors += 1))
+				cprintf red "[x] $d"
+				((ERRORS += 1))
 			fi
 		fi
 	done
 
-	printf "\n%bMaking scripts executable...%b\n" "$BLUE" "$RESET"
+	cprintf blue "\nMaking scripts executable..."
 	chmod -v +x ~/.config/waybar/scripts/*.sh
+
+	cprintf blue "\nRestarting Waybar..."
 
 	pkill waybar
 	waybar &> /dev/null &
 	disown
 
-	if ((errors > 0)); then
-		printf "\nInstallation completed with %b%d errors%b\n" \
-			"$RED" "$errors" "$RESET"
+	if ((ERRORS > 0)); then
+		cprintf red "\nInstallation completed with $ERRORS errors"
 	else
-		printf "\n%bInstallation complete!%b\n" "$GREEN" "$RESET"
+		cprintf green "\nInstallation complete!"
 	fi
 }
 
