@@ -3,48 +3,55 @@
 # Adjust screen brightness and send a notification with the current level
 #
 # Requirements:
-# 	brightnessctl
-# 	notify-send (libnotify)
+# - brightnessctl
+# - notify-send (libnotify)
 #
 # Author:  Jesse Mirabel <sejjymvm@gmail.com>
 # Date:    August 28, 2025
 # License: MIT
 
-VALUE=1
+DEF_VALUE=1
 
 usage() {
+	local script=${0##*/}
+
 	cat <<- EOF
-		USAGE: ${0##*/} [OPTIONS]
+		USAGE: $script {up|down} [value]
 
 		Adjust screen brightness and send a notification with the current level
 
 		OPTIONS:
-		    up   <value>    Increase brightness by <value>
-		    down <value>    Decrease brightness by <value>
-		                        Default value: $VALUE
+		  up   [value]    Increase brightness by [value] (default: $DEF_VALUE)
+		  down [value]    Decrease brightness by [value] (default: $DEF_VALUE)
 
 		EXAMPLES:
-		    Increase brightness:
-		        $ ${0##*/} up
+		  Increase brightness:
+		    $ $script up
 
-		    Decrease brightness by 5:
-		        $ ${0##*/} down 5
+		  Decrease brightness by 5:
+		    $ $script down 5
 	EOF
-	exit 1
 }
 
 main() {
 	local action=$1
-	local value=${2:-$VALUE}
+	local value=${2:-$DEF_VALUE}
 
-	((value > 0)) || usage
+	if ((value < 1)); then
+		usage >&2
+		return 1
+	fi
 
 	case $action in
 		"up" | "down")
+			local sign
+
 			case $action in
-				"up") brightnessctl -n set "${value}%+" > /dev/null ;;
-				"down") brightnessctl -n set "${value}%-" > /dev/null ;;
+				"up")   sign="+" ;;
+				"down") sign="-" ;;
 			esac
+
+			brightnessctl -n set "$value%$sign" > /dev/null
 
 			local level
 			level=$(brightnessctl -m | awk -F "," '{print $4}')
@@ -52,7 +59,7 @@ main() {
 			notify-send "Brightness: $level" -h int:value:"$level" -i \
 				"contrast" -h string:x-canonical-private-synchronous:backlight
 			;;
-		*) usage ;;
+		*) usage >&2; return 1 ;;
 	esac
 }
 
