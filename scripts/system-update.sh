@@ -5,90 +5,94 @@
 # Waybar
 #
 # Requirements:
-# 	checkupdates (pacman-contrib)
-# 	notify-send (libnotify)
-# 	Optional: An AUR helper
+# - checkupdates (pacman-contrib)
+# - notify-send (libnotify)
+# - Optional: An AUR helper
 #
 # Author:  Jesse Mirabel <sejjymvm@gmail.com>
 # Date:    August 16, 2025
 # License: MIT
 
-GREEN="\e[32m"
-BLUE="\e[34m"
-RESET="\e[39m"
-
 TIMEOUT=10
 HELPERS=("aura" "paru" "pikaur" "trizen" "yay")
 
-detect-helper() {
+FAILURE=false
+PAC_UPD=0
+AUR_UPD=0
+
+cprintf() {
+	case $1 in
+		green) printf "\e[32m" ;;
+		blue)  printf "\e[34m" ;;
+	esac
+
+	printf "%b%b\n" "${@:2}" "\e[39m" >&2
+}
+
+get_helper() {
 	local h
 	for h in "${HELPERS[@]}"; do
 		if command -v "$h" > /dev/null; then
-			helper=$h
+			HELPER=$h
 			break
 		fi
 	done
 }
 
-check-updates() {
-	success=true
-	pacman=0
-	aur=0
+check_updates() {
+	local pac_output pac_status
+	pac_output=$(timeout $TIMEOUT checkupdates)
+	pac_status=$?
 
-	local p_output p_status
-	p_output=$(timeout $TIMEOUT checkupdates)
-	p_status=$?
-
-	if ((p_status != 0 && p_status != 2)); then
-		success=false
+	if ((pac_status != 0 && pac_status != 2)); then
+		FAILURE=true
 		return 1
 	fi
 
-	pacman=$(grep -cve "^\s*$" <<< "$p_output")
+	PAC_UPD=$(grep -cve "^\s*$" <<< "$pac_output")
 
-	if [[ -z $helper ]]; then
-		return 0
-	fi
+	[[ -z $HELPER ]] && return 0
 
-	local a_output a_status
-	a_output=$(timeout $TIMEOUT "$helper" -Quaq)
-	a_status=$?
+	local aur_output aur_status
+	aur_output=$(timeout $TIMEOUT "$HELPER" -Quaq)
+	aur_status=$?
 
-	if ((${#a_output} > 0 && a_status != 0)); then
-		success=false
+	if ((${#aur_output} > 0 && aur_status != 0)); then
+		FAILURE=true
 		return 1
 	fi
 
-	aur=$(grep -cve "^\s*$" <<< "$a_output")
+	AUR_UPD=$(grep -cve "^\s*$" <<< "$aur_output")
 }
 
-update-packages() {
-	printf "\n%bUpdating pacman packages...%b\n" "$BLUE" "$RESET"
+update_packages() {
+	cprintf blue "Updating pacman packages..."
 	sudo pacman -Syu
 
-	if [[ -n $helper ]]; then
-		printf "\n%bUpdating AUR packages...%b\n" "$BLUE" "$RESET"
-		command "$helper" -Syu
+	if [[ -n $HELPER ]]; then
+		cprintf blue "\nUpdating AUR packages..."
+		"$HELPER" -Syu
 	fi
 
 	notify-send "Update Complete" -i "package-install"
 
-	printf "\n%bUpdate Complete!%b\n" "$GREEN" "$RESET"
+	cprintf green "\nUpdate Complete!"
 	read -rsn 1 -p "Press any key to exit..."
 }
 
-display-module() {
-	if [[ $success == false ]]; then
+display_module() {
+	if $FAILURE; then
 		echo "{ \"text\": \"󰒑\", \"tooltip\": \"Cannot fetch updates. Right-click to retry.\" }"
-		return 0
+		exit 0
 	fi
 
-	local tooltip="<b>Official</b>: $pacman"
-	if [[ -n $helper ]]; then
-		tooltip+="\n<b>AUR($helper)</b>: $aur"
+	local tooltip="<b>Official</b>: $PAC_UPD"
+
+	if [[ -n $HELPER ]]; then
+		tooltip+="\n<b>AUR($HELPER)</b>: $AUR_UPD"
 	fi
 
-	if ((pacman + aur == 0)); then
+	if ((PAC_UPD + AUR_UPD == 0)); then
 		echo "{ \"text\": \"󰸟\", \"tooltip\": \"No updates available\" }"
 	else
 		echo "{ \"text\": \"󰄠\", \"tooltip\": \"$tooltip\" }"
@@ -96,17 +100,18 @@ display-module() {
 }
 
 main() {
-	detect-helper
+	get_helper
 
 	case $1 in
 		"module")
-			check-updates
-			display-module
+			check_updates
+			display_module
 			;;
 		*)
-			printf "%bChecking for updates...%b" "$BLUE" "$RESET"
-			check-updates
-			update-packages
+			cprintf blue "Checking for updates..."
+			check_updates
+
+			update_packages
 			pkill -RTMIN+1 waybar
 			;;
 	esac
