@@ -157,11 +157,11 @@ See [Nerd Fonts wiki: Glyph Sets](https://github.com/ryanoasis/nerd-fonts/wiki/G
 <details open>
 <summary>Theme</summary>
 
-Copy your preferred theme from the [themes](./themes/) directory into `current-theme.css`. Example:
+Copy your preferred theme from the [themes](./themes/) directory into `theme.css`. Example:
 
 ```bash
 cd ~/.config/waybar
-cp themes/catppuccin-latte.css current-theme.css
+cp themes/catppuccin-latte.css theme.css
 ```
 
 </details>
