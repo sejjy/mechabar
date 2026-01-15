@@ -1,12 +1,44 @@
-/* ignore GTK theme */
+@import "theme.css";
+
 * {
+	/* ignore GTK theme */
 	all: initial;
+	color: @main-fg;
 }
 
-@import "theme.css";
 @import "styles/fonts.css";
-@import "styles/global.css";
 @import "styles/modules-center.css";
 @import "styles/modules-left.css";
 @import "styles/modules-right.css";
 @import "styles/states.css";
+
+.module {
+	margin-bottom: -1px;
+}
+
+#waybar {
+	background-color: @outline;
+}
+#waybar > box {
+	margin: 4px;
+	background-color: @main-bg;
+}
+
+button {
+	border-radius: 16px;
+	min-width: 16px;
+	padding: 0 10px;
+}
+button:hover {
+	background-color: @hover-bg;
+	color: @hover-fg;
+}
+
+tooltip {
+	border: 2px solid @main-br;
+	border-radius: 10px;
+	background-color: @main-bg;
+}
+tooltip > box {
+	padding: 0 6px;
+}
