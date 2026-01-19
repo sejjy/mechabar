@@ -48,12 +48,11 @@ main() {
 	cprintf blue "\nRestarting Waybar..."
 
 	if ! (systemctl --user is-enabled waybar.service &&
-		systemctl --user restart waybar.service) &>/dev/null; then
-    	pkill waybar
-    	waybar &>/dev/null &
-    	disown
+		systemctl --user restart waybar.service) &> /dev/null; then
+		pkill waybar
+		waybar &> /dev/null &
+		disown
 	fi
-
 
 	if ((ERRORS > 0)); then
 		cprintf red "\nInstallation completed with $ERRORS errors"
