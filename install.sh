@@ -47,12 +47,12 @@ main() {
 
 	cprintf blue "\nRestarting Waybar..."
 
-	if systemctl --user is-enabled waybar.service &>/dev/null; then
+	if systemctl --user is-enabled waybar.service &> /dev/null; then
 		systemctl --user restart waybar.service
 	else
-    	pkill waybar
-    	waybar &>/dev/null &
-    	disown
+		pkill waybar
+		waybar &> /dev/null &
+		disown
 	fi
 
 	if ((ERRORS > 0)); then
