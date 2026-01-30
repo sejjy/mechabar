@@ -1,51 +1,51 @@
 #!/usr/bin/env bash
 
 DEPS=(
-	"bluez"
-	"bluez-utils" # bluetoothctl
-	"brightnessctl"
-	"fzf"
-	"networkmanager" # nmcli
-	"pacman-contrib" # checkupdates
-	"pipewire-pulse"
-	"otf-commit-mono-nerd"
+	bluez
+	bluez-utils    # bluetoothctl
+	brightnessctl
+	fzf
+	networkmanager # nmcli
+	pacman-contrib # checkupdates
+	pipewire-pulse
+	otf-commit-mono-nerd
 )
-
-ERRORS=0
 
 cprintf() {
 	case $1 in
-		red)   printf "\e[31m" ;;
-		green) printf "\e[32m" ;;
-		blue)  printf "\e[34m" ;;
+		r) printf "\e[31m" ;;
+		g) printf "\e[32m" ;;
+		b) printf "\e[34m" ;;
 	esac
-
-	printf "%b%b\n" "${@:2}" "\e[39m" >&2
+	printf "%b\n" "${@:2}"
+	printf "\e[39m"
 }
 
 main() {
-	cprintf blue "Installing dependencies..."
+	cprintf b "Installing dependencies..."
 
+	local errors=0
 	local d
+
 	for d in "${DEPS[@]}"; do
 		if pacman -Qi "$d" > /dev/null; then
-			cprintf green "[/] $d"
+			printf "[/] %s\n" "$d"
 		else
 			printf "[ ] %s...\n" "$d"
 
 			if sudo pacman -S --noconfirm "$d"; then
-				cprintf green "[+] $d"
+				cprintf g "[+] $d"
 			else
-				cprintf red "[x] $d"
-				((ERRORS += 1))
+				cprintf r "[x] $d"
+				((errors += 1))
 			fi
 		fi
 	done
 
-	cprintf blue "\nMaking scripts executable..."
+	cprintf b "\nMaking scripts executable..."
 	chmod -v +x ~/.config/waybar/scripts/*.sh
 
-	cprintf blue "\nRestarting Waybar..."
+	cprintf b "\nRestarting Waybar..."
 
 	if ! (systemctl --user is-enabled waybar.service &&
 		systemctl --user restart waybar.service) &> /dev/null; then
@@ -54,10 +54,10 @@ main() {
 		disown
 	fi
 
-	if ((ERRORS > 0)); then
-		cprintf red "\nInstallation completed with $ERRORS errors"
+	if ((errors > 0)); then
+		cprintf r "\nInstallation completed with $errors errors"
 	else
-		cprintf green "\nInstallation complete!"
+		cprintf g "\nInstallation complete!"
 	fi
 }
 
