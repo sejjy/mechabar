@@ -14,16 +14,6 @@ DEF_VALUE=1
 MIN=0
 MAX=100
 
-DEVICE=
-ACTION=
-VALUE=
-
-DEV_DEF=
-DEV_STATE=
-DEV_VOLUME=
-DEV_ICON=
-DEV_NAME=
-
 usage() {
 	local script=${0##*/}
 
@@ -62,39 +52,44 @@ get_state() {
 	state=$(pactl "get-$DEV_STATE" | awk '{print $2}')
 
 	case $state in
-		"yes") printf "Muted" ;;
-		"no")  printf "Unmuted" ;;
+		yes) printf "Muted" ;;
+		no)  printf "Unmuted" ;;
 	esac
 }
 
 get_volume() {
-	pactl "get-$DEV_VOLUME" | awk '{print $5}' | tr -d "%"
+	pactl "get-$DEV_VOLUME" | awk '{print $5}' | tr -d '%'
 }
 
 get_icon() {
 	local state level
+
 	state=$(get_state)
 	level=$(get_volume)
 
+	local icon
 	local new_level=${1:-$level}
 
-	if [[ $state == "Muted" ]]; then
-		printf "%s" "$DEV_ICON-muted"
+	if [[ $state == Muted ]]; then
+		icon="$DEV_ICON-muted"
 	else
 		if ((new_level < MAX * 33 / 100)); then
-			printf "%s" "$DEV_ICON-low"
+			icon="$DEV_ICON-low"
 		elif ((new_level < MAX * 66 / 100)); then
-			printf "%s" "$DEV_ICON-medium"
+			icon="$DEV_ICON-medium"
 		else
-			printf "%s" "$DEV_ICON-high"
+			icon="$DEV_ICON-high"
 		fi
 	fi
+
+	printf "%s" "$icon"
 }
 
 set_state() {
 	pactl "set-$DEV_STATE" toggle
 
 	local state icon
+
 	state=$(get_state)
 	icon=$(get_icon)
 
@@ -109,13 +104,17 @@ set_volume() {
 	local new_level
 
 	case $ACTION in
-		"raise")
+		raise)
 			new_level=$((level + VALUE))
-			((new_level > MAX)) && new_level=$MAX
+			if ((new_level > MAX)); then
+				new_level=$MAX
+			fi
 			;;
-		"lower")
+		lower)
 			new_level=$((level - VALUE))
-			((new_level < MIN)) && new_level=$MIN
+			if ((new_level < MIN)); then
+				new_level=$MIN
+			fi
 			;;
 	esac
 
@@ -139,27 +138,37 @@ main() {
 	fi
 
 	case $DEVICE in
-		"input")
+		input)
 			DEV_DEF="@DEFAULT_SOURCE@"
 			DEV_STATE="source-mute"
 			DEV_VOLUME="source-volume"
 			DEV_ICON="mic-volume"
 			DEV_NAME="Microphone"
 			;;
-		"output")
+		output)
 			DEV_DEF="@DEFAULT_SINK@"
 			DEV_STATE="sink-mute"
 			DEV_VOLUME="sink-volume"
 			DEV_ICON="audio-volume"
 			DEV_NAME="Volume"
 			;;
-		*) usage >&2; return 1 ;;
+		*)
+			usage >&2
+			return 1
+			;;
 	esac
 
 	case $ACTION in
-		"mute")            set_state ;;
-		"raise" | "lower") set_volume ;;
-		*)                 usage >&2; return 1 ;;
+		mute)
+			set_state
+			;;
+		raise | lower)
+			set_volume
+			;;
+		*)
+			usage >&2
+			return 1
+			;;
 	esac
 }
 

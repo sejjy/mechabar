@@ -13,38 +13,45 @@
 
 TIMEOUT=10
 
-LIST=
-ADDRESS=
-
 cprintf() {
-	printf "\e[31m%b\e[39m\n" "$@"
+	printf "\e[31m"
+	printf "%b\n" "$@"
+	printf "\e[39m"
 }
 
-check_state() {
+power_on() {
 	local state
 	state=$(bluetoothctl show | awk '/PowerState/ {print $2}')
 
 	case $state in
-		"off") bluetoothctl power on > /dev/null ;;
-		"off-blocked")
+		off)
+			bluetoothctl power on > /dev/null
+			;;
+		off-blocked)
 			rfkill unblock bluetooth
 
-			local i new_state
-			for ((i = 1; i <= TIMEOUT; i++)); do
+			local new_state
+			local i=1
+
+			for (( ; i <= TIMEOUT; i++)); do
 				printf "\rUnblocking Bluetooth... (%d/%d)" $i $TIMEOUT
 
 				new_state=$(bluetoothctl show | awk '/PowerState/ {print $2}')
-				[[ $new_state == "on" ]] && break
+				if [[ $new_state == on ]]; then
+					break
+				fi
 
 				sleep 1
 			done
 
-			if [[ $new_state != "on" ]]; then
+			if [[ $new_state != on ]]; then
 				notify-send "Bluetooth" "Failed to unblock" -i "package-purge"
 				exit 1
 			fi
 			;;
-		*) return 0 ;;
+		*)
+			return 0
+			;;
 	esac
 
 	notify-send "Bluetooth On" -i "network-bluetooth-activated" \
@@ -54,8 +61,10 @@ check_state() {
 get_devices() {
 	bluetoothctl -t $TIMEOUT scan on > /dev/null &
 
-	local i num
-	for ((i = 1; i <= TIMEOUT; i++)); do
+	local num
+	local i=1
+
+	for (( ; i <= TIMEOUT; i++)); do
 		printf  "\rScanning for devices... (%d/%d)" $i $TIMEOUT
 		cprintf "\nPress [q] to stop"
 
@@ -64,7 +73,9 @@ get_devices() {
 		printf "\e[3F"
 
 		read -rsn 1 -t 1
-		[[ $REPLY == [Qq] ]] && break
+		if [[ $REPLY == [Qq] ]]; then
+			break
+		fi
 	done
 
 	cprintf "\nScanning stopped.\n"
@@ -93,12 +104,14 @@ select_device() {
 	)
 
 	ADDRESS=$(fzf "${options[@]}" <<< "$LIST" | awk '{print $1}')
-	[[ -z $ADDRESS ]] && exit 1
+	if [[ -z $ADDRESS ]]; then
+		exit 1
+	fi
 
 	local connected
 	connected=$(bluetoothctl info "$ADDRESS" | awk '/Connected/ {print $2}')
 
-	if [[ $connected == "yes" ]]; then
+	if [[ $connected == yes ]]; then
 		notify-send "Bluetooth" "Already connected to this device" \
 			-i "package-install"
 		exit 1
@@ -109,7 +122,7 @@ pair_and_connect() {
 	local paired
 	paired=$(bluetoothctl info "$ADDRESS" | awk '/Paired/ {print $2}')
 
-	if [[ $paired == "no" ]]; then
+	if [[ $paired == no ]]; then
 		printf "Pairing..."
 
 		if ! timeout $TIMEOUT bluetoothctl pair "$ADDRESS" > /dev/null; then
@@ -132,7 +145,7 @@ main() {
 	# hide cursor
 	printf "\e[?25l"
 
-	check_state
+	power_on
 	get_devices
 
 	# unhide cursor
