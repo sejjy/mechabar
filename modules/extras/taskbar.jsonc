@@ -13,7 +13,7 @@
 		// "on-click-middle":
 		// "on-click-right":
 		// "on-update":
-		"ignore-list": [ "kitty" ],
+		"ignore-list": [ "kitty", "Discord Updater" ],
 		// "app_ids-mapping":
 		// "rewrite":
 		"cursor": true
