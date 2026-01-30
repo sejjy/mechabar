@@ -14,7 +14,7 @@
 # License: MIT
 
 TIMEOUT=10
-HELPERS=("aura" "paru" "pikaur" "trizen" "yay")
+HELPERS=(aura paru pikaur trizen yay)
 
 FAILURE=false
 PAC_UPD=0
@@ -22,11 +22,11 @@ AUR_UPD=0
 
 cprintf() {
 	case $1 in
-		green) printf "\e[32m" ;;
-		blue)  printf "\e[34m" ;;
+		g) printf "\e[32m" ;;
+		b) printf "\e[34m" ;;
 	esac
-
-	printf "%b%b\n" "${@:2}" "\e[39m" >&2
+	printf "%b\n" "${@:2}"
+	printf "\e[39m"
 }
 
 get_helper() {
@@ -41,6 +41,7 @@ get_helper() {
 
 check_updates() {
 	local pac_output pac_status
+
 	pac_output=$(timeout $TIMEOUT checkupdates)
 	pac_status=$?
 
@@ -51,9 +52,12 @@ check_updates() {
 
 	PAC_UPD=$(grep -cve "^\s*$" <<< "$pac_output")
 
-	[[ -z $HELPER ]] && return 0
+	if [[ -z $HELPER ]]; then
+		return 0
+	fi
 
 	local aur_output aur_status
+
 	aur_output=$(timeout $TIMEOUT "$HELPER" -Quaq)
 	aur_status=$?
 
@@ -66,17 +70,17 @@ check_updates() {
 }
 
 update_packages() {
-	cprintf blue "Updating pacman packages..."
+	cprintf b "Updating pacman packages..."
 	sudo pacman -Syu
 
 	if [[ -n $HELPER ]]; then
-		cprintf blue "\nUpdating AUR packages..."
-		"$HELPER" -Syu
+		cprintf b "\nUpdating AUR packages..."
+		command "$HELPER" -Syu
 	fi
 
 	notify-send "Update Complete" -i "package-install"
 
-	cprintf green "\nUpdate Complete!"
+	cprintf g "\nUpdate Complete!"
 	read -rsn 1 -p "Press any key to exit..."
 }
 
@@ -108,10 +112,10 @@ main() {
 			display_module
 			;;
 		*)
-			cprintf blue "Checking for updates..."
+			cprintf b "Checking for updates..."
 			check_updates
-
 			update_packages
+
 			pkill -RTMIN+1 waybar
 			;;
 	esac

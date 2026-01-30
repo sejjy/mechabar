@@ -13,28 +13,32 @@
 
 TIMEOUT=5
 
-LIST=
-NETWORKS=
-BSSID=
-
 cprintf() {
-	printf "\e[31m%b\e[39m\n" "$@"
+	printf "\e[31m"
+	printf "%b\n" "$@"
+	printf "\e[39m"
 }
 
-check_state() {
+switch_on() {
 	local state
 	state=$(nmcli radio wifi)
 
-	[[ $state == "enabled" ]] && return 0
+	if [[ $state == enabled ]]; then
+		return 0
+	fi
 
 	nmcli radio wifi on
 
-	local i new_state
-	for ((i = 1; i <= TIMEOUT; i++)); do
+	local new_state
+	local i=1
+
+	for (( ; i <= TIMEOUT; i++)); do
 		printf "\rEnabling Wi-Fi... (%d/%d)" $i $TIMEOUT
 
 		new_state=$(nmcli -t -f STATE general)
-		[[ $new_state != "connected (local only)" ]] && break
+		if [[ $new_state != "connected (local only)" ]]; then
+			break
+		fi
 
 		sleep 1
 	done
@@ -46,14 +50,16 @@ check_state() {
 get_networks() {
 	nmcli device wifi rescan
 
-	local i
-	for ((i = 1; i <= TIMEOUT; i++)); do
+	local i=1
+	for (( ; i <= TIMEOUT; i++)); do
 		printf "\rScanning for networks... (%d/%d)" $i $TIMEOUT
 
 		LIST=$(timeout 1 nmcli device wifi list)
 		NETWORKS=$(tail -n +2 <<< "$LIST" | awk '$2 != "--"')
 
-		[[ -n $NETWORKS ]] && break
+		if [[ -n $NETWORKS ]]; then
+			break
+		fi
 	done
 
 	cprintf "\nScanning stopped.\n"
@@ -82,8 +88,10 @@ select_network() {
 
 	BSSID=$(fzf "${options[@]}" <<< "$NETWORKS" | awk '{print $1}')
 	case $BSSID in
-		"") exit 1 ;;
-		"*")
+		'')
+			exit 1
+			;;
+		'*')
 			notify-send "Wi-Fi" "Already connected to this network" \
 				-i "package-install"
 			exit 1
@@ -106,7 +114,7 @@ main() {
 	# hide cursor
 	printf "\e[?25l"
 
-	check_state
+	switch_on
 	get_networks
 
 	# unhide cursor

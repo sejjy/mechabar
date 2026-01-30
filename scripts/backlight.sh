@@ -43,23 +43,26 @@ main() {
 	fi
 
 	case $action in
-		"up" | "down")
+		up | down)
 			local sign
 
 			case $action in
-				"up")   sign="+" ;;
-				"down") sign="-" ;;
+				up)   sign='+' ;;
+				down) sign='-' ;;
 			esac
 
-			brightnessctl -n set "$value%$sign" > /dev/null
+			brightnessctl -n set "${value}%${sign}" > /dev/null
 
 			local level
-			level=$(brightnessctl -m | awk -F "," '{print $4}')
+			level=$(brightnessctl -m | awk -F ',' '{print $4}')
 
 			notify-send "Brightness: $level" -h int:value:"$level" -i \
 				"contrast" -h string:x-canonical-private-synchronous:backlight
 			;;
-		*) usage >&2; return 1 ;;
+		*)
+			usage >&2
+			return 1
+			;;
 	esac
 }
 
