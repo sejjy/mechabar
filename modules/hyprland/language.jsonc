@@ -1,0 +1,14 @@
+{
+	"hyprland/language": {
+		// "format":
+		// "format-<lang>":
+		"format-en": " en"
+		// "keyboard-name":
+		// "min-length":
+		// "max-length":
+		// "menu":
+		// "menu-file":
+		// "menu-actions":
+		// "expand":
+	}
+}
