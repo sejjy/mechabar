@@ -1,11 +1,9 @@
-/*------------------
-    window count
-------------------*/
+/*--------------
+    language
+--------------*/
 
-#windowcount {
+#language {
 	margin-right: 12px;
-}
-#windowcount label {
 	color: @hover-fg;
 }
 
