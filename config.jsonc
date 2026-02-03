@@ -38,6 +38,7 @@
 		"~/.config/waybar/modules/custom/dividers.jsonc"
 
 		// modules that are not included by default:
+		// "~/.config/waybar/modules/extras/keyboard_state.jsonc",
 		// "~/.config/waybar/modules/extras/taskbar.jsonc",
 		// "~/.config/waybar/modules/extras/tray.jsonc",
 		// "~/.config/waybar/modules/extras/wireplumber.jsonc"
