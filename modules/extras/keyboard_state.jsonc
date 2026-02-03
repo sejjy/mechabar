@@ -1,0 +1,16 @@
+{
+	"keyboard-state": {
+		// "interval":
+		"format": "󰌌 {icon}",
+		"format-icons": {
+			"locked": "A",
+			"unlocked": "a"
+		},
+		// "numlock":
+		"capslock": true,
+		// "scrolllock":
+		// "device-path":
+		"binding-keys": [ 1, 58 ]
+		// "expand":
+	}
+}
