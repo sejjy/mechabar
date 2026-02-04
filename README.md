@@ -5,27 +5,27 @@
 A mecha-themed, modular Waybar configuration.
 
 | ![Mechabar](./assets/catppuccin-mocha.png) |
-| :--------------------------------------: |
+| :----------------------------------------: |
 
 <details>
 <summary>Themes</summary>
 
 <ins><b>Catppuccin:</b></ins>
 
-| Mocha (default)                                  |
-| :----------------------------------------------: |
+| Mocha (default)                                    |
+| :------------------------------------------------: |
 | ![Catppuccin Mocha](./assets/catppuccin-mocha.png) |
 
-| Macchiato                                                |
-| :------------------------------------------------------: |
+| Macchiato                                                  |
+| :--------------------------------------------------------: |
 | ![Catppuccin Macchiato](./assets/catppuccin-macchiato.png) |
 
-| Frappe                                             |
-| :------------------------------------------------: |
+| Frappe                                               |
+| :--------------------------------------------------: |
 | ![Catppuccin Frappe](./assets/catppuccin-frappe.png) |
 
-| Latte                                            |
-| :----------------------------------------------: |
+| Latte                                              |
+| :------------------------------------------------: |
 | ![Catppuccin Latte](./assets/catppuccin-latte.png) |
 
 Feel free to open a pull request if you'd like to add themes! :^)
@@ -40,14 +40,16 @@ Feel free to open a pull request if you'd like to add themes! :^)
 1. **[Waybar](https://github.com/Alexays/Waybar)**
 
 > [!WARNING]
-> **Waybar v0.14.0** introduced an [issue](https://github.com/Alexays/Waybar/issues/4354) that breaks [wildcard includes](./config.jsonc#L2-L9).
+> **Waybar v0.14.0** introduced an
+> [issue](https://github.com/Alexays/Waybar/issues/4354) that breaks
+> [wildcard includes](./config.jsonc#L2-L9).
 > [Clone the `fix/v0.14.0` branch](#clone-fix-branch) as a temporary workaround.
 
 2. A **terminal emulator** (default: `kitty`)
 
 > [!IMPORTANT]
-> If you use a different terminal emulator (e.g., `ghostty`),
-> you need to replace all invocations of `kitty` with your terminal command:
+> If you use a different terminal emulator (e.g., `ghostty`), you need to
+> replace all invocations of `kitty` with your terminal command:
 >
 > ```diff
 > - "on-click": "kitty -e ..."
@@ -82,7 +84,8 @@ Feel free to open a pull request if you'd like to add themes! :^)
 	~/.config/waybar/install.sh
 	```
 
-	This makes the [scripts](./scripts/) executable and installs the following dependencies:
+	This makes the [scripts](./scripts/) executable and installs the following
+	dependencies:
 
 	<details>
 	<summary>Packages (8)</summary>
@@ -105,28 +108,60 @@ Feel free to open a pull request if you'd like to add themes! :^)
 ### Configuration
 
 <details>
+<summary>User module</summary>
+
+The leftmost module has no default function and is reserved for custom use. You
+can configure it to run any command. Example:
+
+```jsonc
+// modules/custom/user.jsonc
+
+"custom/trigger": {
+	// Run fastfetch (keep the window open)
+	"on-click": "kitty --hold sh -c fastfetch",
+	// Run btop
+	"on-click-right": "kitty -e btop",
+}
+```
+
+#
+
+</details>
+
+<details>
 <summary>Binds</summary>
 
-You can set keybinds to interact with modules via [scripts](./scripts/). Example:
+You can set binds to interact with modules using their respective
+[scripts](./scripts/). Example:
 
 ```properties
 # ~/.config/hypr/hyprland.conf
 
-$mod  = SUPER
-$term = kitty
-$scr  = ~/.config/waybar/scripts
+$scr = ~/.config/waybar/scripts
 
-bind = $mod, B, exec, $term -e $scr/bluetooth.sh
-bind = $mod, N, exec, $term -e $scr/network.sh
-bind = $mod, O, exec, $term -e $scr/power-menu.sh
-bind = $mod, U, exec, $term -e $scr/system-update.sh
+# Interactive
+bind = SUPER, B, exec, kitty -e ${scr}/bluetooth.sh
+bind = SUPER, N, exec, kitty -e ${scr}/network.sh
+bind = SUPER, O, exec, kitty -e ${scr}/power-menu.sh
+bind = SUPER, U, exec, kitty -e ${scr}/system-update.sh
 
-bindl  = , XF86AudioMicMute,      exec, $scr/volume.sh input mute
-bindl  = , XF86AudioMute,         exec, $scr/volume.sh output mute
-bindel = , XF86AudioLowerVolume,  exec, $scr/volume.sh output lower
-bindel = , XF86AudioRaiseVolume,  exec, $scr/volume.sh output raise
-bindel = , XF86MonBrightnessDown, exec, $scr/backlight.sh down
-bindel = , XF86MonBrightnessUp,   exec, $scr/backlight.sh up
+# Direct control
+bindl  = , XF86AudioMicMute,      exec, ${scr}/volume.sh    input  mute
+bindl  = , XF86AudioMute,         exec, ${scr}/volume.sh    output mute
+bindel = , XF86AudioLowerVolume,  exec, ${scr}/volume.sh    output lower
+bindel = , XF86AudioRaiseVolume,  exec, ${scr}/volume.sh    output raise
+bindel = , XF86MonBrightnessDown, exec, ${scr}/backlight.sh down
+bindel = , XF86MonBrightnessUp,   exec, ${scr}/backlight.sh up
+
+# Toggle off
+bind = SUPER ALT, B, exec, bluetoothctl power off &&           \
+                           notify-send 'Bluetooth Off'         \
+                               -i 'network-bluetooth-inactive' \
+                               -h string:x-canonical-private-synchronous:bluetooth
+bind = SUPER ALT, N, exec, nmcli radio wifi off &&          \
+                           notify-send 'Wi-Fi Disabled'     \
+                               -i 'network-wireless-off'    \
+                               -h string:x-canonical-private-synchronous:network
 ```
 
 #
@@ -136,19 +171,23 @@ bindel = , XF86MonBrightnessUp,   exec, $scr/backlight.sh up
 <details>
 <summary>Icons</summary>
 
-You can search for icons on [Nerd Fonts: Cheat Sheet ↗](https://www.nerdfonts.com/cheat-sheet). Example:
+You can search for icons on
+[Nerd Fonts: Cheat Sheet ↗](https://www.nerdfonts.com/cheat-sheet). Example:
 
 ```
 battery charging
 ```
 
-For consistency, most modules use icons from Material Design, prefixed with `nf-md`:
+For consistency, most modules use icons from Material Design, prefixed with
+`nf-md`:
 
 ```
 nf-md battery charging
 ```
 
-See [Nerd Fonts wiki: Glyph Sets](https://github.com/ryanoasis/nerd-fonts/wiki/Glyph-Sets-and-Code-Points#glyph-sets) for more info.
+See
+[Nerd Fonts wiki: Glyph Sets](https://github.com/ryanoasis/nerd-fonts/wiki/Glyph-Sets-and-Code-Points#glyph-sets)
+for more info.
 
 #
 
@@ -157,7 +196,8 @@ See [Nerd Fonts wiki: Glyph Sets](https://github.com/ryanoasis/nerd-fonts/wiki/G
 <details open>
 <summary>Theme</summary>
 
-Copy your preferred theme from the [themes](./themes/) directory into `theme.css`. Example:
+Copy your preferred theme from the [themes](./themes/) directory into
+`theme.css`. Example:
 
 ```bash
 cd ~/.config/waybar
