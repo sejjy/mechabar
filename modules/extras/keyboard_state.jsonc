@@ -1,10 +1,10 @@
 {
 	"keyboard-state": {
 		// "interval":
-		"format": "󰌌 {icon}",
+		"format": " {icon}",
 		"format-icons": {
-			"locked": "A",
-			"unlocked": "a"
+			"locked": "AA",
+			"unlocked": "aa"
 		},
 		// "numlock":
 		"capslock": true,
