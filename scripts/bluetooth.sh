@@ -98,6 +98,7 @@ select_device() {
 	local options=(
 		"--border=sharp"
 		"--border-label= Bluetooth Devices "
+		"--cycle"
 		"--ghost=Search"
 		"--header=$header"
 		"--height=~100%"
