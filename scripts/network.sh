@@ -115,6 +115,8 @@ connect() {
 }
 
 main() {
+	trap "printf '\e[?25h'" EXIT
+
 	# hide cursor
 	printf "\e[?25l"
 
