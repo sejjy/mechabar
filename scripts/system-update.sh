@@ -16,10 +16,6 @@
 TIMEOUT=10
 HELPERS=(aura paru pikaur trizen yay)
 
-FAILURE=false
-PAC_UPD=0
-AUR_UPD=0
-
 printf() {
 	command printf "$@" >&2
 }
@@ -110,8 +106,12 @@ display_module() {
 main() {
 	get_helper
 
+	FAILURE=false
+	PAC_UPD=0
+	AUR_UPD=0
+
 	case $1 in
-		"module")
+		module)
 			check_updates
 			display_module
 			;;
