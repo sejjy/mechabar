@@ -81,6 +81,7 @@ select_network() {
 	local options=(
 		"--border=sharp"
 		"--border-label= Wi-Fi Networks "
+		"--cycle"
 		"--ghost=Search"
 		"--header=$header"
 		"--height=~100%"

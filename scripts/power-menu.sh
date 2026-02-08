@@ -21,6 +21,7 @@ main() {
 	local options=(
 		"--border=sharp"
 		"--border-label= Power Menu "
+		"--cycle"
 		"--height=~100%"
 		"--highlight-line"
 		"--no-input"
