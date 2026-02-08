@@ -17,7 +17,7 @@ MAX=100
 usage() {
 	local script=${0##*/}
 
-	cat <<- EOF
+	cat >&2 <<- EOF
 		USAGE: $script {input|output} {mute|raise|lower} [value]
 
 		Adjust default device volume and send a notification with the current level
@@ -133,7 +133,7 @@ main() {
 	VALUE=${3:-$DEF_VALUE}
 
 	if ((VALUE < 1)); then
-		usage >&2
+		usage
 		return 1
 	fi
 
@@ -153,20 +153,16 @@ main() {
 			DEV_NAME="Volume"
 			;;
 		*)
-			usage >&2
+			usage
 			return 1
 			;;
 	esac
 
 	case $ACTION in
-		mute)
-			set_state
-			;;
-		raise | lower)
-			set_volume
-			;;
+		mute)          set_state ;;
+		raise | lower) set_volume ;;
 		*)
-			usage >&2
+			usage
 			return 1
 			;;
 	esac

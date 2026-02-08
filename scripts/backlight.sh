@@ -15,7 +15,7 @@ DEF_VALUE=1
 usage() {
 	local script=${0##*/}
 
-	cat <<- EOF
+	cat >&2 <<- EOF
 		USAGE: $script {up|down} [value]
 
 		Adjust screen brightness and send a notification with the current level
@@ -38,7 +38,7 @@ main() {
 	local value=${2:-$DEF_VALUE}
 
 	if ((value < 1)); then
-		usage >&2
+		usage
 		return 1
 	fi
 
@@ -60,7 +60,7 @@ main() {
 				"contrast" -h string:x-canonical-private-synchronous:backlight
 			;;
 		*)
-			usage >&2
+			usage
 			return 1
 			;;
 	esac

@@ -13,10 +13,14 @@
 
 TIMEOUT=10
 
+printf() {
+	command printf "$@" >&2
+}
+
 cprintf() {
 	printf "\e[31m"
-	printf "%b\n" "$@"
-	printf "\e[39m"
+	printf "%b" "$@"
+	printf "\e[39m\n"
 }
 
 power_on() {
