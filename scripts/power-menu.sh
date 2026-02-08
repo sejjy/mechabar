@@ -22,9 +22,10 @@ main() {
 		"--border=sharp"
 		"--border-label= Power Menu "
 		"--cycle"
+		"--ghost=Search"
 		"--height=~100%"
 		"--highlight-line"
-		"--no-input"
+		"--info=inline-right"
 		"--pointer="
 		"--reverse"
 	)
