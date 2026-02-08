@@ -11,14 +11,18 @@ DEPS=(
 	otf-commit-mono-nerd
 )
 
+printf() {
+	command printf "$@" >&2
+}
+
 cprintf() {
 	case $1 in
 		r) printf "\e[31m" ;;
 		g) printf "\e[32m" ;;
 		b) printf "\e[34m" ;;
 	esac
-	printf "%b\n" "${@:2}"
-	printf "\e[39m"
+	printf "%b" "${@:2}"
+	printf "\e[39m\n"
 }
 
 main() {

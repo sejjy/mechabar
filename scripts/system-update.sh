@@ -20,13 +20,17 @@ FAILURE=false
 PAC_UPD=0
 AUR_UPD=0
 
+printf() {
+	command printf "$@" >&2
+}
+
 cprintf() {
 	case $1 in
 		g) printf "\e[32m" ;;
 		b) printf "\e[34m" ;;
 	esac
-	printf "%b\n" "${@:2}"
-	printf "\e[39m"
+	printf "%b" "${@:2}"
+	printf "\e[39m\n"
 }
 
 get_helper() {
@@ -86,7 +90,7 @@ update_packages() {
 
 display_module() {
 	if $FAILURE; then
-		echo "{ \"text\": \"󰒑\", \"tooltip\": \"Cannot fetch updates. Right-click to retry.\" }"
+		command printf "{ \"text\": \"󰒑\", \"tooltip\": \"Cannot fetch updates. Right-click to retry.\" }\n"
 		exit 0
 	fi
 
@@ -97,9 +101,9 @@ display_module() {
 	fi
 
 	if ((PAC_UPD + AUR_UPD == 0)); then
-		echo "{ \"text\": \"󰸟\", \"tooltip\": \"No updates available\" }"
+		command printf "{ \"text\": \"󰸟\", \"tooltip\": \"No updates available\" }\n"
 	else
-		echo "{ \"text\": \"󰄠\", \"tooltip\": \"$tooltip\" }"
+		command printf "{ \"text\": \"󰄠\", \"tooltip\": \"%s\" }\n" "$tooltip"
 	fi
 }
 
