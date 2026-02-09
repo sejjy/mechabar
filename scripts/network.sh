@@ -11,16 +11,13 @@
 # Date:    August 11, 2025
 # License: MIT
 
+FG_RED="\e[31m"
+FG_RESET="\e[39m"
+
 TIMEOUT=5
 
 printf() {
 	command printf "$@" >&2
-}
-
-cprintf() {
-	printf "\e[31m"
-	printf "%b" "$@"
-	printf "\e[39m\n"
 }
 
 switch_on() {
@@ -34,9 +31,9 @@ switch_on() {
 	nmcli radio wifi on
 
 	local new_state
-	local i=1
 
-	for (( ; i <= TIMEOUT; i++)); do
+	local i=1
+	for ((; i <= TIMEOUT; i++)); do
 		printf "\rEnabling Wi-Fi... (%d/%d)" $i $TIMEOUT
 
 		new_state=$(nmcli -t -f STATE general)
@@ -55,7 +52,7 @@ get_networks() {
 	nmcli device wifi rescan
 
 	local i=1
-	for (( ; i <= TIMEOUT; i++)); do
+	for ((; i <= TIMEOUT; i++)); do
 		printf "\rScanning for networks... (%d/%d)" $i $TIMEOUT
 
 		LIST=$(timeout 1 nmcli device wifi list)
@@ -66,7 +63,7 @@ get_networks() {
 		fi
 	done
 
-	cprintf "\nScanning stopped.\n"
+	printf "\n%bScanning stopped.%b\n\n" "$FG_RED" "$FG_RESET"
 
 	if [[ -z $NETWORKS ]]; then
 		notify-send "Wi-Fi" "No networks found" -i "package-broken"
@@ -116,15 +113,13 @@ connect() {
 }
 
 main() {
-	trap "printf '\e[?25h'" EXIT
-
-	# hide cursor
+	# make cursor invisible
 	printf "\e[?25l"
 
 	switch_on
 	get_networks
 
-	# unhide cursor
+	# make cursor visible
 	printf "\e[?25h"
 
 	select_network
