@@ -1,8 +1,15 @@
 #!/usr/bin/env bash
 
+FG_RED="\e[31m"
+FG_GREEN="\e[32m"
+FG_BLUE="\e[34m"
+FG_RESET="\e[39m"
+
+ERRORS=0
+
 DEPS=(
 	bluez
-	bluez-utils    # bluetoothctl
+	bluez-utils # bluetoothctl
 	brightnessctl
 	fzf
 	networkmanager # nmcli
@@ -15,41 +22,34 @@ printf() {
 	command printf "$@" >&2
 }
 
-cprintf() {
-	case $1 in
-		r) printf "\e[31m" ;;
-		g) printf "\e[32m" ;;
-		b) printf "\e[34m" ;;
-	esac
-	printf "%b" "${@:2}"
-	printf "\e[39m\n"
-}
+install_deps() {
+	printf "%bInstalling dependencies...%b\n" "$FG_BLUE" "$FG_RESET"
 
-main() {
-	cprintf b "Installing dependencies..."
-
-	local errors=0
-	local d
-
-	for d in "${DEPS[@]}"; do
-		if pacman -Qi "$d" > /dev/null; then
-			printf "[/] %s\n" "$d"
+	local dep
+	for dep in "${DEPS[@]}"; do
+		if pacman -Qi "$dep" > /dev/null; then
+			printf "[/] %s\n" "$dep"
 		else
-			printf "[ ] %s...\n" "$d"
+			printf "[ ] %s...\n" "$dep"
 
-			if sudo pacman -S --noconfirm "$d"; then
-				cprintf g "[+] $d"
+			if sudo pacman -S --noconfirm "$dep"; then
+				printf "%b[/] %s%b\n" "$FG_GREEN" "$dep" "$FG_RESET"
 			else
-				cprintf r "[x] $d"
-				((errors += 1))
+				printf "%b[x] %s%b\n" "$FG_RED" "$dep" "$FG_RESET"
+				((ERRORS += 1))
 			fi
 		fi
 	done
+}
 
-	cprintf b "\nMaking scripts executable..."
+setup_scripts() {
+	printf "\n%bMaking scripts executable...%b\n" "$FG_BLUE" "$FG_RESET"
+
 	chmod -v +x ~/.config/waybar/scripts/*.sh
+}
 
-	cprintf b "\nRestarting Waybar..."
+restart_waybar() {
+	printf "\n%bRestarting Waybar...%b\n" "$FG_BLUE" "$FG_RESET"
 
 	if ! (systemctl --user is-enabled waybar.service &&
 		systemctl --user restart waybar.service) &> /dev/null; then
@@ -57,11 +57,18 @@ main() {
 		waybar &> /dev/null &
 		disown
 	fi
+}
 
-	if ((errors > 0)); then
-		cprintf r "\nInstallation completed with $errors errors"
+main() {
+	install_deps
+	setup_scripts
+	restart_waybar
+
+	if ((ERRORS > 0)); then
+		printf "\n%bInstallation completed with %d error(s)%b\n" \
+			"$FG_RED" "$ERRORS" "$FG_RESET"
 	else
-		cprintf g "\nInstallation complete!"
+		printf "\n%bInstallation complete!%b\n" "$FG_GREEN" "$FG_RESET"
 	fi
 }
 
