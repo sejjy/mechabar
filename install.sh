@@ -42,12 +42,6 @@ install_deps() {
 	done
 }
 
-setup_scripts() {
-	printf "\n%bMaking scripts executable...%b\n" "$FG_BLUE" "$FG_RESET"
-
-	chmod -v +x ~/.config/waybar/scripts/*.sh
-}
-
 restart_waybar() {
 	printf "\n%bRestarting Waybar...%b\n" "$FG_BLUE" "$FG_RESET"
 
@@ -61,7 +55,6 @@ restart_waybar() {
 
 main() {
 	install_deps
-	setup_scripts
 	restart_waybar
 
 	if ((ERRORS > 0)); then
