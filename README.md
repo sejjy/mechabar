@@ -107,19 +107,19 @@ Feel free to open a pull request to add new themes! :^)
 <details>
 <summary>User module</summary>
 
-The leftmost module has no default function and is reserved for custom use. You
-can configure it to run any command. For example:
+- The leftmost module has no default function and is reserved for custom use.
+  You can configure it to run any command. For example:
 
-```jsonc
-// modules/custom/user.jsonc
+   ```jsonc
+   // modules/custom/user.jsonc
 
-"custom/trigger": {
-	// Run fastfetch and keep the window open
-	"on-click": "kitty --hold sh -c fastfetch",
-	// Run btop
-	"on-click-right": "kitty -e btop",
-}
-```
+   "custom/trigger": {
+   	// Run fastfetch and keep the window open
+   	"on-click": "kitty --hold sh -c fastfetch",
+   	// Run btop
+   	"on-click-right": "kitty -e btop",
+   }
+   ```
 
 #
 
@@ -128,38 +128,38 @@ can configure it to run any command. For example:
 <details>
 <summary>Binds</summary>
 
-You can define keybinds to interact with modules using their respective
-[scripts](./scripts/). For example:
+- You can define keybinds to interact with modules using their respective
+  [scripts](./scripts/). For example:
 
-```properties
-# ~/.config/hypr/hyprland.conf
+   ```properties
+   # ~/.config/hypr/hyprland.conf
 
-$scr = ~/.config/waybar/scripts
+   $scr = ~/.config/waybar/scripts
 
-# Interactive
-bind = SUPER, B, exec, kitty -e ${scr}/bluetooth.sh
-bind = SUPER, N, exec, kitty -e ${scr}/network.sh
-bind = SUPER, O, exec, kitty -e ${scr}/power-menu.sh
-bind = SUPER, U, exec, kitty -e ${scr}/system-update.sh
+   # Interactive
+   bind = SUPER, B, exec, kitty -e ${scr}/bluetooth.sh
+   bind = SUPER, N, exec, kitty -e ${scr}/network.sh
+   bind = SUPER, O, exec, kitty -e ${scr}/power-menu.sh
+   bind = SUPER, U, exec, kitty -e ${scr}/system-update.sh
 
-# Direct control
-bindl  = , XF86AudioMicMute,      exec, ${scr}/volume.sh    input  mute
-bindl  = , XF86AudioMute,         exec, ${scr}/volume.sh    output mute
-bindel = , XF86AudioLowerVolume,  exec, ${scr}/volume.sh    output lower
-bindel = , XF86AudioRaiseVolume,  exec, ${scr}/volume.sh    output raise
-bindel = , XF86MonBrightnessDown, exec, ${scr}/backlight.sh down
-bindel = , XF86MonBrightnessUp,   exec, ${scr}/backlight.sh up
+   # Direct control
+   bindl  = , XF86AudioMicMute,      exec, ${scr}/volume.sh    input  mute
+   bindl  = , XF86AudioMute,         exec, ${scr}/volume.sh    output mute
+   bindel = , XF86AudioLowerVolume,  exec, ${scr}/volume.sh    output lower
+   bindel = , XF86AudioRaiseVolume,  exec, ${scr}/volume.sh    output raise
+   bindel = , XF86MonBrightnessDown, exec, ${scr}/backlight.sh down
+   bindel = , XF86MonBrightnessUp,   exec, ${scr}/backlight.sh up
 
-# Toggle off
-bind = SUPER ALT, B, exec, bluetoothctl power off &&           \
-                           notify-send "Bluetooth Off"         \
-                               -i "network-bluetooth-inactive" \
-                               -h string:x-canonical-private-synchronous:bluetooth
-bind = SUPER ALT, N, exec, nmcli radio wifi off &&          \
-                           notify-send "Wi-Fi Disabled"     \
-                               -i "network-wireless-off"    \
-                               -h string:x-canonical-private-synchronous:network
-```
+   # Toggle off
+   bind = SUPER ALT, B, exec, bluetoothctl power off &&           \
+                              notify-send "Bluetooth Off"         \
+                                  -i "network-bluetooth-inactive" \
+                                  -h string:x-canonical-private-synchronous:bluetooth
+   bind = SUPER ALT, N, exec, nmcli radio wifi off &&          \
+                              notify-send "Wi-Fi Disabled"     \
+                                  -i "network-wireless-off"    \
+                                  -h string:x-canonical-private-synchronous:network
+   ```
 
 #
 
@@ -168,23 +168,24 @@ bind = SUPER ALT, N, exec, nmcli radio wifi off &&          \
 <details>
 <summary>Icons</summary>
 
-You can search for icons on
-[Nerd Fonts: Cheat Sheet ↗](https://www.nerdfonts.com/cheat-sheet). For example:
+- You can search for icons on
+  [Nerd Fonts: Cheat Sheet ↗](https://www.nerdfonts.com/cheat-sheet). For
+  example:
 
-```
-battery charging
-```
+   ```
+   battery charging
+   ```
 
-For consistency, most modules use icons from Material Design, prefixed with
-`nf-md`:
+	For consistency, most modules use icons from Material Design, prefixed with
+	`nf-md`:
 
-```
-nf-md battery charging
-```
+   ```
+   nf-md battery charging
+   ```
 
-> See
-> [Nerd Fonts wiki: Glyph Sets](https://github.com/ryanoasis/nerd-fonts/wiki/Glyph-Sets-and-Code-Points#glyph-sets)
-> for more info.
+	> See
+	> [Nerd Fonts wiki: Glyph Sets](https://github.com/ryanoasis/nerd-fonts/wiki/Glyph-Sets-and-Code-Points#glyph-sets)
+	> for more info.
 
 #
 
@@ -193,13 +194,13 @@ nf-md battery charging
 <details open>
 <summary>Theme</summary>
 
-Copy your preferred theme from the [themes](./themes/) directory to `theme.css`.
-For example:
+- Copy your preferred theme from the [themes](./themes/) directory to
+  `theme.css`. For example:
 
-```bash
-cd ~/.config/waybar
-cp themes/catppuccin-latte.css theme.css
-```
+   ```bash
+   cd ~/.config/waybar
+   cp themes/catppuccin-latte.css theme.css
+   ```
 
 </details>
 
