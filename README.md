@@ -209,13 +209,11 @@ cp themes/catppuccin-latte.css theme.css
 
 - [Waybar wiki](https://github.com/Alexays/Waybar/wiki)
 
-- ```bash
-  man waybar
-  ```
+- Man page:
 
-- ```bash
-  waybar --help
-  ```
+   ```bash
+   man waybar
+   ```
 
 #
 
