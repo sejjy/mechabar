@@ -39,15 +39,15 @@ Feel free to open a pull request to add new themes! :^)
 
 1. **[Waybar](https://github.com/Alexays/Waybar)**
 
-> [!WARNING]
+> [!IMPORTANT]
 > If you have **v0.14.0** installed,
 > [clone the `fix/v0.14.0` branch](#clone-fix-branch) instead.
 
 2. A **terminal emulator** (default: Kitty)
 
 > [!IMPORTANT]
-> If you're not using Kitty, replace all its invocations with your
-> terminal command. For example:
+> If you use a different emulator, replace all `kitty` commands accordingly. For
+> example:
 >
 > ```diff
 > - "on-click": "kitty -e ..."
@@ -114,8 +114,8 @@ can configure it to run any command. For example:
 // modules/custom/user.jsonc
 
 "custom/trigger": {
-	// Run fastfetch and keep the window open
-	"on-click": "kitty --hold sh -c fastfetch",
+	// Run fastfetch and keep the terminal open
+	"on-click": "kitty --hold bash -c fastfetch",
 	// Run btop
 	"on-click-right": "kitty -e btop",
 }
@@ -182,10 +182,6 @@ For consistency, most modules use icons from Material Design, prefixed with
 nf-md battery charging
 ```
 
-> See
-> [Nerd Fonts wiki: Glyph Sets](https://github.com/ryanoasis/nerd-fonts/wiki/Glyph-Sets-and-Code-Points#glyph-sets)
-> for more info.
-
 #
 
 </details>
@@ -205,20 +201,8 @@ cp themes/catppuccin-latte.css theme.css
 
 #
 
-### Documentation
-
-- [Waybar wiki](https://github.com/Alexays/Waybar/wiki)
-
-- Man page:
-
-   ```bash
-   man waybar
-   ```
-
-#
-
 ### References
 
-- [Catppuccin Waybar theme](https://github.com/catppuccin/waybar)
-- [CommitMono Nerd Font](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/CommitMono)
 - [Hyprland wiki: Binds ↗](https://wiki.hypr.land/Configuring/Binds/)
+- [Nerd Fonts wiki: Glyph Sets](https://github.com/ryanoasis/nerd-fonts/wiki/Glyph-Sets-and-Code-Points)
+- [Waybar wiki](https://github.com/Alexays/Waybar/wiki)
