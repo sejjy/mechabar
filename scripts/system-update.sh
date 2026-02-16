@@ -84,22 +84,24 @@ update_packages() {
 }
 
 display_module() {
+	local icon tooltip
+
 	if $FAILURE; then
-		command printf "{ \"text\": \"󰒑\", \"tooltip\": \"Cannot fetch updates. Right-click to retry.\" }\n"
-		exit 0
-	fi
-
-	local tooltip="<b>Official</b>: $PAC_UPD"
-
-	if [[ -n $HELPER ]]; then
-		tooltip+="\n<b>AUR($HELPER)</b>: $AUR_UPD"
-	fi
-
-	if ((PAC_UPD + AUR_UPD == 0)); then
-		command printf "{ \"text\": \"󰸟\", \"tooltip\": \"No updates available\" }\n"
+		icon='󰒑'
+		tooltip="Cannot fetch updates. Right-click to retry."
+	elif ((PAC_UPD + AUR_UPD == 0)); then
+		icon='󰸟'
+		tooltip="No updates available"
 	else
-		command printf "{ \"text\": \"󰄠\", \"tooltip\": \"%s\" }\n" "$tooltip"
+		icon='󰄠'
+		tooltip="<b>Official</b>: $PAC_UPD"
+
+		if [[ -n $HELPER ]]; then
+			tooltip+="\n<b>AUR($HELPER)</b>: $AUR_UPD"
+		fi
 	fi
+
+	command printf '{ "text": "%s", "tooltip": "%s" }\n' "$icon" "$tooltip"
 }
 
 main() {
