@@ -39,7 +39,7 @@
 		"custom/right_div#4",
 		"network",
 		"bluetooth",
-		"custom/system_update",
+		"custom/update",
 		"custom/right_div#5"
 	],
 	"modules-right": [

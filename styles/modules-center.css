@@ -109,7 +109,7 @@
 	background-color: @tray;
 	padding: 0 5px;
 }
-#custom-system_update {
+#custom-update {
 	background-color: @tray;
 	padding: 0 8px 0 2px;
 }
