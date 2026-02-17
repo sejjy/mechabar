@@ -27,15 +27,15 @@ install_deps() {
 
 	local dep
 	for dep in "${DEPS[@]}"; do
-		if pacman -Qi "$dep" > /dev/null; then
-			printf "[/] %s\n" "$dep"
+		if pacman -Qi "$dep" &> /dev/null; then
+			printf "[=] %s\n" "$dep"
 		else
 			printf "[ ] %s...\n" "$dep"
 
 			if sudo pacman -S --noconfirm "$dep"; then
-				printf "%b[/] %s%b\n" "$FG_GREEN" "$dep" "$FG_RESET"
+				printf "[%b+%b] %s\n" "$FG_GREEN" "$FG_RESET" "$dep"
 			else
-				printf "%b[x] %s%b\n" "$FG_RED" "$dep" "$FG_RESET"
+				printf "[%bx%b] %s\n" "$FG_RED" "$FG_RESET" "$dep"
 				((ERRORS += 1))
 			fi
 		fi
@@ -58,7 +58,7 @@ main() {
 	restart_waybar
 
 	if ((ERRORS > 0)); then
-		printf "\n%bInstallation completed with %d error(s)%b\n" \
+		printf "\nInstallation completed with %b%d error(s)%b\n" \
 			"$FG_RED" "$ERRORS" "$FG_RESET"
 	else
 		printf "\n%bInstallation complete!%b\n" "$FG_GREEN" "$FG_RESET"
