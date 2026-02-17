@@ -39,7 +39,7 @@
 		"custom/right_div#4",
 		"network",
 		"bluetooth",
-		"custom/system_update",
+		"custom/update",
 		"custom/right_div#5"
 	],
 	"modules-right": [
@@ -51,7 +51,7 @@
 		"custom/left_div#8",
 		"battery",
 		"custom/left_inv#2",
-		"custom/power_menu"
+		"custom/power"
 	],
 
 	/*-------------

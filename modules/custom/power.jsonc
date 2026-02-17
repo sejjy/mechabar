@@ -1,5 +1,5 @@
 {
-	"custom/power_menu": {
+	"custom/power": {
 		// "exec":
 		// "exec-if":
 		// "exec-on-event":
@@ -15,7 +15,7 @@
 		// "max-length":
 		// "align":
 		// "justify":
-		"on-click": "kitty -e ~/.config/waybar/scripts/power-menu.sh",
+		"on-click": "kitty -e ~/.config/waybar/scripts/power",
 		// "on-click-middle":
 		// "on-click-right":
 		// "on-update":
