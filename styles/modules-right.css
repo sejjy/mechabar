@@ -49,11 +49,11 @@
     power menu
 ----------------*/
 
-#custom-power_menu {
+#custom-power {
 	border-radius: 16px;
 	padding: 0 19px 0 16px;
 	color: @accent;
 }
-#custom-power_menu:hover {
+#custom-power:hover {
 	background-color: @hover-bg;
 }
