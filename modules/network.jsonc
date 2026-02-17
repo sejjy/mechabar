@@ -19,7 +19,7 @@
 		"max-length": 2,
 		// "align":
 		// "justify":
-		"on-click": "kitty -e ~/.config/waybar/scripts/network.sh",
+		"on-click": "kitty -e ~/.config/waybar/scripts/network",
 		// "on-click-middle":
 		"on-click-right": "nmcli radio wifi off && notify-send 'Wi-Fi Disabled' -i 'network-wireless-off' -h string:x-canonical-private-synchronous:network",
 		// "on-update":
