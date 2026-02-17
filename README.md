@@ -70,22 +70,20 @@ Feel free to open a pull request to add new themes! :^)
 	git clone https://github.com/sejjy/mechabar.git ~/.config/waybar
 	```
 
-	<a name="clone-fix-branch">**Waybar v0.14.0**</a>:
+	<a name="clone-fix-branch">**For Waybar v0.14.0**</a>:
 
 	```bash
 	git clone -b fix/v0.14.0 https://github.com/sejjy/mechabar.git ~/.config/waybar
 	```
 
-3. Run [`install.sh`](./install.sh):
+3. Install the dependencies and restart Waybar:
 
 	```bash
-	~/.config/waybar/install.sh
+	~/.config/waybar/install
 	```
 
-	> This installs the following dependencies:
-
 	<details>
-	<summary>Packages (8)</summary>
+	<summary>Dependencies (8)</summary>
 
 	| Package                | Command         | Description                                                                    |
 	| ---------------------- | --------------- | ------------------------------------------------------------------------------ |
@@ -105,7 +103,7 @@ Feel free to open a pull request to add new themes! :^)
 ### Configuration
 
 <details>
-<summary>User module</summary>
+<summary><code>user.jsonc</code></summary>
 
 The leftmost module has no default function and is reserved for custom use. You
 can configure it to run any command. For example:
@@ -114,10 +112,10 @@ can configure it to run any command. For example:
 // modules/custom/user.jsonc
 
 "custom/trigger": {
-	// Run fastfetch and keep the terminal open
-	"on-click": "kitty --hold bash -c fastfetch",
-	// Run btop
-	"on-click-right": "kitty -e btop",
+	// Run your script
+	"on-click": "/path/to/my/script",
+	// Restart Waybar
+	"on-click-right": "pkill -SIGUSR2 waybar",
 }
 ```
 
@@ -134,23 +132,23 @@ You can define keybinds to interact with modules using their respective
 ```properties
 # ~/.config/hypr/hyprland.conf
 
-$scr = ~/.config/waybar/scripts
+$path = ~/.config/waybar/scripts
 
-# Interactive
-bind = SUPER, B, exec, kitty -e ${scr}/bluetooth.sh
-bind = SUPER, N, exec, kitty -e ${scr}/network.sh
-bind = SUPER, O, exec, kitty -e ${scr}/power-menu.sh
-bind = SUPER, U, exec, kitty -e ${scr}/system-update.sh
+# Launch CLI
+bind = SUPER, B, exec, kitty -e $path/bluetooth
+bind = SUPER, N, exec, kitty -e $path/network
+bind = SUPER, O, exec, kitty -e $path/power
+bind = SUPER, U, exec, kitty -e $path/update
 
-# Direct control
-bindl  = , XF86AudioMicMute,      exec, ${scr}/volume.sh    input  mute
-bindl  = , XF86AudioMute,         exec, ${scr}/volume.sh    output mute
-bindel = , XF86AudioLowerVolume,  exec, ${scr}/volume.sh    output lower
-bindel = , XF86AudioRaiseVolume,  exec, ${scr}/volume.sh    output raise
-bindel = , XF86MonBrightnessDown, exec, ${scr}/backlight.sh down
-bindel = , XF86MonBrightnessUp,   exec, ${scr}/backlight.sh up
+# Adjust volume/brightness
+bindl  = , XF86AudioMicMute,      exec, $path/volume    input  mute
+bindl  = , XF86AudioMute,         exec, $path/volume    output mute
+bindel = , XF86AudioLowerVolume,  exec, $path/volume    output lower
+bindel = , XF86AudioRaiseVolume,  exec, $path/volume    output raise
+bindel = , XF86MonBrightnessDown, exec, $path/backlight down
+bindel = , XF86MonBrightnessUp,   exec, $path/backlight up
 
-# Toggle off
+# Toggle off bluetooth/wifi
 bind = SUPER ALT, B, exec, bluetoothctl power off &&           \
                            notify-send "Bluetooth Off"         \
                                -i "network-bluetooth-inactive" \
@@ -159,6 +157,9 @@ bind = SUPER ALT, N, exec, nmcli radio wifi off &&          \
                            notify-send "Wi-Fi Disabled"     \
                                -i "network-wireless-off"    \
                                -h string:x-canonical-private-synchronous:network
+
+# Refresh `update` module
+bind = SUPER ALT, U, exec, pkill -RTMIN+1 waybar
 ```
 
 #
