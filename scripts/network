@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 #
-# Scan, select, and connect to Wi-Fi networks
+# Scan, select, and connect to Wi-Fi networks. Using "off" switches off Wi-Fi.
 #
 # Requirements:
-# - nmcli (networkmanager)
 # - fzf
-# - notify-send (libnotify)
+# - libnotify (notify-send)
+# - networkmanager (nmcli)
 #
 # Author:  Jesse Mirabel <sejjymvm@gmail.com>
 # Date:    August 11, 2025
@@ -113,17 +113,19 @@ connect() {
 }
 
 main() {
-	# make cursor invisible
-	printf "\e[?25l"
+	if [[ $1 == off ]]; then
+		nmcli radio wifi off
+		notify-send 'Wi-Fi Disabled' -i 'network-wireless-off' \
+			-h string:x-canonical-private-synchronous:network
+	fi
 
+	printf "\e[?25l" # make cursor invisible
 	switch_on
 	get_networks
 
-	# make cursor visible
-	printf "\e[?25h"
-
+	printf "\e[?25h" # make cursor visible
 	select_network
 	connect
 }
 
-main
+main "$@"

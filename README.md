@@ -141,22 +141,16 @@ bind = SUPER, O, exec, kitty -e $path/power
 bind = SUPER, U, exec, kitty -e $path/update
 
 # Adjust volume/brightness
-bindl  = , XF86AudioMicMute,      exec, $path/volume    input  mute
-bindl  = , XF86AudioMute,         exec, $path/volume    output mute
-bindel = , XF86AudioLowerVolume,  exec, $path/volume    output lower
-bindel = , XF86AudioRaiseVolume,  exec, $path/volume    output raise
+bindl  = , XF86AudioMicMute,      exec, $path/volume input mute
+bindl  = , XF86AudioMute,         exec, $path/volume output mute
+bindel = , XF86AudioLowerVolume,  exec, $path/volume output lower
+bindel = , XF86AudioRaiseVolume,  exec, $path/volume output raise
 bindel = , XF86MonBrightnessDown, exec, $path/backlight down
 bindel = , XF86MonBrightnessUp,   exec, $path/backlight up
 
 # Toggle off bluetooth/wifi
-bind = SUPER ALT, B, exec, bluetoothctl power off &&           \
-                           notify-send "Bluetooth Off"         \
-                               -i "network-bluetooth-inactive" \
-                               -h string:x-canonical-private-synchronous:bluetooth
-bind = SUPER ALT, N, exec, nmcli radio wifi off &&          \
-                           notify-send "Wi-Fi Disabled"     \
-                               -i "network-wireless-off"    \
-                               -h string:x-canonical-private-synchronous:network
+bind = SUPER ALT, B, exec, $path/bluetooth off
+bind = SUPER ALT, N, exec, $path/network off
 
 # Refresh `update` module
 bind = SUPER ALT, U, exec, pkill -RTMIN+1 waybar

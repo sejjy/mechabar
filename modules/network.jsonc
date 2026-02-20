@@ -21,7 +21,7 @@
 		// "justify":
 		"on-click": "kitty -e ~/.config/waybar/scripts/network",
 		// "on-click-middle":
-		"on-click-right": "nmcli radio wifi off && notify-send 'Wi-Fi Disabled' -i 'network-wireless-off' -h string:x-canonical-private-synchronous:network",
+		"on-click-right": "~/.config/waybar/scripts/network off",
 		// "on-update":
 		// "on-scroll-up":
 		// "on-scroll-down":

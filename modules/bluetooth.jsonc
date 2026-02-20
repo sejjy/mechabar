@@ -17,7 +17,7 @@
 		// "justify":
 		"on-click": "kitty -e ~/.config/waybar/scripts/bluetooth",
 		// "on-click-middle":
-		"on-click-right": "bluetoothctl power off && notify-send 'Bluetooth Off' -i 'network-bluetooth-inactive' -h string:x-canonical-private-synchronous:bluetooth",
+		"on-click-right": "~/.config/waybar/scripts/bluetooth off",
 		// "on-scroll-up":
 		// "on-scroll-down":
 		// "smooth-scrolling-threshold":
