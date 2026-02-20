@@ -1,13 +1,12 @@
 #!/usr/bin/env bash
 #
-# Check for official and AUR package updates and upgrade them. When run with the
-# "module" argument, output the status icon and update counts in JSON format for
-# Waybar
+# Check for official and AUR package updates and upgrade them. Using "module"
+# outputs a Waybar module in JSON format.
 #
 # Requirements:
-# - checkupdates (pacman-contrib)
-# - notify-send (libnotify)
-# - Optional: An AUR helper
+# - libnotify (notify-send)
+# - pacman-contrib (checkupdates)
+# - An AUR helper (optional, auto-detected)
 #
 # Author:  Jesse Mirabel <sejjymvm@gmail.com>
 # Date:    August 16, 2025
@@ -117,8 +116,7 @@ main() {
 			check_updates
 			update_packages
 
-			# update the module
-			pkill -RTMIN+1 waybar
+			pkill -RTMIN+1 waybar # refresh the module
 			;;
 	esac
 }
