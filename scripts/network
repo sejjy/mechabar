@@ -117,6 +117,7 @@ main() {
 		nmcli radio wifi off
 		notify-send 'Wi-Fi Disabled' -i 'network-wireless-off' \
 			-h string:x-canonical-private-synchronous:network
+		exit 0
 	fi
 
 	printf "\e[?25l" # make cursor invisible
