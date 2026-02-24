@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 #
-# Launch a power menu.
+# Launch a power menu
 #
-# Requirement: fzf
+# Requires fzf and systemd (loginctl, systemctl)
 #
 # Author:  Jesse Mirabel <sejjymvm@gmail.com>
 # Date:    August 19, 2025

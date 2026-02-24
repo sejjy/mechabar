@@ -1,10 +1,8 @@
 #!/usr/bin/env bash
 #
-# Adjust screen brightness and send a notification with the current level.
+# Adjust screen brightness and send a notification with the current level
 #
-# Requirements:
-# - brightnessctl
-# - libnotify (notify-send)
+# Requires brightnessctl
 #
 # Author:  Jesse Mirabel <sejjymvm@gmail.com>
 # Date:    August 28, 2025

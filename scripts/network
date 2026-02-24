@@ -1,11 +1,9 @@
 #!/usr/bin/env bash
 #
-# Scan, select, and connect to Wi-Fi networks. Using "off" switches off Wi-Fi.
+# Scan, select, and connect to Wi-Fi networks
+# Passing "off" switches off Wi-Fi
 #
-# Requirements:
-# - fzf
-# - libnotify (notify-send)
-# - networkmanager (nmcli)
+# Requires fzf and networkmanager (nmcli)
 #
 # Author:  Jesse Mirabel <sejjymvm@gmail.com>
 # Date:    August 11, 2025

@@ -1,10 +1,8 @@
 #!/usr/bin/env bash
 #
-# Adjust default device volume and send a notification with the current level.
+# Adjust default device volume and send a notification with the current level
 #
-# Requirements:
-# - libnotify (notify-send)
-# - libpulse (pactl)
+# Requires libpulse (pactl)
 #
 # Author:  Jesse Mirabel <sejjymvm@gmail.com>
 # Date:    September 07, 2025

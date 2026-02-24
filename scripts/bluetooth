@@ -1,12 +1,9 @@
 #!/usr/bin/env bash
 #
-# Scan, select, pair, and connect to Bluetooth devices. Using "off" powers off
-# Bluetooth.
+# Scan, select, pair, and connect to Bluetooth devices
+# Passing "off" powers off Bluetooth
 #
-# Requirements:
-# - bluez-utils (bluetoothctl)
-# - fzf
-# - libnotify (notify-send)
+# Requires bluez-utils (bluetoothctl) and fzf
 #
 # Author:  Jesse Mirabel <sejjymvm@gmail.com>
 # Date:    August 19, 2025
