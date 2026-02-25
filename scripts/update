@@ -13,12 +13,8 @@ FG_GREEN="\e[32m"
 FG_BLUE="\e[34m"
 FG_RESET="\e[39m"
 
-FAILURE=false
-PAC_UPD=0
-AUR_UPD=0
-
 TIMEOUT=10
-HELPERS=(aura paru pikaur trizen yay)
+HELPERS=( aura paru pikaur trizen yay )
 
 printf() {
 	command printf "$@" >&2
@@ -35,17 +31,17 @@ get_helper() {
 }
 
 check_updates() {
-	local pac_output pac_status
+	local output status
 
-	pac_output=$(timeout $TIMEOUT checkupdates)
-	pac_status=$?
+	output=$(timeout $TIMEOUT checkupdates)
+	status=$?
 
-	if ((pac_status != 0 && pac_status != 2)); then
-		FAILURE=true
+	if ((status != 0 && status != 2)); then
+		FAILED=true
 		return 1
 	fi
 
-	PAC_UPD=$(grep -c . <<< "$pac_output")
+	UPDATES=$(grep -c . <<< "$output")
 
 	if [[ -z $HELPER ]]; then
 		return 0
@@ -57,11 +53,11 @@ check_updates() {
 	aur_status=$?
 
 	if ((${#aur_output} > 0 && aur_status != 0)); then
-		FAILURE=true
+		FAILED=true
 		return 1
 	fi
 
-	AUR_UPD=$(grep -c . <<< "$aur_output")
+	AUR_UPDATES=$(grep -c . <<< "$aur_output")
 }
 
 update_packages() {
@@ -70,7 +66,7 @@ update_packages() {
 
 	if [[ -n $HELPER ]]; then
 		printf "\n%bUpdating AUR packages...%b\n" "$FG_BLUE" "$FG_RESET"
-		command "$HELPER" -Syu
+		"$HELPER" -Syu
 	fi
 
 	notify-send "Update Complete" -i "package-install"
@@ -82,25 +78,31 @@ update_packages() {
 display_module() {
 	local icon tooltip
 
-	if $FAILURE; then
+	if $FAILED; then
 		icon='󰒑'
 		tooltip="Cannot fetch updates. Right-click to retry."
-	elif ((PAC_UPD + AUR_UPD == 0)); then
+	elif ((UPDATES + AUR_UPDATES == 0)); then
 		icon='󰸟'
 		tooltip="No updates available"
 	else
 		icon='󰄠'
-		tooltip="<b>Official</b>: $PAC_UPD"
+		tooltip="<b>Official</b>: $UPDATES"
 
 		if [[ -n $HELPER ]]; then
-			tooltip+="\n<b>AUR($HELPER)</b>: $AUR_UPD"
+			tooltip+="\n<b>AUR($HELPER)</b>: $AUR_UPDATES"
 		fi
 	fi
 
-	command printf '{ "text": "%s", "tooltip": "%s" }\n' "$icon" "$tooltip"
+	cat <<- EOF
+		{ "text": "$icon", "tooltip": "$tooltip" }
+	EOF
 }
 
 main() {
+	FAILED=false
+	UPDATES=0
+	AUR_UPDATES=0
+
 	get_helper
 
 	case $1 in
