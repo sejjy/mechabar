@@ -20,11 +20,11 @@ printf() {
 
 power_on() {
 	local state
-	state=$(bluetoothctl show | awk '/PowerState/ {print $2}')
+	state=$(bluetoothctl <<< "show" | awk '/PowerState/ {print $2}')
 
 	case $state in
 		off)
-			bluetoothctl power on > /dev/null
+			bluetoothctl <<< "power on" > /dev/null
 			;;
 		off-blocked)
 			rfkill unblock bluetooth
@@ -35,7 +35,7 @@ power_on() {
 			for ((; i <= TIMEOUT; i++)); do
 				printf "\rUnblocking Bluetooth... (%d/%d)" $i $TIMEOUT
 
-				new_state=$(bluetoothctl show | awk '/PowerState/ {print $2}')
+				new_state=$(bluetoothctl <<< "show" | awk '/PowerState/ {print $2}')
 				if [[ $new_state == on ]]; then
 					break
 				fi
@@ -67,7 +67,7 @@ get_devices() {
 		printf "\rScanning for devices... (%d/%d)" $i $TIMEOUT
 		printf "\n%bPress [q] to stop%b\n" "$FG_RED" "$FG_RESET"
 
-		num=$(bluetoothctl devices | grep -c "Device")
+		num=$(bluetoothctl <<< "devices" | grep -c "^Device")
 		printf "\nDevices: %d" "$num"
 
 		# move cursor 3 lines up
@@ -81,7 +81,9 @@ get_devices() {
 
 	printf "\n%bScanning stopped.%b\n\n" "$FG_RED" "$FG_RESET"
 
-	LIST=$(bluetoothctl devices | sed "s/^Device //")
+	LIST=$(bluetoothctl <<< "devices" |
+		awk '/^Device / {sub(/^Device /, ""); print}')
+
 	if [[ -z $LIST ]]; then
 		notify-send "Bluetooth" "No devices found" -i "package-broken"
 		exit 1
@@ -111,7 +113,7 @@ select_device() {
 	fi
 
 	local connected
-	connected=$(bluetoothctl info "$ADDRESS" | awk '/Connected/ {print $2}')
+	connected=$(bluetoothctl <<< "info $ADDRESS" | awk '/Connected/ {print $2}')
 
 	if [[ $connected == yes ]]; then
 		notify-send "Bluetooth" "Already connected to this device" \
@@ -122,12 +124,12 @@ select_device() {
 
 pair_and_connect() {
 	local paired
-	paired=$(bluetoothctl info "$ADDRESS" | awk '/Paired/ {print $2}')
+	paired=$(bluetoothctl <<< "info $ADDRESS" | awk '/Paired/ {print $2}')
 
 	if [[ $paired == no ]]; then
 		printf "Pairing..."
 
-		if ! timeout $TIMEOUT bluetoothctl pair "$ADDRESS" > /dev/null; then
+		if ! timeout $TIMEOUT bluetoothctl <<< "pair $ADDRESS" > /dev/null; then
 			notify-send "Bluetooth" "Failed to pair" -i "package-purge"
 			exit 1
 		fi
@@ -135,7 +137,7 @@ pair_and_connect() {
 
 	printf "\nConnecting..."
 
-	if ! timeout $TIMEOUT bluetoothctl connect "$ADDRESS" > /dev/null; then
+	if ! timeout $TIMEOUT bluetoothctl <<< "connect $ADDRESS" > /dev/null; then
 		notify-send "Bluetooth" "Failed to connect" -i "package-purge"
 		exit 1
 	fi
@@ -145,7 +147,7 @@ pair_and_connect() {
 
 main() {
 	if [[ $1 == off ]]; then
-		bluetoothctl power off
+		bluetoothctl <<< "power off"
 		notify-send 'Bluetooth Off' -i 'network-bluetooth-inactive' \
 			-h string:x-canonical-private-synchronous:bluetooth
 		return 0
