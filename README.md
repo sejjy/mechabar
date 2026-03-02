@@ -111,7 +111,7 @@ can configure it to run any command. For example:
 ```jsonc
 // modules/custom/user.jsonc
 
-"custom/trigger": {
+"custom/user": {
 	// Run your script
 	"on-click": "/path/to/my/script",
 	// Restart Waybar
