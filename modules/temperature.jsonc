@@ -26,7 +26,7 @@
 		// "on-scroll-down":
 		// "smooth-scrolling-threshold":
 		// "tooltip":
-		"tooltip-format": "Fahrenheit: {temperatureF}°F"
+		"tooltip-format": "Temperature in Fahrenheit: {temperatureF}°F"
 		// "menu":
 		// "menu-file":
 		// "menu-actions":

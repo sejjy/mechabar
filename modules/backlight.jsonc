@@ -22,8 +22,8 @@
 		// "reverse-mouse-scrolling":
 		// "scroll-step":
 		// "min-brightness":
-		"tooltip": false
-		// "tooltip-format":
+		// "tooltip":
+		"tooltip-format": "Screen Brightness"
 		// "menu":
 		// "menu-file":
 		// "menu-actions":
