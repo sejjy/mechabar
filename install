@@ -8,13 +8,11 @@ FG_RESET="\e[39m"
 ERRORS=0
 
 DEPS=(
-	bluez
 	bluez-utils # bluetoothctl
 	brightnessctl
 	fzf
 	networkmanager # nmcli
 	pacman-contrib # checkupdates
-	pipewire-pulse
 	otf-commit-mono-nerd
 )
 

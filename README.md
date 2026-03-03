@@ -83,17 +83,15 @@ Feel free to open a pull request to add new themes! :^)
 	```
 
 	<details>
-	<summary>Dependencies (8)</summary>
+	<summary>Dependencies (6)</summary>
 
 	| Package                | Command         | Description                                                                    |
 	| ---------------------- | --------------- | ------------------------------------------------------------------------------ |
-	| `bluez`                | -               | Daemons for the bluetooth protocol stack<tr></tr>                              |
 	| `bluez-utils`          | `bluetoothctl`  | Development and debugging utilities for the bluetooth protocol stack<tr></tr>  |
 	| `brightnessctl`        | `brightnessctl` | Lightweight brightness control tool<tr></tr>                                   |
 	| `fzf`                  | `fzf`           | Command-line fuzzy finder<tr></tr>                                             |
 	| `networkmanager`       | `nmcli`         | Network connection manager and user applications<tr></tr>                      |
 	| `pacman-contrib`       | `checkupdates`  | Contributed scripts and tools for pacman systems<tr></tr>                      |
-	| `pipewire-pulse`       | -               | Low-latency audio/video router and processor - PulseAudio replacement<tr></tr> |
 	| `otf-commit-mono-nerd` | -               | Patched font Commit Mono from nerd fonts library                               |
 
 	</details>
