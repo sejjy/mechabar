@@ -14,7 +14,7 @@
 	},
 
 	/*-------------------
-	    output device
+	    Output device
 	-------------------*/
 
 	"pulseaudio#output": {
@@ -58,7 +58,7 @@
 	},
 
 	/*----------------
-	    microphone
+	    Microphone
 	----------------*/
 
 	"pulseaudio#input": {

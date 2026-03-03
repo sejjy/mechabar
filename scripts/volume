@@ -157,8 +157,12 @@ main() {
 	esac
 
 	case $ACTION in
-		mute)          set_state ;;
-		raise | lower) set_volume ;;
+		mute)
+			set_state
+			;;
+		raise | lower)
+			set_volume
+			;;
 		*)
 			usage
 			return 1

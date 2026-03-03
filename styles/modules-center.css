@@ -1,5 +1,5 @@
 /*---------------
-    indicator
+    Indicator
 ---------------*/
 
 #keyboard-state label,
@@ -9,7 +9,7 @@
 }
 
 /*-----------------
-    temperature
+    Temperature
 -----------------*/
 
 #custom-left_div.2 {
@@ -20,7 +20,7 @@
 }
 
 /*------------
-    memory
+    Memory
 ------------*/
 
 #custom-left_div.3 {
@@ -32,7 +32,7 @@
 }
 
 /*---------
-    cpu
+    CPU
 ---------*/
 
 #custom-left_div.4 {
@@ -47,7 +47,7 @@
 }
 
 /*-----------------
-    distro icon
+    Distro icon
 -----------------*/
 
 #custom-left_div.5,
@@ -61,7 +61,7 @@
 }
 
 /*--------------------
-    idle inhibitor
+    Idle inhibitor
 --------------------*/
 
 #custom-right_inv.1 {
@@ -72,7 +72,7 @@
 }
 
 /*----------
-    time
+    Time
 ----------*/
 
 #clock.time {
@@ -85,7 +85,7 @@
 }
 
 /*----------
-    date
+    Date
 ----------*/
 
 #clock.date {
@@ -98,7 +98,7 @@
 }
 
 /*-----------------
-    system tray
+    System tray
 -----------------*/
 
 #network {
