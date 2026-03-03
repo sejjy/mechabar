@@ -132,28 +132,32 @@ You can define keybinds to interact with modules using their respective
 ```properties
 # ~/.config/hypr/hyprland.conf
 
-$path = ~/.config/waybar/scripts
+$scripts = ~/.config/waybar/scripts
+$mod = Super
+$terminal = kitty
 
 # Launch CLI
-bind = SUPER, B, exec, kitty -e $path/bluetooth
-bind = SUPER, N, exec, kitty -e $path/network
-bind = SUPER, O, exec, kitty -e $path/power
-bind = SUPER, U, exec, kitty -e $path/update
+bind = $mod, B, exec, $terminal -e $scripts/bluetooth
+bind = $mod, N, exec, $terminal -e $scripts/network
+bind = $mod, O, exec, $terminal -e $scripts/power
+bind = $mod, U, exec, $terminal -e $scripts/update
 
-# Adjust volume/brightness
-bindl  = , XF86AudioMicMute,      exec, $path/volume input mute
-bindl  = , XF86AudioMute,         exec, $path/volume output mute
-bindel = , XF86AudioLowerVolume,  exec, $path/volume output lower
-bindel = , XF86AudioRaiseVolume,  exec, $path/volume output raise
-bindel = , XF86MonBrightnessDown, exec, $path/backlight down
-bindel = , XF86MonBrightnessUp,   exec, $path/backlight up
+# Toggle off Bluetooth/Wi-Fi
+bind = $mod Alt, B, exec, $scripts/bluetooth off
+bind = $mod Alt, N, exec, $scripts/network off
 
-# Toggle off bluetooth/wifi
-bind = SUPER ALT, B, exec, $path/bluetooth off
-bind = SUPER ALT, N, exec, $path/network off
+# Refresh `custom/update` module
+bind = $mod Alt, U, exec, pkill -RTMIN+1 waybar
 
-# Refresh `update` module
-bind = SUPER ALT, U, exec, pkill -RTMIN+1 waybar
+# Adjust volume
+bindl = , XF86AudioMicMute, exec, $scripts/volume input mute
+bindl = , XF86AudioMute, exec, $scripts/volume output mute
+bindel = , XF86AudioLowerVolume, exec, $scripts/volume output lower
+bindel = , XF86AudioRaiseVolume, exec, $scripts/volume output raise
+
+# Adjust brightness
+bindel = , XF86MonBrightnessDown, exec, $scripts/backlight down
+bindel = , XF86MonBrightnessUp, exec, $scripts/backlight up
 ```
 
 #
