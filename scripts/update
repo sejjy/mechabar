@@ -80,22 +80,23 @@ display_module() {
 
 	if $FAILED; then
 		icon='󰒑'
-		tooltip="Cannot fetch updates. Right-click to retry."
+		tooltip="<b>Failed to fetch updates</b>\nRight-click to retry"
 	elif ((UPDATES + AUR_UPDATES == 0)); then
 		icon='󰸟'
 		tooltip="No updates available"
 	else
 		icon='󰄠'
-		tooltip="<b>Official</b>: $UPDATES"
+		tooltip="<b>Pacman</b>: $UPDATES"
 
 		if [[ -n $HELPER ]]; then
-			tooltip+="\n<b>AUR($HELPER)</b>: $AUR_UPDATES"
+			local padding
+			printf -v padding "%*s" $((6 - ${#HELPER})) ''
+
+			tooltip+="\n<b>${HELPER^}</b>: $padding$AUR_UPDATES"
 		fi
 	fi
 
-	cat <<- EOF
-		{ "text": "$icon", "tooltip": "$tooltip" }
-	EOF
+	command printf '{ "text": "%s", "tooltip": "%s" }\n' "$icon" "$tooltip"
 }
 
 main() {
