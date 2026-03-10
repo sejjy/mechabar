@@ -28,6 +28,14 @@ A mecha-themed, modular Waybar configuration.
 | :------------------------------------------------: |
 | ![Catppuccin Latte](./assets/catppuccin-latte.png) |
 
+
+<ins><b>Community</b></ins>
+
+| Brainwaves (Added By just-brainwaves)              |
+| :------------------------------------------------: |
+| ![Brainwaves](./assets/brainwaves.png)             |
+
+
 Feel free to open a pull request to add new themes! :^)
 
 </details>
