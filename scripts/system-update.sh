@@ -13,6 +13,8 @@
 # Date:    August 16, 2025
 # License: MIT
 
+set -o pipefail
+
 FG_GREEN="\e[32m"
 FG_BLUE="\e[34m"
 FG_RESET="\e[39m"
@@ -20,6 +22,7 @@ FG_RESET="\e[39m"
 FAILURE=false
 PAC_UPD=0
 AUR_UPD=0
+HELPER=
 
 TIMEOUT=10
 HELPERS=(aura paru pikaur trizen yay)
@@ -38,10 +41,32 @@ get_helper() {
 	done
 }
 
+reset_state() {
+	FAILURE=false
+	PAC_UPD=0
+	AUR_UPD=0
+}
+
+get_ignored_pkgs() {
+	grep -E "^IgnorePkg" /etc/pacman.conf | sed 's/IgnorePkg = //' | tr ' ' '\n' | grep -v '^$'
+}
+
+filter_ignored() {
+	local ignored
+	ignored=$(get_ignored_pkgs)
+	if [[ -z $ignored ]]; then
+		cat
+	else
+		grep -v -F -f <(echo "$ignored") || true
+	fi
+}
+
 check_updates() {
+	reset_state
+
 	if [[ -n $HELPER ]]; then
 		local pac_output pac_status
-		pac_output=$(timeout $TIMEOUT "$HELPER" -Qud)
+		pac_output=$(timeout $TIMEOUT "$HELPER" -Qud | filter_ignored)
 		pac_status=$?
 
 		if ((pac_status != 0 && pac_status != 2)); then
@@ -51,7 +76,7 @@ check_updates() {
 		PAC_UPD=$(grep -c . <<< "$pac_output")
 
 		local aur_output aur_status
-		aur_output=$(timeout $TIMEOUT "$HELPER" -Qua)
+		aur_output=$(timeout $TIMEOUT "$HELPER" -Qua | filter_ignored)
 		aur_status=$?
 
 		if ((${#aur_output} > 0 && aur_status != 0)); then
@@ -61,7 +86,7 @@ check_updates() {
 		AUR_UPD=$(grep -c . <<< "$aur_output")
 	else
 		local pac_output pac_status
-		pac_output=$(timeout $TIMEOUT checkupdates)
+		pac_output=$(timeout $TIMEOUT checkupdates | filter_ignored)
 		pac_status=$?
 
 		if ((pac_status != 0 && pac_status != 2)); then
