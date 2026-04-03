@@ -54,6 +54,30 @@ Feel free to open a pull request to add new themes! :^)
 > + "on-click": "ghostty -e ..."
 > ```
 
+<details>
+<summary>System Update</summary>
+
+The system update module requires `notify-send` (libnotify) and optionally an
+AUR helper for checking AUR packages.
+
+| Helper        | Check Official | Check AUR | Update Both |
+| :------------ | :------------: | :-------: | :--------: |
+| **aura**      | ✓              | ✓         | ✓          |
+| **paru**      | ✓              | ✓         | ✓          |
+| **pikaur**    | ✓              | ✓         | ✓          |
+| **trizen**    | ✓              | ✓         | ✓          |
+| **yay**       | ✓              | ✓         | ✓          |
+
+If an AUR helper is installed, it will be used for all update checking and
+upgrading (official repos and AUR).
+
+If **no AUR helper** is installed:
+- Only official Arch repositories can be checked/updated
+- `checkupdates` (from `pacman-contrib`) is required
+- AUR packages will not be checked or updated
+
+</details>
+
 #
 
 ### Installation

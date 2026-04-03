@@ -5,9 +5,9 @@
 # Waybar
 #
 # Requirements:
-# - checkupdates (pacman-contrib)
 # - notify-send (libnotify)
-# - Optional: An AUR helper
+# - checkupdates (pacman-contrib) — only needed if no AUR helper is installed
+# - AUR helper (optional) — aura, paru, pikaur, trizen, or yay
 #
 # Author:  Jesse Mirabel <sejjymvm@gmail.com>
 # Date:    August 16, 2025
@@ -39,42 +39,47 @@ get_helper() {
 }
 
 check_updates() {
-	local pac_output pac_status
+	if [[ -n $HELPER ]]; then
+		local pac_output pac_status
+		pac_output=$(timeout $TIMEOUT "$HELPER" -Qud)
+		pac_status=$?
 
-	pac_output=$(timeout $TIMEOUT checkupdates)
-	pac_status=$?
+		if ((pac_status != 0 && pac_status != 2)); then
+			FAILURE=true
+			return 1
+		fi
+		PAC_UPD=$(grep -c . <<< "$pac_output")
 
-	if ((pac_status != 0 && pac_status != 2)); then
-		FAILURE=true
-		return 1
+		local aur_output aur_status
+		aur_output=$(timeout $TIMEOUT "$HELPER" -Qua)
+		aur_status=$?
+
+		if ((${#aur_output} > 0 && aur_status != 0)); then
+			FAILURE=true
+			return 1
+		fi
+		AUR_UPD=$(grep -c . <<< "$aur_output")
+	else
+		local pac_output pac_status
+		pac_output=$(timeout $TIMEOUT checkupdates)
+		pac_status=$?
+
+		if ((pac_status != 0 && pac_status != 2)); then
+			FAILURE=true
+			return 1
+		fi
+		PAC_UPD=$(grep -c . <<< "$pac_output")
+		AUR_UPD=0
 	fi
-
-	PAC_UPD=$(grep -c . <<< "$pac_output")
-
-	if [[ -z $HELPER ]]; then
-		return 0
-	fi
-
-	local aur_output aur_status
-
-	aur_output=$(timeout $TIMEOUT "$HELPER" -Quaq)
-	aur_status=$?
-
-	if ((${#aur_output} > 0 && aur_status != 0)); then
-		FAILURE=true
-		return 1
-	fi
-
-	AUR_UPD=$(grep -c . <<< "$aur_output")
 }
 
 update_packages() {
-	printf "%bUpdating pacman packages...%b\n" "$FG_BLUE" "$FG_RESET"
-	sudo pacman -Syu
-
 	if [[ -n $HELPER ]]; then
-		printf "\n%bUpdating AUR packages...%b\n" "$FG_BLUE" "$FG_RESET"
+		printf "%bUpdating packages ($HELPER)...%b\n" "$FG_BLUE" "$FG_RESET"
 		command "$HELPER" -Syu
+	else
+		printf "%bUpdating packages (pacman)...%b\n" "$FG_BLUE" "$FG_RESET"
+		sudo pacman -Syu
 	fi
 
 	notify-send "Update Complete" -i "package-install"
