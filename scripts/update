@@ -71,7 +71,7 @@ update_packages() {
 
 	notify-send "Update Complete" -i "package-install"
 
-	printf "\n%bUpdate Complete!%b\n" "$FG_GREEN" "$FG_RESET"
+	printf "\n%bUpdate complete!%b\n" "$FG_GREEN" "$FG_RESET"
 	read -rsn 1 -p "Press any key to exit..."
 }
 
@@ -96,10 +96,15 @@ display_module() {
 		fi
 	fi
 
-	command printf '{ "text": "%s", "tooltip": "%s" }\n' "$icon" "$tooltip"
+	cat <<- EOF
+		{ "text": "$icon", "tooltip": "$tooltip" }
+	EOF
 }
 
 main() {
+	# Update the module on exit
+	trap "pkill -RTMIN+1 waybar" EXIT
+
 	FAILED=false
 	UPDATES=0
 	AUR_UPDATES=0
@@ -113,9 +118,9 @@ main() {
 			;;
 		*)
 			printf "%bChecking for updates...%b\n" "$FG_BLUE" "$FG_RESET"
+
 			check_updates
 			update_packages
-			pkill -RTMIN+1 waybar # Refresh the module
 			;;
 	esac
 }

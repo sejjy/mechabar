@@ -31,8 +31,8 @@ power_on() {
 
 			local new_state
 
-			local i=1
-			for ((; i <= TIMEOUT; i++)); do
+			local i
+			for ((i = 1; i <= TIMEOUT; i++)); do
 				printf "\rUnblocking Bluetooth... (%d/%d)" $i $TIMEOUT
 
 				new_state=$(bluetoothctl show | awk '/PowerState/ {print $2}')
@@ -62,14 +62,16 @@ get_devices() {
 
 	local num
 
-	local i=1
-	for ((; i <= TIMEOUT; i++)); do
+	local i
+	for ((i = 1; i <= TIMEOUT; i++)); do
 		printf "\rScanning for devices... (%d/%d)" $i $TIMEOUT
 		printf "\n%bPress [q] to stop%b\n" "$FG_RED" "$FG_RESET"
 
 		num=$(bluetoothctl devices | grep -c "^Device")
 		printf "\nDevices: %d" "$num"
-		printf "\e[3F" # Move cursor 3 lines up
+
+		# Move cursor 3 lines up
+		printf "\e[3F"
 
 		read -rsn 1 -t 1
 		if [[ $REPLY == [Qq] ]]; then
@@ -149,11 +151,15 @@ main() {
 		return 0
 	fi
 
-	printf "\e[?25l" # Make cursor invisible
+	# Make cursor invisible
+	printf "\e[?25l"
+
 	power_on
 	get_devices
 
-	printf "\e[?25h" # Make cursor visible
+	# Make cursor visible
+	printf "\e[?25h"
+
 	select_device
 	pair_and_connect
 }
