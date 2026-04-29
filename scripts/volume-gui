@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+#
+# Open audio GUI control
+# Tries wiremix first, falls back to pavucontrol
+#
+
+main() {
+    local tab=$1
+    if command -v wiremix &>/dev/null; then
+        wiremix --tab "$tab"
+    elif command -v pavucontrol &>/dev/null; then
+        pavucontrol
+    fi
+}
+
+main "$@"
