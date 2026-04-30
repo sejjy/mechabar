@@ -39,10 +39,6 @@ Feel free to open a pull request to add new themes! :^)
 
 1. **[Waybar](https://github.com/Alexays/Waybar)**
 
-> [!IMPORTANT]
-> If you have **v0.14.0** installed,
-> [clone the `fix/v0.14.0` branch](#clone-fix-branch) instead.
-
 2. A **terminal emulator** (default: Kitty)
 
 > [!IMPORTANT]
@@ -68,12 +64,6 @@ Feel free to open a pull request to add new themes! :^)
 
 	```bash
 	git clone https://github.com/sejjy/mechabar.git ~/.config/waybar
-	```
-
-	<a name="clone-fix-branch">**For Waybar v0.14.0**</a>:
-
-	```bash
-	git clone -b fix/v0.14.0 https://github.com/sejjy/mechabar.git ~/.config/waybar
 	```
 
 3. Install the dependencies and restart Waybar:
@@ -111,7 +101,7 @@ can configure it to run any command. For example:
 
 "custom/user": {
 	// Run your script
-	"on-click": "/path/to/my/script",
+	"on-click": "/path/to/your/script",
 	// Restart Waybar
 	"on-click-right": "pkill -SIGUSR2 waybar",
 }
@@ -124,8 +114,8 @@ can configure it to run any command. For example:
 <details>
 <summary>Binds</summary>
 
-You can define keybinds to interact with modules using their respective
-[scripts](./scripts/). For example:
+You can set keybinds to execute scripts from the [scripts](./scripts/)
+directory. For example:
 
 ```properties
 # ~/.config/hypr/hyprland.conf
