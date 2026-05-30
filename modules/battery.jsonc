@@ -20,7 +20,7 @@
 		// "align":
 		// "justify":
 		// "rotate":
-		// "on-click":
+		"on-click": "omarchy-menu power",
 		// "on-click-middle":
 		// "on-click-right":
 		// "on-update":

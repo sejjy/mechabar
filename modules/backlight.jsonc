@@ -2,9 +2,7 @@
 	"backlight": {
 		// "interval":
 		"format": "{icon} {percent}%",
-		"format-icons": [
-			"", "", "", "", "", "", "", "", ""
-		],
+		"format-icons": ["󰃞", "󰃟", "󰃠"],
 		"min-length": 7,
 		"max-length": 7,
 		// "align":

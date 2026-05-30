@@ -42,8 +42,8 @@
 		// "on-click-middle":
 		// "on-click-right":
 		// "on-update":
-		"on-scroll-up": "~/.config/waybar/scripts/volume output raise",
-		"on-scroll-down": "~/.config/waybar/scripts/volume output lower",
+		"on-scroll-up": "~/.config/waybar/scripts/volume output raise 5",
+		"on-scroll-down": "~/.config/waybar/scripts/volume output lower 5",
 		// "smooth-scrolling-threshold":
 		// "tooltip":
 		"tooltip-format": "<b>Output Device</b>: {desc}"
@@ -79,8 +79,8 @@
 		// "on-click-middle":
 		// "on-click-right":
 		// "on-update":
-		"on-scroll-up": "~/.config/waybar/scripts/volume input raise",
-		"on-scroll-down": "~/.config/waybar/scripts/volume input lower",
+		"on-scroll-up": "~/.config/waybar/scripts/volume input raise 5",
+		"on-scroll-down": "~/.config/waybar/scripts/volume input lower 5",
 		// "smooth-scrolling-threshold":
 		// "tooltip":
 		"tooltip-format": "<b>Input Device</b>: {desc}"

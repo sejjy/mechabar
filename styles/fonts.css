@@ -1,28 +1,28 @@
 * {
-	font-family: "CommitMono Nerd Font";
-	font-weight: bold;
-	font-size: 16px;
+    font-family: "JetBrainsMono Nerd Font";
+    font-weight: bold;
+    font-size: 12px;
 }
 
 #window label,
 #mpris,
 tooltip label {
-	font-weight: normal;
+    font-weight: normal;
 }
 
 #workspaces button.active label,
 #workspaces button.focused label,
 #custom-distro {
-	font-size: 20px;
+    font-size: 12px;
 }
 
 #custom-power {
-	font-size: 18px;
+    font-size: 12px;
 }
 
 #custom-left_div,
 #custom-left_inv,
 #custom-right_div,
 #custom-right_inv {
-	font-size: 22px;
+    font-size: 13px;
 }

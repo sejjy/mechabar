@@ -1,7 +1,7 @@
 {
 	"memory": {
 		"interval": 10,
-		"format": "󰘚 {percentage}%",
+		"format": "  {percentage}%",
 		"format-warning": "󰀧 {percentage}%",
 		"format-critical": "󰀧 {percentage}%",
 		// "format-icons":

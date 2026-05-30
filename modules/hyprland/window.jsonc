@@ -5,6 +5,7 @@
 			"": "Desktop",
 			"kitty": "Terminal",
 			"zsh": "Terminal",
+            "ghostty" : "Terminal",
 			"~": "Terminal"
 		},
 		// "separate-outputs":

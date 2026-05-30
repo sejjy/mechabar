@@ -1,8 +1,14 @@
 {
 	"temperature": {
 		"thermal-zone": 1,
-		// "hwmon-path":
-		// "hwmon-path-abs":
+        "hwmon-path": [
+            "/sys/class/hwmon/hwmon0/temp1_input",
+            "/sys/class/hwmon/hwmon1/temp1_input",
+            "/sys/class/hwmon/hwmon2/temp1_input",
+            "/sys/class/hwmon/hwmon3/temp1_input",
+            "/sys/class/hwmon/hwmon4/temp1_input",
+            "/sys/class/hwmon/hwmon5/temp1_input"
+        ],
 		// "input-filename":
 		// "warning-threshold":
 		"critical-threshold": 90,

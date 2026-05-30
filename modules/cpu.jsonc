@@ -14,7 +14,7 @@
 			"warning": 75,
 			"critical": 90
 		},
-		// "on-click":
+		"on-click": "omarchy-launch-or-focus-tui btop",
 		// "on-click-middle":
 		// "on-click-right":
 		// "on-update":
