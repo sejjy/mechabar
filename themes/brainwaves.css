@@ -1,0 +1,64 @@
+/* Brainwaves (Added By Just-Brainwaves) */
+
+@define-color rosewater      #ffd7a8;
+@define-color flamingo       #ffb86c;
+@define-color pink           #ff9ac1;
+@define-color mauve          #ab9df2;
+@define-color red            #ff657a;
+@define-color maroon         #ff8f70;
+@define-color peach          #ff9d00;
+@define-color yellow         #ffd866;
+@define-color green          #a9dc76;
+@define-color teal           #78dce8;
+@define-color sky            #7bdff2;
+@define-color sapphire       #5ccfe6;
+@define-color blue           #6daafc;
+@define-color lavender       #ab9df2;
+@define-color text           #f8f8f2;
+@define-color subtext1       #e6db74;
+@define-color subtext0       #cfcfc2;
+@define-color overlay2       #a8a8a2;
+@define-color overlay1       #8f8f88;
+@define-color overlay0       #4a413c;
+@define-color surface2       #564842;
+@define-color surface1       #453a35;
+@define-color surface0       #352d29;
+
+@define-color base           #26221f;
+@define-color mantle         #1e1a18;
+@define-color crust          #14110f;
+
+/*
+    br - border
+    bg - background
+    fg - foreground
+*/
+
+/* Main colors */
+
+@define-color accent         @peach;
+@define-color main-br        @overlay0;
+@define-color main-bg        @crust;
+@define-color main-fg        @text;
+@define-color hover-bg       @base;
+@define-color hover-fg       alpha(@main-fg, 0.75);
+@define-color outline        shade(@main-bg, 0.5);
+
+/* Module colors */
+
+@define-color workspaces     @mantle;
+@define-color temperature    @mantle;
+@define-color memory         @base;
+@define-color cpu            @surface0;
+@define-color time           @surface0;
+@define-color date           @base;
+@define-color tray           @mantle;
+@define-color volume         @mantle;
+@define-color backlight      @base;
+@define-color battery        @surface0;
+
+/* State colors */
+
+@define-color warning        @yellow;
+@define-color critical       @red;
+@define-color charging       @green;
