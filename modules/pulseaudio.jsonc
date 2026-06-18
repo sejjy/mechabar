@@ -40,7 +40,7 @@
 		// "scroll-step":
 		"on-click": "~/.config/waybar/scripts/volume output mute",
 		// "on-click-middle":
-		// "on-click-right":
+		"on-click-right": "kitty -e ~/.config/waybar/scripts/volume-gui output",
 		// "on-update":
 		"on-scroll-up": "~/.config/waybar/scripts/volume output raise",
 		"on-scroll-down": "~/.config/waybar/scripts/volume output lower",
@@ -77,7 +77,7 @@
 		// "scroll-step":
 		"on-click": "~/.config/waybar/scripts/volume input mute",
 		// "on-click-middle":
-		// "on-click-right":
+		"on-click-right": "kitty -e ~/.config/waybar/scripts/volume-gui input",
 		// "on-update":
 		"on-scroll-up": "~/.config/waybar/scripts/volume input raise",
 		"on-scroll-down": "~/.config/waybar/scripts/volume input lower",

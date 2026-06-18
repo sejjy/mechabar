@@ -14,7 +14,7 @@
 			"warning": 75,
 			"critical": 90
 		},
-		// "on-click":
+		"on-click": "kitty -e ~/.config/waybar/scripts/btop-gui",
 		// "on-click-middle":
 		// "on-click-right":
 		// "on-update":

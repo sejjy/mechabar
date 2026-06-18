@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+#
+# Launch btop system monitor if available
+#
+
+main() {
+    if command -v btop &>/dev/null; then
+        btop
+    fi
+}
+
+main "$@"
