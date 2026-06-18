@@ -12,21 +12,21 @@
 @import "styles/states.css";
 
 .module {
-	margin-bottom: -1px;
+	margin-bottom: 2px;
 }
 
 #waybar {
 	background-color: @outline;
 }
 #waybar > box {
-	margin: 4px;
+	margin: 2px;
 	background-color: @main-bg;
 }
 
 button {
-	border-radius: 16px;
-	min-width: 16px;
-	padding: 0 10px;
+	border-radius: 14px;
+	min-width: 5px;
+	padding: 0 8px;
 }
 button:hover {
 	background-color: @hover-bg;
@@ -34,10 +34,10 @@ button:hover {
 }
 
 tooltip {
-	border: 2px solid @main-br;
+	border: 1px solid @main-br;
 	border-radius: 10px;
 	background-color: @main-bg;
 }
 tooltip > box {
-	padding: 0 6px;
+	padding: 0 5px;
 }

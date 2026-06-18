@@ -15,7 +15,7 @@
 		"max-length": 4,
 		// "align":
 		// "justify":
-		// "on-click":
+		"on-click": "omarchy-menu",
 		// "on-click-middle":
 		// "on-click-right":
 		// "on-update":

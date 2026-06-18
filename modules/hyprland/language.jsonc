@@ -2,7 +2,8 @@
 	"hyprland/language": {
 		// "format":
 		// "format-<lang>":
-		"format-en": " en"
+        "format": "󰌌 {}",
+        "keyboard-name": "at-translated-set-2-keyboard",
 		// "keyboard-name":
 		// "min-length":
 		// "max-length":

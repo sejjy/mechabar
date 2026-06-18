@@ -51,7 +51,7 @@
 
 #custom-power {
 	border-radius: 16px;
-	padding: 0 19px 0 16px;
+	padding: 0 12px 0 12px;
 	color: @accent;
 }
 #custom-power:hover {

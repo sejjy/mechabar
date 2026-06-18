@@ -4,7 +4,8 @@
 
 #keyboard-state label,
 #language {
-	margin-right: 12px;
+	margin-right: 8px;
+    margin-left: 8px;
 	color: @hover-fg;
 }
 
@@ -103,15 +104,15 @@
 
 #network {
 	background-color: @tray;
-	padding: 0 6px 0 4px;
+	padding: 0 6px 0 2px;
 }
 #bluetooth {
 	background-color: @tray;
-	padding: 0 5px;
+	padding: 0 2px;
 }
 #custom-update {
 	background-color: @tray;
-	padding: 0 8px 0 2px;
+	padding: 0 6px 0 2px;
 }
 #custom-right_div.5 {
 	color: @tray;
