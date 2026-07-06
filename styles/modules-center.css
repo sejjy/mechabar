@@ -4,71 +4,71 @@
 
 #keyboard-state label,
 #language {
-	margin-right: 12px;
-	color: @hover-fg;
+  margin-right: 12px;
+  color: @hover-fg;
 }
 
 /*-----------------
     Temperature
 -----------------*/
 
-#custom-left_div.2 {
-	color: @temperature;
+#custom-left_div.2 label {
+  color: @temperature;
 }
 #temperature {
-	background-color: @temperature;
+  background-color: @temperature;
 }
 
 /*------------
     Memory
 ------------*/
 
-#custom-left_div.3 {
-	background-color: @temperature;
-	color: @memory;
+#custom-left_div.3 label {
+  background-color: @temperature;
+  color: @memory;
 }
 #memory {
-	background-color: @memory;
+  background-color: @memory;
 }
 
 /*---------
     CPU
 ---------*/
 
-#custom-left_div.4 {
-	background-color: @memory;
-	color: @cpu;
+#custom-left_div.4 label {
+  background-color: @memory;
+  color: @cpu;
 }
 #cpu {
-	background-color: @cpu;
+  background-color: @cpu;
 }
-#custom-left_inv.1 {
-	color: @cpu;
+#custom-left_inv.1 label {
+  color: @cpu;
 }
 
 /*-----------------
     Distro icon
 -----------------*/
 
-#custom-left_div.5,
-#custom-right_div.2 {
-	color: @accent;
+#custom-left_div.5 label,
+#custom-right_div.2 label {
+  color: @accent;
 }
-#custom-distro {
-	padding: 0 10px 0 5px;
-	background-color: @accent;
-	color: @main-bg;
+#custom-distro label {
+  padding: 0 10px 0 5px;
+  background-color: @accent;
+  color: @main-bg;
 }
 
 /*--------------------
     Idle inhibitor
 --------------------*/
 
-#custom-right_inv.1 {
-	color: @time;
+#custom-right_inv.1 label {
+  color: @time;
 }
 #idle_inhibitor {
-	background-color: @time;
+  background-color: @time;
 }
 
 /*----------
@@ -76,12 +76,12 @@
 ----------*/
 
 #clock.time {
-	padding-right: 6px;
-	background-color: @time;
+  padding-right: 6px;
+  background-color: @time;
 }
-#custom-right_div.3 {
-	background-color: @date;
-	color: @time;
+#custom-right_div.3 label {
+  background-color: @date;
+  color: @time;
 }
 
 /*----------
@@ -89,12 +89,12 @@
 ----------*/
 
 #clock.date {
-	padding-left: 6px;
-	background-color: @date;
+  padding-left: 6px;
+  background-color: @date;
 }
-#custom-right_div.4 {
-	background-color: @tray;
-	color: @date;
+#custom-right_div.4 label {
+  background-color: @tray;
+  color: @date;
 }
 
 /*-----------------
@@ -102,17 +102,17 @@
 -----------------*/
 
 #network {
-	background-color: @tray;
-	padding: 0 6px 0 4px;
+  background-color: @tray;
+  padding: 0 6px 0 4px;
 }
 #bluetooth {
-	background-color: @tray;
-	padding: 0 5px;
+  background-color: @tray;
+  padding: 0 5px;
 }
 #custom-update {
-	background-color: @tray;
-	padding: 0 8px 0 2px;
+  background-color: @tray;
+  padding: 0 8px 0 2px;
 }
-#custom-right_div.5 {
-	color: @tray;
+#custom-right_div.5 label {
+  color: @tray;
 }
