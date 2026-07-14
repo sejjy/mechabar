@@ -2,10 +2,10 @@
 
 ## 🤖 mechabar
 
-A mecha-themed, modular Waybar configuration.
+A mecha-themed, modular Waybar configuration
 
-| ![Mechabar](./assets/catppuccin-mocha.png) |
-| :----------------------------------------: |
+| ![Preview](./assets/catppuccin-mocha.png) |
+| :---------------------------------------: |
 
 <details>
 <summary>Themes</summary>
@@ -35,26 +35,18 @@ Feel free to open a pull request to add new themes! :^)
 
 #
 
-### Prerequisites
+### Requirements
 
-1. **[Waybar](https://github.com/Alexays/Waybar)**
+1. **[waybar](https://archlinux.org/packages/extra/x86_64/waybar/)**
 
-2. A **terminal emulator** (default: Kitty)
-
-> [!IMPORTANT]
-> If you use a different emulator, replace all `kitty` commands accordingly. For
-> example:
->
-> ```diff
-> - "on-click": "kitty -e ..."
-> + "on-click": "ghostty -e ..."
-> ```
+2. A **terminal emulator** (default: [kitty](https://archlinux.org/packages/extra/x86_64/kitty/))
+	> If you use a different terminal emulator, see the [Configuration](#configuration) section below.
 
 #
 
 ### Installation
 
-1. Back up your current config:
+1. Back up your current Waybar configuration:
 
 	```bash
 	mv ~/.config/waybar{,.bak}
@@ -82,7 +74,7 @@ Feel free to open a pull request to add new themes! :^)
 	| `fzf`                  | `fzf`           | Command-line fuzzy finder<tr></tr>                                             |
 	| `networkmanager`       | `nmcli`         | Network connection manager and user applications<tr></tr>                      |
 	| `pacman-contrib`       | `checkupdates`  | Contributed scripts and tools for pacman systems<tr></tr>                      |
-	| `otf-commit-mono-nerd` | -               | Patched font Commit Mono from nerd fonts library                               |
+	| `otf-commit-mono-nerd` |                 | Patched font Commit Mono from nerd fonts library                               |
 
 	</details>
 
@@ -90,17 +82,44 @@ Feel free to open a pull request to add new themes! :^)
 
 ### Configuration
 
-<details>
-<summary><code>user.jsonc</code></summary>
+<details open>
+<summary>Terminal emulator</summary>
 
-The leftmost module has no default function and is reserved for custom use. You
-can configure it to run any command. For example:
+If you use a different terminal emulator, replace every instance of `kitty` in the module files. For example:
+
+```diff
+- "on-click": "kitty -e ..."
++ "on-click": "ghostty -e ..."
+```
+
+#
+
+</details>
+
+<details open>
+<summary>Theme</summary>
+
+To change the theme, copy your preferred file from the [themes](./themes/) directory to `theme.css`. For example:
+
+```bash
+cd ~/.config/waybar
+cp themes/catppuccin-latte.css theme.css
+```
+
+#
+
+</details>
+
+<details>
+<summary>Custom module</summary>
+
+The leftmost module has no default function and is _left_ for you to configure. For example:
 
 ```jsonc
 // modules/custom/user.jsonc
 
 "custom/user": {
-	// Run your script
+	// Run your own script
 	"on-click": "/path/to/your/script",
 	// Restart Waybar
 	"on-click-right": "pkill -SIGUSR2 waybar",
@@ -112,16 +131,32 @@ can configure it to run any command. For example:
 </details>
 
 <details>
-<summary>Binds</summary>
+<summary>Icons</summary>
 
-You can set keybinds to execute scripts from the [scripts](./scripts/)
-directory. For example:
+You can search for icons on [Nerd Fonts: Cheat Sheet ↗](https://www.nerdfonts.com/cheat-sheet). For example:
+
+```
+gentoo
+```
+
+_Matches: `nf-dev-gentoo`, `nf-linux-gentoo`, `nf-md-gentoo`*_
+
+_*Most modules use Material Design Icons (`nf-md-*`) for consistency._
+
+#
+
+</details>
+
+<details>
+<summary>Keybinds (optional)</summary>
+
+You can optionally create keybinds to run scripts from the [scripts](./scripts/) directory. For example:
 
 ```properties
 # ~/.config/hypr/hyprland.conf
 
-$scripts = ~/.config/waybar/scripts
-$mod = Super
+$scripts  = ~/.config/waybar/scripts
+$mod      = Super
 $terminal = kitty
 
 # Launch CLI
@@ -132,56 +167,17 @@ bind = $mod, U, exec, $terminal -e $scripts/update
 
 # Toggle off Bluetooth/Wi-Fi
 bind = $mod Alt, B, exec, $scripts/bluetooth off
-bind = $mod Alt, N, exec, $scripts/network off
-
-# Refresh `custom/update` module
-bind = $mod Alt, U, exec, pkill -RTMIN+1 waybar
+bind = $mod Alt, N, exec, $scripts/network   off
 
 # Adjust volume
-bindl = , XF86AudioMicMute, exec, $scripts/volume input mute
-bindl = , XF86AudioMute, exec, $scripts/volume output mute
+bindl  = , XF86AudioMicMute,     exec, $scripts/volume input  mute
+bindl  = , XF86AudioMute,        exec, $scripts/volume output mute
 bindel = , XF86AudioLowerVolume, exec, $scripts/volume output lower
 bindel = , XF86AudioRaiseVolume, exec, $scripts/volume output raise
 
 # Adjust brightness
 bindel = , XF86MonBrightnessDown, exec, $scripts/backlight down
-bindel = , XF86MonBrightnessUp, exec, $scripts/backlight up
-```
-
-#
-
-</details>
-
-<details>
-<summary>Icons</summary>
-
-You can search for icons on
-[Nerd Fonts: Cheat Sheet ↗](https://www.nerdfonts.com/cheat-sheet). For example:
-
-```
-battery charging
-```
-
-For consistency, most modules use icons from Material Design, prefixed with
-`nf-md`:
-
-```
-nf-md battery charging
-```
-
-#
-
-</details>
-
-<details open>
-<summary>Theme</summary>
-
-Copy your preferred theme from the [themes](./themes/) directory to `theme.css`.
-For example:
-
-```bash
-cd ~/.config/waybar
-cp themes/catppuccin-latte.css theme.css
+bindel = , XF86MonBrightnessUp,   exec, $scripts/backlight up
 ```
 
 </details>
