@@ -116,7 +116,7 @@ cp themes/catppuccin-latte.css theme.css
 The leftmost module has no default function and is _left_ for you to configure. For example:
 
 ```jsonc
-// modules/custom/user.jsonc
+// ~/.config/waybar/modules/custom/user.jsonc
 
 "custom/user": {
 	// Run your own script
