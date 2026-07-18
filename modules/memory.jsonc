@@ -10,8 +10,8 @@
 			"warning": 75,
 			"critical": 90
 		},
-		"min-length": 7,
 		"max-length": 7,
+		"min-length": 7,
 		// "align":
 		// "justify":
 		// "on-click":
@@ -27,5 +27,6 @@
 		// "menu-file":
 		// "menu-actions":
 		// "expand":
+		// "unit":
 	}
 }

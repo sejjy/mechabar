@@ -1,6 +1,7 @@
 {
 	"bluetooth": {
 		// "controller":
+		// "controller-alias":
 		// "format-device-preference":
 		"format": "󰂯",
 		"format-disabled": "󰂲",
@@ -11,8 +12,8 @@
 		// "format-no-controller":
 		// "format-icons":
 		// "rotate":
-		"min-length": 2,
 		"max-length": 2,
+		"min-length": 2,
 		// "align":
 		// "justify":
 		"on-click": "kitty -e ~/.config/waybar/scripts/bluetooth",
@@ -27,8 +28,9 @@
 		"tooltip-format-off": "Bluetooth Off",
 		"tooltip-format-on": "Bluetooth Disconnected",
 		"tooltip-format-connected": "Device: {device_alias}",
-		"tooltip-format-enumerate-connected": "Device: {device_alias}",
 		"tooltip-format-connected-battery": "Device: {device_alias}\nBattery: {device_battery_percentage}%",
+		// "tooltip-format-no-controller":
+		"tooltip-format-enumerate-connected": "Device: {device_alias}",
 		"tooltip-format-enumerate-connected-battery": "Device: {device_alias}\nBattery: {device_battery_percentage}%"
 		// "menu":
 		// "menu-file":

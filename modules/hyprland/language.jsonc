@@ -3,12 +3,17 @@
 		// "format":
 		// "format-<lang>":
 		"format-en": " en"
+		// "format-<lang>-<variant>":
 		// "keyboard-name":
-		// "min-length":
-		// "max-length":
 		// "menu":
 		// "menu-file":
 		// "menu-actions":
+		// "tooltip":
+		// "tooltip-format":
+		// "tooltip-format-<lang>":
+		// "tooltip-format-<lang>-<variant>":
 		// "expand":
+		// "max-length":
+		// "min-length":
 	}
 }

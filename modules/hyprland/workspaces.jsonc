@@ -1,37 +1,47 @@
 {
 	"hyprland/workspaces": {
-		// "active-only":
-		// "hide-active":
-		// "all-outputs":
 		"format": "{icon}",
 		"format-icons": {
 			"active": "",
 			"default": ""
 		},
-		"persistent-workspaces": {
-			"*": 5
-		},
-		// "persistent-only":
-		// "show-special":
-		// "special-visible-only":
-		// "sort-by":
 		// "window-rewrite":
 		// "window-rewrite-default":
 		// "format-window-separator":
+		// "window-rewrite-group-threshold":
+		// "window-rewrite-group-format":
 		"workspace-taskbar": {
 			// "enable":
 			// "update-active-window":
+			// "reverse-direction":
+			// "active-window-position":
 			// "format":
 			// "icon-size":
+			// "max-icons":
 			// "icon-theme":
 			// "orientation":
 			// "ignore-list":
 			// "on-click-window":
+			// "max-windows":
 		},
+		// "show-special":
+		// "special-visible-only":
+		// "persistent-only":
+		"persistent-workspaces": {
+			"*": 5
+		},
+		// "all-outputs":
+		// "active-only":
+		// "hide-active":
 		// "move-to-monitor":
-		// "ignore-workspaces":
+		// "unique-icons":
+		// "enable-bar-scroll":
 		"on-scroll-up": "hyprctl dispatch workspace +1",
 		"on-scroll-down": "hyprctl dispatch workspace -1",
+		// "ignore-workspaces":
+		// "sort-by":
+		// "tooltip":
+		// "tooltips":
 		// "expand":
 		"cursor": true
 	}

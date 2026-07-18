@@ -5,8 +5,8 @@
 		"format-warning": "󰀨 {usage}%",
 		"format-critical": "󰀨 {usage}%",
 		// "format-icons":
-		"min-length": 7,
 		"max-length": 7,
+		"min-length": 7,
 		// "align":
 		// "justify":
 		// "rotate":
@@ -22,6 +22,8 @@
 		// "on-scroll-down":
 		// "smooth-scrolling-threshold":
 		"tooltip": false
+		// "tooltip-format":
+		// "tooltip-format-<state>":
 		// "expand":
 	}
 }

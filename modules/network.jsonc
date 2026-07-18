@@ -15,8 +15,8 @@
 			"󰤟", "󰤢", "󰤥", "󰤨"
 		],
 		// "rotate":
-		"min-length": 2,
 		"max-length": 2,
+		"min-length": 2,
 		// "align":
 		// "justify":
 		"on-click": "kitty -e ~/.config/waybar/scripts/network",

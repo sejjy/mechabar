@@ -3,7 +3,9 @@
 		"thermal-zone": 1,
 		// "hwmon-path":
 		// "hwmon-path-abs":
+		// "hwmon-name":
 		// "input-filename":
+		// "hwmon-by-name":
 		// "warning-threshold":
 		"critical-threshold": 90,
 		"interval": 10,
@@ -14,8 +16,8 @@
 			"󱃃", "󰔏", "󱃂"
 		],
 		// "rotate":
-		"min-length": 8,
 		"max-length": 8,
+		"min-length": 8,
 		// "align":
 		// "justify":
 		// "on-click":
@@ -26,7 +28,7 @@
 		// "on-scroll-down":
 		// "smooth-scrolling-threshold":
 		// "tooltip":
-		"tooltip-format": "Temperature in Fahrenheit: {temperatureF}°F"
+		"tooltip-format": "Fahrenheit: {temperatureF}°F"
 		// "menu":
 		// "menu-file":
 		// "menu-actions":

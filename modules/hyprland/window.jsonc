@@ -8,12 +8,14 @@
 			"~": "Terminal"
 		},
 		// "separate-outputs":
+		// "fallback":
+		// "tooltip":
+		// "tooltip-format":
 		// "icon":
 		// "icon-size":
-		// "min-length":
-		// "max-length":
-		// "tooltip":
-		"swap-icon-label": false
 		// "expand":
+		// "max-length":
+		// "min-length":
+		"swap-icon-label": false
 	}
 }

@@ -5,8 +5,8 @@
 		// "format-windowed":
 		// "format-fullscreen":
 		// "separate-outputs":
-		// "min-length":
 		// "max-length":
+		// "min-length":
 		"swap-icon-label": false
 	}
 }

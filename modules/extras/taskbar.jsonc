@@ -1,6 +1,7 @@
 {
 	"wlr/taskbar": {
 		// "all-outputs":
+		// "bar-css-states":
 		// "format":
 		// "icon-theme":
 		// "icon-size":
@@ -8,12 +9,18 @@
 		// "tooltip":
 		// "tooltip-format":
 		// "active-first":
+		// "active-only":
 		// "sort-by-app-id":
+		// "homogeneous":
+		// "justify":
+		// "expand":
+		// "truncate":
 		"on-click": "activate",
 		// "on-click-middle":
 		// "on-click-right":
 		// "on-update":
 		"ignore-list": [ "kitty", "Discord Updater" ],
+		// "squash-list":
 		// "app_ids-mapping":
 		// "rewrite":
 		"cursor": true

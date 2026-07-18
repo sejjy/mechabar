@@ -2,17 +2,17 @@
 	"custom/user": {
 		// "exec":
 		// "exec-if":
-		// "exec-on-event":
 		// "hide-empty-text":
+		// "exec-on-event":
 		// "return-type":
 		// "interval":
 		// "restart-interval":
 		// "signal":
-		"format": "󰍜",
+		"format": "󰌽",
 		// "format-icons":
 		// "rotate":
-		"min-length": 4,
 		"max-length": 4,
+		"min-length": 4,
 		// "align":
 		// "justify":
 		// "on-click":
@@ -29,5 +29,8 @@
 		// "menu-file":
 		// "menu-actions":
 		// "expand":
+		// "image-path":
+		// "image-name":
+		// "icon-size":
 	}
 }

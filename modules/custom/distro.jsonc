@@ -2,8 +2,8 @@
 	"custom/distro": {
 		// "exec":
 		// "exec-if":
-		// "exec-on-event":
 		// "hide-empty-text":
+		// "exec-on-event":
 		// "return-type":
 		// "interval":
 		// "restart-interval":
@@ -11,8 +11,8 @@
 		"format": "󰣇",
 		// "format-icons":
 		// "rotate":
-		// "min-length":
 		// "max-length":
+		// "min-length":
 		// "align":
 		// "justify":
 		// "on-click":
@@ -29,5 +29,8 @@
 		// "menu-file":
 		// "menu-actions":
 		// "expand":
+		// "image-path":
+		// "image-name":
+		// "icon-size":
 	}
 }
