@@ -2,8 +2,6 @@
 #
 # Adjust default device volume and send a notification with the current level
 #
-# Requires libpulse (pactl)
-#
 # Author:  Jesse Mirabel <sejjymvm@gmail.com>
 # Date:    September 07, 2025
 # License: MIT
@@ -14,8 +12,7 @@ MAX=100
 
 usage() {
 	local script=${0##*/}
-
-	cat <<- EOF
+	cat <<-EOF
 		USAGE: $script {input|output} {mute|raise|lower} [value]
 
 		Adjust default device volume and send a notification with the current level
@@ -41,13 +38,13 @@ usage() {
 	EOF
 }
 
-pactl() {
-	command pactl "$1" "$DEV_DEF" "${@:2}"
+_pactl() {
+	pactl "$1" "$DEV_DEF" "${@:2}"
 }
 
 get_state() {
 	local state
-	state=$(pactl "get-$DEV_STATE" | awk '{print $2}')
+	state=$(_pactl "get-$DEV_STATE" | awk '{print $2}')
 
 	case $state in
 		yes) printf "Muted" ;;
@@ -56,12 +53,11 @@ get_state() {
 }
 
 get_volume() {
-	pactl "get-$DEV_VOLUME" | awk '{print $5}' | tr -d '%'
+	_pactl "get-$DEV_VOLUME" | awk '{print $5}' | tr -d '%'
 }
 
 get_icon() {
 	local state level
-
 	state=$(get_state)
 	level=$(get_volume)
 
@@ -70,24 +66,21 @@ get_icon() {
 
 	if [[ $state == Muted ]]; then
 		icon="$DEV_ICON-muted"
+	elif ((new_level < MAX * 33 / 100)); then
+		icon="$DEV_ICON-low"
+	elif ((new_level < MAX * 66 / 100)); then
+		icon="$DEV_ICON-medium"
 	else
-		if ((new_level < MAX * 33 / 100)); then
-			icon="$DEV_ICON-low"
-		elif ((new_level < MAX * 66 / 100)); then
-			icon="$DEV_ICON-medium"
-		else
-			icon="$DEV_ICON-high"
-		fi
+		icon="$DEV_ICON-high"
 	fi
 
 	printf "%s" "$icon"
 }
 
 set_state() {
-	pactl "set-$DEV_STATE" toggle
+	_pactl "set-$DEV_STATE" toggle
 
 	local state icon
-
 	state=$(get_state)
 	icon=$(get_icon)
 
@@ -96,10 +89,9 @@ set_state() {
 }
 
 set_volume() {
+	local new_level
 	local level
 	level=$(get_volume)
-
-	local new_level
 
 	case $ACTION in
 		raise)
@@ -116,7 +108,7 @@ set_volume() {
 			;;
 	esac
 
-	pactl "set-$DEV_VOLUME" "$new_level%"
+	_pactl "set-$DEV_VOLUME" "$new_level%"
 
 	local icon
 	icon=$(get_icon $new_level)

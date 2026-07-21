@@ -2,46 +2,41 @@
 #
 # Launch a power menu
 #
-# Requires fzf and systemd (loginctl, systemctl)
+# Requires fzf
 #
 # Author:  Jesse Mirabel <sejjymvm@gmail.com>
 # Date:    August 19, 2025
 # License: MIT
 
-main() {
-	local list=(
-		"Lock"
-		"Shutdown"
-		"Reboot"
-		"Logout"
-		"Hibernate"
-		"Suspend"
-	)
+list=(
+	"Lock"
+	"Shutdown"
+	"Reboot"
+	"Logout"
+	"Hibernate"
+	"Suspend"
+)
 
-	local options=(
-		"--border=sharp"
-		"--border-label= Power Menu "
-		"--cycle"
-		"--ghost=Search"
-		"--height=~100%"
-		"--highlight-line"
-		"--info=inline-right"
-		"--pointer="
-		"--reverse"
-	)
+options=(
+	"--border=sharp"
+	"--border-label= Power Menu "
+	"--cycle"
+	"--ghost=Search"
+	"--height=~100%"
+	"--highlight-line"
+	"--info=inline-right"
+	"--pointer="
+	"--reverse"
+)
 
-	local selected
-	selected=$(printf "%s\n" "${list[@]}" | fzf "${options[@]}")
+selected=$(printf "%s\n" "${list[@]}" | fzf "${options[@]}")
 
-	case $selected in
-		Lock)      loginctl lock-session ;;
-		Shutdown)  systemctl poweroff ;;
-		Reboot)    systemctl reboot ;;
-		Logout)    loginctl terminate-session "$XDG_SESSION_ID" ;;
-		Hibernate) systemctl hibernate ;;
-		Suspend)   systemctl suspend ;;
-		*)         return 1 ;;
-	esac
-}
-
-main
+case $selected in
+	Lock)      loginctl lock-session ;;
+	Shutdown)  systemctl poweroff ;;
+	Reboot)    systemctl reboot ;;
+	Logout)    loginctl terminate-session "$XDG_SESSION_ID" ;;
+	Hibernate) systemctl hibernate ;;
+	Suspend)   systemctl suspend ;;
+	*)         return 1 ;;
+esac
