@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 #
 # Scan, select, pair, and connect to Bluetooth devices
-# Passing "off" powers off Bluetooth
+#
+# Power off Bluetooth:
+#   $ bluetooth off
 #
 # Requires bluez-utils (bluetoothctl) and fzf
 #
@@ -9,13 +11,13 @@
 # Date:    August 19, 2025
 # License: MIT
 
-FG_RED="\e[31m"
-FG_RESET="\e[39m"
-
 TIMEOUT=10
 
-printf() {
-	command printf "$@" >&2
+RED="\e[31m"
+RESET="\e[39m"
+
+debug() {
+	printf "%b" "$*" >&2
 }
 
 power_on() {
@@ -24,16 +26,15 @@ power_on() {
 
 	case $state in
 		off)
-			bluetoothctl power on > /dev/null
+			bluetoothctl power on >/dev/null
 			;;
 		off-blocked)
 			rfkill unblock bluetooth
 
 			local new_state
-
 			local i
 			for ((i = 1; i <= TIMEOUT; i++)); do
-				printf "\rUnblocking Bluetooth... (%d/%d)" $i $TIMEOUT
+				debug "\rUnblocking Bluetooth... ($i/$TIMEOUT)"
 
 				new_state=$(bluetoothctl show | awk '/PowerState/ {print $2}')
 				if [[ $new_state == on ]]; then
@@ -58,20 +59,19 @@ power_on() {
 }
 
 get_devices() {
-	bluetoothctl -t $TIMEOUT scan on > /dev/null &
+	bluetoothctl -t $TIMEOUT scan on >/dev/null &
 
 	local num
-
 	local i
 	for ((i = 1; i <= TIMEOUT; i++)); do
-		printf "\rScanning for devices... (%d/%d)" $i $TIMEOUT
-		printf "\n%bPress [q] to stop%b\n" "$FG_RED" "$FG_RESET"
+		debug "\rScanning for devices... ($i/$TIMEOUT)"
+		debug "\n${RED}Press [q] to stop${RESET}\n"
 
 		num=$(bluetoothctl devices | grep -c "^Device")
-		printf "\nDevices: %d" "$num"
+		debug "\nDevices: $num"
 
-		# Move cursor 3 lines up
-		printf "\e[3F"
+		# move cursor 3 lines up
+		debug "\e[3F"
 
 		read -rsn 1 -t 1
 		if [[ $REPLY == [Qq] ]]; then
@@ -79,7 +79,7 @@ get_devices() {
 		fi
 	done
 
-	printf "\n%bScanning stopped.%b\n\n" "$FG_RED" "$FG_RESET"
+	debug "\n${RED}Scanning stopped.${RESET}\n\n"
 
 	LIST=$(bluetoothctl devices | sed "s/^Device //")
 	if [[ -z $LIST ]]; then
@@ -105,7 +105,7 @@ select_device() {
 		"--reverse"
 	)
 
-	ADDRESS=$(fzf "${options[@]}" <<< "$LIST" | awk '{print $1}')
+	ADDRESS=$(fzf "${options[@]}" <<<"$LIST" | awk '{print $1}')
 	if [[ -z $ADDRESS ]]; then
 		exit 1
 	fi
@@ -125,22 +125,22 @@ pair_and_connect() {
 	paired=$(bluetoothctl info "$ADDRESS" | awk '/Paired/ {print $2}')
 
 	if [[ $paired == no ]]; then
-		printf "Pairing..."
+		debug "Pairing..."
 
-		if ! timeout $TIMEOUT bluetoothctl pair "$ADDRESS" > /dev/null; then
+		if ! timeout $TIMEOUT bluetoothctl pair "$ADDRESS" >/dev/null; then
 			notify-send "Bluetooth" "Failed to pair" -i "package-purge"
 			exit 1
 		fi
 	fi
 
-	printf "\nConnecting..."
+	debug "\nConnecting..."
 
-	if ! timeout $TIMEOUT bluetoothctl connect "$ADDRESS" > /dev/null; then
+	if timeout $TIMEOUT bluetoothctl connect "$ADDRESS" >/dev/null; then
+		notify-send "Bluetooth" "Successfully connected" -i "package-install"
+	else
 		notify-send "Bluetooth" "Failed to connect" -i "package-purge"
 		exit 1
 	fi
-
-	notify-send "Bluetooth" "Successfully connected" -i "package-install"
 }
 
 main() {
@@ -151,14 +151,14 @@ main() {
 		return 0
 	fi
 
-	# Make cursor invisible
-	printf "\e[?25l"
+	# make cursor invisible
+	debug "\e[?25l"
 
 	power_on
 	get_devices
 
-	# Make cursor visible
-	printf "\e[?25h"
+	# make cursor visible
+	debug "\e[?25h"
 
 	select_device
 	pair_and_connect

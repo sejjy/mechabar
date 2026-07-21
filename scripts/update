@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 #
-# Update packages from the official and unofficial user repositories
-# Passing "module" returns the update status in JSON format
+# Update packages
+#
+# Print the number of pending updates in JSON format:
+#   $ update module
 #
 # Requires pacman-contrib (checkupdates)
 #
@@ -9,21 +11,20 @@
 # Date:    August 16, 2025
 # License: MIT
 
-FG_GREEN="\e[32m"
-FG_BLUE="\e[34m"
-FG_RESET="\e[39m"
-
 TIMEOUT=10
-HELPERS=( aura paru pikaur trizen yay )
 
-printf() {
-	command printf "$@" >&2
+GREEN="\e[32m"
+BLUE="\e[34m"
+RESET="\e[39m"
+
+debug() {
+	printf "%b\n" "$*" >&2
 }
 
-get_helper() {
+check_helper() {
 	local helper
-	for helper in "${HELPERS[@]}"; do
-		if command -v "$helper" > /dev/null; then
+	for helper in aura pakku paru pikaur trizen yay; do
+		if command -v "$helper" >/dev/null; then
 			HELPER=$helper
 			break
 		fi
@@ -31,45 +32,49 @@ get_helper() {
 }
 
 check_updates() {
-	local output status
+	FAILED=false
 
+	local output status
 	output=$(timeout $TIMEOUT checkupdates)
 	status=$?
 
 	if ((status != 0 && status != 2)); then
 		FAILED=true
+		UPDATES=0
 		return 1
+	else
+		UPDATES=$(grep -c . <<<"$output")
 	fi
 
-	UPDATES=$(grep -c . <<< "$output")
+	check_helper
 
 	if [[ -n $HELPER ]]; then
 		local aur_output aur_status
-
 		aur_output=$(timeout $TIMEOUT "$HELPER" -Quaq)
 		aur_status=$?
 
 		if ((${#aur_output} > 0 && aur_status != 0)); then
 			FAILED=true
+			AUR_UPDATES=0
 			return 1
+		else
+			AUR_UPDATES=$(grep -c . <<<"$aur_output")
 		fi
-
-		AUR_UPDATES=$(grep -c . <<< "$aur_output")
 	fi
 }
 
 update_packages() {
-	printf "%bUpdating packages...%b\n" "$FG_BLUE" "$FG_RESET"
+	debug "${BLUE}Updating packages...${RESET}"
 
 	if [[ -n $HELPER ]]; then
-		"$HELPER" -Syu
+		$HELPER -Syu
 	else
 		sudo pacman -Syu
 	fi
 
 	notify-send "Update Complete" -i "package-install"
 
-	printf "\n%bUpdate complete!%b\n" "$FG_GREEN" "$FG_RESET"
+	debug "\n${GREEN}Update complete!${RESET}"
 	read -rsn 1 -p "Press any key to exit..."
 }
 
@@ -94,30 +99,24 @@ display_module() {
 		fi
 	fi
 
-	cat <<- EOF
+	cat <<-EOF
 		{ "text": "$icon", "tooltip": "$tooltip" }
 	EOF
 }
 
 main() {
-	FAILED=false
-	UPDATES=0
-	AUR_UPDATES=0
-
-	get_helper
-
 	case $1 in
 		module)
 			check_updates
 			display_module
 			;;
 		*)
-			# Update the module on exit
+			# update the module on exit
 			trap "pkill -RTMIN+1 waybar" EXIT
 
-			printf "%bChecking for updates...%b\n" "$FG_BLUE" "$FG_RESET"
-
+			debug "${BLUE}Checking for updates...${RESET}"
 			check_updates
+
 			update_packages
 			;;
 	esac

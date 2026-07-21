@@ -1,21 +1,23 @@
 #!/usr/bin/env bash
 #
 # Scan, select, and connect to Wi-Fi networks
-# Passing "off" switches off Wi-Fi
 #
-# Requires fzf and networkmanager (nmcli)
+# Switch off Wi-Fi:
+#   $ network off
+#
+# Requires networkmanager (nmcli) and fzf
 #
 # Author:  Jesse Mirabel <sejjymvm@gmail.com>
 # Date:    August 11, 2025
 # License: MIT
 
-FG_RED="\e[31m"
-FG_RESET="\e[39m"
-
 TIMEOUT=5
 
-printf() {
-	command printf "$@" >&2
+RED="\e[31m"
+RESET="\e[39m"
+
+debug() {
+	printf "%b" "$*" >&2
 }
 
 switch_on() {
@@ -29,10 +31,9 @@ switch_on() {
 	nmcli radio wifi on
 
 	local new_state
-
 	local i
 	for ((i = 1; i <= TIMEOUT; i++)); do
-		printf "\rEnabling Wi-Fi... (%d/%d)" $i $TIMEOUT
+		debug "\rEnabling Wi-Fi... ($i/$TIMEOUT)"
 
 		new_state=$(nmcli -t -f STATE general)
 		if [[ $new_state != "connected (local only)" ]]; then
@@ -51,17 +52,17 @@ get_networks() {
 
 	local i
 	for ((i = 1; i <= TIMEOUT; i++)); do
-		printf "\rScanning for networks... (%d/%d)" $i $TIMEOUT
+		debug "\rScanning for networks... ($i/$TIMEOUT)"
 
 		LIST=$(timeout 1 nmcli device wifi list)
-		NETWORKS=$(tail -n +2 <<< "$LIST" | awk '$2 != "--"')
 
+		NETWORKS=$(tail -n +2 <<<"$LIST" | awk '$2 != "--"')
 		if [[ -n $NETWORKS ]]; then
 			break
 		fi
 	done
 
-	printf "\n%bScanning stopped.%b\n\n" "$FG_RED" "$FG_RESET"
+	debug "\n${RED}Scanning stopped.${RESET}\n\n"
 
 	if [[ -z $NETWORKS ]]; then
 		notify-send "Wi-Fi" "No networks found" -i "package-broken"
@@ -71,7 +72,7 @@ get_networks() {
 
 select_network() {
 	local header
-	header=$(head -n 1 <<< "$LIST")
+	header=$(head -n 1 <<<"$LIST")
 
 	local options=(
 		"--border=sharp"
@@ -86,7 +87,8 @@ select_network() {
 		"--reverse"
 	)
 
-	BSSID=$(fzf "${options[@]}" <<< "$NETWORKS" | awk '{print $1}')
+	BSSID=$(fzf "${options[@]}" <<<"$NETWORKS" | awk '{print $1}')
+
 	case $BSSID in
 		'')
 			exit 1
@@ -100,14 +102,14 @@ select_network() {
 }
 
 connect() {
-	printf "Connecting...\n"
+	debug "Connecting...\n"
 
-	if ! nmcli -a device wifi connect "$BSSID"; then
+	if nmcli -a device wifi connect "$BSSID"; then
+		notify-send "Wi-Fi" "Successfully connected" -i "package-install"
+	else
 		notify-send "Wi-Fi" "Failed to connect" -i "package-purge"
 		exit 1
 	fi
-
-	notify-send "Wi-Fi" "Successfully connected" -i "package-install"
 }
 
 main() {
@@ -118,14 +120,14 @@ main() {
 		exit 0
 	fi
 
-	# Make cursor invisible
-	printf "\e[?25l"
+	# make cursor invisible
+	debug "\e[?25l"
 
 	switch_on
 	get_networks
 
-	# Make cursor visible
-	printf "\e[?25h"
+	# make cursor visible
+	debug "\e[?25h"
 
 	select_network
 	connect

@@ -1,14 +1,13 @@
 #!/usr/bin/env bash
+#
+# Install [mechabar](https://github.com/sejjy/mechabar) dependencies
+#
+# Author:  Jesse Mirabel <sejjymvm@gmail.com>
+# Date:    August 22, 2025
+# License: MIT
 
-FG_RED="\e[31m"
-FG_GREEN="\e[32m"
-FG_BLUE="\e[34m"
-FG_RESET="\e[39m"
-
-ERRORS=0
-
-DEPS=(
-	bluez-utils # bluetoothctl
+PACKAGES=(
+	bluez-utils    # bluetoothctl
 	brightnessctl
 	fzf
 	networkmanager # nmcli
@@ -16,50 +15,49 @@ DEPS=(
 	otf-commit-mono-nerd
 )
 
-printf() {
-	command printf "$@" >&2
+RED="\e[31m"
+GREEN="\e[32m"
+BLUE="\e[34m"
+RESET="\e[39m"
+
+ERRORS=0
+
+debug() {
+	printf "%b\n" "$*" >&2
 }
 
-install_deps() {
-	printf "%bInstalling dependencies...%b\n" "$FG_BLUE" "$FG_RESET"
+main() {
+	debug "${BLUE}Installing dependencies...${RESET}"
 
-	local dep
-	for dep in "${DEPS[@]}"; do
-		if pacman -Qi "$dep" &> /dev/null; then
-			printf "[=] %s\n" "$dep"
+	local package
+	for package in "${PACKAGES[@]}"; do
+		if pacman -Qi "$package" &>/dev/null; then
+			debug "  $package"
 		else
-			printf "[ ] %s...\n" "$dep"
+			debug "${BLUE}*${RESET} $package...\n"
 
-			if sudo pacman -S --noconfirm "$dep"; then
-				printf "[%b+%b] %s\n" "$FG_GREEN" "$FG_RESET" "$dep"
+			if sudo pacman -S --noconfirm "$package"; then
+				debug "\n${GREEN}+${RESET} $package"
 			else
-				printf "[%bx%b] %s\n" "$FG_RED" "$FG_RESET" "$dep"
+				debug "\n${RED}x${RESET} $package"
 				((ERRORS += 1))
 			fi
 		fi
 	done
-}
 
-restart_waybar() {
-	printf "\n%bRestarting Waybar...%b\n" "$FG_BLUE" "$FG_RESET"
+	debug "\n${BLUE}Restarting Waybar...${RESET}"
 
 	if ! (systemctl --user is-enabled waybar.service &&
-		systemctl --user restart waybar.service) &> /dev/null; then
+		systemctl --user restart waybar.service) &>/dev/null; then
 		pkill waybar
-		waybar &> /dev/null &
+		waybar &>/dev/null &
 		disown
 	fi
-}
-
-main() {
-	install_deps
-	restart_waybar
 
 	if ((ERRORS > 0)); then
-		printf "\nInstallation completed with %b%d error(s)%b\n" \
-			"$FG_RED" "$ERRORS" "$FG_RESET"
+		debug "\nInstallation completed with ${RED}$ERRORS error(s)${RESET}"
 	else
-		printf "\n%bInstallation complete!%b\n" "$FG_GREEN" "$FG_RESET"
+		debug "\n${GREEN}Installation complete!${RESET}"
 	fi
 }
 
