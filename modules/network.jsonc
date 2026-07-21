@@ -19,7 +19,7 @@
 		"min-length": 2,
 		// "align":
 		// "justify":
-		"on-click": "kitty -e ~/.config/waybar/scripts/network",
+		"on-click": "~/.config/waybar/scripts/terminal -e ~/.config/waybar/scripts/network",
 		// "on-click-middle":
 		"on-click-right": "~/.config/waybar/scripts/network off",
 		// "on-update":

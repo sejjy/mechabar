@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+#
+# This code is released in public domain by Han Boetes <han@mijncomputer.nl>
+# Updated by Dave Davenport <qball@gmpclient.org>
+# + Modified by Jesse Mirabel <sejjymvm@gmail.com>
+#
+# This script tries to exec a terminal emulator by trying some known terminal
+# emulators.
+#
+# shellcheck disable=2153
+# ^---------------------^
+# Ignore SC2153 (info):
+# Possible misspelling: TERMINAL may not be assigned. Did you mean terminal?
+# For more information: https://www.shellcheck.net/wiki/SC2153
+
+for terminal in \
+	$TERMINAL Eterm alacritty aterm foot ghostty kitty konsole lxterminal    \
+	mate-terminal qterminal roxterm rxvt st terminology urxvt uxterm wezterm \
+	x-terminal-emulator xfce4-terminal.wrapper xterm
+do
+	if command -v "$terminal" &>/dev/null; then
+		exec $terminal "$@"
+	fi
+done
+
+notify-send "Failed to find a suitable terminal" -i "package-purge"
