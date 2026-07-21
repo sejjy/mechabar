@@ -37,10 +37,7 @@ Feel free to open a pull request to add new themes! :^)
 
 ### Requirements
 
-1. **[waybar](https://archlinux.org/packages/extra/x86_64/waybar/)**
-
-2. A **terminal emulator** (default: [kitty](https://archlinux.org/packages/extra/x86_64/kitty/))
-	> If you use a different terminal emulator, see the [Configuration](#configuration) section below.
+- **[waybar](https://archlinux.org/packages/extra/x86_64/waybar/)**
 
 #
 
@@ -81,20 +78,6 @@ Feel free to open a pull request to add new themes! :^)
 #
 
 ### Configuration
-
-<details open>
-<summary>Terminal emulator</summary>
-
-If you use a different terminal emulator, replace every instance of `kitty` in the module files. For example:
-
-```diff
-- "on-click": "kitty -e ..."
-+ "on-click": "ghostty -e ..."
-```
-
-#
-
-</details>
 
 <details open>
 <summary>Theme</summary>
@@ -147,45 +130,9 @@ _*Most modules use Material Design Icons (`nf-md-*`) for consistency._
 
 </details>
 
-<details>
-<summary>Keybinds (optional)</summary>
-
-You can optionally create keybinds to run scripts from the [scripts](./scripts/) directory. For example:
-
-```properties
-# ~/.config/hypr/hyprland.conf
-
-$scripts  = ~/.config/waybar/scripts
-$mod      = Super
-$terminal = kitty
-
-# Launch CLI
-bind = $mod, B, exec, $terminal -e $scripts/bluetooth
-bind = $mod, N, exec, $terminal -e $scripts/network
-bind = $mod, O, exec, $terminal -e $scripts/power
-bind = $mod, U, exec, $terminal -e $scripts/update
-
-# Toggle off Bluetooth/Wi-Fi
-bind = $mod Alt, B, exec, $scripts/bluetooth off
-bind = $mod Alt, N, exec, $scripts/network   off
-
-# Adjust volume
-bindl  = , XF86AudioMicMute,     exec, $scripts/volume input  mute
-bindl  = , XF86AudioMute,        exec, $scripts/volume output mute
-bindel = , XF86AudioLowerVolume, exec, $scripts/volume output lower
-bindel = , XF86AudioRaiseVolume, exec, $scripts/volume output raise
-
-# Adjust brightness
-bindel = , XF86MonBrightnessDown, exec, $scripts/backlight down
-bindel = , XF86MonBrightnessUp,   exec, $scripts/backlight up
-```
-
-</details>
-
 #
 
 ### References
 
-- [Hyprland wiki: Binds ↗](https://wiki.hypr.land/Configuring/Binds/)
-- [Nerd Fonts wiki: Glyph Sets](https://github.com/ryanoasis/nerd-fonts/wiki/Glyph-Sets-and-Code-Points)
 - [Waybar wiki](https://github.com/Alexays/Waybar/wiki)
+- [Nerd Fonts wiki: Glyph Sets](https://github.com/ryanoasis/nerd-fonts/wiki/Glyph-Sets-and-Code-Points)
