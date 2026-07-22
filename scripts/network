@@ -137,13 +137,11 @@ main() {
 			;;
 	esac
 
-	# make cursor invisible
 	debug "\e[?25l"
 
 	switch_on
 	list_networks
 
-	# make cursor visible
 	debug "\e[?25h"
 
 	select_network

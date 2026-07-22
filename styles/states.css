@@ -10,7 +10,6 @@
 	color: @hover-fg;
 }
 
-/* Inactive states */
 #idle_inhibitor.deactivated,
 #mpris.paused,
 #pulseaudio.output.muted,

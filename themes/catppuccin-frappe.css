@@ -1,5 +1,3 @@
-/* Catppuccin Frappe */
-
 @define-color rosewater      #f2d5cf;
 @define-color flamingo       #eebebe;
 @define-color pink           #f4b8e4;
@@ -27,14 +25,6 @@
 @define-color mantle         #292c3c;
 @define-color crust          #232634;
 
-/*
-	br - border
-	bg - background
-	fg - foreground
-*/
-
-/* Main colors */
-
 @define-color accent         @lavender;
 @define-color main-br        @subtext0;
 @define-color main-bg        @crust;
@@ -42,8 +32,6 @@
 @define-color hover-bg       @base;
 @define-color hover-fg       alpha(@main-fg, 0.75);
 @define-color outline        shade(@main-bg, 0.5);
-
-/* Module colors */
 
 @define-color workspaces     @mantle;
 @define-color temperature    @mantle;
@@ -55,8 +43,6 @@
 @define-color volume         @mantle;
 @define-color backlight      @base;
 @define-color battery        @surface0;
-
-/* State colors */
 
 @define-color warning        @yellow;
 @define-color critical       @red;

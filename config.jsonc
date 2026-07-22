@@ -4,13 +4,7 @@
 		"~/.config/waybar/modules/custom/*.jsonc",
 		"~/.config/waybar/modules/hyprland/*.jsonc"
 
-		// Modules that are not included by default:
-		// "~/.config/waybar/modules/extras/*.jsonc"
 	],
-
-	/*------------
-	    Layout
-	------------*/
 
 	"modules-left": [
 		"custom/user",
@@ -19,6 +13,7 @@
 		"custom/right_div#1",
 		"hyprland/window"
 	],
+
 	"modules-center": [
 		"hyprland/language",
 		"custom/left_div#2",
@@ -42,6 +37,7 @@
 		"custom/update",
 		"custom/right_div#5"
 	],
+
 	"modules-right": [
 		"mpris",
 		"custom/left_div#6",
@@ -54,35 +50,11 @@
 		"custom/power"
 	],
 
-	/*-------------
-	    Options
-	-------------*/
-
-	// "expand-center":
-	// "expand-left":
-	// "expand-right":
 	"layer": "top",
-	// "output":
-	// "position":
 	"height": 0,
 	"width": 0,
 	"margin": 0,
-	// "margin-top":
-	// "margin-left":
-	// "margin-bottom":
-	// "margin-right":
-	// "no-center":
 	"spacing": 0,
-	// "name":
 	"mode": "dock",
-	// "start_hidden":
-	// "modifier-reset":
-	// "exclusive":
-	// "fixed-center":
-	// "passthrough":
-	// "ipc":
-	// "id":
 	"reload_style_on_change": true
-	// "on-sigusr1":
-	// "on-sigusr2":
 }

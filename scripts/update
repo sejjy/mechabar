@@ -10,6 +10,8 @@
 
 TIMEOUT=10
 
+HELPER=paru
+
 GREEN="\e[32m"
 BLUE="\e[34m"
 RESET="\e[39m"
@@ -30,16 +32,6 @@ debug() {
 	printf "%b\n" "$*" >&2
 }
 
-detect_helper() {
-	local helper
-	for helper in aura pakku paru pikaur trizen yay; do
-		if command -v "$helper" >/dev/null; then
-			HELPER=$helper
-			break
-		fi
-	done
-}
-
 check_updates() {
 	FAILED=false
 
@@ -55,31 +47,23 @@ check_updates() {
 		UPDATES=$(grep -c . <<<"$output")
 	fi
 
-	detect_helper
+	local aur_output aur_status
+	aur_output=$(timeout $TIMEOUT "$HELPER" -Quaq)
+	aur_status=$?
 
-	if [[ -n $HELPER ]]; then
-		local aur_output aur_status
-		aur_output=$(timeout $TIMEOUT "$HELPER" -Quaq)
-		aur_status=$?
-
-		if ((${#aur_output} > 0 && aur_status != 0)); then
-			FAILED=true
-			AUR_UPDATES=0
-			return 1
-		else
-			AUR_UPDATES=$(grep -c . <<<"$aur_output")
-		fi
+	if ((${#aur_output} > 0 && aur_status != 0)); then
+		FAILED=true
+		AUR_UPDATES=0
+		return 1
+	else
+		AUR_UPDATES=$(grep -c . <<<"$aur_output")
 	fi
 }
 
 update_packages() {
 	debug "${BLUE}Updating packages...${RESET}"
 
-	if [[ -n $HELPER ]]; then
-		$HELPER -Syu
-	else
-		sudo pacman -Syu
-	fi
+	$HELPER -Syu
 
 	notify-send "Update Complete" -i "package-install"
 
@@ -99,13 +83,7 @@ display_module() {
 	else
 		icon='󰄠'
 		tooltip="<b>Pacman</b>: $UPDATES"
-
-		if [[ -n $HELPER ]]; then
-			local padding
-			printf -v padding "%*s" $((6 - ${#HELPER})) ''
-
-			tooltip+="\n<b>${HELPER^}</b>: $padding$AUR_UPDATES"
-		fi
+		tooltip+="\n<b>${HELPER^}</b>:   $AUR_UPDATES"
 	fi
 
 	cat <<-EOF
@@ -120,7 +98,6 @@ main() {
 			display_module
 			;;
 		*)
-			# update the module on exit
 			trap "pkill -RTMIN+1 waybar" EXIT
 
 			debug "${BLUE}Checking for updates...${RESET}"
