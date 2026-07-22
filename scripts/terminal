@@ -1,22 +1,20 @@
 #!/usr/bin/env bash
 #
-# This code is released in public domain by Han Boetes <han@mijncomputer.nl>
-# Updated by Dave Davenport <qball@gmpclient.org>
-# + Modified by Jesse Mirabel <sejjymvm@gmail.com>
+# Execute a terminal emulator
 #
-# This script tries to exec a terminal emulator by trying some known terminal
-# emulators.
+# Original script:
+#   https://github.com/davatorium/rofi/blob/next/script/rofi-sensible-terminal
 #
-# shellcheck disable=2153
-# ^---------------------^
-# Ignore SC2153 (info):
-# Possible misspelling: TERMINAL may not be assigned. Did you mean terminal?
-# For more information: https://www.shellcheck.net/wiki/SC2153
+# Authors: Han Boetes     <han@mijncomputer.nl>
+#          Dave Davenport <qball@gmpclient.org>
+#          Jesse Mirabel  <sejjymvm@gmail.com>
+# Date:    July 22, 2026
+# License: MIT
 
-for terminal in \
-	$TERMINAL Eterm alacritty aterm foot ghostty kitty konsole lxterminal    \
-	mate-terminal qterminal roxterm rxvt st terminology urxvt uxterm wezterm \
-	x-terminal-emulator xfce4-terminal.wrapper xterm
+# shellcheck disable=2153
+for terminal in $TERMINAL alacritty aterm Eterm foot ghostty kitty konsole \
+	lxterminal mate-terminal qterminal roxterm rxvt st terminology urxvt   \
+	uxterm wezterm x-terminal-emulator xfce4-terminal.wrapper xterm
 do
 	if command -v "$terminal" &>/dev/null; then
 		exec $terminal "$@"
