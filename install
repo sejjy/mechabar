@@ -6,21 +6,10 @@
 # Date:    August 22, 2025
 # License: MIT
 
-PACKAGES=(
-	bluez-utils    # bluetoothctl
-	brightnessctl
-	fzf
-	networkmanager # nmcli
-	pacman-contrib # checkupdates
-	otf-commit-mono-nerd
-)
-
 RED="\e[31m"
 GREEN="\e[32m"
 BLUE="\e[34m"
 RESET="\e[39m"
-
-ERRORS=0
 
 debug() {
 	printf "%b\n" "$*" >&2
@@ -30,7 +19,9 @@ main() {
 	debug "${BLUE}Installing dependencies...${RESET}"
 
 	local package
-	for package in "${PACKAGES[@]}"; do
+	for package in bluez-utils brightnessctl fzf networkmanager pacman-contrib \
+		otf-commit-mono-nerd
+	do
 		if pacman -Qi "$package" &>/dev/null; then
 			debug "  $package"
 		else

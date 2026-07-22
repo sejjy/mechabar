@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# Adjust screen brightness and send a notification with the current level
+# Adjust screen brightness
 #
 # Requires brightnessctl
 #
@@ -12,10 +12,11 @@ DEF_VALUE=1
 
 usage() {
 	local script=${0##*/}
+
 	cat <<-EOF
 		USAGE: $script {up|down} [value]
 
-		Adjust screen brightness and send a notification with the current level
+		Adjust screen brightness
 
 		OPTIONS:
 		  up   [value]    Increase brightness by [value] (default: $DEF_VALUE)

@@ -1,9 +1,6 @@
 #!/usr/bin/env bash
 #
-# Scan, select, and connect to Wi-Fi networks
-#
-# Switch off Wi-Fi:
-#   $ network off
+# Connect to a Wi-Fi network
 #
 # Requires networkmanager (nmcli) and fzf
 #
@@ -15,6 +12,18 @@ TIMEOUT=5
 
 RED="\e[31m"
 RESET="\e[39m"
+
+usage() {
+	cat <<-EOF
+		USAGE: ${0##*/} [option]
+
+		Connect to a Wi-Fi network
+
+		OPTIONS:
+		  off       Switch off Wi-Fi
+		  <none>    Switch on Wi-Fi and launch the CLI
+	EOF
+}
 
 debug() {
 	printf "%b" "$*" >&2
@@ -36,18 +45,19 @@ switch_on() {
 		debug "\rEnabling Wi-Fi... ($i/$TIMEOUT)"
 
 		new_state=$(nmcli -t -f STATE general)
+
 		if [[ $new_state != "connected (local only)" ]]; then
 			break
+		else
+			sleep 1
 		fi
-
-		sleep 1
 	done
 
 	notify-send "Wi-Fi Enabled" -i "network-wireless-on" \
 		-h string:x-canonical-private-synchronous:network
 }
 
-get_networks() {
+list_networks() {
 	nmcli device wifi rescan
 
 	local i
@@ -55,8 +65,8 @@ get_networks() {
 		debug "\rScanning for networks... ($i/$TIMEOUT)"
 
 		LIST=$(timeout 1 nmcli device wifi list)
-
 		NETWORKS=$(tail -n +2 <<<"$LIST" | awk '$2 != "--"')
+
 		if [[ -n $NETWORKS ]]; then
 			break
 		fi
@@ -89,19 +99,18 @@ select_network() {
 
 	BSSID=$(fzf "${options[@]}" <<<"$NETWORKS" | awk '{print $1}')
 
-	case $BSSID in
-		'')
-			exit 1
-			;;
-		'*')
-			notify-send "Wi-Fi" "Already connected to this network" \
-				-i "package-install"
-			exit 1
-			;;
-	esac
+	if [[ -z $BSSID ]]; then
+		exit 1
+	fi
 }
 
-connect() {
+connect_network() {
+	if [[ $BSSID == '*' ]]; then
+		notify-send "Wi-Fi" "Already connected to this network" \
+			-i "package-install"
+		exit 1
+	fi
+
 	debug "Connecting...\n"
 
 	if nmcli -a device wifi connect "$BSSID"; then
@@ -113,24 +122,32 @@ connect() {
 }
 
 main() {
-	if [[ $1 == off ]]; then
-		nmcli radio wifi off
-		notify-send 'Wi-Fi Disabled' -i 'network-wireless-off' \
-			-h string:x-canonical-private-synchronous:network
-		exit 0
-	fi
+	case $1 in
+		off)
+			nmcli radio wifi off
+			notify-send 'Wi-Fi Disabled' -i 'network-wireless-off' \
+				-h string:x-canonical-private-synchronous:network
+			return 0
+			;;
+		'')
+			;;
+		*)
+			usage >&2
+			return 1
+			;;
+	esac
 
 	# make cursor invisible
 	debug "\e[?25l"
 
 	switch_on
-	get_networks
+	list_networks
 
 	# make cursor visible
 	debug "\e[?25h"
 
 	select_network
-	connect
+	connect_network
 }
 
 main "$@"

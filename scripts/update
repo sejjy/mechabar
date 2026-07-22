@@ -1,9 +1,6 @@
 #!/usr/bin/env bash
 #
-# Update packages
-#
-# Print the number of pending updates in JSON format:
-#   $ update module
+# Update Arch packages
 #
 # Requires pacman-contrib (checkupdates)
 #
@@ -17,11 +14,23 @@ GREEN="\e[32m"
 BLUE="\e[34m"
 RESET="\e[39m"
 
+usage() {
+	cat <<-EOF
+		USAGE: ${0##*/} [option]
+
+		Update Arch packages
+
+		OPTIONS:
+		  module    Print the number of pending updates in JSON format
+		  <none>    Launch the CLI
+	EOF
+}
+
 debug() {
 	printf "%b\n" "$*" >&2
 }
 
-check_helper() {
+detect_helper() {
 	local helper
 	for helper in aura pakku paru pikaur trizen yay; do
 		if command -v "$helper" >/dev/null; then
@@ -46,7 +55,7 @@ check_updates() {
 		UPDATES=$(grep -c . <<<"$output")
 	fi
 
-	check_helper
+	detect_helper
 
 	if [[ -n $HELPER ]]; then
 		local aur_output aur_status
