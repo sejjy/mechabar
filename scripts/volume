@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# Adjust default device volume and send a notification with the current level
+# Adjust default device volume
 #
 # Author:  Jesse Mirabel <sejjymvm@gmail.com>
 # Date:    September 07, 2025
@@ -12,10 +12,11 @@ MAX=100
 
 usage() {
 	local script=${0##*/}
+
 	cat <<-EOF
 		USAGE: $script {input|output} {mute|raise|lower} [value]
 
-		Adjust default device volume and send a notification with the current level
+		Adjust default device volume
 
 		DEVICE:
 		  input            Use "@DEFAULT_SOURCE@" (microphone)

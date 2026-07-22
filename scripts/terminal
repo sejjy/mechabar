@@ -11,14 +11,18 @@
 # Date:    July 22, 2026
 # License: MIT
 
-# shellcheck disable=2153
-for terminal in $TERMINAL alacritty aterm Eterm foot ghostty kitty konsole \
-	lxterminal mate-terminal qterminal roxterm rxvt st terminology urxvt   \
-	uxterm wezterm x-terminal-emulator xfce4-terminal.wrapper xterm
-do
-	if command -v "$terminal" &>/dev/null; then
-		exec $terminal "$@"
-	fi
-done
+main() {
+	# shellcheck disable=2153
+	for terminal in $TERMINAL alacritty aterm Eterm foot ghostty kitty konsole \
+		lxterminal mate-terminal qterminal roxterm rxvt st terminology urxvt   \
+		uxterm wezterm x-terminal-emulator xfce4-terminal.wrapper xterm
+	do
+		if command -v "$terminal" &>/dev/null; then
+			exec $terminal "$@"
+		fi
+	done
 
-notify-send "Failed to find a suitable terminal" -i "package-purge"
+	notify-send "Failed to find a suitable terminal" -i "package-purge"
+}
+
+main "$@"

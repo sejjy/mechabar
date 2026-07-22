@@ -8,35 +8,40 @@
 # Date:    August 19, 2025
 # License: MIT
 
-list=(
-	"Lock"
-	"Shutdown"
-	"Reboot"
-	"Logout"
-	"Hibernate"
-	"Suspend"
-)
+main() {
+	local list=(
+		"Lock"
+		"Shutdown"
+		"Reboot"
+		"Logout"
+		"Hibernate"
+		"Suspend"
+	)
 
-options=(
-	"--border=sharp"
-	"--border-label= Power Menu "
-	"--cycle"
-	"--ghost=Search"
-	"--height=~100%"
-	"--highlight-line"
-	"--info=inline-right"
-	"--pointer="
-	"--reverse"
-)
+	local options=(
+		"--border=sharp"
+		"--border-label= Power Menu "
+		"--cycle"
+		"--ghost=Search"
+		"--height=~100%"
+		"--highlight-line"
+		"--info=inline-right"
+		"--pointer="
+		"--reverse"
+	)
 
-selected=$(printf "%s\n" "${list[@]}" | fzf "${options[@]}")
+	local selected
+	selected=$(printf "%s\n" "${list[@]}" | fzf "${options[@]}")
 
-case $selected in
-	Lock)      loginctl lock-session ;;
-	Shutdown)  systemctl poweroff ;;
-	Reboot)    systemctl reboot ;;
-	Logout)    loginctl terminate-session "$XDG_SESSION_ID" ;;
-	Hibernate) systemctl hibernate ;;
-	Suspend)   systemctl suspend ;;
-	*)         return 1 ;;
-esac
+	case $selected in
+		Lock)      loginctl lock-session ;;
+		Shutdown)  systemctl poweroff ;;
+		Reboot)    systemctl reboot ;;
+		Logout)    loginctl terminate-session "$XDG_SESSION_ID" ;;
+		Hibernate) systemctl hibernate ;;
+		Suspend)   systemctl suspend ;;
+		*)         return 1 ;;
+	esac
+}
+
+main
