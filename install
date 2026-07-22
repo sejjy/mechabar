@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# Install [mechabar](https://github.com/sejjy/mechabar) dependencies
+# Install mechabar dependencies
 #
 # Author:  Jesse Mirabel <sejjymvm@gmail.com>
 # Date:    August 22, 2025

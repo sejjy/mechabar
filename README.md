@@ -37,7 +37,7 @@ Feel free to open a pull request to add new themes! :^)
 
 ### Requirements
 
-- **[waybar](https://archlinux.org/packages/extra/x86_64/waybar/)**
+- [waybar](https://archlinux.org/packages/extra/x86_64/waybar/)
 
 #
 
