@@ -37,7 +37,10 @@ Feel free to open a pull request to add new themes! :^)
 
 ### Requirements
 
-- [waybar](https://archlinux.org/packages/extra/x86_64/waybar/)
+1. [waybar](https://archlinux.org/packages/extra/x86_64/waybar/)
+
+2. A terminal emulator (default: [kitty](https://archlinux.org/packages/extra/x86_64/kitty/))
+	> If you use a different terminal emulator, see the [Configuration](#configuration) section below.
 
 #
 
@@ -78,6 +81,20 @@ Feel free to open a pull request to add new themes! :^)
 #
 
 ### Configuration
+
+<details open>
+<summary>Terminal emulator</summary>
+
+If you use a different terminal emulator, replace every instance of `kitty` in the module files. For example:
+
+```diff
+- "on-click": "kitty -e ..."
++ "on-click": "ghostty -e ..."
+```
+
+#
+
+</details>
 
 <details open>
 <summary>Theme</summary>
