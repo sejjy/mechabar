@@ -1,77 +1,28 @@
 {
 	"clock#time": {
-		// "interval":
 		"format": "{:%H:%M}",
-		// "timezone":
-		// "timezones":
-		// "timezone-tooltip-format":
-		// "locale":
 		"max-length": 5,
 		"min-length": 5,
-		// "rotate":,
-		// "on-click":
-		// "on-click-middle":
-		// "on-click-right":
-		// "on-scroll-up":
-		// "on-scroll-down":
-		// "smooth-scrolling-threshold":
-		// "tooltip":
 		"tooltip-format": "<b>Standard Time</b>: <span text_transform='lowercase'>{:%I:%M %p}</span>"
-		// "menu":
-		// "menu-file":
-		// "menu-actions":
-		// "expand":
 	},
 
-	/*--------------
-	    Calendar
-	--------------*/
-
 	"clock#date": {
-		// "interval":
 		"format": "󰸗 {:%d-%m}",
-		// "timezone":
-		// "timezones":
-		// "locale":
 		"min-length": 8,
 		"max-length": 8,
-		// "rotate":
-		// "on-click":
-		// "on-click-middle":
-		// "on-click-right":
-		// "on-scroll-up":
-		// "on-scroll-down":
-		// "smooth-scrolling-threshold":
-		// "tooltip":
 		"tooltip-format": "{calendar}",
-		// "menu":
-		// "menu-file":
-		// "menu-actions":
-		// "expand":
 		"calendar": {
 			"mode": "month",
 			"mode-mon-col": 6,
-			// "week-pos":
-			// "on-scroll":
-			// "iso8601":
-			// "weeks-numbering":
-			// "first-day-of-week":
 			"format": {
 				"months": "<span alpha='100%'><b>{}</b></span>",
 				"days": "<span alpha='90%'>{}</span>",
-				// "weeks":
 				"weekdays": "<span alpha='80%'><i>{}</i></span>",
 				"today": "<span alpha='100%'><b><u>{}</u></b></span>"
 			}
 		},
 		"actions": {
 			"on-click": "mode"
-			// "on-click-middle":
-			// "on-click-right":
-			// "on-click-forward":
-			// "on-click-backward":
-			// "on-scroll-up":
-			// "on-scroll-down":
 		}
 	}
 }

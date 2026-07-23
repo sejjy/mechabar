@@ -1,40 +1,21 @@
 {
 	"bluetooth": {
-		// "controller":
-		// "controller-alias":
-		// "format-device-preference":
 		"format": "󰂯",
 		"format-disabled": "󰂲",
 		"format-off": "󰂲",
 		"format-on": "󰂰",
 		"format-connected": "󰂱",
-		// "format-connected-battery":
-		// "format-no-controller":
-		// "format-icons":
-		// "rotate":
 		"max-length": 2,
 		"min-length": 2,
-		// "align":
-		// "justify":
 		"on-click": "~/.config/waybar/scripts/terminal -e ~/.config/waybar/scripts/bluetooth",
-		// "on-click-middle":
 		"on-click-right": "~/.config/waybar/scripts/bluetooth off",
-		// "on-scroll-up":
-		// "on-scroll-down":
-		// "smooth-scrolling-threshold":
-		// "tooltip":
 		"tooltip-format": "Device Addr: {device_address}",
 		"tooltip-format-disabled": "Bluetooth Disabled",
 		"tooltip-format-off": "Bluetooth Off",
 		"tooltip-format-on": "Bluetooth Disconnected",
 		"tooltip-format-connected": "Device: {device_alias}",
 		"tooltip-format-connected-battery": "Device: {device_alias}\nBattery: {device_battery_percentage}%",
-		// "tooltip-format-no-controller":
 		"tooltip-format-enumerate-connected": "Device: {device_alias}",
 		"tooltip-format-enumerate-connected-battery": "Device: {device_alias}\nBattery: {device_battery_percentage}%"
-		// "menu":
-		// "menu-file":
-		// "menu-actions":
-		// "expand":
 	}
 }

@@ -1,36 +1,7 @@
 {
 	"custom/power": {
-		// "exec":
-		// "exec-if":
-		// "hide-empty-text":
-		// "exec-on-event":
-		// "return-type":
-		// "interval":
-		// "restart-interval":
-		// "signal":
 		"format": "󰤄",
-		// "format-icons":
-		// "rotate":
-		// "max-length":
-		// "min-length":
-		// "align":
-		// "justify":
 		"on-click": "~/.config/waybar/scripts/terminal -e ~/.config/waybar/scripts/power",
-		// "on-click-middle":
-		// "on-click-right":
-		// "on-update":
-		// "on-scroll-up":
-		// "on-scroll-down":
-		// "smooth-scrolling-threshold":
 		"tooltip-format": "Power Menu"
-		// "tooltip-format":
-		// "escape":
-		// "menu":
-		// "menu-file":
-		// "menu-actions":
-		// "expand":
-		// "image-path":
-		// "image-name":
-		// "icon-size":
 	}
 }
