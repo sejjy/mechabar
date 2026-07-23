@@ -1,15 +1,9 @@
-/*----------------
-    Media info
-----------------*/
-
+/* Media info */
 #mpris {
 	padding: 0 12px;
 }
 
-/*------------
-    Volume
-------------*/
-
+/* Volume */
 #custom-left_div.6 {
 	color: @volume;
 }
@@ -18,10 +12,7 @@
 	background-color: @volume;
 }
 
-/*----------------
-    Brightness
-----------------*/
-
+/* Brightness */
 #custom-left_div.7 {
 	background-color: @volume;
 	color: @backlight;
@@ -30,10 +21,7 @@
 	background-color: @backlight;
 }
 
-/*-------------
-    Battery
--------------*/
-
+/* Battery */
 #custom-left_div.8 {
 	background-color: @backlight;
 	color: @battery;
@@ -45,10 +33,7 @@
 	color: @battery;
 }
 
-/*----------------
-    Power menu
-----------------*/
-
+/* Power button */
 #custom-power {
 	border-radius: 16px;
 	padding: 0 19px 0 16px;

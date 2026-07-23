@@ -1,5 +1,4 @@
 /* Catppuccin Macchiato */
-
 @define-color rosewater      #f4dbd6;
 @define-color flamingo       #f0c6c6;
 @define-color pink           #f5bde6;
@@ -27,14 +26,7 @@
 @define-color mantle         #1e2030;
 @define-color crust          #181926;
 
-/*
-	br - border
-	bg - background
-	fg - foreground
-*/
-
 /* Main colors */
-
 @define-color accent         @lavender;
 @define-color main-br        @subtext0;
 @define-color main-bg        @crust;
@@ -44,7 +36,6 @@
 @define-color outline        shade(@main-bg, 0.5);
 
 /* Module colors */
-
 @define-color workspaces     @mantle;
 @define-color temperature    @mantle;
 @define-color memory         @base;
@@ -57,7 +48,6 @@
 @define-color battery        @surface0;
 
 /* State colors */
-
 @define-color warning        @yellow;
 @define-color critical       @red;
 @define-color charging       @green;

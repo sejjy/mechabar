@@ -1,17 +1,11 @@
-/*---------------
-    Indicator
----------------*/
-
+/* Keyboard state */
 #keyboard-state label,
 #language {
 	margin-right: 12px;
 	color: @hover-fg;
 }
 
-/*-----------------
-    Temperature
------------------*/
-
+/* Temperature */
 #custom-left_div.2 {
 	color: @temperature;
 }
@@ -19,10 +13,7 @@
 	background-color: @temperature;
 }
 
-/*------------
-    Memory
-------------*/
-
+/* Memory */
 #custom-left_div.3 {
 	background-color: @temperature;
 	color: @memory;
@@ -31,10 +22,7 @@
 	background-color: @memory;
 }
 
-/*---------
-    CPU
----------*/
-
+/* CPU */
 #custom-left_div.4 {
 	background-color: @memory;
 	color: @cpu;
@@ -46,10 +34,7 @@
 	color: @cpu;
 }
 
-/*-----------------
-    Distro icon
------------------*/
-
+/* Distro */
 #custom-left_div.5,
 #custom-right_div.2 {
 	color: @accent;
@@ -60,10 +45,7 @@
 	color: @main-bg;
 }
 
-/*--------------------
-    Idle inhibitor
---------------------*/
-
+/* Idle inhibitor */
 #custom-right_inv.1 {
 	color: @time;
 }
@@ -71,10 +53,7 @@
 	background-color: @time;
 }
 
-/*----------
-    Time
-----------*/
-
+/* Time */
 #clock.time {
 	padding-right: 6px;
 	background-color: @time;
@@ -84,10 +63,7 @@
 	color: @time;
 }
 
-/*----------
-    Date
-----------*/
-
+/* Date */
 #clock.date {
 	padding-left: 6px;
 	background-color: @date;
@@ -97,10 +73,7 @@
 	color: @date;
 }
 
-/*-----------------
-    System tray
------------------*/
-
+/* System tray */
 #network {
 	background-color: @tray;
 	padding: 0 6px 0 4px;
