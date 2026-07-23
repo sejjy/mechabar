@@ -1,5 +1,4 @@
 /* Catppuccin Mocha */
-
 @define-color rosewater      #f5e0dc;
 @define-color flamingo       #f2cdcd;
 @define-color pink           #f5c2e7;
@@ -27,14 +26,7 @@
 @define-color mantle         #181825;
 @define-color crust          #11111b;
 
-/*
-	br - border
-	bg - background
-	fg - foreground
-*/
-
 /* Main colors */
-
 @define-color accent         @lavender;
 @define-color main-br        @subtext0;
 @define-color main-bg        @crust;
@@ -44,7 +36,6 @@
 @define-color outline        shade(@main-bg, 0.5);
 
 /* Module colors */
-
 @define-color workspaces     @mantle;
 @define-color temperature    @mantle;
 @define-color memory         @base;
@@ -57,7 +48,6 @@
 @define-color battery        @surface0;
 
 /* State colors */
-
 @define-color warning        @yellow;
 @define-color critical       @red;
 @define-color charging       @green;

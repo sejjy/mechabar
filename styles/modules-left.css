@@ -1,7 +1,4 @@
-/*----------------
-    Workspaces
-----------------*/
-
+/* Workspaces */
 #custom-left_div.1,
 #custom-right_div.1 {
 	color: @workspaces;
@@ -15,10 +12,7 @@
 	color: @accent;
 }
 
-/*------------------
-    Window title
-------------------*/
-
+/* Window title */
 #window {
 	margin: 0 12px;
 }
