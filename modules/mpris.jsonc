@@ -1,40 +1,15 @@
 {
 	"mpris": {
-		// "player":
-		// "ignored-players":
-		// "interval":
 		"format": "{player_icon} {title} - {artist}",
 		"format-paused": "{status_icon} {title} - {artist}",
-		// "tooltip":
 		"tooltip-format": "Playing: {title} - {artist}",
 		"tooltip-format-paused": "Paused: {title} - {artist}",
-		// "artist-len":
-		// "album-len":
-		// "title-len":
-		// "dynamic-len":
-		// "dynamic-order":
-		// "dynamic-importance-order":
-		// "dynamic-separator":
-		// "truncate-hours":
-		// "enable-tooltip-len-limits":
-		// "ellipsis":
-		// "rotate":
 		"max-length": 1000,
-		// "min-length":
-		// "align":
-		// "justify":
-		// "on-click":
-		// "on-click-middle":
-		// "on-click-right":
-		// "on-click-backward":
-		// "on-click-forward":
-		// "prefer-album-artist":
 		"player-icons": {
 			"default": "󰐊"
 		},
 		"status-icons": {
 			"paused": "󰏤"
 		}
-		// "expand":
 	}
 }

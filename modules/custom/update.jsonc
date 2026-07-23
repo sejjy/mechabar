@@ -1,36 +1,12 @@
 {
 	"custom/update": {
 		"exec": "~/.config/waybar/scripts/update module",
-		// "exec-if":
-		// "hide-empty-text":
-		// "exec-on-event":
 		"return-type": "json",
 		"interval": 3600,
-		// "restart-interval":
 		"signal": 1,
-		"format": "{}",
-		// "format-icons":
-		// "rotate":
 		"max-length": 2,
 		"min-length": 2,
-		// "align":
-		// "justify":
 		"on-click": "kitty -e ~/.config/waybar/scripts/update",
-		// "on-click-middle":
 		"on-click-right": "pkill -RTMIN+1 waybar"
-		// "on-update":
-		// "on-scroll-up":
-		// "on-scroll-down":
-		// "smooth-scrolling-threshold":
-		// "tooltip":
-		// "tooltip-format":
-		// "escape":
-		// "menu":
-		// "menu-file":
-		// "menu-actions":
-		// "expand":
-		// "image-path":
-		// "image-name":
-		// "icon-size":
 	}
 }

@@ -1,36 +1,6 @@
 {
 	"custom/distro": {
-		// "exec":
-		// "exec-if":
-		// "hide-empty-text":
-		// "exec-on-event":
-		// "return-type":
-		// "interval":
-		// "restart-interval":
-		// "signal":
 		"format": "󰣇",
-		// "format-icons":
-		// "rotate":
-		// "max-length":
-		// "min-length":
-		// "align":
-		// "justify":
-		// "on-click":
-		// "on-click-middle":
-		// "on-click-right":
-		// "on-update":
-		// "on-scroll-up":
-		// "on-scroll-down":
-		// "smooth-scrolling-threshold":
 		"tooltip": false
-		// "tooltip-format":
-		// "escape":
-		// "menu":
-		// "menu-file":
-		// "menu-actions":
-		// "expand":
-		// "image-path":
-		// "image-name":
-		// "icon-size":
 	}
 }

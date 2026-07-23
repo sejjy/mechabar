@@ -1,40 +1,22 @@
 {
 	"network": {
-		// "interface":
-		// "rfkill":
 		"interval": 10,
-		// "family":
 		"format": "󰤨",
 		"format-ethernet": "󰈀",
 		"format-wifi": "{icon}",
-		// "format-linked":
 		"format-disconnected": "󰤯",
 		"format-disabled": "󰤮",
-		// "format-alt":
 		"format-icons": [
 			"󰤟", "󰤢", "󰤥", "󰤨"
 		],
-		// "rotate":
 		"max-length": 2,
 		"min-length": 2,
-		// "align":
-		// "justify":
 		"on-click": "kitty -e ~/.config/waybar/scripts/network",
-		// "on-click-middle":
 		"on-click-right": "~/.config/waybar/scripts/network off",
-		// "on-update":
-		// "on-scroll-up":
-		// "on-scroll-down":
-		// "smooth-scrolling-threshold":
-		// "tooltip":
 		"tooltip-format": "<b>Gateway</b>: {gwaddr}",
 		"tooltip-format-ethernet": "<b>Interface</b>: {ifname}",
 		"tooltip-format-wifi": "<b>Network</b>: {essid}\n<b>IP Addr</b>: {ipaddr}/{cidr}\n<b>Strength</b>: {signalStrength}%\n<b>Frequency</b>: {frequency} GHz",
 		"tooltip-format-disconnected": "Wi-Fi Disconnected",
 		"tooltip-format-disabled": "Wi-Fi Disabled"
-		// "menu":
-		// "menu-file":
-		// "menu-actions":
-		// "expand":
 	}
 }
