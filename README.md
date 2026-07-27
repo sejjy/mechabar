@@ -8,27 +8,25 @@ A mecha-themed, modular Waybar configuration
 | :---------------------------------------: |
 
 <details>
-<summary>Themes</summary>
+<summary>Colors</summary>
 
-<ins><b>Catppuccin:</b></ins>
-
-| Mocha (default)                                    |
+| Catppuccin Mocha (default)                         |
 | :------------------------------------------------: |
 | ![Catppuccin Mocha](./assets/catppuccin-mocha.png) |
 
-| Macchiato                                                  |
+| Catppuccin Macchiato                                       |
 | :--------------------------------------------------------: |
 | ![Catppuccin Macchiato](./assets/catppuccin-macchiato.png) |
 
-| Frappe                                               |
+| Catppuccin Frappe                                    |
 | :--------------------------------------------------: |
 | ![Catppuccin Frappe](./assets/catppuccin-frappe.png) |
 
-| Latte                                              |
+| Catppuccin Latte                                   |
 | :------------------------------------------------: |
 | ![Catppuccin Latte](./assets/catppuccin-latte.png) |
 
-Feel free to open a pull request to add new themes! :^)
+_Feel free to open a pull request to add new colors! :^)_
 
 </details>
 </div>
@@ -87,23 +85,27 @@ Feel free to open a pull request to add new themes! :^)
 
 If you use a different terminal emulator, replace every instance of `kitty` in the module files. For example:
 
-```diff
-- "on-click": "kitty -e ..."
-+ "on-click": "ghostty -e ..."
+```jsonc
+// ~/.config/waybar/modules/custom/power.jsonc
+
+"custom/power": {
+	// "on-click": "kitty -e ~/.config/waybar/scripts/power",
+	"on-click": "ghostty -e ~/.config/waybar/scripts/power",
+}
 ```
 
 #
 
 </details>
 
-<details open>
-<summary>Theme</summary>
+<details>
+<summary>Colors</summary>
 
-To change the theme, copy your preferred file from the [themes](./themes/) directory to `theme.css`. For example:
+To change the colors, import your preferred file from the [colors](./styles/colors/) directory to `style.css`. For example:
 
-```bash
-cd ~/.config/waybar
-cp themes/catppuccin-latte.css theme.css
+```css
+/* @import "styles/colors/catppuccin-mocha.css"; */
+@import "styles/colors/catppuccin-latte.css";
 ```
 
 #
@@ -119,11 +121,23 @@ The leftmost module has no default function and is _left_ for you to configure. 
 // ~/.config/waybar/modules/custom/user.jsonc
 
 "custom/user": {
-	// Run your own script
-	"on-click": "/path/to/your/script",
-	// Restart Waybar
-	"on-click-right": "pkill -SIGUSR2 waybar",
+	"on-click": "/path/to/your/script", // Run your own script
+	"on-click-right": "pkill -SIGUSR2 waybar", // Restart Waybar
 }
+```
+
+#
+
+</details>
+
+<details>
+<summary>Font</summary>
+
+To change the font, import your preferred file from the [fonts](./styles/fonts/) directory to `style.css`. For example:
+
+```css
+/* @import "styles/fonts/commit-mono.css"; */
+@import "styles/fonts/jetbrains-mono.css";
 ```
 
 #
@@ -142,8 +156,6 @@ gentoo
 _Matches: `nf-dev-gentoo`, `nf-linux-gentoo`, `nf-md-gentoo`*_
 
 _*Most modules use Material Design Icons (`nf-md-*`) for consistency._
-
-#
 
 </details>
 

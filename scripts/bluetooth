@@ -78,7 +78,7 @@ list_devices() {
 		num=$(bluetoothctl devices | grep -c "^Device")
 		debug "\nDevices: $num"
 
-		# move cursor 3 lines up
+		# Move cursor 3 lines up
 		debug "\e[3F"
 
 		read -rsn 1 -t 1
@@ -169,13 +169,13 @@ main() {
 			;;
 	esac
 
-	# make cursor invisible
+	# Make cursor invisible
 	debug "\e[?25l"
 
 	power_on
 	list_devices
 
-	# make cursor visible
+	# Make cursor visible
 	debug "\e[?25h"
 
 	select_device

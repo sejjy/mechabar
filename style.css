@@ -1,15 +1,17 @@
-@import "theme.css";
-
 * {
 	all: initial;
-	color: @main-fg;
 }
 
-@import "styles/fonts.css";
+@import "styles/colors/catppuccin-mocha.css";
+@import "styles/fonts/commit-mono.css";
 @import "styles/modules-center.css";
 @import "styles/modules-left.css";
 @import "styles/modules-right.css";
 @import "styles/states.css";
+
+* {
+	color: @main-fg;
+}
 
 .module {
 	margin-bottom: -1px;

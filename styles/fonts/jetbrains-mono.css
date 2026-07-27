@@ -1,0 +1,28 @@
+* {
+	font-family: "JetBrainsMono Nerd Font";
+	font-weight: bold;
+	font-size: 16px;
+}
+
+#window label,
+#mpris,
+tooltip label {
+	font-weight: normal;
+}
+
+#workspaces button.active label,
+#workspaces button.focused label,
+#custom-distro {
+	font-size: 18px;
+}
+
+#custom-power {
+	font-size: 18px;
+}
+
+#custom-left_div,
+#custom-left_inv,
+#custom-right_div,
+#custom-right_inv {
+	font-size: 18.5px;
+}
