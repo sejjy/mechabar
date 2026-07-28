@@ -21,7 +21,7 @@ usage() {
 		Update Arch packages
 
 		OPTIONS:
-		  module    Print the number of pending updates in JSON format
+		  module    Print Waybar-compatible JSON output
 		  <none>    Launch the CLI
 	EOF
 }
@@ -43,8 +43,8 @@ detect_helper() {
 check_updates() {
 	FAILED=false
 
-	local output status
-	output=$(timeout $TIMEOUT checkupdates)
+	local packages status
+	packages=$(timeout $TIMEOUT checkupdates)
 	status=$?
 
 	if ((status != 0 && status != 2)); then
@@ -52,22 +52,24 @@ check_updates() {
 		UPDATES=0
 		return 1
 	else
-		UPDATES=$(grep -c . <<<"$output")
+		UPDATES=$(grep -c . <<<"$packages")
 	fi
 
 	detect_helper
 
 	if [[ -n $HELPER ]]; then
-		local aur_output aur_status
-		aur_output=$(timeout $TIMEOUT "$HELPER" -Quaq)
+		local aur_packages aur_status
+		aur_packages=$(timeout "$TIMEOUT" "$HELPER" -Qua)
 		aur_status=$?
 
-		if ((${#aur_output} > 0 && aur_status != 0)); then
+		if ((${#aur_packages} > 0 && aur_status != 0)); then
 			FAILED=true
 			AUR_UPDATES=0
 			return 1
 		else
-			AUR_UPDATES=$(grep -c . <<<"$aur_output")
+			# Filter out ignored AUR packages
+			aur_packages=$(awk '!/\[ignored\]/ {print $1}' <<<"$aur_packages")
+			AUR_UPDATES=$(grep -c . <<<"$aur_packages")
 		fi
 	fi
 }
@@ -76,7 +78,7 @@ update_packages() {
 	debug "${BLUE}Updating packages...${RESET}"
 
 	if [[ -n $HELPER ]]; then
-		$HELPER -Syu
+		command $HELPER -Syu
 	else
 		sudo pacman -Syu
 	fi
@@ -87,7 +89,7 @@ update_packages() {
 	read -rsn 1 -p "Press any key to exit..."
 }
 
-display_module() {
+print_module() {
 	local icon tooltip
 
 	if $FAILED; then
@@ -117,15 +119,16 @@ main() {
 	case $1 in
 		module)
 			check_updates
-			display_module
+			print_module
 			;;
-		*)
+		'')
 			trap "pkill -RTMIN+1 waybar" EXIT # Update the module on exit
 
-			debug "${BLUE}Checking for updates...${RESET}"
-			check_updates
-
 			update_packages
+			;;
+		*)
+			usage >&2
+			return 1
 			;;
 	esac
 }
