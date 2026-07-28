@@ -33,7 +33,7 @@
 	color: @battery;
 }
 
-/* Power button */
+/* Power */
 #custom-power {
 	border-radius: 16px;
 	padding: 0 19px 0 16px;

@@ -1,9 +1,11 @@
 * {
+	/* Ignore GTK theme */
+	/* https://github.com/Alexays/Waybar/issues/1351 */
 	all: initial;
 }
 
-@import "styles/colors/catppuccin-mocha.css";
-@import "styles/fonts/commit-mono.css";
+@import "styles/colors/catppuccin-mocha.css"; /* Colors */
+@import "styles/fonts/commit-mono.css"; /* Font */
 @import "styles/modules-center.css";
 @import "styles/modules-left.css";
 @import "styles/modules-right.css";
@@ -13,6 +15,7 @@
 	color: @main-fg;
 }
 
+/* Fix vertical alignment */
 .module {
 	margin-bottom: -1px;
 }

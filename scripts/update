@@ -120,8 +120,7 @@ main() {
 			display_module
 			;;
 		*)
-			# Update the module on exit
-			trap "pkill -RTMIN+1 waybar" EXIT
+			trap "pkill -RTMIN+1 waybar" EXIT # Update the module on exit
 
 			debug "${BLUE}Checking for updates...${RESET}"
 			check_updates
