@@ -23,7 +23,7 @@ main() {
 		otf-commit-mono-nerd
 	do
 		if pacman -Qi "$package" &>/dev/null; then
-			debug "  $package"
+			debug "${GREEN}/${RESET} $package"
 		else
 			debug "${BLUE}*${RESET} $package...\n"
 
