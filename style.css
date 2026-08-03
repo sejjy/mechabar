@@ -7,26 +7,20 @@
 @import "styles/colors/catppuccin-mocha.css";
 @import "styles/fonts/commit-mono.css";
 
-@import "styles/modules-center.css";
-@import "styles/modules-left.css";
-@import "styles/modules-right.css";
+@import "styles/dividers.css";
+@import "styles/modules.css";
 @import "styles/states.css";
 
 * {
-	color: @base-fg;
+	color: @fg-0;
 }
 
-#waybar > box {
-	margin: 4px;
-	background-color: @base-bg;
-}
 #waybar {
 	background-color: @outline;
 }
-
-/* Fix vertical alignment */
-.module {
-	margin-bottom: -1px;
+#waybar > box {
+	margin: 4px;
+	background-color: @bg-0;
 }
 
 button {
@@ -34,16 +28,12 @@ button {
 	padding: 0 10px;
 	min-width: 16px;
 }
-button:hover {
-	background-color: @hover-bg;
-	color: @hover-fg;
-}
 
-tooltip > box {
-	padding: 0 6px;
-}
 tooltip {
 	border: 2px solid @border;
 	border-radius: 10px;
-	background-color: @base-bg;
+	background-color: @bg-0;
+}
+tooltip > box {
+	padding: 0 6px;
 }

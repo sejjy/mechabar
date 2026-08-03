@@ -20,9 +20,9 @@ tooltip label {
 	font-size: 18px;
 }
 
-#custom-left_div,
-#custom-left_inv,
-#custom-right_div,
-#custom-right_inv {
+#custom-left,
+#custom-left.inverse,
+#custom-right,
+#custom-right.inverse {
 	font-size: 18.5px;
 }

@@ -1,0 +1,92 @@
+/******************************************************************************/
+/* Vertically align modules                                                   */
+ .module { margin-bottom: -1px; }
+/******************************************************************************/
+
+/* Left modules */
+
+#workspaces {
+	padding: 0 1px;
+	background-color: @bg-1;
+}
+
+#window {
+	margin: 0 12px;
+}
+
+#keyboard-state label,
+#language {
+	margin-right: 12px;
+	color: @hover-fg;
+}
+
+/* Center modules */
+
+#temperature {
+	background-color: @bg-1;
+}
+
+#memory {
+	background-color: @bg-2;
+}
+
+#cpu {
+	background-color: @bg-3;
+}
+
+#custom-distro {
+	padding: 0 10px 0 5px;
+	background-color: @accent;
+	color: @bg-0;
+}
+
+#idle_inhibitor {
+	background-color: @bg-3;
+}
+#clock.time {
+	padding-right: 6px;
+	background-color: @bg-3;
+}
+
+#clock.date {
+	padding-left: 6px;
+	background-color: @bg-2;
+}
+
+#network {
+	background-color: @bg-1;
+	padding: 0 6px 0 4px;
+}
+#bluetooth {
+	background-color: @bg-1;
+	padding: 0 5px;
+}
+#custom-update {
+	background-color: @bg-1;
+	padding: 0 8px 0 2px;
+}
+
+/* Right modules */
+
+#mpris {
+	padding: 0 12px;
+}
+
+#pulseaudio,
+#wireplumber {
+	background-color: @bg-1;
+}
+
+#backlight {
+	background-color: @bg-2;
+}
+
+#battery {
+	background-color: @bg-3;
+}
+
+#custom-power {
+	border-radius: 16px;
+	padding: 0 19px 0 16px;
+	color: @accent;
+}
