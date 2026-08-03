@@ -4,8 +4,8 @@
 		"return-type": "json",
 		"interval": 3600,
 		"signal": 1,
-		"max-length": 2,
 		"min-length": 2,
+		"max-length": 2,
 		"on-click": "kitty -e ~/.config/waybar/scripts/update",
 		"on-click-right": "pkill -RTMIN+1 waybar"
 	}

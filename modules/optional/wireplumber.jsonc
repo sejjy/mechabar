@@ -1,39 +1,39 @@
 {
 	"group/wireplumber": {
-		"orientation": "horizontal",
 		"modules": [
 			"wireplumber#output",
 			"wireplumber#input"
 		],
+		"orientation": "horizontal",
 		"drawer": {
 			"transition-left-to-right": false
 		}
 	},
 
 	"wireplumber#output": {
+		"node-type": "Audio/Sink",
 		"format": "{icon} {volume}%",
-		"format-muted": "󰝟 {volume}%",
 		"format-icons": [
 			"󰕿", "󰖀", "󰕾"
 		],
-		"node-type": "Audio/Sink",
-		"tooltip-format": "Device: {node_name}",
-		"max-length": 7,
+		"format-muted": "󰝟 {volume}%",
 		"min-length": 7,
+		"max-length": 7,
 		"on-click": "~/.config/waybar/scripts/volume output mute",
 		"on-scroll-up": "~/.config/waybar/scripts/volume output raise",
-		"on-scroll-down": "~/.config/waybar/scripts/volume output lower"
+		"on-scroll-down": "~/.config/waybar/scripts/volume output lower",
+		"tooltip-format": "Device: {node_name}"
 	},
 
 	"wireplumber#input": {
+		"node-type": "Audio/Source",
 		"format": "󰍬 {volume}%",
 		"format-muted": "󰍭 {volume}%",
-		"node-type": "Audio/Source",
-		"tooltip-format": "Device: {node_name}",
-		"max-length": 7,
 		"min-length": 7,
+		"max-length": 7,
 		"on-click": "~/.config/waybar/scripts/volume input mute",
 		"on-scroll-up": "~/.config/waybar/scripts/volume input raise",
-		"on-scroll-down": "~/.config/waybar/scripts/volume input lower"
+		"on-scroll-down": "~/.config/waybar/scripts/volume input lower",
+		"tooltip-format": "Device: {node_name}"
 	}
 }

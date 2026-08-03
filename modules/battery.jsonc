@@ -1,19 +1,19 @@
 {
 	"battery": {
-		"states": {
-			"warning": 20,
-			"critical": 10
-		},
 		"format": "{icon} {capacity}%",
-		"format-time": "{H}h {M}min",
 		"format-icons": [
 			"󰂎", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"
 		],
 		"format-charging": "󰉁 {capacity}%",
+		"states": {
+			"warning": 20,
+			"critical": 10
+		},
 		"max-length": 7,
 		"min-length": 7,
 		"tooltip-format": "<b>Discharging</b>: {time}",
 		"tooltip-format-charging": "<b>Charging</b>: {time}",
+		"format-time": "{H}h {M}min",
 		"events": {
 			"on-discharging-warning": "notify-send 'Battery Low (20%)' -u critical -i 'battery-020' -h string:x-canonical-private-synchronous:battery",
 			"on-discharging-critical": "notify-send 'Battery Critical (10%)' -u critical -i 'battery-010' -h string:x-canonical-private-synchronous:battery",

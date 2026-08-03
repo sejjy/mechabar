@@ -2,14 +2,14 @@
 	"cpu": {
 		"interval": 10,
 		"format": "󰍛 {usage}%",
-		"format-warning": "󰀨 {usage}%",
-		"format-critical": "󰀨 {usage}%",
-		"max-length": 7,
-		"min-length": 7,
 		"states": {
 			"warning": 75,
 			"critical": 90
 		},
+		"format-warning": "󰀨 {usage}%",
+		"format-critical": "󰀨 {usage}%",
+		"min-length": 7,
+		"max-length": 7,
 		"tooltip": false
 	}
 }
