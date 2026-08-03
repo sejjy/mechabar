@@ -2,14 +2,14 @@
 	"memory": {
 		"interval": 10,
 		"format": "󰘚 {percentage}%",
-		"format-warning": "󰀧 {percentage}%",
-		"format-critical": "󰀧 {percentage}%",
 		"states": {
 			"warning": 75,
 			"critical": 90
 		},
-		"max-length": 7,
+		"format-warning": "󰀧 {percentage}%",
+		"format-critical": "󰀧 {percentage}%",
 		"min-length": 7,
+		"max-length": 7,
 		"tooltip-format": "Memory Used: {used:0.0f}/{total:0.0f} GiB"
 	}
 }

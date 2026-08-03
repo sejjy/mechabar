@@ -1,15 +1,15 @@
 {
 	"mpris": {
 		"format": "{player_icon} {title} - {artist}",
-		"format-paused": "{status_icon} {title} - {artist}",
-		"tooltip-format": "Playing: {title} - {artist}",
-		"tooltip-format-paused": "Paused: {title} - {artist}",
-		"max-length": 1000,
 		"player-icons": {
 			"default": "󰐊"
 		},
+		"format-paused": "{status_icon} {title} - {artist}",
 		"status-icons": {
 			"paused": "󰏤"
-		}
+		},
+		"max-length": 1000,
+		"tooltip-format": "Playing: {title} - {artist}",
+		"tooltip-format-paused": "Paused: {title} - {artist}"
 	}
 }

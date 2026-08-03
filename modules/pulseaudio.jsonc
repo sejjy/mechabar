@@ -1,10 +1,10 @@
 {
 	"group/pulseaudio": {
-		"orientation": "horizontal",
 		"modules": [
 			"pulseaudio#output",
 			"pulseaudio#input"
 		],
+		"orientation": "horizontal",
 		"drawer": {
 			"transition-left-to-right": false
 		}

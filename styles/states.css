@@ -1,24 +1,3 @@
-#custom-user:hover,
-#idle_inhibitor:hover,
-#clock.date:hover,
-#network:hover,
-#bluetooth:hover,
-#custom-update:hover,
-#mpris:hover,
-#pulseaudio:hover,
-#wireplumber:hover {
-	color: @hover-fg;
-}
-
-/* Inactive states */
-#idle_inhibitor.deactivated,
-#mpris.paused,
-#pulseaudio.output.muted,
-#pulseaudio.input.source-muted,
-#wireplumber.muted {
-	color: @hover-fg;
-}
-
 #memory.warning,
 #cpu.warning,
 #battery.warning {
@@ -34,4 +13,39 @@
 
 #battery.charging {
 	color: @charging;
+}
+
+/* Active states */
+#workspaces button.active label,
+#workspaces button.focused label {
+	color: @accent;
+}
+
+/* Inactive states */
+#idle_inhibitor.deactivated,
+#mpris.paused,
+#pulseaudio.output.muted,
+#pulseaudio.input.source-muted,
+#wireplumber.muted {
+	color: @hover-fg;
+}
+
+#idle_inhibitor:hover,
+#clock.date:hover,
+#network:hover,
+#bluetooth:hover,
+#custom-update:hover,
+#mpris:hover,
+#pulseaudio:hover,
+#wireplumber:hover {
+	color: @hover-fg;
+}
+
+#custom-power:hover {
+	background-color: @hover-bg;
+}
+
+button:hover {
+	background-color: @hover-bg;
+	color: @hover-fg;
 }
