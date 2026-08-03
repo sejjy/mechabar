@@ -1,11 +1,11 @@
 /* Workspaces */
 #custom-left_div.1,
 #custom-right_div.1 {
-	color: @workspaces;
+	color: @layer-1;
 }
 #workspaces {
 	padding: 0 1px;
-	background-color: @workspaces;
+	background-color: @layer-1;
 }
 #workspaces button.active label,
 #workspaces button.focused label {

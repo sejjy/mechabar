@@ -7,31 +7,31 @@
 
 /* Temperature */
 #custom-left_div.2 {
-	color: @temperature;
+	color: @layer-1;
 }
 #temperature {
-	background-color: @temperature;
+	background-color: @layer-1;
 }
 
 /* Memory */
 #custom-left_div.3 {
-	background-color: @temperature;
-	color: @memory;
+	background-color: @layer-1;
+	color: @layer-2;
 }
 #memory {
-	background-color: @memory;
+	background-color: @layer-2;
 }
 
 /* CPU */
 #custom-left_div.4 {
-	background-color: @memory;
-	color: @cpu;
+	background-color: @layer-2;
+	color: @layer-3;
 }
 #cpu {
-	background-color: @cpu;
+	background-color: @layer-3;
 }
 #custom-left_inv.1 {
-	color: @cpu;
+	color: @layer-3;
 }
 
 /* Distro */
@@ -42,50 +42,50 @@
 #custom-distro {
 	padding: 0 10px 0 5px;
 	background-color: @accent;
-	color: @main-bg;
+	color: @base-bg;
 }
 
 /* Idle inhibitor */
 #custom-right_inv.1 {
-	color: @time;
+	color: @layer-3;
 }
 #idle_inhibitor {
-	background-color: @time;
+	background-color: @layer-3;
 }
 
 /* Time */
 #clock.time {
 	padding-right: 6px;
-	background-color: @time;
+	background-color: @layer-3;
 }
 #custom-right_div.3 {
-	background-color: @date;
-	color: @time;
+	background-color: @layer-2;
+	color: @layer-3;
 }
 
 /* Date */
 #clock.date {
 	padding-left: 6px;
-	background-color: @date;
+	background-color: @layer-2;
 }
 #custom-right_div.4 {
-	background-color: @tray;
-	color: @date;
+	background-color: @layer-1;
+	color: @layer-2;
 }
 
 /* System tray */
 #network {
-	background-color: @tray;
+	background-color: @layer-1;
 	padding: 0 6px 0 4px;
 }
 #bluetooth {
-	background-color: @tray;
+	background-color: @layer-1;
 	padding: 0 5px;
 }
 #custom-update {
-	background-color: @tray;
+	background-color: @layer-1;
 	padding: 0 8px 0 2px;
 }
 #custom-right_div.5 {
-	color: @tray;
+	color: @layer-1;
 }

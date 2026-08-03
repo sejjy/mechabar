@@ -1,18 +1,27 @@
-* {
-	/* Ignore GTK theme */
-	/* https://github.com/Alexays/Waybar/issues/1351 */
-	all: initial;
-}
+/******************************************************************************/
+/* Ignore GTK theme                                                           */
+/* https://github.com/Alexays/Waybar/issues/1351                              */
+ * { all: initial; }
+/******************************************************************************/
 
-@import "styles/colors/catppuccin-mocha.css"; /* Colors */
-@import "styles/fonts/commit-mono.css"; /* Font */
+@import "styles/colors/catppuccin-mocha.css";
+@import "styles/fonts/commit-mono.css";
+
 @import "styles/modules-center.css";
 @import "styles/modules-left.css";
 @import "styles/modules-right.css";
 @import "styles/states.css";
 
 * {
-	color: @main-fg;
+	color: @base-fg;
+}
+
+#waybar > box {
+	margin: 4px;
+	background-color: @base-bg;
+}
+#waybar {
+	background-color: @outline;
 }
 
 /* Fix vertical alignment */
@@ -20,29 +29,21 @@
 	margin-bottom: -1px;
 }
 
-#waybar {
-	background-color: @outline;
-}
-#waybar > box {
-	margin: 4px;
-	background-color: @main-bg;
-}
-
 button {
 	border-radius: 16px;
-	min-width: 16px;
 	padding: 0 10px;
+	min-width: 16px;
 }
 button:hover {
 	background-color: @hover-bg;
 	color: @hover-fg;
 }
 
-tooltip {
-	border: 2px solid @main-br;
-	border-radius: 10px;
-	background-color: @main-bg;
-}
 tooltip > box {
 	padding: 0 6px;
+}
+tooltip {
+	border: 2px solid @border;
+	border-radius: 10px;
+	background-color: @base-bg;
 }
