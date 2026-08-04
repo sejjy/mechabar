@@ -2,13 +2,13 @@
 
 ## 🤖 mechabar
 
-A mecha-themed, modular Waybar configuration
+A customizable, modular Waybar configuration
 
 | ![Preview](./assets/catppuccin-mocha.png) |
 | :---------------------------------------: |
 
 <details>
-<summary>Colors</summary>
+<summary>Themes</summary>
 
 | Catppuccin Mocha (default)                         |
 | :------------------------------------------------: |
@@ -25,8 +25,6 @@ A mecha-themed, modular Waybar configuration
 | Catppuccin Latte                                   |
 | :------------------------------------------------: |
 | ![Catppuccin Latte](./assets/catppuccin-latte.png) |
-
-_Feel free to open a pull request to add new colors! :^)_
 
 </details>
 </div>
@@ -81,7 +79,7 @@ _Feel free to open a pull request to add new colors! :^)_
 ### Configuration
 
 <details open>
-<summary>Terminal emulator</summary>
+<summary>Terminal</summary>
 
 If you use a different terminal emulator, replace every instance of `kitty` in the module files. For example:
 
@@ -99,45 +97,27 @@ If you use a different terminal emulator, replace every instance of `kitty` in t
 </details>
 
 <details>
-<summary>Colors</summary>
-
-To change the colors, import your preferred file from the [colors](./styles/colors/) directory to `style.css`. For example:
-
-```css
-/* @import "styles/colors/catppuccin-mocha.css"; */
-@import "styles/colors/catppuccin-latte.css";
-```
-
-#
-
-</details>
-
-<details>
-<summary>Custom module</summary>
-
-The leftmost module has no default function and is _left_ for you to configure. For example:
-
-```jsonc
-// ~/.config/waybar/modules/custom/user.jsonc
-
-"custom/user": {
-	"on-click": "/path/to/your/script", // Run your own script
-	"on-click-right": "pkill -SIGUSR2 waybar", // Restart Waybar
-}
-```
-
-#
-
-</details>
-
-<details>
-<summary>Font</summary>
+<summary>Fonts</summary>
 
 To change the font, import your preferred file from the [fonts](./styles/fonts/) directory to `style.css`. For example:
 
 ```css
 /* @import "styles/fonts/commit-mono.css"; */
 @import "styles/fonts/jetbrains-mono.css";
+```
+
+#
+
+</details>
+
+<details>
+<summary>Themes</summary>
+
+To change the theme, import your preferred file from the [themes](./styles/themes/) directory to `style.css`. For example:
+
+```css
+/* @import "styles/themes/catppuccin-mocha.css"; */
+@import "styles/themes/catppuccin-latte.css";
 ```
 
 #
@@ -156,6 +136,24 @@ gentoo
 _Matches: `nf-dev-gentoo`, `nf-linux-gentoo`, `nf-md-gentoo`*_
 
 _*Most modules use Material Design Icons (`nf-md-*`) for consistency._
+
+#
+
+</details>
+
+<details>
+<summary>Custom module</summary>
+
+The leftmost module has no default function and is _left_ for you to configure. For example:
+
+```jsonc
+// ~/.config/waybar/modules/custom/user.jsonc
+
+"custom/user": {
+	"on-click": "/path/to/your/script", // Run your own script
+	"on-click-right": "pkill -SIGUSR2 waybar", // Restart Waybar
+}
+```
 
 </details>
 

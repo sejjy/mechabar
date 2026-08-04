@@ -33,6 +33,8 @@
 @define-color bg-1         @mantle;
 @define-color bg-2         @base;
 @define-color bg-3         @surface0;
+@define-color br           @subtext0;
+@define-color shadow       shade(@bg-0, 0.5);
 
 /* State colors */
 @define-color warning      @yellow;
@@ -40,7 +42,3 @@
 @define-color charging     @green;
 @define-color hover-bg     @base;
 @define-color hover-fg     alpha(@fg, 0.75);
-
-/* Border colors */
-@define-color br           @subtext0;
-@define-color shadow       shade(@bg-0, 0.5);

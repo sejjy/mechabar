@@ -1,11 +1,9 @@
-/******************************************************************************/
-/* Ignore GTK theme                                                           */
-/* https://github.com/Alexays/Waybar/issues/1351                              */
- * { all: initial; }
-/******************************************************************************/
+/* Ignore GTK theme */
+/* https://github.com/Alexays/Waybar/issues/1351 */
+* { all: initial; }
 
-@import "styles/colors/catppuccin-mocha.css";
 @import "styles/fonts/commit-mono.css";
+@import "styles/themes/catppuccin-mocha.css";
 
 @import "styles/dividers.css";
 @import "styles/modules.css";
@@ -28,6 +26,10 @@ button {
 	padding: 0 10px;
 	min-width: 16px;
 }
+button:hover {
+	background-color: @hover-bg;
+	color: @hover-fg;
+}
 
 tooltip {
 	border: 2px solid @br;
@@ -36,4 +38,7 @@ tooltip {
 }
 tooltip > box {
 	padding: 0 6px;
+}
+tooltip label {
+	font-weight: normal;
 }

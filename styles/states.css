@@ -30,6 +30,8 @@
 	color: @hover-fg;
 }
 
+/* Hover states */
+
 #idle_inhibitor:hover,
 #clock.date:hover,
 #network:hover,
@@ -43,9 +45,4 @@
 
 #custom-power:hover {
 	background-color: @hover-bg;
-}
-
-button:hover {
-	background-color: @hover-bg;
-	color: @hover-fg;
 }

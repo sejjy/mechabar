@@ -1,7 +1,5 @@
-/******************************************************************************/
-/* Vertically align modules                                                   */
- .module { margin-bottom: -1px; }
-/******************************************************************************/
+/* Vertically align modules */
+.module { margin-bottom: -1px; }
 
 /* Left modules */
 
