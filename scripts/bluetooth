@@ -47,9 +47,8 @@ power_on() {
 
 				if [[ $(state) == on ]]; then
 					break
-				else
-					sleep 1
 				fi
+				sleep 1
 			done
 
 			if [[ $(state) != on ]]; then
@@ -144,12 +143,11 @@ connect_device() {
 
 	debug "\nConnecting..."
 
-	if timeout $TIMEOUT bluetoothctl connect "$ADDRESS" >/dev/null; then
-		notify-send "Bluetooth" "Successfully connected" -i "package-install"
-	else
+	if ! timeout $TIMEOUT bluetoothctl connect "$ADDRESS" >/dev/null; then
 		notify-send "Bluetooth" "Failed to connect" -i "package-purge"
 		exit 1
 	fi
+	notify-send "Bluetooth" "Successfully connected" -i "package-install"
 }
 
 main() {
@@ -160,8 +158,7 @@ main() {
 				-h string:x-canonical-private-synchronous:bluetooth
 			return 0
 			;;
-		'')
-			;;
+		'') ;;
 		*)
 			usage >&2
 			return 1

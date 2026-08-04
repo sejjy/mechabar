@@ -36,7 +36,6 @@ switch_on() {
 	if [[ $state == enabled ]]; then
 		return 0
 	fi
-
 	nmcli radio wifi on
 
 	local new_state
@@ -48,9 +47,8 @@ switch_on() {
 
 		if [[ $new_state != "connected (local only)" ]]; then
 			break
-		else
-			sleep 1
 		fi
+		sleep 1
 	done
 
 	notify-send "Wi-Fi Enabled" -i "network-wireless-on" \
@@ -113,12 +111,11 @@ connect_network() {
 
 	debug "Connecting...\n"
 
-	if nmcli -a device wifi connect "$BSSID"; then
-		notify-send "Wi-Fi" "Successfully connected" -i "package-install"
-	else
+	if ! nmcli -a device wifi connect "$BSSID"; then
 		notify-send "Wi-Fi" "Failed to connect" -i "package-purge"
 		exit 1
 	fi
+	notify-send "Wi-Fi" "Successfully connected" -i "package-install"
 }
 
 main() {
@@ -129,8 +126,7 @@ main() {
 				-h string:x-canonical-private-synchronous:network
 			return 0
 			;;
-		'')
-			;;
+		'') ;;
 		*)
 			usage >&2
 			return 1
