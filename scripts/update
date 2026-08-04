@@ -9,6 +9,7 @@
 # License: MIT
 
 TIMEOUT=10
+HELPER=
 
 GREEN="\e[32m"
 BLUE="\e[34m"
@@ -51,11 +52,8 @@ check_updates() {
 		FAILED=true
 		UPDATES=0
 		return 1
-	else
-		UPDATES=$(grep -c . <<<"$packages")
 	fi
-
-	detect_helper
+	UPDATES=$(grep -c . <<<"$packages")
 
 	if [[ -n $HELPER ]]; then
 		local aur_packages aur_status
@@ -66,11 +64,11 @@ check_updates() {
 			FAILED=true
 			AUR_UPDATES=0
 			return 1
-		else
-			# Filter out ignored AUR packages
-			aur_packages=$(awk '!/\[ignored\]/ {print $1}' <<<"$aur_packages")
-			AUR_UPDATES=$(grep -c . <<<"$aur_packages")
 		fi
+		AUR_UPDATES=$(
+			# Exclude ignored AUR packages
+			awk '!/\[ignored\]/ {print $1}' <<<"$aur_packages" | grep -c .
+		)
 	fi
 }
 
@@ -118,12 +116,14 @@ print_module() {
 main() {
 	case $1 in
 		module)
+			detect_helper
 			check_updates
 			print_module
 			;;
 		'')
 			trap "pkill -RTMIN+1 waybar" EXIT # Update the module on exit
 
+			detect_helper
 			update_packages
 			;;
 		*)
