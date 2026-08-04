@@ -12,11 +12,11 @@
 @import "styles/states.css";
 
 * {
-	color: @fg-0;
+	color: @fg;
 }
 
 #waybar {
-	background-color: @outline;
+	background-color: @shadow;
 }
 #waybar > box {
 	margin: 4px;
@@ -30,7 +30,7 @@ button {
 }
 
 tooltip {
-	border: 2px solid @border;
+	border: 2px solid @br;
 	border-radius: 10px;
 	background-color: @bg-0;
 }
