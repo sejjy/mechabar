@@ -39,7 +39,6 @@ button:hover {
 
 tooltip {
 	border: 2px solid @br;
-	border-radius: 10px;
 	background-color: @bg-0;
 }
 tooltip > box {
