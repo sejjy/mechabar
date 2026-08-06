@@ -81,7 +81,8 @@ A customizable, modular Waybar configuration
 <details open>
 <summary>Terminal</summary>
 
-If you use a different terminal emulator, replace every instance of `kitty` in the module files. For example:
+If you use a different terminal emulator, replace every instance of `kitty` in the module files.
+For example:
 
 ```jsonc
 // ~/.config/waybar/modules/custom/power.jsonc
@@ -99,7 +100,9 @@ If you use a different terminal emulator, replace every instance of `kitty` in t
 <details>
 <summary>Fonts</summary>
 
-To change the font, import your preferred file from the [fonts](./styles/fonts/) directory to `style.css`. For example:
+Different fonts render characters in different sizes, which can affect the layout.
+Import your preferred font file from the [fonts](./styles/fonts/) directory to `style.css`.
+For example:
 
 ```css
 /* @import "styles/fonts/commit-mono.css"; */
@@ -113,7 +116,8 @@ To change the font, import your preferred file from the [fonts](./styles/fonts/)
 <details>
 <summary>Themes</summary>
 
-To change the theme, import your preferred file from the [themes](./styles/themes/) directory to `style.css`. For example:
+To change the theme, import your preferred theme file from the [themes](./styles/themes/) directory to `style.css`.
+For example:
 
 ```css
 /* @import "styles/themes/catppuccin-mocha.css"; */
@@ -127,7 +131,8 @@ To change the theme, import your preferred file from the [themes](./styles/theme
 <details>
 <summary>Icons</summary>
 
-You can search for icons on [Nerd Fonts: Cheat Sheet ↗](https://www.nerdfonts.com/cheat-sheet). For example:
+You can search for icons on [Nerd Fonts: Cheat Sheet ↗](https://www.nerdfonts.com/cheat-sheet).
+For example:
 
 ```
 gentoo
@@ -144,7 +149,8 @@ _*Most modules use Material Design Icons (`nf-md-*`) for consistency._
 <details>
 <summary>Custom module</summary>
 
-The leftmost module has no default function and is _left_ for you to configure. For example:
+The leftmost module has no default function and is _left_ for you to configure.
+For example:
 
 ```jsonc
 // ~/.config/waybar/modules/custom/user.jsonc
