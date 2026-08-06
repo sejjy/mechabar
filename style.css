@@ -23,7 +23,7 @@
 	background-color: @shadow;
 }
 #waybar > box {
-	margin: 4px;
+	margin: 3px;
 	background-color: @bg-0;
 }
 
