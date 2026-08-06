@@ -33,10 +33,7 @@ A customizable, modular Waybar configuration
 
 ### Requirements
 
-1. [waybar](https://archlinux.org/packages/extra/x86_64/waybar/)
-
-2. A terminal emulator (default: [kitty](https://archlinux.org/packages/extra/x86_64/kitty/))
-	> If you use a different terminal emulator, see the [Configuration](#configuration) section below.
+- [waybar](https://archlinux.org/packages/extra/x86_64/waybar/)
 
 #
 
@@ -77,25 +74,6 @@ A customizable, modular Waybar configuration
 #
 
 ### Configuration
-
-<details open>
-<summary>Terminal</summary>
-
-If you use a different terminal emulator, replace every instance of `kitty` in the module files.
-For example:
-
-```jsonc
-// ~/.config/waybar/modules/custom/power.jsonc
-
-"custom/power": {
-	// "on-click": "kitty -e ~/.config/waybar/scripts/power",
-	"on-click": "ghostty -e ~/.config/waybar/scripts/power",
-}
-```
-
-#
-
-</details>
 
 <details>
 <summary>Fonts</summary>
