@@ -5,16 +5,15 @@
 }
 
 #window label,
+#keyboard-state label,
+#language,
 #mpris {
 	font-weight: normal;
 }
 
 #workspaces button.active label,
 #workspaces button.focused label,
-#custom-distro {
-	font-size: 18px;
-}
-
+#custom-distro,
 #custom-power {
 	font-size: 18px;
 }

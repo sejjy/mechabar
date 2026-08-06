@@ -1,7 +1,4 @@
-/* Vertically align modules */
-.module { margin-bottom: -1px; }
-
-/* Left modules */
+/* Left modules ***************************************************************/
 
 #workspaces {
 	padding: 0 1px;
@@ -18,7 +15,7 @@
 	color: @hover-fg;
 }
 
-/* Center modules */
+/* Center modules *************************************************************/
 
 #temperature {
 	background-color: @bg-1;
@@ -64,7 +61,7 @@
 	padding: 0 8px 0 2px;
 }
 
-/* Right modules */
+/* Right modules **************************************************************/
 
 #mpris {
 	padding: 0 12px;

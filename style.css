@@ -1,6 +1,9 @@
-/* Ignore GTK theme */
-/* https://github.com/Alexays/Waybar/issues/1351 */
+/* Ignore GTK theme
+ * https://github.com/Alexays/Waybar/issues/1351
+ */
 * { all: initial; }
+
+/* Imports ********************************************************************/
 
 @import "styles/fonts/commit-mono.css";
 @import "styles/themes/catppuccin-mocha.css";
@@ -8,6 +11,8 @@
 @import "styles/dividers.css";
 @import "styles/modules.css";
 @import "styles/states.css";
+
+/* Global styles **************************************************************/
 
 * {
 	color: @fg;
@@ -42,3 +47,13 @@ tooltip > box {
 tooltip label {
 	font-weight: normal;
 }
+
+/* Fixes **********************************************************************/
+
+/* Vertically align modules */
+.module { margin-bottom: -1px; }
+
+/* Prevent large Unicode characters from increasing the bar height
+ * https://github.com/Alexays/Waybar/issues/2026
+ */
+#window { margin-top: -50px; margin-bottom: -50px; }

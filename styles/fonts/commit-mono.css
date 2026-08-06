@@ -5,6 +5,8 @@
 }
 
 #window label,
+#keyboard-state label,
+#language,
 #mpris {
 	font-weight: normal;
 }
