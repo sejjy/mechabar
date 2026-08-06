@@ -8,10 +8,14 @@
 #window {
 	margin: 0 12px;
 }
+#window label {
+	font-weight: normal;
+}
 
 #keyboard-state label,
 #language {
-	margin-right: 12px;
+	margin: 0 12px 0 8px;
+	font-weight: normal;
 	color: @hover-fg;
 }
 
@@ -65,6 +69,7 @@
 
 #mpris {
 	padding: 0 12px;
+	font-weight: normal;
 }
 
 #pulseaudio,

@@ -1,24 +1,16 @@
 * {
 	font-family: "CommitMono Nerd Font";
-	font-weight: bold;
-	font-size: 16px;
-}
-
-#window label,
-#keyboard-state label,
-#language,
-#mpris {
-	font-weight: normal;
+	font-size: 14px;
 }
 
 #workspaces button.active label,
 #workspaces button.focused label,
 #custom-distro {
-	font-size: 20px;
+	font-size: 18.5px;
 }
 
 #custom-power {
-	font-size: 18px;
+	font-size: 16px;
 }
 
 #custom-left,
