@@ -1,4 +1,4 @@
-/* Catppuccin Latte */
+/* Palette */
 @define-color rosewater    #dc8a78;
 @define-color flamingo     #dd7878;
 @define-color pink         #ea76cb;
@@ -36,7 +36,7 @@
 @define-color br           @subtext0;
 @define-color shadow       shade(@bg-0, 0.5);
 
-/* State colors */
+/* States */
 @define-color warning      @yellow;
 @define-color critical     @red;
 @define-color charging     @green;

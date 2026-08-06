@@ -1,4 +1,4 @@
-/* Catppuccin Mocha */
+/* Palette */
 @define-color rosewater    #f5e0dc;
 @define-color flamingo     #f2cdcd;
 @define-color pink         #f5c2e7;
@@ -36,7 +36,7 @@
 @define-color br           @subtext0;
 @define-color shadow       shade(@bg-0, 0.5);
 
-/* State colors */
+/* States */
 @define-color warning      @yellow;
 @define-color critical     @red;
 @define-color charging     @green;

@@ -3,16 +3,8 @@
  */
 * { all: initial; }
 
-/* Imports ********************************************************************/
-
 @import "styles/fonts/commit-mono-nerd.css";
 @import "styles/themes/catppuccin-mocha.css";
-
-@import "styles/dividers.css";
-@import "styles/modules.css";
-@import "styles/states.css";
-
-/* Global styles **************************************************************/
 
 * {
 	font-weight: bold;
@@ -25,6 +17,11 @@
 #waybar > box {
 	margin: 3px;
 	background-color: @bg-0;
+}
+
+/* Vertically align modules */
+.module {
+	margin-bottom: -1px;
 }
 
 button {
@@ -48,12 +45,6 @@ tooltip label {
 	font-weight: normal;
 }
 
-/* Fixes **********************************************************************/
-
-/* Vertically align modules */
-.module { margin-bottom: -1px; }
-
-/* Prevent large Unicode characters from increasing the bar height
- * https://github.com/Alexays/Waybar/issues/2026
- */
-#window { margin-top: -50px; margin-bottom: -50px; }
+@import "styles/dividers.css";
+@import "styles/modules.css";
+@import "styles/states.css";

@@ -1,4 +1,4 @@
-/* Catppuccin Frappe */
+/* Palette */
 @define-color rosewater    #f2d5cf;
 @define-color flamingo     #eebebe;
 @define-color pink         #f4b8e4;
@@ -36,7 +36,7 @@
 @define-color br           @subtext0;
 @define-color shadow       shade(@bg-0, 0.5);
 
-/* State colors */
+/* States */
 @define-color warning      @yellow;
 @define-color critical     @red;
 @define-color charging     @green;
