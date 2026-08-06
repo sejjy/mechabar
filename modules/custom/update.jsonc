@@ -6,7 +6,7 @@
 		"signal": 1,
 		"min-length": 2,
 		"max-length": 2,
-		"on-click": "kitty -e ~/.config/waybar/scripts/update",
+		"on-click": "~/.config/waybar/scripts/terminal -e ~/.config/waybar/scripts/update",
 		"on-click-right": "pkill -RTMIN+1 waybar"
 	}
 }
