@@ -8,10 +8,10 @@
 # Date:    August 11, 2025
 # License: MIT
 
-TIMEOUT=5
+TIMEOUT=10
 
-RED="\e[31m"
-RESET="\e[39m"
+DIM=$'\e[2m'
+RESET=$'\e[0m'
 
 usage() {
 	cat <<-EOF
@@ -20,57 +20,73 @@ usage() {
 		Connect to a Wi-Fi network
 
 		OPTIONS:
-		  off       Switch off Wi-Fi
-		  <none>    Switch on Wi-Fi and launch the CLI
+		  off       Turn Wi-Fi off
+		  <none>    Turn Wi-Fi on and launch the CLI
 	EOF
 }
 
-debug() {
-	printf "%b" "$*" >&2
-}
+debug() { printf "%b" "$*" >&2; }
 
-switch_on() {
-	local state
-	state=$(nmcli radio wifi)
+hide_cursor() { debug $'\e[?25l'; }
+show_cursor() { debug $'\e[?25h'; }
 
-	if [[ $state == enabled ]]; then
-		return 0
-	fi
-	nmcli radio wifi on
-
-	local new_state
-	local i
-	for ((i = 1; i <= TIMEOUT; i++)); do
-		debug "\rEnabling Wi-Fi... ($i/$TIMEOUT)"
-
-		new_state=$(nmcli -t -f STATE general)
-
-		if [[ $new_state != "connected (local only)" ]]; then
-			break
-		fi
-		sleep 1
-	done
-
-	notify-send "Wi-Fi Enabled" -i "network-wireless-on" \
+turn_off() {
+	nmcli radio wifi off
+	notify-send "Wi-Fi Off" -i "network-wireless-off" \
 		-h string:x-canonical-private-synchronous:network
 }
 
-list_networks() {
+turn_on() {
+	local init
+	init=$(nmcli radio wifi)
+
+	if [[ $init == enabled ]]; then
+		return 0
+	fi
+
+	nmcli radio wifi on
+
+	local state
+	local s
+	for ((s = 1; s <= TIMEOUT; s++)); do
+		debug "\rTurning on Wi-Fi... ($s/$TIMEOUT)"
+
+		state=$(nmcli radio wifi)
+
+		if [[ $state == enabled ]]; then
+			break
+		fi
+
+		sleep 1
+	done
+
+	if [[ $state != enabled ]]; then
+		notify-send "Wi-Fi" "Failed to turn on" -i "package-purge"
+		exit 1
+	fi
+
+	notify-send "Wi-Fi On" -i "network-wireless-on" \
+		-h string:x-canonical-private-synchronous:network
+}
+
+get_networks() {
 	nmcli device wifi rescan
 
-	local i
-	for ((i = 1; i <= TIMEOUT; i++)); do
-		debug "\rScanning for networks... ($i/$TIMEOUT)"
+	local s
+	for ((s = 1; s <= TIMEOUT; s++)); do
+		debug "\rScanning for networks... ($s/$TIMEOUT)"
 
-		LIST=$(timeout 1 nmcli device wifi list)
+		LIST=$(nmcli device wifi list)
 		NETWORKS=$(tail -n +2 <<<"$LIST" | awk '$2 != "--"')
 
 		if [[ -n $NETWORKS ]]; then
 			break
 		fi
+
+		sleep 1
 	done
 
-	debug "\n${RED}Scanning stopped.${RESET}\n\n"
+	debug "\n${DIM}Scanning stopped${RESET}\n\n"
 
 	if [[ -z $NETWORKS ]]; then
 		notify-send "Wi-Fi" "No networks found" -i "package-broken"
@@ -106,7 +122,7 @@ connect_network() {
 	if [[ $BSSID == '*' ]]; then
 		notify-send "Wi-Fi" "Already connected to this network" \
 			-i "package-install"
-		exit 1
+		exit 0
 	fi
 
 	debug "Connecting...\n"
@@ -115,33 +131,36 @@ connect_network() {
 		notify-send "Wi-Fi" "Failed to connect" -i "package-purge"
 		exit 1
 	fi
+
 	notify-send "Wi-Fi" "Successfully connected" -i "package-install"
 }
 
 main() {
-	case $1 in
+	local option=$1
+
+	case $option in
 		off)
-			nmcli radio wifi off
-			notify-send 'Wi-Fi Disabled' -i 'network-wireless-off' \
-				-h string:x-canonical-private-synchronous:network
+			turn_off
 			return 0
 			;;
-		'') ;;
+		'')
+			hide_cursor
+			trap 'show_cursor' EXIT
+
+			turn_on
+			get_networks
+
+			show_cursor
+			trap - EXIT
+
+			select_network
+			connect_network
+			;;
 		*)
 			usage >&2
 			return 1
 			;;
 	esac
-
-	debug "\e[?25l" # Make cursor invisible
-
-	switch_on
-	list_networks
-
-	debug "\e[?25h" # Make cursor visible
-
-	select_network
-	connect_network
 }
 
 main "$@"

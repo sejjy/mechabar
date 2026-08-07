@@ -9,11 +9,10 @@
 # License: MIT
 
 TIMEOUT=10
-HELPER=
 
-GREEN="\e[32m"
-BLUE="\e[34m"
-RESET="\e[39m"
+GREEN=$'\e[32m'
+BLUE=$'\e[34m'
+RESET=$'\e[39m'
 
 usage() {
 	cat <<-EOF
@@ -22,14 +21,12 @@ usage() {
 		Update Arch packages
 
 		OPTIONS:
-		  module    Print Waybar-compatible JSON output
+		  module    Output Waybar module
 		  <none>    Launch the CLI
 	EOF
 }
 
-debug() {
-	printf "%b\n" "$*" >&2
-}
+debug() { printf "%b\n" "$*" >&2; }
 
 detect_helper() {
 	local helper
@@ -41,58 +38,42 @@ detect_helper() {
 	done
 }
 
-check_updates() {
-	FAILED=false
-
+get_updates() {
 	local packages status
+
 	packages=$(timeout $TIMEOUT checkupdates)
 	status=$?
 
 	if ((status != 0 && status != 2)); then
-		FAILED=true
-		UPDATES=0
 		return 1
 	fi
+
 	UPDATES=$(grep -c . <<<"$packages")
 
 	if [[ -n $HELPER ]]; then
 		local aur_packages aur_status
+
 		aur_packages=$(timeout "$TIMEOUT" "$HELPER" -Qua)
 		aur_status=$?
 
-		if ((${#aur_packages} > 0 && aur_status != 0)); then
-			FAILED=true
-			AUR_UPDATES=0
+		if ((aur_status != 0 && ${#aur_packages} > 0)); then
 			return 1
 		fi
-		AUR_UPDATES=$(
-			# Exclude ignored AUR packages
-			awk '!/\[ignored\]/ {print $1}' <<<"$aur_packages" | grep -c .
-		)
-	fi
-}
 
-update_packages() {
-	debug "${BLUE}Updating packages...${RESET}"
-
-	if [[ -n $HELPER ]]; then
-		command $HELPER -Syu
-	else
-		sudo pacman -Syu
+		AUR_UPDATES=$(awk '!/\[ignored\]/ {print $1}' <<<"$aur_packages" |
+			grep -c .)
 	fi
 
-	notify-send "Update Complete" -i "package-install"
-
-	debug "\n${GREEN}Update complete!${RESET}"
-	read -rsn 1 -p "Press any key to exit..."
+	return 0
 }
 
-print_module() {
+waybar_module() {
 	local icon tooltip
 
-	if $FAILED; then
+	if ! get_updates; then
 		icon='󰒑'
-		tooltip="<b>Failed to fetch updates</b>\nRight-click to retry"
+		tooltip="<b>Failed to fetch updates</b>"
+		tooltip+="\nRight-click to retry"
 	elif ((UPDATES + AUR_UPDATES == 0)); then
 		icon='󰸟'
 		tooltip="No updates available"
@@ -113,15 +94,29 @@ print_module() {
 	EOF
 }
 
+update_packages() {
+	debug "${BLUE}Updating packages...${RESET}"
+
+	if [[ -n $HELPER ]]; then
+		command $HELPER -Syu
+	else
+		sudo pacman -Syu
+	fi
+
+	notify-send "Update Complete" -i "package-install"
+
+	debug "\n${GREEN}Update complete!${RESET}"
+	read -rsn 1 -p "Press any key to exit..."
+}
+
 main() {
 	case $1 in
 		module)
 			detect_helper
-			check_updates
-			print_module
+			waybar_module
 			;;
 		'')
-			trap "pkill -RTMIN+1 waybar" EXIT # Update the module on exit
+			trap "pkill -RTMIN+1 waybar" EXIT
 
 			detect_helper
 			update_packages

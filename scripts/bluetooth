@@ -10,8 +10,8 @@
 
 TIMEOUT=10
 
-RED="\e[31m"
-RESET="\e[39m"
+DIM=$'\e[2m'
+RESET=$'\e[0m'
 
 usage() {
 	cat <<-EOF
@@ -20,74 +20,83 @@ usage() {
 		Connect to a Bluetooth device
 
 		OPTIONS:
-		  off       Power off Bluetooth
-		  <none>    Power on Bluetooth and launch the CLI
+		  off       Turn Bluetooth off
+		  <none>    Turn Bluetooth on and launch the CLI
 	EOF
 }
 
-debug() {
-	printf "%b" "$*" >&2
+debug() { printf "%b" "$*" >&2; }
+
+hide_cursor() { debug $'\e[?25l'; }
+show_cursor() { debug $'\e[?25h'; }
+
+turn_off() {
+	bluetoothctl power off
+	notify-send "Bluetooth Off" -i "network-bluetooth-inactive" \
+		-h string:x-canonical-private-synchronous:bluetooth
 }
 
-power_on() {
-	state() {
-		bluetoothctl show | awk '/PowerState/ {print $2}'
-	}
+turn_on() {
+	local init
+	init=$(bluetoothctl show | awk '/PowerState/ {print $2}')
 
-	case $(state) in
+	case $init in
+		on)
+			return 0
+			;;
 		off)
 			bluetoothctl power on >/dev/null
 			;;
 		off-blocked)
 			rfkill unblock bluetooth
-
-			local i
-			for ((i = 1; i <= TIMEOUT; i++)); do
-				debug "\rUnblocking Bluetooth... ($i/$TIMEOUT)"
-
-				if [[ $(state) == on ]]; then
-					break
-				fi
-				sleep 1
-			done
-
-			if [[ $(state) != on ]]; then
-				notify-send "Bluetooth" "Failed to unblock" -i "package-purge"
-				exit 1
-			fi
-			;;
-		*)
-			return 0
 			;;
 	esac
+
+	local state
+	local s
+	for ((s = 1; s <= TIMEOUT; s++)); do
+		debug "\rTurning on Bluetooth... ($s/$TIMEOUT)"
+
+		state=$(bluetoothctl show | awk '/PowerState/ {print $2}')
+
+		if [[ $state == on ]]; then
+			break
+		fi
+
+		sleep 1
+	done
+
+	if [[ $state != on ]]; then
+		notify-send "Bluetooth" "Failed to turn on" -i "package-purge"
+		exit 1
+	fi
 
 	notify-send "Bluetooth On" -i "network-bluetooth-activated" \
 		-h string:x-canonical-private-synchronous:bluetooth
 }
 
-list_devices() {
+get_devices() {
 	bluetoothctl -t $TIMEOUT scan on >/dev/null &
 
-	local num
-	local i
-	for ((i = 1; i <= TIMEOUT; i++)); do
-		debug "\rScanning for devices... ($i/$TIMEOUT)"
-		debug "\n${RED}Press [q] to stop${RESET}\n"
+	local count
+	local s
+	for ((s = 1; s <= TIMEOUT; s++)); do
+		debug "\rScanning for devices... ($s/$TIMEOUT) ${DIM}[q]${RESET}"
 
-		num=$(bluetoothctl devices | grep -c "^Device")
+		count=$(bluetoothctl devices | grep -c '^Device')
 
-		debug "\nDevices: $num"
-		debug "\e[3F" # Move cursor 3 lines up
+		debug "\n${DIM}Devices: $count${RESET}\e[1F"
 
 		read -rsn 1 -t 1
+
 		if [[ $REPLY == [Qq] ]]; then
 			break
 		fi
 	done
 
-	debug "\n${RED}Scanning stopped.${RESET}\n\n"
+	debug "\n${DIM}Scanning stopped${RESET}\n\n"
 
-	LIST=$(bluetoothctl devices | sed "s/^Device //")
+	LIST=$(bluetoothctl devices | sed 's/^Device //')
 
 	if [[ -z $LIST ]]; then
 		notify-send "Bluetooth" "No devices found" -i "package-broken"
@@ -119,6 +128,22 @@ select_device() {
 	fi
 }
 
+pair_device() {
+	local paired
+	paired=$(bluetoothctl info "$ADDRESS" | awk '/Paired/ {print $2}')
+
+	if [[ $paired == yes ]]; then
+		return 0
+	fi
+
+	debug "Pairing...\n"
+
+	if ! timeout $TIMEOUT bluetoothctl pair "$ADDRESS" >/dev/null; then
+		notify-send "Bluetooth" "Failed to pair" -i "package-purge"
+		exit 1
+	fi
+}
+
 connect_device() {
 	local connected
 	connected=$(bluetoothctl info "$ADDRESS" | awk '/Connected/ {print $2}')
@@ -126,54 +151,47 @@ connect_device() {
 	if [[ $connected == yes ]]; then
 		notify-send "Bluetooth" "Already connected to this device" \
 			-i "package-install"
-		exit 1
+		exit 0
 	fi
 
-	local paired
-	paired=$(bluetoothctl info "$ADDRESS" | awk '/Paired/ {print $2}')
+	pair_device
 
-	if [[ $paired == no ]]; then
-		debug "Pairing..."
-
-		if ! timeout $TIMEOUT bluetoothctl pair "$ADDRESS" >/dev/null; then
-			notify-send "Bluetooth" "Failed to pair" -i "package-purge"
-			exit 1
-		fi
-	fi
-
-	debug "\nConnecting..."
+	debug "Connecting...\n"
 
 	if ! timeout $TIMEOUT bluetoothctl connect "$ADDRESS" >/dev/null; then
 		notify-send "Bluetooth" "Failed to connect" -i "package-purge"
 		exit 1
 	fi
+
 	notify-send "Bluetooth" "Successfully connected" -i "package-install"
 }
 
 main() {
-	case $1 in
+	local option=$1
+
+	case $option in
 		off)
-			bluetoothctl power off
-			notify-send 'Bluetooth Off' -i 'network-bluetooth-inactive' \
-				-h string:x-canonical-private-synchronous:bluetooth
+			turn_off
 			return 0
 			;;
-		'') ;;
+		'')
+			hide_cursor
+			trap 'show_cursor' EXIT
+
+			turn_on
+			get_devices
+
+			show_cursor
+			trap - EXIT
+
+			select_device
+			connect_device
+			;;
 		*)
 			usage >&2
 			return 1
 			;;
 	esac
-
-	debug "\e[?25l" # Make cursor invisible
-
-	power_on
-	list_devices
-
-	debug "\e[?25h" # Make cursor visible
-
-	select_device
-	connect_device
 }
 
 main "$@"
