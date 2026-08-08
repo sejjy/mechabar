@@ -34,7 +34,7 @@
 @define-color bg-2         @base;
 @define-color bg-3         @surface0;
 @define-color br           @subtext0;
-@define-color shadow       shade(@bg-0, 0.5);
+@define-color shadow       shade(@bg-0, 0.75);
 
 /* States */
 @define-color warning      @yellow;
