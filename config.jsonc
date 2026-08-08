@@ -1,8 +1,9 @@
 {
 	"mode": "dock",
+	"position": "top",
 	"layer": "top",
-	"height": 0,
 	"width": 0,
+	"height": 0,
 	"margin": 0,
 	"spacing": 0,
 	"reload_style_on_change": true,
