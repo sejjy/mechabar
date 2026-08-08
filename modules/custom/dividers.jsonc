@@ -3,15 +3,15 @@
 		"format": "",
 		"tooltip": false
 	},
-	"custom/left#bg1": {
+	"custom/left#bg-1": {
 		"format": "",
 		"tooltip": false
 	},
-	"custom/left#bg2": {
+	"custom/left#bg-2": {
 		"format": "",
 		"tooltip": false
 	},
-	"custom/left#bg3": {
+	"custom/left#bg-3": {
 		"format": "",
 		"tooltip": false
 	},
@@ -24,15 +24,15 @@
 		"format": "",
 		"tooltip": false
 	},
-	"custom/right#bg1": {
+	"custom/right#bg-1": {
 		"format": "",
 		"tooltip": false
 	},
-	"custom/right#bg2": {
+	"custom/right#bg-2": {
 		"format": "",
 		"tooltip": false
 	},
-	"custom/right#bg3": {
+	"custom/right#bg-3": {
 		"format": "",
 		"tooltip": false
 	},
