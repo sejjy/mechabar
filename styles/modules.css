@@ -1,5 +1,9 @@
 /* Left modules */
 
+#custom-user {
+	padding: 0 16px;
+}
+
 #workspaces {
 	padding: 0 1px;
 	background-color: @bg-1;
