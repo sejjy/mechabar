@@ -10,12 +10,11 @@
 }
 
 #window {
-	margin: 0 12px;
+	padding: 0 12px;
 	/* Prevent large Unicode characters from increasing the bar height
 	 * https://github.com/Alexays/Waybar/issues/2026
 	 */
-	margin-top: -50px;
-	margin-bottom: -50px;
+	margin: -50px 0;
 }
 #window label {
 	font-weight: normal;
@@ -23,7 +22,7 @@
 
 #keyboard-state label,
 #language {
-	margin: 0 12px 0 8px;
+	padding: 0 12px 0 8px;
 	font-weight: normal;
 	color: @hover-fg;
 }
