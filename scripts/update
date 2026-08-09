@@ -67,17 +67,14 @@ get_updates() {
 	return 0
 }
 
-waybar_module() {
+output_module() {
 	local icon tooltip
 
 	if ! get_updates; then
 		icon='󰒑'
 		tooltip="<b>Failed to fetch updates</b>"
 		tooltip+="\nRight-click to retry"
-	elif ((UPDATES + AUR_UPDATES == 0)); then
-		icon='󰸟'
-		tooltip="No updates available"
-	else
+	elif ((UPDATES + AUR_UPDATES > 0)); then
 		icon='󰄠'
 		tooltip="<b>Pacman</b>: $UPDATES"
 
@@ -87,6 +84,9 @@ waybar_module() {
 
 			tooltip+="\n<b>${HELPER^}</b>: $padding$AUR_UPDATES"
 		fi
+	else
+		icon='󰸟'
+		tooltip="No updates available"
 	fi
 
 	cat <<-EOF
@@ -113,7 +113,7 @@ main() {
 	case $1 in
 		module)
 			detect_helper
-			waybar_module
+			output_module
 			;;
 		'')
 			trap "pkill -RTMIN+1 waybar" EXIT
