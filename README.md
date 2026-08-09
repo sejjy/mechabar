@@ -63,14 +63,16 @@ A customizable, modular Waybar configuration
 	<details>
 	<summary>Dependencies (6)</summary>
 
-	| Package                | Command         | Description                                                                    |
-	| ---------------------- | --------------- | ------------------------------------------------------------------------------ |
-	| `bluez-utils`          | `bluetoothctl`  | Development and debugging utilities for the bluetooth protocol stack<tr></tr>  |
-	| `brightnessctl`        | `brightnessctl` | Lightweight brightness control tool<tr></tr>                                   |
-	| `fzf`                  | `fzf`           | Command-line fuzzy finder<tr></tr>                                             |
-	| `networkmanager`       | `nmcli`         | Network connection manager and user applications<tr></tr>                      |
-	| `pacman-contrib`       | `checkupdates`  | Contributed scripts and tools for pacman systems<tr></tr>                      |
-	| `otf-commit-mono-nerd` |                 | Patched font Commit Mono from nerd fonts library                               |
+	| Package                 | Command         | Description                                                                    |
+	| ----------------------  | --------------- | ------------------------------------------------------------------------------ |
+	| `bluez-utils`           | `bluetoothctl`  | Development and debugging utilities for the bluetooth protocol stack<tr></tr>  |
+	| `brightnessctl`         | `brightnessctl` | Lightweight brightness control tool<tr></tr>                                   |
+	| `fzf`                   | `fzf`           | Command-line fuzzy finder<tr></tr>                                             |
+	| `networkmanager`        | `nmcli`         | Network connection manager and user applications<tr></tr>                      |
+	| `pacman-contrib`        | `checkupdates`  | Contributed scripts and tools for pacman systems<tr></tr>                      |
+	| `otf-commit-mono-nerd`* |                 | Patched font Commit Mono from nerd fonts library                               |
+
+	_*If you prefer a different font, see the [Configuration](#configuration) section below._
 
 	</details>
 
@@ -149,7 +151,7 @@ _*Most modules use Material Design Icons (`nf-md-*`) for consistency._
 <details>
 <summary>Custom module</summary>
 
-The leftmost module has no default function and is _left_ for you to configure.
+The leftmost module has no default function and is left for you to configure.
 For example:
 
 ```jsonc
