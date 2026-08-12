@@ -2,7 +2,10 @@
 #
 # Connect to a Wi-Fi network
 #
-# Requires networkmanager (nmcli) and fzf
+# Dependencies:
+#   - fzf
+#   - libnotify (notify-send)
+#   - networkmanager (nmcli)
 #
 # Author:  Jesse Mirabel <sejjymvm@gmail.com>
 # Date:    August 11, 2025

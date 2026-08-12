@@ -2,6 +2,10 @@
 #
 # Adjust default device volume
 #
+# Dependencies:
+#   - libnotify (notify-send)
+#   - libpulse (pactl)
+#
 # Author:  Jesse Mirabel <sejjymvm@gmail.com>
 # Date:    September 07, 2025
 # License: MIT

@@ -2,7 +2,9 @@
 #
 # Adjust screen brightness
 #
-# Requires brightnessctl
+# Dependencies:
+#   - brightnessctl
+#   - libnotify (notify-send)
 #
 # Author:  Jesse Mirabel <sejjymvm@gmail.com>
 # Date:    August 28, 2025

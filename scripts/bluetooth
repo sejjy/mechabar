@@ -2,7 +2,10 @@
 #
 # Connect to a Bluetooth device
 #
-# Requires bluez-utils (bluetoothctl) and fzf
+# Dependencies:
+#   - bluez-utils (bluetoothctl)
+#   - fzf
+#   - libnotify (notify-send)
 #
 # Author:  Jesse Mirabel <sejjymvm@gmail.com>
 # Date:    August 19, 2025

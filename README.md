@@ -61,18 +61,24 @@ A customizable, modular Waybar configuration
 	```
 
 	<details>
-	<summary>Dependencies (6)</summary>
+	<summary>Dependencies (7)</summary>
 
 	| Package                 | Command         | Description                                                                    |
 	| ----------------------  | --------------- | ------------------------------------------------------------------------------ |
 	| `bluez-utils`           | `bluetoothctl`  | Development and debugging utilities for the bluetooth protocol stack<tr></tr>  |
 	| `brightnessctl`         | `brightnessctl` | Lightweight brightness control tool<tr></tr>                                   |
 	| `fzf`                   | `fzf`           | Command-line fuzzy finder<tr></tr>                                             |
+	| `libnotify`             | `notify-send`   | Library for sending desktop notifications<tr></tr>                             |
 	| `networkmanager`        | `nmcli`         | Network connection manager and user applications<tr></tr>                      |
-	| `pacman-contrib`        | `checkupdates`  | Contributed scripts and tools for pacman systems<tr></tr>                      |
-	| `otf-commit-mono-nerd`* |                 | Patched font Commit Mono from nerd fonts library                               |
+	| `pacman-contrib`        | `checkupdates`  | Contributed scripts and tools for pacman systems                               |
 
-	_*If you prefer a different font, see the [Configuration](#configuration) section below._
+    Optional:
+
+	| Package                | Description                                                                    |
+	| ---------------------- | ------------------------------------------------------------------------------ |
+	| `otf-commit-mono-nerd` | Patched font Commit Mono from nerd fonts library                               |
+
+	> If you prefer a different font, see the [Configuration](#configuration) section below.
 
 	</details>
 

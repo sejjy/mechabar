@@ -6,37 +6,64 @@
 # Date:    August 22, 2025
 # License: MIT
 
-RED="\e[31m"
-GREEN="\e[32m"
-BLUE="\e[34m"
-RESET="\e[39m"
+DEPS=(
+	bluez-utils
+	brightnessctl
+	fzf
+	libnotify
+	networkmanager
+	pacman-contrib
+	waybar
+)
 
-debug() {
-	printf "%b\n" "$*" >&2
-}
+RED=$'\e[31m'
+GREEN=$'\e[32m'
+BLUE=$'\e[34m'
+RESET=$'\e[39m'
 
-main() {
-	debug "${BLUE}Installing dependencies...${RESET}"
+debug() { printf "%b" "$*" >&2; }
 
+install() {
 	local package
-	for package in bluez-utils brightnessctl fzf networkmanager pacman-contrib \
-		otf-commit-mono-nerd
-	do
+	for package in "$@"; do
 		if pacman -Qi "$package" &>/dev/null; then
-			debug "${GREEN}/${RESET} $package"
+			debug "${GREEN}/${RESET} $package\n"
 		else
-			debug "${BLUE}*${RESET} $package...\n"
+			debug "\n${BLUE}*${RESET} $package...\n"
 
 			if sudo pacman -S --noconfirm "$package"; then
-				debug "\n${GREEN}+${RESET} $package"
+				debug "\n${GREEN}+${RESET} $package\n"
 			else
-				debug "\n${RED}x${RESET} $package"
+				debug "\n${RED}x${RESET} $package\n"
 				((ERRORS += 1))
 			fi
 		fi
 	done
+}
 
-	debug "\n${BLUE}Restarting Waybar...${RESET}"
+main() {
+	debug "${BLUE}Installing dependencies...${RESET}\n"
+
+	install "${DEPS[@]}"
+
+	debug '\nInstall "CommitMono Nerd Font" (otf-commit-mono-nerd)? [Y/n] '
+	read -r
+
+	case $REPLY in
+		'' | [Yy])
+			install otf-commit-mono-nerd
+			;;
+		*)
+			cat <<-EOF
+
+				| Different fonts render characters in different sizes,
+				| which can affect the layout.
+				| Import your preferred font file from ./styles/fonts/ to ./style.css.
+			EOF
+			;;
+	esac
+
+	debug "\n${BLUE}Restarting Waybar...${RESET}\n"
 
 	if ! (systemctl --user is-enabled waybar.service &&
 		systemctl --user restart waybar.service) &>/dev/null; then
@@ -46,9 +73,9 @@ main() {
 	fi
 
 	if ((ERRORS > 0)); then
-		debug "\nInstallation completed with ${RED}$ERRORS error(s)${RESET}"
+		debug "\nInstallation completed with ${RED}$ERRORS error(s)${RESET}\n"
 	else
-		debug "\n${GREEN}Installation complete!${RESET}"
+		debug "\n${GREEN}Installation complete!${RESET}\n"
 	fi
 }
 

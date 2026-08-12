@@ -2,7 +2,8 @@
 #
 # Launch a power menu
 #
-# Requires fzf
+# Dependencies:
+#   - fzf
 #
 # Author:  Jesse Mirabel <sejjymvm@gmail.com>
 # Date:    August 19, 2025
