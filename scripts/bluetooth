@@ -13,8 +13,8 @@
 
 TIMEOUT=10
 
-DIM=$'\e[2m'
 RESET=$'\e[0m'
+DIM=$'\e[2m'
 
 usage() {
 	cat <<-EOF
@@ -88,7 +88,7 @@ get_devices() {
 
 		count=$(bluetoothctl devices | grep -c '^Device')
 
-		debug "\n${DIM}Devices: $count${RESET}\e[1F"
+		debug "\n\n${DIM}Devices: $count${RESET}\e[2F"
 
 		read -rsn 1 -t 1
 
@@ -97,7 +97,7 @@ get_devices() {
 		fi
 	done
 
-	debug "\n${DIM}Scanning stopped${RESET}\n\n"
+	debug "\n\n"
 
 	LIST=$(bluetoothctl devices | sed 's/^Device //')
 

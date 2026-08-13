@@ -16,10 +16,12 @@ DEPS=(
 	waybar
 )
 
+RESET=$'\e[0m'
+DIM=$'\e[2m'
+U=$'\e[4m'
 RED=$'\e[31m'
 GREEN=$'\e[32m'
 BLUE=$'\e[34m'
-RESET=$'\e[39m'
 
 debug() { printf "%b" "$*" >&2; }
 
@@ -27,14 +29,14 @@ install() {
 	local package
 	for package in "$@"; do
 		if pacman -Qi "$package" &>/dev/null; then
-			debug "${GREEN}/${RESET} $package\n"
+			debug "${DIM}[SKIP]${RESET} $package\n"
 		else
-			debug "\n${BLUE}*${RESET} $package...\n"
+			debug "\n${DIM}[    ]${RESET} $package...\n"
 
 			if sudo pacman -S --noconfirm "$package"; then
-				debug "\n${GREEN}+${RESET} $package\n"
+				debug "\n${GREEN}[DONE]${RESET} $package\n"
 			else
-				debug "\n${RED}x${RESET} $package\n"
+				debug "\n${RED}[ERR ]${RESET} $package\n"
 				((ERRORS += 1))
 			fi
 		fi
@@ -46,19 +48,24 @@ main() {
 
 	install "${DEPS[@]}"
 
-	debug '\nInstall "CommitMono Nerd Font" (otf-commit-mono-nerd)? [Y/n] '
-	read -r
+	printf $'\n'
+	read -rp 'Install "CommitMono Nerd Font" (otf-commit-mono-nerd)? [Y/n] '
 
 	case $REPLY in
 		'' | [Yy])
 			install otf-commit-mono-nerd
 			;;
 		*)
+			local v="${DIM}│${RESET}"
+
 			cat <<-EOF
 
-				| Different fonts render characters in different sizes,
-				| which can affect the layout.
-				| Import your preferred font file from ./styles/fonts/ to ./style.css.
+				${v} Different fonts render characters in different sizes, which
+				${v} can affect the layout. Import your preferred font file from
+				${v} ${U}./styles/fonts/${RESET} to ${U}./style.css${RESET}:
+				${v}
+				${v} ${DIM}/* @import "styles/fonts/commit-mono.css"; */${RESET}
+				${v} @import ${U}"styles/fonts/jetbrains-mono.css"${RESET};
 			EOF
 			;;
 	esac
@@ -75,7 +82,7 @@ main() {
 	if ((ERRORS > 0)); then
 		debug "\nInstallation completed with ${RED}$ERRORS error(s)${RESET}\n"
 	else
-		debug "\n${GREEN}Installation complete!${RESET}\n"
+		debug "\nInstallation complete!\n"
 	fi
 }
 

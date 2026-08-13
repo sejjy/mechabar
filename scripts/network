@@ -13,8 +13,8 @@
 
 TIMEOUT=10
 
-DIM=$'\e[2m'
 RESET=$'\e[0m'
+DIM=$'\e[2m'
 
 usage() {
 	cat <<-EOF
@@ -89,7 +89,7 @@ get_networks() {
 		sleep 1
 	done
 
-	debug "\n${DIM}Scanning stopped${RESET}\n\n"
+	debug "\n\n"
 
 	if [[ -z $NETWORKS ]]; then
 		notify-send "Wi-Fi" "No networks found" -i "package-broken"
