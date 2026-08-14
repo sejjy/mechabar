@@ -3,92 +3,88 @@
 # Update Arch Linux packages
 #
 # Dependencies:
-#   - libnotify (notify-send)
 #   - pacman-contrib (checkupdates)
+#   - libnotify (notify-send)
 #
 # Author:  Jesse Mirabel <sejjymvm@gmail.com>
 # Date:    August 16, 2025
 # License: MIT
 
-TIMEOUT=10
+AUR_HELPER=
 
-GREEN=$'\e[32m'
-BLUE=$'\e[34m'
-RESET=$'\e[39m'
+print_help() {
+	local script=${0##*/}
 
-usage() {
 	cat <<-EOF
-		USAGE: ${0##*/} [option]
+		$script: $script [option]
+		    Update Arch Linux packages
 
-		Update Arch Linux packages
-
-		OPTIONS:
-		  module    Output Waybar module
-		  <none>    Launch the CLI
+		    Options:
+		      data         Print data in JSON format
 	EOF
 }
 
-debug() { printf "%b" "$*" >&2; }
-
 detect_helper() {
-	local helper
-	for helper in aura pakku paru pikaur trizen yay; do
-		if command -v "$helper" >/dev/null; then
-			HELPER=$helper
-			break
-		fi
-	done
+	if [[ -z $AUR_HELPER ]]; then
+		local helper
+		for helper in aura pakku paru pikaur trizen yay; do
+			if command -v "$helper" >/dev/null; then
+				AUR_HELPER=$helper
+				return 0
+			fi
+		done
+	fi
 }
 
-get_updates() {
-	local packages status
+detect_updates() {
+	local repo_updates repo_status
+	repo_updates=$(checkupdates)
+	repo_status=$?
 
-	packages=$(timeout $TIMEOUT checkupdates)
-	status=$?
-
-	if ((status != 0 && status != 2)); then
+	if ((repo_status != 0 && repo_status != 2)); then
 		return 1
 	fi
 
-	UPDATES=$(grep -c . <<<"$packages")
+	repo_updates=$(grep -c . <<<"$repo_updates")
 
-	if [[ -n $HELPER ]]; then
-		local aur_packages aur_status
-
-		aur_packages=$(timeout "$TIMEOUT" "$HELPER" -Qua)
+	if [[ -n $AUR_HELPER ]]; then
+		local aur_updates aur_status
+		aur_updates=$(command "$AUR_HELPER" -Qua)
 		aur_status=$?
 
-		if ((aur_status != 0 && ${#aur_packages} > 0)); then
+		if ((${#aur_updates} > 0 && aur_status != 0)); then
 			return 1
 		fi
 
-		AUR_UPDATES=$(awk '!/\[ignored\]/ {print $1}' <<<"$aur_packages" |
+		aur_updates=$(awk '$NF != "[ignored]" {print $1}' <<<"$aur_updates" |
 			grep -c .)
 	fi
 
-	return 0
+	printf "%d %d" "$repo_updates" "$aur_updates"
 }
 
-output_module() {
-	local icon tooltip
+print_data() {
+	local updates icon tooltip
 
-	if ! get_updates; then
-		icon='󰒑'
-		tooltip="<b>Failed to fetch updates</b>"
+	if ! updates=$(detect_updates); then
+		icon="󰒑"
+		tooltip="<b>Failed to detect updates</b>"
 		tooltip+="\nRight-click to retry"
-	elif ((UPDATES + AUR_UPDATES > 0)); then
-		icon='󰄠'
-		tooltip="<b>Pacman</b>: $UPDATES"
-
-		if [[ -n $HELPER ]]; then
-			local padding
-			printf -v padding "%*s" $((6 - ${#HELPER})) ''
-
-			tooltip+="\n<b>${HELPER^}</b>: $padding$AUR_UPDATES"
-		fi
 	else
-		icon='󰸟'
-		tooltip="No updates available"
+		local repo_updates aur_updates
+		read -r repo_updates aur_updates <<<"$updates"
+
+		if ((repo_updates + aur_updates > 0)); then
+			icon="󰄠"
+			tooltip="<b>Repo</b>: $repo_updates"
+
+			if [[ -n $AUR_HELPER ]]; then
+				tooltip+="\n<b>AUR</b>:  $aur_updates"
+			fi
+		else
+			icon="󰸟"
+			tooltip="No updates available"
+		fi
 	fi
 
 	cat <<-EOF
@@ -96,35 +92,34 @@ output_module() {
 	EOF
 }
 
-update_packages() {
-	debug "${BLUE}Updating packages...${RESET}\n"
-
-	if [[ -n $HELPER ]]; then
-		command $HELPER -Syu
-	else
-		sudo pacman -Syu
-	fi
-
-	notify-send "Update Complete" -i "package-install"
-
-	debug "\n${GREEN}Update complete!${RESET}\n"
-	read -rsn 1 -p "Press any key to exit..."
-}
-
 main() {
-	case $1 in
-		module)
-			detect_helper
-			output_module
-			;;
+	local option=$1
+
+	case $option in
 		'')
 			trap "pkill -RTMIN+1 waybar" EXIT
 
 			detect_helper
-			update_packages
+
+			printf "Updating packages...\n"
+
+			if [[ -n $AUR_HELPER ]]; then
+				command "$AUR_HELPER" -Syu
+			else
+				sudo pacman -Syu
+			fi
+
+			notify-send "Update Complete" --icon "package-install"
+
+			printf "\nUpdate complete!\n"
+			read -rsn 1 -p "Press any key to exit..."
+			;;
+		data)
+			detect_helper
+			print_data
 			;;
 		*)
-			usage >&2
+			print_help >&2
 			return 1
 			;;
 	esac

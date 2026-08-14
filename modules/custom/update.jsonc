@@ -1,6 +1,6 @@
 {
 	"custom/update": {
-		"exec": "~/.config/waybar/scripts/update module",
+		"exec": "~/.config/waybar/scripts/update data",
 		"return-type": "json",
 		"interval": 3600,
 		"signal": 1,

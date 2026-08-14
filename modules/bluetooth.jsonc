@@ -7,7 +7,7 @@
 		"format-disabled": "󰂲",
 		"min-length": 2,
 		"max-length": 2,
-		"on-click": "kitty -e ~/.config/waybar/scripts/bluetooth",
+		"on-click": "kitty -e ~/.config/waybar/scripts/bluetooth menu",
 		"on-click-right": "~/.config/waybar/scripts/bluetooth off",
 		"tooltip-format": "Device Addr: {device_address}",
 		"tooltip-format-on": "Bluetooth Disconnected",
