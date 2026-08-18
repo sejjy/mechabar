@@ -25,15 +25,14 @@ main() {
 	local package
 	for package in "${DEPENDENCIES[@]}"; do
 		if pacman -Qi "$package" &>/dev/null; then
-			printf "[SKIP] %s" "$package\n"
+			printf "[SKIP] %s\n" "$package"
 		else
-			printf "\n[    ] %s" "$package...\n"
+			printf "\n[    ] %s...\n" "$package"
 
 			if sudo pacman -S --noconfirm "$package"; then
-				printf "\n[DONE] %s" "$package\n"
+				printf "\n[DONE] %s\n" "$package"
 			else
-				printf "\n[ERR ] %s" "$package\n"
-
+				printf "\n[ERR ] %s\n" "$package"
 				((errors += 1))
 			fi
 		fi

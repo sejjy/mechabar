@@ -52,7 +52,7 @@ detect_updates() {
 		aur_updates=$(command "$AUR_HELPER" -Qua)
 		aur_status=$?
 
-		if ((${#aur_updates} > 0 && aur_status != 0)); then
+		if ((aur_status != 0 && ${#aur_updates} > 0)); then
 			return 1
 		fi
 
