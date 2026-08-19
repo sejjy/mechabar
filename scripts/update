@@ -20,7 +20,7 @@ print_help() {
 		    Update Arch Linux packages
 
 		    Options:
-		      data         Print data in JSON format
+		      data      Print data in JSON format
 	EOF
 }
 
