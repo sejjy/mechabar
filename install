@@ -18,27 +18,33 @@ DEPENDENCIES=(
 )
 
 main() {
-	printf "Installing dependencies...\n"
+	local md_reset=$'\e[0m'
+	local md_dim=$'\e[2m'
+	local fg_red=$'\e[31m'
+	local fg_green=$'\e[32m'
+	local fg_blue=$'\e[34m'
 
 	local errors=0
+
+	printf "%bInstalling dependencies...%b\n" "$fg_blue" "$md_reset"
 
 	local package
 	for package in "${DEPENDENCIES[@]}"; do
 		if pacman -Qi "$package" &>/dev/null; then
-			printf "[SKIP] %s\n" "$package"
+			printf "[%bSKIP%b] %s\n" "$md_dim" "$md_reset" "$package"
 		else
 			printf "\n[    ] %s...\n" "$package"
 
 			if sudo pacman -S --noconfirm "$package"; then
-				printf "\n[DONE] %s\n" "$package"
+				printf "\n[%bDONE%b] %s\n" "$fg_green" "$md_reset" "$package"
 			else
-				printf "\n[ERR ] %s\n" "$package"
+				printf "\n[%bERR %b] %s\n" "$fg_red" "$md_reset" "$package"
 				((errors += 1))
 			fi
 		fi
 	done
 
-	printf "\nRestarting Waybar...\n"
+	printf "\n%bRestarting Waybar...%b\n" "$fg_blue" "$md_reset"
 
 	if ! (systemctl --user is-enabled waybar.service &&
 		systemctl --user restart waybar.service) &>/dev/null; then
@@ -48,11 +54,12 @@ main() {
 	fi
 
 	if ((errors > 0)); then
-		printf "\nInstallation completed with %d errors.\n" "$errors"
+		printf "\nInstallation completed with %b%d errors%b.\n" \
+			"$fg_red" "$errors" "$md_reset"
 		return 1
 	fi
 
-	printf "\nInstallation complete!\n"
+	printf "\n%bInstallation complete!%b\n" "$fg_green" "$md_reset"
 }
 
 main

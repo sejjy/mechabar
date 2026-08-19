@@ -101,7 +101,11 @@ main() {
 
 			detect_helper
 
-			printf "Updating packages...\n"
+			local md_reset=$'\e[0m'
+			local fg_green=$'\e[32m'
+			local fg_blue=$'\e[34m'
+
+			printf "%bUpdating packages...%b\n" "$fg_blue" "$md_reset"
 
 			if [[ -n $AUR_HELPER ]]; then
 				command "$AUR_HELPER" -Syu
@@ -111,8 +115,8 @@ main() {
 
 			notify-send "Update Complete" --icon "package-install"
 
-			printf "\nUpdate complete!\n"
-			read -rsn 1 -p "Press any key to exit..."
+			printf "\n%bUpdate complete!%b\n" "$fg_green" "$md_reset"
+			read -rn 1 -p "Press any key to exit..."
 			;;
 		data)
 			detect_helper
