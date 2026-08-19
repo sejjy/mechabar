@@ -10,60 +10,51 @@
 # Date:    August 28, 2025
 # License: MIT
 
-DEF_VALUE=1
+VALUE=2
 
-usage() {
+print_help() {
 	local script=${0##*/}
 
 	cat <<-EOF
-		USAGE: $script {up|down} [value]
+		$script: $script <option> [value]
+		    Adjust screen brightness
 
-		Adjust screen brightness
-
-		OPTIONS:
-		  up   [value]    Increase brightness by [value] (default: $DEF_VALUE)
-		  down [value]    Decrease brightness by [value] (default: $DEF_VALUE)
-
-		EXAMPLES:
-		  Increase brightness:
-		    $ $script up
-
-		  Decrease brightness by 5:
-		    $ $script down 5
+		    Options:
+		      up        Increase brightness by [value] (default: $VALUE)
+		      down      Decrease brightness by [value] (default: $VALUE)
 	EOF
 }
 
 main() {
-	local action=$1
-	local value=${2:-$DEF_VALUE}
+	local option=$1
+	local value=${2:-$VALUE}
 
-	if ((value < 1)); then
-		usage >&2
+	if ! [[ $value =~ ^[1-9][0-9]*$ ]]; then
+		printf "%s: value must be an integer greater than 0\n" "${0##*/}" >&2
 		return 1
 	fi
 
-	case $action in
-		up | down)
-			local sign
-
-			case $action in
-				up)   sign='+' ;;
-				down) sign='-' ;;
-			esac
-
-			brightnessctl -n set "${value}%${sign}" >/dev/null
-
-			local level
-			level=$(brightnessctl -m | awk -F ',' '{print $4}')
-
-			notify-send "Brightness: $level" -h int:value:"$level" -i \
-				"contrast" -h string:x-canonical-private-synchronous:backlight
+	case $option in
+		up)
+			local sign="+"
+			;;
+		down)
+			local sign="-"
 			;;
 		*)
-			usage >&2
+			print_help >&2
 			return 1
 			;;
 	esac
+
+	brightnessctl set "${value}%${sign}" >/dev/null
+
+	local level
+	level=$(brightnessctl --machine-readable | awk -F ',' '{print $4}')
+
+	notify-send "Brightness: $level" --icon "contrast" \
+		--hint "int:value:${level}" \
+		--hint "string:x-canonical-private-synchronous:backlight"
 }
 
 main "$@"

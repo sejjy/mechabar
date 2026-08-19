@@ -1,76 +1,50 @@
 #!/usr/bin/env bash
 #
-# Install mechabar dependencies
+# Install "mechabar" dependencies
 #
 # Author:  Jesse Mirabel <sejjymvm@gmail.com>
 # Date:    August 22, 2025
 # License: MIT
 
-DEPS=(
+DEPENDENCIES=(
 	bluez-utils
 	brightnessctl
 	fzf
 	libnotify
 	networkmanager
+	otf-commit-mono-nerd
 	pacman-contrib
 	waybar
 )
 
-RESET=$'\e[0m'
-DIM=$'\e[2m'
-U=$'\e[4m'
-RED=$'\e[31m'
-GREEN=$'\e[32m'
-BLUE=$'\e[34m'
+main() {
+	local md_reset=$'\e[0m'
+	local md_dim=$'\e[2m'
+	local fg_red=$'\e[31m'
+	local fg_green=$'\e[32m'
+	local fg_blue=$'\e[34m'
 
-debug() { printf "%b" "$*" >&2; }
+	local errors=0
 
-install() {
+	printf "%bInstalling dependencies...%b\n" "$fg_blue" "$md_reset"
+
 	local package
-	for package in "$@"; do
+	for package in "${DEPENDENCIES[@]}"; do
 		if pacman -Qi "$package" &>/dev/null; then
-			debug "${DIM}[SKIP]${RESET} $package\n"
+			printf "[%bSKIP%b] %s\n" "$md_dim" "$md_reset" "$package"
 		else
-			debug "\n${DIM}[    ]${RESET} $package...\n"
+			printf "\n[    ] %s...\n" "$package"
 
 			if sudo pacman -S --noconfirm "$package"; then
-				debug "\n${GREEN}[DONE]${RESET} $package\n"
+				printf "\n[%bDONE%b] %s\n" "$fg_green" "$md_reset" "$package"
 			else
-				debug "\n${RED}[ERR ]${RESET} $package\n"
-				((ERRORS += 1))
+				printf "\n[%bERR %b] %s\n" "$fg_red" "$md_reset" "$package"
+				((errors += 1))
 			fi
 		fi
 	done
-}
 
-main() {
-	debug "${BLUE}Installing dependencies...${RESET}\n"
-
-	install "${DEPS[@]}"
-
-	printf $'\n'
-	read -rp 'Install "CommitMono Nerd Font" (otf-commit-mono-nerd)? [Y/n] '
-
-	case $REPLY in
-		'' | [Yy])
-			install otf-commit-mono-nerd
-			;;
-		*)
-			local v="${DIM}│${RESET}"
-
-			cat <<-EOF
-
-				${v} Different fonts render characters in different sizes, which
-				${v} can affect the layout. Import your preferred font file from
-				${v} ${U}./styles/fonts/${RESET} to ${U}./style.css${RESET}:
-				${v}
-				${v} ${DIM}/* @import "styles/fonts/commit-mono.css"; */${RESET}
-				${v} @import ${U}"styles/fonts/jetbrains-mono.css"${RESET};
-			EOF
-			;;
-	esac
-
-	debug "\n${BLUE}Restarting Waybar...${RESET}\n"
+	printf "\n%bRestarting Waybar...%b\n" "$fg_blue" "$md_reset"
 
 	if ! (systemctl --user is-enabled waybar.service &&
 		systemctl --user restart waybar.service) &>/dev/null; then
@@ -79,11 +53,13 @@ main() {
 		disown
 	fi
 
-	if ((ERRORS > 0)); then
-		debug "\nInstallation completed with ${RED}$ERRORS error(s)${RESET}\n"
-	else
-		debug "\nInstallation complete!\n"
+	if ((errors > 0)); then
+		printf "\nInstallation completed with %b%d errors%b.\n" \
+			"$fg_red" "$errors" "$md_reset"
+		return 1
 	fi
+
+	printf "\n%bInstallation complete!%b\n" "$fg_green" "$md_reset"
 }
 
 main
