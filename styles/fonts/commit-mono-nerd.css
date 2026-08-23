@@ -1,6 +1,7 @@
 * {
 	font-family: "CommitMono Nerd Font";
 	font-size: 14px;
+	font-weight: bold;
 }
 
 #workspaces button.active label,
@@ -18,4 +19,12 @@
 #custom-right,
 #custom-right.inverse {
 	font-size: 22px;
+}
+
+tooltip label,
+#window label,
+#keyboard-state label,
+#language,
+#mpris {
+	font-weight: normal;
 }

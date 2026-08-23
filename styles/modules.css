@@ -11,19 +11,16 @@
 
 #window {
 	padding: 0 12px;
-	/* Prevent large Unicode characters from increasing the bar height
+	/*
+	 * Prevent large Unicode characters from increasing the bar height
 	 * https://github.com/Alexays/Waybar/issues/2026
 	 */
 	margin: -50px 0;
-}
-#window label {
-	font-weight: normal;
 }
 
 #keyboard-state label,
 #language {
 	padding: 0 12px 0 8px;
-	font-weight: normal;
 	color: @hover-fg;
 }
 
@@ -77,7 +74,6 @@
 
 #mpris {
 	padding: 0 12px;
-	font-weight: normal;
 }
 
 #pulseaudio,

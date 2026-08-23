@@ -1,6 +1,7 @@
 * {
 	font-family: "JetBrainsMono Nerd Font";
 	font-size: 14px;
+	font-weight: bold;
 }
 
 #workspaces button.active label,
@@ -18,4 +19,12 @@
 #custom-right,
 #custom-right.inverse {
 	font-size: 18.5px;
+}
+
+tooltip label,
+#window label,
+#keyboard-state label,
+#language,
+#mpris {
+	font-weight: normal;
 }
