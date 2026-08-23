@@ -1,0 +1,30 @@
+* {
+	font-family: "GoogleSansCode Nerd Font";
+	font-size: 13px;
+	font-weight: 500;
+}
+
+#workspaces button.active label,
+#workspaces button.focused label,
+#custom-distro {
+	font-size: 18.75px;
+}
+
+#custom-power {
+	font-size: 16px;
+}
+
+#custom-left,
+#custom-left.inverse,
+#custom-right,
+#custom-right.inverse {
+	font-size: 19.5px;
+}
+
+tooltip label,
+#window label,
+#keyboard-state label,
+#language,
+#mpris {
+	font-weight: normal;
+}
