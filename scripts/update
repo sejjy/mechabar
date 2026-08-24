@@ -60,7 +60,7 @@ detect_updates() {
 			grep -c .)
 	fi
 
-	printf "%d %d" "$repo_updates" "$aur_updates"
+	printf "%d %d" "${repo_updates:-0}" "${aur_updates:-0}"
 }
 
 print_data() {
