@@ -7,6 +7,8 @@ A customizable, modular Waybar configuration
 | ![Preview](./assets/catppuccin-mocha.png) |
 | :---------------------------------------: |
 
+<sup>Screenshot from a 1920×1080 monitor, scaled to 150%.</sup>
+
 <details>
 <summary>Themes</summary>
 
