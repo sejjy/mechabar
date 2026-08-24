@@ -20,7 +20,7 @@
 
 #keyboard-state label,
 #language {
-	padding: 0 12px 0 8px;
+	padding: 0 10px 0 8px;
 	color: @hover-fg;
 }
 
