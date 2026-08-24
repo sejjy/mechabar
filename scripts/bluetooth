@@ -49,6 +49,11 @@ main() {
 
 	case $option in
 		off)
+			local state
+			state=$(bluetoothctl show | awk '/PowerState/ {print $2}')
+
+			[[ $state == off ]] && return 0
+
 			bluetoothctl power off
 
 			notify-send "Bluetooth Off" --icon "network-bluetooth-inactive" \

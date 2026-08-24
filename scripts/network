@@ -48,6 +48,11 @@ main() {
 
 	case $option in
 		off)
+			local status
+			status=$(nmcli radio wifi)
+
+			[[ $status == disabled ]] && return 0
+
 			nmcli radio wifi off
 
 			notify-send "Wi-Fi Off" --icon "network-wireless-off" \
