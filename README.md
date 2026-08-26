@@ -2,12 +2,10 @@
 
 ## 🤖 mechabar
 
-A customizable, modular Waybar configuration
+A modular Waybar configuration
 
 | ![Preview](./assets/catppuccin-mocha.png) |
 | :---------------------------------------: |
-
-<sup>Screenshot from a 1920×1080 monitor, scaled to 150%.</sup>
 
 <details>
 <summary>Themes</summary>
@@ -35,10 +33,11 @@ A customizable, modular Waybar configuration
 
 ### Requirements
 
-1. [waybar](https://archlinux.org/packages/extra/x86_64/waybar/)
+- [waybar](https://github.com/Alexays/Waybar)
 
-2. A terminal emulator (default: [kitty](https://archlinux.org/packages/extra/x86_64/kitty/))
-	> If you use a different terminal emulator, see the [Configuration](#configuration) section below.
+- A terminal (default: [kitty](https://github.com/kovidgoyal/kitty))
+	> If you use a different terminal, see the [Terminal](#configuration)
+	> section below.
 
 #
 
@@ -62,29 +61,8 @@ A customizable, modular Waybar configuration
 	~/.config/waybar/install
 	```
 
-	<details>
-	<summary>Dependencies (7)</summary>
-
-	| Package                | Command         | Description                                                                   |
-	| ---------------------- | --------------- | ----------------------------------------------------------------------------- |
-	| `bluez-utils`          | `bluetoothctl`  | Development and debugging utilities for the bluetooth protocol stack<tr></tr> |
-	| `brightnessctl`        | `brightnessctl` | Lightweight brightness control tool<tr></tr>                                  |
-	| `fzf`                  | `fzf`           | Command-line fuzzy finder<tr></tr>                                            |
-	| `libnotify`            | `notify-send`   | Library for sending desktop notifications<tr></tr>                            |
-	| `networkmanager`       | `nmcli`         | Network connection manager and user applications<tr></tr>                     |
-	| `pacman-contrib`       | `checkupdates`  | Contributed scripts and tools for pacman systems                              |
-
-	Optional (but recommended):
-
-	| Package                | Description                                      |
-	| ---------------------- | ------------------------------------------------ |
-	| `otf-commit-mono-nerd` | Patched font Commit Mono from nerd fonts library |
-
-	> Different fonts render characters in different sizes, which can affect the layout.
-	> If you prefer a different font, you can edit the font properties in `style.css`.
-
-	</details>
-
+	> See [install](./install) for the list of dependencies. If you prefer to
+	> use a different font, see the [Fonts/Icons](#configuration) section below.
 #
 
 ### Configuration
@@ -92,8 +70,8 @@ A customizable, modular Waybar configuration
 <details open>
 <summary>Terminal</summary>
 
-If you use a different terminal emulator, replace every instance of `kitty` in the module files.
-For example:
+If you use a different terminal, replace all invocations of
+[kitty](https://github.com/kovidgoyal/kitty) in the module files. For example:
 
 ```jsonc
 // ~/.config/waybar/modules/custom/power.jsonc
@@ -109,10 +87,25 @@ For example:
 </details>
 
 <details>
+<summary>Fonts/Icons</summary>
+
+Different fonts render characters in different sizes, which can affect the
+layout. If you prefer to use a different font, you may need to adjust the font
+sizes in [style.css](./style.css).
+
+You can search for icons on
+[nerdfonts.com](https://www.nerdfonts.com/cheat-sheet). Most modules use
+[nf-md-](https://www.nerdfonts.com/cheat-sheet?q=nf-md-) icons for consistency.
+
+#
+
+</details>
+
+<details>
 <summary>Themes</summary>
 
-To change the theme, import your preferred theme file from the [themes](./themes/) directory to `style.css`.
-For example:
+To change the theme, import your preferred theme file from the
+[themes](./themes/) directory to [style.css](./style.css). For example:
 
 ```css
 /* @import "themes/catppuccin-mocha.css"; */
@@ -124,29 +117,9 @@ For example:
 </details>
 
 <details>
-<summary>Icons</summary>
+<summary>Custom</summary>
 
-You can search for icons on [Nerd Fonts: Cheat Sheet ↗](https://www.nerdfonts.com/cheat-sheet).
-For example:
-
-```
-gentoo
-```
-
-This matches <ins>nf-dev-gentoo</ins>, <ins>nf-linux-gentoo</ins>, and <ins>nf-md-gentoo</ins>.
-
-> Most modules use [Material Design Icons](https://github.com/Templarian/MaterialDesign).
-> In this case, you may want to use <ins>nf-md-gentoo</ins> for consistency.
-
-#
-
-</details>
-
-<details>
-<summary>Custom module</summary>
-
-The leftmost module has no default function and is left for you to configure.
-For example:
+The leftmost module is left for you to configure. For example:
 
 ```jsonc
 // ~/.config/waybar/modules/custom/user.jsonc
