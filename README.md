@@ -74,13 +74,14 @@ A customizable, modular Waybar configuration
 	| `networkmanager`        | `nmcli`         | Network connection manager and user applications<tr></tr>                      |
 	| `pacman-contrib`        | `checkupdates`  | Contributed scripts and tools for pacman systems                               |
 
-    Optional:
+	Optional (but recommended):
 
 	| Package                | Description                                                                    |
 	| ---------------------- | ------------------------------------------------------------------------------ |
 	| `otf-commit-mono-nerd` | Patched font Commit Mono from nerd fonts library                               |
 
-	> If you prefer a different font, see the [Configuration](#configuration) section below.
+	> Different fonts render characters in different sizes, which can affect the layout.
+	> If you prefer a different font, you can edit the `font-*` properties in `style.css`.
 
 	</details>
 
@@ -108,30 +109,14 @@ For example:
 </details>
 
 <details>
-<summary>Fonts</summary>
-
-Different fonts render characters in different sizes, which can affect the layout.
-Import your preferred font file from the [fonts](./styles/fonts/) directory to `style.css`.
-For example:
-
-```css
-/* @import "styles/fonts/commit-mono.css"; */
-@import "styles/fonts/jetbrains-mono.css";
-```
-
-#
-
-</details>
-
-<details>
 <summary>Themes</summary>
 
-To change the theme, import your preferred theme file from the [themes](./styles/themes/) directory to `style.css`.
+To change the theme, import your preferred theme file from the [themes](./themes/) directory to `style.css`.
 For example:
 
 ```css
-/* @import "styles/themes/catppuccin-mocha.css"; */
-@import "styles/themes/catppuccin-latte.css";
+/* @import "themes/catppuccin-mocha.css"; */
+@import "themes/catppuccin-latte.css";
 ```
 
 #

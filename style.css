@@ -4,10 +4,12 @@
  */
 * { all: initial; }
 
-@import "styles/fonts/commit-mono-nerd.css";
-@import "styles/themes/catppuccin-mocha.css";
+@import "themes/catppuccin-mocha.css";
 
 * {
+	font-family: "CommitMono Nerd Font";
+	font-size: 13px;
+	font-weight: bold;
 	color: @fg;
 }
 
@@ -19,8 +21,8 @@
 	background-color: @bg-0;
 }
 
-/* Vertically align modules */
 .module {
+	/* Vertically align modules */
 	margin-bottom: -1px;
 }
 
@@ -41,7 +43,204 @@ tooltip {
 tooltip > box {
 	padding: 0 6px;
 }
+tooltip label {
+	font-weight: normal;
+}
 
-@import "styles/dividers.css";
-@import "styles/modules.css";
-@import "styles/states.css";
+/* Left modules */
+
+#custom-user {
+	padding: 0 16px;
+}
+
+#workspaces {
+	padding: 0 1px;
+	background-color: @bg-1;
+}
+#workspaces button.active label,
+#workspaces button.focused label {
+	font-size: 18.5px;
+	color: @accent;
+}
+
+#window {
+	/*
+	 * Prevent large Unicode characters from increasing the bar height
+	 * https://github.com/Alexays/Waybar/issues/2026
+	 */
+	margin: -50px 0;
+}
+#window label {
+	font-weight: normal;
+	padding: 0 12px;
+}
+
+/* Center modules */
+
+#keyboard-state label,
+#language {
+	font-weight: normal;
+	padding: 0 10px 0 8px;
+	color: @hover-fg;
+}
+
+#temperature {
+	background-color: @bg-1;
+}
+#temperature.critical {
+	color: @critical;
+}
+
+#memory {
+	background-color: @bg-2;
+}
+#memory.warning {
+	color: @warning;
+}
+#memory.critical {
+	color: @critical;
+}
+
+#cpu {
+	background-color: @bg-3;
+}
+#cpu.warning {
+	color: @warning;
+}
+#cpu.critical {
+	color: @critical;
+}
+
+#custom-distro {
+	font-size: 18.5px;
+	padding: 0 10px 0 5px;
+	background-color: @accent;
+	color: @bg-0;
+}
+
+#idle_inhibitor {
+	background-color: @bg-3;
+}
+#idle_inhibitor:hover,
+#idle_inhibitor.deactivated {
+	color: @hover-fg;
+}
+#clock.time {
+	padding-right: 6px;
+	background-color: @bg-3;
+}
+
+#clock.date {
+	padding-left: 6px;
+	background-color: @bg-2;
+}
+#clock.date:hover {
+	color: @hover-fg;
+}
+
+#network {
+	padding: 0 6px 0 4px;
+	background-color: @bg-1;
+}
+#network:hover {
+	color: @hover-fg;
+}
+#bluetooth {
+	padding: 0 5px;
+	background-color: @bg-1;
+}
+#bluetooth:hover {
+	color: @hover-fg;
+}
+#custom-update {
+	padding: 0 8px 0 2px;
+	background-color: @bg-1;
+}
+#custom-update:hover {
+	color: @hover-fg;
+}
+
+/* Right modules */
+
+#mpris {
+	font-weight: normal;
+	padding: 0 12px;
+}
+#mpris:hover,
+#mpris.paused {
+	color: @hover-fg;
+}
+
+#pulseaudio,
+#wireplumber {
+	background-color: @bg-1;
+}
+#pulseaudio:hover,
+#pulseaudio.output.muted,
+#pulseaudio.input.source-muted,
+#wireplumber:hover,
+#wireplumber.muted {
+	color: @hover-fg;
+}
+
+#backlight {
+	background-color: @bg-2;
+}
+
+#battery {
+	background-color: @bg-3;
+}
+#battery.warning {
+	color: @warning;
+}
+#battery.critical {
+	color: @critical;
+}
+#battery.charging {
+	color: @charging;
+}
+
+#custom-power {
+	font-size: 16px;
+	border-radius: 16px;
+	padding: 0 19px 0 16px;
+	color: @accent;
+}
+#custom-power:hover {
+	background-color: @hover-bg;
+	color: @hover-fg;
+}
+
+/* Dividers */
+
+#custom-left,
+#custom-right {
+	font-size: 22px;
+}
+
+#custom-left.accent,
+#custom-right.accent {
+	color: @accent;
+}
+
+#custom-left.bg-1,
+#custom-right.bg-1 {
+	color: @bg-1;
+}
+
+#custom-left.bg-2,
+#custom-right.bg-2 {
+	background-color: @bg-1;
+	color: @bg-2;
+}
+
+#custom-left.bg-3,
+#custom-right.bg-3 {
+	background-color: @bg-2;
+	color: @bg-3;
+}
+
+#custom-left.inverse,
+#custom-right.inverse {
+	color: @bg-3;
+}
