@@ -81,7 +81,7 @@ A customizable, modular Waybar configuration
 	| `otf-commit-mono-nerd` | Patched font Commit Mono from nerd fonts library |
 
 	> Different fonts render characters in different sizes, which can affect the layout.
-	> If you prefer a different font, you can edit the `font-*` properties in `style.css`.
+	> If you prefer a different font, you can edit the font properties in `style.css`.
 
 	</details>
 
@@ -133,9 +133,10 @@ For example:
 gentoo
 ```
 
-_Matches: `nf-dev-gentoo`, `nf-linux-gentoo`, `nf-md-gentoo`*_
+This matches <ins>nf-dev-gentoo</ins>, <ins>nf-linux-gentoo</ins>, and <ins>nf-md-gentoo</ins>.
 
-_*Most modules use Material Design Icons (`nf-md-*`) for consistency._
+> Most modules use [Material Design Icons](https://github.com/Templarian/MaterialDesign).
+> In this case, you may want to use <ins>nf-md-gentoo</ins> for consistency.
 
 #
 
@@ -163,4 +164,4 @@ For example:
 ### References
 
 - [Waybar wiki](https://github.com/Alexays/Waybar/wiki)
-- [Nerd Fonts wiki: Glyph Sets](https://github.com/ryanoasis/nerd-fonts/wiki/Glyph-Sets-and-Code-Points)
+- [Nerd Fonts wiki](https://github.com/ryanoasis/nerd-fonts/wiki)
