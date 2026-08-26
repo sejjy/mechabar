@@ -63,13 +63,12 @@ tooltip label {
 	color: @accent;
 }
 
-#window {
-	/*
-	 * Prevent large Unicode characters from increasing the bar height
-	 * https://github.com/Alexays/Waybar/issues/2026
-	 */
-	margin: -50px 0;
-}
+/*
+ * Prevent large Unicode characters from increasing the bar height
+ * https://github.com/Alexays/Waybar/issues/2026
+ */
+#window { margin: -50px 0; }
+
 #window label {
 	font-weight: normal;
 	padding: 0 12px;
