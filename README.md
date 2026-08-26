@@ -65,20 +65,20 @@ A customizable, modular Waybar configuration
 	<details>
 	<summary>Dependencies (7)</summary>
 
-	| Package                 | Command         | Description                                                                    |
-	| ----------------------  | --------------- | ------------------------------------------------------------------------------ |
-	| `bluez-utils`           | `bluetoothctl`  | Development and debugging utilities for the bluetooth protocol stack<tr></tr>  |
-	| `brightnessctl`         | `brightnessctl` | Lightweight brightness control tool<tr></tr>                                   |
-	| `fzf`                   | `fzf`           | Command-line fuzzy finder<tr></tr>                                             |
-	| `libnotify`             | `notify-send`   | Library for sending desktop notifications<tr></tr>                             |
-	| `networkmanager`        | `nmcli`         | Network connection manager and user applications<tr></tr>                      |
-	| `pacman-contrib`        | `checkupdates`  | Contributed scripts and tools for pacman systems                               |
+	| Package                | Command         | Description                                                                   |
+	| ---------------------- | --------------- | ----------------------------------------------------------------------------- |
+	| `bluez-utils`          | `bluetoothctl`  | Development and debugging utilities for the bluetooth protocol stack<tr></tr> |
+	| `brightnessctl`        | `brightnessctl` | Lightweight brightness control tool<tr></tr>                                  |
+	| `fzf`                  | `fzf`           | Command-line fuzzy finder<tr></tr>                                            |
+	| `libnotify`            | `notify-send`   | Library for sending desktop notifications<tr></tr>                            |
+	| `networkmanager`       | `nmcli`         | Network connection manager and user applications<tr></tr>                     |
+	| `pacman-contrib`       | `checkupdates`  | Contributed scripts and tools for pacman systems                              |
 
 	Optional (but recommended):
 
-	| Package                | Description                                                                    |
-	| ---------------------- | ------------------------------------------------------------------------------ |
-	| `otf-commit-mono-nerd` | Patched font Commit Mono from nerd fonts library                               |
+	| Package                | Description                                      |
+	| ---------------------- | ------------------------------------------------ |
+	| `otf-commit-mono-nerd` | Patched font Commit Mono from nerd fonts library |
 
 	> Different fonts render characters in different sizes, which can affect the layout.
 	> If you prefer a different font, you can edit the `font-*` properties in `style.css`.
