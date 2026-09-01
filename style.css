@@ -71,16 +71,13 @@ tooltip label {
 
 #window label {
 	font-weight: normal;
-	padding: 0 12px;
+	padding-left: 12px;
 }
 
 /* Center modules */
 
-#keyboard-state label,
-#language {
-	font-weight: normal;
-	padding: 0 10px 0 8px;
-	color: @hover-fg;
+#custom-space {
+	padding: 0 3px;
 }
 
 #temperature {
@@ -145,14 +142,14 @@ tooltip label {
 	color: @hover-fg;
 }
 #bluetooth {
-	padding: 0 5px;
+	padding: 0 4px;
 	background-color: @bg-1;
 }
 #bluetooth:hover {
 	color: @hover-fg;
 }
 #custom-update {
-	padding: 0 8px 0 2px;
+	padding: 0 6px 0 1px;
 	background-color: @bg-1;
 }
 #custom-update:hover {

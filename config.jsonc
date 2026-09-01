@@ -26,7 +26,7 @@
 	],
 
 	"modules-center": [
-		"hyprland/language",
+		"custom/space",
 
 		"custom/left#bg-1",
 		"temperature",

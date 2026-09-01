@@ -8,8 +8,8 @@
 		},
 		"format-warning": "󰀧 {percentage}%",
 		"format-critical": "󰀧 {percentage}%",
-		"min-length": 7,
-		"max-length": 7,
+		"min-length": 8,
+		"max-length": 8,
 		"tooltip-format": "Memory Used: {used:0.0f}/{total:0.0f} GiB"
 	}
 }

@@ -8,8 +8,8 @@
 		],
 		"critical-threshold": 90,
 		"format-critical": "󰀦 {temperatureC}°C",
-		"min-length": 8,
-		"max-length": 8,
+		"min-length": 9,
+		"max-length": 9,
 		"tooltip-format": "Fahrenheit: {temperatureF}°F"
 	}
 }
