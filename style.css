@@ -67,7 +67,7 @@ tooltip label {
  * Prevent large Unicode characters from increasing the bar height
  * https://github.com/Alexays/Waybar/issues/2026
  */
-#window { margin: -50px 0; }
+#window { margin: -1px 0; }
 
 #window label {
 	font-weight: 400;
