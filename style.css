@@ -44,7 +44,7 @@ tooltip > box {
 	padding: 0 6px;
 }
 tooltip label {
-	font-weight: normal;
+	font-weight: 400;
 }
 
 /* Left modules */
@@ -70,7 +70,7 @@ tooltip label {
 #window { margin: -50px 0; }
 
 #window label {
-	font-weight: normal;
+	font-weight: 400;
 	padding-left: 12px;
 }
 
@@ -159,7 +159,7 @@ tooltip label {
 /* Right modules */
 
 #mpris {
-	font-weight: normal;
+	font-weight: 400;
 	padding: 0 12px;
 }
 #mpris:hover,
