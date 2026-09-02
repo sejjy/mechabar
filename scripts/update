@@ -63,38 +63,6 @@ detect_updates() {
 	printf "%d %d" "$repo_updates" "${aur_updates:-0}"
 }
 
-print_data() {
-	local updates icon tooltip
-
-	if ! updates=$(detect_updates); then
-		icon="󰒑"
-		tooltip="Failed to detect updates"
-		tooltip+="\nRight-click to retry"
-	else
-		local repo_updates aur_updates
-		read -r repo_updates aur_updates <<<"$updates"
-
-		if ((repo_updates + aur_updates > 0)); then
-			local count
-			printf -v count "%3d" "$repo_updates"
-			icon="󰄠"
-			tooltip="Repo: $count"
-
-			if [[ -n $AUR_HELPER ]]; then
-				printf -v count "%3d" "$aur_updates"
-				tooltip+="\n AUR: $count"
-			fi
-		else
-			icon="󰸟"
-			tooltip="No updates available"
-		fi
-	fi
-
-	cat <<-EOF
-		{ "text": "$icon", "tooltip": "$tooltip" }
-	EOF
-}
-
 main() {
 	local option=$1
 
@@ -123,7 +91,36 @@ main() {
 			;;
 		data)
 			detect_helper
-			print_data
+
+			local updates icon tooltip
+
+			if ! updates=$(detect_updates); then
+				icon="󰒑"
+				tooltip="Failed to detect updates"
+				tooltip+="\nRight-click to retry"
+			else
+				local repo_updates aur_updates
+				read -r repo_updates aur_updates <<<"$updates"
+
+				if ((repo_updates + aur_updates > 0)); then
+					local count
+					printf -v count "%3d" "$repo_updates"
+					icon="󰄠"
+					tooltip="Repo: $count"
+
+					if [[ -n $AUR_HELPER ]]; then
+						printf -v count "%3d" "$aur_updates"
+						tooltip+="\n AUR: $count"
+					fi
+				else
+					icon="󰸟"
+					tooltip="No updates available"
+				fi
+			fi
+
+			cat <<-EOF
+				{ "text": "$icon", "tooltip": "$tooltip" }
+			EOF
 			;;
 		*)
 			print_help >&2
