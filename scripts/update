@@ -68,7 +68,7 @@ print_data() {
 
 	if ! updates=$(detect_updates); then
 		icon="󰒑"
-		tooltip="<span weight='500'>Failed to detect updates</span>"
+		tooltip="Failed to detect updates"
 		tooltip+="\nRight-click to retry"
 	else
 		local repo_updates aur_updates
@@ -78,11 +78,11 @@ print_data() {
 			local count
 			printf -v count "%3d" "$repo_updates"
 			icon="󰄠"
-			tooltip="<span weight='500'>Repo</span>: $count"
+			tooltip="Repo: $count"
 
 			if [[ -n $AUR_HELPER ]]; then
 				printf -v count "%3d" "$aur_updates"
-				tooltip+="\n <span weight='500'>AUR</span>: $count"
+				tooltip+="\n AUR: $count"
 			fi
 		else
 			icon="󰸟"

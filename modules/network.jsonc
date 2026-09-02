@@ -13,10 +13,10 @@
 		"max-length": 2,
 		"on-click": "kitty -e ~/.config/waybar/scripts/network menu",
 		"on-click-right": "~/.config/waybar/scripts/network off",
-		"tooltip-format": "<span weight='500'>Gateway</span>: {gwaddr}",
-		"tooltip-format-wifi": "  <span weight='500'>Network</span>: {essid}\n  <span weight='500'>IP Addr</span>: {ipaddr}/{cidr}\n <span weight='500'>Strength</span>: {signalStrength}%\n<span weight='500'>Frequency</span>: {frequency} GHz",
+		"tooltip-format": "Gateway: {gwaddr}",
+		"tooltip-format-wifi": "  Network: {essid}\n  IP Addr: {ipaddr}/{cidr}\n Strength: {signalStrength}%\nFrequency: {frequency} GHz",
 		"tooltip-format-disconnected": "Wi-Fi Disconnected",
 		"tooltip-format-disabled": "Wi-Fi Off",
-		"tooltip-format-ethernet": "<span weight='500'>Interface</span>: {ifname}"
+		"tooltip-format-ethernet": "Interface: {ifname}"
 	}
 }
