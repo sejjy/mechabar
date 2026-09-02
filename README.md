@@ -61,8 +61,7 @@ A modular Waybar configuration
 	~/.config/waybar/install
 	```
 
-	> See [install](./install) for the list of dependencies. If you prefer to
-	> use a different font, see the [Fonts/Icons](#configuration) section below.
+	> See [install](./install) for the list of dependencies.
 #
 
 ### Configuration
@@ -89,13 +88,14 @@ If you use a different terminal, replace all invocations of
 <details>
 <summary>Fonts/Icons</summary>
 
-Different fonts render characters in different sizes, which can affect the
+Different fonts render characters at different sizes, which can affect the
 layout. If you prefer to use a different font, you may need to adjust the font
 sizes in [style.css](./style.css).
 
 You can search for icons on
-[nerdfonts.com](https://www.nerdfonts.com/cheat-sheet). Most modules use
-[nf-md-](https://www.nerdfonts.com/cheat-sheet?q=nf-md-) icons for consistency.
+[nerdfonts.com/cheat-sheet](https://www.nerdfonts.com/cheat-sheet). Most modules
+use [nf-md-](https://www.nerdfonts.com/cheat-sheet?q=nf-md-) icons for
+consistency.
 
 #
 
