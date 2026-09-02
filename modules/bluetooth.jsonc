@@ -14,8 +14,8 @@
 		"tooltip-format-connected": "Device: {device_alias}",
 		"tooltip-format-off": "Bluetooth Off",
 		"tooltip-format-disabled": "Bluetooth Disabled",
-		"tooltip-format-connected-battery": "Device: {device_alias}\nBattery: {device_battery_percentage}%",
+		"tooltip-format-connected-battery": " Device: {device_alias}\nBattery: {device_battery_percentage}%",
 		"tooltip-format-enumerate-connected": "Device: {device_alias}",
-		"tooltip-format-enumerate-connected-battery": "Device: {device_alias}\nBattery: {device_battery_percentage}%"
+		"tooltip-format-enumerate-connected-battery": " Device: {device_alias}\nBattery: {device_battery_percentage}%"
 	}
 }

@@ -60,7 +60,7 @@ detect_updates() {
 			grep -c .)
 	fi
 
-	printf "%d %d" "${repo_updates:-0}" "${aur_updates:-0}"
+	printf "%d %d" "$repo_updates" "${aur_updates:-0}"
 }
 
 print_data() {
@@ -75,11 +75,14 @@ print_data() {
 		read -r repo_updates aur_updates <<<"$updates"
 
 		if ((repo_updates + aur_updates > 0)); then
+			local count
+			printf -v count "%3d" "$repo_updates"
 			icon="󰄠"
-			tooltip="<b>Repo</b>: $repo_updates"
+			tooltip="<b>Repo</b>: $count"
 
 			if [[ -n $AUR_HELPER ]]; then
-				tooltip+="\n<b>AUR</b>:  $aur_updates"
+				printf -v count "%3d" "$aur_updates"
+				tooltip+="\n <b>AUR</b>: $count"
 			fi
 		else
 			icon="󰸟"
