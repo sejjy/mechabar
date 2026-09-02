@@ -35,10 +35,6 @@ A modular Waybar configuration
 
 - [waybar](https://github.com/Alexays/Waybar)
 
-- A terminal (default: [kitty](https://github.com/kovidgoyal/kitty))
-	> If you use a different terminal, see the [Terminal](#configuration)
-	> section below.
-
 #
 
 ### Installation
@@ -65,25 +61,6 @@ A modular Waybar configuration
 #
 
 ### Configuration
-
-<details open>
-<summary>Terminal</summary>
-
-If you use a different terminal, replace all invocations of
-[kitty](https://github.com/kovidgoyal/kitty) in the module files. For example:
-
-```jsonc
-// ~/.config/waybar/modules/custom/power.jsonc
-
-"custom/power": {
-	// "on-click": "kitty -e ~/.config/waybar/scripts/power",
-	"on-click": "ghostty -e ~/.config/waybar/scripts/power",
-}
-```
-
-#
-
-</details>
 
 <details>
 <summary>Fonts/Icons</summary>

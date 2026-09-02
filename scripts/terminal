@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+#
+# Detect and execute a terminal emulator
+#
+# Based on:
+#   https://github.com/davatorium/rofi/blob/next/script/rofi-sensible-terminal
+#
+# Original authors:
+#   Han Boetes     <han@mijncomputer.nl>
+#   Dave Davenport <qball@gmpclient.org>
+#
+# Modified by: Jesse Mirabel <sejjymvm@gmail.com>
+# Date:        July 22, 2026
+# License:     MIT
+
+main() {
+	# shellcheck disable=2153
+	for terminal in $TERMINAL alacritty aterm foot ghostty kitty konsole     \
+		lxterminal mate-terminal qterminal roxterm rxvt st terminology urxvt \
+		uxterm wezterm x-terminal-emulator xfce4-terminal.wrapper xterm
+	do
+		if command -v "$terminal" &>/dev/null; then
+			exec $terminal "$@"
+		fi
+	done
+
+	notify-send "Failed to detect a terminal emulator" --icon "package-purge"
+}
+
+main "$@"

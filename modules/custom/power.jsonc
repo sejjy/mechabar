@@ -1,7 +1,7 @@
 {
 	"custom/power": {
 		"format": "󰤄",
-		"on-click": "kitty -e ~/.config/waybar/scripts/power",
+		"on-click": "~/.config/waybar/scripts/terminal -e ~/.config/waybar/scripts/power",
 		"tooltip-format": "Power Menu"
 	}
 }
