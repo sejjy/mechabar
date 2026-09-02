@@ -1,6 +1,6 @@
 {
 	"wlr/taskbar": {
-		"ignore-list": [ "kitty", "Discord Updater" ],
+		"ignore-list": [ "kitty" ],
 		"on-click": "activate",
 		"cursor": true
 	}
