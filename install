@@ -12,7 +12,7 @@ DEPENDENCIES=(
 	fzf
 	libnotify
 	networkmanager
-	otf-commit-mono-nerd
+	ttf-googlesanscode-nerd
 	pacman-contrib
 	waybar
 )

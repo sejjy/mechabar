@@ -7,9 +7,9 @@
 @import "themes/catppuccin-mocha.css";
 
 * {
-	font-family: "CommitMono Nerd Font";
+	font-family: "GoogleSansCode Nerd Font";
 	font-size: 13px;
-	font-weight: bold;
+	font-weight: 500;
 	color: @fg;
 }
 
@@ -44,7 +44,7 @@ tooltip > box {
 	padding: 0 6px;
 }
 tooltip label {
-	font-weight: normal;
+	font-weight: 400;
 }
 
 /* Left modules */
@@ -59,7 +59,7 @@ tooltip label {
 }
 #workspaces button.active label,
 #workspaces button.focused label {
-	font-size: 18.5px;
+	font-size: 18.75px;
 	color: @accent;
 }
 
@@ -70,7 +70,7 @@ tooltip label {
 #window { margin: -50px 0; }
 
 #window label {
-	font-weight: normal;
+	font-weight: 400;
 	padding-left: 12px;
 }
 
@@ -108,7 +108,7 @@ tooltip label {
 }
 
 #custom-distro {
-	font-size: 18.5px;
+	font-size: 18.75px;
 	padding: 0 10px 0 5px;
 	background-color: @accent;
 	color: @bg-0;
@@ -159,7 +159,7 @@ tooltip label {
 /* Right modules */
 
 #mpris {
-	font-weight: normal;
+	font-weight: 400;
 	padding: 0 12px;
 }
 #mpris:hover,
@@ -211,7 +211,7 @@ tooltip label {
 
 #custom-left,
 #custom-right {
-	font-size: 22px;
+	font-size: 19.5px;
 }
 
 #custom-left.accent,

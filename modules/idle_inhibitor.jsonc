@@ -8,7 +8,7 @@
 		},
 		"min-length": 3,
 		"max-length": 3,
-		"tooltip-format-activated": "<b>Idle Inhibitor</b>: Activated",
-		"tooltip-format-deactivated": "<b>Idle Inhibitor</b>: Deactivated"
+		"tooltip-format-activated": "Idle Inhibitor: Activated",
+		"tooltip-format-deactivated": "Idle Inhibitor: Deactivated"
 	}
 }
