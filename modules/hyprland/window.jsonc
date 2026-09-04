@@ -3,7 +3,7 @@
 		"rewrite": {
 			"": "Desktop",
 			"kitty": "Terminal",
-			"(.*)sh": "Terminal",
+			"zsh": "Terminal",
 			"~": "Terminal"
 		},
 		"swap-icon-label": false
