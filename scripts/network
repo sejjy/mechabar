@@ -72,18 +72,15 @@ main() {
 			done &
 			PID=$!
 
-			local header
-			header=$(nmcli device wifi list --rescan no | head -n 1)
-
-			local networks="nmcli device wifi list --rescan no | tail -n +2"
+			local list="nmcli device wifi list --rescan no"
 
 			local opts=(
-				--bind="start,every(2):reload-sync($networks)"
+				--bind="start,every(2):reload-sync($list)"
 				--border-label=" Wi-Fi Networks "
 				--border="sharp"
 				--cycle
 				--ghost="Search"
-				--header="$header"
+				--header-lines=1
 				--highlight-line
 				--info="inline-right"
 				--reverse
