@@ -13,6 +13,7 @@
 		"max-length": 8,
 		"tooltip-format": "Battery Discharging: {time}",
 		"tooltip-format-charging": "Battery Charging: {time}",
+		"tooltip-format-full": "Battery Full",
 		"format-time": "{H}h {M}m",
 		"events": {
 			"on-discharging-warning": "notify-send 'Battery Low (20%)' -u critical -i 'battery-020' -h string:x-canonical-private-synchronous:battery",
