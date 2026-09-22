@@ -30,7 +30,7 @@ main() {
 
 	local package
 	for package in "${DEPENDENCIES[@]}"; do
-		if pacman -Qi "$package" &>/dev/null; then
+		if pacman -Q "$package" &>/dev/null; then
 			printf "[%bSKIP%b] %s\n" "$md_dim" "$md_reset" "$package"
 		else
 			printf "\n[    ] %s...\n" "$package"
