@@ -18,7 +18,7 @@
 }
 #waybar > box {
 	margin: 3px;
-	background-color: @bg-0;
+	background-color: @layer-0;
 }
 
 .module {
@@ -38,7 +38,7 @@ button:hover {
 
 tooltip {
 	border: 2px solid @br;
-	background-color: @bg-0;
+	background-color: @layer-0;
 }
 tooltip > box {
 	padding: 0 6px;
@@ -52,7 +52,7 @@ tooltip > box {
 
 #workspaces {
 	padding: 0 1px;
-	background-color: @bg-1;
+	background-color: @layer-1;
 }
 #workspaces button.active label,
 #workspaces button.focused label {
@@ -77,14 +77,14 @@ tooltip > box {
 }
 
 #temperature {
-	background-color: @bg-1;
+	background-color: @layer-1;
 }
 #temperature.critical {
 	color: @critical;
 }
 
 #memory {
-	background-color: @bg-2;
+	background-color: @layer-2;
 }
 #memory.warning {
 	color: @warning;
@@ -94,7 +94,7 @@ tooltip > box {
 }
 
 #cpu {
-	background-color: @bg-3;
+	background-color: @layer-3;
 }
 #cpu.warning {
 	color: @warning;
@@ -107,11 +107,11 @@ tooltip > box {
 	font-size: 18.75px;
 	padding: 0 10px 0 5px;
 	background-color: @accent;
-	color: @bg-0;
+	color: @layer-0;
 }
 
 #idle_inhibitor {
-	background-color: @bg-3;
+	background-color: @layer-3;
 }
 #idle_inhibitor:hover,
 #idle_inhibitor.deactivated {
@@ -119,12 +119,12 @@ tooltip > box {
 }
 #clock.time {
 	padding-right: 6px;
-	background-color: @bg-3;
+	background-color: @layer-3;
 }
 
 #clock.date {
 	padding-left: 6px;
-	background-color: @bg-2;
+	background-color: @layer-2;
 }
 #clock.date:hover {
 	color: @hover-fg;
@@ -132,21 +132,21 @@ tooltip > box {
 
 #network {
 	padding: 0 6px 0 4px;
-	background-color: @bg-1;
+	background-color: @layer-1;
 }
 #network:hover {
 	color: @hover-fg;
 }
 #bluetooth {
 	padding: 0 4px;
-	background-color: @bg-1;
+	background-color: @layer-1;
 }
 #bluetooth:hover {
 	color: @hover-fg;
 }
 #custom-update {
 	padding: 0 6px 0 1px;
-	background-color: @bg-1;
+	background-color: @layer-1;
 }
 #custom-update:hover {
 	color: @hover-fg;
@@ -164,7 +164,7 @@ tooltip > box {
 
 #pulseaudio,
 #wireplumber {
-	background-color: @bg-1;
+	background-color: @layer-1;
 }
 #pulseaudio:hover,
 #pulseaudio.output.muted,
@@ -175,11 +175,11 @@ tooltip > box {
 }
 
 #backlight {
-	background-color: @bg-2;
+	background-color: @layer-2;
 }
 
 #battery {
-	background-color: @bg-3;
+	background-color: @layer-3;
 }
 #battery.warning {
 	color: @warning;
@@ -205,7 +205,9 @@ tooltip > box {
 /* Dividers */
 
 #custom-left,
-#custom-right {
+#custom-right,
+#custom-left_inverse,
+#custom-right_inverse {
 	font-size: 19.5px;
 }
 
@@ -213,25 +215,22 @@ tooltip > box {
 #custom-right.accent {
 	color: @accent;
 }
-
-#custom-left.bg-1,
-#custom-right.bg-1 {
-	color: @bg-1;
+#custom-left.layer-1,
+#custom-right.layer-1 {
+	color: @layer-1;
+}
+#custom-left.layer-2,
+#custom-right.layer-2 {
+	background-color: @layer-1;
+	color: @layer-2;
+}
+#custom-left.layer-3,
+#custom-right.layer-3 {
+	background-color: @layer-2;
+	color: @layer-3;
 }
 
-#custom-left.bg-2,
-#custom-right.bg-2 {
-	background-color: @bg-1;
-	color: @bg-2;
-}
-
-#custom-left.bg-3,
-#custom-right.bg-3 {
-	background-color: @bg-2;
-	color: @bg-3;
-}
-
-#custom-left.inverse,
-#custom-right.inverse {
-	color: @bg-3;
+#custom-left_inverse.layer-3,
+#custom-right_inverse.layer-3 {
+	color: @layer-3;
 }

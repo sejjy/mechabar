@@ -29,12 +29,12 @@
 /* Base colors */
 @define-color accent       @lavender;
 @define-color fg           @text;
-@define-color bg-0         @crust;
-@define-color bg-1         @mantle;
-@define-color bg-2         @base;
-@define-color bg-3         @surface0;
+@define-color layer-0      @crust;
+@define-color layer-1      @mantle;
+@define-color layer-2      @base;
+@define-color layer-3      @surface0;
 @define-color br           @subtext0;
-@define-color shadow       shade(@bg-0, 0.75);
+@define-color shadow       shade(@layer-0, 0.75);
 
 /* States */
 @define-color warning      @yellow;

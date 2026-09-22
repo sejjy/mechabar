@@ -3,20 +3,16 @@
 		"format": "",
 		"tooltip": false
 	},
-	"custom/left#bg-1": {
+	"custom/left#layer-1": {
 		"format": "",
 		"tooltip": false
 	},
-	"custom/left#bg-2": {
+	"custom/left#layer-2": {
 		"format": "",
 		"tooltip": false
 	},
-	"custom/left#bg-3": {
+	"custom/left#layer-3": {
 		"format": "",
-		"tooltip": false
-	},
-	"custom/left#inverse": {
-		"format": "",
 		"tooltip": false
 	},
 
@@ -24,19 +20,25 @@
 		"format": "",
 		"tooltip": false
 	},
-	"custom/right#bg-1": {
+	"custom/right#layer-1": {
 		"format": "",
 		"tooltip": false
 	},
-	"custom/right#bg-2": {
+	"custom/right#layer-2": {
 		"format": "",
 		"tooltip": false
 	},
-	"custom/right#bg-3": {
+	"custom/right#layer-3": {
 		"format": "",
 		"tooltip": false
 	},
-	"custom/right#inverse": {
+
+	"custom/left_inverse#layer-3": {
+		"format": "",
+		"tooltip": false
+	},
+
+	"custom/right_inverse#layer-3": {
 		"format": "",
 		"tooltip": false
 	}
