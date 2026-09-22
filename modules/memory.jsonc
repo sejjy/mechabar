@@ -10,6 +10,6 @@
 		"format-critical": "󰀧 {percentage}%",
 		"min-length": 8,
 		"max-length": 8,
-		"tooltip-format": "Memory Used: {used:0.0f}/{total:0.0f} GiB"
+		"tooltip-format": "Memory Used: {used:0.2f} GiB / {total:0.2f} GiB"
 	}
 }
