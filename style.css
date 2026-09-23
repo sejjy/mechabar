@@ -18,7 +18,7 @@
 }
 #waybar > box {
 	margin: 3px;
-	background-color: @layer-0;
+	background-color: @bg_0;
 }
 
 .module {
@@ -32,13 +32,13 @@ button {
 	min-width: 16px;
 }
 button:hover {
-	background-color: @hover-bg;
-	color: @hover-fg;
+	background-color: @bg_alt;
+	color: @fg_alt;
 }
 
 tooltip {
-	border: 2px solid @br;
-	background-color: @layer-0;
+	border: 2px solid @border;
+	background-color: @bg_0;
 }
 tooltip > box {
 	padding: 0 6px;
@@ -52,7 +52,7 @@ tooltip > box {
 
 #workspaces {
 	padding: 0 1px;
-	background-color: @layer-1;
+	background-color: @bg_1;
 }
 #workspaces button.active label,
 #workspaces button.focused label {
@@ -77,14 +77,14 @@ tooltip > box {
 }
 
 #temperature {
-	background-color: @layer-1;
+	background-color: @bg_1;
 }
 #temperature.critical {
 	color: @critical;
 }
 
 #memory {
-	background-color: @layer-2;
+	background-color: @bg_2;
 }
 #memory.warning {
 	color: @warning;
@@ -94,7 +94,7 @@ tooltip > box {
 }
 
 #cpu {
-	background-color: @layer-3;
+	background-color: @bg_3;
 }
 #cpu.warning {
 	color: @warning;
@@ -107,49 +107,49 @@ tooltip > box {
 	font-size: 18.75px;
 	padding: 0 10px 0 5px;
 	background-color: @accent;
-	color: @layer-0;
+	color: @bg_0;
 }
 
 #idle_inhibitor {
-	background-color: @layer-3;
+	background-color: @bg_3;
 }
 #idle_inhibitor:hover,
 #idle_inhibitor.deactivated {
-	color: @hover-fg;
+	color: @fg_alt;
 }
 #clock.time {
 	padding-right: 6px;
-	background-color: @layer-3;
+	background-color: @bg_3;
 }
 
 #clock.date {
 	padding-left: 6px;
-	background-color: @layer-2;
+	background-color: @bg_2;
 }
 #clock.date:hover {
-	color: @hover-fg;
+	color: @fg_alt;
 }
 
 #network {
 	padding: 0 6px 0 4px;
-	background-color: @layer-1;
+	background-color: @bg_1;
 }
 #network:hover {
-	color: @hover-fg;
+	color: @fg_alt;
 }
 #bluetooth {
 	padding: 0 4px;
-	background-color: @layer-1;
+	background-color: @bg_1;
 }
 #bluetooth:hover {
-	color: @hover-fg;
+	color: @fg_alt;
 }
 #custom-update {
 	padding: 0 6px 0 1px;
-	background-color: @layer-1;
+	background-color: @bg_1;
 }
 #custom-update:hover {
-	color: @hover-fg;
+	color: @fg_alt;
 }
 
 /* Right modules */
@@ -159,27 +159,27 @@ tooltip > box {
 }
 #mpris:hover,
 #mpris.paused {
-	color: @hover-fg;
+	color: @fg_alt;
 }
 
 #pulseaudio,
 #wireplumber {
-	background-color: @layer-1;
+	background-color: @bg_1;
 }
 #pulseaudio:hover,
 #pulseaudio.output.muted,
 #pulseaudio.input.source-muted,
 #wireplumber:hover,
 #wireplumber.muted {
-	color: @hover-fg;
+	color: @fg_alt;
 }
 
 #backlight {
-	background-color: @layer-2;
+	background-color: @bg_2;
 }
 
 #battery {
-	background-color: @layer-3;
+	background-color: @bg_3;
 }
 #battery.warning {
 	color: @warning;
@@ -198,8 +198,8 @@ tooltip > box {
 	color: @accent;
 }
 #custom-power:hover {
-	background-color: @hover-bg;
-	color: @hover-fg;
+	background-color: @bg_alt;
+	color: @fg_alt;
 }
 
 /* Dividers */
@@ -215,22 +215,22 @@ tooltip > box {
 #custom-right.accent {
 	color: @accent;
 }
-#custom-left.layer-1,
-#custom-right.layer-1 {
-	color: @layer-1;
+#custom-left.bg_1,
+#custom-right.bg_1 {
+	color: @bg_1;
 }
-#custom-left.layer-2,
-#custom-right.layer-2 {
-	background-color: @layer-1;
-	color: @layer-2;
+#custom-left.bg_2,
+#custom-right.bg_2 {
+	background-color: @bg_1;
+	color: @bg_2;
 }
-#custom-left.layer-3,
-#custom-right.layer-3 {
-	background-color: @layer-2;
-	color: @layer-3;
+#custom-left.bg_3,
+#custom-right.bg_3 {
+	background-color: @bg_2;
+	color: @bg_3;
 }
 
-#custom-left_inverse.layer-3,
-#custom-right_inverse.layer-3 {
-	color: @layer-3;
+#custom-left_inverse.bg_3,
+#custom-right_inverse.bg_3 {
+	color: @bg_3;
 }
