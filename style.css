@@ -1,9 +1,3 @@
-/*
- * Ignore GTK theme
- * https://github.com/Alexays/Waybar/issues/1351
- */
-* { all: initial; }
-
 @import "themes/catppuccin-mocha.css";
 
 * {
@@ -22,26 +16,43 @@
 }
 
 .module {
-	/* Vertically align modules */
-	margin-bottom: -1px;
+	margin-bottom: -1px; /* Vertically align modules */
 }
 
 button {
+	border: none;
 	border-radius: 16px;
 	padding: 0 10px;
 	min-width: 16px;
+	min-height: 24px;
 }
 button:hover {
 	background-color: @bg_alt;
+	background-image: none;
 	color: @fg_alt;
 }
 
 tooltip {
 	border: 2px solid @border;
+	border-radius: 0;
 	background-color: @bg_0;
 }
-tooltip > box {
+tooltip box {
+	margin: -4px;
 	padding: 0 6px;
+}
+
+menu {
+	border: 2px solid @border;
+	border-radius: 0;
+	background-color: @bg_0;
+}
+menu menuitem {
+	margin: 0 2px;
+}
+menu separator {
+	margin: 0 2px;
+	background-color: @bg_alt;
 }
 
 /* Left modules */
@@ -60,13 +71,8 @@ tooltip > box {
 	color: @accent;
 }
 
-/*
- * Prevent large Unicode characters from increasing the bar height
- * https://github.com/Alexays/Waybar/issues/2026
- */
-#window { margin: -1px 0; }
-
-#window label {
+#window {
+	margin: -1px 0; /* https://github.com/Alexays/Waybar/issues/2026 */
 	padding-left: 12px;
 }
 
