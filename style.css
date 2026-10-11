@@ -50,6 +50,9 @@ menu {
 menu menuitem {
 	margin: 0 2px;
 }
+menu menuitem:hover {
+	background-color: @bg_alt;
+}
 menu separator {
 	margin: 0 2px;
 	background-color: @bg_alt;
