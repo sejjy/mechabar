@@ -19,6 +19,10 @@
 	margin-bottom: -1px; /* Vertically align modules */
 }
 
+.modules-center {
+	padding-left: 14px; /* Center center modules */
+}
+
 button {
 	border: none;
 	border-radius: 16px;
@@ -80,10 +84,6 @@ menu separator {
 }
 
 /* Center modules */
-
-#custom-space {
-	padding: 0 3px;
-}
 
 #temperature {
 	background-color: @bg_1;

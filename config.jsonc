@@ -26,8 +26,6 @@
 	],
 
 	"modules-center": [
-		"custom/space",
-
 		"custom/left#bg_1",
 		"temperature",
 
