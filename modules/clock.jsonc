@@ -7,7 +7,7 @@
 	},
 
 	"clock#date": {
-		"format": "󰸗 {:%d-%m}",
+		"format": "󰸗 {:%m/%d}",
 		"min-length": 8,
 		"max-length": 8,
 		"actions": {
