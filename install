@@ -7,13 +7,13 @@
 # License: MIT
 
 DEPENDENCIES=(
-	bluez-utils
+	bluez-utils # bluetoothctl
 	brightnessctl
 	fzf
-	libnotify
-	networkmanager
+	libnotify # notify-send
+	networkmanager # nmcli
 	ttf-googlesanscode-nerd
-	pacman-contrib
+	pacman-contrib # checkupdates
 	waybar
 )
 
