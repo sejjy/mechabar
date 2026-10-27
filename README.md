@@ -4,7 +4,7 @@
 
 A <ins>mecha</ins>-themed Way<ins>bar</ins> configuration
 
-| ![Preview](./assets/catppuccin-mocha.png) |
+| ![Default](./assets/catppuccin-mocha.png) |
 | :---------------------------------------: |
 
 <details>
@@ -57,21 +57,20 @@ A <ins>mecha</ins>-themed Way<ins>bar</ins> configuration
 ### Configuration
 
 <details open>
-<summary>Terminal emulator</summary>
+<summary>Terminal</summary>
 
-- By default, <ins>mechabar</ins> uses
-  [kitty](https://github.com/kovidgoyal/kitty) for launching command-line
-  interfaces. If you use a different terminal emulator, replace all instances of
-  "<ins>kitty</ins>" in the module files. For example:
+By default, modules use [kitty](https://github.com/kovidgoyal/kitty) to launch
+command-line interfaces. If you use a different terminal, replace all instances
+of "kitty" with your terminal command. For example:
 
-	```jsonc
-	// ~/.config/waybar/modules/custom/power.jsonc
+```jsonc
+// ~/.config/waybar/modules/custom/power.jsonc
 
-	"custom/power": {
-		// "on-click": "kitty -e ~/.config/waybar/scripts/power",
-		"on-click": "ghostty -e ~/.config/waybar/scripts/power",
-	}
-	```
+"custom/power": {
+	// "on-click": "kitty -e ~/.config/waybar/scripts/power",
+	"on-click": "ghostty -e ~/.config/waybar/scripts/power",
+}
+```
 
 #
 
@@ -80,16 +79,11 @@ A <ins>mecha</ins>-themed Way<ins>bar</ins> configuration
 <details>
 <summary>Fonts & Icons</summary>
 
-- Note: Different fonts render characters at different sizes, which can affect
-  the layout. If you use a different font, you may want to adjust the font sizes
-  in [style.css](./style.css).
-
-- You can find patched fonts on
-  [Nerd Fonts](https://www.nerdfonts.com/font-downloads) and icons via their
-  [Cheat Sheet](https://www.nerdfonts.com/cheat-sheet). Most modules use
-  [Material Design](https://github.com/Templarian/MaterialDesign)
-  ([nf-md-*](https://www.nerdfonts.com/cheat-sheet?q=nf-md-)) icons for
-  consistency.
+You can find patched fonts on
+[nerdfonts.com](https://www.nerdfonts.com/font-downloads) and icons via their
+[cheat sheet](https://www.nerdfonts.com/cheat-sheet). For consistency, most
+modules use [Material Design](https://github.com/Templarian/MaterialDesign)
+icons, prefixed with "[nf-md-](https://www.nerdfonts.com/cheat-sheet?q=nf-md-)".
 
 #
 
@@ -98,13 +92,13 @@ A <ins>mecha</ins>-themed Way<ins>bar</ins> configuration
 <details>
 <summary>Themes</summary>
 
-- To change the theme, import your preferred theme file from the
-  [themes](./themes/) directory to [style.css](./style.css). For example:
+To change the theme, import your preferred theme from the [themes](./themes/)
+directory into [style.css](./style.css). For example:
 
-	```css
-	/* @import "themes/catppuccin-mocha.css"; */
-	@import "themes/catppuccin-latte.css";
-	```
+```css
+/* @import "themes/catppuccin-mocha.css"; */
+@import "themes/catppuccin-latte.css";
+```
 
 #
 
@@ -113,16 +107,16 @@ A <ins>mecha</ins>-themed Way<ins>bar</ins> configuration
 <details>
 <summary>Custom user module</summary>
 
-- The leftmost module is left for you to configure. For example:
+The leftmost module is left for you to configure. For example:
 
-	```jsonc
-	// ~/.config/waybar/modules/custom/user.jsonc
+```jsonc
+// ~/.config/waybar/modules/custom/user.jsonc
 
-	"custom/user": {
-		"on-click": "/path/to/your/script", // Run your own script
-		"on-click-right": "pkill -SIGUSR2 waybar", // Restart Waybar
-	}
-	```
+"custom/user": {
+	"on-click": "/path/to/your/script", // Run your own script
+	"on-click-right": "pkill -SIGUSR2 waybar", // Restart Waybar
+}
+```
 
 </details>
 
