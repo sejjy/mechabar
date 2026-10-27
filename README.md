@@ -81,7 +81,7 @@ A <ins>mecha</ins>-themed Way<ins>bar</ins> configuration
 <summary>Fonts & Icons</summary>
 
 - Note: Different fonts render characters at different sizes, which can affect
-  the layout. If you use a different font, you may need to adjust the font sizes
+  the layout. If you use a different font, you may want to adjust the font sizes
   in [style.css](./style.css).
 
 - You can find patched fonts on
