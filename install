@@ -7,10 +7,10 @@
 # License: MIT
 
 DEPENDENCIES=(
-	bluez-utils # bluetoothctl
+	bluez-utils    # bluetoothctl
 	brightnessctl
 	fzf
-	libnotify # notify-send
+	libnotify      # notify-send
 	networkmanager # nmcli
 	ttf-googlesanscode-nerd
 	pacman-contrib # checkupdates
@@ -46,16 +46,15 @@ main() {
 
 	printf "\n%bRestarting Waybar...%b\n" "$fg_blue" "$md_reset"
 
+	# https://github.com/sejjy/mechabar/pull/46
 	if ! (systemctl --user is-enabled waybar.service &&
-		systemctl --user restart waybar.service) &>/dev/null; then
-		pkill waybar
-		waybar &>/dev/null &
-		disown
+	      systemctl --user restart waybar.service) &>/dev/null; then
+		pkill -SIGUSR2 waybar
 	fi
 
 	if ((errors > 0)); then
 		printf "\nInstallation completed with %b%d errors%b.\n" \
-			"$fg_red" "$errors" "$md_reset"
+		       "$fg_red" "$errors" "$md_reset"
 		return 1
 	fi
 

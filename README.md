@@ -31,99 +31,76 @@ A <ins>mecha</ins>-themed Way<ins>bar</ins> configuration
 
 #
 
-### Installation
+> [!IMPORTANT]
+> By default, mechabar is configured for
+> [Arch-based Linux distributions](https://wiki.archlinux.org/title/Arch-based_distributions)
+> and [Hyprland](https://github.com/hyprwm/Hyprland), and uses
+> [kitty](https://github.com/kovidgoyal/kitty) to launch command-line
+> interfaces. If you use a different distribution, compositor, or terminal, see
+> the [Configuration](#configuration) section below.
 
-1. Back up your existing Waybar configuration:
+## Installation
 
-	```sh
-	mv ~/.config/waybar ~/.config/waybar.bak
-	```
+1. Back up your existing Waybar config:
+
+   ```sh
+   mv ~/.config/waybar ~/.config/waybar.bak
+   ```
 
 2. Clone the repository into <ins>~/.config/waybar</ins>:
 
-	```sh
-	git clone https://github.com/sejjy/mechabar.git ~/.config/waybar
-	```
+   ```sh
+   git clone https://github.com/sejjy/mechabar.git ~/.config/waybar
+   ```
 
 3. Install the dependencies and restart Waybar:
 
-	```sh
-	~/.config/waybar/install
-	```
+   ```sh
+   ~/.config/waybar/install # Arch-based distros only
+   ```
 
-	> See [install](./install) for the list of dependencies.
-#
+   > See [install](./install) for the list of dependencies.
 
-### Configuration
+## Configuration
 
-<details open>
-<summary>Terminal</summary>
+### For other distributions
 
-By default, modules use [kitty](https://github.com/kovidgoyal/kitty) to launch
-command-line interfaces. If you use a different terminal, replace all instances
-of "kitty" with your terminal command. For example:
+Edit the following files:
 
-```jsonc
-// ~/.config/waybar/modules/custom/power.jsonc
+1. [update](./scripts/update): Uses
+   [checkupdates](https://github.com/archlinux/pacman-contrib/blob/master/src/checkupdates.sh.in)
+   from [pacman-contrib](https://github.com/archlinux/pacman-contrib)
+   to print the number of pending updates and
+   [pacman](https://archlinux.org/packages/core/x86_64/pacman) to upgrade
+   packages.
+2. [distro.jsonc](./modules/custom/distro.jsonc): Uses the Arch Linux icon
+   ([nf-md-arch](https://www.nerdfonts.com/cheat-sheet?q=nf-md-arch)).
 
-"custom/power": {
-	// "on-click": "kitty -e ~/.config/waybar/scripts/power",
-	"on-click": "ghostty -e ~/.config/waybar/scripts/power",
-}
+### For other compositors
+
+[DWL](https://github.com/Alexays/Waybar/wiki/Module:-Dwl)
+&nbsp; [Mango](https://github.com/Alexays/Waybar/wiki/Module:-Mango)
+&nbsp; [Niri](https://github.com/Alexays/Waybar/wiki/Module:-Niri)
+&nbsp; [River](https://github.com/Alexays/Waybar/wiki/Module:-River)
+&nbsp; [Sway](https://github.com/Alexays/Waybar/wiki/Module:-Sway)
+&nbsp; [Wayfire](https://github.com/Alexays/Waybar/wiki/Module:-Wayfire)
+
+Edit (or create new versions of) the following files:
+
+1. [window.jsonc](./modules/hyprland/window.jsonc)
+2. [workspaces.jsonc](./modules/hyprland/workspaces.jsonc)
+
+### For other terminals
+
+Replace <ins>kitty</ins> with your terminal (make sure to change
+<ins>TERMINAL</ins>):
+
+```sh
+sed -i "s/kitty/TERMINAL/g" \
+       ~/.config/waybar/modules/custom/power.jsonc \
+       ~/.config/waybar/modules/custom/update.jsonc \
+       ~/.config/waybar/modules/hyprland/window.jsonc \
+       ~/.config/waybar/modules/optional/taskbar.jsonc \
+       ~/.config/waybar/modules/bluetooth.jsonc \
+       ~/.config/waybar/modules/network.jsonc
 ```
-
-#
-
-</details>
-
-<details>
-<summary>Fonts & Icons</summary>
-
-You can find patched fonts on
-[nerdfonts.com](https://www.nerdfonts.com/font-downloads) and icons via their
-[cheat sheet](https://www.nerdfonts.com/cheat-sheet). For consistency, most
-modules use [Material Design](https://github.com/Templarian/MaterialDesign)
-icons, prefixed with "[nf-md-](https://www.nerdfonts.com/cheat-sheet?q=nf-md-)".
-
-#
-
-</details>
-
-<details>
-<summary>Themes</summary>
-
-To change the theme, import your preferred theme from the [themes](./themes/)
-directory into [style.css](./style.css). For example:
-
-```css
-/* @import "themes/catppuccin-mocha.css"; */
-@import "themes/catppuccin-latte.css";
-```
-
-#
-
-</details>
-
-<details>
-<summary>Custom user module</summary>
-
-The leftmost module is left for you to configure. For example:
-
-```jsonc
-// ~/.config/waybar/modules/custom/user.jsonc
-
-"custom/user": {
-	"on-click": "/path/to/your/script", // Run your own script
-	"on-click-right": "pkill -SIGUSR2 waybar", // Restart Waybar
-}
-```
-
-</details>
-
-#
-
-### References
-
-- [Mecha](https://en.wikipedia.org/wiki/Mecha)
-- [Waybar wiki](https://github.com/Alexays/Waybar/wiki)
-- [Nerd Fonts wiki](https://github.com/ryanoasis/nerd-fonts/wiki)
