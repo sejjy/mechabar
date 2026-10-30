@@ -19,7 +19,7 @@
 		"custom/user",
 
 		"custom/left#bg_1",
-		"hyprland/workspaces",
+		"ext/workspaces",
 		"custom/right#bg_1",
 
 		"hyprland/window"
