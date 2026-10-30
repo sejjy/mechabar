@@ -1,0 +1,10 @@
+{
+	"ext/workspaces": {
+		"format": "{icon}",
+		"format-icons": {
+			"active": "",
+			"default": ""
+		},
+		"on-click": "activate"
+	}
+}

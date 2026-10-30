@@ -10,7 +10,6 @@
 
 	"include": [
 		"~/.config/waybar/modules/custom/*.jsonc",
-		"~/.config/waybar/modules/hyprland/*.jsonc",
 		// "~/.config/waybar/modules/optional/*.jsonc",
 		"~/.config/waybar/modules/*.jsonc"
 	],
@@ -19,7 +18,7 @@
 		"custom/user",
 
 		"custom/left#bg_1",
-		"hyprland/workspaces",
+		"ext/workspaces",
 		"custom/right#bg_1",
 
 		"hyprland/window"
