@@ -30,9 +30,9 @@ A <ins>mecha</ins>-themed Way<ins>bar</ins> configuration
 </div>
 
 > [!IMPORTANT]
-> By default, mechabar is configured for [Arch Linux](https://archlinux.org/)
+> By default, mechabar is configured for [Arch Linux↗](https://archlinux.org/)
 > and [Hyprland](https://github.com/hyprwm/Hyprland), and uses
-> [Kitty](https://github.com/kovidgoyal/kitty) to launch command-line
+> [`kitty`](https://github.com/kovidgoyal/kitty) to launch command-line
 > interfaces. If you use a different distribution, compositor, or terminal, see
 > the [Configuration](#configuration) section below.
 
@@ -44,7 +44,7 @@ A <ins>mecha</ins>-themed Way<ins>bar</ins> configuration
    $ mv ~/.config/waybar ~/.config/waybar.bak
    ```
 
-2. Clone the repository into <ins>~/.config/waybar</ins>:
+2. Clone the repository into `~/.config/waybar`:
 
    ```sh
    $ git clone https://github.com/sejjy/mechabar.git ~/.config/waybar
@@ -56,7 +56,7 @@ A <ins>mecha</ins>-themed Way<ins>bar</ins> configuration
    bluez-utils brightnessctl fzf libnotify networkmanager ttf-googlesanscode-nerd pacman-contrib
    ```
 
-4. Restart Waybar:
+4. Reload `waybar`:
 
    ```sh
    $ pkill -SIGUSR2 waybar
@@ -66,11 +66,11 @@ A <ins>mecha</ins>-themed Way<ins>bar</ins> configuration
 
 ### Distribution
 
-[update](./scripts/update) uses
-[checkupdates](https://man.archlinux.org/man/checkupdates.8) from
-[pacman-contrib](https://archlinux.org/packages/extra/x86_64/pacman-contrib/) to
-display update counts and [pacman](https://man.archlinux.org/man/pacman.8) to
-upgrade packages. If you use a non-Arch-based Linux distribution...
+The [`update`](./scripts/update) script uses
+[`checkupdates`↗](https://man.archlinux.org/man/checkupdates.8) from
+[pacman-contrib↗](https://archlinux.org/packages/extra/x86_64/pacman-contrib/)
+to display update counts and [`pacman`↗](https://man.archlinux.org/man/pacman.8)
+to upgrade packages. If you use a non-Arch-based Linux distribution...
 
 ```text
 Bailing out, you are on your own now. Good luck.
@@ -81,18 +81,21 @@ module at all.
 
 ### Compositor
 
-[config.jsonc](./config.jsonc) uses <ins>hyprland/window</ins> to display the
-title of the currently focused window. If you use
+[`config.jsonc`](./config.jsonc) uses
+[hyprland/window](https://github.com/Alexays/Waybar/wiki/Module:-Hyprland#hyprlandwindow)
+to display the title of the currently focused window. If you use
 [Niri](https://github.com/niri-wm/niri), for example, simply replace
-<ins>hyprland/window</ins> with <ins>niri/window</ins>. See the
-[Waybar wiki](https://github.com/Alexays/Waybar/wiki) for more information.
+<ins>hyprland/window</ins> with
+[niri/window](https://github.com/Alexays/Waybar/wiki/Module:-Niri#niriwindow).
+See the [Waybar wiki](https://github.com/Alexays/Waybar/wiki) for more
+information.
 
 ### Terminal
 
-[bluetooth.jsonc](./modules/bluetooth.jsonc),
-[network.jsonc](./modules/network.jsonc),
-[power.jsonc](./modules/custom/power.jsonc), and
-[update.jsonc](./modules/custom/update.jsonc) use Kitty to launch their
+[`bluetooth.jsonc`](./modules/bluetooth.jsonc),
+[`network.jsonc`](./modules/network.jsonc),
+[`power.jsonc`](./modules/custom/power.jsonc), and
+[`update.jsonc`](./modules/custom/update.jsonc) use `kitty` to launch their
 respective command-line interfaces. If you use
-[WezTerm](https://github.com/wezterm/wezterm), for example, simply replace
-<ins>kitty -e</ins> with <ins>wezterm -e</ins>.
+[`wezterm`](https://github.com/wezterm/wezterm), for example, simply replace
+`kitty -e` with `wezterm -e`.
