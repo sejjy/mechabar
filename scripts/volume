@@ -27,8 +27,9 @@ print_help() {
 
 		    Options:
 		      mute      Toggle mute status
-		      up        Increase volume by [value] (default: $VALUE)
-		      down      Decrease volume by [value] (default: $VALUE)
+		      set       Set volume to [value]%
+		      up        Increase volume by [value]% (default: +$VALUE%)
+		      down      Decrease volume by [value]% (default: -$VALUE%)
 	EOF
 }
 
@@ -65,6 +66,18 @@ get_icon() {
 			fi
 			;;
 	esac
+}
+
+toggle_mute() {
+	pactl "set-${DEVICE_TYPE}-mute" "$DEVICE_NAME" toggle
+
+	local status volume icon
+	status=$(get_status)
+	volume=$(get_volume)
+	icon=$(get_icon "$status" "$volume")
+
+	notify-send "${device^}: ${status^}" --icon "$icon" \
+		--hint "string:x-canonical-private-synchronous:volume"
 }
 
 set_volume() {
@@ -113,15 +126,10 @@ main() {
 
 	case $option in
 		mute)
-			pactl "set-${DEVICE_TYPE}-mute" "$DEVICE_NAME" toggle
-
-			local status volume icon
-			status=$(get_status)
-			volume=$(get_volume)
-			icon=$(get_icon "$status" "$volume")
-
-			notify-send "${device^}: ${status^}" --icon "$icon" \
-				--hint "string:x-canonical-private-synchronous:volume"
+			toggle_mute
+			;;
+		set)
+			set_volume "$value"
 			;;
 		up)
 			local volume

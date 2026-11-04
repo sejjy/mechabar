@@ -20,9 +20,24 @@ print_help() {
 		    Adjust screen brightness
 
 		    Options:
-		      up        Increase brightness by [value] (default: $VALUE)
-		      down      Decrease brightness by [value] (default: $VALUE)
+		      set       Set brightness to [value]%
+		      up        Increase brightness by [value]% (default: +$VALUE%)
+		      down      Decrease brightness by [value]% (default: -$VALUE%)
 	EOF
+}
+
+get_brightness() {
+	brightnessctl --machine-readable | awk -F ',' '{print $4}' | tr -d "%"
+}
+
+set_brightness() {
+	local brightness=$1
+
+	brightnessctl set "${brightness}%" >/dev/null
+
+	notify-send "Brightness: ${brightness}%" --icon "contrast" \
+		--hint "int:value:${brightness}" \
+		--hint "string:x-canonical-private-synchronous:backlight"
 }
 
 main() {
@@ -35,26 +50,26 @@ main() {
 	fi
 
 	case $option in
+		set)
+			set_brightness "$value"
+			;;
 		up)
-			local sign="+"
+			local brightness
+			brightness=$(get_brightness)
+
+			set_brightness $((brightness + value))
 			;;
 		down)
-			local sign="-"
+			local brightness
+			brightness=$(get_brightness)
+
+			set_brightness $((brightness - value))
 			;;
 		*)
 			print_help >&2
 			return 1
 			;;
 	esac
-
-	brightnessctl set "${value}%${sign}" >/dev/null
-
-	local level
-	level=$(brightnessctl --machine-readable | awk -F ',' '{print $4}')
-
-	notify-send "Brightness: $level" --icon "contrast" \
-		--hint "int:value:${level}" \
-		--hint "string:x-canonical-private-synchronous:backlight"
 }
 
 main "$@"

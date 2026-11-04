@@ -25,9 +25,25 @@ print_help() {
 	EOF
 }
 
-turn_wifi_on() {
+get_status() {
+	nmcli radio wifi
+}
+
+turn_off() {
 	local status
-	status=$(nmcli radio wifi)
+	status=$(get_status)
+
+	[[ $status == disabled ]] && return 0
+
+	nmcli radio wifi off
+
+	notify-send "Wi-Fi Off" --icon "network-wireless-off" \
+		--hint "string:x-canonical-private-synchronous:network"
+}
+
+turn_on() {
+	local status
+	status=$(get_status)
 
 	case $status in
 		enabled)  return 0 ;;
@@ -38,9 +54,53 @@ turn_wifi_on() {
 		--hint "string:x-canonical-private-synchronous:network"
 }
 
-cleanup() {
+scan_off() {
 	kill "$PID"
 	wait "$PID"
+}
+
+scan_on() {
+	while true; do
+		nmcli device wifi rescan
+		sleep 10
+	done &
+	PID=$!
+}
+
+launch_menu() {
+	local list="nmcli device wifi list --rescan no"
+
+	local opts=(
+		--bind="start,every(2):reload-sync($list)"
+		--border-label=" Wi-Fi Networks "
+		--border="sharp"
+		--cycle
+		--ghost="Search"
+		--header-lines=1
+		--highlight-line
+		--info="inline-right"
+		--reverse
+	)
+
+	local bssid
+	bssid=$(fzf "${opts[@]}" | awk '{print $1}')
+
+	[[ -z $bssid ]] && return 1
+
+	if [[ $bssid == '*' ]]; then
+		notify-send "Wi-Fi" "Already connected to this network" \
+			--icon "package-install"
+		return 0
+	fi
+
+	printf "Connecting...\n"
+
+	if ! nmcli --ask device wifi connect "$bssid"; then
+		notify-send "Wi-Fi" "Failed to connect" --icon "package-purge"
+		return 1
+	fi
+
+	notify-send "Wi-Fi" "Successfully connected" --icon "package-install"
 }
 
 main() {
@@ -48,64 +108,16 @@ main() {
 
 	case $option in
 		off)
-			local status
-			status=$(nmcli radio wifi)
-
-			[[ $status == disabled ]] && return 0
-
-			nmcli radio wifi off
-
-			notify-send "Wi-Fi Off" --icon "network-wireless-off" \
-				--hint "string:x-canonical-private-synchronous:network"
+			turn_off
 			;;
 		on)
-			turn_wifi_on
+			turn_on
 			;;
 		menu)
-			turn_wifi_on
-
-			trap cleanup EXIT
-
-			while true; do
-				nmcli device wifi rescan
-				sleep 10
-			done &
-			PID=$!
-
-			local list="nmcli device wifi list --rescan no"
-
-			local opts=(
-				--bind="start,every(2):reload-sync($list)"
-				--border-label=" Wi-Fi Networks "
-				--border="sharp"
-				--cycle
-				--ghost="Search"
-				--header-lines=1
-				--highlight-line
-				--info="inline-right"
-				--reverse
-			)
-
-			local bssid
-			bssid=$(fzf "${opts[@]}" | awk '{print $1}')
-
-			[[ -z $bssid ]] && return 1
-
-			if [[ $bssid == '*' ]]; then
-				notify-send "Wi-Fi" "Already connected to this network" \
-					--icon "package-install"
-				return 0
-			fi
-
-			printf "Connecting...\n"
-
-			if ! nmcli --ask device wifi connect "$bssid"; then
-				notify-send "Wi-Fi" "Failed to connect" --icon "package-purge"
-				return 1
-			fi
-
-			notify-send "Wi-Fi" "Successfully connected" \
-				--icon "package-install"
+			turn_on
+			trap scan_off EXIT
+			scan_on
+			launch_menu
 			;;
 		*)
 			print_help >&2

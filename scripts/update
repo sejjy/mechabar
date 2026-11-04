@@ -20,8 +20,13 @@ print_help() {
 		    Update Arch Linux packages
 
 		    Options:
+		      <none>    Launch the update CLI
 		      data      Print data in JSON format
 	EOF
+}
+
+update_module() {
+	pkill -RTMIN+1 waybar
 }
 
 detect_helper() {
@@ -34,6 +39,25 @@ detect_helper() {
 			fi
 		done
 	fi
+}
+
+launch_cli() {
+	local md_reset=$'\e[0m'
+	local fg_green=$'\e[32m'
+	local fg_blue=$'\e[34m'
+
+	printf "%bUpdating packages...%b\n" "$fg_blue" "$md_reset"
+
+	if [[ -n $AUR_HELPER ]]; then
+		command "$AUR_HELPER" -Syu
+	else
+		sudo pacman -Syu
+	fi
+
+	notify-send "Update Complete" --icon "package-install"
+
+	printf "\n%bUpdate complete!%b\n" "$fg_green" "$md_reset"
+	read -rn 1 -p "Press any key to exit..."
 }
 
 detect_updates() {
@@ -63,64 +87,50 @@ detect_updates() {
 	printf "%d %d" "$repo_updates" "${aur_updates:-0}"
 }
 
+print_data() {
+	local updates icon tooltip
+
+	if ! updates=$(detect_updates); then
+		icon="󰒑"
+		tooltip="Failed to detect updates"
+		tooltip+="\nRight-click to retry"
+	else
+		local repo_updates aur_updates
+		read -r repo_updates aur_updates <<<"$updates"
+
+		if ((repo_updates + aur_updates > 0)); then
+			local count
+			printf -v count "%3d" "$repo_updates"
+			icon="󰄠"
+			tooltip="Repo: $count"
+
+			if [[ -n $AUR_HELPER ]]; then
+				printf -v count "%3d" "$aur_updates"
+				tooltip+="\n AUR: $count"
+			fi
+		else
+			icon="󰸟"
+			tooltip="No updates available"
+		fi
+	fi
+
+	cat <<-EOF
+		{ "text": "$icon", "tooltip": "$tooltip" }
+	EOF
+}
+
 main() {
 	local option=$1
 
 	case $option in
 		'')
-			trap "pkill -RTMIN+1 waybar" EXIT
-
+			trap update_module EXIT
 			detect_helper
-
-			local md_reset=$'\e[0m'
-			local fg_green=$'\e[32m'
-			local fg_blue=$'\e[34m'
-
-			printf "%bUpdating packages...%b\n" "$fg_blue" "$md_reset"
-
-			if [[ -n $AUR_HELPER ]]; then
-				command "$AUR_HELPER" -Syu
-			else
-				sudo pacman -Syu
-			fi
-
-			notify-send "Update Complete" --icon "package-install"
-
-			printf "\n%bUpdate complete!%b\n" "$fg_green" "$md_reset"
-			read -rn 1 -p "Press any key to exit..."
+			launch_cli
 			;;
 		data)
 			detect_helper
-
-			local updates icon tooltip
-
-			if ! updates=$(detect_updates); then
-				icon="󰒑"
-				tooltip="Failed to detect updates"
-				tooltip+="\nRight-click to retry"
-			else
-				local repo_updates aur_updates
-				read -r repo_updates aur_updates <<<"$updates"
-
-				if ((repo_updates + aur_updates > 0)); then
-					local count
-					printf -v count "%3d" "$repo_updates"
-					icon="󰄠"
-					tooltip="Repo: $count"
-
-					if [[ -n $AUR_HELPER ]]; then
-						printf -v count "%3d" "$aur_updates"
-						tooltip+="\n AUR: $count"
-					fi
-				else
-					icon="󰸟"
-					tooltip="No updates available"
-				fi
-			fi
-
-			cat <<-EOF
-				{ "text": "$icon", "tooltip": "$tooltip" }
-			EOF
+			print_data
 			;;
 		*)
 			print_help >&2

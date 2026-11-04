@@ -25,9 +25,25 @@ print_help() {
 	EOF
 }
 
-turn_bluetooth_on() {
+get_state() {
+	bluetoothctl show | awk '/PowerState/ {print $2}'
+}
+
+turn_off() {
 	local state
-	state=$(bluetoothctl show | awk '/PowerState/ {print $2}')
+	state=$(get_state)
+
+	[[ $state == off ]] && return 0
+
+	bluetoothctl power off
+
+	notify-send "Bluetooth Off" --icon "network-bluetooth-inactive" \
+		--hint "string:x-canonical-private-synchronous:bluetooth"
+}
+
+turn_on() {
+	local state
+	state=$(get_state)
 
 	case $state in
 		on)          return 0 ;;
@@ -39,9 +55,60 @@ turn_bluetooth_on() {
 		--hint "string:x-canonical-private-synchronous:bluetooth"
 }
 
-cleanup() {
+scan_off() {
 	kill "$PID"
 	wait "$PID"
+}
+
+scan_on() {
+	while true; do
+		bluetoothctl --timeout 10 scan on >/dev/null
+	done &
+	PID=$!
+}
+
+launch_menu() {
+	local list="bluetoothctl devices | sed 's/^Device //'"
+
+	local opts=(
+		--bind="start,every(2):reload-sync($list)"
+		--border-label=" Bluetooth Devices "
+		--border="sharp"
+		--cycle
+		--ghost="Search"
+		--header="MAC ADDRESS       NAME"
+		--highlight-line
+		--info="inline-right"
+		--reverse
+	)
+
+	local address
+	address=$(fzf "${opts[@]}" | awk '{print $1}')
+
+	[[ -z $address ]] && return 1
+
+	local connected
+	connected=$(bluetoothctl info "$address" | awk '/Connected/ {print $2}')
+
+	if [[ $connected == yes ]]; then
+		notify-send "Bluetooth" "Already connected to this device" \
+			--icon "package-install"
+		return 0
+	fi
+
+	local paired
+	paired=$(bluetoothctl info "$address" | awk '/Paired/ {print $2}')
+
+	if [[ $paired != yes ]]; then
+		bluetoothctl pair "$address"
+	fi
+
+	if ! bluetoothctl connect "$address"; then
+		notify-send "Bluetooth" "Failed to connect" --icon "package-purge"
+		return 1
+	fi
+
+	notify-send "Bluetooth" "Successfully connected" --icon "package-install"
 }
 
 main() {
@@ -49,73 +116,16 @@ main() {
 
 	case $option in
 		off)
-			local state
-			state=$(bluetoothctl show | awk '/PowerState/ {print $2}')
-
-			[[ $state == off ]] && return 0
-
-			bluetoothctl power off
-
-			notify-send "Bluetooth Off" --icon "network-bluetooth-inactive" \
-				--hint "string:x-canonical-private-synchronous:bluetooth"
+			turn_off
 			;;
 		on)
-			turn_bluetooth_on
+			turn_on
 			;;
 		menu)
-			turn_bluetooth_on
-
-			trap cleanup EXIT
-
-			while true; do
-				bluetoothctl --timeout 10 scan on >/dev/null
-			done &
-			PID=$!
-
-			local list="bluetoothctl devices | sed 's/^Device //'"
-
-			local opts=(
-				--bind="start,every(2):reload-sync($list)"
-				--border-label=" Bluetooth Devices "
-				--border="sharp"
-				--cycle
-				--ghost="Search"
-				--header="MAC ADDRESS       NAME"
-				--highlight-line
-				--info="inline-right"
-				--reverse
-			)
-
-			local address
-			address=$(fzf "${opts[@]}" | awk '{print $1}')
-
-			[[ -z $address ]] && return 1
-
-			local connected
-			connected=$(bluetoothctl info "$address" |
-				awk '/Connected/ {print $2}')
-
-			if [[ $connected == yes ]]; then
-				notify-send "Bluetooth" "Already connected to this device" \
-					--icon "package-install"
-				return 0
-			fi
-
-			local paired
-			paired=$(bluetoothctl info "$address" | awk '/Paired/ {print $2}')
-
-			if [[ $paired != yes ]]; then
-				bluetoothctl pair "$address"
-			fi
-
-			if ! bluetoothctl connect "$address"; then
-				notify-send "Bluetooth" "Failed to connect" \
-					--icon "package-purge"
-				return 1
-			fi
-
-			notify-send "Bluetooth" "Successfully connected" \
-				--icon "package-install"
+			turn_on
+			trap scan_off EXIT
+			scan_on
+			launch_menu
 			;;
 		*)
 			print_help >&2
