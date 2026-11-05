@@ -30,7 +30,7 @@ A <ins>mecha</ins>-themed Way<ins>bar</ins> configuration
 </div>
 
 > [!IMPORTANT]
-> By default, mechabar is configured for [Arch Linux↗](https://archlinux.org/)
+> By default, mechabar is configured for [Arch Linux](https://archlinux.org/)
 > and [Hyprland](https://github.com/hyprwm/Hyprland), and uses
 > [`kitty`](https://github.com/kovidgoyal/kitty) to launch command-line
 > interfaces. If you use a different distribution, compositor, or terminal, see
@@ -67,9 +67,9 @@ A <ins>mecha</ins>-themed Way<ins>bar</ins> configuration
 ### Distribution
 
 The [`update`](./scripts/update) script uses
-[`checkupdates`↗](https://man.archlinux.org/man/checkupdates.8) from
-[pacman-contrib↗](https://archlinux.org/packages/extra/x86_64/pacman-contrib/)
-to display update counts and [`pacman`↗](https://man.archlinux.org/man/pacman.8)
+[`checkupdates`](https://man.archlinux.org/man/checkupdates.8) from
+[pacman-contrib](https://archlinux.org/packages/extra/x86_64/pacman-contrib/)
+to display update counts and [`pacman`](https://man.archlinux.org/man/pacman.8)
 to upgrade packages. If you use a non-Arch-based Linux distribution...
 
 ```text
