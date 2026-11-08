@@ -26,19 +26,17 @@
 @define-color mantle       #292c3c;
 @define-color crust        #232634;
 
-/* Base colors */
-@define-color accent       @lavender;
-@define-color fg           @text;
-@define-color bg_0         @crust;
-@define-color bg_1         @mantle;
-@define-color bg_2         @base;
-@define-color bg_3         @surface0;
-@define-color border       @subtext0;
-@define-color shadow       shade(@bg_0, 0.75);
-
-/* States */
-@define-color warning      @yellow;
-@define-color critical     @red;
-@define-color charging     @green;
-@define-color bg_alt       @base;
-@define-color fg_alt       alpha(@fg, 0.75);
+/* Constants */
+@define-color m_accent      @lavender;
+@define-color m_fg          @text;
+@define-color m_bg_0        @crust;
+@define-color m_bg_1        @mantle;
+@define-color m_bg_2        @base;
+@define-color m_bg_3        @surface0;
+@define-color m_border      @subtext0;
+@define-color m_shadow      shade(@crust, 0.75);
+@define-color m_warning     @yellow;
+@define-color m_critical    @red;
+@define-color m_charging    @green;
+@define-color m_bg_alt      @base;
+@define-color m_fg_alt      alpha(@text, 0.75);

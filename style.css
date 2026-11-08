@@ -4,15 +4,15 @@
 	font-family: "GoogleSansCode Nerd Font";
 	font-size: 13px;
 	font-weight: 500;
-	color: @fg;
+	color: @m_fg;
 }
 
 #waybar {
-	background-color: @shadow;
+	background-color: @m_shadow;
 }
 #waybar > box {
 	margin: 3px;
-	background-color: @bg_0;
+	background-color: @m_bg_0;
 }
 
 .module {
@@ -31,15 +31,15 @@ button {
 	min-height: 24px;
 }
 button:hover {
-	background-color: @bg_alt;
+	background-color: @m_bg_alt;
 	background-image: none;
-	color: @fg_alt;
+	color: @m_fg_alt;
 }
 
 tooltip {
-	border: 2px solid @border;
+	border: 2px solid @m_border;
 	border-radius: 0;
-	background-color: @bg_0;
+	background-color: @m_bg_0;
 }
 tooltip box {
 	margin: -4px;
@@ -47,19 +47,19 @@ tooltip box {
 }
 
 menu {
-	border: 2px solid @border;
+	border: 2px solid @m_border;
 	border-radius: 0;
-	background-color: @bg_0;
+	background-color: @m_bg_0;
 }
 menu menuitem {
 	margin: 0 2px;
 }
 menu menuitem:hover {
-	background-color: @bg_alt;
+	background-color: @m_bg_alt;
 }
 menu separator {
 	margin: 0 2px;
-	background-color: @bg_alt;
+	background-color: @m_bg_alt;
 }
 
 /* Left modules */
@@ -70,12 +70,12 @@ menu separator {
 
 #workspaces {
 	padding: 0 1px;
-	background-color: @bg_1;
+	background-color: @m_bg_1;
 }
 #workspaces button.active label,
 #workspaces button.focused label {
 	font-size: 18.75px;
-	color: @accent;
+	color: @m_accent;
 }
 
 #window {
@@ -86,79 +86,79 @@ menu separator {
 /* Center modules */
 
 #temperature {
-	background-color: @bg_1;
+	background-color: @m_bg_1;
 }
 #temperature.critical {
-	color: @critical;
+	color: @m_critical;
 }
 
 #memory {
-	background-color: @bg_2;
+	background-color: @m_bg_2;
 }
 #memory.warning {
-	color: @warning;
+	color: @m_warning;
 }
 #memory.critical {
-	color: @critical;
+	color: @m_critical;
 }
 
 #cpu {
-	background-color: @bg_3;
+	background-color: @m_bg_3;
 }
 #cpu.warning {
-	color: @warning;
+	color: @m_warning;
 }
 #cpu.critical {
-	color: @critical;
+	color: @m_critical;
 }
 
 #custom-distro {
 	font-size: 18.75px;
 	padding: 0 10px 0 5px;
-	background-color: @accent;
-	color: @bg_0;
+	background-color: @m_accent;
+	color: @m_bg_0;
 }
 
 #idle_inhibitor {
-	background-color: @bg_3;
+	background-color: @m_bg_3;
 }
 #idle_inhibitor:hover,
 #idle_inhibitor.deactivated {
-	color: @fg_alt;
+	color: @m_fg_alt;
 }
 #clock.time {
 	padding-right: 6px;
-	background-color: @bg_3;
+	background-color: @m_bg_3;
 }
 
 #clock.date {
 	padding-left: 6px;
-	background-color: @bg_2;
+	background-color: @m_bg_2;
 }
 #clock.date:hover {
-	color: @fg_alt;
+	color: @m_fg_alt;
 }
 
 #network {
 	padding: 0 6px 0 4px;
-	background-color: @bg_1;
+	background-color: @m_bg_1;
 }
 #network:hover {
-	color: @fg_alt;
+	color: @m_fg_alt;
 }
 #bluetooth {
 	padding: 0 4px;
-	background-color: @bg_1;
+	background-color: @m_bg_1;
 }
 #bluetooth:hover {
-	color: @fg_alt;
+	color: @m_fg_alt;
 }
 #custom-update {
 	padding: 0 6px 0 1px;
-	background-color: @bg_1;
+	background-color: @m_bg_1;
 }
 #custom-update:hover {
-	color: @fg_alt;
+	color: @m_fg_alt;
 }
 
 /* Right modules */
@@ -168,47 +168,47 @@ menu separator {
 }
 #mpris:hover,
 #mpris.paused {
-	color: @fg_alt;
+	color: @m_fg_alt;
 }
 
 #pulseaudio,
 #wireplumber {
-	background-color: @bg_1;
+	background-color: @m_bg_1;
 }
 #pulseaudio:hover,
 #pulseaudio.output.muted,
 #pulseaudio.input.source-muted,
 #wireplumber:hover,
 #wireplumber.muted {
-	color: @fg_alt;
+	color: @m_fg_alt;
 }
 
 #backlight {
-	background-color: @bg_2;
+	background-color: @m_bg_2;
 }
 
 #battery {
-	background-color: @bg_3;
+	background-color: @m_bg_3;
 }
 #battery.warning {
-	color: @warning;
+	color: @m_warning;
 }
 #battery.critical {
-	color: @critical;
+	color: @m_critical;
 }
 #battery.charging {
-	color: @charging;
+	color: @m_charging;
 }
 
 #custom-power {
 	font-size: 16px;
 	border-radius: 16px;
 	padding: 0 19px 0 16px;
-	color: @accent;
+	color: @m_accent;
 }
 #custom-power:hover {
-	background-color: @bg_alt;
-	color: @fg_alt;
+	background-color: @m_bg_alt;
+	color: @m_fg_alt;
 }
 
 /* Dividers */
@@ -222,24 +222,24 @@ menu separator {
 
 #custom-left.accent,
 #custom-right.accent {
-	color: @accent;
+	color: @m_accent;
 }
 #custom-left.bg_1,
 #custom-right.bg_1 {
-	color: @bg_1;
+	color: @m_bg_1;
 }
 #custom-left.bg_2,
 #custom-right.bg_2 {
-	background-color: @bg_1;
-	color: @bg_2;
+	background-color: @m_bg_1;
+	color: @m_bg_2;
 }
 #custom-left.bg_3,
 #custom-right.bg_3 {
-	background-color: @bg_2;
-	color: @bg_3;
+	background-color: @m_bg_2;
+	color: @m_bg_3;
 }
 
 #custom-left_inverse.bg_3,
 #custom-right_inverse.bg_3 {
-	color: @bg_3;
+	color: @m_bg_3;
 }
