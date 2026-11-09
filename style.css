@@ -208,7 +208,6 @@ menu separator {
 }
 #custom-power:hover {
 	background-color: @m_bg_alt;
-	color: @m_fg_alt;
 }
 
 /* Dividers */
