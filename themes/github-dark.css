@@ -1,0 +1,47 @@
+/* Palette */
+@define-color accent_fg         #2f81f7;
+@define-color fg_default        #e6edf3;
+@define-color fg_muted          #848d97;
+@define-color fg_subtle         #6e7681;
+@define-color canvas_default    #0d1117;
+@define-color canvas_subtle     #161b22;
+@define-color border_default    #30363d;
+@define-color border_muted      #21262d;
+@define-color border_subtle     rgba(240, 246, 252, 0.1);
+@define-color shadow            #010409;
+@define-color success_fg        #3fb950;
+@define-color attention_fg      #d29922;
+@define-color severe_fg         #db6d28;
+@define-color danger_fg         #f85149;
+@define-color black             #0d1117;
+@define-color blackBright       #161b22;
+@define-color white             #b1bac4;
+@define-color whiteBright       #b1bac4;
+@define-color gray              #6e7681;
+@define-color red               #ff7b72;
+@define-color redBright         #ffa198;
+@define-color green             #3fb950;
+@define-color greenBright       #56d364;
+@define-color yellow            #d29922;
+@define-color yellowBright      #e3b341;
+@define-color blue              #58a6ff;
+@define-color blueBright        #79c0ff;
+@define-color magenta           #bc8cff;
+@define-color magentaBright     #d2a8ff;
+@define-color cyan              #76e3ea;
+@define-color cyanBright        #b3f0ff;
+
+/* Constants */
+@define-color m_accent      @blueBright;
+@define-color m_fg          @fg_default;
+@define-color m_bg_0        @shadow;
+@define-color m_bg_1        @black;
+@define-color m_bg_2        @blackBright;
+@define-color m_bg_3        @border_muted;
+@define-color m_border      @white;
+@define-color m_shadow      shade(@shadow, 0.75);
+@define-color m_warning     @yellowBright;
+@define-color m_critical    @redBright;
+@define-color m_charging    @greenBright;
+@define-color m_bg_alt      @blackBright;
+@define-color m_fg_alt      @fg_muted;
