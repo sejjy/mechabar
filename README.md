@@ -74,36 +74,58 @@ A <ins>mecha</ins>-themed Way<ins>bar</ins> configuration
 
 ### Distribution
 
-The [`update`](./scripts/update) script uses
-[`checkupdates`](https://man.archlinux.org/man/checkupdates.8) from
+The [update script](./scripts/update), used by the
+[update module](./modules/custom/update.jsonc), uses the
+[`checkupdates`](https://man.archlinux.org/man/checkupdates.8) command from the
 [pacman-contrib](https://archlinux.org/packages/extra/x86_64/pacman-contrib/)
-to display update counts and [`pacman`](https://man.archlinux.org/man/pacman.8)
-to upgrade packages. If you use a non-Arch-based Linux distribution...
-
-```text
-Bailing out, you are on your own now. Good luck.
-```
-
-But seriously, you can edit the script, use your own, or simply not use the
-module at all.
+package to display the number of pending updates and the
+[`pacman`](https://man.archlinux.org/man/pacman.8) command to install updates.
+If you use a non-Arch-based Linux distribution, you can replace these commands,
+use your own script, or not use the module at all.
 
 ### Compositor
 
-[`config.jsonc`](./config.jsonc) uses
+The [config file](./config.jsonc) uses the
 [hyprland/window](https://github.com/Alexays/Waybar/wiki/Module:-Hyprland#hyprlandwindow)
-to display the title of the currently focused window. If you use
-[Niri](https://github.com/niri-wm/niri), for example, simply replace
-<ins>hyprland/window</ins> with
-[niri/window](https://github.com/Alexays/Waybar/wiki/Module:-Niri#niriwindow).
-See the [Waybar wiki](https://github.com/Alexays/Waybar/wiki) for more
-information.
+module to display the title of the currently focused window. If you use the
+[Niri](https://github.com/niri-wm/niri) compositor, for example, use the
+[niri/window](https://github.com/Alexays/Waybar/wiki/Module:-Niri#niriwindow)
+module instead:
+
+```jsonc
+"modules-left": [
+	// "hyprland/window"
+	"niri/window"
+]
+```
+
+[List of supported compositors](https://github.com/Alexays/Waybar#compositor-integration).
 
 ### Terminal
 
-[`bluetooth.jsonc`](./modules/bluetooth.jsonc),
-[`network.jsonc`](./modules/network.jsonc),
-[`power.jsonc`](./modules/custom/power.jsonc), and
-[`update.jsonc`](./modules/custom/update.jsonc) use `kitty` to launch their
-respective command-line interfaces. If you use
-[`wezterm`](https://github.com/wezterm/wezterm), for example, simply replace
-`kitty -e` with `wezterm -e`.
+The [bluetooth](./modules/bluetooth.jsonc),
+[network](./modules/network.jsonc),
+[power](./modules/custom/power.jsonc), and
+[update](./modules/custom/update.jsonc) modules use the `kitty` command to
+launch their command-line interfaces. If you use the
+[WezTerm](https://github.com/wezterm/wezterm) terminal, for example, use the
+`wezterm` command instead:
+
+```jsonc
+"custom/power": {
+	// "on-click": "kitty -e ~/.config/waybar/scripts/power",
+	"on-click": "wezterm -e ~/.config/waybar/scripts/power",
+}
+```
+
+### Theme
+
+The [style file](./style.css) uses the
+[Catppuccin Mocha](./themes/catppuccin-mocha.css) theme by default. If you
+prefer to use [Monochrome](./themes/monochrome.css), for example, import
+`monochrome.css` instead:
+
+```css
+/* @import "themes/catppuccin-mocha.css"; */
+@import "themes/monochrome.css";
+```
