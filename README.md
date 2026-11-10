@@ -10,14 +10,6 @@ A <ins>mecha</ins>-themed Way<ins>bar</ins> configuration
 <details>
 <summary>Themes</summary>
 
-| Catppuccin Mocha (default)                         |
-| :------------------------------------------------: |
-| ![Catppuccin Mocha](./assets/catppuccin-mocha.png) |
-
-| Catppuccin Macchiato                                       |
-| :--------------------------------------------------------: |
-| ![Catppuccin Macchiato](./assets/catppuccin-macchiato.png) |
-
 | Catppuccin Frappe                                    |
 | :--------------------------------------------------: |
 | ![Catppuccin Frappe](./assets/catppuccin-frappe.png) |
@@ -25,6 +17,22 @@ A <ins>mecha</ins>-themed Way<ins>bar</ins> configuration
 | Catppuccin Latte                                   |
 | :------------------------------------------------: |
 | ![Catppuccin Latte](./assets/catppuccin-latte.png) |
+
+| Catppuccin Macchiato                                       |
+| :--------------------------------------------------------: |
+| ![Catppuccin Macchiato](./assets/catppuccin-macchiato.png) |
+
+| Catppuccin Mocha (default)                         |
+| :------------------------------------------------: |
+| ![Catppuccin Mocha](./assets/catppuccin-mocha.png) |
+
+| GitHub Dark                              |
+| :--------------------------------------: |
+| ![GitHub Dark](./assets/github-dark.png) |
+
+| Monochrome                             |
+| :------------------------------------: |
+| ![Monochrome](./assets/monochrome.png) |
 
 </details>
 </div>
