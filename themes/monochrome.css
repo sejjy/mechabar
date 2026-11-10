@@ -1,0 +1,27 @@
+/* Palette */
+@define-color black                #000000;
+@define-color near_black           #1b1b1b;
+@define-color very_dark_gray       #303030;
+@define-color dark_gray            #474747;
+@define-color medium_dark_gray     #5e5e5e;
+@define-color middle_gray          #777777;
+@define-color medium_light_gray    #919191;
+@define-color light_gray           #ababab;
+@define-color very_light_gray      #c6c6c6;
+@define-color near_white           #e2e2e2;
+@define-color white                #ffffff;
+
+/* Constants */
+@define-color m_accent      @white;
+@define-color m_fg          @near_white;
+@define-color m_bg_0        @black;
+@define-color m_bg_1        @near_black;
+@define-color m_bg_2        @very_dark_gray;
+@define-color m_bg_3        @dark_gray;
+@define-color m_border      @very_light_gray;
+@define-color m_shadow      @black;
+@define-color m_warning     @white;
+@define-color m_critical    @white;
+@define-color m_charging    @near_white;
+@define-color m_bg_alt      @very_dark_gray;
+@define-color m_fg_alt      @very_light_gray;
