@@ -32,7 +32,7 @@
 @define-color cyanBright        #b3f0ff;
 
 /* Constants */
-@define-color m_accent      @blueBright;
+@define-color m_accent      @cyanBright;
 @define-color m_fg          @fg_default;
 @define-color m_bg_0        @shadow;
 @define-color m_bg_1        @black;
