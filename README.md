@@ -72,7 +72,8 @@ A <ins>mecha</ins>-themed Way<ins>bar</ins> configuration
 
 ## Configuration
 
-### Distribution
+<details>
+<summary>Distribution</summary>
 
 The [update script](./scripts/update), used by the
 [update module](./modules/custom/update.jsonc), uses the
@@ -82,8 +83,11 @@ package to display the number of pending updates and the
 [`pacman`](https://man.archlinux.org/man/pacman.8) command to install updates.
 If you use a non-Arch-based Linux distribution, you can replace these commands,
 use your own script, or not use the module at all.
+#
+</details>
 
-### Compositor
+<details>
+<summary>Compositor</summary>
 
 The [config file](./config.jsonc) uses the
 [hyprland/window](https://github.com/Alexays/Waybar/wiki/Module:-Hyprland#hyprlandwindow)
@@ -100,8 +104,11 @@ module instead:
 ```
 
 [List of supported compositors](https://github.com/Alexays/Waybar#compositor-integration).
+#
+</details>
 
-### Terminal
+<details>
+<summary>Terminal</summary>
 
 The [bluetooth](./modules/bluetooth.jsonc),
 [network](./modules/network.jsonc),
@@ -117,8 +124,11 @@ launch their command-line interfaces. If you use the
 	"on-click": "wezterm -e ~/.config/waybar/scripts/power",
 }
 ```
+#
+</details>
 
-### Theme
+<details>
+<summary>Theme</summary>
 
 The [style file](./style.css) uses the
 [Catppuccin Mocha](./themes/catppuccin-mocha.css) theme by default. If you
@@ -129,3 +139,5 @@ prefer to use [Monochrome](./themes/monochrome.css), for example, import
 /* @import "themes/catppuccin-mocha.css"; */
 @import "themes/monochrome.css";
 ```
+
+</details>
