@@ -27,7 +27,7 @@ print_help() {
 }
 
 get_brightness() {
-	brightnessctl --machine-readable | awk -F ',' '{print $4}' | tr -d "%"
+	brightnessctl --machine-readable | awk -F ',' '{print $4}' | tr -d '%'
 }
 
 set_brightness() {

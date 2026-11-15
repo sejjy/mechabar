@@ -57,7 +57,8 @@ launch_cli() {
 	notify-send "Update Complete" --icon "package-install"
 
 	printf "\n%bUpdate complete!%b\n" "$fg_green" "$md_reset"
-	read -rn 1 -p "Press any key to exit..."
+	read -rsn 1 -p "Press any key to exit..."
+	printf '\n'
 }
 
 detect_updates() {
@@ -123,7 +124,7 @@ main() {
 	local option=$1
 
 	case $option in
-		'')
+		"")
 			trap update_module EXIT
 			detect_helper
 			launch_cli

@@ -1,4 +1,5 @@
 /* Palette */
+/* https://github.com/projekt0n/github-nvim-theme/blob/main/lua/github-theme/palette/primitives/dark.lua */
 @define-color accent_fg         #2f81f7;
 @define-color fg_default        #e6edf3;
 @define-color fg_muted          #848d97;
